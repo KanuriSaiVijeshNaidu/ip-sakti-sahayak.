@@ -264,7 +264,7 @@ async def ingest_directory(
     return result
 
 
-# ??? CLI entry point ??????????????????????????????????????????????????????????
+# ─── CLI entry point ──────────────────────────────────────────────────────────
 
 async def _main() -> None:
     logging.basicConfig(
@@ -272,19 +272,18 @@ async def _main() -> None:
         format="%(asctime)s | %(levelname)s | %(message)s",
         stream=sys.stdout,
     )
-    print("\n????????????????????????????????????")
-    print("?  IP-SAKTI Phase 2 Ingestion CLI  ?")
-    print("????????????????????????????????????\n")
+    print("\n╔═════════════════════════════════════════════════════════════╗")
+    print("║   AYURLEX Docling-Powered Legal Document Ingestion CLI      ║")
+    print("╚═════════════════════════════════════════════════════════════╝\n")
 
-    result = await ingest_directory(RAW_DIR)
+    from backend.app.ingestion.docling_pipeline import run_pipeline
+    total_chunks, doclings, triples = run_pipeline()
 
-    print("\n?? Ingestion Summary")
-    print(f"   Documents processed : {result['documents_added']}")
-    print(f"   Chunks added        : {result['chunks_added']}")
-    print(f"   Chunks skipped      : {result['skipped']} (already in DB)")
-    print(f"   FAISS vectors total : {result.get('total_faiss_vectors', 'N/A')}")
-    print(f"   Time taken          : {result['elapsed_s']}s")
-    print("\n? Phase 2 ingestion complete!\n")
+    print("\n✅ Docling Ingestion Summary:")
+    print(f"   Docling documents built : {doclings}")
+    print(f"   Noise-free chunks added : {total_chunks}")
+    print(f"   Contrastive triples     : {triples}")
+    print("\n🚀 Ingestion successfully completed via Docling Document Engine!\n")
 
 
 if __name__ == "__main__":

@@ -54,49 +54,125 @@ def _synthesize_answer(query: str, passages: list[dict]) -> str:
             "verified statutory evidence for your inquiry.\n\n"
             "AYURLEX operates under a strict **Zero-Hallucination Policy**: we do not invent legal rules, "
             "fabricate section numbers, or speculate on unverified regulatory procedures.\n\n"
-            "**Recommended Verification:**\n"
+            "**Recommended Verification Channels:**\n"
             "- For AYUSH drug licensing: Consult the State Licensing Authority (SLA) or e-Aushadhi portal (e-aushadhi.gov.in).\n"
             "- For Ayurveda Aahara: Consult the FSSAI FoSCoS portal (foscos.fssai.gov.in).\n"
             "- For Patents & Trademarks: Consult the IP India Registry (ipindia.gov.in)."
         )
 
+    # Domain keywords check: If the query is completely unrelated to IP or AYUSH/FSSAI,
+    # reject immediately without generating an answer or procedural plan.
+    domain_keywords = [
+        "trademark", "trade mark", "tm", "brand", "logo", "patent", "patents", "invention",
+        "inventor", "inpass", "tkdl", "ayush", "ayurveda", "ayurvedic", "asu", "siddha",
+        "unani", "herbal", "drug", "cosmetic", "fssai", "aahara", "food", "label",
+        "supplement", "gi tag", "geographical indication", "biodiversity", "nba",
+        "schedule t", "gmp", "form 24d", "form 25d", "form tm-a", "form 1", "form 2",
+        "form 18", "rule 158b", "section 3", "section 9", "section 11", "section 28",
+        "license", "licensing", "registration", "register", "infringement", "prior art"
+    ]
+    is_domain_relevant = any(kw in q_lower for kw in domain_keywords)
+    if not is_domain_relevant:
+        return (
+            "### ⚠️ Insufficient Statutory Resources in AYURLEX Corpus\n"
+            "The retrieved legal registers and Gazette notifications in the AYURLEX corpus do not contain "
+            "verified statutory evidence for your inquiry.\n\n"
+            "AYURLEX operates under a strict **Zero-Hallucination Policy**: we do not invent legal rules, "
+            "fabricate section numbers, or speculate on unverified regulatory procedures.\n\n"
+            "**Recommended Verification Channels:**\n"
+            "- For AYUSH drug licensing: Consult the State Licensing Authority (SLA) or e-Aushadhi portal (e-aushadhi.gov.in).\n"
+            "- For Ayurveda Aahara: Consult the FSSAI FoSCoS portal (foscos.fssai.gov.in).\n"
+            "- For Patents & Trademarks: Consult the IP India Registry (ipindia.gov.in)."
+        )
+
+    # Explicit out-of-scope check: if query asks about topics outside statutory IP/AYUSH law
+    out_of_scope_keywords = [
+        "cryptocurrency", "crypto", "bitcoin", "blockchain", "token", "nft",
+        "stocks", "forex", "trading", "weather", "cricket", "python code",
+        "java code", "javascript", "react", "nuclear", "weapon", "movie", "song"
+    ]
+    if any(w in q_lower for w in out_of_scope_keywords):
+        return (
+            "### ⚠️ Insufficient Statutory Resources in AYURLEX Corpus\n"
+            "The retrieved legal registers and Gazette notifications in the AYURLEX corpus do not contain "
+            "verified statutory evidence for your inquiry.\n\n"
+            "AYURLEX operates under a strict **Zero-Hallucination Policy**: we do not invent legal rules, "
+            "fabricate section numbers, or speculate on unverified regulatory procedures.\n\n"
+            "**Recommended Verification Channels:**\n"
+            "- For AYUSH drug licensing: Consult the State Licensing Authority (SLA) or e-Aushadhi portal (e-aushadhi.gov.in).\n"
+            "- For Ayurveda Aahara: Consult the FSSAI FoSCoS portal (foscos.fssai.gov.in).\n"
+            "- For Patents & Trademarks: Consult the IP India Registry (ipindia.gov.in)."
+        )
+
+    q_stripped = re.sub(r"[^\w\s]", "", q_lower).strip()
+
     # 1. Procedural: Registration of Ayurvedic Product
     is_registration_ayush = any(w in q_lower for w in [
         "register my product", "register an ayurvedic product", "how do i register my product",
         "how to register my product", "ayush license", "form 24d", "form 25d", "schedule t",
-        "start ayurveda", "manufacturing license for ayurveda"
+        "start ayurveda", "manufacturing license for ayurveda", "register product under ayurveda",
+        "how do i register my porduct", "register ayurvedic product"
     ])
 
     # 2. Definitional: What is a Trademark?
-    is_tm_definitional = any(w in q_lower for w in [
-        "what is a trademark", "what is trademark", "define trademark", "meaning of trademark",
-        "concept of trademark", "explain trademark"
-    ])
+    # Captures bare queries like "trade mark", "trademark", "what is a trademark", "what is trademark", "tm"
+    is_tm_definitional = (
+        q_stripped in ["trademark", "trade mark", "tm", "what is a trademark", "what is trademark", "what is trade mark", "what is tm", "define trademark", "meaning of trademark", "explain trademark"]
+        or (
+            any(w in q_lower for w in [
+                "what is a trademark", "what is trademark", "define trademark", "meaning of trademark",
+                "concept of trademark", "explain trademark"
+            ])
+            and not any(w in q_lower for w in [
+                "how to", "how do", "register", "apply", "process", "procedure", "filing", "fee", "cost",
+                "get a trademark", "get the trademark"
+            ])
+        )
+    )
 
     # 3. Procedural: How to register a Trademark?
     is_tm_procedural = any(w in q_lower for w in [
         "how to register a trademark", "how do i register a trademark", "register my trademark",
         "trademark registration process", "apply for trademark", "trademark filing",
-        "how to get a trademark", "trademark procedure"
+        "how to get a trademark", "how to get the trademark", "trademark procedure",
+        "register a trademark", "get a trademark", "get the trademark", "how to register trademark"
     ])
 
     # 4. Definitional: What is a Patent?
-    is_patent_definitional = any(w in q_lower for w in [
-        "what is a patent", "what is patent", "define patent", "meaning of patent",
-        "concept of patent", "explain patent"
-    ]) and not any(w in q_lower for w in ["how to", "file", "process", "apply"])
+    is_patent_definitional = (
+        q_stripped in ["patent", "patents", "what is a patent", "what is patent", "define patent", "meaning of patent", "explain patent"]
+        or (
+            any(w in q_lower for w in [
+                "what is a patent", "what is patent", "define patent", "meaning of patent",
+                "concept of patent", "explain patent"
+            ])
+            and not any(w in q_lower for w in [
+                "how to", "how do", "file", "process", "apply", "register", "procedure", "fee", "cost",
+                "ashwagandha", "formulation", "ayurvedic", "admixture", "synergy", "section 3"
+            ])
+        )
+    )
 
     # 5. Procedural: How to file/get a Patent?
     is_patent_procedural = any(w in q_lower for w in [
         "how to file a patent", "how do i file a patent", "how to get a patent",
-        "patent filing process", "how to apply for a patent", "patent application process"
+        "patent filing process", "how to apply for a patent", "patent application process",
+        "file a patent", "apply for a patent", "how to file patent"
     ])
 
     # 6. Definitional: What is Ayurveda / What is AYUSH
-    is_ayurveda_definitional = any(w in q_lower for w in [
-        "what is ayurveda", "what is ayush", "define ayurveda", "meaning of ayurveda",
-        "definition of ayurveda", "what are asu", "what is asu"
-    ])
+    is_ayurveda_definitional = (
+        q_stripped in ["ayurveda", "ayush", "avyur veda", "avyurveda", "asu", "what is ayurveda", "what is ayush", "what is avyur veda", "define ayurveda", "meaning of ayurveda"]
+        or (
+            any(w in q_lower for w in [
+                "what is ayurveda", "what is ayush", "define ayurveda", "meaning of ayurveda",
+                "definition of ayurveda", "what are asu", "what is asu", "what is avyur veda"
+            ])
+            and not any(w in q_lower for w in [
+                "how to", "how do", "register", "license", "licensing", "product", "manufacturing", "sell", "export", "patent"
+            ])
+        )
+    )
 
     # 7. FSSAI Labelling & Ayurveda Aahara queries
     is_fssai = any(w in q_lower for w in ["fssai", "label", "labelling", "ayurveda aahara", "packaging", "supplement"])
@@ -136,7 +212,12 @@ def _synthesize_answer(query: str, passages: list[dict]) -> str:
             "- **Mandatory Documents:** Master Manufacturing Formula (MMF), batch testing reports from NABL/AYUSH lab, stability data, and specimen product label.\n\n"
             "#### 4️⃣ Step 4: Statutory Site Inspection & License Grant\n"
             "- A government **Drug Inspector (AYUSH)** conducts a physical inspection of the premises to verify Schedule T GMP compliance.\n"
-            "- Upon inspection approval and lab sample verification, the SLA issues **Form 26D** (Manufacturing License & GMP Certificate)."
+            "- Upon inspection approval and lab sample verification, the SLA issues **Form 26D** (Manufacturing License & GMP Certificate).\n\n"
+            "---\n\n"
+            "### 🚀 Practical Next Steps\n"
+            "1. **Classify:** Determine whether your formulation qualifies as Classical ASU (Form 24D), P&P (Rule 158B), or Ayurveda Aahara.\n"
+            "2. **Premises Audit:** Ensure your premises or contract manufacturer holds an active Schedule T GMP certificate.\n"
+            "3. **Apply:** Register on your State AYUSH SLA portal or the central e-Aushadhi system."
         )
     elif is_tm_definitional:
         answer = (
@@ -162,7 +243,16 @@ def _synthesize_answer(query: str, passages: list[dict]) -> str:
             "4. **Exclusive Statutory Monopoly (Section 28 & 29):**\n"
             "   Registration confers on the proprietor the exclusive legal right to use the mark and initiate civil or criminal infringement suits under Section 29.\n\n"
             "5. **Absolute Grounds for Refusal (Section 9):**\n"
-            "   Generic or descriptive botanical plant names (e.g. attempting to monopolize *'Ashwagandha'* or *'Triphala'* alone) cannot be registered by one individual. The brand mark must be distinctive, coined, or arbitrary."
+            "   Generic or descriptive botanical plant names (e.g. attempting to monopolize *'Ashwagandha'* or *'Triphala'* alone) cannot be registered by one individual. The brand mark must be distinctive, coined, or arbitrary.\n\n"
+            "---\n\n"
+            "### 💡 Recommended Next Step: How to Get / Register Your Trademark\n\n"
+            "Now that you understand what a trademark is, would you like to proceed with securing legal ownership of your brand?\n\n"
+            "**Quick Filing Summary:**\n"
+            "1. **Clearance Search:** Search your proposed brand name on the official IP India registry (`ipindiaonline.gov.in`) to ensure no conflicting marks exist.\n"
+            "2. **Select Nice Class:** Identify whether your formulation belongs to **Class 5** (Medicines & Pharma), **Class 3** (Herbal Cosmetics), or **Class 30** (Ayurveda Aahara & Herbal Teas).\n"
+            "3. **File Form TM-A:** Submit online via IP India. MSMEs, Startups, and Individuals pay a subsidized statutory fee of **₹4,500** (standard corporate fee: ₹9,000).\n"
+            "4. **Immediate ™ Protection:** Immediately upon filing Form TM-A, you receive an official application number and can legally display the **™** mark on your packaging while examination is underway.\n\n"
+            "👉 **Continuous Follow-up:** Would you like the complete step-by-step statutory filing walkthrough with mandatory documents and timelines? Simply ask: *\"How do I register a trademark in India?\"*"
         )
     elif is_tm_procedural:
         answer = (
@@ -211,7 +301,16 @@ def _synthesize_answer(query: str, passages: list[dict]) -> str:
             "   - **Industrial Applicability (Section 2(1)(j)):** Must be capable of industrial manufacture or commercial usage.\n"
             "3. **Exclusive Statutory Rights (Section 48):** Confers exclusive rights to exclude third parties from making, using, offering for sale, selling, or importing the patented product or process.\n"
             "4. **Term of Patent (Section 53):** Valid for 20 years from application date, subject to annual statutory renewal fees.\n"
-            "5. **Statutory Bars on Traditional Knowledge (Section 3(p) & 3(e)):** Excludes mere traditional knowledge (TKDL prior art) and mere admixtures lacking unforeseen synergistic efficacy (CI < 1.0)."
+            "5. **Statutory Bars on Traditional Knowledge (Section 3(p) & 3(e)):** Excludes mere traditional knowledge (TKDL prior art) and mere admixtures lacking unforeseen synergistic efficacy (CI < 1.0).\n\n"
+            "---\n\n"
+            "### 💡 Recommended Next Step: How to File / Get a Patent\n\n"
+            "Would you like to know how to file your invention with the Indian Patent Office?\n\n"
+            "**Quick Filing Summary:**\n"
+            "1. **Prior Art & TKDL Search:** Conduct an exhaustive search on InPASS (`ipindiaservices.gov.in`) and the CSIR-AYUSH Traditional Knowledge Digital Library (TKDL) to confirm novelty.\n"
+            "2. **Prove Non-Obvious Synergy (Section 3(e)):** For herbal formulations, document experimental bioassays demonstrating unexpected synergistic efficacy (Combination Index CI < 1.0).\n"
+            "3. **Draft & File Form 1 & Form 2:** File online on `ipindia.gov.in` with ₹1,600 statutory fee for Individuals/Startups/MSMEs.\n"
+            "4. **NBA Approval:** Obtain mandatory Form III prior approval under Section 6 of the Biological Diversity Act, 2002 if using Indian biological resources.\n\n"
+            "👉 **Continuous Follow-up:** Would you like the complete step-by-step patent filing procedure from provisional filing to grant? Simply ask: *\"How do I file a patent in India?\"*"
         )
     elif is_patent_procedural:
         answer = (
@@ -250,7 +349,15 @@ def _synthesize_answer(query: str, passages: list[dict]) -> str:
             "3. **Regulatory Governance**:\n"
             "   - **Ministry of Ayush:** Central governing body formulating policy, pharmacopoeial standards, and national research initiatives.\n"
             "   - **Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H):** Publishes the official **Ayurvedic Pharmacopoeia of India (API)**, which defines statutory identity, purity, and assay benchmarks.\n"
-            "   - **National Commission for Indian System of Medicine (NCISM) Act, 2020:** Regulates higher medical education and practitioner licensing."
+            "   - **National Commission for Indian System of Medicine (NCISM) Act, 2020:** Regulates higher medical education and practitioner licensing.\n\n"
+            "---\n\n"
+            "### 💡 Recommended Next Step: How to Register & License an Ayurvedic Product\n\n"
+            "Are you planning to commercially manufacture or market an Ayurvedic formulation?\n\n"
+            "**Quick Licensing Summary:**\n"
+            "1. **Determine Formulation Category:** Classical ASU Medicine (First Schedule texts, Form 24D/25D) vs. Patent & Proprietary (P&P Rule 158B) vs. Ayurveda Aahara (FSSAI).\n"
+            "2. **Schedule T GMP Premises:** Setup or contract a certified Good Manufacturing Practices facility with a qualified technical supervisor (BAMS / B.Pharm Ayurveda).\n"
+            "3. **Submit Application:** File Form 24D (own factory) or Form 25D (loan license) to the State Licensing Authority (SLA) via e-Aushadhi.\n\n"
+            "👉 **Continuous Follow-up:** Would you like the complete step-by-step manufacturing and licensing guide? Simply ask: *\"How do I register an Ayurvedic product in India?\"*"
         )
     elif is_patent_ayurveda:
         answer = (
@@ -308,14 +415,6 @@ def _synthesize_answer(query: str, passages: list[dict]) -> str:
             "- **Patents & Trademarks:** Controller General of Patents, Designs and Trade Marks (ipindia.gov.in)."
         )
 
-    # Actionable Next Steps
-    answer += (
-        "\n\n### 🚀 Practical Next Steps\n"
-        "1. **Categorization & Portal:** Determine whether your product is an ASU Drug (SLA e-Aushadhi) or Ayurveda Aahara (FSSAI FoSCoS).\n"
-        "2. **Prior Art & TKDL Search:** Conduct an exhaustive search on IP India (ipindia.gov.in) and TKDL prior art archives before filing IP claims.\n"
-        "3. **Statutory Forms:** Submit Form 24D/25D for drug manufacture, or Form 1/2 for patent applications."
-    )
-
     # Source Attribution summary
     answer += "\n\n---\n**📚 References:**\n"
     for p in passages[:4]:
@@ -335,20 +434,39 @@ def _synthesize_answer_hindi(query: str, passages: list[dict]) -> str:
             "AYURLEX शून्य-भ्रम (Zero-Hallucination) नीति का पालन करता है और अपुष्ट कानूनी नियमों का निर्माण नहीं करता है।"
         )
 
+    domain_keywords = [
+        "ट्रेडमार्क", "ट्रेड मार्क", "पेटेंट", "आयुर्वेद", "आयुष", "दवा", "औषधि", "हर्बल",
+        "लाइसेंस", "पंजीकरण", "फॉर्म", "धारा", "trademark", "patent", "ayush", "ayurveda"
+    ]
+    if not any(kw in q_lower for kw in domain_keywords):
+        return (
+            "### ⚠️ AYURLEX कॉर्पस में अपर्याप्त वैधानिक संसाधन\n"
+            "वर्तमान कानूनी डेटाबेस में आपके प्रश्न से संबंधित सत्यापित वैधानिक प्रावधान उपलब्ध नहीं हैं। "
+            "AYURLEX शून्य-भ्रम (Zero-Hallucination) नीति का पालन करता है और अपुष्ट कानूनी नियमों का निर्माण नहीं करता है।"
+        )
+
     # 1. Trademark Definitional in Hindi
-    is_tm_definitional = any(w in q_lower for w in [
-        "ट्रेडमार्क क्या", "ट्रेड मार्क क्या", "what is a trademark", "what is trademark", "ट्रेडमार्क का अर्थ", "ट्रेडमार्क परिभाषा"
-    ])
+    is_tm_definitional = (
+        any(w in q_lower for w in [
+            "ट्रेडमार्क क्या", "ट्रेड मार्क क्या", "what is a trademark", "what is trademark",
+            "ट्रेडमार्क का अर्थ", "ट्रेडमार्क परिभाषा", "ट्रेडमार्क", "ट्रेड मार्क", "tm"
+        ])
+        and not any(w in q_lower for w in ["कैसे", "प्रक्रिया", "पंजीकरण", "रजिस्टर", "how to", "register", "फीस", "शुल्क"])
+    )
 
     # 2. Trademark Procedural in Hindi
     is_tm_procedural = any(w in q_lower for w in [
-        "ट्रेडमार्क रजिस्टर", "ट्रेडमार्क पंजीकरण", "ट्रेडमार्क कैसे", "how to register trademark", "register trademark", "form tm-a", "टीएम-ए"
+        "ट्रेडमार्क रजिस्टर", "ट्रेडमार्क पंजीकरण", "ट्रेडमार्क कैसे", "how to register trademark", "register trademark", "form tm-a", "टीएम-ए", "ट्रेडमार्क कैसे प्राप्त करें"
     ])
 
     # 3. Patent Definitional in Hindi
-    is_patent_definitional = any(w in q_lower for w in [
-        "पेटेंट क्या है", "पेटेंट क्या होता", "what is a patent", "what is patent", "पेटेंट परिभाषा", "पेटेंट अधिकार", "what is patent in"
-    ])
+    is_patent_definitional = (
+        any(w in q_lower for w in [
+            "पेटेंट क्या है", "पेटेंट क्या होता", "what is a patent", "what is patent",
+            "पेटेंट परिभाषा", "पेटेंट अधिकार", "पेटेंट"
+        ])
+        and not any(w in q_lower for w in ["कैसे", "दाखिल", "प्रक्रिया", "पंजीकरण", "how to", "file", "शुल्क", "अश्वगंधा"])
+    )
 
     # 4. Patent Procedural in Hindi
     is_patent_procedural = any(w in q_lower for w in [
@@ -358,15 +476,18 @@ def _synthesize_answer_hindi(query: str, passages: list[dict]) -> str:
     # 5. Registration / Licensing Procedure for Ayurvedic Products in Hindi
     is_registration = any(w in q_lower for w in [
         "रजिस्टर", "लाइसेंस", "पंजीकरण", "निर्माण", "register", "license", "form 24d", "form 25d", "schedule t", "उत्पाद पंजीकरण"
-    ])
+    ]) and not is_tm_definitional and not is_tm_procedural and not is_patent_definitional
 
     # 6. Ayurveda Definitional in Hindi
-    is_definitional = any(w in q_lower for w in [
-        "आयुर्वेद क्या", "आयुष क्या", "परिभाषा", "अर्थ", "what is ayurveda", "what is asu", "आयुर्वेद की परिभाषा"
-    ])
+    is_definitional = (
+        any(w in q_lower for w in [
+            "आयुर्वेद क्या", "आयुष क्या", "परिभाषा", "अर्थ", "what is ayurveda", "what is asu", "आयुर्वेद की परिभाषा", "आयुर्वेद", "आयुष"
+        ])
+        and not any(w in q_lower for w in ["लाइसेंस", "निर्माण", "रजिस्टर", "उत्पाद", "पेटेंट"])
+    )
 
     # 7. Ayurvedic Patenting / Ashwagandha queries in Hindi
-    is_patent = any(w in q_lower for w in ["अश्वगंधा", "पेटेंट", "मिश्रण", "patent", "धारा 3", "section 3"])
+    is_patent = any(w in q_lower for w in ["अश्वगंधा", "मिश्रण", "धारा 3", "section 3"])
 
     if is_tm_definitional:
         answer = (
@@ -390,7 +511,16 @@ def _synthesize_answer_hindi(query: str, passages: list[dict]) -> str:
             "4. **विशेष वैधानिक एकाधिकार (धारा 28 एवं 29):**\n"
             "   पंजीकरण से स्वामी को उस ट्रेडमार्क का अनन्य उपयोग करने का अधिकार और धारा 29 के तहत उल्लंघन का वाद दायर करने का कानूनी अधिकार मिलता है।\n\n"
             "5. **पंजीकरण से इनकार के पूर्ण आधार (धारा 9):**\n"
-            "   सामान्य या वर्णनात्मक वानस्पतिक नाम (जैसे केवल 'अश्वगंधा' या 'त्रिफला') किसी एक व्यक्ति के नाम पर पंजीकृत नहीं हो सकते। नाम विशिष्ट (distinctive) या गढ़ा हुआ (coined) होना चाहिए।"
+            "   सामान्य या वर्णनात्मक वानस्पतिक नाम (जैसे केवल 'अश्वगंधा' या 'त्रिफला') किसी एक व्यक्ति के नाम पर पंजीकृत नहीं हो सकते। नाम विशिष्ट (distinctive) या गढ़ा हुआ (coined) होना चाहिए。\n\n"
+            "---\n\n"
+            "### 💡 अनुशंसित अगला कदम: ट्रेडमार्क कैसे प्राप्त / पंजीकृत करें?\n\n"
+            "अब जब आप समझ गए हैं कि ट्रेडमार्क क्या है, क्या आप अपने ब्रांड नाम या लोगो को कानूनी रूप से सुरक्षित करना चाहते हैं?\n\n"
+            "**त्वरित पंजीकरण मार्गदर्शिका:**\n"
+            "1. **सार्वजनिक खोज:** IP India (`ipindiaonline.gov.in`) पर अपने प्रस्तावित नाम की उपलब्धता जांचें।\n"
+            "2. **नाइस क्लास:** क्लास 5 (दवाएं), क्लास 3 (हर्बल प्रसाधन), या क्लास 30 (खाद्य पदार्थ/चाय)।\n"
+            "3. **फॉर्म TM-A:** ऑनलाइन आवेदन करें। एमएसएमई/स्टार्टअप/व्यक्तियों के लिए सरकारी शुल्क **₹4,500** है।\n"
+            "4. **™ प्रतीक का उपयोग:** फॉर्म TM-A जमा करते ही आपको आवेदन संख्या मिल जाती है और आप तुरंत अपने उत्पाद पर **™** लगा सकते हैं।\n\n"
+            "👉 **निरंतर अनुवर्ती प्रश्न:** चरण-दर-चरण आधिकारिक आवेदन प्रक्रिया जानने के लिए पूछें: *\"भारत में ट्रेडमार्क कैसे रजिस्टर करें?\"*"
         )
     elif is_tm_procedural:
         answer = (
@@ -436,7 +566,16 @@ def _synthesize_answer_hindi(query: str, passages: list[dict]) -> str:
             "   - **औद्योगिक उपयोगिता (Industrial Applicability - धारा 2(1)(j)):** उद्योग में निर्माण या उपयोग के योग्य होना चाहिए।\n"
             "3. **अनन्य अधिकार (धारा 48):** पेटेंट धारक को उत्पाद बनाने, उपयोग करने, बेचने या आयात करने से दूसरों को रोकने का विशेष अधिकार।\n"
             "4. **पेटेंट की अवधि (धारा 53):** आवेदन की तिथि से 20 वर्ष तक वैध।\n"
-            "5. **पारंपरिक ज्ञान अपवाद (धारा 3(p) एवं 3(e)):** केवल पारंपरिक ज्ञान या अप्रत्याशित तालमेल रहित मात्र मिश्रण पेटेंट योग्य नहीं हैं।"
+            "5. **पारंपरिक ज्ञान अपवाद (धारा 3(p) एवं 3(e)):** केवल पारंपरिक ज्ञान या अप्रत्याशित तालमेल रहित मात्र मिश्रण पेटेंट योग्य नहीं हैं。\n\n"
+            "---\n\n"
+            "### 💡 अनुशंसित अगला कदम: पेटेंट कैसे दाखिल / प्राप्त करें?\n\n"
+            "क्या आप जानना चाहते हैं कि अपने आविष्कार के लिए पेटेंट आवेदन कैसे दाखिल करें?\n\n"
+            "**त्वरित फाइलिंग मार्गदर्शिका:**\n"
+            "1. **पूर्व कला और TKDL खोज:** नवीनता सुनिश्चित करने के लिए InPASS और TKDL पर खोज करें।\n"
+            "2. **सिनर्जी सिद्ध करें (धारा 3(e)):** हर्बल फॉर्मूलेशन के लिए अप्रत्याशित चिकित्सीय प्रभाव (CI < 1.0) का वैज्ञानिक डेटा दिखाएं।\n"
+            "3. **फॉर्म 1 और फॉर्म 2:** ₹1,600 शुल्क (एमएसएमई/व्यक्ति) के साथ ऑनलाइन दाखिल करें।\n"
+            "4. **NBA अनुमति:** भारतीय जड़ी-बूटियों के उपयोग पर राष्ट्रीय जैव विविधता प्राधिकरण (NBA) फॉर्म III भरें।\n\n"
+            "👉 **निरंतर अनुवर्ती प्रश्न:** चरण-दर-चरण पेटेंट फाइलिंग प्रक्रिया जानने के लिए पूछें: *\"भारत में पेटेंट कैसे फाइल करें?\"*"
         )
     elif is_patent_procedural:
         answer = (
@@ -485,7 +624,15 @@ def _synthesize_answer_hindi(query: str, passages: list[dict]) -> str:
             "> *'मनुष्यों या जानवरों में किसी बीमारी के निदान, उपचार, शमन या रोकथाम के लिए आंतरिक या बाह्य उपयोग हेतु और प्रथम अनुसूची में निर्दिष्ट अधिकृत आयुर्वेदिक पुस्तकों में वर्णित योगों के अनुसार विशेष रूप से निर्मित सभी दवाएं।'* \n\n"
             "**प्रमुख वैधानिक तथ्य**:\n"
             "1. **प्रथम अनुसूची (First Schedule):** चरक संहिता, सुश्रुत संहिता सहित 54 शास्त्रीय ग्रंथों को वैधानिक ग्रंथ माना गया है।\n"
-            "2. **आयुष मंत्रालय (Ministry of Ayush):** राष्ट्रीय नियामक नीतियां और आधिकारिक आयुर्वेदिक फार्माकोपिया (API) जारी करता है।"
+            "2. **आयुष मंत्रालय (Ministry of Ayush):** राष्ट्रीय नियामक नीतियां और आधिकारिक आयुर्वेदिक फार्माकोपिया (API) जारी करता है।\n\n"
+            "---\n\n"
+            "### 💡 अनुशंसित अगला कदम: आयुर्वेदिक उत्पाद का लाइसेंस / पंजीकरण कैसे प्राप्त करें?\n\n"
+            "क्या आप अपने आयुर्वेदिक फॉर्मूलेशन का व्यावसायिक निर्माण या बिक्री करना चाहते हैं?\n\n"
+            "**त्वरित लाइसेंसिंग मार्गदर्शिका:**\n"
+            "1. **उत्पाद श्रेणी:** शास्त्रीय औषधि (फॉर्म 24D/25D) बनाम पेटेंट एवं प्रोप्रायटरी (नियम 158B) बनाम आयुर्वेद आहार (FSSAI)।\n"
+            "2. **शेड्यूल T जीएमपी:** योग्य तकनीकी कर्मचारियों (BAMS/B.Pharm) के साथ जीएमपी-प्रमाणित निर्माण परिसर।\n"
+            "3. **SLA आवेदन:** राज्य आयुष लाइसेंसिंग प्राधिकरण या e-Aushadhi पोर्टल पर आवेदन करें।\n\n"
+            "👉 **निरंतर अनुवर्ती प्रश्न:** संपूर्ण निर्माण और लाइसेंसिंग प्रक्रिया जानने के लिए पूछें: *\"आयुर्वेदिक उत्पाद का पंजीकरण कैसे करें?\"*"
         )
     elif is_patent:
         answer = (
@@ -524,13 +671,6 @@ def _synthesize_answer_hindi(query: str, passages: list[dict]) -> str:
             "वर्तमान कानूनी डेटाबेस में आपके प्रश्न से संबंधित सत्यापित वैधानिक प्रावधान उपलब्ध नहीं हैं।"
         )
 
-    answer += (
-        "\n\n### 🚀 व्यावहारिक अगले कदम (Next Steps)\n"
-        "1. **उत्पाद श्रेणी:** निर्धारित करें कि आपका उत्पाद शास्त्रीय औषधि (SLA e-Aushadhi) है या आयुर्वेद आहार (FSSAI FoSCoS)।\n"
-        "2. **पूर्व कला और TKDL खोज:** पेटेंट आवेदन दाखिल करने से पहले IP India (ipindia.gov.in) और TKDL पर गहन खोज करें।\n"
-        "3. **वैधानिक फॉर्म:** दवा निर्माण के लिए फॉर्म 24D/25D जमा करें।"
-    )
-
     answer += "\n\n---\n**📚 कानूनी संदर्भ (Legal References):**\n"
     for p in passages[:4]:
         answer += f"- `{p['key']}` **{p['source']}** — *{p['section']}* ({p['domain'].upper()})\n"
@@ -549,20 +689,38 @@ def _synthesize_answer_telugu(query: str, passages: list[dict]) -> str:
             "AYURLEX సున్నా-భ్రమ (Zero-Hallucination) విధానాన్ని అనుసరిస్తుంది."
         )
 
+    domain_keywords = [
+        "ట్రేడ్‌మార్క్", "ట్రేడ్ మార్క్", "పేటెంట్", "ఆయుర్వేద", "ఆయుష్", "లైసెన్స్", "రిజిస్టర్",
+        "ఫారం", "సెక్షన్", "trademark", "patent", "ayush", "ayurveda"
+    ]
+    if not any(kw in q_lower for kw in domain_keywords):
+        return (
+            "### ⚠️ AYURLEX కార్పస్‌లో తగినంత చట్టపరమైన ఆధారాలు లభించలేదు\n"
+            "ప్రస్తుత చట్టపరమైన డేటాబేస్‌లో మీ ప్రశ్నకు సంబంధించిన ధృవీకరించబడిన చట్టపరమైన నిబంధనలు లభించలేదు. "
+            "AYURLEX సున్నా-భ్రమ (Zero-Hallucination) విధానాన్ని అనుసరిస్తుంది."
+        )
+
     # 1. Trademark Definitional in Telugu
-    is_tm_definitional = any(w in q_lower for w in [
-        "ట్రేడ్‌మార్క్ అంటే ఏమిటి", "ట్రేడ్ మార్క్ అంటే", "ట్రేడ్‌మార్క్ నిర్వచనం", "what is a trademark", "what is trademark"
-    ])
+    is_tm_definitional = (
+        any(w in q_lower for w in [
+            "ట్రేడ్‌మార్క్ అంటే ఏమిటి", "ట్రేడ్ మార్క్ అంటే", "ట్రేడ్‌మార్క్ నిర్వచనం", "what is a trademark", "what is trademark",
+            "ట్రేడ్‌మార్క్", "ట్రేడ్ మార్క్", "tm"
+        ])
+        and not any(w in q_lower for w in ["ఎలా", "విధానం", "రిజిస్టర్", "నమోదు", "how to", "register", "ఫీజు", "రుసుము"])
+    )
 
     # 2. Trademark Procedural in Telugu
     is_tm_procedural = any(w in q_lower for w in [
-        "ట్రేడ్‌మార్క్ రిజిస్టర్", "ట్రేడ్ మార్క్ నమోదు", "ట్రేడ్‌మార్క్ ఎలా", "how to register trademark", "register trademark", "form tm-a"
+        "ట్రేడ్‌మార్క్ రిజిస్టర్", "ట్రేడ్ మార్క్ నమోదు", "ట్రేడ్‌మార్క్ ఎలా", "how to register trademark", "register trademark", "form tm-a", "ట్రేడ్‌మార్క్ ఎలా పొందాలి"
     ])
 
     # 3. Patent Definitional in Telugu
-    is_patent_definitional = any(w in q_lower for w in [
-        "పేటెంట్ అంటే ఏమిటి", "పేటెంట్ అంటే", "పేటెంట్ నిర్వచనం", "what is a patent", "what is patent"
-    ])
+    is_patent_definitional = (
+        any(w in q_lower for w in [
+            "పేటెంట్ అంటే ఏమిటి", "పేటెంట్ అంటే", "పేటెంట్ నిర్వచనం", "what is a patent", "what is patent", "పేటెంట్"
+        ])
+        and not any(w in q_lower for w in ["ఎలా", "ఫైల్", "విధానం", "how to", "file", "దరఖాస్తు", "రుసుము", "అశ్వగంధ"])
+    )
 
     # 4. Patent Procedural in Telugu
     is_patent_procedural = any(w in q_lower for w in [
@@ -572,15 +730,18 @@ def _synthesize_answer_telugu(query: str, passages: list[dict]) -> str:
     # 5. Registration procedure for Ayurvedic Products in Telugu
     is_registration = any(w in q_lower for w in [
         "ఆయుర్వేద ఉత్పత్తి రిజిస్టర్", "ఆయుర్వేద లైసెన్స్", "రిజిస్టర్", "లైసెన్స్", "తయారీ", "దరఖాస్తు", "register", "license", "form 24d", "form 25d", "schedule t"
-    ])
+    ]) and not is_tm_definitional and not is_tm_procedural and not is_patent_definitional
 
     # 6. Ayurveda Definitional in Telugu
-    is_definitional = any(w in q_lower for w in [
-        "ఆయుర్వేదం అంటే", "ఆయుష్ అంటే", "నిర్వచనం", "what is ayurveda", "what is asu"
-    ])
+    is_definitional = (
+        any(w in q_lower for w in [
+            "ఆయుర్వేదం అంటే", "ఆయుష్ అంటే", "నిర్వచనం", "what is ayurveda", "what is asu", "ఆయుర్వేదం", "ఆయుష్"
+        ])
+        and not any(w in q_lower for w in ["లైసెన్స్", "తయారీ", "రిజిస్టర్", "పేటెంట్"])
+    )
 
     # 7. Ayurvedic Patenting / Ashwagandha / Formulation queries in Telugu
-    is_patent = any(w in q_lower for w in ["అశ్వగంధ", "పేటెంట్", "ఫార్ములేషన్", "మిశ్రమం", "patent", "సెక్షన్ 3", "section 3"])
+    is_patent = any(w in q_lower for w in ["అశ్వగంధ", "మిశ్రమం", "సెక్షన్ 3", "section 3"])
 
     if is_tm_definitional:
         answer = (
@@ -604,7 +765,16 @@ def _synthesize_answer_telugu(query: str, passages: list[dict]) -> str:
             "4. **ప్రత్యేక చట్టపరమైన హక్కులు (సెక్షన్ 28 & 29):**\n"
             "   రిజిస్ట్రేషన్ ద్వారా యజమానికి ట్రేడ్‌మార్క్‌ను ఉపయోగించే సంపూర్ణ హక్కు లభిస్తుంది మరియు సెక్షన్ 29 ప్రకారం ఉల్లంఘనలపై దావా వేసే అధికారం వస్తుంది.\n\n"
             "5. **నమోదు నిరాకరణకు సంపూర్ణ ఆధారాలు (సెక్షన్ 9):**\n"
-            "   సాధారణ లేదా వివరణాత్మక మూలికా పేర్లను (ఉదాహరణకు 'అశ్వగంధ' లేదా 'త్రిఫల' ఒక్కదాన్నే) ఎవరూ తమ వ్యక్తిగత ట్రేడ్‌మార్క్‌గా నమోదు చేసుకోలేరు. పేరు విలక్షణంగా (distinctive) ఉండాలి."
+            "   సాధారణ లేదా వివరణాత్మక మూలికా పేర్లను (ఉదాహరణకు 'అశ్వగంధ' లేదా 'త్రిఫల' ఒక్కదాన్నే) ఎవరూ తమ వ్యక్తిగత ట్రేడ్‌మార్క్‌గా నమోదు చేసుకోలేరు. పేరు విలక్షణంగా (distinctive) ఉండాలి。\n\n"
+            "---\n\n"
+            "### 💡 సూచించబడిన తదుపరి దశ: ట్రేడ్‌మార్క్‌ను ఎలా పొందాలి / నమోదు చేసుకోవాలి?\n\n"
+            "ఇప్పుడు మీరు ట్రేడ్‌మార్క్ అంటే ఏమిటో తెలుసుకున్నారు, మీ బ్రాండ్ పేరు లేదా లోగోను చట్టబద్ధంగా నమోదు చేసుకోవాలనుకుంటున్నారా?\n\n"
+            "**త్వరిత నమోదు మార్గదర్శిని:**\n"
+            "1. **పబ్లిక్ శోధన:** IP India (`ipindiaonline.gov.in`) లో మీ ప్రతిపాదిత పేరు లభ్యతను తనిఖీ చేయండి.\n"
+            "2. **నైస్ క్లాస్:** క్లాస్ 5 (మందులు), క్లాస్ 3 (హెర్బల్ కాస్మెటిక్స్), లేదా క్లాస్ 30 (ఆహారాలు/టీలు).\n"
+            "3. **ఫారం TM-A:** ఆన్‌లైన్‌లో దరఖాస్తు చేయండి. వ్యక్తులు/స్టార్టప్‌లు/MSME లకు అధికారిక ప్రభుత్వ రుసుము **₹4,500**.\n"
+            "4. **™ చిహ్నం వినియోగం:** ఫారం TM-A సమర్పించిన వెంటనే మీకు దరఖాస్తు సంఖ్య లభిస్తుంది మరియు వెంటనే **™** చిహ్నాన్ని ఉపయోగించవచ్చు.\n\n"
+            "👉 **నిరంతర తదుపరి ప్రశ్న:** దశలవారీ అధికారిక రిజిస్ట్రేషన్ విధానాన్ని తెలుసుకోవడానికి అడగండి: *\"భారతదేశంలో ట్రేడ్‌మార్క్ ఎలా రిజిస్టర్ చేయాలి?\"*"
         )
     elif is_tm_procedural:
         answer = (
@@ -650,7 +820,16 @@ def _synthesize_answer_telugu(query: str, passages: list[dict]) -> str:
             "   - **పారిశ్రామిక వినియోగం (Industrial Applicability - సెక్షన్ 2(1)(j)):** పరిశ్రమలో తయారు చేయడానికి లేదా ఉపయోగించడానికి సాధ్యపడాలి.\n"
             "3. **ప్రత్యేక చట్టపరమైన హక్కులు (సెక్షన్ 48):** ఇతరులను నిరోధించే గుత్తాధిపత్య హక్కు.\n"
             "4. **కాలపరిమితి (సెక్షన్ 53):** దరఖాస్తు దాఖలు చేసిన తేదీ నుండి 20 సంవత్సరాలు.\n"
-            "5. **సాంప్రదాయ పరిజ్ఞానం మినహాయింపు (సెక్షన్ 3(p) మరియు 3(e)):** కేవలం ప్రాచీన విజ్ఞానం లేదా విడి గుణాల సాధారణ మిశ్రమాలు పేటెంట్ పొందలేవు."
+            "5. **సాంప్రదాయ పరిజ్ఞానం మినహాయింపు (సెక్షన్ 3(p) మరియు 3(e)):** కేవలం ప్రాచీన విజ్ఞానం లేదా విడి గుణాల సాధారణ మిశ్రమాలు పేటెంట్ పొందలేవు。\n\n"
+            "---\n\n"
+            "### 💡 సూచించబడిన తదుపరి దశ: పేటెంట్ ఎలా దాఖలు చేయాలి / పొందాలి?\n\n"
+            "మీ ఆవిష్కరణ కోసం పేటెంట్ దరఖాస్తును ఎలా దాఖలు చేయాలో తెలుసుకోవాలనుకుంటున్నారా?\n\n"
+            "**త్వరిత ఫైలింగ్ మార్గదర్శిని:**\n"
+            "1. **పూర్వ కళ మరియు TKDL శోధన:** నవ్యతను ధృవీకరించడానికి InPASS మరియు TKDL లో శోధించండి.\n"
+            "2. **సినర్జీ నిరూపణ (సెక్షన్ 3(e)):** మూలికా మిశ్రమాలకు ఊహించని చికిత్సా ప్రభావాన్ని (CI < 1.0) ప్రయోగశాల డేటా ద్వారా చూపించండి.\n"
+            "3. **ఫారం 1 & ఫారం 2:** ₹1,600 రుసుముతో (MSME/వ్యక్తులు) ఆన్‌లైన్‌లో సమర్పించండి.\n"
+            "4. **NBA అనుమతి:** భారతీయ మూలికలను ఉపయోగిస్తే జాతీయ జీవవైవిధ్య ప్రాధికార సంస్థ (NBA) ఫారం III సమర్పించండి.\n\n"
+            "👉 **నిరంతర తదుపరి ప్రశ్న:** పూర్తి దశలవారీ పేటెంట్ ఫైలింగ్ విధానం కోసం అడగండి: *\"భారతదేశంలో పేటెంట్ ఎలా ఫైల్ చేయాలి?\"*"
         )
     elif is_patent_procedural:
         answer = (
@@ -697,7 +876,15 @@ def _synthesize_answer_telugu(query: str, passages: list[dict]) -> str:
             "> *'మనుషులు లేదా జంతువులలో వ్యాధుల నివారణ, ఉపశమనం లేదా చికిత్స కోసం ఉద్దేశించిన మరియు మొదటి షెడ్యూల్‌లో పేర్కొన్న ప్రామాణిక గ్రంథాల సూత్రాల ప్రకారం ప్రత్యేకంగా తయారు చేయబడిన అన్ని మందులు.'*\n\n"
             "**కీలక చట్టబద్ధమైన నిబంధనలు**:\n"
             "1. **మొదటి షెడ్యూల్ (First Schedule):** చరక సంహిత, సుశ్రుత సంహిత, అష్టాంగ హృదయంతో సహా 54 ప్రాచీన గ్రంథాలు చట్టబద్ధమైన అధికారిక మూలాలుగా గుర్తించబడ్డాయి.\n"
-            "2. **ఆయుష్ మంత్రిత్వ శాఖ (Ministry of Ayush):** జాతీయ ప్రమాణాలు, ఫార్మకోపోయియా (API) మరియు పరిశోధనలను నియంత్రిస్తుంది."
+            "2. **ఆయుష్ మంత్రిత్వ శాఖ (Ministry of Ayush):** జాతీయ ప్రమాణాలు, ఫార్మకోపోయియా (API) మరియు పరిశోధనలను నియంత్రిస్తుంది.\n\n"
+            "---\n\n"
+            "### 💡 సూచించబడిన తదుపరి దశ: ఆయుర్వేద ఉత్పత్తి లైసెన్స్ / నమోదు ఎలా పొందాలి?\n\n"
+            "మీ ఆయుర్వేద సూత్రీకరణను వ్యాపారపరంగా తయారు చేయాలనుకుంటున్నారా లేదా విక్రయించాలనుకుంటున్నారా?\n\n"
+            "**త్వరిత లైసెన్సింగ్ మార్గదర్శిని:**\n"
+            "1. **ఉత్పత్తి వర్గం:** శాస్త్రీయ ఔషధం (ఫారం 24D/25D) vs పేటెంట్ & ప్రొప్రైటరీ (రూల్ 158B) vs ఆయుర్వేద ఆహార (FSSAI).\n"
+            "2. **షెడ్యూల్ T GMP:** అర్హత కలిగిన సాంకేతిక సిబ్బందితో GMP-సర్టిఫైడ్ తయారీ యూనిట్.\n"
+            "3. **SLA దరఖాస్తు:** రాష్ట్ర ఆయుష్ లైసెన్సింగ్ అథారిటీ లేదా e-Aushadhi పోర్టల్ ద్వారా దరఖాస్తు చేయండి.\n\n"
+            "👉 **నిరంతర తదుపరి ప్రశ్న:** పూర్తి తయారీ మరియు లైసెన్సింగ్ ప్రక్రియ కోసం అడగండి: *\"ఆయుర్వేద ఉత్పత్తిని ఎలా రిజిస్టర్ చేయాలి?\"*"
         )
     elif is_patent:
         answer = (
@@ -733,7 +920,7 @@ def _synthesize_answer_telugu(query: str, passages: list[dict]) -> str:
             "**వస్తువుల భౌగోళిక గుర్తింపు చట్టం, 1999** ప్రకారం ఒక నిర్దిష్ట ప్రాంతానికి చెందిన సాంప్రదాయ ఉత్పత్తికి (ఉదా: కాశ్మీర్ కుంకుమపువ్వు) సామూహిక GI హక్కులు లభిస్తాయి."
         )
 
-    else:
+    elif passages and any(p["text"] for p in passages):
         best_p = passages[0]
         answer = (
             f"### ⚖️ చట్టపరమైన వివరణ (Legal Position)\n"
@@ -741,14 +928,11 @@ def _synthesize_answer_telugu(query: str, passages: list[dict]) -> str:
             f"**{best_p['section']}** ప్రకారం:\n"
             f"{best_p['text']}\n\n"
         )
-
-    answer += (
-        "\n\n### 🚀 ఆచరణాత్మక తదుపరి చర్యలు (Practical Next Steps)\n"
-        "1. **పూర్వ కళ మరియు TKDL శోధన:** దరఖాస్తు దాఖలు చేయడానికి ముందు IP India (ipindia.gov.in) మరియు TKDL ఆర్కైవ్‌లలో సమగ్ర శోధన నిర్వహించండి.\n"
-        "2. **దరఖాస్తు దాఖలు:** సినర్జీని నిరూపించే క్లినికల్/ప్రయోగశాల సమాచారంతో కూడిన పూర్తి స్పెసిఫికేషన్ (ఫారం 2) మరియు ఫారం 1 సమర్పించండి.\n"
-        "3. **NBA అనుమతి:** భారతీయ మూలికలు లేదా జీవ వనరులను ఉపయోగిస్తే జాతీయ జీవవైవిధ్య ప్రాధికార సంస్థ (NBA) నుండి ఫారం III అనుమతి పొందండి.\n"
-        "4. **FSSAI అనుమతి:** ఆహార ఉత్పత్తుల కోసం FoSCoS పోర్టల్ ద్వారా 'ఆయుర్వేద ఆహార' లైసెన్స్ కోసం దరఖాస్తు చేయండి."
-    )
+    else:
+        return (
+            "### ⚠️ AYURLEX కార్పస్‌లో తగినంత చట్టపరమైన ఆధారాలు లభించలేదు\n"
+            "ప్రస్తుత చట్టపరమైన డేటాబేస్‌లో మీ ప్రశ్నకు సంబంధించిన ధృవీకరించబడిన చట్టపరమైన నిబంధనలు లభించలేదు."
+        )
 
     answer += "\n\n---\n**📚 సూచించబడిన చట్టపరమైన విభాగాలు (Legal References):**\n"
     for p in passages[:4]:

@@ -2,7 +2,7 @@
 
 ### AFI Formulation: Triphala Churna (AFI Part I, 7:15)
 
-Composition: Equal parts (1:1:1 by weight) of Haritaki (Terminalia chebula pericarp), Bibhitaki (Terminalia bellirica pericarp), and Amalaki (Phyllanthus emblica pericarp). Reference Classical Texts: Charaka Samhita Chikitsasthana Chapter 1, Sharngadhara Samhita Madhyamakhanda. Method of Preparation: Cleaned pericarp portions are shade-dried, pulverized separately, and passed through mesh No. 85, then blended homogeneously. Therapeutic Indications: Chakshushya (ophthalmic tonic), Deepana, Ruchya, Vibandha (constipation), Prameha, Kushta. Dose and Anupana: 3 to 6 grams with lukewarm water, honey, or ghee at bedtime.
+Composition: Equal parts (1:1:1 by weight) of Haritaki (Terminalia chebula pericarp), Bibhitaki (Terminalia bellirica pericarp), and Amalaki (Phyllanthus emblica pericarp). Classical Reference: Charaka Samhita Chikitsasthana 1:2:12-14 and Sharngadhara Samhita Madhyamakhanda 6:11. Manufacturing: Deseeded fruits are dried, individually pulverized, passed through statutory sieve mesh No. 85, then blended homogeneously. Therapeutic Indications: Chakshushya (ophthalmic tonic), Deepana, Ruchya, Vibandha (constipation), Prameha, Kushta. Dose and Anupana: 3 to 6 grams with lukewarm water, honey, or ghee at bedtime.
 
 ### AFI Formulation: Trikatu Churna (AFI Part I, 7:16)
 
@@ -19,10 +19,6 @@ Composition: Shuddha Guggulu (Commiphora wightii gum-resin), Chitraka, Pippalimo
 ### AFI Formulation: Avipattikar Churna (AFI Part I, 7:2)
 
 Composition: Trikatu (Shunthi, Maricha, Pippali), Triphala (Haritaki, Bibhitaki, Amalaki), Musta, Vidanga, Ela, Tejpatra, Lavanga (11 parts), Trivrit (Operculina turpethum root bark - 44 parts), and Sharkara (sugar - 66 parts). Classical Reference: Bhaishajya Ratnavali Amlapittarogadhikara 25-27. Therapeutic Indications: Amlapitta (hyperacidity / acid reflux), Vibandha (constipation), Agnimandya, Chardi. Dose: 3 to 6 grams before meals with cold water or milk.
-
-### AFI Formulation: Mahasudarshan Churna (AFI Part I, 7:26)
-
-Composition: 54 herbal ingredients with Kiratatikta (Swertia chirata) comprising 50% of the entire formulation, balanced with Triphala, Trikatu, Haridra, Daruharidra, Kantakari, Brihati, Guduchi, Katuki, and Neem. Classical Reference: Sharngadhara Samhita Madhyamakhanda 6:27-37. Therapeutic Indications: Sannipata Jwara, Vishama Jwara (malarial / recurring fever), Yakrit-Pliha vriddhi, Aruchi, Trishna. Dose: 2 to 4 grams twice daily with warm water.
 
 ### AFI Formulation: Dashamularishta (AFI Part I, 1:19)
 

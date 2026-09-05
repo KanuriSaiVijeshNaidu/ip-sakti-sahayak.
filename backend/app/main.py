@@ -1,4 +1,4 @@
-﻿"""
+"""
 backend/app/main.py
 ─────────────────────
 FastAPI application factory for IP-SAKTI Sahayak.
@@ -107,16 +107,20 @@ def create_app() -> FastAPI:
     from backend.app.api.routes.chat import router as chat_router
     from backend.app.api.routes.product_guidance import router as pg_router
     from backend.app.api.routes.admin import router as admin_router
+    from backend.app.api.routes.blockchain import router as blockchain_router
 
     prefix = settings.api_prefix  # "/api"
     app.include_router(chat_router, prefix=prefix, tags=["Chat"])
     app.include_router(pg_router, prefix=prefix, tags=["Product Guidance"])
     app.include_router(admin_router, prefix=prefix, tags=["Admin"])
+    app.include_router(blockchain_router, prefix=prefix, tags=["Blockchain"])
 
     @app.get(f"{prefix}/health", tags=["Health"])
     async def health():
         from backend.app.models.schemas import HealthResponse
         from datetime import datetime
+        from backend.app.blockchain.service import blockchain_service
+        ledger_summary = blockchain_service.get_ledger_summary()
         return HealthResponse(
             status="ok",
             version=settings.app_version,
@@ -126,6 +130,7 @@ def create_app() -> FastAPI:
                 "bm25": "ready" if bm25_retriever.is_built() else "not_ready",
                 "vector": "ready" if vector_retriever.is_built() else "not_ready",
                 "reranker": "ready" if reranker.is_built() else "not_ready",
+                "blockchain": "ready" if ledger_summary.chain_valid else "error",
                 "llm": settings.llm_provider,
                 "db": "sqlite",
             },

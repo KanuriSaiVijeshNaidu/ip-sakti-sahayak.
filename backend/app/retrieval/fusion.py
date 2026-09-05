@@ -167,7 +167,15 @@ async def retrieve(
 
     bm25_k = bm25_top_k or settings.bm25_top_k
     vec_k = vector_top_k or settings.vector_top_k
-    final_k = final_top_k or settings.final_top_k
+    final_k = final_top_k or settings.fusion_top_k
+    # ── Query expansion for enhanced lexical & dense recall ───────────────────
+    search_query = query
+    if settings.enable_query_expansion:
+        from backend.app.retrieval.query_expander import expand_query
+        expanded, detected_domains = expand_query(query)
+        search_query = expanded
+        if not domain and detected_domains and len(detected_domains) == 1:
+            domain = detected_domains[0]
 
     # ── Parallel retrieval ────────────────────────────────────────────────────
     import asyncio
@@ -178,17 +186,17 @@ async def retrieve(
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
         bm25_future = loop.run_in_executor(
             pool,
-            lambda: bm25_retriever.search(query, bm25_k, domain, jurisdiction)
+            lambda: bm25_retriever.search(search_query, bm25_k, domain, jurisdiction)
         )
         vector_future = loop.run_in_executor(
             pool,
-            lambda: vector_retriever.search(query, vec_k, domain, jurisdiction)
+            lambda: vector_retriever.search(search_query, vec_k, domain, jurisdiction)
         )
         bm25_results, vector_results = await asyncio.gather(bm25_future, vector_future)
 
     logger.debug(
         f"BM25: {len(bm25_results)} hits | Vector: {len(vector_results)} hits | "
-        f"query='{query[:60]}'"
+        f"query='{query[:60]}' | search_query='{search_query[:60]}'"
     )
 
     # ── RRF fusion ────────────────────────────────────────────────────────────

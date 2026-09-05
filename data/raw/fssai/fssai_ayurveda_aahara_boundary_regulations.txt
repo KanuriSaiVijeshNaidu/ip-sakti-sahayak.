@@ -1,10 +1,14 @@
 FSSAI AYURVEDA AAHARA REGULATIONS 2022 - REGULATORY BOUNDARY
 Source: Food Safety and Standards (Ayurveda Aahara) Regulations, 2022
 Authority: Food Safety and Standards Authority of India (FSSAI)
-Jurisdiction: IN | Domain: fssai | Corpus Version: v2.0
+Jurisdiction: IN | Domain: fssai | Corpus Version: v2.0-docling
 Official Reference: https://fssai.gov.in
 
 ================================================================================
+
+Regulation 1 & 2 - Statutory Scope, Definitions, and Relationship with Food Safety Act 2006
+-------------------------------------------------------------------------------------------
+Under the Food Safety and Standards (Ayurveda Aahara) Regulations, 2022 notified under Section 92 of the FSS Act, 2006: 'Ayurveda Aahara' means food prepared in accordance with the recipes or principles described in authoritative books of Ayurveda listed in Schedule A, intended for human consumption to support normal physiological functions and wellness. Crucial Legal Boundary: Ayurveda Aahara does NOT include Ayurvedic drugs licensed under Chapter IV-A of the Drugs and Cosmetics Act, 1940, nor does it include cosmetics, synthetic food formulations, or pharmaceutical dosage forms. Schedule A lists authenticated classical treatises including Charaka Samhita, Sushruta Samhita, Ashtanga Hridaya, Bhavaprakasha, and the Ayurvedic Formulary of India (AFI).
 
 Regulation 3 - Scope, Applicability, and Separation from ASU Drugs
 ------------------------------------------------------------------
@@ -14,10 +18,10 @@ Regulation 5 - Ayurveda Aahara Official Logo and Packaging Rules
 ----------------------------------------------------------------
 Regulation 5 mandates the distinctive logo for all approved Ayurveda Aahara products: (1) Every package of Ayurveda Aahara shall carry the designated official Ayurveda Aahara logo on the principal display panel. (2) The logo consists of the Devanagari letter 'Ayur' (आयुर्) intertwined with the English letter 'A', encapsulated in a green leaf ring. (3) The logo shall be positioned in close proximity to the name of the food and the FSSAI License Number. (4) The word 'AYURVEDA AAHARA' shall be printed clearly in capital letters directly beneath the logo.
 
-Regulation 6 & 8 - Prohibited Claims and Labelling Disclaimers
---------------------------------------------------------------
+Regulation 6 & 8 - Prohibited Claims and Mandatory Labelling Disclaimers
+------------------------------------------------------------------------
 Regulations 6 and 8 prohibit misleading medicinal claims on Ayurveda Aahara products: (1) No Ayurveda Aahara product shall claim to prevent, treat, cure, or mitigate any disease or physiological disorder. (2) Permitted Claims: Structure-function claims, wellness claims, digestive support (Agni deepana), and Rasayana (rejuvenation/vitality) are permissible only when substantiated by Schedule A authoritative classical texts. (3) Mandatory Front-of-Pack Disclaimer: 'THIS PRODUCT IS NOT INTENDED TO DIAGNOSE, TREAT, CURE OR PREVENT ANY DISEASE.' (4) Prohibition on Synthetic Additives: Synthetic vitamins, synthetic minerals, and modern pharmaceutical active ingredients cannot be added to classical recipes to alter the formulation.
 
-Statutory Comparison: Ayurveda Aahara (FSSAI) vs Classical ASU Drug (AYUSH)
----------------------------------------------------------------------------
-Regulatory Matrix: 1. Governing Act: FSSAI Food Safety and Standards Act 2006 vs AYUSH Drugs and Cosmetics Act 1940. 2. Licensing Authority: State Food Safety Commissioner (FSSAI) vs State Licensing Authority (Ayush). 3. Permitted Claims: Wellness, health promotion, dosha balance vs Therapeutic indication, treatment of Vyadhi. 4. Labelling: Mandatory 'NOT A MEDICINE' disclaimer & Ayur-A logo vs 'Caution: under Vaidya supervision' if Schedule E(1). 5. Sales Channel: Supermarkets, grocery, e-commerce food vs Licensed Ayurvedic pharmacy & retail.
+FSSAI Licensing Workflow via FoSCoS Portal for Ayurveda Aahara Category 13.0
+----------------------------------------------------------------------------
+FSSAI Licensing Roadmap for Food Business Operators (FBOs) under Category 13.0 (Ayurveda Aahara): Step 1: Determine Jurisdiction — Annual turnover up to Rs. 12 lakhs requires FSSAI Basic Registration; turnover between Rs. 12 lakhs and Rs. 20 crores requires State FSSAI License; turnover above Rs. 20 crores or operating in multiple states requires Central FSSAI License. Step 2: Electronic Application via FoSCoS Portal (foscos.fssai.gov.in) under Kind of Business (KoB): Manufacturer / Food Category 13.0. Step 3: Document Upload — Form A/B, Schedule A classical textual recipe citation, ingredient composition table, water test report from NABL-accredited lab, and label artwork containing the mandatory Ayur-A logo and non-disease warning. Step 4: Fee Payment and Food Safety Officer (FSO) scrutiny, leading to grant of 14-digit FSSAI License Number.

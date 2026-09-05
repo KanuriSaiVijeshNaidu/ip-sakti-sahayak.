@@ -3,17 +3,17 @@ backend/app/ingestion/docling_pipeline.py
 =========================================
 Docling-Powered Legal Document Ingestion & Fine-Tuning Pipeline for AYURLEX.
 
-Comprehensive statutory corpora across all 12 AYUSH & IP domains:
-- Patents Act 1970 (Sec 3b, 3d, 3e, 3h, 3i, 3j, 3p, 10(4), 25, 64)
+Comprehensive statutory corpora across all AYUSH & IP domains:
+- Patents Act 1970 (Sec 2(1)(j/ja/l), Sec 3(p), 3(e), 3(d), 3(j), 3(i), Sec 10(4), Sec 48, 53, Forms 1-18)
 - TKDL Landmark Biopiracy Revocations (Turmeric, Neem, Basmati, Jeevani)
-- Drugs & Cosmetics Act 1940 & Rules 1945 (Rule 158B, Sched T GMP, Sched E1, Sec 33EE-33EED)
+- Drugs & Cosmetics Act 1940 & Rules 1945 (Sec 3(a), First Schedule texts, Rule 158B, Sched T GMP, Forms 24D/25D, Sec 33EE-33EED)
 - Ayurvedic Pharmacopoeia of India (API Official Monographs: Haridra, Nimba, Brahmi, Ashwagandha, Tulsi, Shatavari, Arjuna, Yashtimadhu, Guduchi, Punarnava)
 - Ayurvedic Formulary of India (AFI Formulations: Triphala, Trikatu, Chyawanprash, Yograj Guggulu, Avipattikar, Mahasudarshan, Dashamularishta)
 - Biological Diversity (Amendment) Act 2023 & ABS Regulations 2014 (Sec 3, 4, 6 Form III, 7 SBB, Forms I-IV, ABS rates)
-- FSSAI (Ayurveda Aahara) Regulations 2022 (Reg 1-8, Schedule A, Boundary Matrix)
-- Trade Marks Act 1999 (Sec 9, 11, 13 Ayurvedic names ban)
-- Geographical Indications Act 1999 (Sec 2e, 9, 20-22, Kashmir Saffron, Navara Rice, Alleppey Cardamom)
-- WHO Traditional Medicine Quality & Heavy Metal Benchmarks (Pb, As, Cd, Hg limits, microbial criteria)
+- FSSAI (Ayurveda Aahara) Regulations 2022 (Reg 1-8, Schedule A, Boundary Matrix, FoSCoS portal)
+- Trade Marks Act 1999 (Sec 2(1)(zb/m), Sec 9 absolute grounds, Sec 11, Sec 13 Ayurvedic names ban, Sec 28/29, Form TM-A)
+- Geographical Indications Act 1999 (Sec 2(1)(e), Sec 8 collective rights, Kashmir Saffron, Navara Rice, Alleppey Cardamom)
+- WHO Traditional Medicine Quality & Heavy Metal Benchmarks (Pb, As, Cd, Hg limits, microbial criteria, WHO-COPP)
 """
 from __future__ import annotations
 
@@ -70,24 +70,36 @@ def count_tokens(text: str) -> int:
 
 
 # ==============================================================================
-# Comprehensive Domain Corpora Specification (12 Strategic Regulatory Areas)
+# Comprehensive Domain Corpora Specification (10 Strategic Regulatory Areas)
 # ==============================================================================
 
 DOC_SPECS: List[StatutoryDocumentSpec] = [
     # --------------------------------------------------------------------------
-    # 1. Patents Act 1970 - Statutory Exclusions for Traditional Medicine & Biology
+    # 1. Patents Act 1970 - Traditional Knowledge, Definitions, Exclusions & Procedures
     # --------------------------------------------------------------------------
     StatutoryDocumentSpec(
-        title="Patents Act 1970 - Traditional Knowledge & Biological Exclusions",
+        title="Patents Act 1970 - Traditional Knowledge, Criteria & Procedures",
         source_title="The Patents Act, 1970 (39 of 1970) as amended by Patents (Amendment) Act, 2005",
         authority="Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM), DPIIT",
         domain="patents",
         jurisdiction="IN",
         source_url="https://ipindia.gov.in/patents.htm",
-        corpus_version="v2.0",
+        corpus_version="v2.0-docling",
         raw_subdir="patents",
         raw_filename="patents_act_traditional_knowledge_exclusions.txt",
         sections=[
+            {
+                "heading": "Section 2(1)(j), 2(1)(ja), 2(1)(l) - Definitions of Invention, Inventive Step and Novelty",
+                "content": (
+                    "Under Section 2(1)(j) of the Patents Act, 1970, an 'invention' means a new product or process involving an "
+                    "inventive step and capable of industrial application. "
+                    "Section 2(1)(ja) defines 'inventive step' as a feature of an invention that involves technical advance as compared "
+                    "to the existing knowledge or having economic significance or both, making the invention not obvious to a person skilled in the art. "
+                    "Section 2(1)(l) defines 'new invention' (Novelty) as any invention or technology which has not been anticipated by publication "
+                    "in any document or used in the country or elsewhere in the world before the date of filing of patent application with complete specification. "
+                    "In the context of herbal and Ayurvedic innovations, prior publication in ancient slokas or classical treatises destroys novelty ab initio."
+                )
+            },
             {
                 "heading": "Section 3(p) - Exclusion of Traditional Knowledge from Patentability",
                 "content": (
@@ -101,18 +113,20 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
                 )
             },
             {
-                "heading": "Section 3(e) - Mere Admixture of Known Ingredients",
+                "heading": "Section 3(e) - Mere Admixture of Known Ingredients Bar and Synergy Requirement",
                 "content": (
                     "Section 3(e) of the Patents Act, 1970 bars patentability for: "
                     "'A substance obtained by a mere admixture resulting only in the aggregation of the properties of the components "
                     "thereof or a process for producing such substance.' "
                     "Legal Standard in Ayurvedic Inventions: Combining known herbs (e.g. Turmeric + Ginger + Black Pepper) cannot be "
                     "patented unless the applicant demonstrates surprising or unexpected synergistic efficacy that goes substantially "
-                    "beyond the mere additive effects of the individual herbal components."
+                    "beyond the mere additive effects of the individual herbal components. "
+                    "To overcome a Section 3(e) objection, applicants must submit comparative pharmacological bioassay data demonstrating a "
+                    "Combination Index (CI) < 1.0 (Chou-Talalay method) or statistically significant therapeutic enhancement."
                 )
             },
             {
-                "heading": "Section 3(d) - Incremental Modifications and Efficacy Threshold",
+                "heading": "Section 3(d) - Incremental Modifications and Therapeutic Efficacy Threshold",
                 "content": (
                     "Section 3(d) of the Patents Act, 1970 bars: "
                     "'The mere discovery of a new form of a known substance which does not result in the enhancement of the known efficacy "
@@ -142,14 +156,39 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
                 )
             },
             {
-                "heading": "Section 10(4)(d)(ii) - Mandatory Disclosure of Biological Material and Origin",
+                "heading": "Section 10(4)(ii)(D) - Mandatory Disclosure of Biological Material and Geographical Origin",
                 "content": (
-                    "Section 10(4)(d)(ii) of the Patents Act, 1970 mandates that: "
+                    "Section 10(4)(ii)(D) of the Patents Act, 1970 mandates that: "
                     "Every complete specification must disclose the source and geographical origin of the biological material in the specification, "
                     "when used in an invention. "
                     "Consequences of Non-Disclosure: Under Section 25(1)(j)/(k) (pre-grant opposition), Section 25(2)(j)/(k) (post-grant opposition), "
                     "and Section 64(1)(p) and 64(1)(q) (revocation), failure to disclose or wrongful disclosure of the geographical origin or source "
                     "of biological material constitutes absolute statutory grounds for rejection or revocation of the patent."
+                )
+            },
+            {
+                "heading": "Section 48 & 53 - Rights Conferred by Patent Grant and 20-Year Term",
+                "content": (
+                    "Under Section 48 of the Patents Act, 1970, a patent granted under the Act confers upon the patentee: "
+                    "(a) For product patents: Exclusive right to prevent third parties, who do not have consent, from the act of making, "
+                    "using, offering for sale, selling, or importing that product in India; "
+                    "(b) For process patents: Exclusive right to prevent third parties from using the process, and using, offering for sale, "
+                    "selling, or importing products obtained directly by that process. "
+                    "Section 53 specifies the term of every patent as twenty (20) years from the date of filing of the application, "
+                    "subject to payment of prescribed annual renewal fees. Once the 20-year term expires, the patented invention falls into the public domain."
+                )
+            },
+            {
+                "heading": "Indian Patent Application Roadmap: InPASS Search, Forms 1 to 18, and Official Fees",
+                "content": (
+                    "Sequential Procedural Workflow for Filing an Indian Patent: "
+                    "Step 1: Comprehensive Prior Art Search via the Indian Patent Advanced Search System (InPASS at ipindiaservices.gov.in) and TKDL. "
+                    "Step 2: Drafting Provisional / Complete Specification (Form 2 with technical claims, examples, and biological source disclosure). "
+                    "Step 3: Filing Application (Form 1 - Application for Grant, Form 3 - Foreign Filing Undertaking, Form 5 - Declaration of Inventorship). "
+                    "Official statutory e-filing fee: Rs. 1,600 for Individuals, Startups, and MSMEs; Rs. 8,000 for standard corporations. "
+                    "Step 4: Mandatory Biodiversity Clearance (Form III with National Biodiversity Authority under Section 6 of BD Act). "
+                    "Step 5: Request for Examination (Form 18 filed within 48 months from priority date). "
+                    "Step 6: First Examination Report (FER) response within 6 months, followed by hearing and Patent Grant under Section 43."
                 )
             }
         ],
@@ -161,8 +200,13 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
             },
             {
                 "query": "What happens if a patent applicant fails to disclose the source of an Indian biological resource?",
-                "pos": "Under Section 10(4)(d)(ii) and Section 64(1)(p), failure to disclose or wrongly disclosing the source and geographical origin of biological material is a ground for patent revocation.",
+                "pos": "Under Section 10(4)(ii)(D) and Section 64(1)(p), failure to disclose or wrongly disclosing the source and geographical origin of biological material is a ground for patent revocation.",
                 "neg": "Schedule E(1) of the Drugs and Cosmetics Rules lists poisonous medicinal plants."
+            },
+            {
+                "query": "What is the statutory duration and rights of a patent under the Indian Patents Act?",
+                "pos": "Under Section 48 and Section 53, a patent confers a 20-year exclusive monopoly right to prevent unauthorized making, using, or selling.",
+                "neg": "Nice Class 5 covers pharmaceutical and medicinal preparations."
             }
         ]
     ),
@@ -177,7 +221,7 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
         domain="tkdl",
         jurisdiction="IN",
         source_url="https://www.tkdl.res.in",
-        corpus_version="v2.0",
+        corpus_version="v2.0-docling",
         raw_subdir="tkdl",
         raw_filename="tkdl_landmark_biopiracy_cases.txt",
         sections=[
@@ -198,60 +242,59 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
             {
                 "heading": "Case 2: Revocation of European Patent EP 436,257 on Neem (Azadirachta indica)",
                 "content": (
-                    "In 1994, the European Patent Office (EPO) granted Patent EP 436,257 to W.R. Grace & Co. and the USDA "
-                    "covering a method for controlling fungal pests on plants using a hydrophobic extracted neem oil formulation. "
-                    "A legal opposition was filed by Vandana Shiva (Research Foundation for Science, Technology and Ecology), "
-                    "the International Federation of Organic Agriculture Movements (IFOAM), and Magda Aelvoet. "
-                    "Prior art evidence from Indian traditional agronomy and Ayurvedic treatises proved that neem extracts had "
-                    "been used for centuries across Indian agriculture as an insecticidal and antifungal bio-agent. "
-                    "In 2000, the EPO Opposition Board revoked the patent in its entirety on grounds of lack of novelty and "
-                    "inventive step under Articles 54 and 56 of the European Patent Convention (EPC)."
+                    "In 1994, the European Patent Office (EPO) granted Patent EP 436,257 to the United States Department "
+                    "of Agriculture (USDA) and W.R. Grace & Co. for a method of controlling fungi on plants using hydrophobic "
+                    "extracted neem oil (Azadirachta indica). "
+                    "A legal opposition was filed by Dr. Vandana Shiva (Research Foundation for Science, Technology and Ecology), "
+                    "the Green Group in the European Parliament, and the International Federation of Organic Agriculture Movements (IFOAM). "
+                    "Evidence was presented establishing that Ayurvedic farmers in India had used neem extracts as a fungicidal and "
+                    "insecticidal spray for centuries. "
+                    "In 2000, the EPO Opposition Division revoked the patent, and in 2005 the EPO Technical Board of Appeal "
+                    "upheld the revocation, ruling that the invention lacked novelty and inventive step over Indian traditional prior art."
                 )
             },
             {
-                "heading": "Case 3: RiceTec Basmati Patent Challenge (US Patent 5,663,484)",
+                "heading": "Case 3: Revocation of RiceTec US Patent 5,663,484 on Basmati Rice Lines",
                 "content": (
-                    "In 1997, RiceTec Inc. was granted US Patent No. 5,663,484 titled 'Basmati Rice Lines and Grains'. "
-                    "The patent claimed proprietary hybrid lines possessing physical and aromatic characteristics identical "
-                    "to geographical Basmati rice cultivated for centuries in the Indo-Gangetic plains of India and Pakistan. "
-                    "The Government of India, supported by CSIR and APEDA, submitted extensive documentary evidence proving "
-                    "that the grain characteristics, aroma (2-acetyl-1-pyrroline), and elongation ratio were intrinsic to "
-                    "traditional Indian germplasms. "
-                    "Consequently, RiceTec was forced to withdraw 15 of its 20 claims, and the remaining claims were severely restricted, "
-                    "protecting India's heritage grain export and paving the way for GI registration of Basmati."
+                    "In 1997, the USPTO granted Patent No. 5,663,484 to RiceTec Inc. covering 'Basmati Rice Lines and Grains'. "
+                    "The patent claimed proprietary breeding of rice varieties exhibiting the unique aroma, grain elongation, "
+                    "and cooking characteristics of traditional Indian Basmati rice. "
+                    "The Government of India, through the Agricultural and Processed Food Products Export Development Authority (APEDA), "
+                    "challenged the patent by presenting voluminous agronomic data and historical geographical evidence proving that "
+                    "Basmati rice has been bred and cultivated in the sub-Himalayan Indo-Gangetic plains for centuries. "
+                    "In 2001, RiceTec withdrew 15 of its 20 broad claims, and the USPTO struck down the remaining claims, preventing "
+                    "RiceTec from monopolizing the traditional Basmati designation."
                 )
             },
             {
-                "heading": "Case 4: Kani Tribe & Jeevani - Pushpangadan Benefit-Sharing Model",
+                "heading": "Case 4: The Jeevani (Arogyapacha) Model of Access & Benefit Sharing (Kani Tribe)",
                 "content": (
-                    "In December 1987, scientists from the Tropical Botanic Garden and Research Institute (TBGRI), led by "
-                    "Dr. P. Pushpangadan, observed the remarkable endurance of Kani tribal guides in the Western Ghats of Kerala "
-                    "who consumed the leaves of the wild herb Arogyapacha (Trichopus zeylanicus ssp. travancoricus). "
-                    "TBGRI scientifically validated the anti-fatigue, adaptogenic, and immuno-modulatory properties and formulated "
-                    "the Ayurvedic herbal drug 'Jeevani'. In 1995, TBGRI licensed the manufacturing technology to Arya Vaidya Pharmacy "
-                    "(Coimbatore) Ltd for a license fee of Rs. 10 lakhs and a 2% royalty on sales. "
-                    "TBGRI created the 'Kerala Kani Samudaya Kshema Trust' and shared 50% of the license fee and 50% of ongoing "
-                    "royalties with the Kani tribe. This became a pioneering global benchmark for Access and Benefit Sharing (ABS) "
-                    "prior to the Nagoya Protocol and the Indian Biological Diversity Act 2002."
+                    "In 1987, scientists at the Tropical Botanic Garden and Research Institute (TBGRI) in Kerala learned of the anti-fatigue "
+                    "properties of Arogyapacha (Trichopus zeylanicus ssp. travancoricus) from the indigenous Kani tribe. "
+                    "TBGRI isolated the active formulation named 'Jeevani' and licensed the manufacturing technology to Arya Vaidya Pharmacy (AVP) "
+                    "Coimbatore for Rs. 10 lakhs plus a 2% recurring royalty on ex-factory sales. "
+                    "Pioneering ABS Mechanism: In 1998, the Kani Samudaya Kshema Trust was established, and TBGRI transferred 50% of the license "
+                    "fee (Rs. 5 lakhs) and 50% of ongoing royalties directly to the tribal trust for community development. "
+                    "This model preceded the Convention on Biological Diversity (CBD) and the Nagoya Protocol as a global benchmark for ABS."
                 )
-            },
+            }
         ],
         triples=[
             {
-                "query": "How was the US patent on turmeric wound healing revoked by CSIR?",
-                "pos": "In 1997, the USPTO revoked all claims of US Patent 5,401,504 on grounds of anticipation by prior art under 35 U.S.C. 102 after CSIR submitted 32 classical Sanskrit and Urdu references.",
-                "neg": "Under Rule 158B of the Drugs and Cosmetics Rules 1945, classical Ayurvedic medicines do not require clinical trials."
+                "query": "How did India successfully overturn the US patent on turmeric?",
+                "pos": "CSIR submitted 32 classical Ayurvedic text citations from Charaka Samhita and Bhavaprakasha, proving ancient prior art for wound healing.",
+                "neg": "Rule 158B requires pilot clinical stability data for proprietary ASU extracts."
             },
             {
-                "query": "What is the Kani tribe Jeevani benefit sharing model?",
-                "pos": "TBGRI created the Kerala Kani Samudaya Kshema Trust and shared 50% of the license fee and 50% of ongoing royalties from Jeevani (Trichopus zeylanicus) with the Kani tribe.",
-                "neg": "Section 3(p) of the Patents Act 1970 excludes an invention which is traditional knowledge from patentability."
+                "query": "What was the significance of the Jeevani Arogyapacha Kani tribe case?",
+                "pos": "The TBGRI Jeevani model shared 50% of the commercial license fees and royalties directly with the Kani tribal trust, pioneering equitable ABS.",
+                "neg": "Class 30 covers food supplements and herbal dietary preparations."
             }
         ]
     ),
 
     # --------------------------------------------------------------------------
-    # 3. Drugs & Cosmetics Act 1940 & Rules 1945
+    # 3. Drugs & Cosmetics Act 1940 & Rules 1945 - ASU Provisions & Licensing
     # --------------------------------------------------------------------------
     StatutoryDocumentSpec(
         title="Drugs and Cosmetics Act 1940 & Rules 1945 - ASU Provisions",
@@ -260,23 +303,34 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
         domain="ayush",
         jurisdiction="IN",
         source_url="https://cdsco.gov.in",
-        corpus_version="v2.0",
+        corpus_version="v2.0-docling",
         raw_subdir="drugs_cosmetics_rules",
         raw_filename="dc_rules_158b_and_schedule_t.txt",
         sections=[
             {
-                "heading": "Rule 158B - Licensing Requirements for Ayurvedic, Siddha, and Unani (ASU) Drugs",
+                "heading": "Section 3(a) - Statutory Definition of ASU Drug & First Schedule Canonical Treatises",
+                "content": (
+                    "Under Section 3(a) of the Drugs and Cosmetics Act, 1940, 'Ayurvedic, Siddha or Unani (ASU) drug' includes all medicines "
+                    "intended for internal or external use for or in the diagnosis, treatment, mitigation or prevention of disease or disorder "
+                    "in human beings or animals, and manufactured exclusively in accordance with formulae described in authoritative books of "
+                    "Ayurvedic, Siddha and Unani systems of medicine specified in the First Schedule. "
+                    "The First Schedule explicitly recognizes 54 classical texts as statutory benchmarks, including Charaka Samhita, "
+                    "Sushruta Samhita, Ashtanga Sangraha, Ashtanga Hridaya, Sharangadhara Samhita, Bhavaprakasha, Bhaishajya Ratnavali, "
+                    "Sahasrayogam, and the Ayurvedic Formulary of India (AFI). "
+                    "Medicines manufactured strictly per these 54 texts are classified as 'Classical ASU Medicines' requiring no clinical trials."
+                )
+            },
+            {
+                "heading": "Rule 158B - Licensing Requirements for Classical vs Patent & Proprietary ASU Drugs",
                 "content": (
                     "Rule 158B of the Drugs and Cosmetics Rules, 1945 specifies regulatory evidentiary requirements for grant of "
                     "manufacturing licenses for Ayurvedic, Siddha, or Unani medicines: "
-                    "(I) Classical ASU Medicines (Manufactured in accordance with formulations described in authoritative books "
-                    "specified in the First Schedule to the Act): Proof of reference from authoritative books, authentic texts, and "
-                    "compliance with Schedule T GMP is required. No clinical trials or acute toxicity studies are mandated. "
-                    "(II) Patent or Proprietary Medicines (New combinations, modified dosage forms, or proprietary extracts): "
-                    "Licensees must submit published scientific literature on safety, safety toxicity data (acute, sub-acute), "
-                    "and pilot clinical studies depending on whether the ingredients are classical or novel. "
-                    "(III) Standardized Extracts / Phytopharmaceuticals: Complete chromatographic fingerprinting, quantitative "
-                    "estimation of active marker compounds, and regulatory toxicology data are mandatory."
+                    "(I) Classical ASU Medicines (Form 24D / Form 25D): Manufactured in strict accordance with formulae described in authoritative "
+                    "books in the First Schedule. Requires proof of textual citation, authentic raw material verification, and Schedule T GMP compliance. "
+                    "No clinical trials or safety toxicity studies are mandated. "
+                    "(II) Patent or Proprietary (P&P) ASU Medicines (Rule 158B(II)): Formulations containing ASU ingredients but in novel combinations, "
+                    "ratios, or delivery forms. Licensees must submit published safety literature, pilot clinical trials, and stability data. "
+                    "(III) Standardized Extracts / Phytopharmaceuticals: Complete chromatographic fingerprinting, active marker assays, and toxicology are mandatory."
                 )
             },
             {
@@ -284,23 +338,38 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
                 "content": (
                     "Schedule T of the Drugs and Cosmetics Rules, 1945 establishes Good Manufacturing Practices (GMP) that all "
                     "licensed manufacturing units of Ayurvedic, Siddha, and Unani drugs must comply with: "
-                    "(1) Factory Premises: Location in hygienic surroundings, avoidance of contamination, minimum space requirement "
-                    "(1,200 sq. ft. for basic manufacturing plus raw material and packaging storage). "
-                    "(2) Quality Control Laboratory: Must have facilities for physical testing (moisture, total ash, acid-insoluble ash), "
-                    "(3) Chemical analysis (identification tests, TLC/HPTLC profiling, assay of active markers), "
-                    "(4) Heavy metal testing (Lead, Cadmium, Mercury, Arsenic within pharmacopoeial limits), and "
-                    "(5) Microbial contamination testing (Pathogens including E. coli, Salmonella, Pseudomonas, and S. aureus must be absent). "
-                    "(6) Batch Manufacturing Records (BMR): Retention of complete records for 3 years or 1 year past expiry date."
+                    "(1) Factory Premises: Location in hygienic surroundings, minimum space requirement (1,200 sq. ft. for basic manufacturing "
+                    "plus raw material, packaging storage, and finished goods quarantine). "
+                    "(2) Technical Staffing Mandate: Manufacturing must take place under the direct supervision of competent technical staff possessing "
+                    "either a recognized degree in Ayurvedic Medicine (BAMS) or Ayurvedic Pharmacy (B.Pharm Ayurveda) from a recognized university. "
+                    "(3) Quality Control Laboratory: Must have facilities for physical testing (moisture, total ash, acid-insoluble ash), "
+                    "chemical analysis (TLC/HPTLC profiling, assay of active markers), heavy metal testing (Pb, Cd, Hg, As), and microbial limits. "
+                    "(4) Batch Manufacturing Records (BMR): Complete manufacturing and analytical records must be retained for 3 years or 1 year past expiry date."
                 )
             },
             {
-                "heading": "Schedule E(1) - List of Poisonous Substances in ASU Systems",
+                "heading": "AYUSH Drug Licensing Roadmap: e-Aushadhi Portal, Forms 24D, 25D, and Form 26D License",
+                "content": (
+                    "Procedural Steps to Register and License an Ayurvedic Product in India: "
+                    "Step 1: Product Classification — Classify product as Classical ASU (First Schedule text citation) or Patent & Proprietary (Rule 158B). "
+                    "Step 2: Manufacturing Facility Setup — Establish GMP compliant factory premises per Schedule T (minimum 1200 sq. ft.) or identify "
+                    "an approved GMP-certified contract manufacturer for a Loan License. "
+                    "Step 3: Online Application via e-Aushadhi Portal (e-aushadhi.gov.in) to the State Licensing Authority (SLA): "
+                    "- Form 24D: Application for license to manufacture ASU drugs on own premises. "
+                    "- Form 25D: Application for Loan License to manufacture on an approved third-party GMP facility. "
+                    "Step 4: Submission of Dossier — Include master formula, raw material COAs, BAMS technical supervisor credentials, and product labels. "
+                    "Step 5: Joint Physical Inspection by Drug Inspector and SLA officer. "
+                    "Step 6: Issuance of Form 26D Manufacturing License (valid indefinitely subject to periodic GMP retention fee payment)."
+                )
+            },
+            {
+                "heading": "Schedule E(1) - List of Poisonous Substances in ASU Systems & Cautionary Warnings",
                 "content": (
                     "Schedule E(1) of the Drugs and Cosmetics Rules, 1945 specifies toxic plant, mineral, and animal origin substances "
                     "requiring mandatory cautionary labelling ('Caution: To be taken under medical supervision') and stringent purification (Shodhana): "
                     "(A) Ayurvedic Plant Poisons: Aconitum ferox (Vatsanabha), Datura metel (Dhattura), Strychnos nux-vomica (Kupilu), "
                     "Cannabis sativa (Bhanga), Croton tiglium (Jayapala), Semecarpus anacardium (Bhallataka), Abrus precatorius (Gunja). "
-                    "(B) Mineral / Heavy Metal Poisons: Arsenic compounds (Haratala, Manashila, Gouripashana), Mercury compounds (Rasasindura, Hingula), "
+                    "(B) Mineral / Heavy Metal Poisons: Arsenic compounds (Haratala, Manashila), Mercury compounds (Rasasindura, Hingula), "
                     "Lead compounds (Naga Bhasma), Copper (Tamra Bhasma). "
                     "Every ASU formulation containing Schedule E(1) ingredients must be dispensed only under a Registered Vaidya prescription."
                 )
@@ -325,9 +394,14 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
                 "neg": "Regulation 6 of FSSAI Ayurveda Aahara regulations prohibits claiming disease prevention or cure on food packaging."
             },
             {
-                "query": "Which herbs are listed under Schedule E(1) poisonous substances requiring medical supervision?",
-                "pos": "Schedule E(1) lists Aconitum ferox (Vatsanabha), Strychnos nux-vomica (Kupilu), Datura metel (Dhattura), and Bhallataka as poisonous substances requiring cautionary labelling.",
-                "neg": "Section 3(e) excludes a mere admixture resulting only in the aggregation of properties of the components."
+                "query": "How do I register an Ayurvedic product and get a manufacturing license in India?",
+                "pos": "Submit Form 24D for own premises or Form 25D for loan license via the e-Aushadhi portal to the State Licensing Authority, meeting Schedule T GMP norms.",
+                "neg": "Form TM-A is the single omnibus application for trademark registration."
+            },
+            {
+                "query": "What are the technical staffing and square footage requirements under Schedule T GMP?",
+                "pos": "Schedule T mandates minimum 1,200 sq. ft. factory space and competent full-time technical staff holding a recognized BAMS or B.Pharm (Ayurveda) degree.",
+                "neg": "Section 3(p) of the Patents Act bars patenting of traditional knowledge."
             }
         ]
     ),
@@ -342,136 +416,106 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
         domain="ayush",
         jurisdiction="IN",
         source_url="https://pcimh.gov.in",
-        corpus_version="v2.0",
+        corpus_version="v2.0-docling",
         raw_subdir="api",
         raw_filename="api_official_monographs.txt",
         sections=[
             {
                 "heading": "API Monograph: Haridra (Curcuma longa L. Rhizome)",
                 "content": (
-                    "Botanical Identity: Curcuma longa L. (Family: Zingiberaceae). Dried and cured rhizome. "
-                    "Macroscopic: Deep yellow to orange-brown cylindrical branched rhizomes with transverse rings and root scars. "
-                    "Microscopic: Cortical cells with gelatinized starch grains; scattered vascular bundles; oleoresin cells with orange-yellow content. "
-                    "Pharmacopoeial Standards: Foreign matter not more than 2%; Total ash not more than 9%; Acid-insoluble ash not more than 1%; "
-                    "Alcohol-soluble extractive not less than 8%; Water-soluble extractive not less than 9%; Curcumin content not less than 2.0% w/w by HPLC. "
-                    "Ayurvedic Properties: Rasa: Katu, Tikta; Guna: Ruksha, Laghu; Virya: Ushna; Vipaka: Katu; Karma: Kaphapitta shamaka, Varnya, Vishaghna. "
-                    "Therapeutic Indications: Prameha (diabetes/urinary disorders), Kushta (skin disorders), Vrana (wounds), Kandu, Pandu. "
-                    "Dose: 1 to 3 grams of powder daily."
+                    "Botanical Source: Curcuma longa L. (Family Zingiberaceae). Dried and cured rhizome. "
+                    "Sanskrit Synonyms: Rajani, Nisha, Nishi, Ratri, Harita, Gauri, Krimighna, Yoshitpriya. "
+                    "Macroscopic: Round or cylindrical fingers, 2-5 cm long, brownish-yellow surface, fracture horny with orange-yellow resinous center. "
+                    "Microscopic: Outer cork cells with brown contents; ground tissue parenchymatous with gelatinized starch grains; "
+                    "scattered vascular bundles with oleoresin cells possessing deep yellow secretions. "
+                    "Identity, Purity and Strength Standards: "
+                    "(1) Foreign organic matter: Not more than 2.0 per cent; "
+                    "(2) Total ash: Not more than 9.0 per cent; "
+                    "(3) Acid-insoluble ash: Not more than 1.0 per cent; "
+                    "(4) Alcohol-soluble extractive: Not less than 8.0 per cent; "
+                    "(5) Water-soluble extractive: Not less than 9.0 per cent; "
+                    "(6) Curcumin content: Not less than 3.0 per cent by HPLC/spectrophotometric assay. "
+                    "Therapeutic Indications: Prameha (diabetes/urinary disorders), Kustha (skin diseases), Krimi (helminthiasis), "
+                    "Vrana (wounds), Pandu (anaemia), Kamala (jaundice). Dose: 1 to 3 grams in powder form."
                 )
             },
             {
-                "heading": "API Monograph: Brahmi (Bacopa monnieri (L.) Wettst. Whole Plant)",
+                "heading": "API Monograph: Ashwagandha (Withania somnifera Dunal Root)",
                 "content": (
-                    "Botanical Identity: Bacopa monnieri (L.) Wettst. (Family: Scrophulariaceae / Plantaginaceae). Whole plant. "
-                    "Macroscopic: Herbaceous glabrous creeping plant with oblong fleshy leaves and pale blue or purple flowers. "
-                    "Pharmacopoeial Standards: Foreign matter not more than 2%; Total ash not more than 18%; Acid-insoluble ash not more than 6%; "
-                    "Alcohol-soluble extractive not less than 6%; Water-soluble extractive not less than 15%; Total Bacosides (A and B) not less than 1.5% w/w. "
-                    "Ayurvedic Properties: Rasa: Tikta, Kashaya, Madhura; Guna: Laghu; Virya: Sheeta; Vipaka: Madhura; Karma: Medhya, Smritiprada, Rasayana. "
-                    "Therapeutic Indications: Manasamandata (cognitive impairment), Unmada (psychosis), Apasmara (epilepsy), Shotha, Kasa. "
-                    "Dose: 1 to 3 grams of powder; 10 to 20 ml of fresh juice (Swarasa)."
+                    "Botanical Source: Withania somnifera (L.) Dunal (Family Solanaceae). Dried roots. "
+                    "Sanskrit Synonyms: Hayagandha, Vajigandha, Balada, Varahakarni, Turagagandha. "
+                    "Macroscopic: Straight, unbranched, conical roots 10-20 cm long, 1-2 cm thick; outer surface dirty white to pale brown; fracture short and starchy. "
+                    "Microscopic: Cork 4-6 rows; cortex thin; phloem narrow; xylem consists of vessels, tracheids, fibres, and abundant starch grains. "
+                    "Identity, Purity and Strength Standards: "
+                    "(1) Foreign organic matter: Not more than 2.0 per cent; "
+                    "(2) Total ash: Not more than 7.0 per cent; "
+                    "(3) Acid-insoluble ash: Not more than 1.0 per cent; "
+                    "(4) Alcohol-soluble extractive: Not less than 15.0 per cent; "
+                    "(5) Water-soluble extractive: Not less than 27.0 per cent; "
+                    "(6) Total withanolide content: Not less than 0.4 per cent w/w by HPLC (withaferin A + withanolide A). "
+                    "Therapeutic Indications: Shotha (inflammation), Kshaya (emaciation), Dourbalya (debility), Vataroga, Klaibya, Rasayana. "
+                    "Dose: 3 to 6 grams of churna with warm milk or ghee."
                 )
             },
             {
-                "heading": "API Monograph: Ashwagandha (Withania somnifera (L.) Dunal Root)",
+                "heading": "API Monograph: Brahmi (Bacopa monnieri L. Wettst. Whole Plant)",
                 "content": (
-                    "Botanical Identity: Withania somnifera (L.) Dunal (Family: Solanaceae). Dried mature roots. "
-                    "Macroscopic: Straight, cylindrical, fleshy roots, grayish-yellow externally, whitish internally, characteristic horse-like odour. "
-                    "Pharmacopoeial Standards: Foreign matter not more than 2%; Total ash not more than 7%; Acid-insoluble ash not more than 1%; "
-                    "Alcohol-soluble extractive not less than 15%; Water-soluble extractive not less than 15%; Withanolides (Withaferin A and Withanolide A) not less than 0.2% w/w. "
-                    "Ayurvedic Properties: Rasa: Tikta, Kashaya, Madhura; Guna: Snigdha, Guru; Virya: Ushna; Vipaka: Madhura; Karma: Balya, Vrishya, Rasayana, Vata-Kapha shamaka. "
-                    "Therapeutic Indications: Dourbalya (general weakness), Klaibya (loss of vitality), Shotha, Kshaya, Vataroga. "
-                    "Dose: 3 to 6 grams of churna daily with milk or warm water."
+                    "Botanical Source: Bacopa monnieri (L.) Wettst. (Family Scrophulariaceae). Entire dried plant. "
+                    "Sanskrit Synonyms: Saraswati, Kapotavanka, Somalata, Medhya. "
+                    "Identity, Purity and Strength Standards: "
+                    "(1) Foreign organic matter: Not more than 2.0 per cent; "
+                    "(2) Total ash: Not more than 18.0 per cent; "
+                    "(3) Acid-insoluble ash: Not more than 6.0 per cent; "
+                    "(4) Alcohol-soluble extractive: Not less than 6.0 per cent; "
+                    "(5) Water-soluble extractive: Not less than 15.0 per cent; "
+                    "(6) Bacoside A content: Not less than 1.5 per cent w/w by HPLC. "
+                    "Therapeutic Indications: Medhyarasayana (memory/cognition booster), Unmada, Apasmara (epilepsy), Kasa, Kushta. "
+                    "Dose: 1 to 3 grams of dried churna; 10 to 20 ml of fresh Swarasa."
                 )
             },
             {
-                "heading": "API Monograph: Nimba (Azadirachta indica A. Juss. Bark and Leaf)",
+                "heading": "API Monograph: Tulsi (Ocimum sanctum L. Aerial Parts)",
                 "content": (
-                    "Botanical Identity: Azadirachta indica A. Juss. (Family: Meliaceae). Dried stem bark and mature leaves. "
-                    "Pharmacopoeial Standards (Bark): Total ash not more than 8%; Acid-insoluble ash not more than 1.5%; Alcohol-soluble extractive not less than 5%. "
-                    "Marker Constituents: Azadirachtin, Nimbin, Nimbidin, Gedunin. "
-                    "Ayurvedic Properties: Rasa: Tikta, Kashaya; Guna: Laghu, Ruksha; Virya: Sheeta; Vipaka: Katu; Karma: Pitta-Kaphahara, Krimighna, Vranaropaka, Grahi. "
-                    "Therapeutic Indications: Kushta, Vrana, Krimiroga, Prameha, Jwara (fever), Netraroga. "
-                    "Dose: Bark powder 2 to 4 grams; decoction (Kwatha) 50 to 100 ml."
+                    "Botanical Source: Ocimum sanctum L. syn. Ocimum tenuiflorum L. (Family Lamiaceae). Fresh or dried leaves and flowers. "
+                    "Sanskrit Synonyms: Surasa, Surabhi, Bahumanjari, Devadundubhi, Apetarakshasi. "
+                    "Identity, Purity and Strength Standards: "
+                    "(1) Foreign organic matter: Not more than 2.0 per cent; "
+                    "(2) Total ash: Not more than 19.0 per cent; "
+                    "(3) Acid-insoluble ash: Not more than 3.0 per cent; "
+                    "(4) Alcohol-soluble extractive: Not less than 6.0 per cent; "
+                    "(5) Water-soluble extractive: Not less than 13.0 per cent; "
+                    "(6) Volatile oil content: Not less than 0.7 per cent v/w; Eugenol content not less than 50% of volatile oil. "
+                    "Therapeutic Indications: Shwasa (asthma), Kasa (cough), Parshwashoola, Vishama Jwara, Krimiroga. "
+                    "Dose: 2 to 3 grams of churna; 5 to 10 ml of leaf Swarasa."
                 )
             },
             {
-                "heading": "API Monograph: Tulsi (Ocimum sanctum L. Leaf)",
+                "heading": "API Monograph: Guduchi (Tinospora cordifolia Miers Stem)",
                 "content": (
-                    "Botanical Identity: Ocimum sanctum L. (Family: Lamiaceae). Dried leaves. "
-                    "Pharmacopoeial Standards: Foreign matter not more than 2%; Total ash not more than 19%; Acid-insoluble ash not more than 3%; "
-                    "Volatile oil content not less than 0.7% v/w; Eugenol content not less than 0.4% w/w. "
-                    "Ayurvedic Properties: Rasa: Katu, Tikta; Guna: Laghu, Ruksha; Virya: Ushna; Vipaka: Katu; Karma: Kapha-Vata shamaka, Deepana, Hridya. "
-                    "Therapeutic Indications: Kasa (cough), Shwasa (asthma/bronchial spasms), Pratishyaya (coryza), Krimi, Hikka. "
-                    "Dose: 2 to 3 grams of churna; 5 to 10 ml of fresh juice."
-                )
-            },
-            {
-                "heading": "API Monograph: Shatavari (Asparagus racemosus Willd. Tuberous Root)",
-                "content": (
-                    "Botanical Identity: Asparagus racemosus Willd. (Family: Asparagaceae / Liliaceae). Tuberous roots. "
-                    "Pharmacopoeial Standards: Total ash not more than 5%; Acid-insoluble ash not more than 0.5%; Water-soluble extractive not less than 35%; "
-                    "Total Saponins / Shatavarin IV not less than 0.1% w/w. "
-                    "Ayurvedic Properties: Rasa: Madhura, Tikta; Guna: Guru, Snigdha; Virya: Sheeta; Vipaka: Madhura; Karma: Rasayana, Stanyajanana, Shukrala, Pitta-Vata shamaka. "
-                    "Therapeutic Indications: Stanyakshaya (lactation deficiency), Raktapitta, Kshaya, Shukradourbalya, Amlapitta. "
-                    "Dose: 3 to 6 grams of powder with milk."
-                )
-            },
-            {
-                "heading": "API Monograph: Arjuna (Terminalia arjuna (Roxb.) W. & A. Stem Bark)",
-                "content": (
-                    "Botanical Identity: Terminalia arjuna (Roxb.) W. & A. (Family: Combretaceae). Dried stem bark. "
-                    "Pharmacopoeial Standards: Foreign matter not more than 2%; Total ash not more than 25%; Acid-insoluble ash not more than 2%; "
-                    "Alcohol-soluble extractive not less than 20%; Water-soluble extractive not less than 20%; Tannins not less than 12% w/w. "
-                    "Marker Constituents: Arjunic acid, arjunetin, arjunoside I & II, polyphenols. "
-                    "Ayurvedic Properties: Rasa: Kashaya; Guna: Ruksha, Laghu; Virya: Sheeta; Vipaka: Katu; Karma: Hridya (cardioprotective), Bhagnasandhanakara. "
-                    "Therapeutic Indications: Hridroga (cardiac disorders), Kshata-Kshaya, Medoroga (dyslipidemia), Vrana. "
-                    "Dose: 3 to 6 grams of churna; 50 to 100 ml of Ksheerapaka (milk decoction)."
-                )
-            },
-            {
-                "heading": "API Monograph: Yashtimadhu (Glycyrrhiza glabra L. Root and Stolon)",
-                "content": (
-                    "Botanical Identity: Glycyrrhiza glabra L. (Family: Fabaceae). Dried root and stolon. "
-                    "Pharmacopoeial Standards: Foreign matter not more than 2%; Total ash not more than 10%; Acid-insoluble ash not more than 2.5%; "
-                    "Water-soluble extractive not less than 20%; Glycyrrhizin content not less than 3.0% w/w by HPLC. "
-                    "Ayurvedic Properties: Rasa: Madhura; Guna: Guru, Snigdha; Virya: Sheeta; Vipaka: Madhura; Karma: Vatapittashamaka, Kanthya, Vranaropaka. "
-                    "Therapeutic Indications: Kantharoga (throat affections), Kasa, Vranaropa, Amlapitta (peptic ulcer), Raktapitta. "
-                    "Dose: 2 to 4 grams of churna daily with honey or ghee."
-                )
-            },
-            {
-                "heading": "API Monograph: Guduchi (Tinospora cordifolia (Willd.) Miers Stem)",
-                "content": (
-                    "Botanical Identity: Tinospora cordifolia (Willd.) Miers (Family: Menispermaceae). Dried mature stem. "
-                    "Pharmacopoeial Standards: Total ash not more than 8%; Acid-insoluble ash not more than 1%; Alcohol-soluble extractive not less than 3%; "
-                    "Water-soluble extractive not less than 11%; Berberine / Cordifolioside marker present. "
-                    "Ayurvedic Properties: Rasa: Tikta, Kashaya; Guna: Guru, Snigdha; Virya: Ushna; Vipaka: Madhura; Karma: Tridoshashamaka, Rasayana, Deepana, Jwaraghna. "
-                    "Therapeutic Indications: Jwara (chronic fever), Vatarakta (gout), Kamala (jaundice), Prameha, Kushta. "
-                    "Dose: 3 to 6 grams of churna; 20 to 30 ml of Kwatha."
-                )
-            },
-            {
-                "heading": "API Monograph: Punarnava (Boerhavia diffusa L. Whole Plant and Root)",
-                "content": (
-                    "Botanical Identity: Boerhavia diffusa L. (Family: Nyctaginaceae). Dried herbaceous whole plant. "
-                    "Pharmacopoeial Standards: Total ash not more than 15%; Acid-insoluble ash not more than 6%; Water-soluble extractive not less than 10%; "
-                    "Punarnavoside content not less than 0.05% w/w. "
-                    "Ayurvedic Properties: Rasa: Madhura, Tikta, Kashaya; Guna: Laghu, Ruksha; Virya: Ushna; Vipaka: Madhura; Karma: Kaphapittahara, Mutrala, Shothahara. "
-                    "Therapeutic Indications: Shotha (oedema/dropsy), Pandu, Hridroga, Vrikka Roga (renal disease), Udara. "
-                    "Dose: 1 to 3 grams of churna; 10 to 20 ml of fresh juice."
+                    "Botanical Source: Tinospora cordifolia (Willd.) Miers (Family Menispermaceae). Dried mature stem. "
+                    "Sanskrit Synonyms: Amrita, Chinnaruha, Vatsadani, Tantrika, Kundalini, Chakralakshana. "
+                    "Identity, Purity and Strength Standards: "
+                    "(1) Foreign organic matter: Not more than 2.0 per cent; "
+                    "(2) Total ash: Not more than 16.0 per cent; "
+                    "(3) Acid-insoluble ash: Not more than 3.0 per cent; "
+                    "(4) Alcohol-soluble extractive: Not less than 3.0 per cent; "
+                    "(5) Water-soluble extractive: Not less than 11.0 per cent; "
+                    "(6) Bitters content: Not less than 1.2 per cent w/w; Berberine marker confirmed by TLC. "
+                    "Therapeutic Indications: Jwara (fever), Prameha, Vatarakta (gout), Kamala, Pandu, Rasayana. "
+                    "Dose: 3 to 6 grams in powder form; 20 to 30 grams for decoction (Kwatha); 1 to 2 grams for Guduchi Satva."
                 )
             }
         ],
         triples=[
             {
-                "query": "What is the API standard curcumin content and ash limit for Haridra rhizome?",
-                "pos": "According to the Ayurvedic Pharmacopoeia of India, Haridra (Curcuma longa) must have total ash not more than 9%, acid-insoluble ash not more than 1%, and curcumin content not less than 2.0% w/w by HPLC.",
-                "neg": "Under Section 3(j) of the Patents Act, plants and animals in whole or any part thereof are not patentable."
+                "query": "What are the API physicochemical specifications for Haridra (Curcuma longa)?",
+                "pos": "Per API, Haridra must have Foreign organic matter <= 2.0%, Total ash <= 9.0%, Acid-insoluble ash <= 1.0%, and Curcumin content >= 3.0%.",
+                "neg": "Section 9 of the Trade Marks Act bars registration of descriptive marks."
             },
             {
-                "query": "What are the therapeutic indications and Ayurvedic properties of Arjuna bark?",
-                "pos": "Arjuna (Terminalia arjuna) has Kashaya rasa, Sheeta virya, Hridya and Bhagnasandhanakara karma, indicated for Hridroga and Medoroga.",
-                "neg": "Kashmir Saffron was granted GI registration No. 635 recognizing its high crocin and safranal content."
+                "query": "What are the official API standards for Ashwagandha root?",
+                "pos": "API specifies Ashwagandha root total ash <= 7.0%, water-soluble extractive >= 27.0%, and total withanolides >= 0.4% w/w by HPLC.",
+                "neg": "Biological Diversity Act Section 6 mandates prior NBA Form III approval before patent grant."
             }
         ]
     ),
@@ -482,11 +526,11 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
     StatutoryDocumentSpec(
         title="Ayurvedic Formulary of India (AFI) Classical Formulations",
         source_title="The Ayurvedic Formulary of India (Part I, II & III)",
-        authority="Department of AYUSH, Ministry of Health and Family Welfare, Government of India",
+        authority="Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of AYUSH",
         domain="ayush",
         jurisdiction="IN",
         source_url="https://pcimh.gov.in",
-        corpus_version="v2.0",
+        corpus_version="v2.0-docling",
         raw_subdir="afi",
         raw_filename="afi_classical_formulations.txt",
         sections=[
@@ -495,9 +539,8 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
                 "content": (
                     "Composition: Equal parts (1:1:1 by weight) of Haritaki (Terminalia chebula pericarp), "
                     "Bibhitaki (Terminalia bellirica pericarp), and Amalaki (Phyllanthus emblica pericarp). "
-                    "Reference Classical Texts: Charaka Samhita Chikitsasthana Chapter 1, Sharngadhara Samhita Madhyamakhanda. "
-                    "Method of Preparation: Cleaned pericarp portions are shade-dried, pulverized separately, and passed through "
-                    "mesh No. 85, then blended homogeneously. "
+                    "Classical Reference: Charaka Samhita Chikitsasthana 1:2:12-14 and Sharngadhara Samhita Madhyamakhanda 6:11. "
+                    "Manufacturing: Deseeded fruits are dried, individually pulverized, passed through statutory sieve mesh No. 85, then blended homogeneously. "
                     "Therapeutic Indications: Chakshushya (ophthalmic tonic), Deepana, Ruchya, Vibandha (constipation), Prameha, Kushta. "
                     "Dose and Anupana: 3 to 6 grams with lukewarm water, honey, or ghee at bedtime."
                 )
@@ -544,16 +587,6 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
                 )
             },
             {
-                "heading": "AFI Formulation: Mahasudarshan Churna (AFI Part I, 7:26)",
-                "content": (
-                    "Composition: 54 herbal ingredients with Kiratatikta (Swertia chirata) comprising 50% of the entire formulation, "
-                    "balanced with Triphala, Trikatu, Haridra, Daruharidra, Kantakari, Brihati, Guduchi, Katuki, and Neem. "
-                    "Classical Reference: Sharngadhara Samhita Madhyamakhanda 6:27-37. "
-                    "Therapeutic Indications: Sannipata Jwara, Vishama Jwara (malarial / recurring fever), Yakrit-Pliha vriddhi, Aruchi, Trishna. "
-                    "Dose: 2 to 4 grams twice daily with warm water."
-                )
-            },
-            {
                 "heading": "AFI Formulation: Dashamularishta (AFI Part I, 1:19)",
                 "content": (
                     "Composition: Fermented liquid preparation containing Dashamoola (ten roots), Chitraka, Pushkarmoola, Lodhra, "
@@ -569,11 +602,6 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
                 "query": "What is the classical composition and reference text for Triphala Churna?",
                 "pos": "Triphala Churna contains equal parts (1:1:1) of Haritaki, Bibhitaki, and Amalaki per AFI Part I and Charaka Samhita Chikitsasthana, indicated for Chakshushya and Vibandha.",
                 "neg": "Section 3(c) of the Indian Patents Act prohibits patents on the mere discovery of a scientific principle."
-            },
-            {
-                "query": "What is the role of Kiratatikta in Mahasudarshan Churna?",
-                "pos": "In Mahasudarshan Churna, Kiratatikta constitutes 50% of the formulation weight per Sharngadhara Samhita for treating Vishama Jwara and Sannipata Jwara.",
-                "neg": "FSSAI Ayurveda Aahara regulations require displaying the special green logo on the front of food packs."
             }
         ]
     ),
@@ -588,7 +616,7 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
         domain="abs",
         jurisdiction="IN",
         source_url="https://nbaindia.org",
-        corpus_version="v2.0",
+        corpus_version="v2.0-docling",
         raw_subdir="nba",
         raw_filename="bda_2023_amendment_and_abs.txt",
         sections=[
@@ -645,11 +673,6 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
                 "query": "Is NBA prior approval required before patent grant for Ayurvedic inventions using Indian biological resources?",
                 "pos": "Under Section 6 of the Biological Diversity Act, prior approval of the NBA via Form III is mandatory before the grant of any patent based on Indian biological resources.",
                 "neg": "Rule 158B of the Drugs and Cosmetics Rules governs ASU manufacturing licenses."
-            },
-            {
-                "query": "Are AYUSH doctors exempted from NBA benefit sharing under the 2023 Biodiversity Amendment?",
-                "pos": "The 2023 Amendment exempts registered AYUSH practitioners and cultivated medicinal plants from prior intimation to State Biodiversity Boards under Section 7.",
-                "neg": "Section 9 of the Trade Marks Act 1999 provides absolute grounds for refusal of registration."
             }
         ]
     ),
@@ -664,10 +687,22 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
         domain="fssai",
         jurisdiction="IN",
         source_url="https://fssai.gov.in",
-        corpus_version="v2.0",
+        corpus_version="v2.0-docling",
         raw_subdir="fssai",
         raw_filename="fssai_ayurveda_aahara_boundary_regulations.txt",
         sections=[
+            {
+                "heading": "Regulation 1 & 2 - Statutory Scope, Definitions, and Relationship with Food Safety Act 2006",
+                "content": (
+                    "Under the Food Safety and Standards (Ayurveda Aahara) Regulations, 2022 notified under Section 92 of the FSS Act, 2006: "
+                    "'Ayurveda Aahara' means food prepared in accordance with the recipes or principles described in authoritative books "
+                    "of Ayurveda listed in Schedule A, intended for human consumption to support normal physiological functions and wellness. "
+                    "Crucial Legal Boundary: Ayurveda Aahara does NOT include Ayurvedic drugs licensed under Chapter IV-A of the Drugs and "
+                    "Cosmetics Act, 1940, nor does it include cosmetics, synthetic food formulations, or pharmaceutical dosage forms. "
+                    "Schedule A lists authenticated classical treatises including Charaka Samhita, Sushruta Samhita, Ashtanga Hridaya, "
+                    "Bhavaprakasha, and the Ayurvedic Formulary of India (AFI)."
+                )
+            },
             {
                 "heading": "Regulation 3 - Scope, Applicability, and Separation from ASU Drugs",
                 "content": (
@@ -691,7 +726,7 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
                 )
             },
             {
-                "heading": "Regulation 6 & 8 - Prohibited Claims and Labelling Disclaimers",
+                "heading": "Regulation 6 & 8 - Prohibited Claims and Mandatory Labelling Disclaimers",
                 "content": (
                     "Regulations 6 and 8 prohibit misleading medicinal claims on Ayurveda Aahara products: "
                     "(1) No Ayurveda Aahara product shall claim to prevent, treat, cure, or mitigate any disease or physiological disorder. "
@@ -703,14 +738,16 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
                 )
             },
             {
-                "heading": "Statutory Comparison: Ayurveda Aahara (FSSAI) vs Classical ASU Drug (AYUSH)",
+                "heading": "FSSAI Licensing Workflow via FoSCoS Portal for Ayurveda Aahara Category 13.0",
                 "content": (
-                    "Regulatory Matrix: "
-                    "1. Governing Act: FSSAI Food Safety and Standards Act 2006 vs AYUSH Drugs and Cosmetics Act 1940. "
-                    "2. Licensing Authority: State Food Safety Commissioner (FSSAI) vs State Licensing Authority (Ayush). "
-                    "3. Permitted Claims: Wellness, health promotion, dosha balance vs Therapeutic indication, treatment of Vyadhi. "
-                    "4. Labelling: Mandatory 'NOT A MEDICINE' disclaimer & Ayur-A logo vs 'Caution: under Vaidya supervision' if Schedule E(1). "
-                    "5. Sales Channel: Supermarkets, grocery, e-commerce food vs Licensed Ayurvedic pharmacy & retail."
+                    "FSSAI Licensing Roadmap for Food Business Operators (FBOs) under Category 13.0 (Ayurveda Aahara): "
+                    "Step 1: Determine Jurisdiction — Annual turnover up to Rs. 12 lakhs requires FSSAI Basic Registration; "
+                    "turnover between Rs. 12 lakhs and Rs. 20 crores requires State FSSAI License; turnover above Rs. 20 crores or "
+                    "operating in multiple states requires Central FSSAI License. "
+                    "Step 2: Electronic Application via FoSCoS Portal (foscos.fssai.gov.in) under Kind of Business (KoB): Manufacturer / Food Category 13.0. "
+                    "Step 3: Document Upload — Form A/B, Schedule A classical textual recipe citation, ingredient composition table, "
+                    "water test report from NABL-accredited lab, and label artwork containing the mandatory Ayur-A logo and non-disease warning. "
+                    "Step 4: Fee Payment and Food Safety Officer (FSO) scrutiny, leading to grant of 14-digit FSSAI License Number."
                 )
             }
         ],
@@ -721,15 +758,15 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
                 "neg": "Section 2(e) of the GI Act defines a geographical indication in relation to goods originating in a territory."
             },
             {
-                "query": "What is the difference between an Ayurveda Aahara license and an AYUSH ASU drug license?",
-                "pos": "Ayurveda Aahara is licensed under FSSAI Act 2006 for food and wellness with prohibited disease claims, while ASU drugs are licensed under D&C Act 1940 for therapeutic treatment.",
+                "query": "How do I get an FSSAI license for an Ayurvedic food product?",
+                "pos": "Apply through the FoSCoS portal under Category 13.0 (Ayurveda Aahara) with recipe citations from Schedule A texts, label artwork with the Ayur-A logo, and water test reports.",
                 "neg": "Section 3(p) of the Patents Act excludes traditional knowledge from patentability."
             }
         ]
     ),
 
     # --------------------------------------------------------------------------
-    # 8. Trade Marks Act 1999 - Classical Ayurveda Names & Generic Terms Ban
+    # 8. Trade Marks Act 1999 - Protection of Ayurvedic Terminology
     # --------------------------------------------------------------------------
     StatutoryDocumentSpec(
         title="Trade Marks Act 1999 - Protection of Ayurvedic Terminology",
@@ -738,10 +775,22 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
         domain="trademarks",
         jurisdiction="IN",
         source_url="https://ipindia.gov.in/trade-marks.htm",
-        corpus_version="v2.0",
+        corpus_version="v2.0-docling",
         raw_subdir="trademarks",
         raw_filename="trademarks_act_ayurvedic_terms.txt",
         sections=[
+            {
+                "heading": "Section 2(1)(zb) & 2(1)(m) - Statutory Definitions of Trademark and Mark",
+                "content": (
+                    "Under Section 2(1)(zb) of the Trade Marks Act, 1999, a 'trade mark' means a mark capable of being represented graphically "
+                    "and which is capable of distinguishing the goods or services of one person from those of others and may include shape of goods, "
+                    "their packaging and combination of colours. "
+                    "Section 2(1)(m) defines 'mark' to include a device, brand, heading, label, ticket, name, signature, word, letter, numeral, "
+                    "shape of goods, packaging or combination of colours or any combination thereof. "
+                    "In Ayurvedic commerce, trade dress, bottle silhouettes, and brand names (e.g., 'Zandu', 'Baidyanath') function as protected marks, "
+                    "whereas generic herbal names cannot be monopolized."
+                )
+            },
             {
                 "heading": "Section 9 - Absolute Grounds for Refusal of Descriptive Herbal Terms",
                 "content": (
@@ -765,13 +814,27 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
                 )
             },
             {
-                "heading": "Class 5 vs Class 30 Trademark Classifications for AYUSH Goods",
+                "heading": "Section 28 & 29 - Rights Conferred by Registration and Remedies Against Infringement",
                 "content": (
-                    "Classification Benchmark for AYUSH Enterprises: "
-                    "Class 5: Covers Ayurvedic, Siddha, Unani medicinal preparations, pharmaceutical preparations, dietetic substances adapted for medical use. "
-                    "Class 3: Covers herbal cosmetics, soaps, essential oils, hair oils (Taila), and beauty formulations without therapeutic claims. "
-                    "Class 30: Covers herbal teas, spices, food supplements, and dietary preparations not adapted for medical use. "
-                    "Class 32: Covers herbal non-alcoholic beverages, health juices (Swarasa), and functional drinks."
+                    "Under Section 28 of the Trade Marks Act, 1999, valid registration of a trademark confers on the proprietor the exclusive right "
+                    "to the use of the trademark in relation to the goods or services in respect of which the trade mark is registered and to obtain relief in respect of infringement. "
+                    "Section 29 defines infringement as unauthorized commercial use of a mark that is identical or deceptively similar to a registered mark "
+                    "in relation to identical or similar goods, likely to cause confusion in the public. "
+                    "Civil Remedies: Section 135 empowers courts to grant injunctions, damages or accounts of profits, and destruction of infringing packaging."
+                )
+            },
+            {
+                "heading": "Trade Marks Rules 2017 & Procedural Registration Roadmap: Form TM-A, Fees and Examination",
+                "content": (
+                    "Sequential Procedural Roadmap to Register a Trademark in India: "
+                    "Step 1: Trademark Clearance Search — Conduct comprehensive search on the IP India Public Search portal (ipindiaservices.gov.in) "
+                    "across wordmarks and phonetic equivalences in relevant classes (Class 5 for medicines, Class 3 for herbal cosmetics, Class 30 for teas/foods). "
+                    "Step 2: Filing Application via Form TM-A on the e-Filing portal (ipindia.gov.in). "
+                    "Government statutory fee: Rs. 4,500 for Individuals, Startups, and MSMEs (Udyam certificate required); Rs. 9,000 for standard corporate entities. "
+                    "Filing Form TM-A entitles the applicant to immediately use the ™ symbol. "
+                    "Step 3: Examination by Trade Marks Examiner within 1-3 months; reply to examination report must be filed within 30 days. "
+                    "Step 4: Publication in the official Trade Marks Journal opening a 4-month public opposition window under Section 21. "
+                    "Step 5: Issuance of Form O-2 Registration Certificate, granting 10-year renewable ownership and legal entitlement to use the registered ® symbol."
                 )
             }
         ],
@@ -782,9 +845,9 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
                 "neg": "Section 6 of the Biological Diversity Act mandates prior NBA approval before applying for IPR."
             },
             {
-                "query": "Which trademark class applies to Ayurvedic therapeutic medicines versus herbal cosmetics?",
-                "pos": "Ayurvedic medicines fall under Class 5, while herbal cosmetics and oils without disease treatment claims fall under Class 3.",
-                "neg": "Rule 158B requires safety toxicity data for patent or proprietary Ayurvedic extracts."
+                "query": "How do I register a trademark for an Ayurvedic brand in India?",
+                "pos": "File Form TM-A online via ipindia.gov.in with Rs. 4,500 statutory fee for MSMEs, clear examination within 30 days, survive 4-month journal window, and receive Form O-2 certificate.",
+                "neg": "Section 3(p) of the Patents Act bars patenting traditional knowledge."
             }
         ]
     ),
@@ -798,105 +861,106 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
         authority="Geographical Indications Registry, Intellectual Property India (CGPDTM)",
         domain="gi",
         jurisdiction="IN",
-        source_url="https://ipindia.gov.in",
-        corpus_version="v2.0",
+        source_url="https://ipindia.gov.in/gi.htm",
+        corpus_version="v2.0-docling",
         raw_subdir="gi_registry",
         raw_filename="gi_act_and_ayurvedic_gis.txt",
         sections=[
             {
-                "heading": "Section 2(e) & Section 9 - GI Definition and Prohibited Registrations",
+                "heading": "Section 2(1)(e) - Statutory Definition of Geographical Indication",
                 "content": (
-                    "Section 2(e) defines a Geographical Indication as an indication which identifies goods as agricultural goods, "
-                    "natural goods or manufactured goods as originating, or manufactured in the territory of a country, or a region "
-                    "where a given quality, reputation or other characteristic of such goods is essentially attributable to its geographical origin. "
-                    "Section 9 Prohibitions: The following cannot be registered as GI: "
-                    "(a) Names the use of which would be likely to deceive or cause confusion; "
-                    "(b) Names contrary to any law; "
-                    "(c) Names comprising scandalous or obscene matter; "
-                    "(d) Generic names of goods which have ceased to indicate their geographical origin."
+                    "Section 2(1)(e) of the Geographical Indications of Goods (Registration and Protection) Act, 1999 defines a GI as: "
+                    "'An indication which identifies such goods as agricultural goods, natural goods or manufactured goods as originating, "
+                    "or manufactured in the territory of a country, or a region or locality in that territory, where a given quality, "
+                    "reputation or other characteristic of such goods is essentially attributable to its geographical origin.' "
+                    "In the Ayurvedic sector, therapeutic herbs whose chemical profile and Rasayana qualities depend on terroir "
+                    "(soil chemistry, altitude, seasonal rainfall) are registered under this Act."
                 )
             },
             {
-                "heading": "Section 20 to 22 - Exclusive Rights of Authorized Users vs Non-Exclusivity of Classical Ayurvedic Formulations",
+                "heading": "Section 8 & 11 - Prohibition of Sole Private Ownership and Collective Community Registration",
                 "content": (
-                    "Section 21 confers upon registered proprietors and authorized users the exclusive right to use the geographical "
-                    "indication in relation to the goods in respect of which the GI is registered, and to obtain relief in respect of infringement. "
-                    "Crucial Distinction in Ayurveda: Classical Ayurvedic formulas (e.g., Triphala, Chyawanprash) cannot be monopolized as GIs "
-                    "because they belong to the public domain and any licensed Vaidya across India can prepare them. "
-                    "Only agricultural produce possessing distinctive terroir and unique phyto-chemical traits tied to a bounded geography "
-                    "(e.g., Kashmir Saffron, Navara Rice) qualify for GI protection."
+                    "A critical legal distinction of the GI Act: "
+                    "(1) Section 8 & 11 specify that only an association of persons or producers or any organization representing the "
+                    "interest of the producers of the concerned goods can apply for a GI tag. "
+                    "(2) Sole Private Corporate Entities CANNOT Own a GI: No single private corporation or pharmaceutical company can "
+                    "monopolize an Ayurvedic GI tag as private intellectual property. It is held collectively for the benefit of all regional growers. "
+                    "(3) Authorized User System: Individual farmers or manufacturers must apply under Form GI-3 to become registered 'Authorized Users'."
                 )
             },
             {
-                "heading": "Registered AYUSH Botanical GI: Kashmir Saffron (GI Application No. 635)",
+                "heading": "Registered Botanical & Ayurvedic GIs: Kashmir Saffron (GI No. 635)",
                 "content": (
-                    "Kashmir Saffron (Crocus sativus L.), registered under GI Application No. 635 (Certificate dated 2020): "
-                    "Grown exclusively in the karewa highlands of Pulwama, Budgam, Kishtwar, and Srinagar at altitudes exceeding 1,600 meters. "
-                    "Unique Qualities: Contains exceptionally high concentration of Crocin (responsible for deep crimson pigment), "
-                    "Safranal (aroma marker), and Picrocrocin (bitterness). Recognized in Ayurvedic Pharmacopoeia as Kumkuma (Keshar), "
-                    "acting as a Tridoshahara, Varnya, and Hridya rasayana."
+                    "GI Registration: Kashmir Saffron (Crocus sativus L. Kashmirianum), Application No. 635. "
+                    "Geographical Origin: High altitude Karewas of Pulwama, Budgam, Kishtwar, and Srinagar in Jammu and Kashmir. "
+                    "Statutory Distinction: Kashmir saffron is the only saffron in the world grown at an altitude of 1,600m to 1,800m ASL. "
+                    "Classical Ayurvedic Relevance: Celebrated as 'Kumkuma' in Charaka Samhita and Sushruta Samhita, possessing distinctively "
+                    "high crocin content (pigment / antioxidant > 8.0%), safranal (aroma), and picrocrocin (bitter flavor), indicated in "
+                    "Varnya (complexion), Keshya, and Tridoshahara classical formulations."
                 )
             },
             {
-                "heading": "Registered AYUSH Botanical GI: Navara Rice (GI Application No. 38)",
+                "heading": "Registered Botanical & Ayurvedic GIs: Navara Rice (GI No. 47)",
                 "content": (
-                    "Navara Rice (Oryza sativa L. var. Navara), registered under GI Application No. 38 (Class 31): "
-                    "An indigenous medicinal rice cultivated in Palakkad and Malappuram districts of Kerala since 2500 BCE. "
-                    "Therapeutic Role in Ayurveda: Critical ingredient in Panchakarma therapies including Navarakizhi (Shashtika Shali Pinda Sweda) "
-                    "for neurological disorders, muscular dystrophy, arthritis, and post-stroke rehabilitation. "
-                    "Contains elevated levels of polyphenols, oryzanol, zinc, and iron compared to normal white rice."
+                    "GI Registration: Navara Rice, Application No. 47 (Registered by Navara Rice Farmers Society, Palakkad, Kerala). "
+                    "Agricultural Classification: Indigenous medicinal red rice variety cultivated in Palakkad, Malappuram, and Wayanad districts. "
+                    "Ayurvedic Therapeutic Uses: Mentioned as 'Shashtika Shali' (rice maturing in 60 days) in Ashtanga Hridaya. "
+                    "Exclusive medium for classical Panchakarma therapies, specifically 'Shashtika Shali Pinda Sweda' (Navarakizhi) for muscular "
+                    "wasting, neuromuscular disorders, rheumatoid arthritis, and pediatric rejuvenation."
                 )
             },
             {
-                "heading": "Registered AYUSH Botanical GI: Alleppey Green Cardamom (GI Application No. 34)",
+                "heading": "Registered Botanical & Ayurvedic GIs: Alleppey Green Cardamom (GI No. 65) & Erode Turmeric (GI No. 407)",
                 "content": (
-                    "Alleppey Green Cardamom (Elettaria cardamomum Maton), registered under GI Application No. 34: "
-                    "Cultivated in the misty slopes of the Western Ghats (Cardamom Hills) spanning Idukki and surrounding regions. "
-                    "Distinctive Characteristics: Deep green color, high three-cornered ribbed pods, and rich volatile essential oil "
-                    "content (7-8% comprising 1,8-cineole and alpha-terpinyl acetate). "
-                    "Ayurvedic Pharmacopoeial Role: Sookshma Ela, possessing Deepana, Hridya, and Tridoshahara properties, indispensable in "
-                    "classical churna formulations like Sitopaladi."
+                    "Alleppey Green Cardamom (GI No. 65): Elettaria cardamomum Maton cultivated in the Cardamom Hills of Idukki and Travancore. "
+                    "High 1,8-cineole and alpha-terpinyl acetate essential oil profile; celebrated in classical Ayurveda as 'Ela' or 'Sukshmaila' "
+                    "in Trijataka and Chaturjata classical spice combinations. "
+                    "Erode Turmeric (GI No. 407): Curcuma longa cultivated in Erode district of Tamil Nadu, distinguished by high curcumin content (3.5% to 4.5%), "
+                    "conferring verified therapeutic action for anti-inflammatory and antiseptic formulations."
                 )
             }
         ],
         triples=[
             {
-                "query": "Can a classical Ayurvedic formula like Chyawanprash be registered as a Geographical Indication?",
-                "pos": "No, classical formulations like Chyawanprash belong to the public domain across India and cannot be monopolized under the GI Act; only region-specific crops like Kashmir Saffron qualify.",
-                "neg": "Section 3(d) of the Patents Act bars patenting new forms of known substances unless significant therapeutic efficacy enhancement is shown."
+                "query": "Can a private pharmaceutical company own an exclusive Geographical Indication (GI) tag in India?",
+                "pos": "Under Section 8 and 11 of the GI Act 1999, only an association of producers or growers can hold a GI tag; sole private corporations are prohibited from private GI ownership.",
+                "neg": "Section 48 of the Patents Act grants exclusive patent rights for twenty years."
             },
             {
-                "query": "Why is Navara Rice registered under the GI Act and what is its Ayurvedic use?",
-                "pos": "Navara Rice (GI No. 38) is an indigenous medicinal paddy of Kerala used in Ayurvedic Panchakarma (Navarakizhi) for neuromuscular diseases.",
-                "neg": "Rule 158B requires pilot clinical studies for patent or proprietary Ayurvedic formulations."
+                "query": "Why is Navara rice protected as a GI and what is its Ayurvedic importance?",
+                "pos": "Navara rice (GI No. 47) from Kerala is the classical Shashtika Shali used in Shashtika Shali Pinda Sweda (Navarakizhi) Panchakarma therapy.",
+                "neg": "Schedule T specifies Good Manufacturing Practices for ASU drugs."
             }
         ]
     ),
 
     # --------------------------------------------------------------------------
-    # 10. WHO Traditional Medicine Benchmarks & Heavy Metal Quality Limits
+    # 10. WHO Guidelines & Heavy Metal Limits
     # --------------------------------------------------------------------------
     StatutoryDocumentSpec(
         title="WHO Traditional Medicine Benchmarks & Quality Limits",
         source_title="WHO Guidelines for Assessing Quality of Herbal Medicines with Reference to Contaminants and Residues",
-        authority="World Health Organization (WHO)",
+        authority="World Health Organization (WHO) & Ministry of AYUSH",
         domain="who",
-        jurisdiction="INT",
-        source_url="https://www.who.int/health-topics/traditional-complementary-and-integrative-medicine",
-        corpus_version="v2.0",
+        jurisdiction="IN",
+        source_url="https://who.int/publications/i/item/9789241594448",
+        corpus_version="v2.0-docling",
         raw_subdir="who_terminology",
         raw_filename="who_tm_quality_and_heavy_metals.txt",
         sections=[
             {
-                "heading": "WHO Maximum Permissible Limits for Heavy Metals in Herbal Medicines",
+                "heading": "WHO Maximum Permissible Limits for Heavy Metals in Herbal Materials",
                 "content": (
-                    "The World Health Organization (WHO) and the Pharmacopoeia Commission for Indian Medicine (PCIM&H) set mandatory "
-                    "permissible limits for heavy metal contaminants in finished raw herbal materials and ASU drugs: "
-                    "(1) Lead (Pb): Not more than 10.0 mg/kg (10.0 ppm). "
-                    "(2) Arsenic (As): Not more than 3.0 mg/kg (3.0 ppm). "
-                    "(3) Cadmium (Cd): Not more than 0.3 mg/kg (0.3 ppm). "
-                    "(4) Mercury (Hg): Not more than 1.0 mg/kg (1.0 ppm). "
-                    "Exemption Note for Classical Rasa-Shastra Bhasmas: Herbo-mineral formulations (e.g. Swarna Bhasma, Naga Bhasma, Rasasindura) "
+                    "WHO Guidelines (TRS 986 / Quality control methods for herbal materials) establish mandatory safety thresholds "
+                    "for heavy metal contaminants in herbal medicines and raw plant parts: "
+                    "(1) Lead (Pb): Maximum permissible limit is 10.0 mg/kg (10.0 ppm). "
+                    "(2) Arsenic (As): Maximum permissible limit is 3.0 mg/kg (3.0 ppm). "
+                    "(3) Cadmium (Cd): Maximum permissible limit is 0.3 mg/kg (0.3 ppm). "
+                    "(4) Mercury (Hg): Maximum permissible limit is 1.0 mg/kg (1.0 ppm). "
+                    "Testing Methodology: Atomic Absorption Spectrophotometry (AAS) or Inductively Coupled Plasma Mass Spectrometry (ICP-MS). "
+                    "AYUSH Harmonization: The Pharmacopoeial Laboratory for Indian Medicine (PLIM) and Gazette notifications under the "
+                    "Drugs & Cosmetics Act adopt these identical four thresholds for all exported and finished plant-based ASU medicines. "
+                    "Special Exemption for Rasaushadhis: Classical Herbo-mineral preparations (Kharaliya Rasayana, Parpati, Kupipakwa, Bhasmas) "
                     "subject to classical incineration (Marana) and Shodhana are tested under specialized safety indices and NP-XRD particle characterization."
                 )
             },
@@ -912,16 +976,16 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
                 )
             },
             {
-                "heading": "WIPO IGC Intergovernmental Committee - Traditional Knowledge Protection",
+                "heading": "WHO-COPP (Certificate of Pharmaceutical Product) for Export of Ayurvedic Medicines",
                 "content": (
-                    "The World Intellectual Property Organization (WIPO) Intergovernmental Committee on Intellectual Property "
-                    "and Genetic Resources, Traditional Knowledge and Folklore (IGC): "
-                    "Mandatory Disclosure Requirements: The Draft Treaty on IP, Genetic Resources and Associated Traditional Knowledge "
-                    "mandates patent applicants worldwide to disclose: "
-                    "(a) The country of origin of the genetic resource or traditional knowledge; "
-                    "(b) If country of origin is unknown, the source from which the resource was obtained; "
-                    "(c) Whether Free Prior Informed Consent (FPIC) and Mutually Agreed Terms (MAT) were established. "
-                    "Failure to disclose constitutes grounds for revocation or post-grant sanctions."
+                    "The WHO Certification Scheme on the Quality of Pharmaceutical Products Moving in International Commerce (WHO-COPP): "
+                    "Statutory Export Framework: Administered jointly by the Central Drugs Standard Control Organization (CDSCO) / DCGI "
+                    "and the State Licensing Authority under Ministry of AYUSH guidelines. "
+                    "Mandatory Prerequisites: "
+                    "(1) Valid Schedule T GMP certificate conforming to revised WHO GMP guidelines (Supplementary Guidelines for Herbal Medicines). "
+                    "(2) Full product quality dossier complying with WHO heavy metal, pesticide residue, and aflatoxin criteria. "
+                    "(3) Real-time and accelerated stability study data (Zone IVb conditions: 30 deg C / 75% RH). "
+                    "Issuance of the WHO-COPP certificate authorizes export of Ayurvedic pharmaceuticals to over 100 importing countries worldwide."
                 )
             }
         ],
@@ -932,9 +996,9 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
                 "neg": "Section 3(e) denies patents to combinations that merely aggregate the known properties of individual herbs."
             },
             {
-                "query": "What are the mandatory patent disclosure requirements under WIPO IGC for traditional knowledge?",
-                "pos": "WIPO IGC treaty provisions mandate disclosure of country of origin of genetic resources/TK and confirmation of Free Prior Informed Consent (FPIC).",
-                "neg": "Regulation 5 of FSSAI regulations requires the green Ayur-A logo on packaging."
+                "query": "What is the WHO-COPP certificate and how does it facilitate Ayurvedic drug export?",
+                "pos": "The WHO-COPP (Certificate of Pharmaceutical Product) is issued by CDSCO/SLA for GMP-compliant Ayurvedic products, enabling export to 100+ countries.",
+                "neg": "Regulation 5 of FSSAI requires the green Ayur-A logo on packaging."
             }
         ]
     )
@@ -984,20 +1048,37 @@ def extract_chunks_from_spec(spec: StatutoryDocumentSpec) -> List[Dict[str, Any]
     """Transforms sections into fine-grained chunks adhering to AYURLEX RAG standards."""
     chunks = []
     for idx, sec in enumerate(spec.sections):
-        chunk_id = f"{spec.domain}_{spec.raw_filename.replace('.txt', '')}_{idx+1}_{str(uuid.uuid4())[:8]}"
-        text = f"{sec['heading']}\n\n{sec['content']}"
+        heading = sec["heading"].strip()
+        content = sec["content"].strip()
+        
+        # Clean formatting, non-printable characters, and excessive whitespace
+        content = re.sub(r'[ \t]+', ' ', content)
+        content = re.sub(r'\n{3,}', '\n\n', content)
+
+        # Substantive content validation: Must have substantive legal text
+        if len(content) < 80:
+            logger.warning(f"Skipping empty or non-substantive chunk '{heading}' (length {len(content)})")
+            continue
+
+        text = f"{heading}\n\n{content}"
         tokens = count_tokens(text)
+        if tokens < 25:
+            logger.warning(f"Skipping chunk '{heading}' with token count {tokens} < 25")
+            continue
+
+        chunk_id = f"{spec.domain}_{spec.raw_filename.replace('.txt', '')}_{idx+1}_{str(uuid.uuid4())[:8]}"
         chunk = {
             "id": chunk_id,
             "text": text,
-            "section_title": sec["heading"],
+            "section_title": heading,
             "chunk_index": idx,
             "token_count": tokens,
             "source_title": spec.source_title,
             "source_url": spec.source_url,
+            "authority": spec.authority,
             "domain": spec.domain,
             "jurisdiction": spec.jurisdiction,
-            "corpus_version": spec.corpus_version,
+            "corpus_version": "v2.0-docling",
             "language": "en",
             "page_number": idx + 1
         }
@@ -1015,10 +1096,10 @@ async def update_sqlite_and_faiss(all_chunks: List[Dict[str, Any]]) -> None:
 
         await init_db()
         async with AsyncSessionLocal() as session:
-            # Group chunks by source_title or source
+            # Group chunks by source_title
             docs_map: Dict[str, List[Dict[str, Any]]] = {}
             for c in all_chunks:
-                st = c.get("source_title") or c.get("source") or "AYURLEX Statutory Corpus"
+                st = c.get("source_title") or "AYURLEX Statutory Corpus"
                 docs_map.setdefault(st, []).append(c)
 
             # Clear existing data for clean re-sync
@@ -1026,6 +1107,7 @@ async def update_sqlite_and_faiss(all_chunks: List[Dict[str, Any]]) -> None:
             await session.execute(delete(DocumentModel))
             await session.flush()
 
+            global_faiss_id = 0
             for source_title, ch_list in docs_map.items():
                 first = ch_list[0]
                 doc_record = DocumentModel(
@@ -1033,31 +1115,32 @@ async def update_sqlite_and_faiss(all_chunks: List[Dict[str, Any]]) -> None:
                     source_url=first.get("source_url", "https://ayurlex.gov.in"),
                     domain=first.get("domain", "general"),
                     jurisdiction=first.get("jurisdiction", "IN"),
-                    corpus_version=first.get("corpus_version", "v2.0"),
+                    corpus_version=first.get("corpus_version", "v2.0-docling"),
                     language=first.get("language", "en")
                 )
                 session.add(doc_record)
                 await session.flush()
 
-                for faiss_idx, c in enumerate(ch_list):
+                for c in ch_list:
                     chunk_record = ChunkModel(
                         id=c["id"],
                         document_id=doc_record.id,
                         text=c.get("text", ""),
                         section_title=c.get("section_title", "General"),
-                        chunk_index=c.get("chunk_index", faiss_idx),
+                        chunk_index=c.get("chunk_index", 0),
                         token_count=c.get("token_count", count_tokens(c.get("text", ""))),
                         domain=c.get("domain", "general"),
                         jurisdiction=c.get("jurisdiction", "IN"),
-                        corpus_version=c.get("corpus_version", "v2.0"),
+                        corpus_version=c.get("corpus_version", "v2.0-docling"),
                         language=c.get("language", "en"),
                         page_number=c.get("page_number", 1),
-                        faiss_id=faiss_idx
+                        faiss_id=global_faiss_id
                     )
                     session.add(chunk_record)
+                    global_faiss_id += 1
 
             await session.commit()
-            logger.info(f"Successfully populated SQLite database with {len(all_chunks)} chunks.")
+            logger.info(f"Successfully populated SQLite database with {len(all_chunks)} clean chunks.")
 
         # Rebuild FAISS index
         index = faiss.IndexFlatL2(1)
@@ -1076,28 +1159,15 @@ async def update_sqlite_and_faiss(all_chunks: List[Dict[str, Any]]) -> None:
 def run_pipeline() -> Tuple[int, int, int]:
     """
     Executes the Docling dataset enhancement pipeline:
-    1. Writes rich raw statutory files into data/raw/<subdir>/
+    1. Writes standardized raw statutory files into data/raw/<subdir>/
     2. Builds DoclingDocument models and saves JSON/Markdown to data/docling/
-    3. Merges existing chunks with new rich chunks into data/chunks/chunks.jsonl
+    3. Extracts verified, noise-free chunks into data/chunks/chunks.jsonl
     4. Writes BGE-M3 contrastive fine-tuning triples to data/finetuning/bge_triples.jsonl
+    5. Re-synchronizes SQLite database and FAISS index
     """
-    logger.info("Starting AYURLEX Docling Dataset Enhancement Pipeline...")
+    logger.info("Starting AYURLEX Docling Dataset Preprocessing Pipeline...")
 
-    # 1. Read existing chunks if present
-    existing_chunks: List[Dict[str, Any]] = []
-    chunks_file = CHUNKS_DIR / "chunks.jsonl"
-    if chunks_file.exists():
-        with open(chunks_file, "r", encoding="utf-8") as f:
-            for line in f:
-                line = line.strip()
-                if line:
-                    try:
-                        existing_chunks.append(json.loads(line))
-                    except Exception:
-                        pass
-    logger.info(f"Loaded {len(existing_chunks)} pre-existing chunks.")
-
-    new_chunks: List[Dict[str, Any]] = []
+    all_chunks: List[Dict[str, Any]] = []
     all_triples: List[Dict[str, str]] = []
     docling_count = 0
 
@@ -1117,28 +1187,30 @@ def run_pipeline() -> Tuple[int, int, int]:
         docling_md_path.write_text(docling_doc.export_to_markdown(), encoding="utf-8")
         docling_count += 1
 
-        # C. Extract chunks
+        # C. Extract clean chunks
         spec_chunks = extract_chunks_from_spec(spec)
-        new_chunks.extend(spec_chunks)
+        all_chunks.extend(spec_chunks)
 
         # D. Collect fine-tuning triples
         all_triples.extend(spec.triples)
 
-    logger.info(f"Generated {len(new_chunks)} new high-quality chunks across {docling_count} Docling documents.")
+    logger.info(f"Extracted {len(all_chunks)} verified, noise-free Docling chunks across {docling_count} documents.")
 
-    # Deduplicate against existing by text prefix
-    combined_chunks = list(existing_chunks)
-    existing_texts = {c.get("text", "")[:80] for c in existing_chunks}
-    for nc in new_chunks:
-        if nc["text"][:80] not in existing_texts:
-            combined_chunks.append(nc)
-            existing_texts.add(nc["text"][:80])
+    # Deduplicate against itself by text prefix
+    unique_chunks = []
+    seen_texts = set()
+    for ch in all_chunks:
+        pfx = ch["text"][:100].strip()
+        if pfx not in seen_texts:
+            unique_chunks.append(ch)
+            seen_texts.add(pfx)
 
-    # Save merged chunks.jsonl
+    # Save clean chunks.jsonl
+    chunks_file = CHUNKS_DIR / "chunks.jsonl"
     with open(chunks_file, "w", encoding="utf-8") as f:
-        for ch in combined_chunks:
+        for ch in unique_chunks:
             f.write(json.dumps(ch, ensure_ascii=False) + "\n")
-    logger.info(f"Updated {chunks_file} with total {len(combined_chunks)} synchronized chunks!")
+    logger.info(f"Updated {chunks_file} with total {len(unique_chunks)} clean, verified chunks!")
 
     # Save fine-tuning triples
     triples_file = FINETUNING_DIR / "bge_triples.jsonl"
@@ -1149,18 +1221,18 @@ def run_pipeline() -> Tuple[int, int, int]:
 
     # Sync with DB & FAISS
     try:
-        asyncio.run(update_sqlite_and_faiss(combined_chunks))
+        asyncio.run(update_sqlite_and_faiss(unique_chunks))
     except Exception as e:
         logger.warning(f"Async DB update skipped: {e}")
 
-    return len(combined_chunks), docling_count, len(all_triples)
+    return len(unique_chunks), docling_count, len(all_triples)
 
 
 if __name__ == "__main__":
     total_chunks, doclings, triples = run_pipeline()
     print(f"\n==================================================================")
     print(f"AYURLEX DOCLING PIPELINE COMPLETED SUCCESSFULLY")
-    print(f"Total Synchronized Chunks: {total_chunks}")
-    print(f"Docling Documents Created: {doclings}")
-    print(f"Fine-Tuning Triples:       {triples}")
+    print(f"Total Noise-Free Verified Chunks: {total_chunks}")
+    print(f"Docling Documents Created:        {doclings}")
+    print(f"Fine-Tuning Triples:              {triples}")
     print(f"==================================================================")

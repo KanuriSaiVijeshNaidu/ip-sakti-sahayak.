@@ -36,6 +36,18 @@
       },
       {
         "cref": "#/texts/6"
+      },
+      {
+        "cref": "#/texts/7"
+      },
+      {
+        "cref": "#/texts/8"
+      },
+      {
+        "cref": "#/texts/9"
+      },
+      {
+        "cref": "#/texts/10"
       }
     ],
     "content_layer": "body",
@@ -70,8 +82,8 @@
       "meta": null,
       "label": "section_header",
       "prov": [],
-      "orig": "Section 9 - Absolute Grounds for Refusal of Descriptive Herbal Terms",
-      "text": "Section 9 - Absolute Grounds for Refusal of Descriptive Herbal Terms",
+      "orig": "Section 2(1)(zb) & 2(1)(m) - Statutory Definitions of Trademark and Mark",
+      "text": "Section 2(1)(zb) & 2(1)(m) - Statutory Definitions of Trademark and Mark",
       "formatting": null,
       "hyperlink": null,
       "level": 2
@@ -86,13 +98,44 @@
       "meta": null,
       "label": "paragraph",
       "prov": [],
+      "orig": "Under Section 2(1)(zb) of the Trade Marks Act, 1999, a 'trade mark' means a mark capable of being represented graphically and which is capable of distinguishing the goods or services of one person from those of others and may include shape of goods, their packaging and combination of colours. Section 2(1)(m) defines 'mark' to include a device, brand, heading, label, ticket, name, signature, word, letter, numeral, shape of goods, packaging or combination of colours or any combination thereof. In Ayurvedic commerce, trade dress, bottle silhouettes, and brand names (e.g., 'Zandu', 'Baidyanath') function as protected marks, whereas generic herbal names cannot be monopolized.",
+      "text": "Under Section 2(1)(zb) of the Trade Marks Act, 1999, a 'trade mark' means a mark capable of being represented graphically and which is capable of distinguishing the goods or services of one person from those of others and may include shape of goods, their packaging and combination of colours. Section 2(1)(m) defines 'mark' to include a device, brand, heading, label, ticket, name, signature, word, letter, numeral, shape of goods, packaging or combination of colours or any combination thereof. In Ayurvedic commerce, trade dress, bottle silhouettes, and brand names (e.g., 'Zandu', 'Baidyanath') function as protected marks, whereas generic herbal names cannot be monopolized.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/3",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 9 - Absolute Grounds for Refusal of Descriptive Herbal Terms",
+      "text": "Section 9 - Absolute Grounds for Refusal of Descriptive Herbal Terms",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/4",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
       "orig": "Section 9(1) of the Trade Marks Act, 1999 prohibits the registration of trademarks which: (a) Are devoid of any distinctive character; (b) Consist exclusively of marks or indications which may serve in trade to designate the kind, quality, intended purpose, values, geographical origin, or time of production of goods. Application in Ayurvedic Products: Common Sanskrit names of plants (e.g., 'Ashwagandha', 'Brahmi', 'Triphala', 'Tulsi', 'Neem') cannot be registered as trademarks in Class 5 (Pharmaceuticals/Herbal Medicines) or Class 30 (Dietary Foods) because they are generic and publici juris. Any manufacturer is legally entitled to describe their product using these botanical terms.",
       "text": "Section 9(1) of the Trade Marks Act, 1999 prohibits the registration of trademarks which: (a) Are devoid of any distinctive character; (b) Consist exclusively of marks or indications which may serve in trade to designate the kind, quality, intended purpose, values, geographical origin, or time of production of goods. Application in Ayurvedic Products: Common Sanskrit names of plants (e.g., 'Ashwagandha', 'Brahmi', 'Triphala', 'Tulsi', 'Neem') cannot be registered as trademarks in Class 5 (Pharmaceuticals/Herbal Medicines) or Class 30 (Dietary Foods) because they are generic and publici juris. Any manufacturer is legally entitled to describe their product using these botanical terms.",
       "formatting": null,
       "hyperlink": null
     },
     {
-      "self_ref": "#/texts/3",
+      "self_ref": "#/texts/5",
       "parent": {
         "cref": "#/body"
       },
@@ -108,7 +151,7 @@
       "level": 2
     },
     {
-      "self_ref": "#/texts/4",
+      "self_ref": "#/texts/6",
       "parent": {
         "cref": "#/body"
       },
@@ -123,7 +166,7 @@
       "hyperlink": null
     },
     {
-      "self_ref": "#/texts/5",
+      "self_ref": "#/texts/7",
       "parent": {
         "cref": "#/body"
       },
@@ -132,14 +175,14 @@
       "meta": null,
       "label": "section_header",
       "prov": [],
-      "orig": "Class 5 vs Class 30 Trademark Classifications for AYUSH Goods",
-      "text": "Class 5 vs Class 30 Trademark Classifications for AYUSH Goods",
+      "orig": "Section 28 & 29 - Rights Conferred by Registration and Remedies Against Infringement",
+      "text": "Section 28 & 29 - Rights Conferred by Registration and Remedies Against Infringement",
       "formatting": null,
       "hyperlink": null,
       "level": 2
     },
     {
-      "self_ref": "#/texts/6",
+      "self_ref": "#/texts/8",
       "parent": {
         "cref": "#/body"
       },
@@ -148,8 +191,39 @@
       "meta": null,
       "label": "paragraph",
       "prov": [],
-      "orig": "Classification Benchmark for AYUSH Enterprises: Class 5: Covers Ayurvedic, Siddha, Unani medicinal preparations, pharmaceutical preparations, dietetic substances adapted for medical use. Class 3: Covers herbal cosmetics, soaps, essential oils, hair oils (Taila), and beauty formulations without therapeutic claims. Class 30: Covers herbal teas, spices, food supplements, and dietary preparations not adapted for medical use. Class 32: Covers herbal non-alcoholic beverages, health juices (Swarasa), and functional drinks.",
-      "text": "Classification Benchmark for AYUSH Enterprises: Class 5: Covers Ayurvedic, Siddha, Unani medicinal preparations, pharmaceutical preparations, dietetic substances adapted for medical use. Class 3: Covers herbal cosmetics, soaps, essential oils, hair oils (Taila), and beauty formulations without therapeutic claims. Class 30: Covers herbal teas, spices, food supplements, and dietary preparations not adapted for medical use. Class 32: Covers herbal non-alcoholic beverages, health juices (Swarasa), and functional drinks.",
+      "orig": "Under Section 28 of the Trade Marks Act, 1999, valid registration of a trademark confers on the proprietor the exclusive right to the use of the trademark in relation to the goods or services in respect of which the trade mark is registered and to obtain relief in respect of infringement. Section 29 defines infringement as unauthorized commercial use of a mark that is identical or deceptively similar to a registered mark in relation to identical or similar goods, likely to cause confusion in the public. Civil Remedies: Section 135 empowers courts to grant injunctions, damages or accounts of profits, and destruction of infringing packaging.",
+      "text": "Under Section 28 of the Trade Marks Act, 1999, valid registration of a trademark confers on the proprietor the exclusive right to the use of the trademark in relation to the goods or services in respect of which the trade mark is registered and to obtain relief in respect of infringement. Section 29 defines infringement as unauthorized commercial use of a mark that is identical or deceptively similar to a registered mark in relation to identical or similar goods, likely to cause confusion in the public. Civil Remedies: Section 135 empowers courts to grant injunctions, damages or accounts of profits, and destruction of infringing packaging.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/9",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Trade Marks Rules 2017 & Procedural Registration Roadmap: Form TM-A, Fees and Examination",
+      "text": "Trade Marks Rules 2017 & Procedural Registration Roadmap: Form TM-A, Fees and Examination",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/10",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "Sequential Procedural Roadmap to Register a Trademark in India: Step 1: Trademark Clearance Search — Conduct comprehensive search on the IP India Public Search portal (ipindiaservices.gov.in) across wordmarks and phonetic equivalences in relevant classes (Class 5 for medicines, Class 3 for herbal cosmetics, Class 30 for teas/foods). Step 2: Filing Application via Form TM-A on the e-Filing portal (ipindia.gov.in). Government statutory fee: Rs. 4,500 for Individuals, Startups, and MSMEs (Udyam certificate required); Rs. 9,000 for standard corporate entities. Filing Form TM-A entitles the applicant to immediately use the ™ symbol. Step 3: Examination by Trade Marks Examiner within 1-3 months; reply to examination report must be filed within 30 days. Step 4: Publication in the official Trade Marks Journal opening a 4-month public opposition window under Section 21. Step 5: Issuance of Form O-2 Registration Certificate, granting 10-year renewable ownership and legal entitlement to use the registered ® symbol.",
+      "text": "Sequential Procedural Roadmap to Register a Trademark in India: Step 1: Trademark Clearance Search — Conduct comprehensive search on the IP India Public Search portal (ipindiaservices.gov.in) across wordmarks and phonetic equivalences in relevant classes (Class 5 for medicines, Class 3 for herbal cosmetics, Class 30 for teas/foods). Step 2: Filing Application via Form TM-A on the e-Filing portal (ipindia.gov.in). Government statutory fee: Rs. 4,500 for Individuals, Startups, and MSMEs (Udyam certificate required); Rs. 9,000 for standard corporate entities. Filing Form TM-A entitles the applicant to immediately use the ™ symbol. Step 3: Examination by Trade Marks Examiner within 1-3 months; reply to examination report must be filed within 30 days. Step 4: Publication in the official Trade Marks Journal opening a 4-month public opposition window under Section 21. Step 5: Issuance of Form O-2 Registration Certificate, granting 10-year renewable ownership and legal entitlement to use the registered ® symbol.",
       "formatting": null,
       "hyperlink": null
     }

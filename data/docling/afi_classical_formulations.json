@@ -54,12 +54,6 @@
       },
       {
         "cref": "#/texts/12"
-      },
-      {
-        "cref": "#/texts/13"
-      },
-      {
-        "cref": "#/texts/14"
       }
     ],
     "content_layer": "body",
@@ -110,8 +104,8 @@
       "meta": null,
       "label": "paragraph",
       "prov": [],
-      "orig": "Composition: Equal parts (1:1:1 by weight) of Haritaki (Terminalia chebula pericarp), Bibhitaki (Terminalia bellirica pericarp), and Amalaki (Phyllanthus emblica pericarp). Reference Classical Texts: Charaka Samhita Chikitsasthana Chapter 1, Sharngadhara Samhita Madhyamakhanda. Method of Preparation: Cleaned pericarp portions are shade-dried, pulverized separately, and passed through mesh No. 85, then blended homogeneously. Therapeutic Indications: Chakshushya (ophthalmic tonic), Deepana, Ruchya, Vibandha (constipation), Prameha, Kushta. Dose and Anupana: 3 to 6 grams with lukewarm water, honey, or ghee at bedtime.",
-      "text": "Composition: Equal parts (1:1:1 by weight) of Haritaki (Terminalia chebula pericarp), Bibhitaki (Terminalia bellirica pericarp), and Amalaki (Phyllanthus emblica pericarp). Reference Classical Texts: Charaka Samhita Chikitsasthana Chapter 1, Sharngadhara Samhita Madhyamakhanda. Method of Preparation: Cleaned pericarp portions are shade-dried, pulverized separately, and passed through mesh No. 85, then blended homogeneously. Therapeutic Indications: Chakshushya (ophthalmic tonic), Deepana, Ruchya, Vibandha (constipation), Prameha, Kushta. Dose and Anupana: 3 to 6 grams with lukewarm water, honey, or ghee at bedtime.",
+      "orig": "Composition: Equal parts (1:1:1 by weight) of Haritaki (Terminalia chebula pericarp), Bibhitaki (Terminalia bellirica pericarp), and Amalaki (Phyllanthus emblica pericarp). Classical Reference: Charaka Samhita Chikitsasthana 1:2:12-14 and Sharngadhara Samhita Madhyamakhanda 6:11. Manufacturing: Deseeded fruits are dried, individually pulverized, passed through statutory sieve mesh No. 85, then blended homogeneously. Therapeutic Indications: Chakshushya (ophthalmic tonic), Deepana, Ruchya, Vibandha (constipation), Prameha, Kushta. Dose and Anupana: 3 to 6 grams with lukewarm water, honey, or ghee at bedtime.",
+      "text": "Composition: Equal parts (1:1:1 by weight) of Haritaki (Terminalia chebula pericarp), Bibhitaki (Terminalia bellirica pericarp), and Amalaki (Phyllanthus emblica pericarp). Classical Reference: Charaka Samhita Chikitsasthana 1:2:12-14 and Sharngadhara Samhita Madhyamakhanda 6:11. Manufacturing: Deseeded fruits are dried, individually pulverized, passed through statutory sieve mesh No. 85, then blended homogeneously. Therapeutic Indications: Chakshushya (ophthalmic tonic), Deepana, Ruchya, Vibandha (constipation), Prameha, Kushta. Dose and Anupana: 3 to 6 grams with lukewarm water, honey, or ghee at bedtime.",
       "formatting": null,
       "hyperlink": null
     },
@@ -249,37 +243,6 @@
       "meta": null,
       "label": "section_header",
       "prov": [],
-      "orig": "AFI Formulation: Mahasudarshan Churna (AFI Part I, 7:26)",
-      "text": "AFI Formulation: Mahasudarshan Churna (AFI Part I, 7:26)",
-      "formatting": null,
-      "hyperlink": null,
-      "level": 2
-    },
-    {
-      "self_ref": "#/texts/12",
-      "parent": {
-        "cref": "#/body"
-      },
-      "children": [],
-      "content_layer": "body",
-      "meta": null,
-      "label": "paragraph",
-      "prov": [],
-      "orig": "Composition: 54 herbal ingredients with Kiratatikta (Swertia chirata) comprising 50% of the entire formulation, balanced with Triphala, Trikatu, Haridra, Daruharidra, Kantakari, Brihati, Guduchi, Katuki, and Neem. Classical Reference: Sharngadhara Samhita Madhyamakhanda 6:27-37. Therapeutic Indications: Sannipata Jwara, Vishama Jwara (malarial / recurring fever), Yakrit-Pliha vriddhi, Aruchi, Trishna. Dose: 2 to 4 grams twice daily with warm water.",
-      "text": "Composition: 54 herbal ingredients with Kiratatikta (Swertia chirata) comprising 50% of the entire formulation, balanced with Triphala, Trikatu, Haridra, Daruharidra, Kantakari, Brihati, Guduchi, Katuki, and Neem. Classical Reference: Sharngadhara Samhita Madhyamakhanda 6:27-37. Therapeutic Indications: Sannipata Jwara, Vishama Jwara (malarial / recurring fever), Yakrit-Pliha vriddhi, Aruchi, Trishna. Dose: 2 to 4 grams twice daily with warm water.",
-      "formatting": null,
-      "hyperlink": null
-    },
-    {
-      "self_ref": "#/texts/13",
-      "parent": {
-        "cref": "#/body"
-      },
-      "children": [],
-      "content_layer": "body",
-      "meta": null,
-      "label": "section_header",
-      "prov": [],
       "orig": "AFI Formulation: Dashamularishta (AFI Part I, 1:19)",
       "text": "AFI Formulation: Dashamularishta (AFI Part I, 1:19)",
       "formatting": null,
@@ -287,7 +250,7 @@
       "level": 2
     },
     {
-      "self_ref": "#/texts/14",
+      "self_ref": "#/texts/12",
       "parent": {
         "cref": "#/body"
       },

@@ -1,7 +1,7 @@
 BIOLOGICAL DIVERSITY (AMENDMENT) ACT 2023 & ABS RULES
 Source: Biological Diversity Act, 2002 and Biological Diversity (Amendment) Act, 2023
 Authority: National Biodiversity Authority (NBA), Ministry of Environment, Forest and Climate Change
-Jurisdiction: IN | Domain: abs | Corpus Version: v2.0
+Jurisdiction: IN | Domain: abs | Corpus Version: v2.0-docling
 Official Reference: https://nbaindia.org
 
 ================================================================================

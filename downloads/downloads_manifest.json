@@ -1,0 +1,114 @@
+{
+  "master": {
+    "title": "AYURLEX Master Statutory Datasets & Knowledge Base Compendium (Complete)",
+    "filename": "AYURLEX_Master_Datasets_Compendium.pdf",
+    "download_url": "/downloads/AYURLEX_Master_Datasets_Compendium.pdf",
+    "direct_url": "/AYURLEX_Statutory_Datasets_Compendium.pdf",
+    "pages": 11,
+    "size_kb": 31.5,
+    "total_chunks": 144,
+    "domains_count": 8,
+    "jurisdiction": "Republic of India"
+  },
+  "datasets": [
+    {
+      "id": "patents",
+      "filename": "01_Patents_Traditional_Knowledge.pdf",
+      "title": "Patent Law & Traditional Knowledge Exclusions",
+      "statute": "The Patents Act, 1970 & Patent Rules, 2003",
+      "authority": "CGPDTM (IP India)",
+      "chunks": 55,
+      "pages": 1,
+      "size_kb": 4.8,
+      "download_url": "/downloads/01_Patents_Traditional_Knowledge.pdf"
+    },
+    {
+      "id": "trademarks",
+      "filename": "02_Trademarks_Brand_Protection.pdf",
+      "title": "Trade Marks & Brand Protection for Ayurvedic Commerce",
+      "statute": "The Trade Marks Act, 1999 & TM Rules, 2017",
+      "authority": "Trade Marks Registry (CGPDTM)",
+      "chunks": 23,
+      "pages": 1,
+      "size_kb": 4.6,
+      "download_url": "/downloads/02_Trademarks_Brand_Protection.pdf"
+    },
+    {
+      "id": "ayush",
+      "filename": "03_AYUSH_Drug_Licensing_GMP.pdf",
+      "title": "AYUSH Drug Licensing, GMP & Authoritative Treatises",
+      "statute": "Drugs & Cosmetics Act, 1940 & Rules, 1945",
+      "authority": "Ministry of Ayush / State Licensing Authorities",
+      "chunks": 34,
+      "pages": 1,
+      "size_kb": 4.3,
+      "download_url": "/downloads/03_AYUSH_Drug_Licensing_GMP.pdf"
+    },
+    {
+      "id": "api",
+      "filename": "04_Ayurvedic_Pharmacopoeia_API_AFI.pdf",
+      "title": "The Ayurvedic Pharmacopoeia (API) & Formulary (AFI)",
+      "statute": "Drugs & Cosmetics Act (Sections 33E/33EEA)",
+      "authority": "PCIM&H / Ministry of Ayush",
+      "chunks": 34,
+      "pages": 1,
+      "size_kb": 3.9,
+      "download_url": "/downloads/04_Ayurvedic_Pharmacopoeia_API_AFI.pdf"
+    },
+    {
+      "id": "fssai",
+      "filename": "05_FSSAI_Ayurveda_Aahara.pdf",
+      "title": "FSSAI (Ayurveda Aahara) Regulations, 2022",
+      "statute": "FSSAI Ayurveda Aahara Regulations, 2022",
+      "authority": "Food Safety & Standards Authority of India (FSSAI)",
+      "chunks": 27,
+      "pages": 1,
+      "size_kb": 3.8,
+      "download_url": "/downloads/05_FSSAI_Ayurveda_Aahara.pdf"
+    },
+    {
+      "id": "gi",
+      "filename": "06_Geographical_Indications_GI.pdf",
+      "title": "Geographical Indications of Goods Act, 1999",
+      "statute": "Geographical Indications of Goods Act, 1999",
+      "authority": "GI Registry, Chennai (CGPDTM)",
+      "chunks": 6,
+      "pages": 1,
+      "size_kb": 3.7,
+      "download_url": "/downloads/06_Geographical_Indications_GI.pdf"
+    },
+    {
+      "id": "abs",
+      "filename": "07_Biological_Diversity_NBA_ABS.pdf",
+      "title": "Biological Diversity Act, 2002 / 2023 & NBA Clearance",
+      "statute": "Biological Diversity Act, 2002 (Amendment 2023)",
+      "authority": "National Biodiversity Authority (NBA, Chennai)",
+      "chunks": 7,
+      "pages": 1,
+      "size_kb": 3.7,
+      "download_url": "/downloads/07_Biological_Diversity_NBA_ABS.pdf"
+    },
+    {
+      "id": "who_tkdl",
+      "filename": "08_WHO_GMP_Export_TKDL.pdf",
+      "title": "TKDL Biopiracy Defense & WHO Quality Standards",
+      "statute": "CSIR-TKDL Framework & WHO Herbal TRS 986",
+      "authority": "CSIR / Ministry of Ayush / WHO",
+      "chunks": 7,
+      "pages": 1,
+      "size_kb": 3.7,
+      "download_url": "/downloads/08_WHO_GMP_Export_TKDL.pdf"
+    },
+    {
+      "id": "matrix",
+      "filename": "09_Master_Query_Engineering_Matrix.pdf",
+      "title": "Master RAG Query Directory & Prompt Engineering Matrix",
+      "statute": "AYURLEX RAG Grounding & Prompt Specification",
+      "authority": "AYURLEX Legal Engineering Engine",
+      "chunks": 144,
+      "pages": 1,
+      "size_kb": 5.0,
+      "download_url": "/downloads/09_Master_Query_Engineering_Matrix.pdf"
+    }
+  ]
+}

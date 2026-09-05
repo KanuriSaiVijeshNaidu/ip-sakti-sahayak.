@@ -1,4 +1,4 @@
-﻿"""
+"""
 backend/app/api/routes/chat.py
 ────────────────────────────────
 POST /api/chat  — Full RAG pipeline endpoint.
@@ -59,6 +59,30 @@ async def chat(request: ChatRequest) -> ChatResponse:
     if not reranker.is_built():
         reranker.build()
 
+    # ── 1b. Vector Semantic Cache Lookup (< 5ms) ──────────────────────────────
+    query_emb = None
+    from backend.app.core.config import settings
+    from backend.app.retrieval.semantic_cache import semantic_cache
+    if settings.enable_semantic_cache and vector_retriever._model is not None:
+        try:
+            query_emb = vector_retriever.embed_query(query)
+            cached_resp = semantic_cache.lookup(query_emb)
+            if cached_resp:
+                total_ms = int((time.perf_counter() - t0) * 1000)
+                logger.info(f"chat | semantic cache HIT for '{query[:50]}' in {total_ms}ms")
+                return ChatResponse(
+                    answer=cached_resp["answer"],
+                    cited_passages=[CitedPassage(**p) for p in cached_resp.get("cited_passages", [])],
+                    model_used=f"{cached_resp.get('model_used', 'mock-v1')}-semantic-cache",
+                    retrieval_latency_ms=1,
+                    llm_latency_ms=1,
+                    total_latency_ms=total_ms,
+                    corpus_version=request.corpus_version or "v1",
+                    session_id=request.session_id,
+                )
+        except Exception as e:
+            logger.warning(f"Semantic cache lookup failed: {e}")
+
     # ── 2. Retrieve (BM25 + Vector → RRF) ────────────────────────────────────
     retrieval_result = await retrieve(
         query=query,
@@ -79,8 +103,13 @@ async def chat(request: ChatRequest) -> ChatResponse:
         include_needs_review=True,   # show needs_review too; UI filters on grounding_score
     )
 
+    # ── 4b. Corrective RAG (CRAG) Confidence Assessment ───────────────────────
+    from backend.app.retrieval.crag_evaluator import evaluate_retrieval_confidence, CRAGGrade
+    crag_assessment = evaluate_retrieval_confidence(query, evidence)
+    final_evidence = crag_assessment.filtered_evidence if crag_assessment.grade != CRAGGrade.INCORRECT else []
+
     # ── 5. Build LLM context + generate answer ────────────────────────────────
-    context = build_llm_context(query, evidence)
+    context = build_llm_context(query, final_evidence)
     llm = get_llm_adapter()
     llm_response = await llm.generate(
         query=query,
@@ -100,14 +129,34 @@ async def chat(request: ChatRequest) -> ChatResponse:
             jurisdiction=ev.jurisdiction,
             relevance_score=round(ev.grounding_score, 3),
         )
-        for ev in evidence
+        for ev in final_evidence
     ]
 
     total_ms = int((time.perf_counter() - t0) * 1000)
+
+    # ── 7. Store in Semantic Cache if Confident ───────────────────────────────
+    if (
+        settings.enable_semantic_cache
+        and query_emb is not None
+        and crag_assessment.grade == CRAGGrade.CORRECT
+    ):
+        try:
+            semantic_cache.store(
+                query=query,
+                query_embedding=query_emb,
+                response_data={
+                    "answer": llm_response.answer,
+                    "cited_passages": [p.model_dump() for p in cited_passages],
+                    "model_used": llm_response.model_used,
+                }
+            )
+        except Exception as e:
+            logger.debug(f"Failed to store in semantic cache: {e}")
+
     logger.info(
         f"chat | query={query[:60]!r} | "
         f"fused={len(fused)} reranked={len(reranked)} "
-        f"evidence={len(evidence)} latency={total_ms}ms"
+        f"evidence={len(final_evidence)} crag={crag_assessment.grade.value} latency={total_ms}ms"
     )
 
     return ChatResponse(

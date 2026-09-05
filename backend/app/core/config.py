@@ -22,18 +22,26 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    # ?? Application ?????????????????????????????????????????????????????????
-    app_name: str = "IP-SAKTI Sahayak"
+    # ── Application ─────────────────────────────────────────────────────────
+    app_name: str = "AYURLEX IP-SAKTI Sahayak"
     app_version: str = "0.1.0"
     app_env: Literal["development", "staging", "production"] = "development"
+    domain_name: str = "ayurlex.in"
     debug: bool = True
 
-    # ?? API ??????????????????????????????????????????????????????????????????
+    # ── API ──────────────────────────────────────────────────────────────────
     api_host: str = "0.0.0.0"
     api_port: int = 8000
     api_prefix: str = "/api"
     allowed_origins: List[str] = Field(
-        default=["http://localhost:3000", "http://localhost:3001"]
+        default=[
+            "http://localhost:3000",
+            "http://localhost:3001",
+            "https://ayurlex.in",
+            "https://www.ayurlex.in",
+            "https://api.ayurlex.in",
+            "https://admin.ayurlex.in",
+        ]
     )
 
     @field_validator("allowed_origins", mode="before")
@@ -80,6 +88,16 @@ class Settings(BaseSettings):
     # Vector store
     vector_store: Literal["faiss", "pgvector"] = "faiss"
     faiss_index_path: str = "data/embeddings/faiss_index"
+
+    # Semantic Cache & RAG Optimization
+    enable_semantic_cache: bool = True
+    semantic_cache_threshold: float = 0.95
+    semantic_cache_max_entries: int = 500
+    enable_query_expansion: bool = True
+
+    # Blockchain
+    blockchain_ledger_path: str = "data/blockchain/ledger.json"
+    blockchain_difficulty: int = 2
 
 
 @lru_cache(maxsize=1)

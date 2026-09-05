@@ -1,4 +1,4 @@
-﻿"""
+"""
 backend/app/core/logging.py
 ───────────────────────────
 Structured JSON logging via structlog.
@@ -28,6 +28,13 @@ def _add_app_info(
 
 def configure_logging() -> None:
     """Configure structlog + stdlib root logger.  Call once at startup."""
+    if sys.platform == "win32":
+        try:
+            sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+            sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
+
     log_level = logging.DEBUG if settings.debug else logging.INFO
 
     # ── stdlib root ─────────────────────────────────────────────────────────

@@ -1,4 +1,4 @@
-﻿"""
+"""
 backend/app/retrieval/validator.py
 ────────────────────────────────────
 Evidence citation validator for IP-SAKTI RAG pipeline.
@@ -256,7 +256,7 @@ def validate_evidence(
         ev.citation_key = f"[src-{i}]"
 
     logger.debug(
-        f"Evidence validation: {len(candidates)} candidates → "
+        f"Evidence validation: {len(candidates)} candidates -> "
         f"{len(results)} valid citations"
     )
     return results

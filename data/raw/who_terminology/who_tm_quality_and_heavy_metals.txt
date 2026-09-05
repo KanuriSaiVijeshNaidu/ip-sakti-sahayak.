@@ -1,19 +1,19 @@
 WHO TRADITIONAL MEDICINE BENCHMARKS & QUALITY LIMITS
 Source: WHO Guidelines for Assessing Quality of Herbal Medicines with Reference to Contaminants and Residues
-Authority: World Health Organization (WHO)
-Jurisdiction: INT | Domain: who | Corpus Version: v2.0
-Official Reference: https://www.who.int/health-topics/traditional-complementary-and-integrative-medicine
+Authority: World Health Organization (WHO) & Ministry of AYUSH
+Jurisdiction: IN | Domain: who | Corpus Version: v2.0-docling
+Official Reference: https://who.int/publications/i/item/9789241594448
 
 ================================================================================
 
-WHO Maximum Permissible Limits for Heavy Metals in Herbal Medicines
+WHO Maximum Permissible Limits for Heavy Metals in Herbal Materials
 -------------------------------------------------------------------
-The World Health Organization (WHO) and the Pharmacopoeia Commission for Indian Medicine (PCIM&H) set mandatory permissible limits for heavy metal contaminants in finished raw herbal materials and ASU drugs: (1) Lead (Pb): Not more than 10.0 mg/kg (10.0 ppm). (2) Arsenic (As): Not more than 3.0 mg/kg (3.0 ppm). (3) Cadmium (Cd): Not more than 0.3 mg/kg (0.3 ppm). (4) Mercury (Hg): Not more than 1.0 mg/kg (1.0 ppm). Exemption Note for Classical Rasa-Shastra Bhasmas: Herbo-mineral formulations (e.g. Swarna Bhasma, Naga Bhasma, Rasasindura) subject to classical incineration (Marana) and Shodhana are tested under specialized safety indices and NP-XRD particle characterization.
+WHO Guidelines (TRS 986 / Quality control methods for herbal materials) establish mandatory safety thresholds for heavy metal contaminants in herbal medicines and raw plant parts: (1) Lead (Pb): Maximum permissible limit is 10.0 mg/kg (10.0 ppm). (2) Arsenic (As): Maximum permissible limit is 3.0 mg/kg (3.0 ppm). (3) Cadmium (Cd): Maximum permissible limit is 0.3 mg/kg (0.3 ppm). (4) Mercury (Hg): Maximum permissible limit is 1.0 mg/kg (1.0 ppm). Testing Methodology: Atomic Absorption Spectrophotometry (AAS) or Inductively Coupled Plasma Mass Spectrometry (ICP-MS). AYUSH Harmonization: The Pharmacopoeial Laboratory for Indian Medicine (PLIM) and Gazette notifications under the Drugs & Cosmetics Act adopt these identical four thresholds for all exported and finished plant-based ASU medicines. Special Exemption for Rasaushadhis: Classical Herbo-mineral preparations (Kharaliya Rasayana, Parpati, Kupipakwa, Bhasmas) subject to classical incineration (Marana) and Shodhana are tested under specialized safety indices and NP-XRD particle characterization.
 
 WHO Limits for Microbial Contamination in Herbal Materials
 ----------------------------------------------------------
 WHO benchmarks specify permissible limits for microbial load in plant materials: (1) Total aerobic microbial count (TAMC): Maximum 10^7 CFU per gram for raw plant materials; 10^5 CFU/g for herbal products. (2) Total combined yeast and mould count (TYMC): Maximum 10^4 CFU per gram. (3) Escherichia coli: Maximum 10^2 CFU per gram for raw materials; completely ABSENT in 1 gram for finished oral dosage forms. (4) Salmonella spp.: Completely ABSENT in 10 grams of material. (5) Staphylococcus aureus & Pseudomonas aeruginosa: Completely ABSENT in 1 gram of material.
 
-WIPO IGC Intergovernmental Committee - Traditional Knowledge Protection
------------------------------------------------------------------------
-The World Intellectual Property Organization (WIPO) Intergovernmental Committee on Intellectual Property and Genetic Resources, Traditional Knowledge and Folklore (IGC): Mandatory Disclosure Requirements: The Draft Treaty on IP, Genetic Resources and Associated Traditional Knowledge mandates patent applicants worldwide to disclose: (a) The country of origin of the genetic resource or traditional knowledge; (b) If country of origin is unknown, the source from which the resource was obtained; (c) Whether Free Prior Informed Consent (FPIC) and Mutually Agreed Terms (MAT) were established. Failure to disclose constitutes grounds for revocation or post-grant sanctions.
+WHO-COPP (Certificate of Pharmaceutical Product) for Export of Ayurvedic Medicines
+----------------------------------------------------------------------------------
+The WHO Certification Scheme on the Quality of Pharmaceutical Products Moving in International Commerce (WHO-COPP): Statutory Export Framework: Administered jointly by the Central Drugs Standard Control Organization (CDSCO) / DCGI and the State Licensing Authority under Ministry of AYUSH guidelines. Mandatory Prerequisites: (1) Valid Schedule T GMP certificate conforming to revised WHO GMP guidelines (Supplementary Guidelines for Herbal Medicines). (2) Full product quality dossier complying with WHO heavy metal, pesticide residue, and aflatoxin criteria. (3) Real-time and accelerated stability study data (Zone IVb conditions: 30 deg C / 75% RH). Issuance of the WHO-COPP certificate authorizes export of Ayurvedic pharmaceuticals to over 100 importing countries worldwide.

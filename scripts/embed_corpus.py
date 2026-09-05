@@ -1,4 +1,4 @@
-﻿"""
+"""
 scripts/embed_corpus.py
 ────────────────────────
 Re-embeds all chunks in the DB with the configured embedding model
@@ -12,6 +12,9 @@ import logging
 import sys
 import time
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
@@ -24,9 +27,9 @@ async def main():
     from backend.app.core.config import settings
     from backend.app.retrieval.vector_retriever import vector_retriever
 
-    print("\n╔═══════════════════════════════════════════╗")
-    print("║  IP-SAKTI — BGE-M3 Corpus Embedding Tool  ║")
-    print("╚═══════════════════════════════════════════╝\n")
+    print("\n=============================================")
+    print("  AYURLEX - BGE-M3 Corpus Embedding Tool")
+    print("=============================================\n")
     print(f"Model   : {settings.embed_model}")
     print(f"Device  : {settings.embed_device}")
     print(f"FAISS   : {settings.faiss_index_path}")
@@ -40,7 +43,7 @@ async def main():
     n = vector_retriever._index.ntotal if vector_retriever._index else 0
     dim = vector_retriever._dim
 
-    print(f"\n✅ Embedding complete!")
+    print(f"\nEmbedding complete!")
     print(f"   Vectors stored : {n}")
     print(f"   Dimensions     : {dim}")
     print(f"   FAISS file     : {FAISS_INDEX_FILE}")

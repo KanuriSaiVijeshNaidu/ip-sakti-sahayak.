@@ -42,6 +42,12 @@
       },
       {
         "cref": "#/texts/8"
+      },
+      {
+        "cref": "#/texts/9"
+      },
+      {
+        "cref": "#/texts/10"
       }
     ],
     "content_layer": "body",
@@ -76,8 +82,8 @@
       "meta": null,
       "label": "section_header",
       "prov": [],
-      "orig": "Regulation 3 - Scope, Applicability, and Separation from ASU Drugs",
-      "text": "Regulation 3 - Scope, Applicability, and Separation from ASU Drugs",
+      "orig": "Regulation 1 & 2 - Statutory Scope, Definitions, and Relationship with Food Safety Act 2006",
+      "text": "Regulation 1 & 2 - Statutory Scope, Definitions, and Relationship with Food Safety Act 2006",
       "formatting": null,
       "hyperlink": null,
       "level": 2
@@ -92,13 +98,44 @@
       "meta": null,
       "label": "paragraph",
       "prov": [],
+      "orig": "Under the Food Safety and Standards (Ayurveda Aahara) Regulations, 2022 notified under Section 92 of the FSS Act, 2006: 'Ayurveda Aahara' means food prepared in accordance with the recipes or principles described in authoritative books of Ayurveda listed in Schedule A, intended for human consumption to support normal physiological functions and wellness. Crucial Legal Boundary: Ayurveda Aahara does NOT include Ayurvedic drugs licensed under Chapter IV-A of the Drugs and Cosmetics Act, 1940, nor does it include cosmetics, synthetic food formulations, or pharmaceutical dosage forms. Schedule A lists authenticated classical treatises including Charaka Samhita, Sushruta Samhita, Ashtanga Hridaya, Bhavaprakasha, and the Ayurvedic Formulary of India (AFI).",
+      "text": "Under the Food Safety and Standards (Ayurveda Aahara) Regulations, 2022 notified under Section 92 of the FSS Act, 2006: 'Ayurveda Aahara' means food prepared in accordance with the recipes or principles described in authoritative books of Ayurveda listed in Schedule A, intended for human consumption to support normal physiological functions and wellness. Crucial Legal Boundary: Ayurveda Aahara does NOT include Ayurvedic drugs licensed under Chapter IV-A of the Drugs and Cosmetics Act, 1940, nor does it include cosmetics, synthetic food formulations, or pharmaceutical dosage forms. Schedule A lists authenticated classical treatises including Charaka Samhita, Sushruta Samhita, Ashtanga Hridaya, Bhavaprakasha, and the Ayurvedic Formulary of India (AFI).",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/3",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Regulation 3 - Scope, Applicability, and Separation from ASU Drugs",
+      "text": "Regulation 3 - Scope, Applicability, and Separation from ASU Drugs",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/4",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
       "orig": "Regulation 3 sets the strict boundary between food and medicine: (1) These regulations apply to food prepared in accordance with the recipes or processes described in authoritative books of Ayurveda specified in Schedule A of these regulations. (2) Explicit Non-Applicability: These regulations DO NOT apply to Ayurvedic drugs as defined under Section 3(a) of the Drugs and Cosmetics Act, 1940, or proprietary Ayurvedic medicines licensed under Rule 158B. (3) Formulations intended for therapeutic treatment, injection, or sterile ophthalmic applications are strictly prohibited from being registered or marketed as Ayurveda Aahara.",
       "text": "Regulation 3 sets the strict boundary between food and medicine: (1) These regulations apply to food prepared in accordance with the recipes or processes described in authoritative books of Ayurveda specified in Schedule A of these regulations. (2) Explicit Non-Applicability: These regulations DO NOT apply to Ayurvedic drugs as defined under Section 3(a) of the Drugs and Cosmetics Act, 1940, or proprietary Ayurvedic medicines licensed under Rule 158B. (3) Formulations intended for therapeutic treatment, injection, or sterile ophthalmic applications are strictly prohibited from being registered or marketed as Ayurveda Aahara.",
       "formatting": null,
       "hyperlink": null
     },
     {
-      "self_ref": "#/texts/3",
+      "self_ref": "#/texts/5",
       "parent": {
         "cref": "#/body"
       },
@@ -114,7 +151,7 @@
       "level": 2
     },
     {
-      "self_ref": "#/texts/4",
+      "self_ref": "#/texts/6",
       "parent": {
         "cref": "#/body"
       },
@@ -129,37 +166,6 @@
       "hyperlink": null
     },
     {
-      "self_ref": "#/texts/5",
-      "parent": {
-        "cref": "#/body"
-      },
-      "children": [],
-      "content_layer": "body",
-      "meta": null,
-      "label": "section_header",
-      "prov": [],
-      "orig": "Regulation 6 & 8 - Prohibited Claims and Labelling Disclaimers",
-      "text": "Regulation 6 & 8 - Prohibited Claims and Labelling Disclaimers",
-      "formatting": null,
-      "hyperlink": null,
-      "level": 2
-    },
-    {
-      "self_ref": "#/texts/6",
-      "parent": {
-        "cref": "#/body"
-      },
-      "children": [],
-      "content_layer": "body",
-      "meta": null,
-      "label": "paragraph",
-      "prov": [],
-      "orig": "Regulations 6 and 8 prohibit misleading medicinal claims on Ayurveda Aahara products: (1) No Ayurveda Aahara product shall claim to prevent, treat, cure, or mitigate any disease or physiological disorder. (2) Permitted Claims: Structure-function claims, wellness claims, digestive support (Agni deepana), and Rasayana (rejuvenation/vitality) are permissible only when substantiated by Schedule A authoritative classical texts. (3) Mandatory Front-of-Pack Disclaimer: 'THIS PRODUCT IS NOT INTENDED TO DIAGNOSE, TREAT, CURE OR PREVENT ANY DISEASE.' (4) Prohibition on Synthetic Additives: Synthetic vitamins, synthetic minerals, and modern pharmaceutical active ingredients cannot be added to classical recipes to alter the formulation.",
-      "text": "Regulations 6 and 8 prohibit misleading medicinal claims on Ayurveda Aahara products: (1) No Ayurveda Aahara product shall claim to prevent, treat, cure, or mitigate any disease or physiological disorder. (2) Permitted Claims: Structure-function claims, wellness claims, digestive support (Agni deepana), and Rasayana (rejuvenation/vitality) are permissible only when substantiated by Schedule A authoritative classical texts. (3) Mandatory Front-of-Pack Disclaimer: 'THIS PRODUCT IS NOT INTENDED TO DIAGNOSE, TREAT, CURE OR PREVENT ANY DISEASE.' (4) Prohibition on Synthetic Additives: Synthetic vitamins, synthetic minerals, and modern pharmaceutical active ingredients cannot be added to classical recipes to alter the formulation.",
-      "formatting": null,
-      "hyperlink": null
-    },
-    {
       "self_ref": "#/texts/7",
       "parent": {
         "cref": "#/body"
@@ -169,8 +175,8 @@
       "meta": null,
       "label": "section_header",
       "prov": [],
-      "orig": "Statutory Comparison: Ayurveda Aahara (FSSAI) vs Classical ASU Drug (AYUSH)",
-      "text": "Statutory Comparison: Ayurveda Aahara (FSSAI) vs Classical ASU Drug (AYUSH)",
+      "orig": "Regulation 6 & 8 - Prohibited Claims and Mandatory Labelling Disclaimers",
+      "text": "Regulation 6 & 8 - Prohibited Claims and Mandatory Labelling Disclaimers",
       "formatting": null,
       "hyperlink": null,
       "level": 2
@@ -185,8 +191,39 @@
       "meta": null,
       "label": "paragraph",
       "prov": [],
-      "orig": "Regulatory Matrix: 1. Governing Act: FSSAI Food Safety and Standards Act 2006 vs AYUSH Drugs and Cosmetics Act 1940. 2. Licensing Authority: State Food Safety Commissioner (FSSAI) vs State Licensing Authority (Ayush). 3. Permitted Claims: Wellness, health promotion, dosha balance vs Therapeutic indication, treatment of Vyadhi. 4. Labelling: Mandatory 'NOT A MEDICINE' disclaimer & Ayur-A logo vs 'Caution: under Vaidya supervision' if Schedule E(1). 5. Sales Channel: Supermarkets, grocery, e-commerce food vs Licensed Ayurvedic pharmacy & retail.",
-      "text": "Regulatory Matrix: 1. Governing Act: FSSAI Food Safety and Standards Act 2006 vs AYUSH Drugs and Cosmetics Act 1940. 2. Licensing Authority: State Food Safety Commissioner (FSSAI) vs State Licensing Authority (Ayush). 3. Permitted Claims: Wellness, health promotion, dosha balance vs Therapeutic indication, treatment of Vyadhi. 4. Labelling: Mandatory 'NOT A MEDICINE' disclaimer & Ayur-A logo vs 'Caution: under Vaidya supervision' if Schedule E(1). 5. Sales Channel: Supermarkets, grocery, e-commerce food vs Licensed Ayurvedic pharmacy & retail.",
+      "orig": "Regulations 6 and 8 prohibit misleading medicinal claims on Ayurveda Aahara products: (1) No Ayurveda Aahara product shall claim to prevent, treat, cure, or mitigate any disease or physiological disorder. (2) Permitted Claims: Structure-function claims, wellness claims, digestive support (Agni deepana), and Rasayana (rejuvenation/vitality) are permissible only when substantiated by Schedule A authoritative classical texts. (3) Mandatory Front-of-Pack Disclaimer: 'THIS PRODUCT IS NOT INTENDED TO DIAGNOSE, TREAT, CURE OR PREVENT ANY DISEASE.' (4) Prohibition on Synthetic Additives: Synthetic vitamins, synthetic minerals, and modern pharmaceutical active ingredients cannot be added to classical recipes to alter the formulation.",
+      "text": "Regulations 6 and 8 prohibit misleading medicinal claims on Ayurveda Aahara products: (1) No Ayurveda Aahara product shall claim to prevent, treat, cure, or mitigate any disease or physiological disorder. (2) Permitted Claims: Structure-function claims, wellness claims, digestive support (Agni deepana), and Rasayana (rejuvenation/vitality) are permissible only when substantiated by Schedule A authoritative classical texts. (3) Mandatory Front-of-Pack Disclaimer: 'THIS PRODUCT IS NOT INTENDED TO DIAGNOSE, TREAT, CURE OR PREVENT ANY DISEASE.' (4) Prohibition on Synthetic Additives: Synthetic vitamins, synthetic minerals, and modern pharmaceutical active ingredients cannot be added to classical recipes to alter the formulation.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/9",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "FSSAI Licensing Workflow via FoSCoS Portal for Ayurveda Aahara Category 13.0",
+      "text": "FSSAI Licensing Workflow via FoSCoS Portal for Ayurveda Aahara Category 13.0",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/10",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "FSSAI Licensing Roadmap for Food Business Operators (FBOs) under Category 13.0 (Ayurveda Aahara): Step 1: Determine Jurisdiction — Annual turnover up to Rs. 12 lakhs requires FSSAI Basic Registration; turnover between Rs. 12 lakhs and Rs. 20 crores requires State FSSAI License; turnover above Rs. 20 crores or operating in multiple states requires Central FSSAI License. Step 2: Electronic Application via FoSCoS Portal (foscos.fssai.gov.in) under Kind of Business (KoB): Manufacturer / Food Category 13.0. Step 3: Document Upload — Form A/B, Schedule A classical textual recipe citation, ingredient composition table, water test report from NABL-accredited lab, and label artwork containing the mandatory Ayur-A logo and non-disease warning. Step 4: Fee Payment and Food Safety Officer (FSO) scrutiny, leading to grant of 14-digit FSSAI License Number.",
+      "text": "FSSAI Licensing Roadmap for Food Business Operators (FBOs) under Category 13.0 (Ayurveda Aahara): Step 1: Determine Jurisdiction — Annual turnover up to Rs. 12 lakhs requires FSSAI Basic Registration; turnover between Rs. 12 lakhs and Rs. 20 crores requires State FSSAI License; turnover above Rs. 20 crores or operating in multiple states requires Central FSSAI License. Step 2: Electronic Application via FoSCoS Portal (foscos.fssai.gov.in) under Kind of Business (KoB): Manufacturer / Food Category 13.0. Step 3: Document Upload — Form A/B, Schedule A classical textual recipe citation, ingredient composition table, water test report from NABL-accredited lab, and label artwork containing the mandatory Ayur-A logo and non-disease warning. Step 4: Fee Payment and Food Safety Officer (FSO) scrutiny, leading to grant of 14-digit FSSAI License Number.",
       "formatting": null,
       "hyperlink": null
     }

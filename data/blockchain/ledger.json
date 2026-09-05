@@ -1,0 +1,77 @@
+{
+  "chain": [
+    {
+      "index": 0,
+      "timestamp": "2026-01-01T00:00:00Z",
+      "transactions": [
+        {
+          "tx_id": "e2813db46fd70ac66a9f7f0526e0ed2570624f75bba6467f7f7814b0e2574a16",
+          "asset_id": "IP-GENESIS-0000",
+          "ip_type": "genesis_declaration",
+          "title": "IP-SAKTI Sahayak Sovereign Legal & Traditional Knowledge Ledger",
+          "applicant_name": "Government of India / AYUSH-IP Consortium",
+          "document_hash": "9b3a9eb28582dbb4361fe77182bf3fc1f0ee3526a224b75e807b4717dc28068b",
+          "metadata": {
+            "network": "IP-SAKTI-MAINNET-01",
+            "jurisdiction": "IN"
+          },
+          "timestamp": "2026-01-01T00:00:00Z"
+        }
+      ],
+      "previous_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "merkle_root": "e2813db46fd70ac66a9f7f0526e0ed2570624f75bba6467f7f7814b0e2574a16",
+      "nonce": 0,
+      "hash": "002f4a1eeb47e48c1273165539b96d78230f7b17eec717a4810207e4599c7a83"
+    },
+    {
+      "index": 1,
+      "timestamp": "2026-09-05T21:51:25.855069+00:00",
+      "transactions": [
+        {
+          "tx_id": "59999374a3b07b9cb036dd62c0921af507ab858f10f1ad3c0620d56c780acdf1",
+          "asset_id": "IP-NOTARY-AYUS-0002",
+          "ip_type": "ayush_formulation",
+          "title": "Bioactive Curcumin-Piperine Complex for Anti-Inflammatory Synergy",
+          "applicant_name": "Ayush Global Innovators Pvt Ltd",
+          "document_hash": "350b94f010c5df375d560635b6e0aa04047cc0096a116a5beaeeaf990e066f0c",
+          "metadata": {
+            "trademark_class": "Class 5",
+            "applicant_email": "ip@ayushglobal.in"
+          },
+          "timestamp": "2026-09-05T21:51:25.854391+00:00"
+        }
+      ],
+      "previous_hash": "002f4a1eeb47e48c1273165539b96d78230f7b17eec717a4810207e4599c7a83",
+      "merkle_root": "59999374a3b07b9cb036dd62c0921af507ab858f10f1ad3c0620d56c780acdf1",
+      "nonce": 349,
+      "hash": "004c91ac5383cdd820221846373e8d9a7960e9753c8045866ea710697c7e87d7"
+    },
+    {
+      "index": 2,
+      "timestamp": "2026-09-05T21:57:52.014442+00:00",
+      "transactions": [
+        {
+          "tx_id": "76553f3ccd84b911880bd4e471ede6c3451d3d8fdfbcd0e6c0f766a6b06b7ab3",
+          "asset_id": "IP-NOTARY-AYUS-0003",
+          "ip_type": "ayush_formulation",
+          "title": "Novel Ashwagandha-Shankhpushpi Nootropic Formulation",
+          "applicant_name": "Arogya Innovations Ltd",
+          "document_hash": "8f6e0a769eda622de7ee65151759ee66df94c4a51ecc8108ccbb6adf659e7181",
+          "metadata": {
+            "form_type": "Form 24D",
+            "sla": "AYUSH-DL-2026",
+            "applicant_email": "patents@arogya.in"
+          },
+          "timestamp": "2026-09-05T21:57:52.013821+00:00"
+        }
+      ],
+      "previous_hash": "004c91ac5383cdd820221846373e8d9a7960e9753c8045866ea710697c7e87d7",
+      "merkle_root": "76553f3ccd84b911880bd4e471ede6c3451d3d8fdfbcd0e6c0f766a6b06b7ab3",
+      "nonce": 66,
+      "hash": "0038a072e481f46bd56acb3ea897db17efee2917c2f6ec5ff2a5cb4b18d6082f"
+    }
+  ],
+  "pending_transactions": [],
+  "difficulty": 2,
+  "total_blocks": 3
+}
