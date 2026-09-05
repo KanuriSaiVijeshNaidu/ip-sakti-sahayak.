@@ -1,6 +1,6 @@
 import { ChatRequest, ChatResponse } from "@/types";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "/api";
 
 // Client-side instant LRU cache for 0ms repeated responses
 const clientCache = new Map<string, ChatResponse>();
