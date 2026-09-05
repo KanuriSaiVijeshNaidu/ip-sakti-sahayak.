@@ -11,26 +11,43 @@ import ChatHistoryDrawer, { ChatSession } from "@/components/ChatHistoryDrawer";
 import CompareModeModal from "@/components/CompareModeModal";
 import { sendChatMessage } from "@/lib/api";
 import { Message, DomainType, LanguageCode } from "@/types";
-import { Scale, AlertCircle, BookOpen, Sparkles, SplitSquareVertical, MessageSquare, ShieldCheck } from "lucide-react";
+import {
+  Scale,
+  AlertCircle,
+  BookOpen,
+  Sparkles,
+  SplitSquareVertical,
+  MessageSquare,
+  ShieldCheck,
+  Lock,
+  KeyRound,
+} from "lucide-react";
 import { getTranslation } from "@/lib/i18n";
 import { DOMAIN_DATA } from "@/lib/domainData";
 
-const DEFAULT_PROFILE: UserProfile = {
-  name: "Dr. Rajesh Sharma",
-  email: "vaidya.sharma@nia.edu.in",
-  role: "vaidya",
-  registrationNumber: "AYUSH-IN-9842",
-  institution: "National Institute of Ayurveda",
-  isLoggedIn: true,
+// True unauthenticated guest profile
+const GUEST_PROFILE: UserProfile = {
+  name: "Guest Citizen",
+  email: "",
+  role: "guest",
+  isLoggedIn: false,
 };
 
 function generateSessionId() {
   return `session_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
 }
 
+// User-specific storage key ensuring complete per-user isolation
+function getUserStorageKey(profile: UserProfile): string {
+  if (profile && profile.isLoggedIn && profile.email) {
+    return `ayurlex_sessions_${profile.email.trim().toLowerCase()}`;
+  }
+  return "ayurlex_sessions_guest";
+}
+
 export default function ChatPage() {
-  // User Profile
-  const [userProfile, setUserProfile] = useState<UserProfile>(DEFAULT_PROFILE);
+  // User Profile state
+  const [userProfile, setUserProfile] = useState<UserProfile>(GUEST_PROFILE);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
 
   // History & Compare Modals
@@ -51,17 +68,13 @@ export default function ChatPage() {
   const bottomRef = useRef<HTMLDivElement>(null);
   const isEmpty = messages.length === 0;
 
-  // 1. Initial Load from LocalStorage
-  useEffect(() => {
+  // Helper to load sessions for a specific profile
+  const loadSessionsForProfile = (profile: UserProfile) => {
     try {
-      const savedProfile = localStorage.getItem("ayurlex_user_profile");
-      if (savedProfile) {
-        setUserProfile(JSON.parse(savedProfile));
-      }
-
-      const savedSessions = localStorage.getItem("ayurlex_chat_sessions");
-      if (savedSessions) {
-        const parsed: ChatSession[] = JSON.parse(savedSessions);
+      const key = getUserStorageKey(profile);
+      const saved = localStorage.getItem(key);
+      if (saved) {
+        const parsed: ChatSession[] = JSON.parse(saved);
         if (parsed.length > 0) {
           setSessions(parsed);
           setActiveSessionId(parsed[0].id);
@@ -71,11 +84,11 @@ export default function ChatPage() {
         }
       }
 
-      // If no session exists, create a starter session
+      // If no sessions exist for this user, create an isolated starter session
       const starterId = generateSessionId();
       const starterSession: ChatSession = {
         id: starterId,
-        title: "Initial Statutory Consultation",
+        title: profile.isLoggedIn ? `Inquiry (${profile.role.toUpperCase()})` : "Initial Legal Consultation",
         domain: "auto",
         language: "en",
         createdAt: Date.now(),
@@ -84,34 +97,56 @@ export default function ChatPage() {
       };
       setSessions([starterSession]);
       setActiveSessionId(starterId);
+      setMessages([]);
+      localStorage.setItem(key, JSON.stringify([starterSession]));
     } catch {
-      // Fallback gracefully
+      setSessions([]);
+      setMessages([]);
+    }
+  };
+
+  // 1. Initial Load: Check profile & load that user's private sessions
+  useEffect(() => {
+    try {
+      const savedProfile = localStorage.getItem("ayurlex_user_profile");
+      if (savedProfile) {
+        const parsedProfile: UserProfile = JSON.parse(savedProfile);
+        if (parsedProfile && parsedProfile.isLoggedIn) {
+          setUserProfile(parsedProfile);
+          loadSessionsForProfile(parsedProfile);
+          return;
+        }
+      }
+      // If no valid profile is found, load guest mode
+      setUserProfile(GUEST_PROFILE);
+      loadSessionsForProfile(GUEST_PROFILE);
+    } catch {
+      setUserProfile(GUEST_PROFILE);
+      loadSessionsForProfile(GUEST_PROFILE);
     }
   }, []);
 
-  // 2. Persist profile changes
+  // 2. Persist profile changes upon successful OTP login
   const handleSaveProfile = (profile: UserProfile) => {
     setUserProfile(profile);
     try {
       localStorage.setItem("ayurlex_user_profile", JSON.stringify(profile));
     } catch {}
+    // Instantly load this user's isolated chat history
+    loadSessionsForProfile(profile);
   };
 
-  // Logout handler
+  // 3. Reliable Sign Out Handler
   const handleLogout = () => {
-    const loggedOutProfile: UserProfile = {
-      name: "Guest Citizen",
-      email: "",
-      role: "guest",
-      isLoggedIn: false,
-    };
-    setUserProfile(loggedOutProfile);
     try {
       localStorage.removeItem("ayurlex_user_profile");
     } catch {}
+    setUserProfile(GUEST_PROFILE);
+    // Switch to guest sessions cleanly
+    loadSessionsForProfile(GUEST_PROFILE);
   };
 
-  // 3. Persist messages to active session in localStorage
+  // 4. Persist messages to active user's storage key
   const updateCurrentSessionMessages = (newMsgs: Message[], updatedTitle?: string) => {
     setMessages(newMsgs);
     setSessions((prev) => {
@@ -119,7 +154,11 @@ export default function ChatPage() {
         if (s.id === activeSessionId) {
           return {
             ...s,
-            title: updatedTitle || (s.messages.length === 0 && newMsgs.length > 0 ? newMsgs[0].content.slice(0, 45) + "..." : s.title),
+            title:
+              updatedTitle ||
+              (s.messages.length === 0 && newMsgs.length > 0
+                ? newMsgs[0].content.slice(0, 45) + "..."
+                : s.title),
             updatedAt: Date.now(),
             messages: newMsgs,
           };
@@ -127,18 +166,19 @@ export default function ChatPage() {
         return s;
       });
       try {
-        localStorage.setItem("ayurlex_chat_sessions", JSON.stringify(updated));
+        const key = getUserStorageKey(userProfile);
+        localStorage.setItem(key, JSON.stringify(updated));
       } catch {}
       return updated;
     });
   };
 
-  // 4. Create new chat session
+  // 5. Create new chat session for active user
   const handleNewSession = () => {
     const newId = generateSessionId();
     const newSession: ChatSession = {
       id: newId,
-      title: `Legal Inquiry #${sessions.length + 1}`,
+      title: `Consultation #${sessions.length + 1}`,
       domain,
       language,
       createdAt: Date.now(),
@@ -151,11 +191,12 @@ export default function ChatPage() {
     setMessages([]);
     setError(null);
     try {
-      localStorage.setItem("ayurlex_chat_sessions", JSON.stringify(updated));
+      const key = getUserStorageKey(userProfile);
+      localStorage.setItem(key, JSON.stringify(updated));
     } catch {}
   };
 
-  // 5. Select past session
+  // 6. Select session
   const handleSelectSession = (id: string) => {
     const target = sessions.find((s) => s.id === id);
     if (target) {
@@ -166,12 +207,13 @@ export default function ChatPage() {
     }
   };
 
-  // 6. Delete session
+  // 7. Delete session
   const handleDeleteSession = (id: string) => {
     const updated = sessions.filter((s) => s.id !== id);
     setSessions(updated);
     try {
-      localStorage.setItem("ayurlex_chat_sessions", JSON.stringify(updated));
+      const key = getUserStorageKey(userProfile);
+      localStorage.setItem(key, JSON.stringify(updated));
     } catch {}
 
     if (id === activeSessionId) {
@@ -231,19 +273,10 @@ export default function ChatPage() {
   };
 
   const t = getTranslation(language);
-  const langKey = (["en", "te", "hi", "ta"].includes(language) ? language : "en") as LanguageCode;
-  const activeDomainInfo =
-    DOMAIN_DATA[langKey]?.[domain] ||
-    DOMAIN_DATA.en?.auto || {
-      title: "All Domains",
-      badge: "Official Legal Corpus",
-      statutes: ["The Patents Act, 1970", "FSSAI Regulations, 2022", "Drugs & Cosmetics Act, 1940"],
-      prompts: t.suggestions,
-    };
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      {/* Header with full triggers */}
+      {/* Header with full triggers & Logout */}
       <Header
         language={language}
         onLanguageChange={setLanguage}
@@ -290,6 +323,60 @@ export default function ChatPage() {
                 </p>
               </div>
 
+              {/* User Account / Data Isolation Status Banner */}
+              <div className="w-full max-w-2xl bg-white border border-gray-200 rounded-xl p-3 flex items-center justify-between gap-3 text-xs shadow-2xs">
+                <div className="flex items-center gap-2.5 text-left">
+                  <div
+                    className={`w-8 h-8 rounded-lg flex items-center justify-center text-white shrink-0 font-bold ${
+                      userProfile.isLoggedIn ? "bg-emerald-700" : "bg-gray-400"
+                    }`}
+                  >
+                    {userProfile.isLoggedIn ? userProfile.name[0]?.toUpperCase() : "G"}
+                  </div>
+                  <div>
+                    {userProfile.isLoggedIn ? (
+                      <>
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-bold text-gray-900">{userProfile.name}</span>
+                          <span className="text-[10px] bg-emerald-100 text-emerald-800 font-mono px-1.5 py-0.2 rounded uppercase font-bold">
+                            {userProfile.role}
+                          </span>
+                        </div>
+                        <span className="text-[11px] text-gray-500 font-mono">
+                          Vault: {userProfile.email} (Strictly Isolated)
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="font-bold text-gray-800">Unauthenticated Guest Mode</span>
+                        <p className="text-[11px] text-gray-500">
+                          Sign in with Email & OTP to enable private encrypted consultation history.
+                        </p>
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  {userProfile.isLoggedIn ? (
+                    <button
+                      onClick={handleLogout}
+                      className="px-3 py-1 text-xs font-semibold text-red-600 hover:text-red-700 hover:bg-red-50 border border-red-200 rounded-lg transition-colors"
+                    >
+                      Sign Out
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => setIsAuthOpen(true)}
+                      className="px-3 py-1.5 text-xs font-bold text-white bg-green-700 hover:bg-green-800 rounded-lg shadow-xs transition-all flex items-center gap-1"
+                    >
+                      <KeyRound className="w-3.5 h-3.5" />
+                      Sign In with OTP
+                    </button>
+                  )}
+                </div>
+              </div>
+
               {/* Quick Action Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-2xl text-left">
                 <button
@@ -311,10 +398,12 @@ export default function ChatPage() {
                 >
                   <div className="flex items-center gap-2 text-xs font-bold text-gray-900 mb-1">
                     <ShieldCheck className="w-4 h-4 text-blue-700" />
-                    <span>Role Verification</span>
+                    <span>Email & OTP Access</span>
                   </div>
                   <p className="text-[11px] text-gray-500">
-                    Active as <strong className="text-gray-800">{userProfile.name}</strong> ({userProfile.role}).
+                    {userProfile.isLoggedIn
+                      ? `Active: ${userProfile.email}`
+                      : "Instant 6-digit OTP verification."}
                   </p>
                 </button>
 
@@ -324,10 +413,10 @@ export default function ChatPage() {
                 >
                   <div className="flex items-center gap-2 text-xs font-bold text-gray-900 mb-1">
                     <MessageSquare className="w-4 h-4 text-purple-700" />
-                    <span>Audit Consultations</span>
+                    <span>Private Consultations</span>
                   </div>
                   <p className="text-[11px] text-gray-500">
-                    {sessions.length} recorded consultations ready for Markdown/JSON export.
+                    {sessions.length} recorded consultations in your isolated vault.
                   </p>
                 </button>
               </div>

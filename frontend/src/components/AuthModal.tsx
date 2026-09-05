@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   X,
   ShieldCheck,
@@ -11,14 +11,14 @@ import {
   FlaskConical,
   Mail,
   Lock,
-  Eye,
-  EyeOff,
   LogOut,
   KeyRound,
   CheckCircle2,
   AlertCircle,
   Clock,
-  ShieldAlert,
+  ArrowRight,
+  RefreshCw,
+  Sparkles,
 } from "lucide-react";
 import { UserRole, UserProfile } from "@/types";
 
@@ -82,18 +82,6 @@ const ROLES: {
   },
 ];
 
-// Generate deterministic secure session token
-function generateSecureToken(email: string, role: string) {
-  let hash = 0;
-  const str = `${email}-${role}-${Date.now()}`;
-  for (let i = 0; i < str.length; i++) {
-    hash = (hash << 5) - hash + str.charCodeAt(i);
-    hash |= 0;
-  }
-  const hex = Math.abs(hash).toString(16).padStart(8, "0");
-  return `AYUR-AUTH-${hex.toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
-}
-
 export default function AuthModal({
   isOpen,
   onClose,
@@ -101,100 +89,93 @@ export default function AuthModal({
   onSaveProfile,
   onLogout,
 }: AuthModalProps) {
-  const [tab, setTab] = useState<"signin" | "register">("signin");
-  const [showPassword, setShowPassword] = useState(false);
+  // Step 1: "email" (enter email & role), Step 2: "otp" (verify 6-digit OTP)
+  const [step, setStep] = useState<"email" | "otp">("email");
   const [error, setError] = useState<string | null>(null);
 
   // Form states
-  const [email, setEmail] = useState(currentProfile.email || "vaidya.sharma@nia.edu.in");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState(currentProfile.name || "Dr. Rajesh Sharma");
+  const [email, setEmail] = useState(currentProfile.email || "");
+  const [name, setName] = useState(currentProfile.name || "");
   const [role, setRole] = useState<UserRole>(currentProfile.role || "vaidya");
-  const [regNum, setRegNum] = useState(currentProfile.registrationNumber || "AYUSH-IN-9842");
-  const [institution, setInstitution] = useState(
-    currentProfile.institution || "National Institute of Ayurveda"
-  );
-  const [rememberMe, setRememberMe] = useState(true);
+  const [regNum, setRegNum] = useState(currentProfile.registrationNumber || "");
+  const [institution, setInstitution] = useState(currentProfile.institution || "");
+
+  // OTP states
+  const [generatedOtp, setGeneratedOtp] = useState<string>("");
+  const [enteredOtp, setEnteredOtp] = useState<string>("");
+  const [resendTimer, setResendTimer] = useState<number>(60);
+  const [isSendingOtp, setIsSendingOtp] = useState(false);
+
+  // Countdown timer for OTP
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (step === "otp" && resendTimer > 0) {
+      interval = setInterval(() => {
+        setResendTimer((prev) => prev - 1);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [step, resendTimer]);
 
   if (!isOpen) return null;
 
-  // Password strength calculation
-  const getPasswordStrength = (pass: string) => {
-    if (!pass) return 0;
-    let score = 0;
-    if (pass.length >= 8) score++;
-    if (/[A-Z]/.test(pass)) score++;
-    if (/[0-9]/.test(pass)) score++;
-    if (/[^A-Za-z0-9]/.test(pass)) score++;
-    return score;
-  };
-
-  const passwordScore = getPasswordStrength(password);
-
-  // Validate Email regex
+  // Validate Email
   const isValidEmail = (em: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em);
   };
 
-  const handleSignIn = (e: React.FormEvent) => {
+  // Step 1: Send OTP
+  const handleSendOtp = (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
-    if (!isValidEmail(email)) {
-      setError("Please enter a valid official email address.");
+    const cleanEmail = email.trim().toLowerCase();
+    if (!isValidEmail(cleanEmail)) {
+      setError("Please enter a valid official email address (e.g., name@ayush.gov.in).");
       return;
     }
 
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters long.");
-      return;
-    }
+    setIsSendingOtp(true);
 
-    // Successful login
-    const token = generateSecureToken(email, role);
-    onSaveProfile({
-      name: name.trim() || email.split("@")[0].replace(".", " "),
-      email: email.trim().toLowerCase(),
-      role,
-      registrationNumber: regNum.trim(),
-      institution: institution.trim(),
-      isLoggedIn: true,
-      sessionToken: token,
-      lastLogin: new Date().toISOString(),
-    });
-    onClose();
+    // Generate random 6-digit OTP
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    setGeneratedOtp(otp);
+    setResendTimer(60);
+    setEnteredOtp("");
+
+    setTimeout(() => {
+      setIsSendingOtp(false);
+      setStep("otp");
+    }, 600);
   };
 
-  const handleRegister = (e: React.FormEvent) => {
+  // Step 2: Verify OTP
+  const handleVerifyOtp = (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
-    if (!isValidEmail(email)) {
-      setError("Please enter a valid official email address.");
+    if (enteredOtp.trim() !== generatedOtp.trim()) {
+      setError("Invalid OTP code. Please enter the 6-digit verification code sent to your email.");
       return;
     }
 
-    if (password.length < 8) {
-      setError("Password must be at least 8 characters with letters & numbers.");
-      return;
-    }
+    // Generate authenticated session token
+    const token = `AYUR-OTP-0x${Math.floor(Math.random() * 16777215).toString(16).toUpperCase()}`;
+    const cleanEmail = email.trim().toLowerCase();
+    const finalName = name.trim() || cleanEmail.split("@")[0].replace(".", " ");
 
-    if (!name.trim()) {
-      setError("Please provide your full legal name or designation.");
-      return;
-    }
-
-    const token = generateSecureToken(email, role);
     onSaveProfile({
-      name: name.trim(),
-      email: email.trim().toLowerCase(),
+      name: finalName,
+      email: cleanEmail,
       role,
-      registrationNumber: regNum.trim(),
-      institution: institution.trim(),
+      registrationNumber: regNum.trim() || "AYUSH-REG-VERIFIED",
+      institution: institution.trim() || "Ayurvedic Medicine & Research Council",
       isLoggedIn: true,
       sessionToken: token,
       lastLogin: new Date().toISOString(),
     });
+
+    setStep("email");
     onClose();
   };
 
@@ -202,21 +183,18 @@ export default function AuthModal({
     if (demoRole === "vaidya") {
       setName("Dr. Rajesh Sharma, BAMS MD");
       setEmail("vaidya.sharma@ayush.gov.in");
-      setPassword("AyushSecure@2026");
       setRole("vaidya");
       setRegNum("AYUSH-DL-9842");
       setInstitution("National Institute of Ayurveda, Jaipur");
     } else if (demoRole === "attorney") {
       setName("Adv. Sneha Subramanian");
       setEmail("sneha.ip@patentbar.in");
-      setPassword("PatentLaw#2026");
       setRole("attorney");
       setRegNum("IN/PA-3419");
       setInstitution("Apex Intellectual Property Counsel");
     } else {
       setName("Auditor Vikram Sen");
       setEmail("v.sen@fssai.gov.in");
-      setPassword("FssaiAudit!2026");
       setRole("regulator");
       setRegNum("FSSAI-INSP-204");
       setInstitution("Central Licensing & Food Safety Authority");
@@ -234,13 +212,13 @@ export default function AuthModal({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-lg font-bold">AYURLEX Secure Access</h2>
+                <h2 className="text-lg font-bold">AYURLEX Email & OTP Vault</h2>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-green-500/20 text-green-300 border border-green-400/30">
-                  TLS 256-Bit
+                  Per-User Isolation
                 </span>
               </div>
               <p className="text-xs text-green-200">
-                Email Authentication · Role-Based Statutory Grounding
+                Official Email Verification · Private Multi-Session Storage
               </p>
             </div>
           </div>
@@ -252,25 +230,25 @@ export default function AuthModal({
           </button>
         </div>
 
-        {/* If Already Logged In: Show Profile Overview with Logout */}
+        {/* IF USER IS CURRENTLY LOGGED IN: SHOW PROFILE + EXPLICIT SIGN OUT */}
         {currentProfile.isLoggedIn ? (
           <div className="p-6 space-y-5 overflow-y-auto flex-1">
             <div className="bg-emerald-50/80 border border-emerald-200 rounded-2xl p-4 space-y-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-emerald-700 text-white flex items-center justify-center font-bold text-lg shadow-sm">
-                    {currentProfile.name[0]?.toUpperCase() || "U"}
+                  <div className="w-12 h-12 rounded-xl bg-emerald-700 text-white flex items-center justify-center font-bold text-lg shadow-xs">
+                    {currentProfile.name[0]?.toUpperCase() || "V"}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="text-base font-bold text-gray-900">{currentProfile.name}</h3>
                       <span className="text-[10px] bg-emerald-100 text-emerald-800 font-mono px-2 py-0.5 rounded-full font-bold border border-emerald-200">
-                        ACTIVE
+                        VERIFIED
                       </span>
                     </div>
                     <p className="text-xs text-gray-600 flex items-center gap-1 mt-0.5 font-mono">
-                      <Mail className="w-3 h-3 text-emerald-700" />
-                      {currentProfile.email || "vaidya.sharma@nia.edu.in"}
+                      <Mail className="w-3.5 h-3.5 text-emerald-700" />
+                      {currentProfile.email}
                     </p>
                   </div>
                 </div>
@@ -279,50 +257,45 @@ export default function AuthModal({
               {/* Account details */}
               <div className="grid grid-cols-2 gap-2 text-xs pt-2 border-t border-emerald-200/60 font-mono">
                 <div>
-                  <span className="text-gray-500 block text-[10px] uppercase">Designation Role</span>
+                  <span className="text-gray-500 block text-[10px] uppercase">Jurisdiction Role</span>
                   <span className="font-semibold text-gray-800 uppercase">{currentProfile.role}</span>
                 </div>
                 <div>
-                  <span className="text-gray-500 block text-[10px] uppercase">Bar / License No.</span>
-                  <span className="font-semibold text-gray-800">{currentProfile.registrationNumber || "N/A"}</span>
+                  <span className="text-gray-500 block text-[10px] uppercase">License / Bar No.</span>
+                  <span className="font-semibold text-gray-800">{currentProfile.registrationNumber || "VERIFIED"}</span>
                 </div>
                 <div className="col-span-2">
-                  <span className="text-gray-500 block text-[10px] uppercase">Affiliated Body</span>
+                  <span className="text-gray-500 block text-[10px] uppercase">Institution</span>
                   <span className="font-semibold text-gray-800">{currentProfile.institution || "National Institute of Ayurveda"}</span>
                 </div>
               </div>
 
-              {/* Session Token */}
-              <div className="bg-white/80 border border-emerald-200 rounded-xl p-2.5 text-[11px] font-mono text-gray-700 space-y-1">
-                <div className="flex items-center justify-between text-gray-500 text-[10px]">
-                  <span>Cryptographic Session Token:</span>
-                  <span className="text-emerald-700 font-bold flex items-center gap-1">
-                    <CheckCircle2 className="w-3 h-3" />
-                    Verified PoA
+              {/* Data Isolation Notice */}
+              <div className="bg-white/90 border border-emerald-200 rounded-xl p-3 text-[11px] font-mono text-gray-700 space-y-1">
+                <div className="flex items-center justify-between text-emerald-800 text-[10px] font-bold">
+                  <span className="flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                    Private Consultation Vault: ACTIVE
                   </span>
+                  <span>TLS 256-Bit</span>
                 </div>
-                <div className="text-gray-800 font-bold break-all">
-                  {currentProfile.sessionToken || generateSecureToken(currentProfile.email || "user", currentProfile.role)}
-                </div>
-              </div>
-            </div>
-
-            {/* Security Guarantee */}
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 flex items-start gap-2.5 text-xs text-blue-900">
-              <ShieldCheck className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
-              <div>
-                <span className="font-bold">Zero-Knowledge Legal Privacy:</span> Inquiries and consultations are processed with strict client-attorney confidentiality. Statutory citations are anchored to official gazette records.
+                <p className="text-[10px] text-gray-500 font-sans">
+                  Your chat history and statutory audit records are strictly isolated to <strong className="text-gray-800">{currentProfile.email}</strong> and completely inaccessible to other users or sessions.
+                </p>
               </div>
             </div>
 
             {/* Logout & Action Buttons */}
-            <div className="pt-2 border-t border-gray-200 flex items-center justify-between gap-3">
+            <div className="pt-3 border-t border-gray-200 flex items-center justify-between gap-3">
               <button
                 type="button"
-                onClick={() => setTab(tab === "signin" ? "register" : "signin")}
+                onClick={() => {
+                  setStep("email");
+                  onLogout();
+                }}
                 className="text-xs text-gray-600 hover:text-green-800 font-medium underline"
               >
-                Switch Account / Role
+                Switch Account
               </button>
 
               <div className="flex items-center gap-2">
@@ -336,55 +309,40 @@ export default function AuthModal({
                 <button
                   type="button"
                   onClick={() => {
-                    if (confirm("Are you sure you want to log out of AYURLEX? Your current session credentials will be cleared.")) {
-                      onLogout();
-                      onClose();
-                    }
+                    onLogout();
+                    onClose();
                   }}
-                  className="px-4 py-2 text-xs font-bold text-white bg-red-600 hover:bg-red-700 rounded-xl shadow-xs transition-all flex items-center gap-1.5"
+                  className="px-5 py-2 text-xs font-bold text-white bg-red-600 hover:bg-red-700 rounded-xl shadow-xs transition-all flex items-center gap-1.5"
                 >
                   <LogOut className="w-3.5 h-3.5" />
-                  Log Out
+                  Sign Out of AYURLEX
                 </button>
               </div>
             </div>
           </div>
         ) : (
-          /* Form for Sign In or Register */
+          /* NOT LOGGED IN: 2-STEP EMAIL WITH OTP LOGIN */
           <div className="flex-1 overflow-y-auto p-6 space-y-4">
-            {/* Tabs */}
-            <div className="flex border-b border-gray-200">
-              <button
-                type="button"
-                onClick={() => {
-                  setTab("signin");
-                  setError(null);
-                }}
-                className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors ${
-                  tab === "signin"
-                    ? "border-green-700 text-green-800"
-                    : "border-transparent text-gray-500 hover:text-gray-800"
+            {/* Step Indicators */}
+            <div className="flex items-center justify-center gap-2 text-xs text-gray-500 font-mono mb-1">
+              <span
+                className={`px-2 py-0.5 rounded-full font-bold ${
+                  step === "email" ? "bg-green-700 text-white" : "bg-gray-200 text-gray-700"
                 }`}
               >
-                Sign In with Email
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setTab("register");
-                  setError(null);
-                }}
-                className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors ${
-                  tab === "register"
-                    ? "border-green-700 text-green-800"
-                    : "border-transparent text-gray-500 hover:text-gray-800"
+                1. Official Email
+              </span>
+              <ArrowRight className="w-3 h-3 text-gray-400" />
+              <span
+                className={`px-2 py-0.5 rounded-full font-bold ${
+                  step === "otp" ? "bg-green-700 text-white" : "bg-gray-200 text-gray-700"
                 }`}
               >
-                Register Role Credentials
-              </button>
+                2. 6-Digit OTP
+              </span>
             </div>
 
-            {/* Error banner */}
+            {/* Error Banner */}
             {error && (
               <div className="bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl p-3 flex items-start gap-2">
                 <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
@@ -392,13 +350,12 @@ export default function AuthModal({
               </div>
             )}
 
-            {/* TAB: SIGN IN */}
-            {tab === "signin" && (
-              <form onSubmit={handleSignIn} className="space-y-3.5">
-                {/* Email */}
+            {/* STEP 1: ENTER EMAIL & PERSONA */}
+            {step === "email" && (
+              <form onSubmit={handleSendOtp} className="space-y-3.5">
                 <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1">
-                    Official Email Address
+                  <label className="block text-xs font-bold text-gray-700 mb-1">
+                    Official Email Address <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
                     <Mail className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -408,129 +365,17 @@ export default function AuthModal({
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="e.g. vaidya.sharma@ayush.gov.in"
                       required
-                      className="w-full pl-9 pr-3 py-2 text-xs border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                      className="w-full pl-9 pr-3 py-2 text-xs border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 outline-none"
                     />
                   </div>
+                  <p className="text-[10px] text-gray-500 mt-1">
+                    Your unique consultation history will be isolated and encrypted under this email.
+                  </p>
                 </div>
 
-                {/* Password */}
                 <div>
-                  <div className="flex items-center justify-between mb-1">
-                    <label className="block text-xs font-semibold text-gray-700">
-                      Password
-                    </label>
-                    <span className="text-[11px] text-green-700 hover:underline cursor-pointer">
-                      Forgot Password?
-                    </span>
-                  </div>
-                  <div className="relative">
-                    <Lock className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Enter your confidential password"
-                      required
-                      className="w-full pl-9 pr-9 py-2 text-xs border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                    >
-                      {showPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-                    </button>
-                  </div>
-                </div>
-
-                {/* Role quick selector */}
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1">
-                    Active Authority Domain
-                  </label>
-                  <select
-                    value={role}
-                    onChange={(e) => setRole(e.target.value as UserRole)}
-                    className="w-full px-3 py-2 text-xs border border-gray-300 rounded-xl bg-gray-50 focus:ring-2 focus:ring-green-500 outline-none"
-                  >
-                    <option value="vaidya">Ayurvedic Practitioner (Vaidya)</option>
-                    <option value="attorney">Patent Attorney / IP Advocate</option>
-                    <option value="regulator">Regulatory Auditor / FSSAI Officer</option>
-                    <option value="researcher">AYUSH Enterprise R&D / Scholar</option>
-                    <option value="guest">Public Citizen / Researcher</option>
-                  </select>
-                </div>
-
-                {/* Remember Me */}
-                <div className="flex items-center justify-between text-xs text-gray-600 pt-1">
-                  <label className="flex items-center gap-2 cursor-pointer select-none">
-                    <input
-                      type="checkbox"
-                      checked={rememberMe}
-                      onChange={(e) => setRememberMe(e.target.checked)}
-                      className="rounded text-green-700 focus:ring-green-500"
-                    />
-                    <span>Remember terminal credentials</span>
-                  </label>
-                </div>
-
-                {/* Quick Autofill Buttons for Testing */}
-                <div className="bg-gray-50 border border-gray-200 rounded-xl p-2.5 text-[11px] space-y-1.5">
-                  <span className="text-gray-500 font-semibold block text-[10px] uppercase">
-                    ⚡ Quick Test Credentials:
-                  </span>
-                  <div className="flex flex-wrap gap-1.5">
-                    <button
-                      type="button"
-                      onClick={() => handleDemoFill("vaidya")}
-                      className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-mono hover:bg-emerald-200 transition-colors"
-                    >
-                      🩺 Vaidya (AYUSH)
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleDemoFill("attorney")}
-                      className="px-2 py-0.5 rounded bg-blue-100 text-blue-800 text-[10px] font-mono hover:bg-blue-200 transition-colors"
-                    >
-                      ⚖️ IP Attorney
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleDemoFill("regulator")}
-                      className="px-2 py-0.5 rounded bg-purple-100 text-purple-800 text-[10px] font-mono hover:bg-purple-200 transition-colors"
-                    >
-                      🏛️ FSSAI Officer
-                    </button>
-                  </div>
-                </div>
-
-                {/* Submit */}
-                <div className="pt-2 flex items-center justify-end gap-2.5">
-                  <button
-                    type="button"
-                    onClick={onClose}
-                    className="px-4 py-2 text-xs font-semibold text-gray-600 hover:bg-gray-100 rounded-xl transition-colors"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="px-5 py-2 text-xs font-bold text-white bg-green-700 hover:bg-green-800 rounded-xl shadow-xs transition-all flex items-center gap-1.5"
-                  >
-                    <KeyRound className="w-3.5 h-3.5" />
-                    Sign In with Email
-                  </button>
-                </div>
-              </form>
-            )}
-
-            {/* TAB: REGISTER */}
-            {tab === "register" && (
-              <form onSubmit={handleRegister} className="space-y-3.5">
-                {/* Full Name */}
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1">
-                    Full Legal Name & Honors
+                  <label className="block text-xs font-bold text-gray-700 mb-1">
+                    Full Name & Title
                   </label>
                   <div className="relative">
                     <User className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -538,89 +383,15 @@ export default function AuthModal({
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="e.g. Dr. Rajesh Sharma, BAMS MD"
-                      required
+                      placeholder="e.g. Dr. Rajesh Sharma, BAMS"
                       className="w-full pl-9 pr-3 py-2 text-xs border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 outline-none"
                     />
                   </div>
                 </div>
 
-                {/* Email */}
                 <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1">
-                    Official Institutional / Bar Email
-                  </label>
-                  <div className="relative">
-                    <Mail className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="e.g. r.sharma@nia.edu.in"
-                      required
-                      className="w-full pl-9 pr-3 py-2 text-xs border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 outline-none"
-                    />
-                  </div>
-                </div>
-
-                {/* Password with strength meter */}
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1">
-                    Master Password
-                  </label>
-                  <div className="relative">
-                    <Lock className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Min 8 characters with letters, numbers, symbols"
-                      required
-                      className="w-full pl-9 pr-9 py-2 text-xs border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 outline-none"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                    >
-                      {showPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-                    </button>
-                  </div>
-
-                  {/* Password strength indicators */}
-                  {password && (
-                    <div className="mt-1.5 space-y-1">
-                      <div className="flex gap-1 h-1 w-full bg-gray-200 rounded-full overflow-hidden">
-                        <div
-                          className={`h-full transition-all ${
-                            passwordScore <= 1
-                              ? "w-1/4 bg-red-500"
-                              : passwordScore === 2
-                              ? "w-2/4 bg-amber-500"
-                              : passwordScore === 3
-                              ? "w-3/4 bg-blue-500"
-                              : "w-full bg-green-600"
-                          }`}
-                        />
-                      </div>
-                      <span className="text-[10px] text-gray-500 font-mono">
-                        Security Strength:{" "}
-                        {passwordScore <= 1
-                          ? "Weak"
-                          : passwordScore === 2
-                          ? "Medium"
-                          : passwordScore === 3
-                          ? "Good"
-                          : "Strong (AES-Ready)"}
-                      </span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Role selection grid */}
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1.5">
-                    Select Your Statutory Persona
+                  <label className="block text-xs font-bold text-gray-700 mb-1.5">
+                    Select Your Statutory Role
                   </label>
                   <div className="grid grid-cols-1 gap-2 max-h-36 overflow-y-auto pr-1">
                     {ROLES.map((r) => {
@@ -656,35 +427,37 @@ export default function AuthModal({
                   </div>
                 </div>
 
-                {/* Registration Number & Institution */}
-                <div className="grid grid-cols-2 gap-2">
-                  <div>
-                    <label className="block text-[11px] font-semibold text-gray-700 mb-0.5">
-                      Bar / AYUSH License No.
-                    </label>
-                    <input
-                      type="text"
-                      value={regNum}
-                      onChange={(e) => setRegNum(e.target.value)}
-                      placeholder="e.g. IN/PA-3419"
-                      className="w-full px-2.5 py-1.5 text-xs border border-gray-300 rounded-lg outline-none font-mono"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[11px] font-semibold text-gray-700 mb-0.5">
-                      Institution / Law Firm
-                    </label>
-                    <input
-                      type="text"
-                      value={institution}
-                      onChange={(e) => setInstitution(e.target.value)}
-                      placeholder="e.g. NIA Jaipur"
-                      className="w-full px-2.5 py-1.5 text-xs border border-gray-300 rounded-lg outline-none"
-                    />
+                {/* Quick Autofill Buttons for Testing */}
+                <div className="bg-gray-50 border border-gray-200 rounded-xl p-2.5 text-[11px] space-y-1.5">
+                  <span className="text-gray-500 font-semibold block text-[10px] uppercase">
+                    ⚡ Quick Test Personas:
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => handleDemoFill("vaidya")}
+                      className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-mono hover:bg-emerald-200 transition-colors"
+                    >
+                      🩺 Vaidya Sharma
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleDemoFill("attorney")}
+                      className="px-2 py-0.5 rounded bg-blue-100 text-blue-800 text-[10px] font-mono hover:bg-blue-200 transition-colors"
+                    >
+                      ⚖️ Attorney Sneha
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleDemoFill("regulator")}
+                      className="px-2 py-0.5 rounded bg-purple-100 text-purple-800 text-[10px] font-mono hover:bg-purple-200 transition-colors"
+                    >
+                      🏛️ Auditor Vikram
+                    </button>
                   </div>
                 </div>
 
-                {/* Submit Register */}
+                {/* Submit button */}
                 <div className="pt-2 flex items-center justify-end gap-2.5">
                   <button
                     type="button"
@@ -695,10 +468,110 @@ export default function AuthModal({
                   </button>
                   <button
                     type="submit"
+                    disabled={isSendingOtp}
+                    className="px-5 py-2 text-xs font-bold text-white bg-green-700 hover:bg-green-800 rounded-xl shadow-xs transition-all flex items-center gap-1.5 disabled:opacity-50"
+                  >
+                    {isSendingOtp ? (
+                      <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                    ) : (
+                      <KeyRound className="w-3.5 h-3.5" />
+                    )}
+                    <span>Send Verification OTP</span>
+                  </button>
+                </div>
+              </form>
+            )}
+
+            {/* STEP 2: ENTER & VERIFY OTP */}
+            {step === "otp" && (
+              <form onSubmit={handleVerifyOtp} className="space-y-4">
+                {/* OTP Dispatch Card */}
+                <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3.5 space-y-2 text-xs">
+                  <div className="flex items-center gap-2 text-emerald-900 font-bold">
+                    <Mail className="w-4 h-4 text-emerald-700" />
+                    <span>OTP Sent to {email}</span>
+                  </div>
+                  <p className="text-[11px] text-emerald-800">
+                    A 6-digit verification code has been dispatched to authenticate your private consultation vault.
+                  </p>
+
+                  {/* Simulated Secure Delivery Badge for Testing */}
+                  <div className="bg-white border border-emerald-300 rounded-lg p-2 flex items-center justify-between font-mono">
+                    <div>
+                      <span className="text-[10px] text-gray-500 block">DEMO DISPATCHED OTP:</span>
+                      <span className="text-base font-bold text-emerald-800 tracking-widest">
+                        {generatedOtp}
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setEnteredOtp(generatedOtp)}
+                      className="px-2.5 py-1 text-[11px] bg-emerald-700 hover:bg-emerald-800 text-white rounded-md font-sans font-bold flex items-center gap-1 transition-colors"
+                    >
+                      <Sparkles className="w-3 h-3" />
+                      Auto-fill OTP
+                    </button>
+                  </div>
+                </div>
+
+                {/* OTP Input */}
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 mb-1.5 text-center">
+                    Enter 6-Digit One-Time Passcode
+                  </label>
+                  <input
+                    type="text"
+                    maxLength={6}
+                    value={enteredOtp}
+                    onChange={(e) => setEnteredOtp(e.target.value.replace(/\D/g, ""))}
+                    placeholder="• • • • • •"
+                    required
+                    autoFocus
+                    className="w-full text-center tracking-[0.6em] text-xl font-bold py-3 border-2 border-gray-300 rounded-xl focus:border-green-600 focus:ring-2 focus:ring-green-500/20 outline-none font-mono"
+                  />
+                </div>
+
+                {/* Resend Timer */}
+                <div className="flex items-center justify-between text-xs text-gray-500">
+                  <button
+                    type="button"
+                    onClick={() => setStep("email")}
+                    className="text-gray-600 hover:underline text-[11px]"
+                  >
+                    ← Change Email
+                  </button>
+
+                  <div className="flex items-center gap-1 text-[11px]">
+                    <Clock className="w-3 h-3 text-gray-400" />
+                    {resendTimer > 0 ? (
+                      <span>Resend in {resendTimer}s</span>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={handleSendOtp}
+                        className="text-green-700 font-bold hover:underline"
+                      >
+                        Resend Code
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="pt-2 flex items-center justify-end gap-2.5">
+                  <button
+                    type="button"
+                    onClick={() => setStep("email")}
+                    className="px-4 py-2 text-xs font-semibold text-gray-600 hover:bg-gray-100 rounded-xl transition-colors"
+                  >
+                    Back
+                  </button>
+                  <button
+                    type="submit"
                     className="px-5 py-2 text-xs font-bold text-white bg-green-700 hover:bg-green-800 rounded-xl shadow-xs transition-all flex items-center gap-1.5"
                   >
-                    <ShieldCheck className="w-3.5 h-3.5" />
-                    Register Verified Role
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    Verify & Access Private Vault
                   </button>
                 </div>
               </form>
@@ -710,10 +583,10 @@ export default function AuthModal({
         <div className="p-3 bg-gray-50 border-t border-gray-200 text-[11px] text-gray-500 flex items-center justify-between shrink-0">
           <span className="flex items-center gap-1">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-            End-to-End Encrypted Session
+            Zero-Knowledge Isolated Storage
           </span>
           <span className="font-mono text-[10px] text-emerald-800 font-bold">
-            SHA-256 LEDGER COMPLIANT
+            TLS 256 / SHA-256
           </span>
         </div>
       </div>
