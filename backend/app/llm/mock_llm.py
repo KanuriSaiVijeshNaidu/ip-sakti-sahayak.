@@ -60,32 +60,57 @@ def _synthesize_answer(query: str, passages: list[dict]) -> str:
             "- For Patents & Trademarks: Consult the IP India Registry (ipindia.gov.in)."
         )
 
-    # 1. Procedural: How to register an Ayurvedic product / Licensing roadmap
-    is_registration = any(w in q_lower for w in [
-        "register", "registration", "license", "licensing", "manufacture", "manufacturing",
-        "how do i register", "how to register", "how to apply", "form 24d", "form 25d",
-        "schedule t", "sla", "drug license", "start ayurveda", "approval process"
+    # 1. Procedural: Registration of Ayurvedic Product
+    is_registration_ayush = any(w in q_lower for w in [
+        "register my product", "register an ayurvedic product", "how do i register my product",
+        "how to register my product", "ayush license", "form 24d", "form 25d", "schedule t",
+        "start ayurveda", "manufacturing license for ayurveda"
     ])
 
-    # 2. Definitional: What is Ayurveda / What is AYUSH
-    is_definitional = any(w in q_lower for w in [
+    # 2. Definitional: What is a Trademark?
+    is_tm_definitional = any(w in q_lower for w in [
+        "what is a trademark", "what is trademark", "define trademark", "meaning of trademark",
+        "concept of trademark", "explain trademark"
+    ])
+
+    # 3. Procedural: How to register a Trademark?
+    is_tm_procedural = any(w in q_lower for w in [
+        "how to register a trademark", "how do i register a trademark", "register my trademark",
+        "trademark registration process", "apply for trademark", "trademark filing",
+        "how to get a trademark", "trademark procedure"
+    ])
+
+    # 4. Definitional: What is a Patent?
+    is_patent_definitional = any(w in q_lower for w in [
+        "what is a patent", "what is patent", "define patent", "meaning of patent",
+        "concept of patent", "explain patent"
+    ]) and not any(w in q_lower for w in ["how to", "file", "process", "apply"])
+
+    # 5. Procedural: How to file/get a Patent?
+    is_patent_procedural = any(w in q_lower for w in [
+        "how to file a patent", "how do i file a patent", "how to get a patent",
+        "patent filing process", "how to apply for a patent", "patent application process"
+    ])
+
+    # 6. Definitional: What is Ayurveda / What is AYUSH
+    is_ayurveda_definitional = any(w in q_lower for w in [
         "what is ayurveda", "what is ayush", "define ayurveda", "meaning of ayurveda",
         "definition of ayurveda", "what are asu", "what is asu"
     ])
 
-    # 3. FSSAI Labelling & Ayurveda Aahara queries
+    # 7. FSSAI Labelling & Ayurveda Aahara queries
     is_fssai = any(w in q_lower for w in ["fssai", "label", "labelling", "ayurveda aahara", "packaging", "supplement"])
 
-    # 4. Trademark & GI Tag queries
-    is_tm_gi = any(w in q_lower for w in ["trademark", "trade mark", "brand", "gi", "geographical indication", "logo"])
+    # 8. GI Tag queries
+    is_gi = any(w in q_lower for w in ["gi tag", "geographical indication", "gi act"])
 
-    # 5. Patentability & Innovation queries
-    is_patent = any(w in q_lower for w in [
-        "patent", "patentable", "patentability", "section 3(e)", "section 3(p)",
-        "admixture", "synergy", "tkdl", "term of patent", "patent rights"
-    ]) or ("ashwagandha" in q_lower and "patent" in q_lower)
+    # 9. Patentability & Innovation queries (e.g. Ashwagandha formulation)
+    is_patent_ayurveda = any(w in q_lower for w in [
+        "patent an ayurvedic", "ashwagandha", "section 3(e)", "section 3(p)",
+        "admixture", "synergy", "tkdl", "patentable"
+    ])
 
-    if is_registration:
+    if is_registration_ayush:
         answer = (
             "### 📋 Step-by-Step Statutory Process: Registering an Ayurvedic Product in India\n\n"
             "To legally register and manufacture an Ayurvedic product in India, you must follow the statutory licensing "
@@ -113,7 +138,106 @@ def _synthesize_answer(query: str, passages: list[dict]) -> str:
             "- A government **Drug Inspector (AYUSH)** conducts a physical inspection of the premises to verify Schedule T GMP compliance.\n"
             "- Upon inspection approval and lab sample verification, the SLA issues **Form 26D** (Manufacturing License & GMP Certificate)."
         )
-    elif is_definitional:
+    elif is_tm_definitional:
+        answer = (
+            "### 🏷️ What is a Trademark? (Simple Plain-Language Explanation)\n\n"
+            "In simple, everyday words, a **Trademark** is your brand's unique identity. It can be your brand name "
+            "(such as *Dabur*, *Baidyanath*, or *Patanjali*), a distinctive logo, slogan, label, or symbol that tells customers:\n"
+            "👉 **'This product was genuinely made by us, not a fake or competitor.'**\n\n"
+            "Think of it as your company's official badge of trust. If you register your trademark, nobody else can copy your "
+            "brand name or deceive customers with copycat packaging.\n\n"
+            "---\n\n"
+            "### 📜 Technical & Statutory Provisions (The Trade Marks Act, 1999)\n\n"
+            "1. **Statutory Definition (Section 2(1)(zb)):**\n"
+            "   Under Section 2(1)(zb) of The Trade Marks Act, 1999, a trademark is legally defined as:\n"
+            "   > *'A mark capable of being represented graphically and which is capable of distinguishing the goods or services "
+            "   of one person from those of others and may include shape of goods, their packaging and combination of colours.'*\n\n"
+            "2. **Definition of 'Mark' (Section 2(1)(m)):**\n"
+            "   Includes any device, brand, heading, label, ticket, name, signature, word, letter, numeral, shape of goods, packaging, or combination of colours.\n\n"
+            "3. **Nice Classification Classes for Ayurvedic Products:**\n"
+            "   - **Class 5:** Ayurvedic medicines, herbal pharmaceuticals, and therapeutic preparations.\n"
+            "   - **Class 3:** Ayurvedic cosmetics, herbal oils, soaps, and skincare.\n"
+            "   - **Class 30:** Ayurvedic dietary supplements, herbal teas, and spices.\n"
+            "   - **Class 35:** Ayurvedic retail stores, online marketplaces, and clinic management.\n\n"
+            "4. **Exclusive Statutory Monopoly (Section 28 & 29):**\n"
+            "   Registration confers on the proprietor the exclusive legal right to use the mark and initiate civil or criminal infringement suits under Section 29.\n\n"
+            "5. **Absolute Grounds for Refusal (Section 9):**\n"
+            "   Generic or descriptive botanical plant names (e.g. attempting to monopolize *'Ashwagandha'* or *'Triphala'* alone) cannot be registered by one individual. The brand mark must be distinctive, coined, or arbitrary."
+        )
+    elif is_tm_procedural:
+        answer = (
+            "### 📋 Step-by-Step Statutory Process: How to Register a Trademark in India\n\n"
+            "Registering a trademark with the **Trade Marks Registry (Controller General of Patents, Designs and Trade Marks)** "
+            "involves the following practical statutory workflow:\n\n"
+            "#### 1️⃣ Step 1: Official Public Clearance Search\n"
+            "- Before filing, conduct an exhaustive clearance search on the official **IP India Public Search Portal** (`ipindiaonline.gov.in`).\n"
+            "- Search both exact wordmarks and phonetic similarities in your target Nice Class to ensure no identical or confusingly similar mark already exists.\n\n"
+            "#### 2️⃣ Step 2: Select the Correct Nice Class\n"
+            "- Choose the statutory class corresponding to your products:\n"
+            "  - **Class 5:** Ayurvedic medicinal formulations & pharma.\n"
+            "  - **Class 3:** Herbal cosmetics, lotions, and soaps.\n"
+            "  - **Class 30:** Herbal foods, teas, and Ayurveda Aahara.\n\n"
+            "#### 3️⃣ Step 3: Online Filing via Form TM-A\n"
+            "- File **Form TM-A** electronically on the IP India Comprehensive e-Filing Portal.\n"
+            "- **Statutory Government Fees:**\n"
+            "  - **₹4,500:** For Individuals, Startups, and MSMEs (with Udyam certificate).\n"
+            "  - **₹9,000:** For standard private limited companies and partnerships.\n"
+            "- **Key Enclosures:** High-resolution logo/wordmark image, Identity/Business proof, and User Affidavit with documentary evidence (invoices/marketing) if claiming prior use date, or declare *'Proposed to be used'*.\n"
+            "- *Immediate Milestone:* Upon submission, you receive an official application number and can immediately start using the **™** symbol!\n\n"
+            "#### 4️⃣ Step 4: Examination by Trade Marks Registry\n"
+            "- An official Trademark Examiner scrutinizes your application within 30 to 60 days.\n"
+            "- If an **Examination Report** issues objections under Section 9 (lack of distinctiveness) or Section 11 (similarity to existing marks), submit a formal written legal reply within **30 days**.\n\n"
+            "#### 5️⃣ Step 5: Publication in the Trade Marks Journal\n"
+            "- If accepted by the Registrar, the trademark is published in the official *Trade Marks Journal*.\n"
+            "- This triggers a statutory **4-month public opposition period** (Section 21) during which third parties may challenge the registration.\n\n"
+            "#### 6️⃣ Step 6: Certificate of Registration (Form O-2)\n"
+            "- If no opposition is filed (or if opposition is decided in your favor), the Registrar issues the official **Certificate of Registration (Form O-2)**.\n"
+            "- You can now lawfully use the prestigious registered **®** symbol!\n"
+            "- **Validity:** The trademark is valid for **10 years** and can be renewed indefinitely every 10 years under Section 25."
+        )
+    elif is_patent_definitional:
+        answer = (
+            "### 💡 What is a Patent? (Simple Plain-Language Explanation)\n\n"
+            "In simple, everyday words, a **Patent** is an official certificate and legal monopoly granted by the Government of India to an inventor. "
+            "It gives you the legal power to stop anyone else from manufacturing, copying, selling, using, or importing your invention for **20 years**.\n\n"
+            "In return for this 20-year legal monopoly, you must publicly disclose the complete technical secrets of how your invention works so society can learn from it.\n\n"
+            "---\n\n"
+            "### 📜 Technical & Statutory Provisions (The Patents Act, 1970)\n\n"
+            "1. **Statutory Definition of Invention (Section 2(1)(j)):**\n"
+            "   An 'invention' means a new product or process involving an inventive step and capable of industrial application.\n"
+            "2. **The Three Pillars of Patentability:**\n"
+            "   - **Novelty (Section 2(1)(l)):** The invention must not have been published or publicly used anywhere in the world prior to filing.\n"
+            "   - **Inventive Step (Section 2(1)(ja)):** A technical advancement or economic significance that is non-obvious to a person skilled in the art.\n"
+            "   - **Industrial Applicability (Section 2(1)(j)):** Must be capable of industrial manufacture or commercial usage.\n"
+            "3. **Exclusive Statutory Rights (Section 48):** Confers exclusive rights to exclude third parties from making, using, offering for sale, selling, or importing the patented product or process.\n"
+            "4. **Term of Patent (Section 53):** Valid for 20 years from application date, subject to annual statutory renewal fees.\n"
+            "5. **Statutory Bars on Traditional Knowledge (Section 3(p) & 3(e)):** Excludes mere traditional knowledge (TKDL prior art) and mere admixtures lacking unforeseen synergistic efficacy (CI < 1.0)."
+        )
+    elif is_patent_procedural:
+        answer = (
+            "### 📋 Step-by-Step Statutory Process: How to File a Patent in India\n\n"
+            "To secure a patent in India under **The Patents Act, 1970**, follow this official filing and examination workflow:\n\n"
+            "#### 1️⃣ Step 1: Prior Art & TKDL Search\n"
+            "- Conduct an exhaustive search on **InPASS** (`ipindiaservices.gov.in`) and the CSIR-AYUSH **Traditional Knowledge Digital Library (TKDL)** to confirm novelty.\n\n"
+            "#### 2️⃣ Step 2: Drafting Patent Specification (Form 2)\n"
+            "- Draft a **Provisional Specification** (if R&D is ongoing to secure priority date) or **Complete Specification** with detailed background, working examples, claims, and comparative synergy bioassays (Combination Index CI < 1.0).\n\n"
+            "#### 3️⃣ Step 3: Online Filing on IP India Portal\n"
+            "- Submit statutory forms on `ipindia.gov.in`:\n"
+            "  - **Form 1:** Application for grant of patent.\n"
+            "  - **Form 2:** Complete/Provisional specification and claims.\n"
+            "  - **Form 3:** Statement and undertaking regarding foreign filings.\n"
+            "  - **Form 5:** Declaration as to inventorship.\n"
+            "- **Statutory Fees:** ₹1,600 for Individuals/Startups/MSMEs (₹8,000 for large corporate entities).\n\n"
+            "#### 4️⃣ Step 4: Mandatory Biodiversity Approval (NBA Form III)\n"
+            "- Under **Section 6 of the Biological Diversity Act, 2002**, if your invention uses any biological resource or herb sourced from India, you must file **Form III** with the National Biodiversity Authority (NBA) before patent grant.\n\n"
+            "#### 5️⃣ Step 5: Publication & Request for Examination (Form 18)\n"
+            "- The patent application is published in the official journal after 18 months (or expedited via Form 9).\n"
+            "- Submit **Form 18** (Request for Examination, RFE) within 48 months from the filing date.\n\n"
+            "#### 6️⃣ Step 6: First Examination Report (FER) & Patent Grant\n"
+            "- The Patent Examiner issues a FER. Submit written responses and claim amendments within 6 months.\n"
+            "- Upon satisfaction of all requirements, the Patent Office issues the Certificate of Patent Grant under **Section 43**."
+        )
+    elif is_ayurveda_definitional:
         answer = (
             "### 🌿 Statutory & Foundational Definition of Ayurveda in Indian Law\n\n"
             "Under Indian jurisprudence and statutory healthcare governance, **Ayurveda** is formally recognized as a traditional system of healthcare and codified medical science.\n\n"
@@ -128,7 +252,7 @@ def _synthesize_answer(query: str, passages: list[dict]) -> str:
             "   - **Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H):** Publishes the official **Ayurvedic Pharmacopoeia of India (API)**, which defines statutory identity, purity, and assay benchmarks.\n"
             "   - **National Commission for Indian System of Medicine (NCISM) Act, 2020:** Regulates higher medical education and practitioner licensing."
         )
-    elif is_patent:
+    elif is_patent_ayurveda:
         answer = (
             "### ⚖️ Direct Legal Position on Patenting Ayurvedic Innovations\n"
             "Under Indian patent law, **you generally CANNOT patent a traditional Ayurvedic formulation** if it is a mere combination of known herbs with cumulative properties. Such claims are excluded under **Section 3(e)** (mere admixture) and **Section 3(p)** (traditional knowledge) of the Indian Patents Act, 1970.\n\n"
@@ -152,17 +276,13 @@ def _synthesize_answer(query: str, passages: list[dict]) -> str:
             "4. **Target Consumer & Dosage Instructions:** The label must clearly state advisory warnings (e.g. consult a physician during pregnancy), recommended daily consumption, and duration of usage.\n"
             "5. **Contaminant Safety Limits:** Must satisfy Schedule II standards for heavy metal limits (Lead ≤2.5 ppm, Mercury ≤0.5 ppm, Arsenic ≤1.0 ppm)."
         )
-    elif is_tm_gi:
+    elif is_gi:
         answer = (
-            "### ™️ Trademark & GI Protection for Ayurvedic Brands\n"
-            "Under **The Trade Marks Act, 1999** and **The Geographical Indications of Goods Act, 1999**:\n\n"
-            "1. **Applicable Nice Classification Classes:**\n"
-            "   - **Class 5:** For Ayurvedic pharmaceuticals, medicinal formulations, and herbal medicines.\n"
-            "   - **Class 29 & 30:** For Ayurvedic food items, dietary supplements, herbal teas, and Ayurveda Aahara.\n"
-            "   - **Class 3:** For Ayurvedic skincare, soaps, cosmetics, and herbal toiletries.\n"
-            "2. **Distinctiveness Requirement (Section 9):** Common generic or descriptive plant names (such as 'Ashwagandha' or 'Triphala') cannot be registered as trademarks by an individual. The brand mark must be distinctive, coined, or arbitrary.\n"
-            "3. **Clearance Search:** Conduct a search on the official IP India Trade Marks Registry (*ipindia.gov.in*) to verify that no identical or phonetically similar mark is already registered or pending.\n"
-            "4. **Geographical Indications (GI):** When an Ayurvedic herb or formulation possesses a reputation originating from a specific geographical region (e.g. *Kashmir Saffron* or *Navara Rice*), protection is obtained under the GI Act for the collective community of producers."
+            "### 🌿 Geographical Indications (GI Tags) under Indian Law\n"
+            "Under **The Geographical Indications of Goods Act, 1999**:\n\n"
+            "1. **Definition (Section 2(e)):** A GI tag identifies goods as originating in a specific geographical territory, where a given quality, reputation, or other characteristic is essentially attributable to its geographic origin (e.g. *Kashmir Saffron*, *Navara Rice*).\n"
+            "2. **Collective Community Right:** Unlike patents or trademarks, a GI tag cannot be exclusively monopolized by a single private corporation. It is owned collectively by the community/association of producers (Section 8).\n"
+            "3. **Remedies Against Misuse (Section 66):** Unauthorized use of a registered GI name on non-certified goods constitutes statutory infringement carrying penal remedies."
         )
     elif passages and any(p["text"] for p in passages):
         best_p = passages[0]
@@ -215,20 +335,133 @@ def _synthesize_answer_hindi(query: str, passages: list[dict]) -> str:
             "AYURLEX शून्य-भ्रम (Zero-Hallucination) नीति का पालन करता है और अपुष्ट कानूनी नियमों का निर्माण नहीं करता है।"
         )
 
-    # 1. Registration / Licensing Procedure in Hindi
+    # 1. Trademark Definitional in Hindi
+    is_tm_definitional = any(w in q_lower for w in [
+        "ट्रेडमार्क क्या", "ट्रेड मार्क क्या", "what is a trademark", "what is trademark", "ट्रेडमार्क का अर्थ", "ट्रेडमार्क परिभाषा"
+    ])
+
+    # 2. Trademark Procedural in Hindi
+    is_tm_procedural = any(w in q_lower for w in [
+        "ट्रेडमार्क रजिस्टर", "ट्रेडमार्क पंजीकरण", "ट्रेडमार्क कैसे", "how to register trademark", "register trademark", "form tm-a", "टीएम-ए"
+    ])
+
+    # 3. Patent Definitional in Hindi
+    is_patent_definitional = any(w in q_lower for w in [
+        "पेटेंट क्या है", "पेटेंट क्या होता", "what is a patent", "what is patent", "पेटेंट परिभाषा", "पेटेंट अधिकार", "what is patent in"
+    ])
+
+    # 4. Patent Procedural in Hindi
+    is_patent_procedural = any(w in q_lower for w in [
+        "पेटेंट कैसे", "पेटेंट फाइल", "पेटेंट पंजीकरण", "how to file a patent", "how to file patent", "how to register patent", "पेटेंट प्रक्रिया", "पेटेंट आवेदन"
+    ])
+
+    # 5. Registration / Licensing Procedure for Ayurvedic Products in Hindi
     is_registration = any(w in q_lower for w in [
-        "रजिस्टर", "लाइसेंस", "पंजीकरण", "निर्माण", "register", "license", "form 24d", "form 25d", "schedule t"
+        "रजिस्टर", "लाइसेंस", "पंजीकरण", "निर्माण", "register", "license", "form 24d", "form 25d", "schedule t", "उत्पाद पंजीकरण"
     ])
 
-    # 2. Definitional in Hindi
+    # 6. Ayurveda Definitional in Hindi
     is_definitional = any(w in q_lower for w in [
-        "आयुर्वेद क्या", "आयुष क्या", "परिभाषा", "अर्थ", "what is ayurveda", "what is asu"
+        "आयुर्वेद क्या", "आयुष क्या", "परिभाषा", "अर्थ", "what is ayurveda", "what is asu", "आयुर्वेद की परिभाषा"
     ])
 
-    # 3. Ayurvedic Patenting / Ashwagandha queries in Hindi
+    # 7. Ayurvedic Patenting / Ashwagandha queries in Hindi
     is_patent = any(w in q_lower for w in ["अश्वगंधा", "पेटेंट", "मिश्रण", "patent", "धारा 3", "section 3"])
 
-    if is_registration:
+    if is_tm_definitional:
+        answer = (
+            "### 💡 ट्रेडमार्क क्या है? (सरल शब्दों में व्याख्या)\n\n"
+            "सरल बोलचाल की भाषा में, **ट्रेडमार्क (व्यापार चिह्न)** आपके ब्रांड, कंपनी या उत्पाद की एक विशिष्ट पहचान होती है। "
+            "यह कोई नाम, लोगो, स्लोगन, प्रतीक या पैकेजिंग का रंग हो सकता है जो आपके उत्पाद को बाज़ार में दूसरे लोगों के उत्पादों से अलग पहचान दिलाता है।\n\n"
+            "उदाहरण के लिए, यदि आप 'पतंजलि' या 'डाबर' का नाम या लोगो देखते हैं, तो आप तुरंत पहचान जाते हैं कि यह उत्पाद किसका है। "
+            "ट्रेडमार्क पंजीकृत कराने से सरकार आपको उस नाम या लोगो पर कानूनी एकाधिकार देती है ताकि कोई दूसरा व्यक्ति आपके ब्रांड नाम की नकल न कर सके।\n\n"
+            "---\n\n"
+            "### 📜 तकनीकी एवं वैधानिक प्रावधान (व्यापार चिह्न अधिनियम, 1999)\n\n"
+            "1. **वैधानिक परिभाषा (धारा 2(1)(zb)):**\n"
+            "   व्यापार चिह्न अधिनियम, 1999 की धारा 2(1)(zb) के अनुसार, ट्रेडमार्क का अर्थ है:\n"
+            "   > *'ऐसा चिह्न जो आलेखीय रूप से निरूपित किए जाने में समर्थ है और जो एक व्यक्ति के माल या सेवाओं को अन्य व्यक्तियों के माल या सेवाओं से विभेदित करने में समर्थ है तथा इसमें माल का रूप, उनका पैकेजिंग और रंगों का संयोजन सम्मिलित हो सकेगा।'\n\n"
+            "2. **चिह्न की परिभाषा (धारा 2(1)(m)):**\n"
+            "   इसमें कोई युक्ति, ब्रांड, शीर्षक, लेबल, टिकट, नाम, हस्ताक्षर, शब्द, अक्षर, अंक, माल का आकार, पैकेजिंग या रंगों का संयोजन शामिल है।\n\n"
+            "3. **आयुर्वेदिक उत्पादों के लिए प्रमुख नाइस वर्गीकरण (Nice Classes):**\n"
+            "   - **क्लास 5:** आयुर्वेदिक औषधियां, हर्बल फॉर्मूलेशन और चिकित्सीय दवाएं।\n"
+            "   - **क्लास 3:** आयुर्वेदिक सौंदर्य प्रसाधन, हर्बल तेल, शैम्पू, साबुन और स्किनकेयर।\n"
+            "   - **क्लास 30:** आयुर्वेदिक आहार पूरक, हर्बल चाय और मसाले।\n"
+            "   - **क्लास 35:** आयुर्वेदिक खुदरा दुकानें, ऑनलाइन स्टोर और क्लीनिक सेवाएं।\n\n"
+            "4. **विशेष वैधानिक एकाधिकार (धारा 28 एवं 29):**\n"
+            "   पंजीकरण से स्वामी को उस ट्रेडमार्क का अनन्य उपयोग करने का अधिकार और धारा 29 के तहत उल्लंघन का वाद दायर करने का कानूनी अधिकार मिलता है।\n\n"
+            "5. **पंजीकरण से इनकार के पूर्ण आधार (धारा 9):**\n"
+            "   सामान्य या वर्णनात्मक वानस्पतिक नाम (जैसे केवल 'अश्वगंधा' या 'त्रिफला') किसी एक व्यक्ति के नाम पर पंजीकृत नहीं हो सकते। नाम विशिष्ट (distinctive) या गढ़ा हुआ (coined) होना चाहिए।"
+        )
+    elif is_tm_procedural:
+        answer = (
+            "### 📋 भारत में ट्रेडमार्क पंजीकरण की चरण-दर-चरण वैधानिक प्रक्रिया (Step-by-Step Process)\n\n"
+            "ट्रेड मार्क्स रजिस्ट्री (CGPDTM) के साथ ट्रेडमार्क पंजीकृत करने की आधिकारिक प्रक्रिया निम्नलिखित 6 चरणों में पूरी होती है:\n\n"
+            "#### 1️⃣ चरण 1: आधिकारिक सार्वजनिक खोज (Clearance Search)\n"
+            "- आवेदन से पहले आधिकारिक **IP India पब्लिक सर्च पोर्टल** (`ipindiaonline.gov.in`) पर संपूर्ण खोज करें ताकि यह सुनिश्चित हो सके कि कोई मिलता-जुलता या समान नाम पहले से मौजूद नहीं है।\n\n"
+            "#### 2️⃣ चरण 2: सही नाइस क्लास (Nice Class) का चयन\n"
+            "- अपने उत्पाद के अनुसार सही वैधानिक श्रेणी चुनें:\n"
+            "  - **क्लास 5:** आयुर्वेदिक औषधियां एवं उपचारात्मक उत्पाद।\n"
+            "  - **क्लास 3:** हर्बल प्रसाधन, साबुन, फेसपैक आदि।\n"
+            "  - **क्लास 30:** हर्बल खाद्य पदार्थ, चाय, आयुर्वेद आहार।\n\n"
+            "#### 3️⃣ चरण 3: फॉर्म TM-A के माध्यम से ऑनलाइन आवेदन\n"
+            "- IP India e-Filing पोर्टल पर **फॉर्म TM-A (Form TM-A)** इलेक्ट्रॉनिक रूप से दाखिल करें।\n"
+            "- **सरकारी वैधानिक शुल्क (Statutory Fees):**\n"
+            "  - **₹4,500:** व्यक्ति (Individual), स्टार्टअप और MSME/Udyam प्रमाण पत्र धारकों के लिए।\n"
+            "  - **₹9,000:** अन्य कंपनियों और संस्थाओं के लिए।\n"
+            "- आवश्यक दस्तावेज: लोगो/शब्द का नमूना, पहचान पत्र, और यदि पहले से उपयोग कर रहे हैं तो उपयोग शपथ पत्र (User Affidavit) या 'उपयोग के लिए प्रस्तावित' (Proposed to be used) घोषित करें।\n"
+            "- *तत्काल लाभ:* आवेदन जमा होते ही आपको आधिकारिक आवेदन संख्या मिलती है और आप अपने नाम के साथ **™** प्रतीक का उपयोग शुरू कर सकते हैं!\n\n"
+            "#### 4️⃣ चरण 4: ट्रेड मार्क्स रजिस्ट्री द्वारा परीक्षण (Examination)\n"
+            "- परीक्षक आवेदन की जांच करता है। यदि कोई आपत्ति (धारा 9 या धारा 11) उठाई जाती है, तो **30 दिनों** के भीतर औपचारिक लिखित कानूनी उत्तर प्रस्तुत करना अनिवार्य है।\n\n"
+            "#### 5️⃣ चरण 5: ट्रेड मार्क्स जर्नल में प्रकाशन (Journal Publication)\n"
+            "- रजिस्ट्रार द्वारा स्वीकार किए जाने के बाद ट्रेडमार्क को आधिकारिक *Trade Marks Journal* में प्रकाशित किया जाता है।\n"
+            "- इसके बाद **4 महीने की सार्वजनिक विरोध अवधि (Opposition Window)** शुरू होती है।\n\n"
+            "#### 6️⃣ चरण 6: पंजीकरण प्रमाण पत्र (Form O-2)\n"
+            "- यदि कोई विरोध नहीं होता (या विरोध का निपटारा आपके पक्ष में होता है), तो आधिकारिक **पंजीकरण प्रमाण पत्र (Form O-2)** जारी किया जाता है।\n"
+            "- अब आप गर्व से पंजीकृत **®** प्रतीक का उपयोग कर सकते हैं!\n"
+            "- **वैधता:** ट्रेडमार्क **10 वर्षों** के लिए वैध होता है और धारा 25 के तहत हर 10 साल में अनिश्चित काल तक नवीनीकृत कराया जा सकता है।"
+        )
+    elif is_patent_definitional:
+        answer = (
+            "### 💡 पेटेंट क्या है? (सरल शब्दों में व्याख्या)\n\n"
+            "सरल शब्दों में, **पेटेंट** भारत सरकार द्वारा किसी आविष्कारक को दिया जाने वाला एक आधिकारिक कानूनी प्रमाण पत्र और विशेष एकाधिकार (Monopoly) है। "
+            "यह आपको **20 वर्षों** के लिए दूसरों को आपके आविष्कार को बनाने, बेचने, उपयोग करने या आयात करने से रोकने की पूरी कानूनी शक्ति देता है।\n\n"
+            "इस 20 साल के एकाधिकार के बदले, आपको अपने आविष्कार की पूरी तकनीकी विधि जनता के सामने सार्वजनिक रूप से प्रकट करनी होती है ताकि समाज उससे सीख सके।\n\n"
+            "---\n\n"
+            "### 📜 तकनीकी एवं वैधानिक प्रावधान (पेटेंट अधिनियम, 1970)\n\n"
+            "1. **आविष्कार की वैधानिक परिभाषा (धारा 2(1)(j)):**\n"
+            "   आविष्कार का अर्थ है कोई नया उत्पाद या प्रक्रिया जिसमें आविष्कारशील कदम शामिल हो और जो औद्योगिक अनुप्रयोग में समर्थ हो।\n"
+            "2. **पेटेंट योग्यता के तीन मुख्य आधार:**\n"
+            "   - **नवीनता (Novelty - धारा 2(1)(l)):** आवेदन से पहले यह विश्व में कहीं भी सार्वजनिक रूप से उपलब्ध नहीं होना चाहिए।\n"
+            "   - **आविष्कारशील कदम (Inventive Step - धारा 2(1)(ja)):** तकनीकी प्रगति जो क्षेत्र के विशेषज्ञ के लिए स्वतः स्पष्ट न हो।\n"
+            "   - **औद्योगिक उपयोगिता (Industrial Applicability - धारा 2(1)(j)):** उद्योग में निर्माण या उपयोग के योग्य होना चाहिए।\n"
+            "3. **अनन्य अधिकार (धारा 48):** पेटेंट धारक को उत्पाद बनाने, उपयोग करने, बेचने या आयात करने से दूसरों को रोकने का विशेष अधिकार।\n"
+            "4. **पेटेंट की अवधि (धारा 53):** आवेदन की तिथि से 20 वर्ष तक वैध।\n"
+            "5. **पारंपरिक ज्ञान अपवाद (धारा 3(p) एवं 3(e)):** केवल पारंपरिक ज्ञान या अप्रत्याशित तालमेल रहित मात्र मिश्रण पेटेंट योग्य नहीं हैं।"
+        )
+    elif is_patent_procedural:
+        answer = (
+            "### 📋 भारत में पेटेंट दाखिल करने की चरण-दर-चरण वैधानिक प्रक्रिया (Step-by-Step Process)\n\n"
+            "भारतीय पेटेंट अधिनियम, 1970 के तहत पेटेंट प्राप्त करने के लिए निम्नलिखित आधिकारिक प्रक्रिया का पालन करें:\n\n"
+            "#### 1️⃣ चरण 1: पूर्व कला (Prior Art) एवं TKDL खोज\n"
+            "- **InPASS** (`ipindiaservices.gov.in`) और CSIR-AYUSH **पारंपरिक ज्ञान डिजिटल लाइब्रेरी (TKDL)** पर विस्तृत खोज करें ताकि नवीनता सुनिश्चित हो सके।\n\n"
+            "#### 2️⃣ चरण 2: पेटेंट विनिर्देश तैयार करना (फॉर्म 2)\n"
+            "- प्राथमिक तिथि सुरक्षित करने के लिए प्रोविजनल स्पेसिफिकेशन या तुलनात्मक सिनर्जिकल बायोएसे डेटा (Combination Index CI < 1.0) के साथ कम्प्लीट स्पेसिफिकेशन ड्राफ्ट करें।\n\n"
+            "#### 3️⃣ चरण 3: IP India पोर्टल पर ऑनलाइन फाइलिंग\n"
+            "- `ipindia.gov.in` पर वैधानिक फॉर्म जमा करें:\n"
+            "  - **फॉर्म 1:** पेटेंट अनुदान के लिए आवेदन।\n"
+            "  - **फॉर्म 2:** प्रोविजनल/कम्प्लीट स्पेसिफिकेशन और दावे (Claims)।\n"
+            "  - **फॉर्म 3:** विदेशी फाइलिंग का विवरण।\n"
+            "  - **फॉर्म 5:** आविष्कारक की घोषणा।\n"
+            "- **सरकारी शुल्क:** व्यक्तियों/स्टार्टअप/MSME के लिए ₹1,600 (बड़ी कंपनियों के लिए ₹8,000)।\n\n"
+            "#### 4️⃣ चरण 4: राष्ट्रीय जैव विविधता प्राधिकरण (NBA) फॉर्म III\n"
+            "- **जैविक विविधता अधिनियम, 2002 की धारा 6** के तहत यदि आविष्कार में भारतीय जैविक संसाधन/जड़ी-बूटी का उपयोग है, तो पेटेंट अनुदान से पहले NBA से अनुमति अनिवार्य है।\n\n"
+            "#### 5️⃣ चरण 5: प्रकाशन एवं परीक्षा का अनुरोध (फॉर्म 18)\n"
+            "- 18 महीने बाद आवेदन जर्नल में प्रकाशित होता है।\n"
+            "- फाइलिंग तिथि से 48 महीनों के भीतर **फॉर्म 18 (RFE)** जमा करें।\n\n"
+            "#### 6️⃣ चरण 6: प्रथम परीक्षा रिपोर्ट (FER) एवं पेटेंट अनुदान\n"
+            "- परीक्षक की आपत्तियों का 6 महीने के भीतर उत्तर दें। सभी शर्तें पूरी होने पर **धारा 43** के तहत पेटेंट प्रमाण पत्र जारी किया जाता है।"
+        )
+    elif is_registration:
         answer = (
             "### 📋 आयुर्वेदिक उत्पाद पंजीकरण एवं लाइसेंसिंग प्रक्रिया (Registration Roadmap)\n\n"
             "भारत में आयुर्वेदिक उत्पाद का निर्माण और पंजीकरण **ड्रग्स एंड कॉस्मेटिक्स एक्ट, 1940** (अध्याय IV-A) और **नियम, 1945** "
@@ -316,20 +549,132 @@ def _synthesize_answer_telugu(query: str, passages: list[dict]) -> str:
             "AYURLEX సున్నా-భ్రమ (Zero-Hallucination) విధానాన్ని అనుసరిస్తుంది."
         )
 
-    # 1. Registration procedure in Telugu
-    is_registration = any(w in q_lower for w in [
-        "రిజిస్టర్", "లైసెన్స్", "తయారీ", "దరఖాస్తు", "register", "license", "form 24d", "form 25d", "schedule t"
+    # 1. Trademark Definitional in Telugu
+    is_tm_definitional = any(w in q_lower for w in [
+        "ట్రేడ్‌మార్క్ అంటే ఏమిటి", "ట్రేడ్ మార్క్ అంటే", "ట్రేడ్‌మార్క్ నిర్వచనం", "what is a trademark", "what is trademark"
     ])
 
-    # 2. Definitional in Telugu
+    # 2. Trademark Procedural in Telugu
+    is_tm_procedural = any(w in q_lower for w in [
+        "ట్రేడ్‌మార్క్ రిజిస్టర్", "ట్రేడ్ మార్క్ నమోదు", "ట్రేడ్‌మార్క్ ఎలా", "how to register trademark", "register trademark", "form tm-a"
+    ])
+
+    # 3. Patent Definitional in Telugu
+    is_patent_definitional = any(w in q_lower for w in [
+        "పేటెంట్ అంటే ఏమిటి", "పేటెంట్ అంటే", "పేటెంట్ నిర్వచనం", "what is a patent", "what is patent"
+    ])
+
+    # 4. Patent Procedural in Telugu
+    is_patent_procedural = any(w in q_lower for w in [
+        "పేటెంట్ ఎలా ఫైల్ చేయాలి", "పేటెంట్ దరఖాస్తు విధానం", "పేటెంట్ ప్రక్రియ", "how to file a patent", "how to file patent", "how to register patent"
+    ])
+
+    # 5. Registration procedure for Ayurvedic Products in Telugu
+    is_registration = any(w in q_lower for w in [
+        "ఆయుర్వేద ఉత్పత్తి రిజిస్టర్", "ఆయుర్వేద లైసెన్స్", "రిజిస్టర్", "లైసెన్స్", "తయారీ", "దరఖాస్తు", "register", "license", "form 24d", "form 25d", "schedule t"
+    ])
+
+    # 6. Ayurveda Definitional in Telugu
     is_definitional = any(w in q_lower for w in [
         "ఆయుర్వేదం అంటే", "ఆయుష్ అంటే", "నిర్వచనం", "what is ayurveda", "what is asu"
     ])
 
-    # 3. Ayurvedic Patenting / Ashwagandha / Formulation queries in Telugu
+    # 7. Ayurvedic Patenting / Ashwagandha / Formulation queries in Telugu
     is_patent = any(w in q_lower for w in ["అశ్వగంధ", "పేటెంట్", "ఫార్ములేషన్", "మిశ్రమం", "patent", "సెక్షన్ 3", "section 3"])
 
-    if is_registration:
+    if is_tm_definitional:
+        answer = (
+            "### 💡 ట్రేడ్‌మార్క్ అంటే ఏమిటి? (సాధారణ మరియు సులభమైన వివరణ)\n\n"
+            "సరళమైన దైనందిన భాషలో, **ట్రేడ్‌మార్క్ (వ్యాపార చిహ్నం)** అనేది మీ బ్రాండ్, కంపెనీ లేదా ఉత్పత్తికి చట్టబద్ధమైన ప్రత్యేక గుర్తింపు. "
+            "ఇది మీ ఉత్పత్తిని మార్కెట్‌లోని ఇతరుల ఉత్పత్తుల నుండి వేరుగా చూపే ఒక ప్రత్యేకమైన పేరు, లోగో, చిహ్నం, రంగుల కలయిక లేదా ప్యాకేజింగ్ శైలి కావచ్చు.\n\n"
+            "ఉదాహరణకు, 'డాబర్' లేదా 'పతంజలి' లోగో చూసిన వెంటనే అది ఏ సంస్థ ఉత్పత్తి అనేది ప్రజలకు స్పష్టంగా తెలుస్తుంది. "
+            "ట్రేడ్‌మార్క్‌ను ప్రభుత్వం వద్ద నమోదు చేసుకోవడం ద్వారా ఆ పేరు లేదా లోగోను ఉపయోగించే సంపూర్ణ చట్టపరమైన గుత్తాధిపత్యం మీకు లభిస్తుంది, మరియు ఇతరులు మీ పేరును కాపీ చేయకుండా ఆపవచ్చు.\n\n"
+            "---\n\n"
+            "### 📜 సాంకేతిక మరియు చట్టపరమైన నిబంధనలు (ట్రేడ్‌మార్క్ చట్టం, 1999)\n\n"
+            "1. **చట్టబద్ధమైన నిర్వచనం (సెక్షన్ 2(1)(zb)):**\n"
+            "   ట్రేడ్‌మార్క్ చట్టం, 1999 లోని సెక్షన్ 2(1)(zb) ప్రకారం ట్రేడ్‌మార్క్ అంటే:\n"
+            "   > *'చిత్రరూపంలో చూపించదగిన మరియు ఒకరి వస్తువులు లేదా సేవలను ఇతరుల నుండి వేరుగా గుర్తించగల సామర్థ్యం కలిగిన గుర్తు; ఇందులో వస్తువుల ఆకారం, వాటి ప్యాకేజింగ్ మరియు రంగుల కలయిక కూడా ఉంటాయి.'*\n\n"
+            "2. **గుర్తు యొక్క నిర్వచనం (సెక్షన్ 2(1)(m)):**\n"
+            "   ఇందులో ఏదైనా డివైజ్, బ్రాండ్, శీర్షిక, లేబుల్, పేరు, సంతకం, పదం, అక్షరం, సంఖ్య, వస్తువుల ఆకారం లేదా రంగుల కలయిక ఉంటుంది.\n\n"
+            "3. **ఆయుర్వేద ఉత్పత్తుల కోసం నైస్ వర్గీకరణ (Nice Classes):**\n"
+            "   - **క్లాస్ 5:** ఆయుర్వేద ఔషధాలు, మూలికా ఫార్మాస్యూటికల్స్ మరియు చికిత్సా మిశ్రమాలు.\n"
+            "   - **క్లాస్ 3:** ఆయుర్వేద సౌందర్య సాధనాలు, హెర్బల్ నూనెలు, సబ్బులు మరియు చర్మ సంరక్షణ.\n"
+            "   - **క్లాస్ 30:** ఆయుర్వేద ఆహార పదార్థాలు, హెర్బల్ టీలు, సుగంధ ద్రవ్యాలు మరియు ఆయుర్వేద ఆహార.\n"
+            "   - **క్లాస్ 35:** ఆయుర్వేద విక్రయ కేంద్రాలు, ఆన్‌లైన్ స్టోర్లు మరియు క్లినిక్ సేవలు.\n\n"
+            "4. **ప్రత్యేక చట్టపరమైన హక్కులు (సెక్షన్ 28 & 29):**\n"
+            "   రిజిస్ట్రేషన్ ద్వారా యజమానికి ట్రేడ్‌మార్క్‌ను ఉపయోగించే సంపూర్ణ హక్కు లభిస్తుంది మరియు సెక్షన్ 29 ప్రకారం ఉల్లంఘనలపై దావా వేసే అధికారం వస్తుంది.\n\n"
+            "5. **నమోదు నిరాకరణకు సంపూర్ణ ఆధారాలు (సెక్షన్ 9):**\n"
+            "   సాధారణ లేదా వివరణాత్మక మూలికా పేర్లను (ఉదాహరణకు 'అశ్వగంధ' లేదా 'త్రిఫల' ఒక్కదాన్నే) ఎవరూ తమ వ్యక్తిగత ట్రేడ్‌మార్క్‌గా నమోదు చేసుకోలేరు. పేరు విలక్షణంగా (distinctive) ఉండాలి."
+        )
+    elif is_tm_procedural:
+        answer = (
+            "### 📋 భారతదేశంలో ట్రేడ్‌మార్క్ రిజిస్ట్రేషన్ దశలవారీ చట్టపరమైన విధానం (Step-by-Step Process)\n\n"
+            "ట్రేడ్ మార్క్స్ రిజిస్ట్రీ వద్ద మీ ట్రేడ్‌మార్క్‌ను చట్టబద్ధంగా నమోదు చేయడానికి కింది 6 దశల అధికారిక విధానాన్ని అనుసరించాలి:\n\n"
+            "#### 1️⃣ దశ 1: అధికారిక పబ్లిక్ శోధన (Clearance Search)\n"
+            "- దరఖాస్తుకు ముందు అధికారిక **IP India పబ్లిక్ సెర్చ్ పోర్టల్** (`ipindiaonline.gov.in`) లో సమగ్ర శోధన నిర్వహించండి. సారూప్యమైన లేదా సమానమైన పేరు లేదా లోగో ఇప్పటికే నమోదు కాలేదని నిర్ధారించుకోండి.\n\n"
+            "#### 2️⃣ దశ 2: సరైన నైస్ క్లాస్ (Nice Class) ఎంపిక\n"
+            "- మీ ఉత్పత్తులకు సంబంధించిన నిర్దిష్ట చట్టబద్ధమైన తరగతిని ఎంచుకోండి:\n"
+            "  - **క్లాస్ 5:** ఆయుర్వేద మందులు & ఔషధాలు.\n"
+            "  - **క్లాస్ 3:** హెర్బల్ కాస్మెటిక్స్, నూనెలు, సబ్బులు.\n"
+            "  - **క్లాస్ 30:** హెర్బల్ ఆహారాలు, టీలు మరియు సప్లిమెంట్లు.\n\n"
+            "#### 3️⃣ దశ 3: ఫారం TM-A ద్వారా ఆన్‌లైన్ దరఖాస్తు\n"
+            "- IP India e-Filing పోర్టల్ ద్వారా **ఫారం TM-A** ను ఎలక్ట్రానిక్ పద్ధతిలో దాఖలు చేయండి.\n"
+            "- **ప్రభుత్వ అధికారిక రుసుము (Statutory Fees):**\n"
+            "  - **₹4,500:** వ్యక్తులు, స్టార్టప్‌లు మరియు MSME/ఉద్యమ్ సర్టిఫికేట్ కలిగిన వారికి.\n"
+            "  - **₹9,000:** ఇతర ప్రైవేట్ కంపెనీలు మరియు సంస్థలకు.\n"
+            "- అవసరమైన పత్రాలు: లోగో/పేరు చిత్రం, గుర్తింపు పత్రం, మరియు ముందస్తు వినియోగ తేదీని క్లెయిమ్ చేస్తే యూజర్ అఫిడవిట్ (లేదా 'వినియోగానికి ప్రతిపాదించబడింది'గా ప్రకటించండి).\n"
+            "- *తక్షణ ప్రయోజనం:* దరఖాస్తు సమర్పించిన వెంటనే అప్లికేషన్ నంబర్ లభిస్తుంది మరియు మీ బ్రాండ్ పక్కన **™** చిహ్నాన్ని ఉపయోగించడం ప్రారంభించవచ్చు!\n\n"
+            "#### 4️⃣ దశ 4: ట్రేడ్‌మార్క్ ఎగ్జామినేషన్\n"
+            "- ఎగ్జామినర్ మీ దరఖాస్తును పరిశీలిస్తారు. ఏవైనా అభ్యంతరాలు (సెక్షన్ 9 లేదా సెక్షన్ 11 కింద) ఉంటే, **30 రోజుల్లోపు** చట్టపరమైన లిఖితపూర్వక సమాధానం సమర్పించాలి.\n\n"
+            "#### 5️⃣ దశ 5: ట్రేడ్ మార్క్స్ జర్నల్ ప్రచురణ (Opposition Window)\n"
+            "- రిజిస్ట్రార్ ఆమోదించిన తర్వాత అధికారిక *Trade Marks Journal* లో ప్రచురించబడుతుంది.\n"
+            "- దీని ద్వారా ప్రజలకు లేదా పోటీదారులకు **4 నెలల వ్యతిరేకత కాలపరిమితి (Opposition Window)** ప్రారంభమవుతుంది.\n\n"
+            "#### 6️⃣ దశ 6: రిజిస్ట్రేషన్ సర్టిఫికేట్ (ఫారం O-2)\n"
+            "- ఎటువంటి అభ్యంతరాలు రాకపోతే, రిజిస్ట్రార్ అధికారిక **రిజిస్ట్రేషన్ సర్టిఫికేట్ (ఫారం O-2)** ను జారీ చేస్తారు.\n"
+            "- అప్పటి నుండి మీరు అధికారిక రిజిస్టర్డ్ **®** చిహ్నాన్ని చట్టబద్ధంగా ఉపయోగించవచ్చు!\n"
+            "- **చెల్లుబాటు:** ట్రేడ్‌మార్క్ **10 సంవత్సరాలు** చెల్లుబాటు అవుతుంది మరియు సెక్షన్ 25 ప్రకారం ప్రతి 10 సంవత్సరాలకు ఒకసారి పునరుద్ధరించుకోవచ్చు."
+        )
+    elif is_patent_definitional:
+        answer = (
+            "### 💡 పేటెంట్ అంటే ఏమిటి? (సాధారణ మరియు సులభమైన వివరణ)\n\n"
+            "సరళమైన రోజువారీ భాషలో, **పేటెంట్** అనేది ఒక సరికొత్త ఆవిష్కరణను సృష్టించిన ఆవిష్కర్తకు భారత ప్రభుత్వం మంజూరు చేసే ఒక అధికారిక చట్టపరమైన ధృవీకరణ పత్రం మరియు గుత్తాధిపత్య హక్కు. "
+            "ఇది మీ ఆవిష్కరణను ఇతరులు తయారు చేయడం, ఉపయోగించడం, అమ్మడం లేదా దిగుమతి చేసుకోవడాన్ని **20 సంవత్సరాల పాటు** అడ్డుకునే సంపూర్ణ చట్టపరమైన అధికారాన్ని మీకు ఇస్తుంది.\n\n"
+            "ఈ 20 ఏళ్ల చట్టబద్ధమైన గుత్తాధిపత్యానికి బదులుగా, మీ ఆవిష్కరణ ఎలా పనిచేస్తుందనే పూర్తి సాంకేతిక రహస్యాలను మీరు బహిరంగంగా సమాజానికి వెల్లడించాలి.\n\n"
+            "---\n\n"
+            "### 📜 సాంకేతిక మరియు చట్టపరమైన నిబంధనలు (భారత పేటెంట్ చట్టం, 1970)\n\n"
+            "1. **ఆవిష్కరణ యొక్క చట్టబద్ధమైన నిర్వచనం (సెక్షన్ 2(1)(j)):**\n"
+            "   ఒక నూతన ఉత్పత్తి లేదా ప్రక్రియ, ఇందులో ఆవిష్కరణాత్మక ముందడుగు ఉండి పారిశ్రామిక అనువర్తనానికి తగినదై ఉండాలి.\n"
+            "2. **పేటెంట్ అర్హతకు మూడు మూలస్తంభాలు:**\n"
+            "   - **నవ్యత (Novelty - సెక్షన్ 2(1)(l)):** దరఖాస్తు తేదీకి ముందు ప్రపంచంలో ఎక్కడా ప్రచురితం లేదా బహిరంగ వినియోగంలో ఉండకూడదు.\n"
+            "   - **ఆవిష్కరణ నైపుణ్యం (Inventive Step - సెక్షన్ 2(1)(ja)):** ఆ రంగంలోని నిపుణుడికి సులభంగా ఊహించలేని సాంకేతిక పురోగతి ఉండాలి.\n"
+            "   - **పారిశ్రామిక వినియోగం (Industrial Applicability - సెక్షన్ 2(1)(j)):** పరిశ్రమలో తయారు చేయడానికి లేదా ఉపయోగించడానికి సాధ్యపడాలి.\n"
+            "3. **ప్రత్యేక చట్టపరమైన హక్కులు (సెక్షన్ 48):** ఇతరులను నిరోధించే గుత్తాధిపత్య హక్కు.\n"
+            "4. **కాలపరిమితి (సెక్షన్ 53):** దరఖాస్తు దాఖలు చేసిన తేదీ నుండి 20 సంవత్సరాలు.\n"
+            "5. **సాంప్రదాయ పరిజ్ఞానం మినహాయింపు (సెక్షన్ 3(p) మరియు 3(e)):** కేవలం ప్రాచీన విజ్ఞానం లేదా విడి గుణాల సాధారణ మిశ్రమాలు పేటెంట్ పొందలేవు."
+        )
+    elif is_patent_procedural:
+        answer = (
+            "### 📋 భారతదేశంలో పేటెంట్ ఫైల్ చేసే దశలవారీ చట్టపరమైన విధానం (Step-by-Step Process)\n\n"
+            "భారత పేటెంట్ చట్టం, 1970 కింద పేటెంట్ పొందడానికి కింది అధికారిక విధానాన్ని అనుసరించాలి:\n\n"
+            "#### 1️⃣ దశ 1: పూర్వ కళ (Prior Art) మరియు TKDL శోధన\n"
+            "- **InPASS** (`ipindiaservices.gov.in`) మరియు CSIR-AYUSH **ట్రెడిషనల్ నాలెడ్జ్ డిజిటల్ లైబ్రరీ (TKDL)** లో సమగ్ర శోధన నిర్వహించి మీ ఆవిష్కరణ యొక్క నవ్యతను నిర్ధారించుకోండి.\n\n"
+            "#### 2️⃣ దశ 2: పేటెంట్ స్పెసిఫికేషన్ రూపకల్పన (ఫారం 2)\n"
+            "- ప్రాధాన్యత తేదీని పొందేందుకు ప్రొవిజనల్ స్పెసిఫికేషన్ లేదా సినర్జీ డేటా (Combination Index CI < 1.0) మరియు క్లెయిమ్‌లతో కూడిన పూర్తి స్పెసిఫికేషన్‌ను సిద్ధం చేయండి.\n\n"
+            "#### 3️⃣ దశ 3: IP India పోర్టల్‌లో ఆన్‌లైన్ దరఖాస్తు\n"
+            "- `ipindia.gov.in` లో కింది ఫారాలను దాఖలు చేయండి:\n"
+            "  - **ఫారం 1:** పేటెంట్ మంజూరు కోసం దరఖాస్తు.\n"
+            "  - **ఫారం 2:** ప్రొవిజనల్ లేదా కంప్లీట్ స్పెసిఫికేషన్.\n"
+            "  - **ఫారం 3:** విదేశీ ఫైలింగ్‌ల వివరాలు.\n"
+            "  - **ఫారం 5:** ఆవిష్కర్త ప్రకటన.\n"
+            "- **ప్రభుత్వ రుసుము:** వ్యక్తులు/స్టార్టప్‌లు/MSME లకు ₹1,600 (పెద్ద కంపెనీలకు ₹8,000).\n\n"
+            "#### 4️⃣ దశ 4: జాతీయ జీవవైవిధ్య ప్రాధికార సంస్థ (NBA) ఫారం III\n"
+            "- **జీవవైవిధ్య చట్టం, 2002 లోని సెక్షన్ 6** ప్రకారం భారతీయ మూలికలు లేదా జీవ వనరులను ఉపయోగిస్తే పేటెంట్ మంజూరుకు ముందే NBA అనుమతి తప్పనిసరి.\n\n"
+            "#### 5️⃣ దశ 5: ప్రచురణ మరియు పరీక్ష అభ్యర్థన (ఫారం 18)\n"
+            "- 18 నెలల తర్వాత దరఖాస్తు జర్నల్‌లో ప్రచురించబడుతుంది. 48 నెలల్లోపు **ఫారం 18 (RFE)** సమర్పించాలి.\n\n"
+            "#### 6️⃣ దశ 6: ఫస్ట్ ఎగ్జామినేషన్ రిపోర్ట్ (FER) & పేటెంట్ మంజూరు\n"
+            "- ఎగ్జామినర్ లేవనెత్తిన అభ్యంతరాలకు 6 నెలల్లోపు సమాధానం సమర్పించాలి. అన్ని నిబంధనలు పూర్తయిన తర్వాత **సెక్షన్ 43** కింద పేటెంట్ సర్టిఫికేట్ మంజూరు చేయబడుతుంది."
+        )
+    elif is_registration:
         answer = (
             "### 📋 ఆయుర్వేద ఉత్పత్తి రిజిస్ట్రేషన్ మరియు లైసెన్సింగ్ విధానం (Registration Roadmap)\n\n"
             "భారతదేశంలో ఆయుర్వేద ఉత్పత్తిని చట్టబద్ధంగా తయారు చేయడానికి మరియు మార్కెట్ చేయడానికి **డ్రగ్స్ & కాస్మెటిక్స్ చట్టం, 1940** (చాప్టర్ IV-A) మరియు **రూల్స్, 1945** కింద అనుమతి పొందాలి:\n\n"
@@ -370,21 +715,7 @@ def _synthesize_answer_telugu(query: str, passages: list[dict]) -> str:
             "- **TKDL ముందస్తు శోధన:** పేటెంట్ ఎగ్జామినర్లు CSIR-ఆయుష్ TKDL డేటాబేస్‌ను తనిఖీ చేస్తారు; పూర్వ గ్రంథాలలో ఈ ఫార్ములేషన్ ఉంటే దరఖాస్తు తిరస్కరించబడుతుంది."
         )
 
-    # 2. General patent explanation in Telugu
-    elif any(w in q_lower for w in ["పేటెంట్ అంటే ఏమిటి", "పేటెంట్ హక్కులు", "పరిధి", "నియమాలు", "కాలపరిమితి", "explain", "what is a patent"]):
-        answer = (
-            "### ⚖️ భారతీయ చట్టం ప్రకారం పేటెంట్ అంటే ఏమిటి?\n"
-            "**భారత పేటెంట్ చట్టం, 1970** ప్రకారం, **పేటెంట్** అనేది ఒక కొత్త ఆవిష్కరణ కోసం భారత ప్రభుత్వం మంజూరు చేసే చట్టపరమైన ప్రత్యేక గుత్తాధిపత్య హక్కు. **సెక్షన్ 48** కింద, ఇది పేటెంట్ పొందిన వస్తువును లేదా ప్రక్రియను ఇతరులు అనధికారికంగా తయారు చేయడం, ఉపయోగించడం, అమ్మడం లేదా దిగుమతి చేసుకోవడాన్ని నిరోధించే చట్టపరమైన హక్కును కల్పిస్తుంది.\n\n"
-            "### 🔑 ముఖ్యమైన చట్టపరమైన నిబంధనలు (Key Provisions)\n"
-            "1. **పేటెంట్ కాలపరిమితి (సెక్షన్ 53):** దరఖాస్తు దాఖలు చేసిన తేదీ నుండి **20 సంవత్సరాలు** చెల్లుబాటు అవుతుంది.\n"
-            "2. **పేటెంట్ అర్హతకు మూలస్తంభాలు (సెక్షన్ 2):\n"
-            "   - **నవ్యత (Novelty - సెక్షన్ 2(1)(l)):** దరఖాస్తు తేదీకి ముందు ప్రపంచంలో ఎక్కడా ప్రచురించబడకూడదు.\n"
-            "   - **ఆవిష్కరణ నైపుణ్యం (Inventive Step - సెక్షన్ 2(1)(ja)):** సంబంధిత రంగంలో నిపుణుడికి స్పష్టంగా ఊహించలేని సాంకేతిక పురోగతి ఉండాలి.\n"
-            "   - **పారిశ్రామిక వినియోగం (Industrial Applicability - సెక్షన్ 2(1)(j)):** పరిశ్రమలో తయారు చేయడానికి లేదా ఉపయోగించడానికి సాధ్యపడాలి.\n"
-            "3. **పేటెంట్ ఇవ్వబడనివి (సెక్షన్ 3):** అల్పమైన విషయాలు, సాంప్రదాయ పరిజ్ఞానం (సెక్షన్ 3(p)), కేవలం మిశ్రమాలు (సెక్షన్ 3(e)) పేటెంట్ పొందలేవు."
-        )
-
-    # 3. FSSAI / Ayurveda Aahara in Telugu
+    # 8. FSSAI / Ayurveda Aahara in Telugu
     elif any(w in q_lower for w in ["fssai", "లేబుల్", "లేబులింగ్", "ఆహార", "నియమాలు", "ఆయుర్వేద ఆహార"]):
         answer = (
             "### 🏷️ ఆయుర్వేద ఆహార ఉత్పత్తులకు తప్పనిసరి FSSAI నిబంధనలు\n"
@@ -395,17 +726,11 @@ def _synthesize_answer_telugu(query: str, passages: list[dict]) -> str:
             "4. **FoSCoS లైసెన్సింగ్:** ఆహార ఉత్పత్తుల తయారీ కోసం FSSAI FoSCoS పోర్టల్ ద్వారా లైసెన్స్ పొందాలి."
         )
 
-    # 4. Trademarks & GI Tags in Telugu
-    elif any(w in q_lower for w in ["ట్రేడ్‌మార్క్", "ట్రేడ్ మార్క్", "బ్రాండ్", "జిఐ", "భౌగోళిక గుర్తింపు"]):
+    # 9. General GI Tags in Telugu
+    elif any(w in q_lower for w in ["జిఐ", "భౌగోళిక గుర్తింపు"]):
         answer = (
-            "### ™️ ఆయుర్వేద బ్రాండ్లకు ట్రేడ్‌మార్క్ & భౌగోళిక గుర్తింపు (GI) రక్షణ\n"
-            "**ట్రేడ్‌మార్క్ చట్టం, 1999** మరియు **వస్తువుల భౌగోళిక గుర్తింపు చట్టం, 1999** ప్రకారం:\n\n"
-            "1. **వర్తించే తరగతులు (Nice Classes):\n"
-            "   - **క్లాస్ 5:** ఆయుర్వేద ఔషధాలు, ఫార్మాస్యూటికల్ ఉత్పత్తులు.\n"
-            "   - **క్లాస్ 29 & 30:** ఆయుర్వేద ఆహార ఉత్పత్తులు, సప్లిమెంట్లు.\n"
-            "   - **క్లాస్ 3:** కాస్మెటిక్స్, హెర్బల్ సబ్బులు మరియు చర్మ సంరక్షణ ఉత్పత్తులు.\n"
-            "2. **ప్రత్యేకత ఆవశ్యకత (సెక్షన్ 9):** 'అశ్వగంధ' లేదా 'త్రిఫల' వంటి సాధారణ పేర్లను ట్రేడ్‌మార్క్‌గా నమోదు చేయలేరు. బ్రాండ్ పేరు విలక్షణంగా ఉండాలి.\n"
-            "3. **భౌగోళిక గుర్తింపు (GI Tag):** ఒక నిర్దిష్ట ప్రాంతానికి చెందిన సాంప్రదాయ ఆయుర్వేద ఉత్పత్తికి (ఉదా: కాశ్మీర్ కుంకుమపువ్వు) GI రక్షణ పొందవచ్చు."
+            "### 🏷️ భౌగోళిక గుర్తింపు (GI Tag) రక్షణ\n"
+            "**వస్తువుల భౌగోళిక గుర్తింపు చట్టం, 1999** ప్రకారం ఒక నిర్దిష్ట ప్రాంతానికి చెందిన సాంప్రదాయ ఉత్పత్తికి (ఉదా: కాశ్మీర్ కుంకుమపువ్వు) సామూహిక GI హక్కులు లభిస్తాయి."
         )
 
     else:
