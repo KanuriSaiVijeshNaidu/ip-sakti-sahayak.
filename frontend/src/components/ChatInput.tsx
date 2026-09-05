@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, KeyboardEvent } from "react";
-import { Send, Loader2 } from "lucide-react";
+import { SendFill, ArrowRepeat } from "react-bootstrap-icons";
 
 interface Props {
   onSend: (query: string) => void;
@@ -32,7 +32,7 @@ export default function ChatInput({ onSend, loading, disabled, placeholder }: Pr
   };
 
   return (
-    <div className="flex items-end gap-2 bg-white border border-gray-300 rounded-2xl px-4 py-3 shadow-sm focus-within:border-green-500 focus-within:ring-1 focus-within:ring-green-500 transition-all">
+    <div className="flex items-end gap-2 bg-white border border-gray-300 rounded-2xl px-4 py-3 shadow-xs focus-within:border-green-500 focus-within:ring-1 focus-within:ring-green-500 transition-all">
       <textarea
         ref={textareaRef}
         value={text}
@@ -49,8 +49,8 @@ export default function ChatInput({ onSend, loading, disabled, placeholder }: Pr
         className="flex-shrink-0 w-9 h-9 rounded-xl bg-green-600 hover:bg-green-700 disabled:bg-gray-200 disabled:cursor-not-allowed flex items-center justify-center transition-colors"
       >
         {loading
-          ? <Loader2 className="w-4 h-4 text-white animate-spin" />
-          : <Send className="w-4 h-4 text-white" />}
+          ? <ArrowRepeat className="w-4 h-4 text-white animate-spin" />
+          : <SendFill className="w-3.5 h-3.5 text-white" />}
       </button>
     </div>
   );

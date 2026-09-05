@@ -1,6 +1,6 @@
-﻿"use client";
+"use client";
 import { CitedPassage } from "@/types";
-import { BookOpen, Globe, Percent } from "lucide-react";
+import { JournalBookmarkFill, Globe2, Percent } from "react-bootstrap-icons";
 
 const DOMAIN_COLORS: Record<string, string> = {
   patents:    "bg-blue-100 text-blue-800",
@@ -27,7 +27,7 @@ export default function CitationCard({ passages }: { passages: CitedPassage[] })
   return (
     <div className="mt-1 space-y-2">
       <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex items-center gap-1 px-1">
-        <BookOpen className="w-3 h-3" /> Legal Sources Referenced
+        <JournalBookmarkFill className="w-3 h-3 text-green-700" /> Legal Sources Referenced
       </p>
 
       {passages.map((p, i) => {
@@ -54,7 +54,7 @@ export default function CitationCard({ passages }: { passages: CitedPassage[] })
                 )}
                 {p.jurisdiction && p.jurisdiction !== "auto" && (
                   <span className="flex items-center gap-0.5 text-gray-400">
-                    <Globe className="w-3 h-3" />
+                    <Globe2 className="w-3 h-3" />
                     {p.jurisdiction}
                   </span>
                 )}

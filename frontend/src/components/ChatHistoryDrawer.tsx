@@ -3,19 +3,16 @@
 import { useState } from "react";
 import { Message, DomainType } from "@/types";
 import {
-  X,
-  Plus,
-  Trash2,
+  XLg,
+  PlusLg,
+  Trash3Fill,
   Download,
-  MessageSquare,
+  ChatLeftTextFill,
   Search,
-  Calendar,
-  Layers,
-  FileText,
-  Clock,
-  KeyRound,
-  ShieldAlert,
-} from "lucide-react";
+  FileEarmarkTextFill,
+  ClockFill,
+  KeyFill,
+} from "react-bootstrap-icons";
 
 export interface ChatSession {
   id: string;
@@ -127,7 +124,7 @@ export default function ChatHistoryDrawer({
         {/* Header */}
         <div className="p-4 border-b border-gray-200 flex items-center justify-between bg-gray-50/70">
           <div className="flex items-center gap-2">
-            <MessageSquare className="w-5 h-5 text-green-700" />
+            <ChatLeftTextFill className="w-4 h-4 text-green-700" />
             <h2 className="font-bold text-gray-900 text-sm">Consultation History</h2>
             <span className="text-xs bg-green-100 text-green-800 font-mono px-2 py-0.5 rounded-full font-semibold">
               {isLoggedIn ? sessions.length : 0}
@@ -137,7 +134,7 @@ export default function ChatHistoryDrawer({
             onClick={onClose}
             className="p-1.5 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors"
           >
-            <X className="w-4 h-4" />
+            <XLg className="w-3.5 h-3.5" />
           </button>
         </div>
 
@@ -145,7 +142,7 @@ export default function ChatHistoryDrawer({
         {!isLoggedIn ? (
           <div className="flex-1 flex flex-col items-center justify-center p-6 text-center space-y-4">
             <div className="w-14 h-14 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 shadow-2xs">
-              <KeyRound className="w-7 h-7" />
+              <KeyFill className="w-6 h-6" />
             </div>
             <div className="space-y-1 max-w-xs">
               <h3 className="text-sm font-bold text-gray-900">No History Before Login</h3>
@@ -160,7 +157,7 @@ export default function ChatHistoryDrawer({
               }}
               className="px-4 py-2 bg-green-700 hover:bg-green-800 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center gap-1.5"
             >
-              <KeyRound className="w-3.5 h-3.5" />
+              <KeyFill className="w-3.5 h-3.5" />
               <span>Sign In with Email & OTP</span>
             </button>
           </div>
@@ -176,7 +173,7 @@ export default function ChatHistoryDrawer({
                 }}
                 className="w-full flex items-center justify-center gap-2 py-2 px-3 bg-green-700 hover:bg-green-800 text-white font-medium text-xs rounded-xl shadow-xs transition-all hover:shadow-md"
               >
-                <Plus className="w-4 h-4" />
+                <PlusLg className="w-3.5 h-3.5" />
                 New Consultation (+ Chat)
               </button>
             </div>
@@ -199,7 +196,7 @@ export default function ChatHistoryDrawer({
             <div className="flex-1 overflow-y-auto p-2 space-y-1.5">
               {filteredSessions.length === 0 ? (
                 <div className="text-center py-12 px-4">
-                  <MessageSquare className="w-8 h-8 text-gray-300 mx-auto mb-2" />
+                  <ChatLeftTextFill className="w-8 h-8 text-gray-300 mx-auto mb-2" />
                   <p className="text-xs font-semibold text-gray-500">No consultations found</p>
                   <p className="text-[11px] text-gray-400 mt-0.5">
                     Ask a legal question to create your first consultation.
@@ -234,7 +231,7 @@ export default function ChatHistoryDrawer({
                             {s.title || "Untitled Legal Inquiry"}
                           </span>
                           <span className="text-[10px] text-gray-400 font-mono shrink-0 flex items-center gap-0.5">
-                            <Clock className="w-2.5 h-2.5" />
+                            <ClockFill className="w-2.5 h-2.5" />
                             {dateStr}
                           </span>
                         </div>
@@ -256,7 +253,7 @@ export default function ChatHistoryDrawer({
                             onClick={() => exportSession(s, "markdown")}
                             className="px-2 py-0.5 text-[10px] font-mono rounded text-gray-600 hover:bg-gray-200/70 flex items-center gap-1 transition-colors"
                           >
-                            <FileText className="w-2.5 h-2.5 text-gray-500" />
+                            <FileEarmarkTextFill className="w-2.5 h-2.5 text-gray-500" />
                             MD
                           </button>
                           <button
@@ -279,7 +276,7 @@ export default function ChatHistoryDrawer({
                           }}
                           className="p-1 rounded text-gray-400 hover:text-red-600 hover:bg-red-50 transition-colors"
                         >
-                          <Trash2 className="w-3.5 h-3.5" />
+                          <Trash3Fill className="w-3.5 h-3.5" />
                         </button>
                       </div>
                     </div>
@@ -299,7 +296,7 @@ export default function ChatHistoryDrawer({
                   }}
                   className="w-full flex items-center justify-center gap-1.5 py-1.5 px-3 border border-red-200 text-red-600 hover:bg-red-50 rounded-lg text-xs font-semibold transition-colors"
                 >
-                  <Trash2 className="w-3 h-3" />
+                  <Trash3Fill className="w-3 h-3" />
                   <span>Clear All History</span>
                 </button>
               </div>

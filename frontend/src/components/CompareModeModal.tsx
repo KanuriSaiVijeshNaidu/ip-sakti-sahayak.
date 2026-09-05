@@ -1,7 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { X, Scale, FileText, CheckCircle2, XCircle, AlertTriangle, ArrowRight, ShieldAlert } from "lucide-react";
+import {
+  XLg,
+  ColumnsGap,
+  FileEarmarkTextFill,
+  Check2Circle,
+  ExclamationTriangleFill,
+} from "react-bootstrap-icons";
 
 interface CompareModeModalProps {
   isOpen: boolean;
@@ -22,7 +28,7 @@ export default function CompareModeModal({ isOpen, onClose }: CompareModeModalPr
         <div className="bg-gradient-to-r from-gray-900 via-emerald-950 to-green-950 text-white p-5 flex items-start justify-between shrink-0">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center border border-white/20">
-              <Scale className="w-6 h-6 text-green-300" />
+              <ColumnsGap className="w-5 h-5 text-green-300" />
             </div>
             <div>
               <div className="flex items-center gap-2">
@@ -40,7 +46,7 @@ export default function CompareModeModal({ isOpen, onClose }: CompareModeModalPr
             onClick={onClose}
             className="p-1 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
           >
-            <X className="w-5 h-5" />
+            <XLg className="w-4 h-4" />
           </button>
         </div>
 
@@ -84,7 +90,7 @@ export default function CompareModeModal({ isOpen, onClose }: CompareModeModalPr
           {activeTab === "ip_regimes" && (
             <div className="space-y-4">
               <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 text-xs text-blue-900 flex items-start gap-2.5">
-                <FileText className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
+                <FileEarmarkTextFill className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-bold">Strategic IP Guidance:</span> Classical recipes (e.g. Triphala) cannot be patented (Sec 3p) or monopolized as trademarks (Sec 9). Protection must be achieved through proprietary extraction technology (Patents), brand distinctiveness (Trademarks), or regional terroir (GI).
                 </div>
@@ -155,7 +161,7 @@ export default function CompareModeModal({ isOpen, onClose }: CompareModeModalPr
           {activeTab === "ayush_fssai" && (
             <div className="space-y-4">
               <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-900 flex items-start gap-2.5">
-                <AlertTriangle className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+                <ExclamationTriangleFill className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-bold">Statutory Claim Demarcation:</span> Advertising an Ayurveda Aahara food product to cure disease (e.g. diabetes or arthritis) is a direct statutory violation of Regulation 6 and attracts penal action under Section 53 of the Food Safety & Standards Act.
                 </div>
@@ -221,7 +227,7 @@ export default function CompareModeModal({ isOpen, onClose }: CompareModeModalPr
           {activeTab === "biodiversity" && (
             <div className="space-y-4">
               <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3 text-xs text-emerald-900 flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+                <Check2Circle className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-bold">Historic Decriminalization:</span> The Biological Diversity (Amendment) Act, 2023 replaced imprisonment with civil penalties, while officially recognizing registered AYUSH vaidyas as exempt custodians of traditional medicine.
                 </div>

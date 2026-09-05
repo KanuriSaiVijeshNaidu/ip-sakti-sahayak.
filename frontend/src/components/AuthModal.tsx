@@ -2,24 +2,24 @@
 
 import { useState, useEffect } from "react";
 import {
-  X,
+  XLg,
   ShieldCheck,
-  User,
-  Stethoscope,
-  Scale,
-  Building2,
-  FlaskConical,
-  Mail,
-  Lock,
-  LogOut,
-  KeyRound,
-  CheckCircle2,
-  AlertCircle,
-  Clock,
+  PersonFill,
+  HeartPulseFill,
+  BriefcaseFill,
+  BuildingFillGear,
+  Flower1,
+  EnvelopeAtFill,
+  ShieldLockFill,
+  BoxArrowRight,
+  KeyFill,
+  Check2Circle,
+  ExclamationCircleFill,
+  HourglassSplit,
   ArrowRight,
-  RefreshCw,
-  Sparkles,
-} from "lucide-react";
+  ArrowRepeat,
+  Stars,
+} from "react-bootstrap-icons";
 import { UserRole, UserProfile } from "@/types";
 
 export type { UserRole, UserProfile };
@@ -36,7 +36,7 @@ const ROLES: {
   id: UserRole;
   label: string;
   description: string;
-  icon: typeof Stethoscope;
+  icon: typeof HeartPulseFill;
   color: string;
   badge: string;
 }[] = [
@@ -44,7 +44,7 @@ const ROLES: {
     id: "vaidya",
     label: "Ayurvedic Doctor / Vaidya",
     description: "Registered Indian Medicine Practitioner with BDA 2023 exemptions & AFI classical formulations.",
-    icon: Stethoscope,
+    icon: HeartPulseFill,
     color: "from-emerald-600 to-teal-700",
     badge: "ISM Registered Vaidya",
   },
@@ -52,7 +52,7 @@ const ROLES: {
     id: "attorney",
     label: "Patent Attorney / IP Agent",
     description: "Registered with CGPDTM. Focus on Sec 3(e), 3(p), 3(d), Form III NBA and prior art defense.",
-    icon: Scale,
+    icon: BriefcaseFill,
     color: "from-blue-600 to-indigo-700",
     badge: "Patent Bar / IN-PA",
   },
@@ -60,7 +60,7 @@ const ROLES: {
     id: "regulator",
     label: "Regulatory Auditor / FSSAI Officer",
     description: "State Licensing Authority or Food Safety Officer monitoring Rule 158B & Schedule T GMP.",
-    icon: Building2,
+    icon: BuildingFillGear,
     color: "from-purple-600 to-violet-800",
     badge: "SLA / FSSAI Officer",
   },
@@ -68,7 +68,7 @@ const ROLES: {
     id: "researcher",
     label: "AYUSH Enterprise / Scientist",
     description: "R&D Scientist or Herbal Exporter managing commercial ABS, API monographs & TLC markers.",
-    icon: FlaskConical,
+    icon: Flower1,
     color: "from-amber-600 to-orange-700",
     badge: "AYUSH R&D / Scholar",
   },
@@ -76,7 +76,7 @@ const ROLES: {
     id: "guest",
     label: "Public Citizen / Researcher",
     description: "General statutory inquiries, herbal heritage rights, and biopiracy case investigations.",
-    icon: User,
+    icon: PersonFill,
     color: "from-gray-600 to-slate-700",
     badge: "Citizen Inquirer",
   },
@@ -256,7 +256,7 @@ export default function AuthModal({
             onClick={onClose}
             className="p-1 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
           >
-            <X className="w-5 h-5" />
+            <XLg className="w-4 h-4" />
           </button>
         </div>
 
@@ -277,7 +277,7 @@ export default function AuthModal({
                       </span>
                     </div>
                     <p className="text-xs text-gray-600 flex items-center gap-1 mt-0.5 font-mono">
-                      <Mail className="w-3.5 h-3.5 text-emerald-700" />
+                      <EnvelopeAtFill className="w-3.5 h-3.5 text-emerald-700" />
                       {currentProfile.email}
                     </p>
                   </div>
@@ -304,7 +304,7 @@ export default function AuthModal({
               <div className="bg-white/90 border border-emerald-200 rounded-xl p-3 text-[11px] font-mono text-gray-700 space-y-1">
                 <div className="flex items-center justify-between text-emerald-800 text-[10px] font-bold">
                   <span className="flex items-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                    <Check2Circle className="w-3.5 h-3.5 text-emerald-600" />
                     Private Consultation Vault: ACTIVE
                   </span>
                   <span>TLS 256-Bit</span>
@@ -344,7 +344,7 @@ export default function AuthModal({
                   }}
                   className="px-5 py-2 text-xs font-bold text-white bg-red-600 hover:bg-red-700 rounded-xl shadow-xs transition-all flex items-center gap-1.5"
                 >
-                  <LogOut className="w-3.5 h-3.5" />
+                  <BoxArrowRight className="w-3.5 h-3.5" />
                   Sign Out of AYURLEX
                 </button>
               </div>
@@ -375,7 +375,7 @@ export default function AuthModal({
             {/* Error Banner */}
             {error && (
               <div className="bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl p-3 flex items-start gap-2">
-                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                <ExclamationCircleFill className="w-4 h-4 shrink-0 mt-0.5" />
                 <span>{error}</span>
               </div>
             )}
@@ -388,7 +388,7 @@ export default function AuthModal({
                     Official Email Address <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
-                    <Mail className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                    <EnvelopeAtFill className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
                     <input
                       type="email"
                       value={email}
@@ -408,7 +408,7 @@ export default function AuthModal({
                     Full Name & Title
                   </label>
                   <div className="relative">
-                    <User className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                    <PersonFill className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
                     <input
                       type="text"
                       value={name}
@@ -502,9 +502,9 @@ export default function AuthModal({
                     className="px-5 py-2 text-xs font-bold text-white bg-green-700 hover:bg-green-800 rounded-xl shadow-xs transition-all flex items-center gap-1.5 disabled:opacity-50"
                   >
                     {isSendingOtp ? (
-                      <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                      <ArrowRepeat className="w-3.5 h-3.5 animate-spin" />
                     ) : (
-                      <KeyRound className="w-3.5 h-3.5" />
+                      <KeyFill className="w-3.5 h-3.5" />
                     )}
                     <span>Send Verification OTP</span>
                   </button>
@@ -518,7 +518,7 @@ export default function AuthModal({
                 {/* OTP Dispatch Card */}
                 <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 space-y-2 text-xs">
                   <div className="flex items-center gap-2 text-emerald-900 font-bold text-sm">
-                    <Mail className="w-4 h-4 text-emerald-700" />
+                    <EnvelopeAtFill className="w-4 h-4 text-emerald-700" />
                     <span>Passcode Dispatched to {email}</span>
                   </div>
                   <p className="text-[12px] text-emerald-800 leading-relaxed">
@@ -561,7 +561,7 @@ export default function AuthModal({
                   </button>
 
                   <div className="flex items-center gap-1 text-[11px]">
-                    <Clock className="w-3 h-3 text-gray-400" />
+                    <HourglassSplit className="w-3 h-3 text-gray-400" />
                     {resendTimer > 0 ? (
                       <span>Resend code in {resendTimer}s</span>
                     ) : (
@@ -594,12 +594,12 @@ export default function AuthModal({
                   >
                     {isVerifyingOtp ? (
                       <>
-                        <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                        <ArrowRepeat className="w-3.5 h-3.5 animate-spin" />
                         Verifying...
                       </>
                     ) : (
                       <>
-                        <CheckCircle2 className="w-3.5 h-3.5" />
+                        <Check2Circle className="w-3.5 h-3.5" />
                         Verify & Access Private Vault
                       </>
                     )}

@@ -1,18 +1,13 @@
 "use client";
 import {
-  Scale,
-  Globe,
-  MessageSquare,
-  SplitSquareVertical,
-  User,
-  ShieldCheck,
-  Activity,
-  LogOut,
-  KeyRound,
-  Mail,
-  Lock,
-  Home,
-} from "lucide-react";
+  ShieldShaded,
+  HouseDoorFill,
+  ClockHistory,
+  ColumnsGap,
+  KeyFill,
+  BoxArrowRight,
+  Globe2,
+} from "react-bootstrap-icons";
 import { LanguageCode, UserProfile } from "@/types";
 import { getTranslation } from "@/lib/i18n";
 import Link from "next/link";
@@ -61,7 +56,7 @@ export default function Header({
           title="Return to AYURLEX Home / New Inquiry"
         >
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-600 to-emerald-700 flex items-center justify-center shadow-xs">
-            <Scale className="w-5 h-5 text-white" />
+            <ShieldShaded className="w-5 h-5 text-white" />
           </div>
           <div>
             <h1 className="text-base font-bold text-gray-900 leading-tight flex items-center gap-1.5">
@@ -81,10 +76,10 @@ export default function Header({
           {/* Home Button */}
           <button
             onClick={onGoHome}
-            className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors border border-gray-200"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors border border-gray-200"
             title="Return to Home Screen"
           >
-            <Home className="w-3.5 h-3.5 text-green-700" />
+            <HouseDoorFill className="w-3.5 h-3.5 text-green-700" />
             <span className="hidden sm:inline">Home</span>
           </button>
 
@@ -94,7 +89,7 @@ export default function Header({
             className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-gray-700 bg-gray-100/80 hover:bg-gray-200/80 rounded-lg transition-colors border border-gray-200"
             title="Open Consultation History"
           >
-            <MessageSquare className="w-3.5 h-3.5 text-green-700" />
+            <ClockHistory className="w-3.5 h-3.5 text-green-700" />
             <span className="hidden sm:inline">History</span>
             {userProfile.isLoggedIn && (
               <span className="bg-green-700 text-white text-[10px] font-mono px-1.5 py-0.2 rounded-full font-bold">
@@ -109,7 +104,7 @@ export default function Header({
             className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors"
             title="Open Statutory Compare Mode"
           >
-            <SplitSquareVertical className="w-3.5 h-3.5 text-emerald-700" />
+            <ColumnsGap className="w-3.5 h-3.5 text-emerald-700" />
             <span className="hidden md:inline">Compare</span>
           </button>
 
@@ -144,7 +139,7 @@ export default function Header({
                 className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors"
                 title="Log Out of AYURLEX"
               >
-                <LogOut className="w-3.5 h-3.5" />
+                <BoxArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
           ) : (
@@ -153,14 +148,14 @@ export default function Header({
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-white bg-green-700 hover:bg-green-800 rounded-lg shadow-xs transition-all"
               title="Sign In with Official Email & OTP"
             >
-              <KeyRound className="w-3.5 h-3.5" />
+              <KeyFill className="w-3.5 h-3.5" />
               <span>Sign In</span>
             </button>
           )}
 
           {/* Language selector */}
           <div className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded-lg px-2.5 py-1 text-xs hover:border-green-400 transition-colors">
-            <Globe className="w-3.5 h-3.5 text-green-600 shrink-0" />
+            <Globe2 className="w-3.5 h-3.5 text-green-600 shrink-0" />
             <select
               value={language}
               onChange={(e) => onLanguageChange(e.target.value as LanguageCode)}

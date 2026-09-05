@@ -2,20 +2,17 @@
 import { Message, LanguageCode } from "@/types";
 import CitationCard from "./CitationCard";
 import {
-  User,
-  Bot,
-  Clock,
-  BookOpen,
+  PersonFill,
+  Robot,
+  ClockFill,
+  JournalBookmarkFill,
   ChevronDown,
   ChevronUp,
   ShieldCheck,
-  CheckCircle2,
+  Check2Circle,
   Copy,
-  Check,
-  Hash,
-  Cpu,
-  Layers,
-} from "lucide-react";
+  Check2,
+} from "react-bootstrap-icons";
 import { useState } from "react";
 import { getTranslation } from "@/lib/i18n";
 
@@ -191,9 +188,9 @@ export default function ChatBubble({
         }`}
       >
         {isUser ? (
-          <User className="w-4 h-4 text-green-700" />
+          <PersonFill className="w-4 h-4 text-green-700" />
         ) : (
-          <Bot className="w-4 h-4 text-white" />
+          <Robot className="w-4 h-4 text-white" />
         )}
       </div>
 
@@ -221,7 +218,7 @@ export default function ChatBubble({
           <div className="w-full bg-white border border-gray-200 rounded-xl p-3 shadow-2xs space-y-2">
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-1.5 text-xs font-semibold text-gray-700">
-                <BookOpen className="w-3.5 h-3.5 text-green-600" />
+                <JournalBookmarkFill className="w-3.5 h-3.5 text-green-600" />
                 <span>{t.referredSources}</span>
               </div>
               <button
@@ -304,7 +301,7 @@ export default function ChatBubble({
                       className="p-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors shrink-0"
                     >
                       {copiedHash ? (
-                        <Check className="w-2.5 h-2.5 text-emerald-400" />
+                        <Check2 className="w-2.5 h-2.5 text-emerald-400" />
                       ) : (
                         <Copy className="w-2.5 h-2.5" />
                       )}
@@ -322,7 +319,7 @@ export default function ChatBubble({
                 <div className="flex items-center justify-between text-[10px] pt-1 text-slate-400 border-t border-slate-800/80">
                   <span>Block #{receipt.block_height}</span>
                   <span className="text-emerald-400 flex items-center gap-1">
-                    <CheckCircle2 className="w-3 h-3" />
+                    <Check2Circle className="w-3 h-3" />
                     Zero Hallucination Verified
                   </span>
                   <span>{new Date(receipt.timestamp).toLocaleTimeString()}</span>
@@ -335,7 +332,7 @@ export default function ChatBubble({
         {/* Latency & Timestamp info */}
         {!isUser && message.latency_ms && (
           <span className="text-[11px] text-gray-400 flex items-center gap-1 px-1">
-            <Clock className="w-3 h-3" />
+            <ClockFill className="w-3 h-3" />
             {t.genTime} {(message.latency_ms / 1000).toFixed(1)}s
           </span>
         )}

@@ -1,8 +1,8 @@
 "use client";
 import { RetrievalCandidate } from "@/types";
-import ScoreBar from "./ScoreBar";
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import ScoreBar from "./ScoreBar";
+import { ChevronDown, ChevronUp } from "react-bootstrap-icons";
 
 const DOMAIN_BADGE: Record<string, string> = {
   patents:    "bg-blue-100 text-blue-700",

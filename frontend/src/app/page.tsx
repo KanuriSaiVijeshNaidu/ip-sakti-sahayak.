@@ -12,19 +12,17 @@ import CompareModeModal from "@/components/CompareModeModal";
 import { sendChatMessage } from "@/lib/api";
 import { Message, DomainType, LanguageCode } from "@/types";
 import {
-  Scale,
-  AlertCircle,
-  BookOpen,
-  Sparkles,
-  SplitSquareVertical,
-  MessageSquare,
+  ShieldShaded,
+  ExclamationCircleFill,
+  ColumnsGap,
+  ChatLeftTextFill,
   ShieldCheck,
-  Lock,
-  KeyRound,
-  Home,
-  Trash2,
-  RotateCcw,
-} from "lucide-react";
+  KeyFill,
+  HouseDoorFill,
+  Trash3Fill,
+  PlusCircleFill,
+  ArrowLeftCircleFill,
+} from "react-bootstrap-icons";
 import { getTranslation } from "@/lib/i18n";
 import { DOMAIN_DATA } from "@/lib/domainData";
 
@@ -344,7 +342,7 @@ export default function ChatPage() {
             onClick={() => setIsCompareOpen(true)}
             className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors shrink-0"
           >
-            <SplitSquareVertical className="w-3 h-3 text-emerald-700" />
+            <ColumnsGap className="w-3 h-3 text-emerald-700" />
             <span>Compare Statutes</span>
           </button>
         </div>
@@ -361,7 +359,7 @@ export default function ChatPage() {
                 className="flex items-center gap-1.5 font-bold text-gray-700 hover:text-green-800 transition-colors"
                 title="Return to Welcome Screen"
               >
-                <Home className="w-3.5 h-3.5 text-green-700" />
+                <HouseDoorFill className="w-3.5 h-3.5 text-green-700" />
                 <span>← Return to Home Screen</span>
               </button>
 
@@ -371,7 +369,7 @@ export default function ChatPage() {
                   className="px-2.5 py-1 text-[11px] font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors flex items-center gap-1"
                   title="Start a fresh question"
                 >
-                  <RotateCcw className="w-3 h-3 text-gray-500" />
+                  <PlusCircleFill className="w-3 h-3 text-gray-500" />
                   <span>New Chat</span>
                 </button>
 
@@ -388,7 +386,7 @@ export default function ChatPage() {
                   className="px-2.5 py-1 text-[11px] font-semibold text-red-600 hover:bg-red-50 border border-red-200 rounded-lg transition-colors flex items-center gap-1"
                   title="Delete this conversation"
                 >
-                  <Trash2 className="w-3 h-3" />
+                  <Trash3Fill className="w-3 h-3" />
                   <span>Delete Chat</span>
                 </button>
               </div>
@@ -399,7 +397,7 @@ export default function ChatPage() {
           {isEmpty && (
             <div className="flex flex-col items-center text-center py-6 space-y-5">
               <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-600 to-orange-500 flex items-center justify-center shadow-lg">
-                <Scale className="w-8 h-8 text-white" />
+                <ShieldShaded className="w-8 h-8 text-white" />
               </div>
               <div className="space-y-1.5 max-w-xl">
                 <h2 className="text-2xl font-bold text-gray-900">{t.title}</h2>
@@ -459,7 +457,7 @@ export default function ChatPage() {
                       onClick={() => setIsAuthOpen(true)}
                       className="px-3 py-1.5 text-xs font-bold text-white bg-green-700 hover:bg-green-800 rounded-lg shadow-xs transition-all flex items-center gap-1"
                     >
-                      <KeyRound className="w-3.5 h-3.5" />
+                      <KeyFill className="w-3.5 h-3.5" />
                       Sign In with OTP
                     </button>
                   )}
@@ -473,7 +471,7 @@ export default function ChatPage() {
                   className="p-3.5 rounded-xl border border-gray-200 bg-white hover:border-green-400 hover:shadow-xs transition-all flex flex-col justify-between"
                 >
                   <div className="flex items-center gap-2 text-xs font-bold text-gray-900 mb-1">
-                    <SplitSquareVertical className="w-4 h-4 text-emerald-700" />
+                    <ColumnsGap className="w-4 h-4 text-emerald-700" />
                     <span>Statutory Compare</span>
                   </div>
                   <p className="text-[11px] text-gray-500">
@@ -501,7 +499,7 @@ export default function ChatPage() {
                   className="p-3.5 rounded-xl border border-gray-200 bg-white hover:border-green-400 hover:shadow-xs transition-all flex flex-col justify-between"
                 >
                   <div className="flex items-center gap-2 text-xs font-bold text-gray-900 mb-1">
-                    <MessageSquare className="w-4 h-4 text-purple-700" />
+                    <ChatLeftTextFill className="w-4 h-4 text-purple-700" />
                     <span>Private Consultations</span>
                   </div>
                   <p className="text-[11px] text-gray-500">
@@ -528,7 +526,7 @@ export default function ChatPage() {
           {loading && (
             <div className="flex gap-3 items-center text-gray-500 text-xs px-2 py-3 bg-white border border-gray-200 rounded-2xl shadow-2xs max-w-sm">
               <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center animate-pulse">
-                <Scale className="w-3.5 h-3.5 text-green-700" />
+                <ShieldShaded className="w-3.5 h-3.5 text-green-700" />
               </div>
               <div className="flex items-center gap-1.5">
                 <div className="w-1.5 h-1.5 bg-green-600 rounded-full animate-bounce [animation-delay:-0.3s]" />
@@ -544,7 +542,7 @@ export default function ChatPage() {
           {/* Error banner */}
           {error && (
             <div className="flex items-center gap-2 bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl p-3 shadow-xs">
-              <AlertCircle className="w-4 h-4 shrink-0" />
+              <ExclamationCircleFill className="w-4 h-4 shrink-0" />
               <span>{error}</span>
             </div>
           )}

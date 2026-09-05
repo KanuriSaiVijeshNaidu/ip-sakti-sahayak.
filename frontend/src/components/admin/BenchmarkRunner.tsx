@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { fetchAdminTrace } from "@/lib/api";
 import { AdminTraceResponse } from "@/types";
-import { Play, CheckCircle, XCircle, Loader2 } from "lucide-react";
+import { PlayFill, CheckCircleFill, XCircleFill, ArrowRepeat } from "react-bootstrap-icons";
 
 const BENCHMARK_QUERIES = [
   { query: "Can I patent an Ayurvedic herbal formulation?",             domain: "patents",    expectedDomains: ["patents"],             label: "Patent Q1 (EN)" },
@@ -75,7 +75,7 @@ export default function BenchmarkRunner() {
           disabled={running}
           className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-300 text-white rounded-lg text-sm font-medium transition-colors"
         >
-          {running ? <Loader2 className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+          {running ? <ArrowRepeat className="w-4 h-4 animate-spin" /> : <PlayFill className="w-4 h-4" />}
           {running ? `Running ${progress}/${BENCHMARK_QUERIES.length}…` : "Run Benchmark"}
         </button>
       </div>
@@ -87,8 +87,8 @@ export default function BenchmarkRunner() {
             passCount === results.length ? "bg-green-50 border border-green-200" : "bg-amber-50 border border-amber-200"
           }`}>
             {passCount === results.length
-              ? <CheckCircle className="w-5 h-5 text-green-600" />
-              : <XCircle className="w-5 h-5 text-amber-600" />}
+              ? <CheckCircleFill className="w-5 h-5 text-green-600" />
+              : <XCircleFill className="w-5 h-5 text-amber-600" />}
             <span className="font-semibold text-gray-800">
               {passCount}/{results.length} passed &nbsp;·&nbsp;
               Avg latency {Math.round(results.reduce((a, r) => a + r.latency, 0) / results.length)}ms
@@ -103,8 +103,8 @@ export default function BenchmarkRunner() {
                 className="flex items-center gap-3 bg-white border border-gray-200 rounded-lg px-4 py-2.5 text-sm"
               >
                 {r.passed
-                  ? <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
-                  : <XCircle className="w-4 h-4 text-red-500 shrink-0" />}
+                  ? <CheckCircleFill className="w-4 h-4 text-green-500 shrink-0" />
+                  : <XCircleFill className="w-4 h-4 text-red-500 shrink-0" />}
                 <span className="font-mono text-xs text-gray-400 shrink-0 w-16">{r.label}</span>
                 <span className="flex-1 text-gray-700 truncate">{r.query}</span>
                 <span className={`font-mono text-xs px-2 py-0.5 rounded ${

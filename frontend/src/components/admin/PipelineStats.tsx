@@ -1,16 +1,16 @@
-﻿"use client";
+"use client";
 import { AdminTraceResponse } from "@/types";
-import { Search, Layers, Zap, CheckCircle } from "lucide-react";
+import { Search, LayersFill, LightningFill, CheckCircleFill } from "react-bootstrap-icons";
 
 interface Props { trace: AdminTraceResponse; latency?: number; }
 
 export default function PipelineStats({ trace, latency }: Props) {
   const stats = [
-    { icon: Search,      label: "BM25 hits",   value: trace.bm25_hit_count,   color: "text-sky-600" },
-    { icon: Layers,      label: "Vector hits",  value: trace.vector_hit_count, color: "text-violet-600" },
-    { icon: Zap,         label: "RRF fused",    value: trace.fused_count,      color: "text-indigo-600" },
-    { icon: Zap,         label: "Reranked",     value: trace.reranked_count,   color: "text-amber-600" },
-    { icon: CheckCircle, label: "Valid cites",  value: trace.validated_count,  color: "text-green-600" },
+    { icon: Search,          label: "BM25 hits",   value: trace.bm25_hit_count,   color: "text-sky-600" },
+    { icon: LayersFill,      label: "Vector hits",  value: trace.vector_hit_count, color: "text-violet-600" },
+    { icon: LightningFill,   label: "RRF fused",    value: trace.fused_count,      color: "text-indigo-600" },
+    { icon: LightningFill,   label: "Reranked",     value: trace.reranked_count,   color: "text-amber-600" },
+    { icon: CheckCircleFill, label: "Valid cites",  value: trace.validated_count,  color: "text-green-600" },
   ];
   return (
     <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
