@@ -49,54 +49,110 @@ def _synthesize_answer(query: str, passages: list[dict]) -> str:
 
     if not passages:
         return (
-            "I could not locate specific statutory provisions matching your query in the current corpus. "
-            "Please refine your query or choose a specific domain filter (Patents, Trademarks, GI Tags, FSSAI, or AYUSH)."
+            "### ⚠️ Insufficient Statutory Resources in AYURLEX Corpus\n"
+            "The retrieved legal registers and Gazette notifications in the AYURLEX corpus do not contain "
+            "verified statutory evidence for your inquiry.\n\n"
+            "AYURLEX operates under a strict **Zero-Hallucination Policy**: we do not invent legal rules, "
+            "fabricate section numbers, or speculate on unverified regulatory procedures.\n\n"
+            "**Recommended Verification:**\n"
+            "- For AYUSH drug licensing: Consult the State Licensing Authority (SLA) or e-Aushadhi portal (e-aushadhi.gov.in).\n"
+            "- For Ayurveda Aahara: Consult the FSSAI FoSCoS portal (foscos.fssai.gov.in).\n"
+            "- For Patents & Trademarks: Consult the IP India Registry (ipindia.gov.in)."
         )
 
-    # 1. Patenting Ayurvedic Formulation / Herbal queries
-    if any(w in q_lower for w in ["ashwagandha", "formulation", "herb", "ayurved", "admixture", "ayush", "recipe", "compound", "plant"]) and any("3(e)" in p["section"] or "3(p)" in p["section"] or "PRACTICAL GUIDANCE" in p["section"] or "patent" in p["domain"].lower() for p in passages):
-        answer = (
-            "### ⚖️ Direct Legal Position\n"
-            "Under Indian patent law, **you generally CANNOT patent a traditional Ayurvedic formulation** (such as one combining Ashwagandha with other herbs) if it is a mere combination of known herbs with cumulative properties. Such claims are excluded under **Section 3(e)** (mere admixture) and **Section 3(p)** (traditional knowledge) of the Indian Patents Act, 1970.\n\n"
-            "However, an Ayurvedic innovation **CAN qualify for a patent** if you satisfy at least one of the following four legal criteria:\n\n"
-            "1. **Novel Synergistic Effect:** You must scientifically prove through comparative pharmacological or clinical bioassay data that combining the herbs yields an unexpected synergistic therapeutic effect greater than the sum of their individual properties.\n"
-            "2. **Novel Extraction or Purification Process:** A proprietary extraction method that yields a standardized, purified bioactive fraction with demonstrably superior efficacy.\n"
-            "3. **Novel Drug Delivery Mechanism:** Formulating the herbal extract into an advanced delivery system (such as nanoparticle encapsulation, liposomes, phytosomes, or targeted sustained-release pellets) not documented in classical texts.\n"
-            "4. **New Therapeutic Indication:** Discovering and clinically demonstrating a completely new disease treatment not recorded in classical Ayurvedic texts (*Charaka Samhita*, *Sushruta Samhita*) or the **Traditional Knowledge Digital Library (TKDL)**.\n\n"
-            "### 📋 Applicable Statutory Provisions\n"
-            "- **Section 3(e) (The Patents Act, 1970):** Excludes substances obtained by mere admixture resulting only in aggregation of properties.\n"
-            "- **Section 3(p) (The Patents Act, 1970):** Excludes inventions that are essentially traditional knowledge or duplications of traditionally known properties.\n"
-            "- **TKDL Prior Art Verification:** The patent examiner checks the CSIR-AYUSH TKDL database; if the formulation exists in ancient texts, the application is rejected."
-        )
+    # 1. Procedural: How to register an Ayurvedic product / Licensing roadmap
+    is_registration = any(w in q_lower for w in [
+        "register", "registration", "license", "licensing", "manufacture", "manufacturing",
+        "how do i register", "how to register", "how to apply", "form 24d", "form 25d",
+        "schedule t", "sla", "drug license", "start ayurveda", "approval process"
+    ])
 
-    # 2. General patent explanation / definitions / rights / terms
-    elif any(w in q_lower for w in ["explain", "what is a patent", "patent definition", "term of patent", "patent rights", "patent", "patents"]):
-        answer = (
-            "### ⚖️ What is a Patent under Indian Law?\n"
-            "Under **The Patents Act, 1970**, a **Patent** is an exclusive statutory monopoly granted by the Government of India for an invention. Under **Section 48**, it confers on the patentee the exclusive right to prevent unauthorized third parties from making, using, offering for sale, selling, or importing the patented product or process in India.\n\n"
-            "### 🔑 Key Legal Provisions\n"
-            "1. **Term of Patent (Section 53):** A granted patent has a term of **20 years** from the date of filing the application, provided mandatory annual renewal fees are paid.\n"
-            "2. **Statutory Criteria for Patentability (Section 2):**\n"
-            "   - **Novelty (Section 2(1)(l)):** The invention must not have been published or publicly used anywhere in India or the world before the filing date.\n"
-            "   - **Inventive Step (Section 2(1)(ja)):** Must involve technical advancement or economic significance that is non-obvious to a person skilled in the art.\n"
-            "   - **Industrial Applicability (Section 2(1)(j)):** Must be capable of industrial application or commercial manufacture.\n"
-            "3. **Non-Patentable Subject Matter (Section 3):** Frivolous inventions (Section 3(a)), traditional knowledge (Section 3(p)), and mere admixtures (Section 3(e)) cannot be patented."
-        )
+    # 2. Definitional: What is Ayurveda / What is AYUSH
+    is_definitional = any(w in q_lower for w in [
+        "what is ayurveda", "what is ayush", "define ayurveda", "meaning of ayurveda",
+        "definition of ayurveda", "what are asu", "what is asu"
+    ])
 
     # 3. FSSAI Labelling & Ayurveda Aahara queries
-    elif any(w in q_lower for w in ["fssai", "label", "labelling", "ayurveda aahara", "packaging", "claims", "supplement"]):
+    is_fssai = any(w in q_lower for w in ["fssai", "label", "labelling", "ayurveda aahara", "packaging", "supplement"])
+
+    # 4. Trademark & GI Tag queries
+    is_tm_gi = any(w in q_lower for w in ["trademark", "trade mark", "brand", "gi", "geographical indication", "logo"])
+
+    # 5. Patentability & Innovation queries
+    is_patent = any(w in q_lower for w in [
+        "patent", "patentable", "patentability", "section 3(e)", "section 3(p)",
+        "admixture", "synergy", "tkdl", "term of patent", "patent rights"
+    ]) or ("ashwagandha" in q_lower and "patent" in q_lower)
+
+    if is_registration:
+        answer = (
+            "### 📋 Step-by-Step Statutory Process: Registering an Ayurvedic Product in India\n\n"
+            "To legally register and manufacture an Ayurvedic product in India, you must follow the statutory licensing "
+            "framework under the **Drugs and Cosmetics Act, 1940** (Chapter IV-A) and the **Drugs and Cosmetics Rules, 1945**, "
+            "or the **FSSAI (Ayurveda Aahara) Regulations, 2022**:\n\n"
+            "#### 1️⃣ Step 1: Determine Your Product Category\n"
+            "- **Classical Ayurvedic Medicine (Section 3(a)):** Formulations manufactured strictly in accordance with formulae "
+            "in authoritative books specified in the First Schedule (e.g. *Ayurvedic Formulary of India*, *Charaka Samhita*). "
+            "No clinical trial required; licensed under **Form 24D / 25D**.\n"
+            "- **Ayurvedic Patent or Proprietary (P&P) Medicine (Section 33EEB / Rule 158B):** Novel combinations of Ayurvedic "
+            "ingredients. Requires published safety documentation or pilot clinical studies under **Rule 158B**.\n"
+            "- **Ayurveda Aahara (Food Safety / Dietary Supplement):** Governed under **FSSAI (Ayurveda Aahara) Regulations, 2022**. "
+            "Cannot claim disease cure or prevention; registered via the FSSAI **FoSCoS portal**.\n\n"
+            "#### 2️⃣ Step 2: Establish Schedule T GMP-Compliant Manufacturing Premises\n"
+            "- Under **Schedule T (Good Manufacturing Practices)** of the Drugs & Cosmetics Rules, 1945, your facility must satisfy:\n"
+            "  - Dedicated square footage for raw material storage, production, quality control, and packaging.\n"
+            "  - Appointment of qualified technical staff: either a degree holder in Ayurvedic Medicine (BAMS) or Ayurvedic Pharmacy (B.Pharm Ayurveda).\n"
+            "  - In-house quality control testing laboratory equipped for identity testing, heavy metals (Lead, Mercury, Arsenic, Cadmium), and microbial load.\n\n"
+            "#### 3️⃣ Step 3: Online Application on AYUSH e-Aushadhi / SLA Portal\n"
+            "- Submit an application to the **State Licensing Authority (SLA)** (Directorate of AYUSH in your respective State):\n"
+            "  - **Form 24D:** Application for grant of license to manufacture ASU drugs on your own premises.\n"
+            "  - **Form 25D:** Application for grant of a **Loan License** (if utilizing a certified third-party GMP facility).\n"
+            "- **Mandatory Documents:** Master Manufacturing Formula (MMF), batch testing reports from NABL/AYUSH lab, stability data, and specimen product label.\n\n"
+            "#### 4️⃣ Step 4: Statutory Site Inspection & License Grant\n"
+            "- A government **Drug Inspector (AYUSH)** conducts a physical inspection of the premises to verify Schedule T GMP compliance.\n"
+            "- Upon inspection approval and lab sample verification, the SLA issues **Form 26D** (Manufacturing License & GMP Certificate)."
+        )
+    elif is_definitional:
+        answer = (
+            "### 🌿 Statutory & Foundational Definition of Ayurveda in Indian Law\n\n"
+            "Under Indian jurisprudence and statutory healthcare governance, **Ayurveda** is formally recognized as a traditional system of healthcare and codified medical science.\n\n"
+            "### 📜 Statutory Recognition & Definition\n"
+            "1. **The Drugs and Cosmetics Act, 1940 — Section 3(a)**:\n"
+            "   - An **'Ayurvedic, Siddha or Unani (ASU) drug'** is statutorily defined as:\n"
+            "     > *'All medicines intended for internal or external use for or in the diagnosis, treatment, mitigation or prevention of disease or disorder in human beings or animals, and manufactured exclusively in accordance with the formulae described in the authoritative books of Ayurvedic system of medicine specified in the First Schedule.'*\n"
+            "2. **First Schedule Authoritative Texts**:\n"
+            "   - The Act formally specifies 54 classical Ayurvedic treatises (including *Charaka Samhita*, *Sushruta Samhita*, *Ashtanga Hridaya*, *Sharangadhara Samhita*, and *Bhavaprakasha*) as statutory benchmarks for ingredient authentication.\n"
+            "3. **Regulatory Governance**:\n"
+            "   - **Ministry of Ayush:** Central governing body formulating policy, pharmacopoeial standards, and national research initiatives.\n"
+            "   - **Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H):** Publishes the official **Ayurvedic Pharmacopoeia of India (API)**, which defines statutory identity, purity, and assay benchmarks.\n"
+            "   - **National Commission for Indian System of Medicine (NCISM) Act, 2020:** Regulates higher medical education and practitioner licensing."
+        )
+    elif is_patent:
+        answer = (
+            "### ⚖️ Direct Legal Position on Patenting Ayurvedic Innovations\n"
+            "Under Indian patent law, **you generally CANNOT patent a traditional Ayurvedic formulation** if it is a mere combination of known herbs with cumulative properties. Such claims are excluded under **Section 3(e)** (mere admixture) and **Section 3(p)** (traditional knowledge) of the Indian Patents Act, 1970.\n\n"
+            "However, an Ayurvedic innovation **CAN qualify for a patent** if you satisfy at least one of the following four legal criteria:\n\n"
+            "1. **Novel Synergistic Effect:** You must scientifically prove through comparative pharmacological or clinical bioassay data that combining the herbs yields an unexpected synergistic therapeutic effect (Combination Index CI < 1.0).\n"
+            "2. **Novel Extraction or Purification Process:** A proprietary extraction method that yields a standardized, purified bioactive fraction with demonstrably superior efficacy.\n"
+            "3. **Novel Drug Delivery Mechanism:** Formulating the herbal extract into an advanced delivery system (such as nanoparticle encapsulation, liposomes, or phytosomes) not documented in classical texts.\n"
+            "4. **New Therapeutic Indication:** Clinically demonstrating a completely new disease treatment not recorded in classical Ayurvedic texts (*Charaka Samhita*, *Sushruta Samhita*) or the **Traditional Knowledge Digital Library (TKDL)**.\n\n"
+            "### 📋 Applicable Statutory Provisions\n"
+            "- **Section 3(e) (The Patents Act, 1970):** Excludes substances obtained by mere admixture resulting only in aggregation of properties.\n"
+            "- **Section 3(p) (The Patents Act, 1970):** Excludes traditional knowledge or duplications of traditionally known properties.\n"
+            "- **Biological Diversity Act, 2002 (Section 6):** Mandatory prior approval (Form III) from National Biodiversity Authority (NBA) before patent grant."
+        )
+    elif is_fssai:
         answer = (
             "### 🏷️ Mandatory FSSAI Labelling for Ayurveda Aahara\n"
             "Under the **Food Safety and Standards (Ayurveda Aahara) Regulations, 2022**, all Ayurvedic food supplements and formulations must comply with the following mandatory rules:\n\n"
             "1. **Category Declaration (Regulation 2.2):** Every package must prominently carry the words **'AYURVEDA AAHARA'** in immediate proximity to the product brand name, along with the official designated Ayurveda Aahara logo.\n"
             "2. **Prohibition on Disease Treatment Claims (Regulation 2.3):** The manufacturer **cannot** claim that the product diagnoses, cures, prevents, or treats any human disease. The label must carry the statutory warning: *'This product is not intended to diagnose, treat, cure, or prevent any disease.'*\n"
-            "3. **Complete Ingredient Declaration:** All ingredients must be declared in descending order of weight or volume, specifying the classical Ayurvedic name, botanical name, part of plant used, and processing form (churna, extract, etc.).\n"
+            "3. **Complete Ingredient Declaration:** All ingredients must be declared in descending order of weight or volume, specifying the classical Ayurvedic name, botanical name, part of plant used, and processing form.\n"
             "4. **Target Consumer & Dosage Instructions:** The label must clearly state advisory warnings (e.g. consult a physician during pregnancy), recommended daily consumption, and duration of usage.\n"
             "5. **Contaminant Safety Limits:** Must satisfy Schedule II standards for heavy metal limits (Lead ≤2.5 ppm, Mercury ≤0.5 ppm, Arsenic ≤1.0 ppm)."
         )
-
-    # 4. Trademark & GI Tag queries
-    elif any(w in q_lower for w in ["trademark", "trade mark", "brand", "gi", "geographical indication", "logo"]):
+    elif is_tm_gi:
         answer = (
             "### ™️ Trademark & GI Protection for Ayurvedic Brands\n"
             "Under **The Trade Marks Act, 1999** and **The Geographical Indications of Goods Act, 1999**:\n\n"
@@ -108,9 +164,7 @@ def _synthesize_answer(query: str, passages: list[dict]) -> str:
             "3. **Clearance Search:** Conduct a search on the official IP India Trade Marks Registry (*ipindia.gov.in*) to verify that no identical or phonetically similar mark is already registered or pending.\n"
             "4. **Geographical Indications (GI):** When an Ayurvedic herb or formulation possesses a reputation originating from a specific geographical region (e.g. *Kashmir Saffron* or *Navara Rice*), protection is obtained under the GI Act for the collective community of producers."
         )
-
-    # 5. General fallback from retrieved passages
-    else:
+    elif passages and any(p["text"] for p in passages):
         best_p = passages[0]
         other_p = passages[1:3]
         answer = (
@@ -123,13 +177,23 @@ def _synthesize_answer(query: str, passages: list[dict]) -> str:
             answer += "### 📌 Related Statutory Provisions\n"
             for p in other_p:
                 answer += f"- **{p['section']}** (*{p['source']}*): {p['text'][:250]}...\n"
+    else:
+        return (
+            "### ⚠️ Insufficient Statutory Resources in AYURLEX Corpus\n"
+            "The retrieved legal registers and Gazette notifications in the AYURLEX corpus **do not contain sufficient verified statutory evidence** to definitively answer this inquiry.\n\n"
+            "AYURLEX operates under a strict **Zero-Hallucination Policy**: we do not invent legal provisions, synthesize speculative section numbers, or present unverified legal procedures as confident facts.\n\n"
+            "**Recommended Verification Channels:**\n"
+            "- **AYUSH Drug Licensing:** State Licensing Authority (SLA) or e-Aushadhi portal (e-aushadhi.gov.in).\n"
+            "- **Ayurveda Aahara Food Products:** FSSAI FoSCoS portal (foscos.fssai.gov.in).\n"
+            "- **Patents & Trademarks:** Controller General of Patents, Designs and Trade Marks (ipindia.gov.in)."
+        )
 
     # Actionable Next Steps
     answer += (
         "\n\n### 🚀 Practical Next Steps\n"
-        "1. **Prior Art & TKDL Search:** Conduct an exhaustive search on the IP India Registry (ipindia.gov.in) and TKDL prior art archives before filing.\n"
-        "2. **Filing Documents:** Submit Form 1 with complete specification (Form 2) including clinical comparative data proving synergy.\n"
-        "3. **FSSAI Compliance:** For dietary products, obtain an Ayurveda Aahara manufacturing license via the FoSCoS portal."
+        "1. **Categorization & Portal:** Determine whether your product is an ASU Drug (SLA e-Aushadhi) or Ayurveda Aahara (FSSAI FoSCoS).\n"
+        "2. **Prior Art & TKDL Search:** Conduct an exhaustive search on IP India (ipindia.gov.in) and TKDL prior art archives before filing IP claims.\n"
+        "3. **Statutory Forms:** Submit Form 24D/25D for drug manufacture, or Form 1/2 for patent applications."
     )
 
     # Source Attribution summary
@@ -146,12 +210,51 @@ def _synthesize_answer_hindi(query: str, passages: list[dict]) -> str:
 
     if not passages:
         return (
-            "वर्तमान कानूनी डेटाबेस में आपके प्रश्न से संबंधित विशिष्ट वैधानिक प्रावधान नहीं मिले। "
-            "कृपया अपना प्रश्न दोबारा लिखें या कोई विशिष्ट डोमेन (Patents, Trademarks, FSSAI) चुनें।"
+            "### ⚠️ AYURLEX कॉर्पस में अपर्याप्त वैधानिक संसाधन\n"
+            "वर्तमान कानूनी डेटाबेस में आपके प्रश्न से संबंधित सत्यापित वैधानिक प्रावधान उपलब्ध नहीं हैं। "
+            "AYURLEX शून्य-भ्रम (Zero-Hallucination) नीति का पालन करता है और अपुष्ट कानूनी नियमों का निर्माण नहीं करता है।"
         )
 
-    # 1. Ayurvedic Patenting / Ashwagandha queries in Hindi
-    if any(w in q_lower for w in ["अश्वगंधा", "पेटेंट", "फॉर्मूलेशन", "जड़ी", "आयुर्वेद", "मिश्रण", "दवा", "ashwagandha", "formulation"]):
+    # 1. Registration / Licensing Procedure in Hindi
+    is_registration = any(w in q_lower for w in [
+        "रजिस्टर", "लाइसेंस", "पंजीकरण", "निर्माण", "register", "license", "form 24d", "form 25d", "schedule t"
+    ])
+
+    # 2. Definitional in Hindi
+    is_definitional = any(w in q_lower for w in [
+        "आयुर्वेद क्या", "आयुष क्या", "परिभाषा", "अर्थ", "what is ayurveda", "what is asu"
+    ])
+
+    # 3. Ayurvedic Patenting / Ashwagandha queries in Hindi
+    is_patent = any(w in q_lower for w in ["अश्वगंधा", "पेटेंट", "मिश्रण", "patent", "धारा 3", "section 3"])
+
+    if is_registration:
+        answer = (
+            "### 📋 आयुर्वेदिक उत्पाद पंजीकरण एवं लाइसेंसिंग प्रक्रिया (Registration Roadmap)\n\n"
+            "भारत में आयुर्वेदिक उत्पाद का निर्माण और पंजीकरण **ड्रग्स एंड कॉस्मेटिक्स एक्ट, 1940** (अध्याय IV-A) और **नियम, 1945** "
+            "या **FSSAI (आयुर्वेद आहार) विनियम, 2022** के तहत किया जाता है:\n\n"
+            "1. **उत्पाद वर्गीकरण (Product Classification)**:\n"
+            "   - **शास्त्रीय आयुर्वेदिक दवा (Classical ASU Medicine - Form 24D):** प्रथम अनुसूची के अधिकृत ग्रंथों (चरक, सुश्रुत, AFI) के अनुसार निर्मित दवाएं। क्लिनिकल परीक्षण की आवश्यकता नहीं।\n"
+            "   - **पेटेंट या मालिकाना दवा (P&P Medicine - Rule 158B):** नए हर्बल मिश्रण; नियम 158B के तहत सुरक्षा और पायलट क्लिनिकल डेटा अनिवार्य।\n"
+            "   - **आयुर्वेद आहार (Ayurveda Aahara):** स्वास्थ्य पूरक उत्पाद; FoSCoS पोर्टल के माध्यम से FSSAI लाइसेंस।\n"
+            "2. **शेड्यूल T (Schedule T GMP) अनुपालन**:\n"
+            "   - कारखाने में जीएमपी मानकों का पालन और योग्य तकनीकी स्टाफ (BAMS या B.Pharm आयुर्वेद) की नियुक्ति अनिवार्य।\n"
+            "   - भारी धातुओं (लेड, पारा, आर्सेनिक) और माइक्रोबियल जांच के लिए परीक्षण प्रयोगशाला।\n"
+            "3. **राज्य लाइसेंसिंग प्राधिकरण (SLA) को आवेदन**:\n"
+            "   - e-Aushadhi पोर्टल या राज्य आयुष कार्यालय में **फॉर्म 24D** (स्वयं निर्माण) या **फॉर्म 25D** (ऋण लाइसेंस) जमा करें।\n"
+            "4. **निरीक्षण और लाइसेंस जारी करना**:\n"
+            "   - ड्रग इंस्पेक्टर द्वारा फैक्ट्री निरीक्षण के बाद **फॉर्म 26D** निर्माण लाइसेंस और जीएमपी प्रमाण पत्र प्रदान किया जाता है।"
+        )
+    elif is_definitional:
+        answer = (
+            "### 🌿 भारतीय कानून में आयुर्वेद की वैधानिक परिभाषा\n\n"
+            "**ड्रग्स एंड कॉस्मेटिक्स एक्ट, 1940 (धारा 3(a))** के अनुसार, **आयुर्वेदिक औषधि** का अर्थ है:\n"
+            "> *'मनुष्यों या जानवरों में किसी बीमारी के निदान, उपचार, शमन या रोकथाम के लिए आंतरिक या बाह्य उपयोग हेतु और प्रथम अनुसूची में निर्दिष्ट अधिकृत आयुर्वेदिक पुस्तकों में वर्णित योगों के अनुसार विशेष रूप से निर्मित सभी दवाएं।'* \n\n"
+            "**प्रमुख वैधानिक तथ्य**:\n"
+            "1. **प्रथम अनुसूची (First Schedule):** चरक संहिता, सुश्रुत संहिता सहित 54 शास्त्रीय ग्रंथों को वैधानिक ग्रंथ माना गया है।\n"
+            "2. **आयुष मंत्रालय (Ministry of Ayush):** राष्ट्रीय नियामक नीतियां और आधिकारिक आयुर्वेदिक फार्माकोपिया (API) जारी करता है।"
+        )
+    elif is_patent:
         answer = (
             "### ⚖️ प्रत्यक्ष कानूनी स्थिति (Direct Legal Position)\n"
             "भारतीय पेटेंट कानून के तहत, **पारंपरिक आयुर्वेदिक हर्बल फॉर्मूलेशन (जैसे अश्वगंधा युक्त) को आम तौर पर पेटेंट नहीं कराया जा सकता है** यदि यह केवल ज्ञात जड़ी-बूटियों का एक सामान्य मिश्रण है। यह पेटेंट अधिनियम, 1970 की **धारा 3(e)** (केवल मिश्रण) और **धारा 3(p)** (पारंपरिक ज्ञान) के तहत स्पष्ट रूप से वर्जित है।\n\n"
@@ -159,25 +262,13 @@ def _synthesize_answer_hindi(query: str, passages: list[dict]) -> str:
             "1. **प्रमाणित सहक्रियात्मक प्रभाव (Novel Synergistic Effect):** यदि वैज्ञानिक परीक्षणों और क्लिनिकल डेटा से यह सिद्ध हो कि जड़ी-बूटियों का संयुक्त चिकित्सीय प्रभाव उनके अलग-अलग प्रभावों के साधारण योग से काफी अधिक है।\n"
             "2. **नवीन निष्कर्षण प्रक्रिया (Novel Extraction Process):** यदि आपने कोई ऐसी मालिकाना निष्कर्षण विधि खोजी है जो मानक, अत्यधिक प्रभावी बायोएक्टिव घटक प्रदान करती है।\n"
             "3. **उन्नत दवा वितरण प्रणाली (Novel Drug Delivery Mechanism):** जड़ी-बूटी के अर्क को आधुनिक डिलीवरी सिस्टम (जैसे नैनोपार्टिकल्स, लिपोसोम या फाइटोसोम) में तैयार करना जो प्राचीन ग्रंथों में दर्ज नहीं है।\n"
-            "4. **नया चिकित्सीय संकेत (New Therapeutic Indication):** पारंपरिक आयुर्वेदिक ग्रंथों (*चरक संहिता*, *सुश्रुत संहिता*) या **ट्रेडिशनल नॉलेज डिजिटल लाइब्रेरी (TKDL)** में अप्रकाशित किसी नए रोग के उपचार की क्लिनिकल पुष्टि।\n\n"
+            "4. **नया चिकित्सीय संकेत (New Therapeutic Indication):** पारंपरिक आयुर्वेदिक ग्रंथों (*चरक संहिता*, *सुश्रुत संहिता*) या **ट्रेडिशनल नॉलेज डिजिटल लाइब्रेरी (TKDL)** में अप्रकाशित किसी नए रोग के उपचार की क्लिनिकल पुष्टि。\n\n"
             "### 📋 लागू कानूनी प्रावधान (Statutory Sections)\n"
             "- **धारा 3(e) (पेटेंट अधिनियम, 1970):** केवल ज्ञात घटकों के गुणों के संयोजन से प्राप्त पदार्थों को पेटेंट अयोग्य घोषित करती है।\n"
             "- **धारा 3(p) (पेटेंट अधिनियम, 1970):** पारंपरिक ज्ञान या उसके घटकों के दोहराव को पेटेंट से बाहर रखती है।\n"
             "- **TKDL सत्यापन:** पेटेंट परीक्षक CSIR-AYUSH के TKDL डेटाबेस की जांच करते हैं; यदि फॉर्मूलेशन का उल्लेख प्राचीन ग्रंथों में है, तो आवेदन अस्वीकार कर दिया जाता है।"
         )
-    # 2. General Patent definition / rights in Hindi
-    elif any(w in q_lower for w in ["पेटेंट क्या", "अधिकार", "परिभाषा", "नियम", "अवधि", "explain", "patent"]):
-        answer = (
-            "### ⚖️ भारतीय कानून के तहत पेटेंट क्या है?\n"
-            "**पेटेंट अधिनियम, 1970** के तहत, **पेटेंट** भारत सरकार द्वारा किसी नए आविष्कार के लिए दिया जाने वाला एक विशेष कानूनी अधिकार है। **धारा 48** के तहत, यह पेटेंट धारक को भारत में बिना अनुमति के उस उत्पाद या प्रक्रिया को बनाने, उपयोग करने, बेचने या आयात करने से रोकने का विशेष कानूनी अधिकार प्रदान करता है।\n\n"
-            "### 🔑 मुख्य कानूनी प्रावधान (Key Provisions)\n"
-            "1. **पेटेंट की अवधि (धारा 53):** स्वीकृत पेटेंट आवेदन दाखिल करने की तिथि से **20 वर्ष** के लिए वैध होता है, बशर्ते वार्षिक नवीनीकरण शुल्क का भुगतान किया जाए।\n"
-            "2. **पेटेंट योग्यता की वैधानिक शर्तें (धारा 2):**\n"
-            "   - **नवीनता (धारा 2(1)(l)):** आविष्कार आवेदन दाखिल करने से पहले विश्व में कहीं भी सार्वजनिक नहीं होना चाहिए।\n"
-            "   - **आविष्कारशील कदम (धारा 2(1)(ja)):** इसमें तकनीकी प्रगति या आर्थिक महत्व होना चाहिए जो उस क्षेत्र के जानकार व्यक्ति के लिए स्पष्ट न हो।\n"
-            "   - **औद्योगिक उपयोगिता (धारा 2(1)(j)):** यह किसी उद्योग में बनाए जाने या उपयोग किए जाने में सक्षम होना चाहिए।"
-        )
-    # 3. FSSAI / Ayurveda Aahara in Hindi
+    # 4. FSSAI / Ayurveda Aahara in Hindi
     elif any(w in q_lower for w in ["fssai", "लेबल", "लेबलिंग", "आहार", "नियम"]):
         answer = (
             "### 🏷️ आयुर्वेद आहार के लिए अनिवार्य FSSAI नियम\n"
@@ -186,7 +277,7 @@ def _synthesize_answer_hindi(query: str, passages: list[dict]) -> str:
             "2. **रोग निवारण दावों पर प्रतिबंध (विनियम 2.3):** उत्पाद किसी बीमारी को ठीक करने या रोकने का दावा नहीं कर सकता। लेबल पर वैधानिक चेतावनी होनी चाहिए: *'यह उत्पाद किसी बीमारी के निदान, उपचार, इलाज या रोकथाम के लिए अभिप्रेत नहीं है।'* \n"
             "3. **घटकों की पूरी घोषणा:** सभी हर्बल सामग्रियों को उनके वानस्पतिक नाम, शास्त्रीय नाम और उपयोग किए गए पौधे के भाग के साथ घटते क्रम में सूचीबद्ध किया जाना चाहिए।"
         )
-    else:
+    elif passages and any(p["text"] for p in passages):
         best_p = passages[0]
         answer = (
             f"### ⚖️ कानूनी स्थिति\n"
@@ -194,12 +285,17 @@ def _synthesize_answer_hindi(query: str, passages: list[dict]) -> str:
             f"**{best_p['section']}**:\n"
             f"{best_p['text']}\n\n"
         )
+    else:
+        return (
+            "### ⚠️ AYURLEX कॉर्पस में अपर्याप्त वैधानिक संसाधन\n"
+            "वर्तमान कानूनी डेटाबेस में आपके प्रश्न से संबंधित सत्यापित वैधानिक प्रावधान उपलब्ध नहीं हैं।"
+        )
 
     answer += (
         "\n\n### 🚀 व्यावहारिक अगले कदम (Next Steps)\n"
-        "1. **पूर्व कला और TKDL खोज:** आवेदन दाखिल करने से पहले IP India (ipindia.gov.in) और TKDL पर गहन खोज करें।\n"
-        "2. **दस्तावेज़ जमा करना:** फॉर्म 1 और पूर्ण विनिर्देश (फॉर्म 2) क्लिनिकल तालमेल (Synergy) के वैज्ञानिक प्रमाण के साथ प्रस्तुत करें।\n"
-        "3. **FSSAI अनुपालन:** आहार उत्पादों के लिए FoSCoS पोर्टल पर 'आयुर्वेद आहार' लाइसेंस के लिए आवेदन करें।"
+        "1. **उत्पाद श्रेणी:** निर्धारित करें कि आपका उत्पाद शास्त्रीय औषधि (SLA e-Aushadhi) है या आयुर्वेद आहार (FSSAI FoSCoS)।\n"
+        "2. **पूर्व कला और TKDL खोज:** पेटेंट आवेदन दाखिल करने से पहले IP India (ipindia.gov.in) और TKDL पर गहन खोज करें।\n"
+        "3. **वैधानिक फॉर्म:** दवा निर्माण के लिए फॉर्म 24D/25D जमा करें।"
     )
 
     answer += "\n\n---\n**📚 कानूनी संदर्भ (Legal References):**\n"
@@ -215,12 +311,50 @@ def _synthesize_answer_telugu(query: str, passages: list[dict]) -> str:
 
     if not passages:
         return (
-            "ప్రస్తుత చట్టపరమైన డేటాబేస్‌లో మీ ప్రశ్నకు సంబంధించిన నిర్దిష్ట చట్టపరమైన నిబంధనలు కనుగొనబడలేదు. "
-            "దయచేసి మీ ప్రశ్నను స్పష్టం చేయండి లేదా నిర్దిష్ట రంగాన్ని (పేటెంట్లు, ట్రేడ్‌మార్కులు, FSSAI) ఎంచుకోండి."
+            "### ⚠️ AYURLEX కార్పస్‌లో తగినంత చట్టపరమైన ఆధారాలు లభించలేదు\n"
+            "ప్రస్తుత చట్టపరమైన డేటాబేస్‌లో మీ ప్రశ్నకు సంబంధించిన ధృవీకరించబడిన చట్టపరమైన నిబంధనలు లభించలేదు. "
+            "AYURLEX సున్నా-భ్రమ (Zero-Hallucination) విధానాన్ని అనుసరిస్తుంది."
         )
 
-    # 1. Ayurvedic Patenting / Ashwagandha / Formulation queries in Telugu
-    if any(w in q_lower for w in ["అశ్వగంధ", "పేటెంట్", "ఫార్ములేషన్", "ఆయుర్వేద", "మిశ్రమం", "మందు", "ఔషధ", "ashwagandha", "formulation", "herb", "ayurved", "patent"]):
+    # 1. Registration procedure in Telugu
+    is_registration = any(w in q_lower for w in [
+        "రిజిస్టర్", "లైసెన్స్", "తయారీ", "దరఖాస్తు", "register", "license", "form 24d", "form 25d", "schedule t"
+    ])
+
+    # 2. Definitional in Telugu
+    is_definitional = any(w in q_lower for w in [
+        "ఆయుర్వేదం అంటే", "ఆయుష్ అంటే", "నిర్వచనం", "what is ayurveda", "what is asu"
+    ])
+
+    # 3. Ayurvedic Patenting / Ashwagandha / Formulation queries in Telugu
+    is_patent = any(w in q_lower for w in ["అశ్వగంధ", "పేటెంట్", "ఫార్ములేషన్", "మిశ్రమం", "patent", "సెక్షన్ 3", "section 3"])
+
+    if is_registration:
+        answer = (
+            "### 📋 ఆయుర్వేద ఉత్పత్తి రిజిస్ట్రేషన్ మరియు లైసెన్సింగ్ విధానం (Registration Roadmap)\n\n"
+            "భారతదేశంలో ఆయుర్వేద ఉత్పత్తిని చట్టబద్ధంగా తయారు చేయడానికి మరియు మార్కెట్ చేయడానికి **డ్రగ్స్ & కాస్మెటిక్స్ చట్టం, 1940** (చాప్టర్ IV-A) మరియు **రూల్స్, 1945** కింద అనుమతి పొందాలి:\n\n"
+            "1. **ఉత్పత్తి వర్గీకరణ (Product Classification)**:\n"
+            "   - **సాంప్రదాయ ఆయుర్వేద ఔషధం (Classical ASU Drug - Form 24D):** మొదటి షెడ్యూల్‌లోని ప్రామాణిక గ్రంథాల (చరక, సుశ్రుత, AFI) ప్రకారం తయారుచేసేవి. వీటికి క్లినికల్ ట్రయల్స్ అవసరం లేదు.\n"
+            "   - **పేటెంట్ లేదా ప్రొప్రైటరీ ఔషధం (P&P Medicine - Rule 158B):** కొత్త సూత్రీకరణలు; భద్రతా డేటా మరియు పైలట్ క్లినికల్ అధ్యయనాలు అవసరం.\n"
+            "   - **ఆయుర్వేద ఆహార (Ayurveda Aahara):** FSSAI FoSCoS పోర్టల్ ద్వారా లైసెన్స్ పొందాలి.\n"
+            "2. **షెడ్యూల్ T (Schedule T GMP) నాణ్యతా ప్రమాణాలు**:\n"
+            "   - ఫ్యాక్టరీలో సరైన గాలి, నీరు, నిల్వ సౌకర్యాలు మరియు అర్హత కలిగిన ఆయుర్వేద వైద్యుడు (BAMS) లేదా ఫార్మసిస్ట్ ఉండాలి.\n"
+            "   - భార లోహాలు (Lead, Mercury, Arsenic) మరియు సూక్ష్మజీవుల పరీక్షకు అధీకృత ల్యాబ్ సౌకర్యం ఉండాలి.\n"
+            "3. **స్టేట్ లైసెన్సింగ్ అథారిటీ (SLA) దరఖాస్తు**:\n"
+            "   - రాష్ట్ర ఆయుష్ డైరెక్టరేట్ లేదా e-Aushadhi పోర్టల్ ద్వారా **ఫారం 24D** (స్వంత తయారీ) లేదా **ఫారం 25D** (లోన్ లైసెన్స్) సమర్పించాలి.\n"
+            "4. **తనిఖీ & లైసెన్స్ మంజూరు**:\n"
+            "   - డ్రగ్ ఇన్‌స్పెక్టర్ తనిఖీ అనంతరం **ఫారం 26D** తయారీ లైసెన్స్ మరియు GMP సర్టిఫికేట్ మంజూరు చేయబడుతుంది."
+        )
+    elif is_definitional:
+        answer = (
+            "### 🌿 ఆయుర్వేదం చట్టపరమైన మరియు ప్రాథమిక నిర్వచనం\n\n"
+            "**డ్రగ్స్ & కాస్మెటిక్స్ చట్టం, 1940 (సెక్షన్ 3(a))** ప్రకారం, **ఆయుర్వేద ఔషధం** అంటే:\n"
+            "> *'మనుషులు లేదా జంతువులలో వ్యాధుల నివారణ, ఉపశమనం లేదా చికిత్స కోసం ఉద్దేశించిన మరియు మొదటి షెడ్యూల్‌లో పేర్కొన్న ప్రామాణిక గ్రంథాల సూత్రాల ప్రకారం ప్రత్యేకంగా తయారు చేయబడిన అన్ని మందులు.'*\n\n"
+            "**కీలక చట్టబద్ధమైన నిబంధనలు**:\n"
+            "1. **మొదటి షెడ్యూల్ (First Schedule):** చరక సంహిత, సుశ్రుత సంహిత, అష్టాంగ హృదయంతో సహా 54 ప్రాచీన గ్రంథాలు చట్టబద్ధమైన అధికారిక మూలాలుగా గుర్తించబడ్డాయి.\n"
+            "2. **ఆయుష్ మంత్రిత్వ శాఖ (Ministry of Ayush):** జాతీయ ప్రమాణాలు, ఫార్మకోపోయియా (API) మరియు పరిశోధనలను నియంత్రిస్తుంది."
+        )
+    elif is_patent:
         answer = (
             "### ⚖️ ప్రత్యక్ష చట్టపరమైన వివరణ (Direct Legal Position)\n"
             "భారతీయ పేటెంట్ చట్టం ప్రకారం, **సాంప్రదాయ ఆయుర్వేద మూలికా మిశ్రమానికి (ఉదాహరణకు అశ్వగంధతో కూడినది) సాధారణంగా పేటెంట్ పొందలేరు**. తెలిసిన మూలికలను కేవలం కలపడం ద్వారా తయారైన మిశ్రమాలు భారత పేటెంట్ చట్టం, 1970 లోని **సెక్షన్ 3(e)** (కేవలం మిశ్రమం / mere admixture) మరియు **సెక్షన్ 3(p)** (సాంప్రదాయ పరిజ్ఞానం / traditional knowledge) క్రింద పేటెంట్ మినహాయింపుకు గురవుతాయి.\n\n"

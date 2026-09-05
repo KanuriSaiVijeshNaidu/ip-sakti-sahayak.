@@ -512,7 +512,7 @@ export default function ChatPage() {
 
               {/* Suggestions grid */}
               <div className="w-full">
-                <SuggestionsGrid onSelect={handleSend} language={language} />
+                <SuggestionsGrid onSelect={handleSend} language={language} domain={domain} />
               </div>
             </div>
           )}

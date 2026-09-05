@@ -1,19 +1,29 @@
 "use client";
-import { LanguageCode } from "@/types";
+import { LanguageCode, DomainType } from "@/types";
 import { getTranslation } from "@/lib/i18n";
+import { DOMAIN_DATA } from "@/lib/domainData";
 
 export default function SuggestionsGrid({
   onSelect,
   language = "en",
+  domain = "auto",
 }: {
   onSelect: (s: string) => void;
   language?: LanguageCode;
+  domain?: DomainType | "auto";
 }) {
   const t = getTranslation(language);
 
+  // Retrieve domain-specific questions for the selected domain & language
+  const langPack = DOMAIN_DATA[language] || DOMAIN_DATA["en"];
+  const domainInfo = langPack ? (langPack[domain] || langPack["auto"]) : null;
+  const suggestions = domainInfo?.prompts && domainInfo.prompts.length > 0
+    ? domainInfo.prompts
+    : t.suggestions;
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-w-2xl w-full mx-auto">
-      {t.suggestions.map((s) => (
+      {suggestions.map((s) => (
         <button
           key={s.text}
           onClick={() => onSelect(s.text)}
@@ -26,3 +36,4 @@ export default function SuggestionsGrid({
     </div>
   );
 }
+
