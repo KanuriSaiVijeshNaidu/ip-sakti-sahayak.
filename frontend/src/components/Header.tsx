@@ -1,5 +1,17 @@
 "use client";
-import { Scale, Globe, MessageSquare, SplitSquareVertical, User, ShieldCheck, Activity } from "lucide-react";
+import {
+  Scale,
+  Globe,
+  MessageSquare,
+  SplitSquareVertical,
+  User,
+  ShieldCheck,
+  Activity,
+  LogOut,
+  KeyRound,
+  Mail,
+  Lock,
+} from "lucide-react";
 import { LanguageCode, UserProfile } from "@/types";
 import { getTranslation } from "@/lib/i18n";
 import Link from "next/link";
@@ -12,6 +24,7 @@ interface HeaderProps {
   onOpenCompare: () => void;
   onOpenAuth: () => void;
   userProfile: UserProfile;
+  onLogout: () => void;
 }
 
 const LANGUAGES: { code: LanguageCode; label: string }[] = [
@@ -31,6 +44,7 @@ export default function Header({
   onOpenCompare,
   onOpenAuth,
   userProfile,
+  onLogout,
 }: HeaderProps) {
   const t = getTranslation(language);
 
@@ -57,6 +71,12 @@ export default function Header({
 
         {/* Action Buttons & Profile Controls */}
         <div className="flex items-center gap-2">
+          {/* Security SSL Status Pill */}
+          <div className="hidden lg:flex items-center gap-1 px-2 py-1 text-[11px] font-mono rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">
+            <Lock className="w-3 h-3 text-emerald-600" />
+            <span>TLS 256-Bit</span>
+          </div>
+
           {/* History Drawer Trigger */}
           <button
             onClick={onOpenHistory}
@@ -77,40 +97,66 @@ export default function Header({
             title="Open Statutory Compare Mode"
           >
             <SplitSquareVertical className="w-3.5 h-3.5 text-emerald-700" />
-            <span className="hidden md:inline">Compare Mode</span>
+            <span className="hidden md:inline">Compare</span>
           </button>
 
-          {/* Admin / Trace / LangSmith evaluation link */}
+          {/* Admin / Trace link */}
           <Link
             href="/admin"
             className="flex items-center gap-1 px-2 py-1.5 text-xs font-semibold text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
             title="Inspection Trace & LangSmith Evaluation Dashboard"
           >
             <Activity className="w-3.5 h-3.5 text-purple-600" />
-            <span className="hidden lg:inline">Trace</span>
+            <span className="hidden xl:inline">Trace</span>
           </Link>
 
-          {/* User Profile / Role Trigger */}
-          <button
-            onClick={onOpenAuth}
-            className="flex items-center gap-1.5 px-2.5 py-1 text-xs border border-gray-200 rounded-lg hover:border-green-400 bg-gray-50 transition-colors"
-            title="Manage Professional Role / Profile"
-          >
-            <div className="w-5 h-5 rounded-full bg-green-700 text-white flex items-center justify-center text-[10px] font-bold">
-              {userProfile.role[0].toUpperCase()}
+          {/* User Profile / Login Button */}
+          {userProfile.isLoggedIn ? (
+            <div className="flex items-center gap-1 bg-gray-50 border border-gray-200 rounded-lg p-0.5">
+              <button
+                onClick={onOpenAuth}
+                className="flex items-center gap-1.5 px-2 py-1 text-xs hover:bg-gray-200/60 rounded-md transition-colors"
+                title="View & Edit Professional Profile"
+              >
+                <div className="w-5 h-5 rounded-full bg-emerald-700 text-white flex items-center justify-center text-[10px] font-bold">
+                  {userProfile.name[0]?.toUpperCase() || "V"}
+                </div>
+                <div className="text-left hidden sm:block">
+                  <span className="block text-[11px] font-semibold text-gray-800 leading-tight truncate max-w-[100px]">
+                    {userProfile.name}
+                  </span>
+                  <span className="block text-[9px] text-gray-500 uppercase font-mono leading-none">
+                    {userProfile.role}
+                  </span>
+                </div>
+              </button>
+
+              {/* Direct Logout Button */}
+              <button
+                onClick={() => {
+                  if (confirm("Sign out of AYURLEX? Your current terminal session will end.")) {
+                    onLogout();
+                  }
+                }}
+                className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors"
+                title="Log Out of AYURLEX"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+              </button>
             </div>
-            <div className="text-left hidden sm:block">
-              <span className="block text-[11px] font-semibold text-gray-800 leading-tight truncate max-w-[100px]">
-                {userProfile.name}
-              </span>
-              <span className="block text-[9px] text-gray-500 uppercase font-mono leading-none">
-                {userProfile.role}
-              </span>
-            </div>
-          </button>
+          ) : (
+            <button
+              onClick={onOpenAuth}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-white bg-green-700 hover:bg-green-800 rounded-lg shadow-xs transition-all"
+              title="Sign In with Official Email"
+            >
+              <KeyRound className="w-3.5 h-3.5" />
+              <span>Sign In</span>
+            </button>
+          )}
 
           {/* Language selector */}
-          <div className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded-lg px-2 py-1 text-xs hover:border-green-400 transition-colors">
+          <div className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded-lg px-2.5 py-1 text-xs hover:border-green-400 transition-colors">
             <Globe className="w-3.5 h-3.5 text-green-600 shrink-0" />
             <select
               value={language}

@@ -8,10 +8,13 @@ export type UserRole = "vaidya" | "attorney" | "regulator" | "researcher" | "gue
 
 export interface UserProfile {
   name: string;
+  email: string;
   role: UserRole;
   registrationNumber?: string;
   institution?: string;
   isLoggedIn: boolean;
+  sessionToken?: string;
+  lastLogin?: string;
 }
 
 export interface CitedPassage {

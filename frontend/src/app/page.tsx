@@ -17,6 +17,7 @@ import { DOMAIN_DATA } from "@/lib/domainData";
 
 const DEFAULT_PROFILE: UserProfile = {
   name: "Dr. Rajesh Sharma",
+  email: "vaidya.sharma@nia.edu.in",
   role: "vaidya",
   registrationNumber: "AYUSH-IN-9842",
   institution: "National Institute of Ayurveda",
@@ -93,6 +94,20 @@ export default function ChatPage() {
     setUserProfile(profile);
     try {
       localStorage.setItem("ayurlex_user_profile", JSON.stringify(profile));
+    } catch {}
+  };
+
+  // Logout handler
+  const handleLogout = () => {
+    const loggedOutProfile: UserProfile = {
+      name: "Guest Citizen",
+      email: "",
+      role: "guest",
+      isLoggedIn: false,
+    };
+    setUserProfile(loggedOutProfile);
+    try {
+      localStorage.removeItem("ayurlex_user_profile");
     } catch {}
   };
 
@@ -237,6 +252,7 @@ export default function ChatPage() {
         onOpenCompare={() => setIsCompareOpen(true)}
         onOpenAuth={() => setIsAuthOpen(true)}
         userProfile={userProfile}
+        onLogout={handleLogout}
       />
 
       {/* Domain selector bar */}
@@ -374,6 +390,7 @@ export default function ChatPage() {
         onClose={() => setIsAuthOpen(false)}
         currentProfile={userProfile}
         onSaveProfile={handleSaveProfile}
+        onLogout={handleLogout}
       />
 
       <ChatHistoryDrawer
