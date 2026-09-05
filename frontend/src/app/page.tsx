@@ -9,7 +9,6 @@ import SuggestionsGrid from "@/components/SuggestionsGrid";
 import AuthModal, { UserProfile, UserRole } from "@/components/AuthModal";
 import ChatHistoryDrawer, { ChatSession } from "@/components/ChatHistoryDrawer";
 import CompareModeModal from "@/components/CompareModeModal";
-import LiveNatureWallpaper from "@/components/LiveNatureWallpaper";
 import { sendChatMessage } from "@/lib/api";
 import { Message, DomainType, LanguageCode } from "@/types";
 import {
@@ -320,10 +319,7 @@ export default function ChatPage() {
   const t = getTranslation(language);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 relative overflow-x-hidden">
-      {/* Live Animated Motion Nature Wallpaper */}
-      <LiveNatureWallpaper />
-
+    <div className="min-h-screen flex flex-col bg-gray-50">
       {/* Header with Home, Triggers & Logout */}
       <Header
         language={language}
