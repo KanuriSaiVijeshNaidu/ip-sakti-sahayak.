@@ -19,7 +19,7 @@ export interface TranslationStrings {
 
 export const I18N: Record<string, TranslationStrings> = {
   en: {
-    title: "IP-SAKTI Sahayak",
+    title: "AYURLEX",
     subtitle: "SIH26045 · Ministry of Ayush",
     tagline: "Multilingual Legal RAG",
     welcomeDesc: "Your AI assistant for Indian IP law and AYUSH / FSSAI regulatory guidance. All answers cite the exact legal source.",
@@ -49,7 +49,7 @@ export const I18N: Record<string, TranslationStrings> = {
     ],
   },
   te: {
-    title: "ఐపీ-శక్తి సహాయక్ (IP-SAKTI)",
+    title: "ఆయుర్‌లెక్స్ (AYURLEX)",
     subtitle: "SIH26045 · ఆయుష్ మంత్రిత్వ శాఖ",
     tagline: "బహుభాషా చట్టపరమైన RAG సహాయకుడు",
     welcomeDesc: "భారతీయ మేధో సంపత్తి (IP) చట్టాలు మరియు ఆయుష్/FSSAI నిబంధనల మార్గదర్శకత్వం కోసం మీ AI సహాయకుడు. అన్ని సమాధానాలు అధికారిక చట్టాలను ఉదహరిస్తాయి.",
@@ -79,7 +79,7 @@ export const I18N: Record<string, TranslationStrings> = {
     ],
   },
   hi: {
-    title: "आईपी-शक्ति सहायक (IP-SAKTI)",
+    title: "आयुर्लेक्स (AYURLEX)",
     subtitle: "SIH26045 · आयुष मंत्रालय",
     tagline: "बहुभाषी कानूनी RAG सहायक",
     welcomeDesc: "भारतीय बौद्धिक संपदा कानून और आयुष/FSSAI नियामक मार्गदर्शन के लिए आपका AI सहायक। सभी उत्तर सटीक कानूनी स्रोतों को उद्धृत करते हैं।",
@@ -109,7 +109,7 @@ export const I18N: Record<string, TranslationStrings> = {
     ],
   },
   ta: {
-    title: "ஐபி-சக்தி சஹாயக் (IP-SAKTI)",
+    title: "ஆயுர்லெக்ஸ் (AYURLEX)",
     subtitle: "SIH26045 · ஆயுஷ் அமைச்சகம்",
     tagline: "பன்மொழி சட்ட RAG உதவியாளர்",
     welcomeDesc: "இந்திய அறிவுசார் சொத்துரிமை சட்டம் மற்றும் ஆயுஷ்/FSSAI வழிகாட்டுதலுக்கான AI உதவியாளர். அனைத்து பதில்களும் சட்ட மூலங்களை மேற்கோள் காட்டுகின்றன.",

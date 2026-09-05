@@ -73,7 +73,7 @@ export default function AdminPage() {
       {/* Top bar */}
       <header className="bg-gray-900 text-white px-4 py-3 flex items-center gap-3">
         <FlaskConical className="w-5 h-5 text-green-400" />
-        <span className="font-bold text-sm">IP-SAKTI Admin Playground</span>
+        <span className="font-bold text-sm">AYURLEX Admin Playground</span>
         <span className="text-gray-500 text-xs hidden sm:block">Retrieval Trace & Benchmark Evaluator</span>
         <div className="ml-auto">
           <Link

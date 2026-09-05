@@ -1,8 +1,8 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "IP-SAKTI Sahayak",
+  title: "AYURLEX - AI Legal & Regulatory Assistant for AYUSH & IP",
   description: "AI assistant for Intellectual Property & AYUSH regulatory guidance",
 };
 
