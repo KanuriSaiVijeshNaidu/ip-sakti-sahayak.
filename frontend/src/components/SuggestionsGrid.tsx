@@ -22,18 +22,21 @@ export default function SuggestionsGrid({
     : t.suggestions;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-w-2xl w-full mx-auto">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl w-full mx-auto">
       {suggestions.map((s) => (
         <button
           key={s.text}
           onClick={() => onSelect(s.text)}
-          className="flex items-start gap-3 p-3.5 rounded-xl border border-gray-200 bg-white hover:border-green-400 hover:bg-green-50 text-left text-sm text-gray-800 transition-all group shadow-2xs"
+          className="flex items-start gap-3.5 p-4 rounded-2xl border border-gray-200/90 bg-white hover:border-emerald-400/90 hover:bg-emerald-50/30 text-left text-xs sm:text-sm text-gray-800 card-motion group shadow-2xs cursor-pointer select-none"
         >
-          <span className="text-xl mt-0.5 group-hover:scale-110 transition-transform">{s.emoji}</span>
-          <span className="leading-snug font-medium">{s.text}</span>
+          <span className="text-xl mt-0.5 group-hover:scale-115 transition-transform duration-200 shrink-0">
+            {s.emoji}
+          </span>
+          <span className="leading-snug font-semibold text-gray-800 group-hover:text-emerald-950">
+            {s.text}
+          </span>
         </button>
       ))}
     </div>
   );
 }
-

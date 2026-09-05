@@ -334,15 +334,15 @@ export default function ChatPage() {
       />
 
       {/* Domain selector bar */}
-      <div className="bg-white border-b border-gray-100 px-4 py-2 sticky top-[53px] z-20 shadow-2xs">
+      <div className="bg-white/95 backdrop-blur-md border-b border-gray-200/80 px-4 py-2.5 sticky top-[57px] z-20 shadow-2xs">
         <div className="max-w-4xl mx-auto flex items-center justify-between gap-2">
           <DomainSelector value={domain} onChange={setDomain} language={language} />
 
           <button
             onClick={() => setIsCompareOpen(true)}
-            className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors shrink-0"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50/80 hover:bg-emerald-100/80 border border-emerald-200/80 rounded-xl transition-all shadow-2xs btn-spring shrink-0 cursor-pointer"
           >
-            <ColumnsGap className="w-3 h-3 text-emerald-700" />
+            <ColumnsGap className="w-3.5 h-3.5 text-emerald-700" />
             <span>Compare Statutes</span>
           </button>
         </div>
@@ -353,20 +353,20 @@ export default function ChatPage() {
         <div className="max-w-4xl mx-auto space-y-5">
           {/* Active Consultation Navigation Toolbar (When chatting) */}
           {!isEmpty && (
-            <div className="flex items-center justify-between bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-xs shadow-2xs">
+            <div className="flex items-center justify-between bg-white border border-gray-200/90 rounded-2xl px-4 py-2.5 text-xs shadow-2xs animate-entrance-1">
               <button
                 onClick={handleGoHome}
-                className="flex items-center gap-1.5 font-bold text-gray-700 hover:text-green-800 transition-colors"
+                className="flex items-center gap-1.5 font-bold text-gray-700 hover:text-emerald-800 transition-colors cursor-pointer"
                 title="Return to Welcome Screen"
               >
-                <HouseDoorFill className="w-3.5 h-3.5 text-green-700" />
+                <HouseDoorFill className="w-3.5 h-3.5 text-emerald-700" />
                 <span>← Return to Home Screen</span>
               </button>
 
               <div className="flex items-center gap-2">
                 <button
                   onClick={handleNewSession}
-                  className="px-2.5 py-1 text-[11px] font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors flex items-center gap-1"
+                  className="px-3 py-1 text-[11px] font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-xl transition-all flex items-center gap-1 btn-spring cursor-pointer"
                   title="Start a fresh question"
                 >
                   <PlusCircleFill className="w-3 h-3 text-gray-500" />
@@ -383,7 +383,7 @@ export default function ChatPage() {
                       }
                     }
                   }}
-                  className="px-2.5 py-1 text-[11px] font-semibold text-red-600 hover:bg-red-50 border border-red-200 rounded-lg transition-colors flex items-center gap-1"
+                  className="px-3 py-1 text-[11px] font-semibold text-red-600 hover:bg-red-50 border border-red-200 rounded-xl transition-all flex items-center gap-1 btn-spring cursor-pointer"
                   title="Delete this conversation"
                 >
                   <Trash3Fill className="w-3 h-3" />
@@ -395,15 +395,20 @@ export default function ChatPage() {
 
           {/* Welcome screen */}
           {isEmpty && (
-            <div className="flex flex-col items-center text-center py-6 space-y-5">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-600 to-orange-500 flex items-center justify-center shadow-lg">
-                <ShieldShaded className="w-8 h-8 text-white" />
+            <div className="flex flex-col items-center text-center py-4 sm:py-6 space-y-5">
+              {/* Emblem Logo */}
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-gradient-to-br from-emerald-600 via-green-600 to-amber-600 p-3.5 sm:p-4 flex items-center justify-center shadow-lg shadow-emerald-900/10 ring-1 ring-emerald-500/20 animate-entrance-1">
+                <ShieldShaded className="w-9 h-9 sm:w-11 sm:h-11 text-white drop-shadow-sm" />
               </div>
-              <div className="space-y-1.5 max-w-xl">
-                <h2 className="text-2xl font-bold text-gray-900">{t.title}</h2>
-                <p className="text-sm text-gray-600">
+
+              {/* Title & Subtitle */}
+              <div className="space-y-1.5 max-w-2xl mx-auto animate-entrance-2">
+                <h2 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">
+                  {t.title}
+                </h2>
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                   {t.subtitle} —{" "}
-                  <span className="text-green-700 font-semibold">
+                  <span className="text-emerald-700 font-bold">
                     Zero-Hallucination Grounded AI
                   </span>{" "}
                   backed by 12 Official Gazette Corpora and SHA-256 Ledger Provenance.
@@ -411,32 +416,32 @@ export default function ChatPage() {
               </div>
 
               {/* User Account / Data Isolation Status Banner */}
-              <div className="w-full max-w-2xl bg-white border border-gray-200 rounded-xl p-3 flex items-center justify-between gap-3 text-xs shadow-2xs">
-                <div className="flex items-center gap-2.5 text-left">
+              <div className="w-full max-w-2xl bg-white border border-gray-200/90 rounded-2xl p-3.5 flex items-center justify-between gap-3 text-xs shadow-2xs card-motion animate-entrance-3">
+                <div className="flex items-center gap-3 text-left">
                   <div
-                    className={`w-8 h-8 rounded-lg flex items-center justify-center text-white shrink-0 font-bold ${
+                    className={`w-9 h-9 rounded-xl flex items-center justify-center text-white shrink-0 font-bold text-sm shadow-xs ${
                       userProfile.isLoggedIn ? "bg-emerald-700" : "bg-gray-400"
                     }`}
                   >
-                    {userProfile.isLoggedIn ? userProfile.name[0]?.toUpperCase() : "G"}
+                    {userProfile.isLoggedIn ? (userProfile.name[0]?.toUpperCase() || "K") : "G"}
                   </div>
                   <div>
                     {userProfile.isLoggedIn ? (
                       <>
                         <div className="flex items-center gap-1.5">
-                          <span className="font-bold text-gray-900">{userProfile.name}</span>
-                          <span className="text-[10px] bg-emerald-100 text-emerald-800 font-mono px-1.5 py-0.2 rounded uppercase font-bold">
+                          <span className="font-bold text-gray-900 text-sm">{userProfile.name}</span>
+                          <span className="text-[10px] bg-emerald-100 text-emerald-800 font-mono px-1.5 py-0.5 rounded uppercase font-bold tracking-wider">
                             {userProfile.role}
                           </span>
                         </div>
-                        <span className="text-[11px] text-gray-500 font-mono">
+                        <span className="text-[11px] text-gray-500 font-mono block mt-0.5">
                           Vault: {userProfile.email} (Strictly Isolated)
                         </span>
                       </>
                     ) : (
                       <>
-                        <span className="font-bold text-gray-800">Guest Mode (No History Stored)</span>
-                        <p className="text-[11px] text-gray-500">
+                        <span className="font-bold text-gray-800 text-sm">Guest Mode (No History Stored)</span>
+                        <p className="text-[11px] text-gray-500 mt-0.5">
                           Sign in with your email & OTP to save private consultations and verify credentials.
                         </p>
                       </>
@@ -448,46 +453,46 @@ export default function ChatPage() {
                   {userProfile.isLoggedIn ? (
                     <button
                       onClick={handleLogout}
-                      className="px-3 py-1 text-xs font-semibold text-red-600 hover:text-red-700 hover:bg-red-50 border border-red-200 rounded-lg transition-colors"
+                      className="px-3.5 py-1.5 text-xs font-semibold text-red-600 hover:text-red-700 hover:bg-red-50 border border-red-200 rounded-xl transition-all btn-spring cursor-pointer"
                     >
                       Sign Out
                     </button>
                   ) : (
                     <button
                       onClick={() => setIsAuthOpen(true)}
-                      className="px-3 py-1.5 text-xs font-bold text-white bg-green-700 hover:bg-green-800 rounded-lg shadow-xs transition-all flex items-center gap-1"
+                      className="px-4 py-2 text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-xl shadow-xs transition-all flex items-center gap-1.5 btn-spring cursor-pointer"
                     >
                       <KeyFill className="w-3.5 h-3.5" />
-                      Sign In with OTP
+                      <span>Sign In with OTP</span>
                     </button>
                   )}
                 </div>
               </div>
 
-              {/* Quick Action Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-2xl text-left">
+              {/* Quick Action Cards (3 Columns) */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-2xl text-left animate-entrance-4">
                 <button
                   onClick={() => setIsCompareOpen(true)}
-                  className="p-3.5 rounded-xl border border-gray-200 bg-white hover:border-green-400 hover:shadow-xs transition-all flex flex-col justify-between"
+                  className="p-4 rounded-2xl border border-gray-200/90 bg-white hover:border-emerald-400 hover:bg-emerald-50/20 card-motion flex flex-col justify-between group shadow-2xs cursor-pointer select-none"
                 >
-                  <div className="flex items-center gap-2 text-xs font-bold text-gray-900 mb-1">
-                    <ColumnsGap className="w-4 h-4 text-emerald-700" />
+                  <div className="flex items-center gap-2 text-xs font-bold text-gray-900 mb-1.5">
+                    <ColumnsGap className="w-4 h-4 text-emerald-700 group-hover:scale-110 transition-transform duration-200" />
                     <span>Statutory Compare</span>
                   </div>
-                  <p className="text-[11px] text-gray-500">
+                  <p className="text-[11px] text-gray-500 leading-snug">
                     Patent vs Trademark vs GI, Classical Drug vs Ayurveda Aahara matrices.
                   </p>
                 </button>
 
                 <button
                   onClick={() => setIsAuthOpen(true)}
-                  className="p-3.5 rounded-xl border border-gray-200 bg-white hover:border-green-400 hover:shadow-xs transition-all flex flex-col justify-between"
+                  className="p-4 rounded-2xl border border-gray-200/90 bg-white hover:border-emerald-400 hover:bg-emerald-50/20 card-motion flex flex-col justify-between group shadow-2xs cursor-pointer select-none"
                 >
-                  <div className="flex items-center gap-2 text-xs font-bold text-gray-900 mb-1">
-                    <ShieldCheck className="w-4 h-4 text-blue-700" />
+                  <div className="flex items-center gap-2 text-xs font-bold text-gray-900 mb-1.5">
+                    <ShieldCheck className="w-4 h-4 text-blue-600 group-hover:scale-110 transition-transform duration-200" />
                     <span>Email & OTP Access</span>
                   </div>
-                  <p className="text-[11px] text-gray-500">
+                  <p className="text-[11px] text-gray-500 leading-snug">
                     {userProfile.isLoggedIn
                       ? `Active: ${userProfile.email}`
                       : "Instant 6-digit OTP to your Gmail."}
@@ -496,13 +501,13 @@ export default function ChatPage() {
 
                 <button
                   onClick={() => setIsHistoryOpen(true)}
-                  className="p-3.5 rounded-xl border border-gray-200 bg-white hover:border-green-400 hover:shadow-xs transition-all flex flex-col justify-between"
+                  className="p-4 rounded-2xl border border-gray-200/90 bg-white hover:border-emerald-400 hover:bg-emerald-50/20 card-motion flex flex-col justify-between group shadow-2xs cursor-pointer select-none"
                 >
-                  <div className="flex items-center gap-2 text-xs font-bold text-gray-900 mb-1">
-                    <ChatLeftTextFill className="w-4 h-4 text-purple-700" />
+                  <div className="flex items-center gap-2 text-xs font-bold text-gray-900 mb-1.5">
+                    <ChatLeftTextFill className="w-4 h-4 text-purple-600 group-hover:scale-110 transition-transform duration-200" />
                     <span>Private Consultations</span>
                   </div>
-                  <p className="text-[11px] text-gray-500">
+                  <p className="text-[11px] text-gray-500 leading-snug">
                     {userProfile.isLoggedIn
                       ? `${sessions.length} consultations in vault.`
                       : "Sign in to save and manage history."}
@@ -511,7 +516,7 @@ export default function ChatPage() {
               </div>
 
               {/* Suggestions grid */}
-              <div className="w-full">
+              <div className="w-full animate-entrance-5">
                 <SuggestionsGrid onSelect={handleSend} language={language} domain={domain} />
               </div>
             </div>
@@ -552,12 +557,12 @@ export default function ChatPage() {
       </main>
 
       {/* Input bar */}
-      <footer className="bg-white border-t border-gray-200 p-4 sticky bottom-0 z-20">
-        <div className="max-w-4xl mx-auto space-y-2">
+      <footer className="bg-gradient-to-t from-gray-50 via-gray-50 to-transparent pt-2 pb-4 px-4 sticky bottom-0 z-20">
+        <div className="max-w-2xl mx-auto space-y-2">
           <ChatInput onSend={handleSend} loading={loading} placeholder={t.inputPlaceholder} />
-          <p className="text-[11px] text-center text-gray-500">
+          <p className="text-[11px] text-center text-gray-500 font-medium select-none">
             {t.legalDisclaimer} ·{" "}
-            <span className="font-mono text-gray-600">AYURLEX V2.0 Enterprise</span>
+            <span className="font-mono text-gray-600 font-semibold">AYURLEX V2.0 Enterprise</span>
           </p>
         </div>
       </footer>

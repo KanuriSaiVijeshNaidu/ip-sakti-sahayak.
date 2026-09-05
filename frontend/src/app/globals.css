@@ -1,9 +1,122 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html { scroll-behavior: smooth; }
-body { @apply bg-gray-50 text-gray-900; }
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-gray-50 text-gray-900 selection:bg-emerald-500/20 selection:text-emerald-900;
+  }
+}
 
-.prose-legal { @apply text-sm leading-relaxed text-gray-700; }
-.prose-legal strong { @apply text-gray-900 font-semibold; }
+/* motion.sites spring easing curves */
+:root {
+  --ease-spring-snappy: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-spring-gentle: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Card & Button Motion Classes */
+.card-motion {
+  transition: transform 0.28s var(--ease-spring-snappy),
+              box-shadow 0.28s var(--ease-spring-snappy),
+              border-color 0.2s ease,
+              background-color 0.2s ease;
+  will-change: transform, box-shadow;
+}
+
+.card-motion:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -6px rgba(16, 185, 129, 0.09), 0 4px 8px -2px rgba(0, 0, 0, 0.04);
+}
+
+.card-motion:active {
+  transform: translateY(0) scale(0.985);
+}
+
+.btn-spring {
+  transition: transform 0.2s var(--ease-spring-snappy),
+              background-color 0.2s ease,
+              box-shadow 0.2s var(--ease-spring-snappy),
+              border-color 0.2s ease;
+}
+
+.btn-spring:hover {
+  transform: translateY(-1px);
+}
+
+.btn-spring:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.pill-spring {
+  transition: all 0.22s var(--ease-spring-snappy);
+}
+
+.pill-spring:hover {
+  transform: translateY(-1px);
+}
+
+.pill-spring:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* Staggered entrance animations */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-entrance-1 {
+  animation: slideUpFade 0.45s var(--ease-spring-snappy) 0.05s both;
+}
+
+.animate-entrance-2 {
+  animation: slideUpFade 0.45s var(--ease-spring-snappy) 0.12s both;
+}
+
+.animate-entrance-3 {
+  animation: slideUpFade 0.45s var(--ease-spring-snappy) 0.18s both;
+}
+
+.animate-entrance-4 {
+  animation: slideUpFade 0.45s var(--ease-spring-snappy) 0.24s both;
+}
+
+.animate-entrance-5 {
+  animation: slideUpFade 0.45s var(--ease-spring-snappy) 0.30s both;
+}
+
+/* Smooth Legal Prose */
+.prose-legal {
+  @apply text-sm leading-relaxed text-gray-700;
+}
+.prose-legal strong {
+  @apply text-gray-900 font-semibold;
+}
+
+/* Custom Clean Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 114, 128, 0.6);
+}

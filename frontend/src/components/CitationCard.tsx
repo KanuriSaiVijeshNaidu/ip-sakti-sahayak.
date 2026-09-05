@@ -41,7 +41,7 @@ export default function CitationCard({ passages }: { passages: CitedPassage[] })
         return (
           <div
             key={i}
-            className="bg-gray-50 border border-gray-200 rounded-xl p-3 space-y-2 text-xs"
+            className="bg-white border border-gray-200/90 rounded-2xl p-3.5 space-y-2 text-xs card-motion shadow-2xs"
           >
             {/* Top row: citation key + domain + jurisdiction + match */}
             <div className="flex items-center justify-between gap-2 flex-wrap">
