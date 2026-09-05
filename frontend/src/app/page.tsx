@@ -9,6 +9,7 @@ import SuggestionsGrid from "@/components/SuggestionsGrid";
 import AuthModal, { UserProfile, UserRole } from "@/components/AuthModal";
 import ChatHistoryDrawer, { ChatSession } from "@/components/ChatHistoryDrawer";
 import CompareModeModal from "@/components/CompareModeModal";
+import LiveNatureWallpaper from "@/components/LiveNatureWallpaper";
 import { sendChatMessage } from "@/lib/api";
 import { Message, DomainType, LanguageCode } from "@/types";
 import {
@@ -319,7 +320,10 @@ export default function ChatPage() {
   const t = getTranslation(language);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-slate-50/40 relative overflow-x-hidden">
+      {/* Live Animated Motion Nature Wallpaper */}
+      <LiveNatureWallpaper />
+
       {/* Header with Home, Triggers & Logout */}
       <Header
         language={language}
@@ -334,7 +338,7 @@ export default function ChatPage() {
       />
 
       {/* Domain selector bar */}
-      <div className="bg-white/90 backdrop-blur-md border-b border-gray-200/70 px-4 py-2.5 sticky top-[57px] z-20 shadow-2xs">
+      <div className="bg-white/85 backdrop-blur-md border-b border-gray-200/60 px-4 py-2.5 sticky top-[57px] z-20 shadow-2xs">
         <div className="max-w-4xl mx-auto flex items-center justify-between gap-2">
           <DomainSelector value={domain} onChange={setDomain} language={language} />
 
