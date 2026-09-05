@@ -34,15 +34,18 @@ export async function POST(req: Request) {
 
       let emailSent = false;
       let deliveryMethod = "Server Dispatch";
+      let mailErrorMsg: string | null = null;
 
       // 1. Check for Gmail credentials (GMAIL_USER & GMAIL_APP_PASSWORD)
-      const gmailUser = process.env.GMAIL_USER || process.env.SMTP_USER;
-      const gmailPass = process.env.GMAIL_APP_PASSWORD || process.env.SMTP_PASS;
+      const gmailUser = (process.env.GMAIL_USER || process.env.SMTP_USER || "").trim();
+      const gmailPass = (process.env.GMAIL_APP_PASSWORD || process.env.SMTP_PASS || "").replace(/\s+/g, "");
 
       if (gmailUser && gmailPass) {
         try {
           const transporter = nodemailer.createTransport({
-            service: "gmail",
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true,
             auth: {
               user: gmailUser,
               pass: gmailPass,
@@ -77,13 +80,15 @@ export async function POST(req: Request) {
           });
           emailSent = true;
           deliveryMethod = "Gmail SMTP";
-        } catch (mailErr) {
+        } catch (mailErr: unknown) {
+          const errObj = mailErr as { message?: string };
+          mailErrorMsg = errObj?.message || String(mailErr);
           console.error("[AYURLEX OTP] Gmail SMTP Delivery Failed:", mailErr);
         }
       }
 
       // 2. Check for Resend API Key
-      const resendApiKey = process.env.RESEND_API_KEY;
+      const resendApiKey = (process.env.RESEND_API_KEY || "").trim();
       if (!emailSent && resendApiKey) {
         try {
           const res = await fetch("https://api.resend.com/emails", {
@@ -102,8 +107,13 @@ export async function POST(req: Request) {
           if (res.ok) {
             emailSent = true;
             deliveryMethod = "Resend API";
+          } else {
+            const errData = await res.json();
+            mailErrorMsg = errData?.message || "Resend dispatch failed";
           }
-        } catch (resendErr) {
+        } catch (resendErr: unknown) {
+          const errObj = resendErr as { message?: string };
+          mailErrorMsg = errObj?.message || String(resendErr);
           console.error("[AYURLEX OTP] Resend Delivery Failed:", resendErr);
         }
       }
@@ -111,7 +121,18 @@ export async function POST(req: Request) {
       // Secure Server Audit (never exposed to client browser)
       console.log(`[AYURLEX AUTH AUDIT] OTP generated for ${normalizedEmail} (Delivery: ${deliveryMethod}): ${generatedOtp}`);
 
-      // Crucial: We do NOT send generatedOtp in the JSON response!
+      if (!emailSent) {
+        return NextResponse.json(
+          {
+            error: mailErrorMsg
+              ? `Email delivery failed: ${mailErrorMsg}`
+              : `Email credentials not configured or incomplete on server. GMAIL_USER: ${gmailUser ? "configured" : "MISSING"}, GMAIL_APP_PASSWORD: ${gmailPass ? "configured" : "MISSING"}. Please check Vercel environment variables and redeploy.`,
+            deliveryMethod,
+          },
+          { status: 500 }
+        );
+      }
+
       return NextResponse.json({
         success: true,
         message: `Secure 6-digit verification code sent to ${normalizedEmail}. Please check your Gmail/email inbox.`,
@@ -157,4 +178,19 @@ export async function POST(req: Request) {
   } catch (err) {
     return NextResponse.json({ error: String(err) }, { status: 500 });
   }
+}
+
+export async function GET() {
+  const gmailUser = (process.env.GMAIL_USER || process.env.SMTP_USER || "").trim();
+  const gmailPass = (process.env.GMAIL_APP_PASSWORD || process.env.SMTP_PASS || "").replace(/\s+/g, "");
+  const resendApiKey = (process.env.RESEND_API_KEY || "").trim();
+
+  return NextResponse.json({
+    status: "ok",
+    hasGmailUser: !!gmailUser,
+    gmailUserMasked: gmailUser ? `${gmailUser.slice(0, 3)}***@${gmailUser.split("@")[1] || "gmail.com"}` : null,
+    hasGmailAppPassword: !!gmailPass,
+    gmailPassLength: gmailPass.length,
+    hasResendApiKey: !!resendApiKey,
+  });
 }
