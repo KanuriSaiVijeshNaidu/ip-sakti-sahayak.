@@ -1,0 +1,17 @@
+# Biological Diversity (Amendment) Act 2023 &amp; ABS Rules
+
+### Section 3 - Access to Biological Resources by Non-Indian Entities
+
+Section 3 of the Biological Diversity Act, 2002 (as amended in 2023) mandates that: No person who is not a citizen of India, or a citizen of India who is an NRI, or a body corporate, association or organisation not incorporated or registered in India, or incorporated in India under any law having any non-Indian participation in its share capital or management, shall access any biological resource occurring in India or associated traditional knowledge for research or commercial utilisation without prior approval of the National Biodiversity Authority (NBA) via Form I.
+
+### Section 6 - Application for Intellectual Property Rights (Form III Mandatory Approval)
+
+Section 6(1) provides: No person shall apply for any intellectual property right, by whatever name called, in or outside India for any invention based on any research or information on a biological resource obtained from India without obtaining the prior approval of the National Biodiversity Authority before grant of such patent. The 2023 Amendment streamlines Section 6 by clarifying that approval may be obtained before the actual grant of patent rather than before filing the application, provided NBA approval is secured prior to patent sealing. Under Section 6(2), the NBA may impose benefit sharing conditions or royalties as per ABS regulations.
+
+### Key 2023 Amendments: AYUSH Registered Practitioner Exemption
+
+The Biological Diversity (Amendment) Act, 2023 introduced significant relief for traditional practitioners: (1) Exemption of AYUSH Practitioners: Registered AYUSH practitioners practicing Indian systems of medicine are exempted from the requirement of giving prior intimation to State Biodiversity Boards (SBB) under Section 7. (2) Exemption for Cultivated Medicinal Plants: Commercial utilization of cultivated medicinal plants is exempt from SBB intimation and benefit-sharing obligations, provided certificate of origin is maintained. (3) Decriminalization: Criminal imprisonment provisions were eliminated and replaced with civil penalties ranging from Rs. 1 lakh up to Rs. 50 lakhs, determined by an Adjudicating Officer under Section 55A.
+
+### Guidelines on Access and Benefit Sharing (ABS) Regulations 2014
+
+Under the ABS Regulations 2014 framed under Section 21 of the Biological Diversity Act: Commercial Utilization Benefit Sharing Percentages on Ex-Factory Sale Price: (a) Annual gross ex-factory sale of product up to Rs. 1,00,00,000: 0.1% of sales. (b) Annual gross ex-factory sale between Rs. 1,00,00,001 and Rs. 3,00,00,000: 0.2% of sales. (c) Annual gross ex-factory sale exceeding Rs. 3,00,00,000: 0.5% of sales. Alternatively, buyers may opt for 3.0% to 5.0% of the purchase price of the biological resource. For IPR/Patents: If the applicant commercializes the patent himself, 0.2% to 1.0% of ex-factory sale price; if licensed or assigned to a third party, 3.0% to 5.0% of license fee and 2.0% to 5.0% of ongoing royalty.

@@ -1,0 +1,23 @@
+TKDL LANDMARK BIOPIRACY CASES & PRIOR ART REVOCATIONS
+Source: Traditional Knowledge Digital Library (TKDL) Case Compendium
+Authority: CSIR & Ministry of AYUSH, Government of India
+Jurisdiction: IN | Domain: tkdl | Corpus Version: v2.0
+Official Reference: https://www.tkdl.res.in
+
+================================================================================
+
+Case 1: Revocation of US Patent 5,401,504 on Turmeric (Curcuma longa)
+---------------------------------------------------------------------
+In 1995, the United States Patent and Trademark Office (USPTO) granted Patent No. 5,401,504 to the University of Mississippi Medical Center claiming the use of turmeric (Curcuma longa) powder for the treatment and promotion of wound healing. The Council of Scientific and Industrial Research (CSIR), led by Dr. R.A. Mashelkar, formally challenged the patent by submitting 32 classical Hindi, Sanskrit, and Urdu references from authenticated Ayurvedic texts, including Charaka Samhita and Bhavaprakasha, proving that the medicinal use of turmeric for wound healing had been documented for over 2,000 years in India. In 1997, the USPTO revoked all claims of US Patent 5,401,504 on grounds of anticipation by prior art under 35 U.S.C. 102. This marked the world's first successful formal challenge against biopiracy of Indian TK.
+
+Case 2: Revocation of European Patent EP 436,257 on Neem (Azadirachta indica)
+-----------------------------------------------------------------------------
+In 1994, the European Patent Office (EPO) granted Patent EP 436,257 to W.R. Grace & Co. and the USDA covering a method for controlling fungal pests on plants using a hydrophobic extracted neem oil formulation. A legal opposition was filed by Vandana Shiva (Research Foundation for Science, Technology and Ecology), the International Federation of Organic Agriculture Movements (IFOAM), and Magda Aelvoet. Prior art evidence from Indian traditional agronomy and Ayurvedic treatises proved that neem extracts had been used for centuries across Indian agriculture as an insecticidal and antifungal bio-agent. In 2000, the EPO Opposition Board revoked the patent in its entirety on grounds of lack of novelty and inventive step under Articles 54 and 56 of the European Patent Convention (EPC).
+
+Case 3: RiceTec Basmati Patent Challenge (US Patent 5,663,484)
+--------------------------------------------------------------
+In 1997, RiceTec Inc. was granted US Patent No. 5,663,484 titled 'Basmati Rice Lines and Grains'. The patent claimed proprietary hybrid lines possessing physical and aromatic characteristics identical to geographical Basmati rice cultivated for centuries in the Indo-Gangetic plains of India and Pakistan. The Government of India, supported by CSIR and APEDA, submitted extensive documentary evidence proving that the grain characteristics, aroma (2-acetyl-1-pyrroline), and elongation ratio were intrinsic to traditional Indian germplasms. Consequently, RiceTec was forced to withdraw 15 of its 20 claims, and the remaining claims were severely restricted, protecting India's heritage grain export and paving the way for GI registration of Basmati.
+
+Case 4: Kani Tribe & Jeevani - Pushpangadan Benefit-Sharing Model
+-----------------------------------------------------------------
+In December 1987, scientists from the Tropical Botanic Garden and Research Institute (TBGRI), led by Dr. P. Pushpangadan, observed the remarkable endurance of Kani tribal guides in the Western Ghats of Kerala who consumed the leaves of the wild herb Arogyapacha (Trichopus zeylanicus ssp. travancoricus). TBGRI scientifically validated the anti-fatigue, adaptogenic, and immuno-modulatory properties and formulated the Ayurvedic herbal drug 'Jeevani'. In 1995, TBGRI licensed the manufacturing technology to Arya Vaidya Pharmacy (Coimbatore) Ltd for a license fee of Rs. 10 lakhs and a 2% royalty on sales. TBGRI created the 'Kerala Kani Samudaya Kshema Trust' and shared 50% of the license fee and 50% of ongoing royalties with the Kani tribe. This became a pioneering global benchmark for Access and Benefit Sharing (ABS) prior to the Nagoya Protocol and the Indian Biological Diversity Act 2002.

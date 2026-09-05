@@ -1,0 +1,35 @@
+AYURVEDIC FORMULARY OF INDIA (AFI) CLASSICAL FORMULATIONS
+Source: The Ayurvedic Formulary of India (Part I, II & III)
+Authority: Department of AYUSH, Ministry of Health and Family Welfare, Government of India
+Jurisdiction: IN | Domain: ayush | Corpus Version: v2.0
+Official Reference: https://pcimh.gov.in
+
+================================================================================
+
+AFI Formulation: Triphala Churna (AFI Part I, 7:15)
+---------------------------------------------------
+Composition: Equal parts (1:1:1 by weight) of Haritaki (Terminalia chebula pericarp), Bibhitaki (Terminalia bellirica pericarp), and Amalaki (Phyllanthus emblica pericarp). Reference Classical Texts: Charaka Samhita Chikitsasthana Chapter 1, Sharngadhara Samhita Madhyamakhanda. Method of Preparation: Cleaned pericarp portions are shade-dried, pulverized separately, and passed through mesh No. 85, then blended homogeneously. Therapeutic Indications: Chakshushya (ophthalmic tonic), Deepana, Ruchya, Vibandha (constipation), Prameha, Kushta. Dose and Anupana: 3 to 6 grams with lukewarm water, honey, or ghee at bedtime.
+
+AFI Formulation: Trikatu Churna (AFI Part I, 7:16)
+--------------------------------------------------
+Composition: Equal parts (1:1:1 by weight) of Shunthi (Zingiber officinale dried rhizome), Maricha (Piper nigrum fruit), and Pippali (Piper longum fruit). Classical Reference: Sharngadhara Samhita Madhyamakhanda 6:12-13. Therapeutic Indications: Agnimandya (loss of digestive fire), Aruchi, Shwasa, Kasa, Galaganda, Pinasa, Sthaulya. Bioenhancement Role: Trikatu significantly increases the bioavailability of co-administered Ayurvedic herbs and mineral bhasmas. Dose and Anupana: 1 to 2 grams with honey or warm water before or after meals.
+
+AFI Formulation: Chyawanprash Avaleha (AFI Part I, 3:11)
+--------------------------------------------------------
+Composition: Bilva, Agnimantha, Shyonaka, Patala, Gambhari, Dashamoola, Amalaki (fresh pulp 500 fruits), Ghrita, Til Taila, Sharkara/Matsyandika, Prakshepa dravyas including Pippali, Vanshlochan, Ela, Twak, Tejpatra, Nagakeshara. Classical Reference: Charaka Samhita Chikitsasthana 1:1:62-74. Therapeutic Indications: Kasa, Shwasa, Kshaya, Dourbalya, Swarabheda, Rasayana (anti-ageing and vitality). Dose: 12 to 24 grams once or twice daily with warm milk.
+
+AFI Formulation: Yograj Guggulu (AFI Part I, 5:6)
+-------------------------------------------------
+Composition: Shuddha Guggulu (Commiphora wightii gum-resin), Chitraka, Pippalimoola, Yavani, Jeeraka, Vidanga, Ajamoda, Triphala, Trikatu, Chavya, Ela, Gokshura, Rasna, and mineral aids processed in Ghrita. Classical Reference: Sharngadhara Samhita Madhyamakhanda 7:56-69. Therapeutic Indications: Amavata (rheumatoid arthritis), Sandhigata Vata (osteoarthritis), Vataroga, Kati Graha. Dose: 1 to 2 tablets (500mg to 1000mg) twice daily with Rasnasaptaka Kwatha or warm water.
+
+AFI Formulation: Avipattikar Churna (AFI Part I, 7:2)
+-----------------------------------------------------
+Composition: Trikatu (Shunthi, Maricha, Pippali), Triphala (Haritaki, Bibhitaki, Amalaki), Musta, Vidanga, Ela, Tejpatra, Lavanga (11 parts), Trivrit (Operculina turpethum root bark - 44 parts), and Sharkara (sugar - 66 parts). Classical Reference: Bhaishajya Ratnavali Amlapittarogadhikara 25-27. Therapeutic Indications: Amlapitta (hyperacidity / acid reflux), Vibandha (constipation), Agnimandya, Chardi. Dose: 3 to 6 grams before meals with cold water or milk.
+
+AFI Formulation: Mahasudarshan Churna (AFI Part I, 7:26)
+--------------------------------------------------------
+Composition: 54 herbal ingredients with Kiratatikta (Swertia chirata) comprising 50% of the entire formulation, balanced with Triphala, Trikatu, Haridra, Daruharidra, Kantakari, Brihati, Guduchi, Katuki, and Neem. Classical Reference: Sharngadhara Samhita Madhyamakhanda 6:27-37. Therapeutic Indications: Sannipata Jwara, Vishama Jwara (malarial / recurring fever), Yakrit-Pliha vriddhi, Aruchi, Trishna. Dose: 2 to 4 grams twice daily with warm water.
+
+AFI Formulation: Dashamularishta (AFI Part I, 1:19)
+---------------------------------------------------
+Composition: Fermented liquid preparation containing Dashamoola (ten roots), Chitraka, Pushkarmoola, Lodhra, Guduchi, Dhataki flowers (fermentation catalyst), Draksha, and self-generated alcohol (not exceeding 12% v/v). Classical Reference: Sharngadhara Samhita Madhyamakhanda 10:78-92. Therapeutic Indications: Sutika Roga (post-natal disorders), Dourbalya, Kasa, Shwasa, Arsha, Vataroga. Dose: 15 to 30 ml with equal quantity of water after food.

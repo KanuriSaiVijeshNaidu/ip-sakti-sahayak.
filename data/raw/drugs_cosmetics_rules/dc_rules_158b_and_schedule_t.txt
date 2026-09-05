@@ -1,0 +1,23 @@
+DRUGS AND COSMETICS ACT 1940 & RULES 1945 - ASU PROVISIONS
+Source: Drugs and Cosmetics Act, 1940 and Drugs and Cosmetics Rules, 1945
+Authority: Central Drugs Standard Control Organization (CDSCO) & Ministry of AYUSH
+Jurisdiction: IN | Domain: ayush | Corpus Version: v2.0
+Official Reference: https://cdsco.gov.in
+
+================================================================================
+
+Rule 158B - Licensing Requirements for Ayurvedic, Siddha, and Unani (ASU) Drugs
+-------------------------------------------------------------------------------
+Rule 158B of the Drugs and Cosmetics Rules, 1945 specifies regulatory evidentiary requirements for grant of manufacturing licenses for Ayurvedic, Siddha, or Unani medicines: (I) Classical ASU Medicines (Manufactured in accordance with formulations described in authoritative books specified in the First Schedule to the Act): Proof of reference from authoritative books, authentic texts, and compliance with Schedule T GMP is required. No clinical trials or acute toxicity studies are mandated. (II) Patent or Proprietary Medicines (New combinations, modified dosage forms, or proprietary extracts): Licensees must submit published scientific literature on safety, safety toxicity data (acute, sub-acute), and pilot clinical studies depending on whether the ingredients are classical or novel. (III) Standardized Extracts / Phytopharmaceuticals: Complete chromatographic fingerprinting, quantitative estimation of active marker compounds, and regulatory toxicology data are mandatory.
+
+Schedule T - Good Manufacturing Practices (GMP) for ASU Medicines
+-----------------------------------------------------------------
+Schedule T of the Drugs and Cosmetics Rules, 1945 establishes Good Manufacturing Practices (GMP) that all licensed manufacturing units of Ayurvedic, Siddha, and Unani drugs must comply with: (1) Factory Premises: Location in hygienic surroundings, avoidance of contamination, minimum space requirement (1,200 sq. ft. for basic manufacturing plus raw material and packaging storage). (2) Quality Control Laboratory: Must have facilities for physical testing (moisture, total ash, acid-insoluble ash), (3) Chemical analysis (identification tests, TLC/HPTLC profiling, assay of active markers), (4) Heavy metal testing (Lead, Cadmium, Mercury, Arsenic within pharmacopoeial limits), and (5) Microbial contamination testing (Pathogens including E. coli, Salmonella, Pseudomonas, and S. aureus must be absent). (6) Batch Manufacturing Records (BMR): Retention of complete records for 3 years or 1 year past expiry date.
+
+Schedule E(1) - List of Poisonous Substances in ASU Systems
+-----------------------------------------------------------
+Schedule E(1) of the Drugs and Cosmetics Rules, 1945 specifies toxic plant, mineral, and animal origin substances requiring mandatory cautionary labelling ('Caution: To be taken under medical supervision') and stringent purification (Shodhana): (A) Ayurvedic Plant Poisons: Aconitum ferox (Vatsanabha), Datura metel (Dhattura), Strychnos nux-vomica (Kupilu), Cannabis sativa (Bhanga), Croton tiglium (Jayapala), Semecarpus anacardium (Bhallataka), Abrus precatorius (Gunja). (B) Mineral / Heavy Metal Poisons: Arsenic compounds (Haratala, Manashila, Gouripashana), Mercury compounds (Rasasindura, Hingula), Lead compounds (Naga Bhasma), Copper (Tamra Bhasma). Every ASU formulation containing Schedule E(1) ingredients must be dispensed only under a Registered Vaidya prescription.
+
+Section 33EEA to 33EED - Spurious, Adulterated, and Misbranded ASU Drugs
+------------------------------------------------------------------------
+Under the Drugs and Cosmetics Act, 1940: Section 33EE: An Ayurvedic, Siddha, or Unani drug shall be deemed to be adulterated if it consists in whole or part of filthy, putrid, or decomposed substances, or if colored with unprescribed dyes, or substituted with foreign matter. Section 33EEA: Deemed to be spurious if manufactured under a name belonging to another drug, or if the manufacturer stated on the label is fictitious or non-existent, or if it purports to be the product of a manufacturer of whom it is not. Section 33EED: Penalties for manufacturing, sale, or distribution of spurious ASU drugs include imprisonment up to 3 years and a minimum fine of Rs. 50,000, or up to 7 years if the drug causes bodily harm.

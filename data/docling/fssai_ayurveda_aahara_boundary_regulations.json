@@ -1,0 +1,199 @@
+{
+  "schema_name": "DoclingDocument",
+  "version": "1.10.0",
+  "name": "fssai_ayurveda_aahara_boundary_regulations",
+  "origin": null,
+  "furniture": {
+    "self_ref": "#/furniture",
+    "parent": null,
+    "children": [],
+    "content_layer": "furniture",
+    "meta": null,
+    "name": "_root_",
+    "label": "unspecified"
+  },
+  "body": {
+    "self_ref": "#/body",
+    "parent": null,
+    "children": [
+      {
+        "cref": "#/texts/0"
+      },
+      {
+        "cref": "#/texts/1"
+      },
+      {
+        "cref": "#/texts/2"
+      },
+      {
+        "cref": "#/texts/3"
+      },
+      {
+        "cref": "#/texts/4"
+      },
+      {
+        "cref": "#/texts/5"
+      },
+      {
+        "cref": "#/texts/6"
+      },
+      {
+        "cref": "#/texts/7"
+      },
+      {
+        "cref": "#/texts/8"
+      }
+    ],
+    "content_layer": "body",
+    "meta": null,
+    "name": "_root_",
+    "label": "unspecified"
+  },
+  "groups": [],
+  "texts": [
+    {
+      "self_ref": "#/texts/0",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "title",
+      "prov": [],
+      "orig": "FSSAI Ayurveda Aahara Regulations 2022 - Regulatory Boundary",
+      "text": "FSSAI Ayurveda Aahara Regulations 2022 - Regulatory Boundary",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/1",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Regulation 3 - Scope, Applicability, and Separation from ASU Drugs",
+      "text": "Regulation 3 - Scope, Applicability, and Separation from ASU Drugs",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/2",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "Regulation 3 sets the strict boundary between food and medicine: (1) These regulations apply to food prepared in accordance with the recipes or processes described in authoritative books of Ayurveda specified in Schedule A of these regulations. (2) Explicit Non-Applicability: These regulations DO NOT apply to Ayurvedic drugs as defined under Section 3(a) of the Drugs and Cosmetics Act, 1940, or proprietary Ayurvedic medicines licensed under Rule 158B. (3) Formulations intended for therapeutic treatment, injection, or sterile ophthalmic applications are strictly prohibited from being registered or marketed as Ayurveda Aahara.",
+      "text": "Regulation 3 sets the strict boundary between food and medicine: (1) These regulations apply to food prepared in accordance with the recipes or processes described in authoritative books of Ayurveda specified in Schedule A of these regulations. (2) Explicit Non-Applicability: These regulations DO NOT apply to Ayurvedic drugs as defined under Section 3(a) of the Drugs and Cosmetics Act, 1940, or proprietary Ayurvedic medicines licensed under Rule 158B. (3) Formulations intended for therapeutic treatment, injection, or sterile ophthalmic applications are strictly prohibited from being registered or marketed as Ayurveda Aahara.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/3",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Regulation 5 - Ayurveda Aahara Official Logo and Packaging Rules",
+      "text": "Regulation 5 - Ayurveda Aahara Official Logo and Packaging Rules",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/4",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "Regulation 5 mandates the distinctive logo for all approved Ayurveda Aahara products: (1) Every package of Ayurveda Aahara shall carry the designated official Ayurveda Aahara logo on the principal display panel. (2) The logo consists of the Devanagari letter 'Ayur' (आयुर्) intertwined with the English letter 'A', encapsulated in a green leaf ring. (3) The logo shall be positioned in close proximity to the name of the food and the FSSAI License Number. (4) The word 'AYURVEDA AAHARA' shall be printed clearly in capital letters directly beneath the logo.",
+      "text": "Regulation 5 mandates the distinctive logo for all approved Ayurveda Aahara products: (1) Every package of Ayurveda Aahara shall carry the designated official Ayurveda Aahara logo on the principal display panel. (2) The logo consists of the Devanagari letter 'Ayur' (आयुर्) intertwined with the English letter 'A', encapsulated in a green leaf ring. (3) The logo shall be positioned in close proximity to the name of the food and the FSSAI License Number. (4) The word 'AYURVEDA AAHARA' shall be printed clearly in capital letters directly beneath the logo.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/5",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Regulation 6 & 8 - Prohibited Claims and Labelling Disclaimers",
+      "text": "Regulation 6 & 8 - Prohibited Claims and Labelling Disclaimers",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/6",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "Regulations 6 and 8 prohibit misleading medicinal claims on Ayurveda Aahara products: (1) No Ayurveda Aahara product shall claim to prevent, treat, cure, or mitigate any disease or physiological disorder. (2) Permitted Claims: Structure-function claims, wellness claims, digestive support (Agni deepana), and Rasayana (rejuvenation/vitality) are permissible only when substantiated by Schedule A authoritative classical texts. (3) Mandatory Front-of-Pack Disclaimer: 'THIS PRODUCT IS NOT INTENDED TO DIAGNOSE, TREAT, CURE OR PREVENT ANY DISEASE.' (4) Prohibition on Synthetic Additives: Synthetic vitamins, synthetic minerals, and modern pharmaceutical active ingredients cannot be added to classical recipes to alter the formulation.",
+      "text": "Regulations 6 and 8 prohibit misleading medicinal claims on Ayurveda Aahara products: (1) No Ayurveda Aahara product shall claim to prevent, treat, cure, or mitigate any disease or physiological disorder. (2) Permitted Claims: Structure-function claims, wellness claims, digestive support (Agni deepana), and Rasayana (rejuvenation/vitality) are permissible only when substantiated by Schedule A authoritative classical texts. (3) Mandatory Front-of-Pack Disclaimer: 'THIS PRODUCT IS NOT INTENDED TO DIAGNOSE, TREAT, CURE OR PREVENT ANY DISEASE.' (4) Prohibition on Synthetic Additives: Synthetic vitamins, synthetic minerals, and modern pharmaceutical active ingredients cannot be added to classical recipes to alter the formulation.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/7",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Statutory Comparison: Ayurveda Aahara (FSSAI) vs Classical ASU Drug (AYUSH)",
+      "text": "Statutory Comparison: Ayurveda Aahara (FSSAI) vs Classical ASU Drug (AYUSH)",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/8",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "Regulatory Matrix: 1. Governing Act: FSSAI Food Safety and Standards Act 2006 vs AYUSH Drugs and Cosmetics Act 1940. 2. Licensing Authority: State Food Safety Commissioner (FSSAI) vs State Licensing Authority (Ayush). 3. Permitted Claims: Wellness, health promotion, dosha balance vs Therapeutic indication, treatment of Vyadhi. 4. Labelling: Mandatory 'NOT A MEDICINE' disclaimer & Ayur-A logo vs 'Caution: under Vaidya supervision' if Schedule E(1). 5. Sales Channel: Supermarkets, grocery, e-commerce food vs Licensed Ayurvedic pharmacy & retail.",
+      "text": "Regulatory Matrix: 1. Governing Act: FSSAI Food Safety and Standards Act 2006 vs AYUSH Drugs and Cosmetics Act 1940. 2. Licensing Authority: State Food Safety Commissioner (FSSAI) vs State Licensing Authority (Ayush). 3. Permitted Claims: Wellness, health promotion, dosha balance vs Therapeutic indication, treatment of Vyadhi. 4. Labelling: Mandatory 'NOT A MEDICINE' disclaimer & Ayur-A logo vs 'Caution: under Vaidya supervision' if Schedule E(1). 5. Sales Channel: Supermarkets, grocery, e-commerce food vs Licensed Ayurvedic pharmacy & retail.",
+      "formatting": null,
+      "hyperlink": null
+    }
+  ],
+  "pictures": [],
+  "tables": [],
+  "key_value_items": [],
+  "form_items": [],
+  "pages": {}
+}

@@ -1,8 +1,18 @@
-// Types mirroring the FastAPI Pydantic schemas
+// Types mirroring the FastAPI Pydantic schemas and frontend state
 
-export type DomainType = "patents" | "trademarks" | "gi" | "ayush" | "fssai" | "auto";
+export type DomainType = "patents" | "trademarks" | "gi" | "ayush" | "fssai";
 export type JurisdictionType = "IN" | "WO" | "EU" | "US" | "GLOBAL" | "auto";
 export type LanguageCode = "en" | "hi" | "ta" | "te" | "kn" | "ml" | "auto";
+
+export type UserRole = "vaidya" | "attorney" | "regulator" | "researcher" | "guest";
+
+export interface UserProfile {
+  name: string;
+  role: UserRole;
+  registrationNumber?: string;
+  institution?: string;
+  isLoggedIn: boolean;
+}
 
 export interface CitedPassage {
   passage_text: string;
@@ -24,6 +34,16 @@ export interface ChatRequest {
   corpus_version?: string;
 }
 
+export interface BlockchainReceipt {
+  receipt_id: string;
+  sha256_hash: string;
+  timestamp: string;
+  consensus_status: string;
+  block_height: number;
+  node_validator: string;
+  grounded_score: number;
+}
+
 export interface ChatResponse {
   answer: string;
   cited_passages: CitedPassage[];
@@ -32,6 +52,7 @@ export interface ChatResponse {
   llm_latency_ms?: number;
   total_latency_ms?: number;
   corpus_version: string;
+  blockchain_receipt?: BlockchainReceipt;
 }
 
 export interface Message {
@@ -41,6 +62,17 @@ export interface Message {
   cited_passages?: CitedPassage[];
   latency_ms?: number;
   timestamp: Date;
+  blockchain_receipt?: BlockchainReceipt;
+}
+
+export interface ChatSession {
+  id: string;
+  title: string;
+  domain: DomainType | "auto";
+  language: string;
+  createdAt: number;
+  updatedAt: number;
+  messages: Message[];
 }
 
 // ─── Admin trace types ────────────────────────────────────────────────────────

@@ -1,0 +1,47 @@
+AYURVEDIC PHARMACOPOEIA OF INDIA (API) OFFICIAL MONOGRAPHS
+Source: The Ayurvedic Pharmacopoeia of India (Part I, Volumes I - IX)
+Authority: Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of AYUSH
+Jurisdiction: IN | Domain: ayush | Corpus Version: v2.0
+Official Reference: https://pcimh.gov.in
+
+================================================================================
+
+API Monograph: Haridra (Curcuma longa L. Rhizome)
+-------------------------------------------------
+Botanical Identity: Curcuma longa L. (Family: Zingiberaceae). Dried and cured rhizome. Macroscopic: Deep yellow to orange-brown cylindrical branched rhizomes with transverse rings and root scars. Microscopic: Cortical cells with gelatinized starch grains; scattered vascular bundles; oleoresin cells with orange-yellow content. Pharmacopoeial Standards: Foreign matter not more than 2%; Total ash not more than 9%; Acid-insoluble ash not more than 1%; Alcohol-soluble extractive not less than 8%; Water-soluble extractive not less than 9%; Curcumin content not less than 2.0% w/w by HPLC. Ayurvedic Properties: Rasa: Katu, Tikta; Guna: Ruksha, Laghu; Virya: Ushna; Vipaka: Katu; Karma: Kaphapitta shamaka, Varnya, Vishaghna. Therapeutic Indications: Prameha (diabetes/urinary disorders), Kushta (skin disorders), Vrana (wounds), Kandu, Pandu. Dose: 1 to 3 grams of powder daily.
+
+API Monograph: Brahmi (Bacopa monnieri (L.) Wettst. Whole Plant)
+----------------------------------------------------------------
+Botanical Identity: Bacopa monnieri (L.) Wettst. (Family: Scrophulariaceae / Plantaginaceae). Whole plant. Macroscopic: Herbaceous glabrous creeping plant with oblong fleshy leaves and pale blue or purple flowers. Pharmacopoeial Standards: Foreign matter not more than 2%; Total ash not more than 18%; Acid-insoluble ash not more than 6%; Alcohol-soluble extractive not less than 6%; Water-soluble extractive not less than 15%; Total Bacosides (A and B) not less than 1.5% w/w. Ayurvedic Properties: Rasa: Tikta, Kashaya, Madhura; Guna: Laghu; Virya: Sheeta; Vipaka: Madhura; Karma: Medhya, Smritiprada, Rasayana. Therapeutic Indications: Manasamandata (cognitive impairment), Unmada (psychosis), Apasmara (epilepsy), Shotha, Kasa. Dose: 1 to 3 grams of powder; 10 to 20 ml of fresh juice (Swarasa).
+
+API Monograph: Ashwagandha (Withania somnifera (L.) Dunal Root)
+---------------------------------------------------------------
+Botanical Identity: Withania somnifera (L.) Dunal (Family: Solanaceae). Dried mature roots. Macroscopic: Straight, cylindrical, fleshy roots, grayish-yellow externally, whitish internally, characteristic horse-like odour. Pharmacopoeial Standards: Foreign matter not more than 2%; Total ash not more than 7%; Acid-insoluble ash not more than 1%; Alcohol-soluble extractive not less than 15%; Water-soluble extractive not less than 15%; Withanolides (Withaferin A and Withanolide A) not less than 0.2% w/w. Ayurvedic Properties: Rasa: Tikta, Kashaya, Madhura; Guna: Snigdha, Guru; Virya: Ushna; Vipaka: Madhura; Karma: Balya, Vrishya, Rasayana, Vata-Kapha shamaka. Therapeutic Indications: Dourbalya (general weakness), Klaibya (loss of vitality), Shotha, Kshaya, Vataroga. Dose: 3 to 6 grams of churna daily with milk or warm water.
+
+API Monograph: Nimba (Azadirachta indica A. Juss. Bark and Leaf)
+----------------------------------------------------------------
+Botanical Identity: Azadirachta indica A. Juss. (Family: Meliaceae). Dried stem bark and mature leaves. Pharmacopoeial Standards (Bark): Total ash not more than 8%; Acid-insoluble ash not more than 1.5%; Alcohol-soluble extractive not less than 5%. Marker Constituents: Azadirachtin, Nimbin, Nimbidin, Gedunin. Ayurvedic Properties: Rasa: Tikta, Kashaya; Guna: Laghu, Ruksha; Virya: Sheeta; Vipaka: Katu; Karma: Pitta-Kaphahara, Krimighna, Vranaropaka, Grahi. Therapeutic Indications: Kushta, Vrana, Krimiroga, Prameha, Jwara (fever), Netraroga. Dose: Bark powder 2 to 4 grams; decoction (Kwatha) 50 to 100 ml.
+
+API Monograph: Tulsi (Ocimum sanctum L. Leaf)
+---------------------------------------------
+Botanical Identity: Ocimum sanctum L. (Family: Lamiaceae). Dried leaves. Pharmacopoeial Standards: Foreign matter not more than 2%; Total ash not more than 19%; Acid-insoluble ash not more than 3%; Volatile oil content not less than 0.7% v/w; Eugenol content not less than 0.4% w/w. Ayurvedic Properties: Rasa: Katu, Tikta; Guna: Laghu, Ruksha; Virya: Ushna; Vipaka: Katu; Karma: Kapha-Vata shamaka, Deepana, Hridya. Therapeutic Indications: Kasa (cough), Shwasa (asthma/bronchial spasms), Pratishyaya (coryza), Krimi, Hikka. Dose: 2 to 3 grams of churna; 5 to 10 ml of fresh juice.
+
+API Monograph: Shatavari (Asparagus racemosus Willd. Tuberous Root)
+-------------------------------------------------------------------
+Botanical Identity: Asparagus racemosus Willd. (Family: Asparagaceae / Liliaceae). Tuberous roots. Pharmacopoeial Standards: Total ash not more than 5%; Acid-insoluble ash not more than 0.5%; Water-soluble extractive not less than 35%; Total Saponins / Shatavarin IV not less than 0.1% w/w. Ayurvedic Properties: Rasa: Madhura, Tikta; Guna: Guru, Snigdha; Virya: Sheeta; Vipaka: Madhura; Karma: Rasayana, Stanyajanana, Shukrala, Pitta-Vata shamaka. Therapeutic Indications: Stanyakshaya (lactation deficiency), Raktapitta, Kshaya, Shukradourbalya, Amlapitta. Dose: 3 to 6 grams of powder with milk.
+
+API Monograph: Arjuna (Terminalia arjuna (Roxb.) W. & A. Stem Bark)
+-------------------------------------------------------------------
+Botanical Identity: Terminalia arjuna (Roxb.) W. & A. (Family: Combretaceae). Dried stem bark. Pharmacopoeial Standards: Foreign matter not more than 2%; Total ash not more than 25%; Acid-insoluble ash not more than 2%; Alcohol-soluble extractive not less than 20%; Water-soluble extractive not less than 20%; Tannins not less than 12% w/w. Marker Constituents: Arjunic acid, arjunetin, arjunoside I & II, polyphenols. Ayurvedic Properties: Rasa: Kashaya; Guna: Ruksha, Laghu; Virya: Sheeta; Vipaka: Katu; Karma: Hridya (cardioprotective), Bhagnasandhanakara. Therapeutic Indications: Hridroga (cardiac disorders), Kshata-Kshaya, Medoroga (dyslipidemia), Vrana. Dose: 3 to 6 grams of churna; 50 to 100 ml of Ksheerapaka (milk decoction).
+
+API Monograph: Yashtimadhu (Glycyrrhiza glabra L. Root and Stolon)
+------------------------------------------------------------------
+Botanical Identity: Glycyrrhiza glabra L. (Family: Fabaceae). Dried root and stolon. Pharmacopoeial Standards: Foreign matter not more than 2%; Total ash not more than 10%; Acid-insoluble ash not more than 2.5%; Water-soluble extractive not less than 20%; Glycyrrhizin content not less than 3.0% w/w by HPLC. Ayurvedic Properties: Rasa: Madhura; Guna: Guru, Snigdha; Virya: Sheeta; Vipaka: Madhura; Karma: Vatapittashamaka, Kanthya, Vranaropaka. Therapeutic Indications: Kantharoga (throat affections), Kasa, Vranaropa, Amlapitta (peptic ulcer), Raktapitta. Dose: 2 to 4 grams of churna daily with honey or ghee.
+
+API Monograph: Guduchi (Tinospora cordifolia (Willd.) Miers Stem)
+-----------------------------------------------------------------
+Botanical Identity: Tinospora cordifolia (Willd.) Miers (Family: Menispermaceae). Dried mature stem. Pharmacopoeial Standards: Total ash not more than 8%; Acid-insoluble ash not more than 1%; Alcohol-soluble extractive not less than 3%; Water-soluble extractive not less than 11%; Berberine / Cordifolioside marker present. Ayurvedic Properties: Rasa: Tikta, Kashaya; Guna: Guru, Snigdha; Virya: Ushna; Vipaka: Madhura; Karma: Tridoshashamaka, Rasayana, Deepana, Jwaraghna. Therapeutic Indications: Jwara (chronic fever), Vatarakta (gout), Kamala (jaundice), Prameha, Kushta. Dose: 3 to 6 grams of churna; 20 to 30 ml of Kwatha.
+
+API Monograph: Punarnava (Boerhavia diffusa L. Whole Plant and Root)
+--------------------------------------------------------------------
+Botanical Identity: Boerhavia diffusa L. (Family: Nyctaginaceae). Dried herbaceous whole plant. Pharmacopoeial Standards: Total ash not more than 15%; Acid-insoluble ash not more than 6%; Water-soluble extractive not less than 10%; Punarnavoside content not less than 0.05% w/w. Ayurvedic Properties: Rasa: Madhura, Tikta, Kashaya; Guna: Laghu, Ruksha; Virya: Ushna; Vipaka: Madhura; Karma: Kaphapittahara, Mutrala, Shothahara. Therapeutic Indications: Shotha (oedema/dropsy), Pandu, Hridroga, Vrikka Roga (renal disease), Udara. Dose: 1 to 3 grams of churna; 10 to 20 ml of fresh juice.

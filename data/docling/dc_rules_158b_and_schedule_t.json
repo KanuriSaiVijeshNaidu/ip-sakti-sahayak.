@@ -1,0 +1,199 @@
+{
+  "schema_name": "DoclingDocument",
+  "version": "1.10.0",
+  "name": "dc_rules_158b_and_schedule_t",
+  "origin": null,
+  "furniture": {
+    "self_ref": "#/furniture",
+    "parent": null,
+    "children": [],
+    "content_layer": "furniture",
+    "meta": null,
+    "name": "_root_",
+    "label": "unspecified"
+  },
+  "body": {
+    "self_ref": "#/body",
+    "parent": null,
+    "children": [
+      {
+        "cref": "#/texts/0"
+      },
+      {
+        "cref": "#/texts/1"
+      },
+      {
+        "cref": "#/texts/2"
+      },
+      {
+        "cref": "#/texts/3"
+      },
+      {
+        "cref": "#/texts/4"
+      },
+      {
+        "cref": "#/texts/5"
+      },
+      {
+        "cref": "#/texts/6"
+      },
+      {
+        "cref": "#/texts/7"
+      },
+      {
+        "cref": "#/texts/8"
+      }
+    ],
+    "content_layer": "body",
+    "meta": null,
+    "name": "_root_",
+    "label": "unspecified"
+  },
+  "groups": [],
+  "texts": [
+    {
+      "self_ref": "#/texts/0",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "title",
+      "prov": [],
+      "orig": "Drugs and Cosmetics Act 1940 & Rules 1945 - ASU Provisions",
+      "text": "Drugs and Cosmetics Act 1940 & Rules 1945 - ASU Provisions",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/1",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Rule 158B - Licensing Requirements for Ayurvedic, Siddha, and Unani (ASU) Drugs",
+      "text": "Rule 158B - Licensing Requirements for Ayurvedic, Siddha, and Unani (ASU) Drugs",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/2",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "Rule 158B of the Drugs and Cosmetics Rules, 1945 specifies regulatory evidentiary requirements for grant of manufacturing licenses for Ayurvedic, Siddha, or Unani medicines: (I) Classical ASU Medicines (Manufactured in accordance with formulations described in authoritative books specified in the First Schedule to the Act): Proof of reference from authoritative books, authentic texts, and compliance with Schedule T GMP is required. No clinical trials or acute toxicity studies are mandated. (II) Patent or Proprietary Medicines (New combinations, modified dosage forms, or proprietary extracts): Licensees must submit published scientific literature on safety, safety toxicity data (acute, sub-acute), and pilot clinical studies depending on whether the ingredients are classical or novel. (III) Standardized Extracts / Phytopharmaceuticals: Complete chromatographic fingerprinting, quantitative estimation of active marker compounds, and regulatory toxicology data are mandatory.",
+      "text": "Rule 158B of the Drugs and Cosmetics Rules, 1945 specifies regulatory evidentiary requirements for grant of manufacturing licenses for Ayurvedic, Siddha, or Unani medicines: (I) Classical ASU Medicines (Manufactured in accordance with formulations described in authoritative books specified in the First Schedule to the Act): Proof of reference from authoritative books, authentic texts, and compliance with Schedule T GMP is required. No clinical trials or acute toxicity studies are mandated. (II) Patent or Proprietary Medicines (New combinations, modified dosage forms, or proprietary extracts): Licensees must submit published scientific literature on safety, safety toxicity data (acute, sub-acute), and pilot clinical studies depending on whether the ingredients are classical or novel. (III) Standardized Extracts / Phytopharmaceuticals: Complete chromatographic fingerprinting, quantitative estimation of active marker compounds, and regulatory toxicology data are mandatory.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/3",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Schedule T - Good Manufacturing Practices (GMP) for ASU Medicines",
+      "text": "Schedule T - Good Manufacturing Practices (GMP) for ASU Medicines",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/4",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "Schedule T of the Drugs and Cosmetics Rules, 1945 establishes Good Manufacturing Practices (GMP) that all licensed manufacturing units of Ayurvedic, Siddha, and Unani drugs must comply with: (1) Factory Premises: Location in hygienic surroundings, avoidance of contamination, minimum space requirement (1,200 sq. ft. for basic manufacturing plus raw material and packaging storage). (2) Quality Control Laboratory: Must have facilities for physical testing (moisture, total ash, acid-insoluble ash), (3) Chemical analysis (identification tests, TLC/HPTLC profiling, assay of active markers), (4) Heavy metal testing (Lead, Cadmium, Mercury, Arsenic within pharmacopoeial limits), and (5) Microbial contamination testing (Pathogens including E. coli, Salmonella, Pseudomonas, and S. aureus must be absent). (6) Batch Manufacturing Records (BMR): Retention of complete records for 3 years or 1 year past expiry date.",
+      "text": "Schedule T of the Drugs and Cosmetics Rules, 1945 establishes Good Manufacturing Practices (GMP) that all licensed manufacturing units of Ayurvedic, Siddha, and Unani drugs must comply with: (1) Factory Premises: Location in hygienic surroundings, avoidance of contamination, minimum space requirement (1,200 sq. ft. for basic manufacturing plus raw material and packaging storage). (2) Quality Control Laboratory: Must have facilities for physical testing (moisture, total ash, acid-insoluble ash), (3) Chemical analysis (identification tests, TLC/HPTLC profiling, assay of active markers), (4) Heavy metal testing (Lead, Cadmium, Mercury, Arsenic within pharmacopoeial limits), and (5) Microbial contamination testing (Pathogens including E. coli, Salmonella, Pseudomonas, and S. aureus must be absent). (6) Batch Manufacturing Records (BMR): Retention of complete records for 3 years or 1 year past expiry date.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/5",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Schedule E(1) - List of Poisonous Substances in ASU Systems",
+      "text": "Schedule E(1) - List of Poisonous Substances in ASU Systems",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/6",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "Schedule E(1) of the Drugs and Cosmetics Rules, 1945 specifies toxic plant, mineral, and animal origin substances requiring mandatory cautionary labelling ('Caution: To be taken under medical supervision') and stringent purification (Shodhana): (A) Ayurvedic Plant Poisons: Aconitum ferox (Vatsanabha), Datura metel (Dhattura), Strychnos nux-vomica (Kupilu), Cannabis sativa (Bhanga), Croton tiglium (Jayapala), Semecarpus anacardium (Bhallataka), Abrus precatorius (Gunja). (B) Mineral / Heavy Metal Poisons: Arsenic compounds (Haratala, Manashila, Gouripashana), Mercury compounds (Rasasindura, Hingula), Lead compounds (Naga Bhasma), Copper (Tamra Bhasma). Every ASU formulation containing Schedule E(1) ingredients must be dispensed only under a Registered Vaidya prescription.",
+      "text": "Schedule E(1) of the Drugs and Cosmetics Rules, 1945 specifies toxic plant, mineral, and animal origin substances requiring mandatory cautionary labelling ('Caution: To be taken under medical supervision') and stringent purification (Shodhana): (A) Ayurvedic Plant Poisons: Aconitum ferox (Vatsanabha), Datura metel (Dhattura), Strychnos nux-vomica (Kupilu), Cannabis sativa (Bhanga), Croton tiglium (Jayapala), Semecarpus anacardium (Bhallataka), Abrus precatorius (Gunja). (B) Mineral / Heavy Metal Poisons: Arsenic compounds (Haratala, Manashila, Gouripashana), Mercury compounds (Rasasindura, Hingula), Lead compounds (Naga Bhasma), Copper (Tamra Bhasma). Every ASU formulation containing Schedule E(1) ingredients must be dispensed only under a Registered Vaidya prescription.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/7",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 33EEA to 33EED - Spurious, Adulterated, and Misbranded ASU Drugs",
+      "text": "Section 33EEA to 33EED - Spurious, Adulterated, and Misbranded ASU Drugs",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/8",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "Under the Drugs and Cosmetics Act, 1940: Section 33EE: An Ayurvedic, Siddha, or Unani drug shall be deemed to be adulterated if it consists in whole or part of filthy, putrid, or decomposed substances, or if colored with unprescribed dyes, or substituted with foreign matter. Section 33EEA: Deemed to be spurious if manufactured under a name belonging to another drug, or if the manufacturer stated on the label is fictitious or non-existent, or if it purports to be the product of a manufacturer of whom it is not. Section 33EED: Penalties for manufacturing, sale, or distribution of spurious ASU drugs include imprisonment up to 3 years and a minimum fine of Rs. 50,000, or up to 7 years if the drug causes bodily harm.",
+      "text": "Under the Drugs and Cosmetics Act, 1940: Section 33EE: An Ayurvedic, Siddha, or Unani drug shall be deemed to be adulterated if it consists in whole or part of filthy, putrid, or decomposed substances, or if colored with unprescribed dyes, or substituted with foreign matter. Section 33EEA: Deemed to be spurious if manufactured under a name belonging to another drug, or if the manufacturer stated on the label is fictitious or non-existent, or if it purports to be the product of a manufacturer of whom it is not. Section 33EED: Penalties for manufacturing, sale, or distribution of spurious ASU drugs include imprisonment up to 3 years and a minimum fine of Rs. 50,000, or up to 7 years if the drug causes bodily harm.",
+      "formatting": null,
+      "hyperlink": null
+    }
+  ],
+  "pictures": [],
+  "tables": [],
+  "key_value_items": [],
+  "form_items": [],
+  "pages": {}
+}

@@ -1,0 +1,273 @@
+{
+  "schema_name": "DoclingDocument",
+  "version": "1.10.0",
+  "name": "patents_act_traditional_knowledge_exclusions",
+  "origin": null,
+  "furniture": {
+    "self_ref": "#/furniture",
+    "parent": null,
+    "children": [],
+    "content_layer": "furniture",
+    "meta": null,
+    "name": "_root_",
+    "label": "unspecified"
+  },
+  "body": {
+    "self_ref": "#/body",
+    "parent": null,
+    "children": [
+      {
+        "cref": "#/texts/0"
+      },
+      {
+        "cref": "#/texts/1"
+      },
+      {
+        "cref": "#/texts/2"
+      },
+      {
+        "cref": "#/texts/3"
+      },
+      {
+        "cref": "#/texts/4"
+      },
+      {
+        "cref": "#/texts/5"
+      },
+      {
+        "cref": "#/texts/6"
+      },
+      {
+        "cref": "#/texts/7"
+      },
+      {
+        "cref": "#/texts/8"
+      },
+      {
+        "cref": "#/texts/9"
+      },
+      {
+        "cref": "#/texts/10"
+      },
+      {
+        "cref": "#/texts/11"
+      },
+      {
+        "cref": "#/texts/12"
+      }
+    ],
+    "content_layer": "body",
+    "meta": null,
+    "name": "_root_",
+    "label": "unspecified"
+  },
+  "groups": [],
+  "texts": [
+    {
+      "self_ref": "#/texts/0",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "title",
+      "prov": [],
+      "orig": "Patents Act 1970 - Traditional Knowledge & Biological Exclusions",
+      "text": "Patents Act 1970 - Traditional Knowledge & Biological Exclusions",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/1",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 3(p) - Exclusion of Traditional Knowledge from Patentability",
+      "text": "Section 3(p) - Exclusion of Traditional Knowledge from Patentability",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/2",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "Section 3(p) of the Patents Act, 1970 provides that the following is not an invention within the meaning of the Act: 'An invention which in effect, is traditional knowledge or which is an aggregation or duplication of known properties of traditionally known component or components.' Statutory Scope: Section 3(p) was specifically inserted by the Patents (Amendment) Act, 2002 to prevent biopiracy and the unauthorized monopolization of traditional Indian knowledge systems, including Ayurveda, Siddha, and Unani. Any patent claim claiming the therapeutic use, formulation, or processing of a medicinal plant already described in classical treatises or the Traditional Knowledge Digital Library (TKDL) is non-patentable ab initio.",
+      "text": "Section 3(p) of the Patents Act, 1970 provides that the following is not an invention within the meaning of the Act: 'An invention which in effect, is traditional knowledge or which is an aggregation or duplication of known properties of traditionally known component or components.' Statutory Scope: Section 3(p) was specifically inserted by the Patents (Amendment) Act, 2002 to prevent biopiracy and the unauthorized monopolization of traditional Indian knowledge systems, including Ayurveda, Siddha, and Unani. Any patent claim claiming the therapeutic use, formulation, or processing of a medicinal plant already described in classical treatises or the Traditional Knowledge Digital Library (TKDL) is non-patentable ab initio.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/3",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 3(e) - Mere Admixture of Known Ingredients",
+      "text": "Section 3(e) - Mere Admixture of Known Ingredients",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/4",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "Section 3(e) of the Patents Act, 1970 bars patentability for: 'A substance obtained by a mere admixture resulting only in the aggregation of the properties of the components thereof or a process for producing such substance.' Legal Standard in Ayurvedic Inventions: Combining known herbs (e.g. Turmeric + Ginger + Black Pepper) cannot be patented unless the applicant demonstrates surprising or unexpected synergistic efficacy that goes substantially beyond the mere additive effects of the individual herbal components.",
+      "text": "Section 3(e) of the Patents Act, 1970 bars patentability for: 'A substance obtained by a mere admixture resulting only in the aggregation of the properties of the components thereof or a process for producing such substance.' Legal Standard in Ayurvedic Inventions: Combining known herbs (e.g. Turmeric + Ginger + Black Pepper) cannot be patented unless the applicant demonstrates surprising or unexpected synergistic efficacy that goes substantially beyond the mere additive effects of the individual herbal components.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/5",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 3(d) - Incremental Modifications and Efficacy Threshold",
+      "text": "Section 3(d) - Incremental Modifications and Efficacy Threshold",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/6",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "Section 3(d) of the Patents Act, 1970 bars: 'The mere discovery of a new form of a known substance which does not result in the enhancement of the known efficacy of that substance or the mere discovery of any new property or new use for a known substance or of the mere use of a known process, machine or apparatus unless such known process results in a new product or employs at least one new reactant.' Novartis Benchmark: As affirmed by the Supreme Court of India in Novartis AG v. Union of India (2013), 'efficacy' in the context of therapeutic substances strictly means enhanced therapeutic efficacy, proven by comparative pharmacological data.",
+      "text": "Section 3(d) of the Patents Act, 1970 bars: 'The mere discovery of a new form of a known substance which does not result in the enhancement of the known efficacy of that substance or the mere discovery of any new property or new use for a known substance or of the mere use of a known process, machine or apparatus unless such known process results in a new product or employs at least one new reactant.' Novartis Benchmark: As affirmed by the Supreme Court of India in Novartis AG v. Union of India (2013), 'efficacy' in the context of therapeutic substances strictly means enhanced therapeutic efficacy, proven by comparative pharmacological data.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/7",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 3(j) - Plants, Animals, and Biological Varieties Exclusion",
+      "text": "Section 3(j) - Plants, Animals, and Biological Varieties Exclusion",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/8",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "Section 3(j) excludes from patentability: 'Plants and animals in whole or any part thereof other than micro-organisms, but including seeds, varieties and species and essentially biological processes for production or propagation of plants and animals.' Implications: Natural herbal cultivars, Ayurvedic plant cuttings, seeds of medicinal varieties, and traditional breeding cannot be patented under Indian patent law; plant varieties must be protected under the PPV&FR Act, 2001.",
+      "text": "Section 3(j) excludes from patentability: 'Plants and animals in whole or any part thereof other than micro-organisms, but including seeds, varieties and species and essentially biological processes for production or propagation of plants and animals.' Implications: Natural herbal cultivars, Ayurvedic plant cuttings, seeds of medicinal varieties, and traditional breeding cannot be patented under Indian patent law; plant varieties must be protected under the PPV&FR Act, 2001.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/9",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 3(i) - Diagnostic and Therapeutic Treatment Exclusion",
+      "text": "Section 3(i) - Diagnostic and Therapeutic Treatment Exclusion",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/10",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "Section 3(i) excludes: 'Any process for the medicinal, surgical, curative, prophylactic, diagnostic, therapeutic or other treatment of human beings or any similar treatment of animals to render them free of disease or to increase their economic value or that of their products.' In India, methods of treating diseases using Ayurvedic formulations, Panchakarma therapy procedures, and dosage regimens are non-patentable.",
+      "text": "Section 3(i) excludes: 'Any process for the medicinal, surgical, curative, prophylactic, diagnostic, therapeutic or other treatment of human beings or any similar treatment of animals to render them free of disease or to increase their economic value or that of their products.' In India, methods of treating diseases using Ayurvedic formulations, Panchakarma therapy procedures, and dosage regimens are non-patentable.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/11",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 10(4)(d)(ii) - Mandatory Disclosure of Biological Material and Origin",
+      "text": "Section 10(4)(d)(ii) - Mandatory Disclosure of Biological Material and Origin",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/12",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "Section 10(4)(d)(ii) of the Patents Act, 1970 mandates that: Every complete specification must disclose the source and geographical origin of the biological material in the specification, when used in an invention. Consequences of Non-Disclosure: Under Section 25(1)(j)/(k) (pre-grant opposition), Section 25(2)(j)/(k) (post-grant opposition), and Section 64(1)(p) and 64(1)(q) (revocation), failure to disclose or wrongful disclosure of the geographical origin or source of biological material constitutes absolute statutory grounds for rejection or revocation of the patent.",
+      "text": "Section 10(4)(d)(ii) of the Patents Act, 1970 mandates that: Every complete specification must disclose the source and geographical origin of the biological material in the specification, when used in an invention. Consequences of Non-Disclosure: Under Section 25(1)(j)/(k) (pre-grant opposition), Section 25(2)(j)/(k) (post-grant opposition), and Section 64(1)(p) and 64(1)(q) (revocation), failure to disclose or wrongful disclosure of the geographical origin or source of biological material constitutes absolute statutory grounds for rejection or revocation of the patent.",
+      "formatting": null,
+      "hyperlink": null
+    }
+  ],
+  "pictures": [],
+  "tables": [],
+  "key_value_items": [],
+  "form_items": [],
+  "pages": {}
+}

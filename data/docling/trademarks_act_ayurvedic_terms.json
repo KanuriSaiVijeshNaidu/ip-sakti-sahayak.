@@ -1,0 +1,162 @@
+{
+  "schema_name": "DoclingDocument",
+  "version": "1.10.0",
+  "name": "trademarks_act_ayurvedic_terms",
+  "origin": null,
+  "furniture": {
+    "self_ref": "#/furniture",
+    "parent": null,
+    "children": [],
+    "content_layer": "furniture",
+    "meta": null,
+    "name": "_root_",
+    "label": "unspecified"
+  },
+  "body": {
+    "self_ref": "#/body",
+    "parent": null,
+    "children": [
+      {
+        "cref": "#/texts/0"
+      },
+      {
+        "cref": "#/texts/1"
+      },
+      {
+        "cref": "#/texts/2"
+      },
+      {
+        "cref": "#/texts/3"
+      },
+      {
+        "cref": "#/texts/4"
+      },
+      {
+        "cref": "#/texts/5"
+      },
+      {
+        "cref": "#/texts/6"
+      }
+    ],
+    "content_layer": "body",
+    "meta": null,
+    "name": "_root_",
+    "label": "unspecified"
+  },
+  "groups": [],
+  "texts": [
+    {
+      "self_ref": "#/texts/0",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "title",
+      "prov": [],
+      "orig": "Trade Marks Act 1999 - Protection of Ayurvedic Terminology",
+      "text": "Trade Marks Act 1999 - Protection of Ayurvedic Terminology",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/1",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 9 - Absolute Grounds for Refusal of Descriptive Herbal Terms",
+      "text": "Section 9 - Absolute Grounds for Refusal of Descriptive Herbal Terms",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/2",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "Section 9(1) of the Trade Marks Act, 1999 prohibits the registration of trademarks which: (a) Are devoid of any distinctive character; (b) Consist exclusively of marks or indications which may serve in trade to designate the kind, quality, intended purpose, values, geographical origin, or time of production of goods. Application in Ayurvedic Products: Common Sanskrit names of plants (e.g., 'Ashwagandha', 'Brahmi', 'Triphala', 'Tulsi', 'Neem') cannot be registered as trademarks in Class 5 (Pharmaceuticals/Herbal Medicines) or Class 30 (Dietary Foods) because they are generic and publici juris. Any manufacturer is legally entitled to describe their product using these botanical terms.",
+      "text": "Section 9(1) of the Trade Marks Act, 1999 prohibits the registration of trademarks which: (a) Are devoid of any distinctive character; (b) Consist exclusively of marks or indications which may serve in trade to designate the kind, quality, intended purpose, values, geographical origin, or time of production of goods. Application in Ayurvedic Products: Common Sanskrit names of plants (e.g., 'Ashwagandha', 'Brahmi', 'Triphala', 'Tulsi', 'Neem') cannot be registered as trademarks in Class 5 (Pharmaceuticals/Herbal Medicines) or Class 30 (Dietary Foods) because they are generic and publici juris. Any manufacturer is legally entitled to describe their product using these botanical terms.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/3",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 13 - Prohibition of Registration of Names of Chemical Elements and INN",
+      "text": "Section 13 - Prohibition of Registration of Names of Chemical Elements and INN",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/4",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "Section 13 of the Trade Marks Act prohibits the registration of any word which is the commonly used and accepted name of any single chemical element or single chemical compound, or which is declared by the World Health Organization (WHO) and notified by the Registrar as an International Non-proprietary Name (INN). By judicial parity, classical formulation names codified in the Ayurvedic Formulary of India (AFI) or classical treatises (such as 'Chyawanprash', 'Yograj Guggulu', 'Sitopaladi Churna') cannot be registered as exclusive trademarks by any single enterprise.",
+      "text": "Section 13 of the Trade Marks Act prohibits the registration of any word which is the commonly used and accepted name of any single chemical element or single chemical compound, or which is declared by the World Health Organization (WHO) and notified by the Registrar as an International Non-proprietary Name (INN). By judicial parity, classical formulation names codified in the Ayurvedic Formulary of India (AFI) or classical treatises (such as 'Chyawanprash', 'Yograj Guggulu', 'Sitopaladi Churna') cannot be registered as exclusive trademarks by any single enterprise.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/5",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Class 5 vs Class 30 Trademark Classifications for AYUSH Goods",
+      "text": "Class 5 vs Class 30 Trademark Classifications for AYUSH Goods",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/6",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "Classification Benchmark for AYUSH Enterprises: Class 5: Covers Ayurvedic, Siddha, Unani medicinal preparations, pharmaceutical preparations, dietetic substances adapted for medical use. Class 3: Covers herbal cosmetics, soaps, essential oils, hair oils (Taila), and beauty formulations without therapeutic claims. Class 30: Covers herbal teas, spices, food supplements, and dietary preparations not adapted for medical use. Class 32: Covers herbal non-alcoholic beverages, health juices (Swarasa), and functional drinks.",
+      "text": "Classification Benchmark for AYUSH Enterprises: Class 5: Covers Ayurvedic, Siddha, Unani medicinal preparations, pharmaceutical preparations, dietetic substances adapted for medical use. Class 3: Covers herbal cosmetics, soaps, essential oils, hair oils (Taila), and beauty formulations without therapeutic claims. Class 30: Covers herbal teas, spices, food supplements, and dietary preparations not adapted for medical use. Class 32: Covers herbal non-alcoholic beverages, health juices (Swarasa), and functional drinks.",
+      "formatting": null,
+      "hyperlink": null
+    }
+  ],
+  "pictures": [],
+  "tables": [],
+  "key_value_items": [],
+  "form_items": [],
+  "pages": {}
+}
