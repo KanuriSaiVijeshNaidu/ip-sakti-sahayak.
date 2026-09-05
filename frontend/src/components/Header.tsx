@@ -11,6 +11,7 @@ import {
   KeyRound,
   Mail,
   Lock,
+  Home,
 } from "lucide-react";
 import { LanguageCode, UserProfile } from "@/types";
 import { getTranslation } from "@/lib/i18n";
@@ -25,6 +26,7 @@ interface HeaderProps {
   onOpenAuth: () => void;
   userProfile: UserProfile;
   onLogout: () => void;
+  onGoHome: () => void;
 }
 
 const LANGUAGES: { code: LanguageCode; label: string }[] = [
@@ -45,14 +47,19 @@ export default function Header({
   onOpenAuth,
   userProfile,
   onLogout,
+  onGoHome,
 }: HeaderProps) {
   const t = getTranslation(language);
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-30 shadow-2xs">
       <div className="max-w-6xl mx-auto px-4 py-2.5 flex items-center justify-between gap-3">
-        {/* Logo & Title */}
-        <div className="flex items-center gap-2.5">
+        {/* Clickable Logo & Title to return home */}
+        <button
+          onClick={onGoHome}
+          className="flex items-center gap-2.5 text-left hover:opacity-90 transition-opacity select-none"
+          title="Return to AYURLEX Home / New Inquiry"
+        >
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-600 to-emerald-700 flex items-center justify-center shadow-xs">
             <Scale className="w-5 h-5 text-white" />
           </div>
@@ -67,15 +74,19 @@ export default function Header({
               {t.subtitle} · {t.tagline}
             </p>
           </div>
-        </div>
+        </button>
 
         {/* Action Buttons & Profile Controls */}
         <div className="flex items-center gap-2">
-          {/* Security SSL Status Pill */}
-          <div className="hidden lg:flex items-center gap-1 px-2 py-1 text-[11px] font-mono rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">
-            <Lock className="w-3 h-3 text-emerald-600" />
-            <span>TLS 256-Bit</span>
-          </div>
+          {/* Home Button */}
+          <button
+            onClick={onGoHome}
+            className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors border border-gray-200"
+            title="Return to Home Screen"
+          >
+            <Home className="w-3.5 h-3.5 text-green-700" />
+            <span className="hidden sm:inline">Home</span>
+          </button>
 
           {/* History Drawer Trigger */}
           <button
@@ -85,9 +96,11 @@ export default function Header({
           >
             <MessageSquare className="w-3.5 h-3.5 text-green-700" />
             <span className="hidden sm:inline">History</span>
-            <span className="bg-green-700 text-white text-[10px] font-mono px-1.5 py-0.2 rounded-full font-bold">
-              {sessionCount}
-            </span>
+            {userProfile.isLoggedIn && (
+              <span className="bg-green-700 text-white text-[10px] font-mono px-1.5 py-0.2 rounded-full font-bold">
+                {sessionCount}
+              </span>
+            )}
           </button>
 
           {/* Compare Mode Trigger */}
@@ -99,16 +112,6 @@ export default function Header({
             <SplitSquareVertical className="w-3.5 h-3.5 text-emerald-700" />
             <span className="hidden md:inline">Compare</span>
           </button>
-
-          {/* Admin / Trace link */}
-          <Link
-            href="/admin"
-            className="flex items-center gap-1 px-2 py-1.5 text-xs font-semibold text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
-            title="Inspection Trace & LangSmith Evaluation Dashboard"
-          >
-            <Activity className="w-3.5 h-3.5 text-purple-600" />
-            <span className="hidden xl:inline">Trace</span>
-          </Link>
 
           {/* User Profile / Login Button */}
           {userProfile.isLoggedIn ? (
@@ -148,7 +151,7 @@ export default function Header({
             <button
               onClick={onOpenAuth}
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-white bg-green-700 hover:bg-green-800 rounded-lg shadow-xs transition-all"
-              title="Sign In with Official Email"
+              title="Sign In with Official Email & OTP"
             >
               <KeyRound className="w-3.5 h-3.5" />
               <span>Sign In</span>

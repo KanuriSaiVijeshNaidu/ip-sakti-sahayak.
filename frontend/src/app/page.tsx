@@ -21,11 +21,14 @@ import {
   ShieldCheck,
   Lock,
   KeyRound,
+  Home,
+  Trash2,
+  RotateCcw,
 } from "lucide-react";
 import { getTranslation } from "@/lib/i18n";
 import { DOMAIN_DATA } from "@/lib/domainData";
 
-// True unauthenticated guest profile
+// Unauthenticated Guest Profile (Zero history before login)
 const GUEST_PROFILE: UserProfile = {
   name: "Guest Citizen",
   email: "",
@@ -42,7 +45,7 @@ function getUserStorageKey(profile: UserProfile): string {
   if (profile && profile.isLoggedIn && profile.email) {
     return `ayurlex_sessions_${profile.email.trim().toLowerCase()}`;
   }
-  return "ayurlex_sessions_guest";
+  return "";
 }
 
 export default function ChatPage() {
@@ -54,7 +57,7 @@ export default function ChatPage() {
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [isCompareOpen, setIsCompareOpen] = useState(false);
 
-  // Sessions State
+  // Sessions State (Zero default history before login)
   const [sessions, setSessions] = useState<ChatSession[]>([]);
   const [activeSessionId, setActiveSessionId] = useState<string>("");
 
@@ -68,8 +71,16 @@ export default function ChatPage() {
   const bottomRef = useRef<HTMLDivElement>(null);
   const isEmpty = messages.length === 0;
 
-  // Helper to load sessions for a specific profile
+  // Helper to load sessions for a specific profile (Zero default history for guests!)
   const loadSessionsForProfile = (profile: UserProfile) => {
+    if (!profile || !profile.isLoggedIn || !profile.email) {
+      // Rule: DO NOT make any default history before login!
+      setSessions([]);
+      setActiveSessionId("");
+      setMessages([]);
+      return;
+    }
+
     try {
       const key = getUserStorageKey(profile);
       const saved = localStorage.getItem(key);
@@ -84,21 +95,10 @@ export default function ChatPage() {
         }
       }
 
-      // If no sessions exist for this user, create an isolated starter session
-      const starterId = generateSessionId();
-      const starterSession: ChatSession = {
-        id: starterId,
-        title: profile.isLoggedIn ? `Inquiry (${profile.role.toUpperCase()})` : "Initial Legal Consultation",
-        domain: "auto",
-        language: "en",
-        createdAt: Date.now(),
-        updatedAt: Date.now(),
-        messages: [],
-      };
-      setSessions([starterSession]);
-      setActiveSessionId(starterId);
+      // If logged in but no past history, start with empty list
+      setSessions([]);
+      setActiveSessionId("");
       setMessages([]);
-      localStorage.setItem(key, JSON.stringify([starterSession]));
     } catch {
       setSessions([]);
       setMessages([]);
@@ -117,7 +117,7 @@ export default function ChatPage() {
           return;
         }
       }
-      // If no valid profile is found, load guest mode
+      // Strictly guest mode with zero default history
       setUserProfile(GUEST_PROFILE);
       loadSessionsForProfile(GUEST_PROFILE);
     } catch {
@@ -132,7 +132,6 @@ export default function ChatPage() {
     try {
       localStorage.setItem("ayurlex_user_profile", JSON.stringify(profile));
     } catch {}
-    // Instantly load this user's isolated chat history
     loadSessionsForProfile(profile);
   };
 
@@ -142,61 +141,108 @@ export default function ChatPage() {
       localStorage.removeItem("ayurlex_user_profile");
     } catch {}
     setUserProfile(GUEST_PROFILE);
-    // Switch to guest sessions cleanly
     loadSessionsForProfile(GUEST_PROFILE);
   };
 
-  // 4. Persist messages to active user's storage key
+  // 4. Return to Home Screen
+  const handleGoHome = () => {
+    setMessages([]);
+    setError(null);
+  };
+
+  // 5. Clear All History for the active user
+  const handleClearAllSessions = () => {
+    const key = getUserStorageKey(userProfile);
+    if (key) {
+      try {
+        localStorage.removeItem(key);
+      } catch {}
+    }
+    setSessions([]);
+    setActiveSessionId("");
+    setMessages([]);
+  };
+
+  // 6. Persist messages to active user's storage key (only when logged in)
   const updateCurrentSessionMessages = (newMsgs: Message[], updatedTitle?: string) => {
     setMessages(newMsgs);
+
+    if (!userProfile.isLoggedIn) {
+      // Guest mode chats are transient and not saved into history
+      return;
+    }
+
     setSessions((prev) => {
-      const updated = prev.map((s) => {
-        if (s.id === activeSessionId) {
-          return {
-            ...s,
-            title:
-              updatedTitle ||
-              (s.messages.length === 0 && newMsgs.length > 0
-                ? newMsgs[0].content.slice(0, 45) + "..."
-                : s.title),
-            updatedAt: Date.now(),
-            messages: newMsgs,
-          };
-        }
-        return s;
-      });
+      let updated: ChatSession[];
+      const existing = prev.find((s) => s.id === activeSessionId);
+
+      if (existing) {
+        updated = prev.map((s) => {
+          if (s.id === activeSessionId) {
+            return {
+              ...s,
+              title:
+                updatedTitle ||
+                (s.messages.length === 0 && newMsgs.length > 0
+                  ? newMsgs[0].content.slice(0, 45) + "..."
+                  : s.title),
+              updatedAt: Date.now(),
+              messages: newMsgs,
+            };
+          }
+          return s;
+        });
+      } else {
+        // Create new session entry for this logged in user
+        const newSessionId = activeSessionId || generateSessionId();
+        setActiveSessionId(newSessionId);
+        const newSession: ChatSession = {
+          id: newSessionId,
+          title: newMsgs[0]?.content.slice(0, 45) + "..." || "Legal Consultation",
+          domain,
+          language,
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+          messages: newMsgs,
+        };
+        updated = [newSession, ...prev];
+      }
+
       try {
         const key = getUserStorageKey(userProfile);
-        localStorage.setItem(key, JSON.stringify(updated));
+        if (key) localStorage.setItem(key, JSON.stringify(updated));
       } catch {}
       return updated;
     });
   };
 
-  // 5. Create new chat session for active user
+  // 7. Create new chat session for active user
   const handleNewSession = () => {
     const newId = generateSessionId();
-    const newSession: ChatSession = {
-      id: newId,
-      title: `Consultation #${sessions.length + 1}`,
-      domain,
-      language,
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
-      messages: [],
-    };
-    const updated = [newSession, ...sessions];
-    setSessions(updated);
     setActiveSessionId(newId);
     setMessages([]);
     setError(null);
-    try {
-      const key = getUserStorageKey(userProfile);
-      localStorage.setItem(key, JSON.stringify(updated));
-    } catch {}
+
+    if (userProfile.isLoggedIn) {
+      const newSession: ChatSession = {
+        id: newId,
+        title: `Consultation #${sessions.length + 1}`,
+        domain,
+        language,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+        messages: [],
+      };
+      const updated = [newSession, ...sessions];
+      setSessions(updated);
+      try {
+        const key = getUserStorageKey(userProfile);
+        if (key) localStorage.setItem(key, JSON.stringify(updated));
+      } catch {}
+    }
   };
 
-  // 6. Select session
+  // 8. Select session
   const handleSelectSession = (id: string) => {
     const target = sessions.find((s) => s.id === id);
     if (target) {
@@ -207,13 +253,13 @@ export default function ChatPage() {
     }
   };
 
-  // 7. Delete session
+  // 9. Delete individual session
   const handleDeleteSession = (id: string) => {
     const updated = sessions.filter((s) => s.id !== id);
     setSessions(updated);
     try {
       const key = getUserStorageKey(userProfile);
-      localStorage.setItem(key, JSON.stringify(updated));
+      if (key) localStorage.setItem(key, JSON.stringify(updated));
     } catch {}
 
     if (id === activeSessionId) {
@@ -222,7 +268,7 @@ export default function ChatPage() {
         setMessages(updated[0].messages || []);
         setDomain(updated[0].domain || "auto");
       } else {
-        handleNewSession();
+        handleGoHome();
       }
     }
   };
@@ -276,7 +322,7 @@ export default function ChatPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      {/* Header with full triggers & Logout */}
+      {/* Header with Home, Triggers & Logout */}
       <Header
         language={language}
         onLanguageChange={setLanguage}
@@ -286,6 +332,7 @@ export default function ChatPage() {
         onOpenAuth={() => setIsAuthOpen(true)}
         userProfile={userProfile}
         onLogout={handleLogout}
+        onGoHome={handleGoHome}
       />
 
       {/* Domain selector bar */}
@@ -305,7 +352,49 @@ export default function ChatPage() {
 
       {/* Chat area */}
       <main className="flex-1 overflow-y-auto px-4 py-6">
-        <div className="max-w-4xl mx-auto space-y-6">
+        <div className="max-w-4xl mx-auto space-y-5">
+          {/* Active Consultation Navigation Toolbar (When chatting) */}
+          {!isEmpty && (
+            <div className="flex items-center justify-between bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-xs shadow-2xs">
+              <button
+                onClick={handleGoHome}
+                className="flex items-center gap-1.5 font-bold text-gray-700 hover:text-green-800 transition-colors"
+                title="Return to Welcome Screen"
+              >
+                <Home className="w-3.5 h-3.5 text-green-700" />
+                <span>← Return to Home Screen</span>
+              </button>
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handleNewSession}
+                  className="px-2.5 py-1 text-[11px] font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors flex items-center gap-1"
+                  title="Start a fresh question"
+                >
+                  <RotateCcw className="w-3 h-3 text-gray-500" />
+                  <span>New Chat</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    if (confirm("Delete and clear this active conversation?")) {
+                      if (activeSessionId) {
+                        handleDeleteSession(activeSessionId);
+                      } else {
+                        handleGoHome();
+                      }
+                    }
+                  }}
+                  className="px-2.5 py-1 text-[11px] font-semibold text-red-600 hover:bg-red-50 border border-red-200 rounded-lg transition-colors flex items-center gap-1"
+                  title="Delete this conversation"
+                >
+                  <Trash2 className="w-3 h-3" />
+                  <span>Delete Chat</span>
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* Welcome screen */}
           {isEmpty && (
             <div className="flex flex-col items-center text-center py-6 space-y-5">
@@ -348,9 +437,9 @@ export default function ChatPage() {
                       </>
                     ) : (
                       <>
-                        <span className="font-bold text-gray-800">Unauthenticated Guest Mode</span>
+                        <span className="font-bold text-gray-800">Guest Mode (No History Stored)</span>
                         <p className="text-[11px] text-gray-500">
-                          Sign in with Email & OTP to enable private encrypted consultation history.
+                          Sign in with your email & OTP to save private consultations and verify credentials.
                         </p>
                       </>
                     )}
@@ -403,7 +492,7 @@ export default function ChatPage() {
                   <p className="text-[11px] text-gray-500">
                     {userProfile.isLoggedIn
                       ? `Active: ${userProfile.email}`
-                      : "Instant 6-digit OTP verification."}
+                      : "Instant 6-digit OTP to your Gmail."}
                   </p>
                 </button>
 
@@ -416,7 +505,9 @@ export default function ChatPage() {
                     <span>Private Consultations</span>
                   </div>
                   <p className="text-[11px] text-gray-500">
-                    {sessions.length} recorded consultations in your isolated vault.
+                    {userProfile.isLoggedIn
+                      ? `${sessions.length} consultations in vault.`
+                      : "Sign in to save and manage history."}
                   </p>
                 </button>
               </div>
@@ -490,6 +581,9 @@ export default function ChatPage() {
         onSelectSession={handleSelectSession}
         onNewSession={handleNewSession}
         onDeleteSession={handleDeleteSession}
+        onClearAllSessions={handleClearAllSessions}
+        isLoggedIn={userProfile.isLoggedIn}
+        onOpenAuth={() => setIsAuthOpen(true)}
       />
 
       <CompareModeModal

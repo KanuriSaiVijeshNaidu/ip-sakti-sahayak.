@@ -101,10 +101,10 @@ export default function AuthModal({
   const [institution, setInstitution] = useState(currentProfile.institution || "");
 
   // OTP states
-  const [generatedOtp, setGeneratedOtp] = useState<string>("");
   const [enteredOtp, setEnteredOtp] = useState<string>("");
   const [resendTimer, setResendTimer] = useState<number>(60);
   const [isSendingOtp, setIsSendingOtp] = useState(false);
+  const [isVerifyingOtp, setIsVerifyingOtp] = useState(false);
 
   // Countdown timer for OTP
   useEffect(() => {
@@ -124,59 +124,89 @@ export default function AuthModal({
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em);
   };
 
-  // Step 1: Send OTP
-  const handleSendOtp = (e: React.FormEvent) => {
+  // Step 1: Send OTP to user's Gmail/Email via serverless dispatch
+  const handleSendOtp = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
     const cleanEmail = email.trim().toLowerCase();
     if (!isValidEmail(cleanEmail)) {
-      setError("Please enter a valid official email address (e.g., name@ayush.gov.in).");
+      setError("Please enter a valid email address (e.g., yourname@gmail.com or official domain).");
       return;
     }
 
     setIsSendingOtp(true);
-
-    // Generate random 6-digit OTP
-    const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    setGeneratedOtp(otp);
-    setResendTimer(60);
-    setEnteredOtp("");
-
-    setTimeout(() => {
+    try {
+      const res = await fetch("/api/auth/otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "send", email: cleanEmail }),
+      });
+      const data = await res.json();
+      if (!res.ok || data.error) {
+        setError(data.error || "Failed to dispatch verification passcode to email.");
+        setIsSendingOtp(false);
+        return;
+      }
+      setResendTimer(60);
+      setEnteredOtp("");
       setIsSendingOtp(false);
       setStep("otp");
-    }, 600);
+    } catch (err) {
+      console.error("Failed to send OTP:", err);
+      setError("Unable to reach authentication server. Please check your connection and try again.");
+      setIsSendingOtp(false);
+    }
   };
 
-  // Step 2: Verify OTP
-  const handleVerifyOtp = (e: React.FormEvent) => {
+  // Step 2: Verify OTP via serverless verification endpoint
+  const handleVerifyOtp = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
-    if (enteredOtp.trim() !== generatedOtp.trim()) {
-      setError("Invalid OTP code. Please enter the 6-digit verification code sent to your email.");
+    const cleanEmail = email.trim().toLowerCase();
+    if (!enteredOtp || enteredOtp.trim().length !== 6) {
+      setError("Please enter the full 6-digit verification code received in your email.");
       return;
     }
 
-    // Generate authenticated session token
-    const token = `AYUR-OTP-0x${Math.floor(Math.random() * 16777215).toString(16).toUpperCase()}`;
-    const cleanEmail = email.trim().toLowerCase();
-    const finalName = name.trim() || cleanEmail.split("@")[0].replace(".", " ");
+    setIsVerifyingOtp(true);
+    try {
+      const res = await fetch("/api/auth/otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "verify", email: cleanEmail, otp: enteredOtp.trim() }),
+      });
+      const data = await res.json();
+      if (!res.ok || data.error) {
+        setError(data.error || "Invalid or expired verification code. Please check your email.");
+        setIsVerifyingOtp(false);
+        return;
+      }
 
-    onSaveProfile({
-      name: finalName,
-      email: cleanEmail,
-      role,
-      registrationNumber: regNum.trim() || "AYUSH-REG-VERIFIED",
-      institution: institution.trim() || "Ayurvedic Medicine & Research Council",
-      isLoggedIn: true,
-      sessionToken: token,
-      lastLogin: new Date().toISOString(),
-    });
+      // Generate authenticated session token and save profile
+      const token = data.sessionToken || `AYUR-OTP-0x${Math.floor(Math.random() * 16777215).toString(16).toUpperCase()}`;
+      const finalName = name.trim() || cleanEmail.split("@")[0].replace(".", " ");
 
-    setStep("email");
-    onClose();
+      onSaveProfile({
+        name: finalName,
+        email: cleanEmail,
+        role,
+        registrationNumber: regNum.trim() || "AYUSH-REG-VERIFIED",
+        institution: institution.trim() || "Ayurvedic Medicine & Research Council",
+        isLoggedIn: true,
+        sessionToken: token,
+        lastLogin: new Date().toISOString(),
+      });
+
+      setIsVerifyingOtp(false);
+      setStep("email");
+      onClose();
+    } catch (err) {
+      console.error("Verification error:", err);
+      setError("Verification failed due to a network error. Please try again.");
+      setIsVerifyingOtp(false);
+    }
   };
 
   const handleDemoFill = (demoRole: UserRole) => {
@@ -486,38 +516,25 @@ export default function AuthModal({
             {step === "otp" && (
               <form onSubmit={handleVerifyOtp} className="space-y-4">
                 {/* OTP Dispatch Card */}
-                <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3.5 space-y-2 text-xs">
-                  <div className="flex items-center gap-2 text-emerald-900 font-bold">
+                <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 space-y-2 text-xs">
+                  <div className="flex items-center gap-2 text-emerald-900 font-bold text-sm">
                     <Mail className="w-4 h-4 text-emerald-700" />
-                    <span>OTP Sent to {email}</span>
+                    <span>Passcode Dispatched to {email}</span>
                   </div>
-                  <p className="text-[11px] text-emerald-800">
-                    A 6-digit verification code has been dispatched to authenticate your private consultation vault.
+                  <p className="text-[12px] text-emerald-800 leading-relaxed">
+                    A 6-digit one-time verification passcode has been dispatched directly to your <strong>Gmail / Email inbox</strong>.
+                    Please check your inbox (and spam folder) and enter the 6-digit code below to unlock your private consultation vault.
                   </p>
-
-                  {/* Simulated Secure Delivery Badge for Testing */}
-                  <div className="bg-white border border-emerald-300 rounded-lg p-2 flex items-center justify-between font-mono">
-                    <div>
-                      <span className="text-[10px] text-gray-500 block">DEMO DISPATCHED OTP:</span>
-                      <span className="text-base font-bold text-emerald-800 tracking-widest">
-                        {generatedOtp}
-                      </span>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => setEnteredOtp(generatedOtp)}
-                      className="px-2.5 py-1 text-[11px] bg-emerald-700 hover:bg-emerald-800 text-white rounded-md font-sans font-bold flex items-center gap-1 transition-colors"
-                    >
-                      <Sparkles className="w-3 h-3" />
-                      Auto-fill OTP
-                    </button>
+                  <div className="flex items-center gap-2 text-[11px] text-emerald-700 bg-white/80 p-2 rounded-lg border border-emerald-200 font-mono">
+                    <ShieldCheck className="w-3.5 h-3.5 shrink-0 text-emerald-600" />
+                    <span>Per zero-knowledge policy, the OTP is never exposed inside this application.</span>
                   </div>
                 </div>
 
                 {/* OTP Input */}
                 <div>
                   <label className="block text-xs font-bold text-gray-700 mb-1.5 text-center">
-                    Enter 6-Digit One-Time Passcode
+                    Enter 6-Digit Verification Passcode
                   </label>
                   <input
                     type="text"
@@ -527,6 +544,7 @@ export default function AuthModal({
                     placeholder="• • • • • •"
                     required
                     autoFocus
+                    disabled={isVerifyingOtp}
                     className="w-full text-center tracking-[0.6em] text-xl font-bold py-3 border-2 border-gray-300 rounded-xl focus:border-green-600 focus:ring-2 focus:ring-green-500/20 outline-none font-mono"
                   />
                 </div>
@@ -536,6 +554,7 @@ export default function AuthModal({
                   <button
                     type="button"
                     onClick={() => setStep("email")}
+                    disabled={isVerifyingOtp}
                     className="text-gray-600 hover:underline text-[11px]"
                   >
                     ← Change Email
@@ -544,14 +563,15 @@ export default function AuthModal({
                   <div className="flex items-center gap-1 text-[11px]">
                     <Clock className="w-3 h-3 text-gray-400" />
                     {resendTimer > 0 ? (
-                      <span>Resend in {resendTimer}s</span>
+                      <span>Resend code in {resendTimer}s</span>
                     ) : (
                       <button
                         type="button"
                         onClick={handleSendOtp}
+                        disabled={isSendingOtp || isVerifyingOtp}
                         className="text-green-700 font-bold hover:underline"
                       >
-                        Resend Code
+                        {isSendingOtp ? "Sending..." : "Resend Code to Email"}
                       </button>
                     )}
                   </div>
@@ -562,16 +582,27 @@ export default function AuthModal({
                   <button
                     type="button"
                     onClick={() => setStep("email")}
+                    disabled={isVerifyingOtp}
                     className="px-4 py-2 text-xs font-semibold text-gray-600 hover:bg-gray-100 rounded-xl transition-colors"
                   >
                     Back
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2 text-xs font-bold text-white bg-green-700 hover:bg-green-800 rounded-xl shadow-xs transition-all flex items-center gap-1.5"
+                    disabled={isVerifyingOtp || enteredOtp.length !== 6}
+                    className="px-5 py-2 text-xs font-bold text-white bg-green-700 hover:bg-green-800 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl shadow-xs transition-all flex items-center gap-1.5"
                   >
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    Verify & Access Private Vault
+                    {isVerifyingOtp ? (
+                      <>
+                        <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                        Verifying...
+                      </>
+                    ) : (
+                      <>
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                        Verify & Access Private Vault
+                      </>
+                    )}
                   </button>
                 </div>
               </form>
