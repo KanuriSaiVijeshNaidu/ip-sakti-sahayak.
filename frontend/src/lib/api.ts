@@ -1,8 +1,15 @@
-﻿import { ChatRequest, ChatResponse } from "@/types";
+import { ChatRequest, ChatResponse } from "@/types";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
 
+// Client-side instant LRU cache for 0ms repeated responses
+const clientCache = new Map<string, ChatResponse>();
+
 export async function sendChatMessage(req: ChatRequest): Promise<ChatResponse> {
+  const cacheKey = `${(req.query || "").trim().toLowerCase()}_${req.language || "en"}_${req.domain || "auto"}`;
+  if (clientCache.has(cacheKey)) {
+    return clientCache.get(cacheKey)!;
+  }
   const res = await fetch(`${API_BASE}/chat`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -12,7 +19,9 @@ export async function sendChatMessage(req: ChatRequest): Promise<ChatResponse> {
     const err = await res.text();
     throw new Error(`Chat API error ${res.status}: ${err}`);
   }
-  return res.json() as Promise<ChatResponse>;
+  const data = (await res.json()) as ChatResponse;
+  clientCache.set(cacheKey, data);
+  return data;
 }
 
 export async function fetchAdminTrace(

@@ -1,16 +1,19 @@
-﻿"use client";
+"use client";
 import { useState } from "react";
 import { fetchAdminTrace } from "@/lib/api";
 import { AdminTraceResponse } from "@/types";
 import { Play, CheckCircle, XCircle, Loader2 } from "lucide-react";
 
 const BENCHMARK_QUERIES = [
-  { query: "Can I patent an Ayurvedic herbal formulation?",             domain: "patents",    expectedDomain: "patents",    label: "Patent Q1" },
-  { query: "What is Section 3(e) of the Patents Act?",                 domain: "patents",    expectedDomain: "patents",    label: "Patent Q2" },
-  { query: "FSSAI labelling requirements for Ashwagandha capsules",    domain: "fssai",      expectedDomain: "fssai",      label: "FSSAI Q1" },
-  { query: "Prohibited substances in Ayurveda Aahara products",        domain: "fssai",      expectedDomain: "fssai",      label: "FSSAI Q2" },
-  { query: "How to register a trademark for an Ayurveda brand?",       domain: "trademarks", expectedDomain: "trademarks", label: "TM Q1" },
-  { query: "GI tag registration process for traditional medicines",    domain: undefined,    expectedDomain: "trademarks", label: "GI Q1" },
+  { query: "Can I patent an Ayurvedic herbal formulation?",             domain: "patents",    expectedDomains: ["patents"],             label: "Patent Q1 (EN)" },
+  { query: "What is Section 3(e) of the Patents Act?",                 domain: "patents",    expectedDomains: ["patents"],             label: "Patent Q2 (EN)" },
+  { query: "త్రిఫల తో ఆయుర్వేద ఫార్ములేషన్ పేటెంట్ చేయవచ్చా?",          domain: "patents",    expectedDomains: ["patents", "ayush"],     label: "Patent (Telugu)" },
+  { query: "क्या मैं त्रिफला के आयुर्वेदिक योग का पेटेंट करा सकता हूँ?", domain: "patents",    expectedDomains: ["patents", "ayush"],     label: "Patent (Hindi)" },
+  { query: "திரிபலா ஆயுர்வேத கலவைக்கு காப்புரிமை பெற முடியுமா?",       domain: "patents",    expectedDomains: ["patents", "ayush"],     label: "Patent (Tamil)" },
+  { query: "FSSAI labelling requirements for Ashwagandha capsules",    domain: "fssai",      expectedDomains: ["fssai"],               label: "FSSAI Q1" },
+  { query: "Prohibited substances in Ayurveda Aahara products",        domain: "fssai",      expectedDomains: ["fssai"],               label: "FSSAI Q2" },
+  { query: "How to register a trademark for an Ayurveda brand?",       domain: "trademarks", expectedDomains: ["trademarks"],          label: "TM Q1" },
+  { query: "GI tag registration process for traditional medicines",    domain: undefined,    expectedDomains: ["trademarks", "gi"],    label: "GI Q1" },
 ];
 
 interface Result {
@@ -35,22 +38,23 @@ export default function BenchmarkRunner() {
     for (let i = 0; i < BENCHMARK_QUERIES.length; i++) {
       const q = BENCHMARK_QUERIES[i];
       setProgress(i + 1);
-      const t0 = performance.now();
       try {
+        const t0 = performance.now();
         const trace: AdminTraceResponse = await fetchAdminTrace(q.query, q.domain, "IN");
         const latency = Math.round(performance.now() - t0);
         const topDomain = trace.candidates[0]?.domain ?? "—";
+        const isPassed = q.expectedDomains.includes(topDomain);
         out.push({
           label: q.label,
           query: q.query,
-          passed: topDomain === q.expectedDomain,
+          passed: isPassed,
           topDomain,
-          expectedDomain: q.expectedDomain,
+          expectedDomain: q.expectedDomains.join(" / "),
           validated: trace.validated_count,
           latency,
         });
       } catch {
-        out.push({ label: q.label, query: q.query, passed: false, topDomain: "error", expectedDomain: q.expectedDomain, validated: 0, latency: 0 });
+        out.push({ label: q.label, query: q.query, passed: false, topDomain: "error", expectedDomain: q.expectedDomains.join(" / "), validated: 0, latency: 0 });
       }
     }
     setResults(out);

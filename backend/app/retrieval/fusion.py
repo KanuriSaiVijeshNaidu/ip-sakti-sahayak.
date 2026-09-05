@@ -1,4 +1,4 @@
-﻿"""
+"""
 backend/app/retrieval/fusion.py
 ────────────────────────────────
 Reciprocal Rank Fusion (RRF) + metadata filtering for IP-SAKTI.
@@ -138,7 +138,9 @@ def metadata_filter(
     return filtered
 
 
-# ─── High-level retrieve() ────────────────────────────────────────────────────
+# ─── In-memory LRU cache for retrieval ─────────────────────────────────────────
+_RETRIEVAL_CACHE: dict = {}
+_MAX_CACHE_SIZE = 256
 
 async def retrieve(
     query: str,
@@ -150,14 +152,19 @@ async def retrieve(
     rrf_k: int | None = None,
 ) -> dict:
     """
-    Full Phase 3 retrieval pipeline:
-      Query -> BM25 + Vector (parallel) -> Merge -> Metadata Filter -> RRF -> Top-K
-
-    Returns a dict with keys:
-      bm25_candidates    : raw BM25 results
-      vector_candidates  : raw vector results
-      fused_candidates   : RRF-fused + filtered results (input to reranker)
+    Full Phase 3 retrieval pipeline with caching:
+      Query -> Cache Check -> BM25 + Vector (parallel) -> Merge -> Metadata Filter -> RRF -> Top-K
     """
+    cache_key = (query.strip().lower(), domain or "", jurisdiction or "", final_top_k or 0)
+    if cache_key in _RETRIEVAL_CACHE:
+        logger.debug(f"Retrieval cache HIT for: '{query[:50]}'")
+        cached = _RETRIEVAL_CACHE[cache_key]
+        return {
+            "bm25_candidates": list(cached["bm25_candidates"]),
+            "vector_candidates": list(cached["vector_candidates"]),
+            "fused_candidates": list(cached["fused_candidates"]),
+        }
+
     bm25_k = bm25_top_k or settings.bm25_top_k
     vec_k = vector_top_k or settings.vector_top_k
     final_k = final_top_k or settings.final_top_k
@@ -193,8 +200,14 @@ async def retrieve(
     # ── Top-K cut ─────────────────────────────────────────────────────────────
     fused = fused[:final_k]
 
-    return {
+    result = {
         "bm25_candidates": bm25_results,
         "vector_candidates": vector_results,
         "fused_candidates": fused,
     }
+
+    if len(_RETRIEVAL_CACHE) >= _MAX_CACHE_SIZE:
+        _RETRIEVAL_CACHE.pop(next(iter(_RETRIEVAL_CACHE)))
+    _RETRIEVAL_CACHE[cache_key] = result
+
+    return result

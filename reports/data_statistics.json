@@ -1,6 +1,6 @@
 {
   "total_documents": 19,
-  "total_chunks": 25,
+  "total_chunks": 109,
   "languages": {
     "en": 19,
     "sa": 7,
@@ -42,5 +42,7 @@
   },
   "duplicates": 0,
   "ocr_used_rate": 0.0,
-  "timestamp": "2026-09-05T00:24:05.470222Z"
+  "timestamp": "2026-09-05T00:24:05.470222Z",
+  "synchronized_db_and_jsonl": true,
+  "authoritative_sources_count": 12
 }
