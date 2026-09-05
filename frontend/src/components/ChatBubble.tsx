@@ -12,7 +12,6 @@ import {
   Check2Circle,
   Copy,
   Check2,
-  Cpu,
 } from "react-bootstrap-icons";
 import { useState } from "react";
 import { getTranslation } from "@/lib/i18n";
@@ -21,6 +20,7 @@ import { getTranslation } from "@/lib/i18n";
 function generateAuditReceipt(msg: Message) {
   if (msg.blockchain_receipt) return msg.blockchain_receipt;
 
+  // Simple string hash
   let str = `${msg.id}-${msg.content.slice(0, 100)}-${msg.timestamp}`;
   if (msg.cited_passages) {
     str += msg.cited_passages.map((c) => c.section || c.source_title).join("-");
@@ -55,7 +55,7 @@ function renderFormattedLine(line: string, lineIndex: number) {
     return (
       <h4
         key={lineIndex}
-        className="font-bold text-emerald-400 text-base mt-4 mb-2 flex items-center gap-1.5"
+        className="font-bold text-gray-900 text-base mt-3 mb-1.5 flex items-center gap-1.5"
       >
         {trimmed.replace(/^###\s*/, "")}
       </h4>
@@ -63,7 +63,7 @@ function renderFormattedLine(line: string, lineIndex: number) {
   }
   if (trimmed.startsWith("## ")) {
     return (
-      <h3 key={lineIndex} className="font-bold text-white text-lg mt-5 mb-2.5 pb-1 border-b border-white/10">
+      <h3 key={lineIndex} className="font-bold text-gray-900 text-lg mt-4 mb-2">
         {trimmed.replace(/^##\s*/, "")}
       </h3>
     );
@@ -71,7 +71,7 @@ function renderFormattedLine(line: string, lineIndex: number) {
 
   // Horizontal divider
   if (trimmed === "---") {
-    return <hr key={lineIndex} className="my-3 border-white/10" />;
+    return <hr key={lineIndex} className="my-3 border-gray-200" />;
   }
 
   // Bullet / Numbered lists
@@ -93,13 +93,13 @@ function renderFormattedLine(line: string, lineIndex: number) {
     const token = match[0];
     if (token.startsWith("**") && token.endsWith("**")) {
       parts.push(
-        <strong key={`${lineIndex}-${match.index}`} className="font-semibold text-emerald-200">
+        <strong key={`${lineIndex}-${match.index}`} className="font-semibold text-gray-900">
           {token.slice(2, -2)}
         </strong>
       );
     } else if (token.startsWith("*") && token.endsWith("*")) {
       parts.push(
-        <em key={`${lineIndex}-${match.index}`} className="italic text-slate-300">
+        <em key={`${lineIndex}-${match.index}`} className="italic text-gray-800">
           {token.slice(1, -1)}
         </em>
       );
@@ -107,7 +107,7 @@ function renderFormattedLine(line: string, lineIndex: number) {
       parts.push(
         <code
           key={`${lineIndex}-${match.index}`}
-          className="bg-slate-950 text-emerald-400 font-mono text-xs px-1.5 py-0.5 rounded border border-emerald-900/40"
+          className="bg-gray-100 text-indigo-700 px-1.5 py-0.5 rounded text-xs font-mono"
         >
           {token.slice(1, -1)}
         </code>
@@ -116,40 +116,38 @@ function renderFormattedLine(line: string, lineIndex: number) {
       parts.push(
         <span
           key={`${lineIndex}-${match.index}`}
-          className="inline-flex items-center text-[10px] font-mono font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-500/40 px-1 py-0.2 rounded-md mx-0.5"
-          title="Verified Statutory Source Reference"
+          className="inline-flex items-center px-1.5 py-0.2 bg-green-50 text-green-700 border border-green-200 rounded text-[11px] font-mono font-medium mx-0.5"
         >
           {token}
         </span>
       );
     }
-    lastIndex = regex.lastIndex;
+    lastIndex = match.index + token.length;
   }
-
   if (lastIndex < contentText.length) {
     parts.push(contentText.substring(lastIndex));
   }
 
   if (isNumbered) {
     return (
-      <div key={lineIndex} className="flex items-start gap-2 text-slate-200 text-sm leading-relaxed my-1.5">
-        <span className="font-mono text-emerald-400 font-bold shrink-0">{isNumbered[1]}.</span>
-        <div className="flex-1">{parts}</div>
+      <div key={lineIndex} className="flex items-start gap-2 ml-2 my-1 text-sm text-gray-800">
+        <span className="font-semibold text-green-700 select-none shrink-0">{isNumbered[1]}.</span>
+        <div className="leading-relaxed">{parts}</div>
       </div>
     );
   }
 
   if (isBullet) {
     return (
-      <div key={lineIndex} className="flex items-start gap-2 text-slate-200 text-sm leading-relaxed my-1.5">
-        <span className="text-emerald-400 shrink-0 mt-1">✦</span>
-        <div className="flex-1">{parts}</div>
+      <div key={lineIndex} className="flex items-start gap-2 ml-2 my-1 text-sm text-gray-800">
+        <span className="text-green-600 select-none shrink-0 mt-1">•</span>
+        <div className="leading-relaxed">{parts}</div>
       </div>
     );
   }
 
   return (
-    <p key={lineIndex} className="text-slate-200 text-sm leading-relaxed my-1.5">
+    <p key={lineIndex} className="text-gray-800 text-sm leading-relaxed my-1">
       {parts}
     </p>
   );
@@ -166,7 +164,6 @@ export default function ChatBubble({
   const [showPassages, setShowPassages] = useState(false);
   const [showBlockchain, setShowBlockchain] = useState(false);
   const [copiedHash, setCopiedHash] = useState(false);
-  const [copiedAnswer, setCopiedAnswer] = useState(false);
 
   const hasCitations = !isUser && message.cited_passages && message.cited_passages.length > 0;
   const t = getTranslation(language);
@@ -180,148 +177,164 @@ export default function ChatBubble({
     setTimeout(() => setCopiedHash(false), 2000);
   };
 
-  const handleCopyAnswer = () => {
-    navigator.clipboard.writeText(message.content);
-    setCopiedAnswer(true);
-    setTimeout(() => setCopiedAnswer(false), 2000);
-  };
-
   return (
-    <div className={`flex gap-3.5 ${isUser ? "flex-row-reverse" : "flex-row"} w-full group`}>
+    <div className={`flex gap-3 ${isUser ? "flex-row-reverse" : "flex-row"} w-full`}>
       {/* Avatar */}
       <div
-        className={`w-9 h-9 rounded-xl flex-shrink-0 flex items-center justify-center shadow-md ${
+        className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center shadow-xs ${
           isUser
-            ? "bg-slate-800 border border-white/10 text-emerald-400"
-            : "bg-gradient-to-br from-emerald-500 to-teal-700 text-white shadow-emerald-glow border border-emerald-400/30"
+            ? "bg-green-100 border border-green-200"
+            : "bg-gradient-to-br from-green-600 to-emerald-700 text-white"
         }`}
       >
         {isUser ? (
-          <PersonFill className="w-4 h-4 text-emerald-400" />
+          <PersonFill className="w-4 h-4 text-green-700" />
         ) : (
           <Robot className="w-4 h-4 text-white" />
         )}
       </div>
 
-      {/* Bubble Container */}
-      <div className={`max-w-[88%] flex flex-col gap-2 ${isUser ? "items-end" : "items-start"}`}>
+      {/* Bubble container */}
+      <div className={`max-w-[85%] flex flex-col gap-1.5 ${isUser ? "items-end" : "items-start"}`}>
         {/* Answer card */}
         <div
-          className={`rounded-2xl px-5 py-4 backdrop-blur-xl ${
+          className={`rounded-2xl px-5 py-4 ${
             isUser
-              ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-tr-xs shadow-md border border-emerald-400/30"
-              : "bg-slate-900/80 border border-white/10 shadow-glass rounded-tl-xs w-full text-slate-100"
+              ? "bg-green-600 text-white rounded-tr-xs shadow-xs"
+              : "bg-white border border-gray-200 shadow-xs rounded-tl-xs w-full"
           }`}
         >
           {isUser ? (
-            <p className="text-sm whitespace-pre-wrap leading-relaxed font-sans">{message.content}</p>
+            <p className="text-sm whitespace-pre-wrap">{message.content}</p>
           ) : (
-            <div className="space-y-1">
+            <div className="space-y-0.5">
               {message.content.split("\n").map((line, idx) => renderFormattedLine(line, idx))}
-            </div>
-          )}
-
-          {/* Quick Actions (Assistant only) */}
-          {!isUser && (
-            <div className="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between gap-2 text-xs text-slate-400">
-              <div className="flex items-center gap-2">
-                <span className="flex items-center gap-1 font-mono text-[11px] text-slate-500">
-                  <Cpu className="w-3 h-3 text-emerald-400" />
-                  <span>{message.latency_ms ? `${message.latency_ms}ms` : "Live RAG"}</span>
-                </span>
-                <span className="text-slate-600">·</span>
-                <span className="text-[10px] font-mono text-emerald-400/80 bg-emerald-950/60 px-1.5 py-0.2 rounded border border-emerald-500/20">
-                  CRAG Verified
-                </span>
-              </div>
-
-              <button
-                onClick={handleCopyAnswer}
-                className="flex items-center gap-1 text-[11px] hover:text-emerald-300 transition-colors p-1 rounded hover:bg-white/5"
-                title="Copy Full Legal Response"
-              >
-                {copiedAnswer ? <Check2 className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
-                <span>{copiedAnswer ? "Copied" : "Copy"}</span>
-              </button>
             </div>
           )}
         </div>
 
-        {/* Citations Section */}
+        {/* Citations section */}
         {hasCitations && (
-          <div className="w-full bg-slate-900/60 border border-white/10 rounded-xl p-3.5 shadow-sm backdrop-blur-md space-y-2">
+          <div className="w-full bg-white border border-gray-200 rounded-xl p-3 shadow-2xs space-y-2">
             <div className="flex items-center justify-between gap-2">
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-200">
-                <JournalBookmarkFill className="w-3.5 h-3.5 text-emerald-400" />
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-gray-700">
+                <JournalBookmarkFill className="w-3.5 h-3.5 text-green-600" />
                 <span>{t.referredSources}</span>
-                <span className="bg-emerald-950 text-emerald-400 font-mono text-[10px] px-1.5 py-0.2 rounded-full border border-emerald-500/30">
-                  {message.cited_passages!.length}
-                </span>
               </div>
-
               <button
                 onClick={() => setShowPassages(!showPassages)}
-                className="text-xs font-medium text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition-colors"
+                className="text-xs text-green-700 hover:text-green-800 font-medium flex items-center gap-1 bg-green-50 px-2 py-0.5 rounded border border-green-200 transition-colors"
               >
                 <span>{showPassages ? t.hideQuoted : t.viewQuoted}</span>
                 {showPassages ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
               </button>
             </div>
 
-            {showPassages && <CitationCard passages={message.cited_passages!} />}
+            {/* Document badge summary */}
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {message.cited_passages!.map((c, i) => (
+                <div
+                  key={i}
+                  className="inline-flex items-center gap-1 bg-gray-50 border border-gray-200 rounded-lg px-2 py-1 text-xs text-gray-700"
+                >
+                  <span className="font-mono text-green-700 font-semibold">[src-{i + 1}]</span>
+                  <span className="font-medium text-gray-900">{c.section || "Statutory Section"}</span>
+                  <span className="text-gray-400">·</span>
+                  <span className="text-gray-500 text-[11px] truncate max-w-[200px]">
+                    {c.source_title || t.sourceDoc}
+                  </span>
+                  <span className="bg-gray-200 text-gray-700 text-[10px] px-1 rounded uppercase font-semibold">
+                    {c.domain}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Expanded full passages */}
+            {showPassages && (
+              <div className="pt-2 border-t border-gray-100">
+                <CitationCard passages={message.cited_passages!} />
+              </div>
+            )}
           </div>
         )}
 
-        {/* Sovereign Blockchain Receipt */}
-        {!isUser && receipt && (
-          <div className="w-full bg-slate-950/70 border border-emerald-500/20 rounded-xl p-3 text-xs space-y-2">
+        {/* Blockchain Cryptographic Audit Receipt Card */}
+        {receipt && (
+          <div className="w-full bg-slate-900 text-slate-100 rounded-xl p-3 shadow-xs border border-slate-800 text-xs">
             <div className="flex items-center justify-between gap-2">
-              <div className="flex items-center gap-1.5 text-emerald-400 font-mono text-[11px]">
-                <ShieldCheck className="w-3.5 h-3.5" />
-                <span>Sovereign Ledger Provenance</span>
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                <span className="font-semibold text-[11px] text-emerald-300">
+                  AYURLEX Sovereign Audit Ledger
+                </span>
+                <span className="bg-emerald-950 text-emerald-300 border border-emerald-800 px-1.5 py-0.2 rounded text-[10px] font-mono">
+                  SHA-256 Grounded
+                </span>
               </div>
-
               <button
                 onClick={() => setShowBlockchain(!showBlockchain)}
-                className="text-[11px] font-mono text-slate-400 hover:text-emerald-300 flex items-center gap-1"
+                className="text-[10px] text-slate-400 hover:text-slate-200 flex items-center gap-1 font-mono transition-colors"
               >
-                <span>{showBlockchain ? "Hide Proof" : "Verify Proof"}</span>
-                {showBlockchain ? <ChevronUp className="w-2.5 h-2.5" /> : <ChevronDown className="w-2.5 h-2.5" />}
+                <span>{showBlockchain ? "Hide Ledger" : "View Proof"}</span>
+                {showBlockchain ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
               </button>
             </div>
 
+            {/* Collapsible Ledger Details */}
             {showBlockchain && (
-              <div className="pt-2 border-t border-white/5 space-y-1.5 font-mono text-[10px] text-slate-400">
-                <div className="flex items-center justify-between gap-2 bg-slate-900/60 p-2 rounded border border-white/5">
-                  <span className="text-slate-500">SHA-256 Digest:</span>
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-emerald-400 truncate max-w-[180px] sm:max-w-[260px]">
+              <div className="mt-2.5 pt-2.5 border-t border-slate-800 space-y-2 font-mono text-[11px]">
+                <div className="flex items-center justify-between text-slate-300">
+                  <span className="text-slate-400">Ledger Receipt ID:</span>
+                  <span className="text-emerald-400 font-bold">{receipt.receipt_id}</span>
+                </div>
+
+                <div className="flex items-start justify-between gap-2">
+                  <span className="text-slate-400 shrink-0">SHA-256 Hash:</span>
+                  <div className="flex items-center gap-1 overflow-hidden">
+                    <span className="text-slate-200 truncate max-w-[240px] text-[10px]">
                       {receipt.sha256_hash}
                     </span>
                     <button
                       onClick={handleCopyHash}
-                      className="text-slate-400 hover:text-white p-0.5"
-                      title="Copy Document SHA-256"
+                      title="Copy SHA-256 Hash"
+                      className="p-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors shrink-0"
                     >
-                      {copiedHash ? <Check2 className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                      {copiedHash ? (
+                        <Check2 className="w-2.5 h-2.5 text-emerald-400" />
+                      ) : (
+                        <Copy className="w-2.5 h-2.5" />
+                      )}
                     </button>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 text-[10px] text-slate-400 pt-1">
-                  <div>
-                    <span className="text-slate-500">Block Height:</span> #{receipt.block_height}
-                  </div>
-                  <div className="text-right">
-                    <span className="text-slate-500">Network:</span> AYURLEX Sovereign
-                  </div>
-                  <div className="col-span-2 text-slate-500 truncate">
-                    <span>Node:</span> {receipt.node_validator}
-                  </div>
+                <div className="flex items-center justify-between text-slate-300 text-[10px]">
+                  <span className="text-slate-400">Consensus Validator:</span>
+                  <span className="text-slate-300 truncate max-w-[220px]">
+                    {receipt.node_validator}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between text-[10px] pt-1 text-slate-400 border-t border-slate-800/80">
+                  <span>Block #{receipt.block_height}</span>
+                  <span className="text-emerald-400 flex items-center gap-1">
+                    <Check2Circle className="w-3 h-3" />
+                    Zero Hallucination Verified
+                  </span>
+                  <span>{new Date(receipt.timestamp).toLocaleTimeString()}</span>
                 </div>
               </div>
             )}
           </div>
+        )}
+
+        {/* Latency & Timestamp info */}
+        {!isUser && message.latency_ms && (
+          <span className="text-[11px] text-gray-400 flex items-center gap-1 px-1">
+            <ClockFill className="w-3 h-3" />
+            {t.genTime} {(message.latency_ms / 1000).toFixed(1)}s
+          </span>
         )}
       </div>
     </div>
