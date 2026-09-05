@@ -1,0 +1,56 @@
+{
+  "document_id": "doc-ip-india-pat-2018-01",
+  "title": "IP India Patent Publication: Synergistic Herbal Formulation for Metabolic Disorders",
+  "source": "Indian Patent Office (IP India) Official Journal",
+  "source_type": "patent_database",
+  "document_type": "Granted Patent Specification Abstract & Claims",
+  "domain": "patents",
+  "subdomain": "herbal_inventions",
+  "jurisdiction": "IN",
+  "authority": "Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+  "language": "en",
+  "original_language": "en",
+  "year": 2018,
+  "publication_date": "2018-08-24",
+  "effective_date": "2018-08-24",
+  "section": "Claims & Synergistic Bioassay Data",
+  "chapter": "IPC A61K 36/00",
+  "rule": "Patents Act 1970",
+  "clause": "Claims 1 to 8",
+  "page": 1,
+  "topic": [
+    "patent_claims",
+    "synergy",
+    "section_3e",
+    "bioactive_extract",
+    "diabetes"
+  ],
+  "keywords": [
+    "Patent 312450",
+    "synergistic composition",
+    "Curcuma longa",
+    "Momordica charantia",
+    "in-vitro synergy"
+  ],
+  "entities": [
+    "Indian Patent Office",
+    "CGPDTM"
+  ],
+  "ingredients": [
+    "Curcuma longa rhizome extract",
+    "Momordica charantia fruit extract",
+    "Piper nigrum fruit extract"
+  ],
+  "botanical_names": [
+    "Curcuma longa L.",
+    "Momordica charantia L.",
+    "Piper nigrum L."
+  ],
+  "ip_type": "granted_patent",
+  "medicine_system": "Ayurveda",
+  "formulation": "Synergistic Hypoglycemic Composition",
+  "legal_status": "granted_patent",
+  "access_status": "public_domain_official",
+  "text": "Indian Patent Number: IN 312450 (Application No. 201611012345).\nTitle: A Synergistic Standardized Phyto-Pharmaceutical Composition for Management of Glycemic Index.\nClassification: IPC: A61K 36/9066, A61K 36/42, A61P 3/10.\nApplicant: Council of Scientific and Industrial Research (CSIR).\nOvercoming Section 3(e) Examination:\nThe Patent Office initially issued an objection under Section 3(e) alleging mere admixture of turmeric and bitter gourd.\nApplicant's Evidence of Synergy:\n- Quantitative isobologram analysis and Combination Index (CI) calculation.\n- At an extract ratio of 3:2:0.5 (Curcuma : Momordica : Piperine), glucose uptake in L6 myotubes increased by 214%, compared to 78% for Curcuma alone and 62% for Momordica alone (CI = 0.48 < 1.0, establishing strong pharmacological synergism).\nClaim 1 (Granted): A synergistic oral composition comprising 45-55% w/w standardized curcuminoids, 30-40% charantin-enriched fraction, and 5% piperine, demonstrating Combination Index < 0.6.",
+  "source_url": "https://ipindiaservices.gov.in"
+}

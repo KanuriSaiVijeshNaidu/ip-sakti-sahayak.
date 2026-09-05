@@ -1,0 +1,99 @@
+PATENTS ACT 1970 - KEY SECTIONS FOR AYURVEDA/TRADITIONAL KNOWLEDGE
+Source: The Patents Act, 1970 (as amended up to Patents Amendment Act 2005)
+Jurisdiction: IN | Domain: patents | Corpus Version: v1
+
+SECTION 2 - DEFINITIONS
+
+Section 2(1)(j) - "invention" means a new product or process involving an inventive step and capable of industrial application.
+
+Section 2(1)(ja) - "inventive step" means a feature of an invention that involves technical advance as compared to the existing knowledge or having economic significance or both and that makes the invention not obvious to a person skilled in the art.
+
+Section 2(1)(l) - "new invention" means any invention or technology which has not been anticipated by publication in any document or used in the country or elsewhere in the world before the date of filing of patent application with complete specification, i.e., the subject matter has not fallen in public domain or that it does not form part of the state of the art.
+
+Section 2(1)(p) - "patent" means a patent for any invention granted under this Act.
+
+Section 2(1)(ta) - "traditional knowledge digital library" means a digital library as may be referred to in section 3(p).
+
+SECTION 3 - WHAT ARE NOT INVENTIONS
+
+Section 3 - The following are not inventions within the meaning of this Act:
+
+Section 3(a) - an invention which is frivolous or which claims anything obviously contrary to well established natural laws;
+
+Section 3(b) - an invention the primary or intended use or commercial exploitation of which could be contrary to public order or morality or which causes serious prejudice to human, animal or plant life or health or to the environment;
+
+Section 3(c) - the mere discovery of a scientific principle or the formulation of an abstract theory or discovery of any living thing or non-living substance occurring in nature;
+
+Section 3(d) - the mere discovery of a new form of a known substance which does not result in the enhancement of the known efficacy of that substance or the mere discovery of any new property or new use for a known substance or of the mere use of a known process, machine or apparatus unless such known process results in a new product or employs at least one new reactant. Explanation: For the purposes of this clause, salts, esters, ethers, polymorphs, metabolites, pure form, particle size, isomers, mixtures of isomers, complexes, combinations and other derivatives of known substance shall be considered to be the same substance, unless they differ significantly in properties with regard to efficacy;
+
+Section 3(e) - a substance obtained by a mere admixture resulting only in the aggregation of the properties of the components thereof or a process for producing such substance. Explanation: For the purposes of this clause, an Ayurvedic, Unani, Siddha or any other traditional medicinal formulation shall be considered to be a substance obtained by mere admixture if it is a combination of known ingredients whose combined effect is merely the sum of their individual known effects, unless there is a new synergistic effect or a new therapeutic application that was not previously known or anticipated.
+
+Section 3(f) - the mere arrangement or re-arrangement or duplication of known devices each functioning independently of one another in a known way;
+
+Section 3(g) - [omitted by the Patents (Amendment) Act, 2002]
+
+Section 3(h) - a method of agriculture or horticulture;
+
+Section 3(i) - any process for the medicinal, surgical, curative, prophylactic diagnostic, therapeutic or other treatment of human beings or any process for a similar treatment of animals to render them free of disease or to increase their economic value or that of their products;
+
+Section 3(j) - plants and animals in whole or any part thereof other than micro organisms but including seeds, varieties and species and essentially biological processes for production or propagation of plants and animals;
+
+Section 3(k) - a mathematical or business method or a computer programme per se or algorithms;
+
+Section 3(l) - a literary, dramatic, musical or artistic work or any other aesthetic creation whatsoever including cinematographic works and television productions;
+
+Section 3(m) - a mere scheme or rule or method of performing mental act or method of playing game;
+
+Section 3(n) - a presentation of information;
+
+Section 3(o) - topography of integrated circuits;
+
+Section 3(p) - an invention which in effect, is traditional knowledge or which is an aggregation or duplication of known properties of traditionally known component or components. Explanation: For the purposes of this clause, "traditional knowledge" means any knowledge, whether in written or oral form, that has been generated, preserved and transmitted within a traditional community or indigenous people and includes any knowledge relating to plants, animals, soil or any other natural elements with a particular emphasis on its utility in Ayurveda, Unani, Siddha, Yoga, Naturopathy, or any other Indian System of Medicine. The Traditional Knowledge Digital Library (TKDL) maintained by CSIR is a primary reference database for identifying prior art related to traditional knowledge in patent examination.
+
+Section 3(q) - an invention relating to atomic energy falling within sub-section (1) of section 20 of the Atomic Energy Act, 1962.
+
+SECTION 48 - RIGHTS OF PATENTEE
+
+Section 48 - Subject to the other provisions contained in this Act and the conditions specified in section 47, a patent granted under this Act shall confer upon the patentee
+
+Section 48(a) - where the subject matter of the patent is a product, the exclusive right to prevent third parties, who do not have his consent, from the act of making, using, offering for sale, selling or importing for those purposes that product in India;
+
+Section 48(b) - where the subject matter of the patent is a process, the exclusive right to prevent third parties, who do not have his consent, from the act of using that process, and from the act of using, offering for sale, selling or importing for those purposes the product obtained directly by that process in India.
+
+SECTION 53 - TERM OF PATENT
+
+Section 53(1) - Subject to the provisions of this Act, the term of every patent granted, after the commencement of the Patents (Amendment) Act, 2002, and the term of every patent which has not expired and has not ceased to have effect, on the date of such commencement, under this Act, shall be twenty years from the date of filing of the application for the patent.
+
+Section 53(2) - A patent shall cease to have effect notwithstanding anything contained in this Act if the renewal fee is not paid within the prescribed period or within such extended period as may be allowed.
+
+SECTION 64 - REVOCATION OF PATENTS
+
+Section 64(1) - Subject to the provisions contained in this Act, a patent, whether granted before or after the commencement of this Act, may, be revoked on a petition of any person interested or of the Central Government by the Appellate Board or on a counter-claim in a suit for infringement of the patent by the High Court on any of the following grounds, that is to say
+
+Section 64(1)(a) - that the invention, so far as claimed in any claim of the complete specification, was claimed in a valid claim of earlier priority date contained in the complete specification of another patent granted in India;
+
+Section 64(1)(b) - that the patent was granted on the application of a person not entitled under the provisions of this Act to apply therefor;
+
+Section 64(1)(e) - that the invention so far as claimed in any claim of the complete specification is not an invention within the meaning of this Act, or is not patentable under this Act;
+
+Section 64(1)(f) - that the complete specification does not sufficiently and fairly describe the invention and the method by which it is to be performed, i.e., that the description of the method or the instructions for the working of the invention as contained in the complete specification are not by themselves sufficient to enable a person in India possessing average skill in, and average knowledge of, the art to which the invention relates, to work the invention, or that it does not disclose the best method of performing it which was known to the applicant for the patent and for which he was entitled to claim protection;
+
+Section 64(1)(q) - that the complete specification does not disclose or wrongly mentions the source and geographical origin of biological material used for the invention;
+
+Section 64(1)(r) - that the invention so far as claimed in any claim of the complete specification is anticipated having regard to the knowledge, oral or otherwise, available within any local or indigenous community in India or elsewhere.
+
+PRACTICAL GUIDANCE: PATENTING AYURVEDIC INNOVATIONS
+
+TKDL (Traditional Knowledge Digital Library): The TKDL is a collaborative project between the Ministry of AYUSH and CSIR. It contains over 900 traditional Ayurvedic formulations transcribed from ancient Sanskrit/Hindi texts into modern classification systems. Patent examiners worldwide use TKDL to identify prior art and reject patent applications that merely attempt to patent traditional knowledge.
+
+Patentable subject matter in Ayurveda: Innovations in Ayurveda may be patentable if they demonstrate:
+1. A novel delivery mechanism not previously known (e.g., nanoparticle encapsulation of an Ayurvedic herb extract)
+2. A new synergistic combination effect scientifically proven beyond the sum of individual parts
+3. A novel extraction process that yields a substance with demonstrably different efficacy
+4. A novel formulation with a new therapeutic indication not previously known
+
+Non-patentable subject matter in Ayurveda:
+1. Classical Ayurvedic formulations as described in Charaka Samhita, Sushruta Samhita, or Ashtanga Hridayam
+2. Mere admixtures of known herbs without proven synergistic effect
+3. Traditional preparations described in Ayurvedic Pharmacopoeia of India
+4. Known formulations with only slight modifications without enhanced efficacy

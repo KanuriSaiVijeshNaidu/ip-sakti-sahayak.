@@ -1,0 +1,127 @@
+FSSAI AYURVEDA AAHARA REGULATIONS 2022 - KEY PROVISIONS
+Source: Food Safety and Standards (Ayurveda Aahara) Regulations, 2022
+Authority: Food Safety and Standards Authority of India (FSSAI)
+Jurisdiction: IN | Domain: fssai | Corpus Version: v1
+
+CHAPTER 1 - PRELIMINARY
+
+Regulation 1.1 - Short title and commencement:
+(1) These regulations may be called the Food Safety and Standards (Ayurveda Aahara) Regulations, 2022.
+(2) They shall come into force on the date of their publication in the Official Gazette.
+
+Regulation 1.2 - Definitions:
+In these regulations, unless the context otherwise requires
+
+(a) "Act" means the Food Safety and Standards Act, 2006 (34 of 2006);
+
+(b) "Ayurveda Aahara" means food products manufactured using ingredients and processes prescribed in Ayurvedic texts such as Charaka Samhita, Sushruta Samhita, Ashtanga Hridayam, Ashtanga Sangraha, or Sharngadhara Samhita, or as specified by the Ministry of AYUSH, and which are intended for consumption with an understanding of their properties according to the principles of Ayurveda;
+
+(c) "classical text" means any of the authenticated Ayurvedic texts recognised by the Ministry of AYUSH, including but not limited to Charaka Samhita, Sushruta Samhita, Ashtanga Hridayam, Kashyapa Samhita, Harita Samhita, and Sharangadhara Samhita;
+
+(d) "dosha" means the three fundamental bio-energies in Ayurveda - Vata, Pitta, and Kapha - that govern physiological and psychological functions;
+
+(e) "prakruti" means the unique psychophysiological constitution of an individual as determined by the relative predominance of doshas at the time of conception;
+
+(f) "Rasayana" means a category of Ayurvedic preparations that promote longevity, rejuvenation, memory enhancement, and disease resistance as defined in classical Ayurvedic texts;
+
+(g) "permitted ingredients" means the ingredients listed in Schedule I to these regulations;
+
+(h) "prohibited ingredients" means the ingredients listed in Schedule II to these regulations;
+
+CHAPTER 2 - STANDARDS FOR AYURVEDA AAHARA PRODUCTS
+
+Regulation 2.1 - General Standards:
+(1) Every food product that is marketed as Ayurveda Aahara shall comply with the following conditions:
+    (a) It shall be manufactured using only permitted ingredients listed in Schedule I;
+    (b) It shall not contain any ingredient listed in Schedule II as a prohibited substance;
+    (c) The manufacturing process shall conform to the Good Manufacturing Practices (GMP) prescribed under the Food Safety and Standards (Licensing and Registration of Food Businesses) Regulations, 2011;
+    (d) The product shall not contain heavy metals exceeding the limits specified in Schedule III.
+
+Regulation 2.2 - Labelling Requirements:
+(1) Every Ayurveda Aahara product shall carry the following information on its label:
+    (a) The name of the product as per classical Ayurvedic text reference, if applicable;
+    (b) Complete list of ingredients in descending order of their weight or volume;
+    (c) Quantity of the product;
+    (d) Name and address of the manufacturer;
+    (e) Batch number and date of manufacture;
+    (f) Best before or expiry date;
+    (g) The statement "This product is not intended to diagnose, treat, cure or prevent any disease" prominently displayed;
+    (h) FSSAI license number;
+    (i) If the product carries a reference to dosha (Vata, Pitta, Kapha), the label shall include the text "Consult an Ayurvedic practitioner before use."
+
+Regulation 2.3 - Health Claims:
+(1) Health claims on Ayurveda Aahara products are permitted only under the following conditions:
+    (a) Structure/function claims based on classical Ayurvedic text references are permitted if the claim is accurate, truthful, and not misleading;
+    (b) Disease reduction claims are not permitted unless supported by clinical evidence and approved by FSSAI;
+    (c) Claims referencing dosha balance (e.g., "balances Vata dosha") are permitted if the product contains ingredients classically associated with such effects;
+    (d) The claim must be substantiated by reference to classical Ayurvedic texts or peer-reviewed scientific literature;
+    (e) No claim shall imply that the product is equivalent to a drug or medicine.
+
+Regulation 2.4 - Prohibited Claims:
+The following claims are expressly prohibited on Ayurveda Aahara products:
+    (a) Claims to cure, treat, or prevent any specific disease;
+    (b) Claims that the product has been approved by FSSAI for therapeutic use;
+    (c) Claims that are inconsistent with classical Ayurvedic texts;
+    (d) Claims that imply superiority over modern medicine;
+    (e) Testimonials that make disease cure claims.
+
+CHAPTER 3 - PERMITTED INGREDIENTS (SCHEDULE I EXCERPT)
+
+Regulation 3.1 - The following categories of ingredients are permitted in Ayurveda Aahara:
+
+Category A - Herbs and Plant-based Ingredients:
+(1) Ashwagandha (Withania somnifera) ? root powder, root extract
+(2) Shatavari (Asparagus racemosus) ? root powder, root extract
+(3) Amla (Phyllanthus emblica / Emblica officinalis) ? fruit, fruit powder, fruit extract
+(4) Brahmi (Bacopa monnieri) ? leaf powder, leaf extract
+(5) Turmeric (Curcuma longa) ? rhizome powder, rhizome extract, standardised curcumin extract
+(6) Ginger (Zingiber officinale) ? dried root, root powder, root extract
+(7) Triphala - combination of Amalaki (Emblica officinalis), Bibhitaki (Terminalia bellirica), and Haritaki (Terminalia chebula)
+(8) Trikatu - combination of Pippali (Piper longum), Maricha (Piper nigrum), and Shunti (Zingiber officinale)
+(9) Guduchi / Giloy (Tinospora cordifolia) ? stem, stem powder, stem extract
+(10) Neem (Azadirachta indica) ? leaf powder, leaf extract (in food-safe concentrations)
+(11) Holy Basil / Tulsi (Ocimum sanctum) ? leaf, leaf powder, leaf extract
+(12) Cardamom (Elettaria cardamomum) ? seed, seed powder
+(13) Licorice / Yashtimadhu (Glycyrrhiza glabra) ? root, root powder, root extract
+(14) Shankhpushpi (Convolvulus pluricaulis) ? whole plant powder, extract
+(15) Moringa (Moringa oleifera) ? leaf powder, seed extract
+
+Category B - Mineral-based Ingredients (Bhasmas - only those approved by Ministry of AYUSH):
+(1) Shilajit (purified) ? as per API standards
+(2) Swarna Bhasma - only in products where concentration is below 10mg per serving and manufactured as per classical procedure
+
+Category C - Dairy and Animal-derived Ingredients:
+(1) Cow's ghee (Goghrita) ? as per FSSAI standards for ghee
+(2) Cow's milk (Gogra) ? as per FSSAI standards
+(3) Honey (Madhu) ? as per FSSAI standards
+
+CHAPTER 4 - PROHIBITED SUBSTANCES (SCHEDULE II EXCERPT)
+
+Regulation 4.1 - The following substances are prohibited in Ayurveda Aahara products:
+(a) Heavy metals exceeding prescribed limits: Lead >2.5 ppm, Mercury >0.5 ppm, Cadmium >0.3 ppm, Arsenic >1.0 ppm;
+(b) Synthetic colours not permitted under FSS (Food Products Standards and Food Additives) Regulations;
+(c) Synthetic preservatives beyond permitted levels;
+(d) Any Schedule H or Schedule X drug ingredient as per Drugs and Cosmetics Act 1940;
+(e) Aconite (Aconitum species) in unprocessed form;
+(f) Cannabis (Cannabis sativa) in any form;
+(g) Nux vomica (Strychnos nux-vomica) in unprocessed form;
+
+CHAPTER 5 - LICENSING AND REGISTRATION
+
+Regulation 5.1 - All manufacturers of Ayurveda Aahara products shall obtain a license under the Food Safety and Standards (Licensing and Registration of Food Businesses) Regulations, 2011 before commencing manufacturing operations.
+
+Regulation 5.2 - In addition to FSSAI licensing, manufacturers who wish to make Rasayana or Bhasma-containing products shall also obtain a No-Objection Certificate from the State Licensing Authority under the Drugs and Cosmetics Act, 1940.
+
+Regulation 5.3 - Products containing Schedule E(1) herbs (potentially toxic herbs) as listed under the Drugs and Cosmetics Act shall require prior approval from the Central Drugs Standard Control Organisation (CDSCO).
+
+PRACTICAL GUIDANCE: FSSAI COMPLIANCE FOR AYURVEDA PRODUCTS
+
+Step 1 - Product Classification: Determine whether your product is an Ayurveda Aahara (food) or an Ayurvedic medicine (drug). If therapeutic claims are intended, the product must be licensed under the Drugs and Cosmetics Act as an Ayurvedic proprietary medicine, not as food.
+
+Step 2 - Ingredient Verification: Check all ingredients against Schedule I (permitted) and Schedule II (prohibited). Any ingredient not listed requires prior FSSAI approval.
+
+Step 3 - Label Review: Ensure all mandatory label information is present. Health claims must reference classical Ayurvedic texts or peer-reviewed literature.
+
+Step 4 - Testing Requirements: Heavy metal testing by NABL-accredited laboratory. Microbial testing as per FSS regulations. Pesticide residue testing for all herb-based ingredients.
+
+Step 5 - Licensing: Apply for Central or State FSSAI license depending on annual turnover. Annual turnover below Rs. 12 lakhs - State registration. Annual turnover Rs. 12 lakhs to Rs. 20 crores - State license. Annual turnover above Rs. 20 crores - Central license.

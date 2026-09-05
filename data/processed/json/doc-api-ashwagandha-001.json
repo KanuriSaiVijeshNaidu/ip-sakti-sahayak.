@@ -1,0 +1,52 @@
+{
+  "document_id": "doc-api-ashwagandha-001",
+  "title": "Ayurvedic Pharmacopoeia of India: Withania somnifera Monograph",
+  "source": "Ayurvedic Pharmacopoeia of India (API)",
+  "source_type": "official_pharmacopoeia",
+  "document_type": "Official Pharmacopoeial Monograph",
+  "domain": "ayush",
+  "subdomain": "pharmacopoeial_standards",
+  "jurisdiction": "IN",
+  "authority": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H)",
+  "language": "en",
+  "original_language": "sa",
+  "year": 2016,
+  "publication_date": "2016-01-01",
+  "effective_date": "2016-01-01",
+  "section": "Standard Quality Criteria & Identity Tests",
+  "chapter": "Part I, Volume I",
+  "rule": "Second Schedule of Drugs and Cosmetics Act, 1940",
+  "clause": "Monograph No. 12",
+  "page": 24,
+  "topic": [
+    "quality_standards",
+    "pharmacopoeia",
+    "identity_tests",
+    "assay"
+  ],
+  "keywords": [
+    "Ashwagandha",
+    "Withania somnifera",
+    "Total Ash",
+    "Acid Insoluble Ash",
+    "Withanolides"
+  ],
+  "entities": [
+    "PCIM&H",
+    "Ministry of Ayush",
+    "Drugs and Cosmetics Act"
+  ],
+  "ingredients": [
+    "Withania somnifera root"
+  ],
+  "botanical_names": [
+    "Withania somnifera (L.) Dunal"
+  ],
+  "ip_type": "pharmacopoeial_standard",
+  "medicine_system": "Ayurveda",
+  "formulation": "Ashwagandha Single Drug Monograph",
+  "legal_status": "statutory_standard",
+  "access_status": "public_domain_official",
+  "text": "Ayurvedic Pharmacopoeia of India (API), Part I, Vol I, Monograph 12.\nCanonical Drug: Ashwagandha (Dry root of Withania somnifera Dunal, family Solanaceae).\nSynonyms: Sanskrit: Hayagandha, Vajigandha, Balada; Hindi: Asgandh; Telugu: Asvagandha, Pennerugadda; Tamil: Amukkarakizhangu.\nMacroscopic Characters: Roots straight, unbranched, conical, tortuous, 10 to 20 cm long, 10 to 20 mm thick, outer surface buff to grey-yellow with longitudinal wrinkles.\nIdentity & Quantitative Standards:\n- Foreign Matter: Not more than 2 per cent.\n- Total Ash: Not more than 7 per cent.\n- Acid-insoluble Ash: Not more than 1 per cent.\n- Alcohol-soluble Extractive: Not less than 15 per cent.\n- Water-soluble Extractive: Not less than 19 per cent.\n- Total Withanolides (Assay by HPLC): Not less than 0.20 per cent w/w calculated on dry root basis.\nRegulatory Mandate: Under the Second Schedule to the Drugs and Cosmetics Act, 1940, compliance with API monographs is legally mandatory for any licensed Ayurvedic drug manufacturer in India.",
+  "source_url": "https://pcimh.gov.in"
+}

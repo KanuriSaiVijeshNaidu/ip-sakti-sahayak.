@@ -1,0 +1,48 @@
+{
+  "document_id": "doc-india-code-patents-sec3p",
+  "title": "The Patents Act, 1970: Section 3(p) - Exclusion of Traditional Knowledge",
+  "source": "India Code - Legislative Department, Ministry of Law and Justice",
+  "source_type": "official_statute",
+  "document_type": "Statutory Provision",
+  "domain": "patents",
+  "subdomain": "statutory_exclusions",
+  "jurisdiction": "IN",
+  "authority": "Parliament of India / CGPDTM",
+  "language": "en",
+  "original_language": "en",
+  "year": 1970,
+  "publication_date": "1970-09-19",
+  "effective_date": "2003-05-20",
+  "section": "Section 3(p)",
+  "chapter": "Chapter II: Inventions Not Patentable",
+  "rule": "Inserted by Patents (Amendment) Act, 2002",
+  "clause": "3(p)",
+  "page": 4,
+  "topic": [
+    "patentability",
+    "traditional_knowledge",
+    "tkdl",
+    "ayurveda_exclusion"
+  ],
+  "keywords": [
+    "Section 3(p)",
+    "traditional knowledge",
+    "aggregation",
+    "duplication",
+    "prior art"
+  ],
+  "entities": [
+    "Indian Patent Office",
+    "TKDL",
+    "CSIR"
+  ],
+  "ingredients": [],
+  "botanical_names": [],
+  "ip_type": "patent_statute",
+  "medicine_system": "All",
+  "formulation": "",
+  "legal_status": "in_force",
+  "access_status": "publicly_accessible_official",
+  "text": "The Patents Act, 1970, Section 3(p) (as inserted by Act 38 of 2002).\nStatutory Text:\nSection 3. What are not inventions —\n(p) an invention which in effect, is traditional knowledge or which is an aggregation or duplication of known properties of traditionally known component or components.\n\nExamination Procedure:\n- Patent examiners routinely conduct automated cross-searches against the CSIR-AYUSH Traditional Knowledge Digital Library (TKDL).\n- If the claimed formulation, combination, or use is documented in classical texts of Ayurveda, Unani, or Siddha, the invention is barred under Section 3(p).\n- Patentability can only be recognized if the applicant proves an inventive step beyond traditional knowledge (such as a novel standardized bioactive isolation process, a non-obvious drug delivery vehicle like phytosomes or nanoparticles, or a validated new therapeutic indication not disclosed in ancient texts).",
+  "source_url": "https://www.indiacode.nic.in"
+}

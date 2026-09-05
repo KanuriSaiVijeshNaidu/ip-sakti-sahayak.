@@ -1,0 +1,47 @@
+{
+  "document_id": "doc-india-code-patents-sec10-4",
+  "title": "The Patents Act, 1970: Section 10(4)(ii)(D) - Disclosure of Biological Source and Origin",
+  "source": "India Code - Legislative Department, Ministry of Law and Justice",
+  "source_type": "official_statute",
+  "document_type": "Statutory Provision",
+  "domain": "patents",
+  "subdomain": "disclosure_requirements",
+  "jurisdiction": "IN",
+  "authority": "Parliament of India / CGPDTM",
+  "language": "en",
+  "original_language": "en",
+  "year": 1970,
+  "publication_date": "1970-09-19",
+  "effective_date": "2003-05-20",
+  "section": "Section 10(4)(ii)(D)",
+  "chapter": "Chapter III: Applications for Patents",
+  "rule": "Patents Rules, 2003, Rule 13",
+  "clause": "10(4)(ii)(D)",
+  "page": 9,
+  "topic": [
+    "patent_specification",
+    "biological_resources",
+    "geographical_origin",
+    "source_disclosure"
+  ],
+  "keywords": [
+    "Section 10(4)",
+    "biological material",
+    "geographical origin",
+    "Form 2",
+    "mandatory disclosure"
+  ],
+  "entities": [
+    "Indian Patent Office",
+    "NBA"
+  ],
+  "ingredients": [],
+  "botanical_names": [],
+  "ip_type": "patent_statute",
+  "medicine_system": "All",
+  "formulation": "",
+  "legal_status": "in_force",
+  "access_status": "publicly_accessible_official",
+  "text": "The Patents Act, 1970, Chapter III, Section 10(4)(ii)(D).\nStatutory Requirement:\nWhere an invention uses biological material, the applicant must disclose the source and geographical origin of the biological material in the complete specification (Form 2).\n\nConsequences of Non-Disclosure or False Disclosure:\n1. Ground of Opposition: Under Section 25(1)(j) and Section 25(2)(j), failure to disclose or wrongful disclosure of the geographical origin of biological material is a ground for pre-grant and post-grant opposition.\n2. Ground of Revocation: Under Section 64(1)(p), a granted patent is liable to be revoked by the High Court if the complete specification does not disclose or wrongly mentions the source or geographical origin of biological materials.",
+  "source_url": "https://www.indiacode.nic.in"
+}

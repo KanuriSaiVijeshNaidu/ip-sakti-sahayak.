@@ -1,0 +1,51 @@
+{
+  "document_id": "doc-api-guduchi-002",
+  "title": "Ayurvedic Pharmacopoeia of India: Tinospora cordifolia (Guduchi) Monograph",
+  "source": "Ayurvedic Pharmacopoeia of India (API)",
+  "source_type": "official_pharmacopoeia",
+  "document_type": "Official Pharmacopoeial Monograph",
+  "domain": "ayush",
+  "subdomain": "pharmacopoeial_standards",
+  "jurisdiction": "IN",
+  "authority": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H)",
+  "language": "en",
+  "original_language": "sa",
+  "year": 2016,
+  "publication_date": "2016-01-01",
+  "effective_date": "2016-01-01",
+  "section": "Standard Quality Criteria & Identity Tests",
+  "chapter": "Part I, Volume I",
+  "rule": "Second Schedule of Drugs and Cosmetics Act, 1940",
+  "clause": "Monograph No. 24",
+  "page": 53,
+  "topic": [
+    "quality_standards",
+    "pharmacopoeia",
+    "guduchi",
+    "tinospora"
+  ],
+  "keywords": [
+    "Guduchi",
+    "Tinospora cordifolia",
+    "Amrita",
+    "Tinosporaside",
+    "Bitter tonic"
+  ],
+  "entities": [
+    "PCIM&H",
+    "Ministry of Ayush"
+  ],
+  "ingredients": [
+    "Tinospora cordifolia stem"
+  ],
+  "botanical_names": [
+    "Tinospora cordifolia (Willd.) Miers"
+  ],
+  "ip_type": "pharmacopoeial_standard",
+  "medicine_system": "Ayurveda",
+  "formulation": "Guduchi Single Drug Monograph",
+  "legal_status": "statutory_standard",
+  "access_status": "public_domain_official",
+  "text": "Ayurvedic Pharmacopoeia of India (API), Part I, Vol I, Monograph 24.\nCanonical Drug: Guduchi (Dry stem of Tinospora cordifolia (Willd.) Miers, family Menispermaceae).\nSynonyms: Sanskrit: Amrita, Chhinnaruha, Chakralakshana; Hindi: Giloy; Telugu: Tippateega; Tamil: Seenthilkodi.\nMacroscopic Standards: Cylindrical pieces, 1 to 5 cm diameter, greenish-brown surface with prominent lenticels and longitudinal fissures; wheel-like vascular bundles in transverse section.\nPhysicochemical Parameters:\n- Foreign Organic Matter: Not more than 2 per cent.\n- Total Ash: Not more than 8 per cent.\n- Acid-insoluble Ash: Not more than 0.5 per cent.\n- Alcohol-soluble Extractive: Not less than 3 per cent.\n- Water-soluble Extractive: Not less than 11 per cent.\n- Bitters content / TLC Fingerprint matching marker compound cordifolioside A and tinocordiside.\nEnforceability: Standard binding on all Ayurvedic formulations containing Giloy/Guduchi as per Section 33EEB of Drugs & Cosmetics Act 1940.",
+  "source_url": "https://pcimh.gov.in"
+}

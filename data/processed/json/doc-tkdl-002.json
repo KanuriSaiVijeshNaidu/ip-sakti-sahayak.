@@ -1,0 +1,61 @@
+{
+  "document_id": "doc-tkdl-002",
+  "title": "TKDL Prior Art Formulation: Haridra Khanda (Bhaishajya Ratnavali)",
+  "source": "Traditional Knowledge Digital Library (TKDL) - CSIR / Ministry of Ayush",
+  "source_type": "traditional_knowledge_digital_library",
+  "document_type": "TKDL Formulation Record",
+  "domain": "ayush",
+  "subdomain": "traditional_knowledge",
+  "jurisdiction": "IN",
+  "authority": "CSIR-TKDL & Ministry of Ayush",
+  "language": "en",
+  "original_language": "sa",
+  "year": 2002,
+  "publication_date": "2002-04-15",
+  "effective_date": "2002-04-15",
+  "section": "Classical Formulation Prior Art",
+  "chapter": "Sheetapitta-Udarda-Kotha Chikitsa",
+  "rule": "",
+  "clause": "",
+  "page": 445,
+  "topic": [
+    "traditional_knowledge",
+    "ayurvedic_formulation",
+    "turmeric",
+    "prior_art"
+  ],
+  "keywords": [
+    "Haridra Khanda",
+    "Curcuma longa",
+    "Trikatu",
+    "Sheetapitta",
+    "Allergy"
+  ],
+  "entities": [
+    "CSIR",
+    "Bhaishajya Ratnavali",
+    "TKDL"
+  ],
+  "ingredients": [
+    "Haridra (Curcuma longa)",
+    "Ghrita",
+    "Kshira",
+    "Sharkara",
+    "Trikatu",
+    "Trijataka"
+  ],
+  "botanical_names": [
+    "Curcuma longa",
+    "Piper nigrum",
+    "Piper longum",
+    "Zingiber officinale",
+    "Cinnamomum zeylanicum"
+  ],
+  "ip_type": "defensive_prior_art",
+  "medicine_system": "Ayurveda",
+  "formulation": "Haridra Khanda",
+  "legal_status": "public_domain_prior_art",
+  "access_status": "publicly_accessible_metadata",
+  "text": "TKDL Identifier: CSIR-TKDL-AY-2002-089.\nClassical Source: Bhaishajya Ratnavali, Sheetapitta Chikitsa Prakarana.\nSystem of Medicine: Ayurveda.\nFormulation: Haridra Khanda (Brihat).\nIngredients: Pure Rhizome powder of Haridra (Curcuma longa), fried in cow ghee (Go-Ghrita), boiled with milk (Godugdha) and sugar candy, fortified with Trikatu (Sunthi, Maricha, Pippali), Trijataka (Twak, Ela, Patra), and Vidanga.\nTraditional Indication: Sheetapitta (urticaria), Udarda (allergic skin lesions), Kandu (pruritus), and Kotha (erythema).\nPatent Defense Context: Following the revocation of the US Turmeric Patent (US Patent 5,401,504) by CSIR, this formulation was systematically indexed in TKDL. Claims for using turmeric extracts with black pepper (piperine) for anti-allergic or anti-inflammatory conditions are directly anticipated by this classical record under Section 3(p) of the Patents Act, 1970 unless non-obvious nanocarrier delivery or unexpected synergy is clinically established.",
+  "source_url": "https://www.tkdl.res.in"
+}

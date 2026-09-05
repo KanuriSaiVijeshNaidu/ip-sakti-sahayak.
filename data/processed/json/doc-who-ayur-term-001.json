@@ -1,0 +1,52 @@
+{
+  "document_id": "doc-who-ayur-term-001",
+  "title": "WHO International Standard Terminologies on Ayurveda: Core Concepts & Botanical Standards",
+  "source": "World Health Organization (WHO) Traditional, Complementary and Integrative Medicine Unit",
+  "source_type": "international_standard",
+  "document_type": "Ontology & Terminology Standard",
+  "domain": "ayush",
+  "subdomain": "ayurvedic_terminologies",
+  "jurisdiction": "GLOBAL",
+  "authority": "World Health Organization (WHO)",
+  "language": "en",
+  "original_language": "sa",
+  "year": 2023,
+  "publication_date": "2023-03-15",
+  "effective_date": "2023-03-15",
+  "section": "Standardized Clinical and Pharmacological Concepts",
+  "chapter": "WHO Technical Report Series, Section 4",
+  "rule": "",
+  "clause": "Concept ID: WHO-AYUR-0412",
+  "page": 88,
+  "topic": [
+    "who_terminologies",
+    "rasayana",
+    "virya",
+    "vipaka",
+    "standardization"
+  ],
+  "keywords": [
+    "WHO Ayurveda",
+    "Rasayana",
+    "Dosha",
+    "Dhatu",
+    "Withania somnifera"
+  ],
+  "entities": [
+    "WHO",
+    "Ministry of Ayush"
+  ],
+  "ingredients": [],
+  "botanical_names": [
+    "Withania somnifera",
+    "Tinospora cordifolia",
+    "Curcuma longa"
+  ],
+  "ip_type": "terminology_ontology",
+  "medicine_system": "Ayurveda",
+  "formulation": "",
+  "legal_status": "international_standard",
+  "access_status": "public_domain_official",
+  "text": "WHO International Standard Terminologies on Ayurveda (2023).\nConcept ID: WHO-AYUR-0412 — Rasayana (रसायन / రసాయన / ரசாயனம்).\nDefinition: A specialized branch and pharmacological action in Ayurveda aimed at conserving, rejuvenating, and strengthening body tissues (Dhatus), promoting longevity, enhancing mental competence (Medha), and imparting disease resistance (Vyadhikshamatva).\nStandardized Multilingual Equivalents:\n- Sanskrit: Rasāyana (रसायन)\n- English: Rejuvenation therapy / Adaptogenic bio-immunomodulation\n- Telugu: రసాయనం (Rasayanamu)\n- Tamil: ரசாயனம் (Rasayanam)\n- Hindi: रसायन (Rasayan)\nRegulatory Relevance: Claims on product labels regarding 'Rasayana' effects are classified under Ayurvedic drug pharmacology; under FSSAI Ayurveda Aahara regulations, label claims must restrict terminology to dietary wellness without alleging reversal of degenerative pathology.",
+  "source_url": "https://www.who.int/publications/i/item/9789240064959"
+}

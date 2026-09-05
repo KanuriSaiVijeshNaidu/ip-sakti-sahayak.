@@ -1,0 +1,46 @@
+{
+  "total_documents": 19,
+  "total_chunks": 25,
+  "languages": {
+    "en": 19,
+    "sa": 7,
+    "te": 9,
+    "hi": 9,
+    "ta": 9
+  },
+  "sources": {
+    "Traditional Knowledge Digital Library (TKDL) - CSIR / Ministry of Ayush": 2,
+    "Ayurvedic Pharmacopoeia of India (API)": 2,
+    "Ayurvedic Formulary of India (AFI)": 2,
+    "India Code - Legislative Department, Ministry of Law and Justice": 3,
+    "Drugs and Cosmetics Act, 1940 (Act No. 23 of 1940)": 1,
+    "Drugs and Cosmetics Act, 1940": 1,
+    "Drugs and Cosmetics Rules, 1945": 2,
+    "Indian Patent Office (IP India) Official Journal": 1,
+    "Geographical Indications Registry of India (CGPDTM)": 1,
+    "World Intellectual Property Organization (WIPO)": 1,
+    "World Health Organization (WHO) Traditional, Complementary and Integrative Medicine Unit": 1,
+    "National Biodiversity Authority (NBA) - Statutory Body of Govt. of India": 1,
+    "Ministry of Environment, Forest and Climate Change / NBA Notification": 1
+  },
+  "domains": {
+    "ayush": 11,
+    "patents": 5,
+    "gi": 1,
+    "abs": 2
+  },
+  "jurisdictions": {
+    "IN": 17,
+    "GLOBAL": 2
+  },
+  "total_evaluation_questions": 268,
+  "evaluation_languages": {
+    "en": 67,
+    "te": 67,
+    "hi": 67,
+    "ta": 67
+  },
+  "duplicates": 0,
+  "ocr_used_rate": 0.0,
+  "timestamp": "2026-09-05T00:24:05.470222Z"
+}

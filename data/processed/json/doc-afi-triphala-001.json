@@ -1,0 +1,57 @@
+{
+  "document_id": "doc-afi-triphala-001",
+  "title": "Ayurvedic Formulary of India: Triphala Churna Specification",
+  "source": "Ayurvedic Formulary of India (AFI)",
+  "source_type": "official_formulary",
+  "document_type": "Official Classical Formulation Specification",
+  "domain": "ayush",
+  "subdomain": "classical_formulations",
+  "jurisdiction": "IN",
+  "authority": "Ministry of Ayush / Pharmacopoeia Commission",
+  "language": "en",
+  "original_language": "sa",
+  "year": 2003,
+  "publication_date": "2003-05-01",
+  "effective_date": "2003-05-01",
+  "section": "Churna Prakarana (Powder Formulations)",
+  "chapter": "Part I, Section 7",
+  "rule": "Rule 158B Drugs & Cosmetics Rules 1945",
+  "clause": "Formulation 7:13",
+  "page": 105,
+  "topic": [
+    "classical_formulation",
+    "triphala",
+    "ingredients",
+    "dosage",
+    "indications"
+  ],
+  "keywords": [
+    "Triphala Churna",
+    "Haritaki",
+    "Bibhitaki",
+    "Amalaki",
+    "Churna"
+  ],
+  "entities": [
+    "AFI",
+    "Ministry of Ayush",
+    "Sharangadhara Samhita"
+  ],
+  "ingredients": [
+    "Haritaki pericarp (Terminalia chebula)",
+    "Bibhitaki pericarp (Terminalia bellirica)",
+    "Amalaki pericarp (Phyllanthus emblica)"
+  ],
+  "botanical_names": [
+    "Terminalia chebula Retz.",
+    "Terminalia bellirica (Gaertn.) Roxb.",
+    "Phyllanthus emblica L."
+  ],
+  "ip_type": "classical_recipe_prior_art",
+  "medicine_system": "Ayurveda",
+  "formulation": "Triphala Churna",
+  "legal_status": "enforceable_formulary_standard",
+  "access_status": "public_domain_official",
+  "text": "Ayurvedic Formulary of India (AFI), Part I, Formulation 7:13.\nCanonical Formulation: Triphala Churna.\nClassical Reference: Sharangadhara Samhita, Madhyama Khanda, Adhyaya 6: 9-11.\nFormulation Composition:\n1. Haritaki fruit pericarp (Terminalia chebula Retz.) - 1 Part (Equal proportion).\n2. Bibhitaki fruit pericarp (Terminalia bellirica Roxb.) - 1 Part (Equal proportion).\n3. Amalaki fruit pericarp (Phyllanthus emblica L.) - 1 Part (Equal proportion).\nMethod of Preparation: De-seeded pericarps of mature fruits are dried, individually pulverized to fine powder (passing through mesh sieve 80), and blended uniformly in equal parts.\nDosage Form & Dosage: Churna (fine powder), 3 g to 6 g once or twice daily with warm water or honey.\nIndications: Vibandha (constipation), Deepana (carminative), Netraroga (eye disorders), and Rasayana (antioxidant tonic).\nPatent Law Relevance: Under Section 3(e) of the Indian Patents Act, any patent application seeking protection for an equal-ratio combination of Haritaki, Bibhitaki, and Amalaki is rejected as an unpatentable mere admixture of traditionally known ingredients unless an inventive extraction step and synergistic pharmacological effect is proven.",
+  "source_url": "https://pcimh.gov.in"
+}

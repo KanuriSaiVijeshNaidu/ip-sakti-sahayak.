@@ -1,0 +1,87 @@
+TRADE MARKS ACT 1999 - KEY SECTIONS FOR AYURVEDA/GI INNOVATIONS
+Source: The Trade Marks Act, 1999 (as amended)
+Jurisdiction: IN | Domain: trademarks | Corpus Version: v1
+
+SECTION 2 - DEFINITIONS
+
+Section 2(1)(zb) - "trade mark" means a mark capable of being represented graphically and which is capable of distinguishing the goods or services of one person from those of others and may include shape of goods, their packaging and combination of colours; and
+(i) in relation to Chapter XII (other than section 107), a registered trade mark or mark used in relation to goods or services for the purpose of indicating or so as to indicate a connection in the course of trade between the goods or services, as the case may be, and some person having the right as proprietor to use the mark; and
+(ii) in relation to other provisions of this Act, a mark used or proposed to be used in relation to goods or services for the purpose of indicating or so as to indicate a connection in the course of trade between the goods or services, as the case may be, and some person having the right, either as proprietor or by way of permitted use, to use the mark whether with or without any indication of the identity of that person, and includes a certification trade mark or collective mark.
+
+Section 2(1)(e) - "collective mark" means a trade mark distinguishing the goods or services of members of an association of persons (not being a partnership within the meaning of the Indian Partnership Act, 1932) which is the proprietor of the mark from those of others.
+
+Section 2(1)(f) - "certification trade mark" means a mark capable of distinguishing the goods or services in connection with which it is used in the course of trade which are certified by the proprietor of the mark in respect of origin, material, mode of manufacture of goods or performance of services, quality, accuracy or other characteristics from goods or services not so certified.
+
+SECTION 9 - ABSOLUTE GROUNDS FOR REFUSAL
+
+Section 9(1) - The trade marks
+(a) which are devoid of any distinctive character, that is to say, not capable of distinguishing the goods or services of one person from those of another person;
+(b) which consist exclusively of marks or indications which may serve in trade to designate the kind, quality, quantity, intended purpose, values, geographical origin or the time of production of the goods or rendering of the service or other characteristics of the goods or service;
+(c) which consist exclusively of marks or indications which have become customary in the current language or in the bona fide and established practices of the trade, shall not be registered:
+
+Provided that a trade mark shall not be refused registration if before the date of application for registration it has acquired a distinctive character as a result of the use made of it or is a well-known trade mark.
+
+Section 9(2) - A mark shall not be registered as a trade mark if
+(a) it is of such nature as to deceive the public or cause confusion;
+(b) it contains or comprises of any matter likely to hurt the religious susceptibilities of any class or section of the citizens of India;
+(c) it comprises or contains scandalous or obscene matter;
+(d) its use is prohibited under the Emblems and Names (Prevention of Improper Use) Act, 1950.
+
+Section 9(3) - A mark shall not be registered as a trade mark if it consists exclusively of
+(a) the shape of goods which results from the nature of the goods themselves;
+(b) the shape of goods which is necessary to obtain a technical result;
+(c) the shape which gives substantial value to the goods.
+
+SECTION 11 - RELATIVE GROUNDS FOR REFUSAL
+
+Section 11(1) - Save as provided in sub-section (2), a trade mark shall not be registered if, because of
+(a) its identity with an earlier trade mark and similarity of goods or services covered by the trade mark; or
+(b) its similarity to an earlier trade mark and the identity or similarity of the goods or services covered by the trade mark,
+there exists a likelihood of confusion on the part of the public, which includes the likelihood of association with the earlier trade mark.
+
+Section 11(2) - A trade mark which
+(a) is identical with or similar to an earlier trade mark; and
+(b) is to be registered for goods or services which are not similar to those for which the earlier trade mark is registered in the name of a different proprietor,
+shall not be registered if, or to the extent that, the earlier trade mark is a well-known trade mark in India and the use of the later mark without due cause would take unfair advantage of or be detrimental to, the distinctive character or repute of the earlier trade mark.
+
+Section 11(10) - While considering an application for registration of a trade mark and opposition filed in respect thereof, the Registrar shall
+(i) protect a well-known trade mark against the identical or similar trade marks;
+(ii) take into consideration the bad faith involved either of the applicant or the opponent affecting the right relating to the trade mark.
+
+GEOGRAPHICAL INDICATIONS OF GOODS ACT 1999 - KEY PROVISIONS
+
+Section 2(e) - "geographical indication" means an indication which identifies such goods as agricultural goods, natural goods or manufactured goods as originating, or manufactured in the territory of a country, or a region or locality in that territory, where a given quality, reputation or other characteristic of such goods is essentially attributable to its geographical origin and in case where such goods are manufactured goods one of the activities of either the production or of processing or preparation of the goods concerned takes place in such territory, region or locality, as the case may be.
+
+GI Registration for Ayurveda Products:
+Several Ayurvedic products have received Geographical Indication (GI) registration in India. GI registration protects traditional Ayurvedic products that are produced in specific geographical regions and have qualities attributable to their origin. Examples include:
+
+1. Mysore Agarbathi - GI Tag: Incense sticks from Mysore with traditional formulation
+2. Mahabaleshwar Honey - Regional honey with specific properties
+3. Coorg Cardamom - Cardamom from Kodagu district with specific aroma profile
+4. Kashmir Saffron (Kesar) ? GI Tag 2020 - Known for high crocin content
+
+GI vs Trademark for Ayurvedic Products:
+- GI protects a community of producers in a region (e.g., all Chyawanprash manufacturers in a specific region following classical Ayurvedic formulation)
+- Trademark protects a specific brand name of an individual manufacturer
+- Both can coexist: A manufacturer can have a trademark brand name for their product while the underlying formula has GI protection
+- GI registration does NOT prevent others in the same region from using the geographical indication
+- TKDL documentation can be used to support GI applications for ancient formulations
+
+PRACTICAL GUIDANCE: TRADEMARK STRATEGY FOR AYURVEDA BRANDS
+
+Step 1 - Clearance Search: Conduct a search on the Indian Trade Marks Registry (https://ipindiaservices.gov.in) before filing. Search for identical and phonetically similar marks in the relevant class.
+
+Step 2 - Class Selection: For Ayurvedic products
+- Class 5: Pharmaceutical preparations, medicinal herbs, dietary supplements
+- Class 29: Food products, dairy products, ghee
+- Class 30: Spices, condiments, food flavorings, herbal teas
+- Class 32: Non-alcoholic beverages, herbal drinks
+- Class 44: Medical services, Ayurvedic treatment services
+
+Step 3 - Distinctiveness: Generic Ayurvedic ingredient names (e.g., "Ashwagandha", "Triphala") cannot be registered as trademarks. Distinctive brand names that are coined, arbitrary, or fanciful are preferred.
+
+Step 4 - Filing: Applications can be filed online through IP India portal. Fee for application: Rs. 4,500 per class (e-filing, natural person/startup/small enterprise) or Rs. 9,000 per class (other entities).
+
+Step 5 - Opposition Period: After examination and acceptance, the mark is advertised in the Trade Marks Journal for 4 months. Any party may oppose registration during this period.
+
+Step 6 - Registration Certificate: Upon expiry of opposition period without opposition (or after successful defence), the trademark registration certificate is issued. Valid for 10 years, renewable indefinitely.

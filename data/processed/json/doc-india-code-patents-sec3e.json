@@ -1,0 +1,49 @@
+{
+  "document_id": "doc-india-code-patents-sec3e",
+  "title": "The Patents Act, 1970: Section 3(e) - Exclusion of Mere Admixtures",
+  "source": "India Code - Legislative Department, Ministry of Law and Justice",
+  "source_type": "official_statute",
+  "document_type": "Statutory Provision",
+  "domain": "patents",
+  "subdomain": "statutory_exclusions",
+  "jurisdiction": "IN",
+  "authority": "Parliament of India / Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+  "language": "en",
+  "original_language": "en",
+  "year": 1970,
+  "publication_date": "1970-09-19",
+  "effective_date": "1972-04-20",
+  "section": "Section 3(e)",
+  "chapter": "Chapter II: Inventions Not Patentable",
+  "rule": "Patents Rules, 2003",
+  "clause": "3(e)",
+  "page": 4,
+  "topic": [
+    "patentability",
+    "exclusions",
+    "mere_admixture",
+    "synergy",
+    "ayurvedic_patents"
+  ],
+  "keywords": [
+    "Section 3(e)",
+    "mere admixture",
+    "aggregation of properties",
+    "synergism",
+    "Patents Act"
+  ],
+  "entities": [
+    "Indian Patent Office",
+    "CGPDTM",
+    "Parliament of India"
+  ],
+  "ingredients": [],
+  "botanical_names": [],
+  "ip_type": "patent_statute",
+  "medicine_system": "All",
+  "formulation": "",
+  "legal_status": "in_force",
+  "access_status": "publicly_accessible_official",
+  "text": "The Patents Act, 1970 (Act No. 39 of 1970), Chapter II, Section 3(e).\nStatutory Text:\nSection 3. What are not inventions — The following are not inventions within the meaning of this Act,—\n(e) a substance obtained by a mere admixture resulting only in the aggregation of the properties of the components thereof or a process for producing such substance.\n\nStatutory Interpretation for Ayurvedic and Herbal Innovations:\nUnder Indian Patent Office (IPO) Guidelines for Examination of Patent Applications in the Field of Pharmaceuticals and Traditional Knowledge:\n1. When an applicant combines known medicinal herbs or extract fractions (such as Ashwagandha and Brahmi), the objection under Section 3(e) is mandatory.\n2. To overcome this statutory bar, the applicant MUST submit comparative in-vitro bioassay or clinical pharmacological data proving unexpected SYNERGY (where the therapeutic activity of the mixture is statistically significantly higher than the sum of its individual parts).\n3. If no quantitative synergy data is submitted in the complete specification (Form 2), the application will be refused under Section 15.",
+  "source_url": "https://www.indiacode.nic.in"
+}

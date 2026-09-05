@@ -1,0 +1,47 @@
+{
+  "document_id": "doc-dcr-1945-schedulet",
+  "title": "Drugs and Cosmetics Rules, 1945: Schedule T - Good Manufacturing Practices (GMP) for ASU Drugs",
+  "source": "Drugs and Cosmetics Rules, 1945",
+  "source_type": "official_rules",
+  "document_type": "Subordinate Legislation / Schedule",
+  "domain": "ayush",
+  "subdomain": "gmp_standards",
+  "jurisdiction": "IN",
+  "authority": "Ministry of Ayush",
+  "language": "en",
+  "original_language": "en",
+  "year": 1945,
+  "publication_date": "1945-12-21",
+  "effective_date": "2000-06-23",
+  "section": "Schedule T",
+  "chapter": "Schedules",
+  "rule": "Rule 157",
+  "clause": "Schedule T Part I & II",
+  "page": 210,
+  "topic": [
+    "gmp",
+    "manufacturing_standards",
+    "hygiene",
+    "quality_control",
+    "machinery"
+  ],
+  "keywords": [
+    "Schedule T",
+    "GMP certificate",
+    "raw material testing",
+    "batch records"
+  ],
+  "entities": [
+    "Ministry of Ayush",
+    "State Licensing Authority"
+  ],
+  "ingredients": [],
+  "botanical_names": [],
+  "ip_type": "regulatory_rule",
+  "medicine_system": "Ayurveda",
+  "formulation": "",
+  "legal_status": "in_force",
+  "access_status": "publicly_accessible_official",
+  "text": "Drugs and Cosmetics Rules, 1945, Schedule T (Good Manufacturing Practices for ASU Drugs).\nMandatory Requirements for Every ASU Drug Factory:\n1. Location and Surroundings: Factory must be situated in hygienic conditions, free from open drains or contaminants.\n2. Minimum Manufacturing Space: Standard minimum area prescribed for churna, tablet/vati, taila/ghrita, and asava/arishta sections.\n3. Quality Control Section: Must maintain an in-house laboratory or tie-up with a government-approved laboratory for raw material identity testing, moisture content, total ash, microbial load, and heavy metal testing.\n4. Batch Manufacturing Records (BMR): Retention of batch samples and complete manufacturing records for a minimum of 3 years.\n5. Compliance is a prerequisite for Form 26D GMP Certificate.",
+  "source_url": "https://cdsco.gov.in"
+}

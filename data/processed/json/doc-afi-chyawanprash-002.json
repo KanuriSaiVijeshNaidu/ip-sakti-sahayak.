@@ -1,0 +1,63 @@
+{
+  "document_id": "doc-afi-chyawanprash-002",
+  "title": "Ayurvedic Formulary of India: Chyawanprash Avaleha Standard",
+  "source": "Ayurvedic Formulary of India (AFI)",
+  "source_type": "official_formulary",
+  "document_type": "Official Classical Formulation Specification",
+  "domain": "ayush",
+  "subdomain": "classical_formulations",
+  "jurisdiction": "IN",
+  "authority": "Ministry of Ayush",
+  "language": "en",
+  "original_language": "sa",
+  "year": 2003,
+  "publication_date": "2003-05-01",
+  "effective_date": "2003-05-01",
+  "section": "Avaleha Prakarana (Electuary/Paste Formulations)",
+  "chapter": "Part I, Section 3",
+  "rule": "First Schedule to Drugs & Cosmetics Act, 1940",
+  "clause": "Formulation 3:11",
+  "page": 42,
+  "topic": [
+    "classical_formulation",
+    "chyawanprash",
+    "avaleha",
+    "amalaki",
+    "dashamoola"
+  ],
+  "keywords": [
+    "Chyawanprash",
+    "Emblica officinalis",
+    "Avaleha",
+    "Charaka Samhita",
+    "Rasayana"
+  ],
+  "entities": [
+    "AFI",
+    "Charaka Samhita",
+    "Ministry of Ayush"
+  ],
+  "ingredients": [
+    "Amalaki fresh fruit",
+    "Dashamoola",
+    "Ashtavarga",
+    "Pippali",
+    "Go-Ghrita",
+    "Tila taila",
+    "Madhu",
+    "Sharkara"
+  ],
+  "botanical_names": [
+    "Phyllanthus emblica",
+    "Piper longum",
+    "Withania somnifera",
+    "Tinospora cordifolia"
+  ],
+  "ip_type": "classical_recipe_prior_art",
+  "medicine_system": "Ayurveda",
+  "formulation": "Chyawanprash",
+  "legal_status": "enforceable_formulary_standard",
+  "access_status": "public_domain_official",
+  "text": "Ayurvedic Formulary of India (AFI), Part I, Formulation 3:11.\nCanonical Formulation: Chyawanprash (Avaleha).\nClassical Reference: Charaka Samhita, Chikitsa Sthana, Adhyaya 1:1, Sloka 62-74.\nKey Ingredients: Fresh Amalaki fruits (500 pieces), decoction of Dashamoola and associated herbs (36 herbs), fried in cow ghee and sesame oil, enriched with sugar syrup, bamboo manna (Vamshalochana), long pepper (Pippali), cardamom (Ela), and raw honey.\nDosage & Therapeutic Use: 12 g to 24 g daily with milk. Indicated for Kasa (cough), Shwasa (dyspnoea), Kshaya (wasting), and Rasayana (immune rejuvenation).\nRegulatory Distinction: Governed under the First Schedule of the Drugs and Cosmetics Act, 1940. Manufacturers marketing Chyawanprash under classical names cannot claim proprietary patent rights under Section 3(p) of the Patents Act, 1970.",
+  "source_url": "https://pcimh.gov.in"
+}
