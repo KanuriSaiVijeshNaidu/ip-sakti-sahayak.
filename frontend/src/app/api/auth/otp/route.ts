@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import fs from "fs";
 import path from "path";
+import { supabase } from "@/lib/supabase";
 
 interface OtpRecord {
   otp: string;
@@ -62,12 +63,24 @@ export async function POST(req: Request) {
 
     // ── ACTION 1: SEND OTP TO GMAIL / EMAIL ──────────────────────────────────
     if (action === "send") {
-      // If username provided during registration step 1, verify uniqueness immediately
+      // If username provided during registration step 1, verify uniqueness immediately (check local + Supabase)
       if (normalizedUsername) {
         const users = readUsersFromFile();
-        const isTaken = users.some(
+        let isTaken = users.some(
           (u) => (u.username || "").toLowerCase() === normalizedUsername && (u.email || "").toLowerCase() !== normalizedEmail
         );
+        if (!isTaken && supabase) {
+          try {
+            const { data: supaCheck } = await supabase
+              .from("ayurlex_users")
+              .select("username,email")
+              .eq("username", normalizedUsername)
+              .limit(1);
+            if (supaCheck && supaCheck.length > 0 && supaCheck[0].email.toLowerCase() !== normalizedEmail) {
+              isTaken = true;
+            }
+          } catch {}
+        }
         if (isTaken) {
           return NextResponse.json(
             { error: "User name is already taken. Please choose another username." },

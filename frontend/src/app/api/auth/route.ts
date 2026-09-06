@@ -103,13 +103,50 @@ export async function POST(req: Request) {
       }
 
       // Find user by unique username (or fallback to email if legacy)
-      const existingUserIndex = users.findIndex((u) => {
+      let existingUserIndex = users.findIndex((u) => {
         const uName = (u.username || "").toLowerCase();
         const uEmail = (u.email || "").toLowerCase();
         return uName === loginIdentifier || uEmail === loginIdentifier;
       });
 
-      if (existingUserIndex === -1) {
+      let user = existingUserIndex !== -1 ? users[existingUserIndex] : null;
+
+      // If user is not found in local file, query Supabase cloud database
+      if (!user && supabase) {
+        try {
+          const { data: supaRows, error: supaErr } = await supabase
+            .from("ayurlex_users")
+            .select("*")
+            .or(`username.eq.${loginIdentifier},email.eq.${loginIdentifier}`)
+            .limit(1);
+
+          if (!supaErr && supaRows && supaRows.length > 0) {
+            const supaUser = supaRows[0];
+            user = {
+              username: supaUser.username,
+              email: supaUser.email,
+              name: supaUser.name || supaUser.username,
+              role: supaUser.role || "citizen",
+              passwordHash: supaUser.password_hash,
+              institution: supaUser.institution || "Ayurvedic Medical Community",
+              registrationNumber: supaUser.registration_number || "AYUR-VERIFIED",
+              isLoggedIn: false,
+              registeredAt: supaUser.created_at || new Date().toISOString(),
+              lastActive: "Just now",
+              lastLogin: supaUser.last_login || new Date().toISOString(),
+              device: device || (req.headers.get("user-agent")?.includes("Mobile") ? "📱 Mobile (Phone)" : "💻 Desktop / Laptop"),
+              sessions: [],
+            };
+            users.push(user);
+            existingUserIndex = users.length - 1;
+            writeUsersToFile(users);
+          }
+        } catch (e) {
+          console.warn("[Auth Supabase lookup warning]:", e);
+        }
+      }
+
+      if (!user) {
         return NextResponse.json(
           {
             error: "User does not exist in our database. Please click 'Create Account' to sign up.",
@@ -118,7 +155,6 @@ export async function POST(req: Request) {
         );
       }
 
-      const user = users[existingUserIndex];
       const submittedHash = hashPassword(password.trim());
 
       // Check password match
@@ -144,6 +180,20 @@ export async function POST(req: Request) {
       if (device) user.device = device;
 
       writeUsersToFile(users);
+
+      // Async cloud sync login status to Supabase table
+      if (supabase) {
+        Promise.resolve(
+          supabase
+            .from("ayurlex_users")
+            .update({
+              is_logged_in: true,
+              last_login: user.lastLogin,
+              password_hash: user.passwordHash,
+            })
+            .eq("username", user.username)
+        ).catch(() => {});
+      }
 
       return NextResponse.json({
         success: true,
@@ -198,10 +248,31 @@ export async function POST(req: Request) {
         );
       }
 
-      // Check if username is already taken by another user
-      const usernameTaken = users.some(
+      // Check if username is already taken by another user (check local + Supabase)
+      let usernameTaken = users.some(
         (u) => (u.username || "").toLowerCase() === normalizedUsername && u.email.toLowerCase() !== normalizedEmail
       );
+
+      if (!usernameTaken && supabase) {
+        try {
+          const { data: supaCheck } = await supabase
+            .from("ayurlex_users")
+            .select("username,email")
+            .eq("username", normalizedUsername)
+            .limit(1);
+
+          if (
+            supaCheck &&
+            supaCheck.length > 0 &&
+            supaCheck[0].email.toLowerCase() !== normalizedEmail
+          ) {
+            usernameTaken = true;
+          }
+        } catch (e) {
+          console.warn("[Supabase check username warning]:", e);
+        }
+      }
+
       if (usernameTaken) {
         return NextResponse.json(
           { error: "User name is already taken. Please choose another username." },

@@ -1,5 +1,20 @@
 [
   {
+    "username": "testpilot_1788707354",
+    "email": "testpilot_1788707354@ayurlex.test",
+    "name": "Test Pilot User",
+    "role": "vaidya",
+    "passwordHash": "90642b6e0fc47bf4c5ae630e256ef6a5e4bc004554553deb3058c26e0e61783a",
+    "institution": "Ayurvedic Medical Community",
+    "registrationNumber": "AYUR-VERIFIED",
+    "isLoggedIn": true,
+    "registeredAt": "2026-09-06T15:09:16.777Z",
+    "lastActive": "Just now",
+    "lastLogin": "2026-09-06T15:09:16.835Z",
+    "device": "💻 Desktop / Laptop",
+    "sessions": []
+  },
+  {
     "username": "testuser_1788695055",
     "email": "testuser_1788695055@example.com",
     "name": "Test User 1788695055",
@@ -10,7 +25,7 @@
     "isLoggedIn": true,
     "registeredAt": "2026-09-06T11:44:16.596Z",
     "lastActive": "Just now",
-    "lastLogin": "2026-09-06T11:44:16.663Z",
+    "lastLogin": "2026-09-06T11:44:16.663+00:00",
     "device": "💻 Desktop / Laptop",
     "sessions": []
   },
@@ -23,10 +38,11 @@
     "isLoggedIn": true,
     "registeredAt": "2026-09-06T09:49:58.027Z",
     "lastActive": "Just now",
-    "lastLogin": "2026-09-06T09:49:58.027Z",
+    "lastLogin": "2026-09-06T09:49:58.027+00:00",
     "device": "?? Mobile (iPhone 15)",
     "sessions": [],
-    "username": "sunitapatel"
+    "username": "sunitapatel",
+    "passwordHash": "a45e58ddf69e1f546b62bb60a058ac4d80f1ad4d75f43411bd6c336fa884cc31"
   },
   {
     "email": "saivijesh63@gmail.com",
@@ -37,7 +53,7 @@
     "isLoggedIn": true,
     "registeredAt": "2026-09-05T09:48:32.932Z",
     "lastActive": "Just now",
-    "lastLogin": "2026-09-06T11:24:21.867Z",
+    "lastLogin": "2026-09-06T11:24:21.867+00:00",
     "device": "💻 Desktop / Laptop",
     "sessions": [
       {
@@ -93,7 +109,7 @@
     "isLoggedIn": true,
     "registeredAt": "2026-09-04T09:48:32.932Z",
     "lastActive": "Today",
-    "lastLogin": "2026-09-06T07:48:32.932Z",
+    "lastLogin": "2026-09-06T07:48:32.932+00:00",
     "device": "📱 Mobile (Phone)",
     "sessions": [
       {
@@ -106,6 +122,22 @@
         "messages": []
       }
     ],
-    "username": "rajeshsharma"
+    "username": "rajeshsharma",
+    "passwordHash": "a45e58ddf69e1f546b62bb60a058ac4d80f1ad4d75f43411bd6c336fa884cc31"
+  },
+  {
+    "username": "sai",
+    "email": "saivijesh2063@gmail.com",
+    "name": "sai viejsh",
+    "role": "vaidya",
+    "passwordHash": "96a086dd6359d3ab63af16f01ff725950200c7b946601ad2707ffd13ec5fa562",
+    "institution": "Ayurvedic Medical Community",
+    "registrationNumber": "AYUR-VERIFIED",
+    "isLoggedIn": true,
+    "registeredAt": "2026-09-06T14:19:41.833654+00:00",
+    "lastActive": "Just now",
+    "lastLogin": "2026-09-06T14:19:17.627+00:00",
+    "device": "💻 Desktop / Laptop",
+    "sessions": []
   }
 ]
