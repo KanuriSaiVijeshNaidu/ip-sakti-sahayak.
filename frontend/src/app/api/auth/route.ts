@@ -299,9 +299,8 @@ export async function POST(req: Request) {
 
       // Async cloud sync to Supabase table
       if (supabase) {
-        supabase
-          .from("ayurlex_users")
-          .upsert(
+        Promise.resolve(
+          supabase.from("ayurlex_users").upsert(
             {
               username: normalizedUsername,
               email: normalizedEmail,
@@ -315,9 +314,10 @@ export async function POST(req: Request) {
             },
             { onConflict: "username" }
           )
-          .then(({ error: supaErr }) => {
-            if (supaErr) {
-              console.log("[Supabase Sync Info]:", supaErr.message);
+        )
+          .then((res) => {
+            if (res && res.error) {
+              console.log("[Supabase Sync Info]:", res.error.message);
             } else {
               console.log("[Supabase Sync]: User synced to Supabase cloud successfully!");
             }
