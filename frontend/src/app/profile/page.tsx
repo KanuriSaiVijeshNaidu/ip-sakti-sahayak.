@@ -221,13 +221,6 @@ export default function ProfilePage() {
             <HouseDoorFill className="w-3.5 h-3.5 text-emerald-400" />
             <span>Chat Workspace</span>
           </Link>
-          <button
-            onClick={handleLogout}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-red-400 bg-red-950/40 hover:bg-red-900/60 border border-red-800/60 rounded-xl transition-all cursor-pointer"
-          >
-            <BoxArrowRight className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Sign Out</span>
-          </button>
         </div>
       </header>
 
@@ -517,6 +510,28 @@ export default function ProfilePage() {
           >
             Launch Chat
           </Link>
+        </div>
+
+        {/* Bottom Sign Out Card */}
+        <div className="bg-red-950/20 border border-red-900/40 rounded-2xl p-5 shadow-xl backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-4 mt-2 mb-6">
+          <div className="flex items-center gap-3.5 text-left">
+            <div className="w-11 h-11 rounded-xl bg-red-900/30 flex items-center justify-center text-red-400 border border-red-800/50 shrink-0">
+              <BoxArrowRight className="w-5 h-5" />
+            </div>
+            <div>
+              <h4 className="text-sm font-bold text-white">Sign Out of AYURLEX Account</h4>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Currently logged in as <span className="font-semibold text-white">{profile.name}</span> ({profile.email}). Click to safely end your session and lock consultation history.
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={handleLogout}
+            className="w-full sm:w-auto px-5 py-2.5 text-xs font-bold text-white bg-red-600 hover:bg-red-500 active:bg-red-700 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 btn-spring cursor-pointer shrink-0"
+          >
+            <BoxArrowRight className="w-4 h-4" />
+            <span>Sign Out</span>
+          </button>
         </div>
       </main>
     </div>

@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import Header from "@/components/Header";
 import DomainSelector from "@/components/DomainSelector";
 import ChatBubble from "@/components/ChatBubble";
@@ -360,13 +361,13 @@ export default function ChatPage() {
       {/* Live Animated Motion Nature Wallpaper */}
       <LiveNatureWallpaper />
 
-      {/* Header with Home, Triggers & Logout */}
+      {/* Header with Home & User Profile Controls */}
       <Header
         language={language}
         onLanguageChange={setLanguage}
         sessionCount={sessions.length}
         onOpenHistory={() => setIsHistoryOpen(true)}
-        onOpenCompare={() => setIsCompareOpen(true)}
+        onOpenCompare={() => {}}
         onOpenAuth={() => router.push("/login")}
         userProfile={userProfile}
         onLogout={handleLogout}
@@ -379,15 +380,6 @@ export default function ChatPage() {
           <div className="flex-1 overflow-x-auto no-scrollbar">
             <DomainSelector value={domain} onChange={setDomain} language={language} />
           </div>
-
-          <button
-            onClick={() => setIsCompareOpen(true)}
-            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50/80 hover:bg-emerald-100/80 border border-emerald-200/80 rounded-xl transition-all shadow-2xs btn-spring shrink-0 cursor-pointer"
-            title="Compare Indian IP & Regulatory Frameworks"
-          >
-            <ColumnsGap className="w-3.5 h-3.5 text-emerald-700" />
-            <span className="hidden sm:inline">Compare</span>
-          </button>
         </div>
       </div>
 
@@ -463,18 +455,23 @@ export default function ChatPage() {
 
               {/* Quick Action Cards (3 Columns - Purely Ayurvedic & IP Project Related) */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-2xl text-left animate-entrance-3">
-                <button
-                  onClick={() => setIsCompareOpen(true)}
-                  className="p-4 rounded-2xl border border-gray-200/90 bg-white hover:border-emerald-400 hover:bg-emerald-50/20 card-motion flex flex-col justify-between group shadow-2xs cursor-pointer select-none"
+                <Link
+                  href="/profile"
+                  className="p-4 rounded-2xl border border-emerald-300/80 bg-gradient-to-br from-emerald-50/80 via-teal-50/40 to-white hover:border-emerald-500 hover:shadow-sm card-motion flex flex-col justify-between group shadow-2xs cursor-pointer select-none"
                 >
-                  <div className="flex items-center gap-2 text-xs font-bold text-gray-900 mb-1.5">
-                    <ColumnsGap className="w-4 h-4 text-emerald-700 group-hover:scale-110 transition-transform duration-200" />
-                    <span>Statutory Compare</span>
+                  <div className="flex items-center gap-2 text-xs font-bold text-emerald-950 mb-1.5">
+                    <div className="w-5 h-5 rounded-full bg-emerald-700 text-white text-[10px] font-bold flex items-center justify-center shrink-0">
+                      {userProfile.name ? userProfile.name.charAt(0).toUpperCase() : "U"}
+                    </div>
+                    <span>My Profile & Details</span>
+                    <span className="text-[9px] font-mono px-1.5 py-0.5 bg-emerald-200/80 text-emerald-900 rounded font-bold ml-auto">
+                      ACCOUNT
+                    </span>
                   </div>
-                  <p className="text-[11px] text-gray-500 leading-snug">
-                    Patent vs Trademark vs GI, Classical Drug vs Ayurveda Aahara matrices.
+                  <p className="text-[11px] text-gray-600 leading-snug">
+                    View Full Name, Verified Gmail, Position ({userProfile.role || "Citizen"}), and Username.
                   </p>
-                </button>
+                </Link>
 
                 <button
                   onClick={() => {

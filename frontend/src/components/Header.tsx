@@ -96,47 +96,23 @@ export default function Header({
             </span>
           </button>
 
-          {/* Compare Mode Trigger (Visible on mobile & desktop) */}
-          <button
-            onClick={onOpenCompare}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50/80 hover:bg-emerald-100/80 border border-emerald-200/80 rounded-xl transition-all shadow-2xs btn-spring shrink-0 cursor-pointer"
-            title="Open Statutory Compare Mode"
-          >
-            <ColumnsGap className="w-3.5 h-3.5 text-emerald-700" />
-            <span className="hidden sm:inline">Compare</span>
-          </button>
-
-          {/* User Profile Details & Sign Out Controls */}
+          {/* User Profile Button — Links to /profile (User Details Page) */}
           {userProfile.isLoggedIn ? (
-            <div className="flex items-center gap-1.5 shrink-0">
-              <Link
-                href="/profile"
-                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-emerald-900 bg-emerald-50 hover:bg-emerald-100/90 border border-emerald-300/80 rounded-xl transition-all shadow-2xs btn-spring shrink-0 cursor-pointer"
-                title="View & Manage User Details"
-              >
-                <div className="w-4 h-4 rounded-full bg-emerald-600 text-white text-[10px] font-bold flex items-center justify-center shrink-0">
-                  {userProfile.name ? userProfile.name.charAt(0).toUpperCase() : "U"}
-                </div>
-                <span className="max-w-[85px] sm:max-w-[120px] truncate text-xs font-bold text-emerald-950">
-                  {userProfile.name || `@${userProfile.username || "user"}`}
-                </span>
-                <span className="hidden md:inline text-[9px] font-mono px-1 py-0.5 bg-emerald-200/70 text-emerald-800 rounded font-semibold">
-                  Details
-                </span>
-              </Link>
-              <button
-                onClick={() => {
-                  if (confirm("Sign out of AYURLEX?")) {
-                    onLogout();
-                  }
-                }}
-                className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-red-600 bg-red-50 hover:bg-red-100 border border-red-200/80 rounded-xl transition-all btn-spring shrink-0 cursor-pointer"
-                title="Sign Out"
-              >
-                <BoxArrowRight className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline text-xs">Sign Out</span>
-              </button>
-            </div>
+            <Link
+              href="/profile"
+              className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-emerald-950 bg-gradient-to-r from-emerald-100 via-emerald-50 to-teal-50 hover:from-emerald-200 hover:to-teal-100 border border-emerald-300 rounded-xl transition-all shadow-xs btn-spring shrink-0 cursor-pointer"
+              title="View your Full Name, Email, Position, and Username details"
+            >
+              <div className="w-5 h-5 rounded-full bg-emerald-700 text-white text-[11px] font-bold flex items-center justify-center shrink-0 shadow-xs">
+                {userProfile.name ? userProfile.name.charAt(0).toUpperCase() : "U"}
+              </div>
+              <span className="max-w-[110px] sm:max-w-[160px] truncate text-xs font-bold text-emerald-950">
+                {userProfile.name || `@${userProfile.username || "user"}`}
+              </span>
+              <span className="text-[10px] font-mono px-1.5 py-0.5 bg-emerald-700 text-white rounded-md font-semibold shrink-0">
+                Profile
+              </span>
+            </Link>
           ) : (
             <Link
               href="/login"
