@@ -16,6 +16,7 @@ export interface UserProfile {
   isLoggedIn: boolean;
   sessionToken?: string;
   lastLogin?: string;
+  device?: string;
 }
 
 export interface CitedPassage {
