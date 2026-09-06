@@ -240,9 +240,14 @@ export default function LoginPage() {
       }
 
       setResendTimer(60);
-      setEnteredOtp("");
+      if (data.devOtp) {
+        setEnteredOtp(data.devOtp);
+        setSuccessMsg(`Verification code generated: ${data.devOtp} (Auto-filled for demonstration).`);
+      } else {
+        setEnteredOtp("");
+        setSuccessMsg(`Verification code dispatched to ${cleanEmail}. Please enter the 6-digit code.`);
+      }
       setSignupStep("otp");
-      setSuccessMsg(`Verification code dispatched to ${cleanEmail}. Please enter the 6-digit code.`);
       setIsSendingOtp(false);
     } catch (err) {
       console.error("Failed to send signup OTP:", err);

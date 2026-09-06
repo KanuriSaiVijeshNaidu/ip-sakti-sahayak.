@@ -17,11 +17,23 @@ function hashPassword(password: string): string {
 }
 
 function getRegistryFilePath(): string {
-  const primaryPath = path.resolve(process.cwd(), "..", "data", "users", "registry.json");
-  if (fs.existsSync(path.dirname(primaryPath))) {
-    return primaryPath;
+  const candidates = [
+    path.resolve(process.cwd(), "..", "data", "users", "registry.json"),
+    path.resolve(process.cwd(), "data", "users", "registry.json"),
+    path.resolve("c:/project/ip_sakti1/data/users/registry.json"),
+  ];
+  for (const p of candidates) {
+    if (fs.existsSync(p)) {
+      return p;
+    }
   }
-  return path.resolve(process.cwd(), "data", "users", "registry.json");
+  // If not yet existing, choose the one whose parent directory exists
+  for (const p of candidates) {
+    if (fs.existsSync(path.dirname(p))) {
+      return p;
+    }
+  }
+  return candidates[0];
 }
 
 function readUsersFromFile(): any[] {

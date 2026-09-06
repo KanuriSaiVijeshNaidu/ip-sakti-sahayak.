@@ -1,5 +1,20 @@
 [
   {
+    "username": "testuser_1788695055",
+    "email": "testuser_1788695055@example.com",
+    "name": "Test User 1788695055",
+    "role": "vaidya",
+    "passwordHash": "6ad56b9601bcbe9ded01cbb87740d9ae3a0a5f0f032c78e451850eede6ea926e",
+    "institution": "Ayurvedic Medical Community",
+    "registrationNumber": "AYUR-VERIFIED",
+    "isLoggedIn": true,
+    "registeredAt": "2026-09-06T11:44:16.596Z",
+    "lastActive": "Just now",
+    "lastLogin": "2026-09-06T11:44:16.663Z",
+    "device": "💻 Desktop / Laptop",
+    "sessions": []
+  },
+  {
     "email": "mobile.tester@ayurlex.in",
     "name": "Dr. Sunita Patel (BAMS)",
     "role": "vaidya",
