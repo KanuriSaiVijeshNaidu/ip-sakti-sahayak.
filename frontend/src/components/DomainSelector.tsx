@@ -21,14 +21,14 @@ export default function DomainSelector({ value, onChange, language = "en" }: Pro
   const t = getTranslation(language);
 
   return (
-    <div className="flex flex-wrap items-center gap-2">
+    <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar scroll-smooth py-0.5 w-full shrink-0">
       {DOMAIN_KEYS.map((d) => {
         const isSelected = value === d.value;
         return (
           <button
             key={d.value}
             onClick={() => onChange(d.value as DomainType | "auto")}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold pill-spring border flex items-center gap-1.5 cursor-pointer select-none ${
+            className={`px-3 py-1.5 rounded-full text-xs font-semibold pill-spring border flex items-center gap-1.5 cursor-pointer select-none whitespace-nowrap shrink-0 ${
               isSelected
                 ? "bg-emerald-600 text-white border-emerald-600 shadow-sm shadow-emerald-600/30 scale-100"
                 : "bg-white text-gray-700 border-gray-200/90 hover:border-emerald-400 hover:text-emerald-800 shadow-2xs"

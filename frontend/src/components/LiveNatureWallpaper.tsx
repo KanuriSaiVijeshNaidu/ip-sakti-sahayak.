@@ -216,7 +216,7 @@ export default function LiveNatureWallpaper() {
       />
 
       {/* 5. Live Wallpaper Floating Selector Pill (Interactive control) */}
-      <div className="absolute bottom-3 left-3 pointer-events-auto z-30 flex items-center gap-1.5 bg-white/90 backdrop-blur-md border border-white/80 rounded-full px-2.5 py-1 shadow-md text-xs font-semibold text-gray-700">
+      <div className="absolute bottom-24 sm:bottom-3 left-3 pointer-events-auto z-30 flex items-center gap-1.5 bg-white/90 backdrop-blur-md border border-white/80 rounded-full px-2.5 py-1 shadow-md text-xs font-semibold text-gray-700">
         <button
           onClick={() => setActiveBgIdx((prev) => (prev + 1) % WALLPAPERS.length)}
           className="flex items-center gap-1 hover:text-emerald-700 transition-colors cursor-pointer"

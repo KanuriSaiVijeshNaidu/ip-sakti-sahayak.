@@ -51,10 +51,10 @@ export default function CompareModeModal({ isOpen, onClose }: CompareModeModalPr
         </div>
 
         {/* Tab Navigation */}
-        <div className="bg-gray-100 border-b border-gray-200 px-5 flex gap-2 shrink-0 pt-2">
+        <div className="bg-gray-100 border-b border-gray-200 px-3 sm:px-5 flex gap-2 shrink-0 pt-2 overflow-x-auto no-scrollbar">
           <button
             onClick={() => setActiveTab("ip_regimes")}
-            className={`px-4 py-2.5 text-xs font-semibold rounded-t-xl transition-all border-t border-x ${
+            className={`px-3 sm:px-4 py-2 sm:py-2.5 text-xs font-semibold rounded-t-xl transition-all border-t border-x whitespace-nowrap shrink-0 ${
               activeTab === "ip_regimes"
                 ? "bg-white text-green-900 border-gray-200 shadow-2xs"
                 : "border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-200/60"
@@ -64,7 +64,7 @@ export default function CompareModeModal({ isOpen, onClose }: CompareModeModalPr
           </button>
           <button
             onClick={() => setActiveTab("ayush_fssai")}
-            className={`px-4 py-2.5 text-xs font-semibold rounded-t-xl transition-all border-t border-x ${
+            className={`px-3 sm:px-4 py-2 sm:py-2.5 text-xs font-semibold rounded-t-xl transition-all border-t border-x whitespace-nowrap shrink-0 ${
               activeTab === "ayush_fssai"
                 ? "bg-white text-green-900 border-gray-200 shadow-2xs"
                 : "border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-200/60"
@@ -74,13 +74,13 @@ export default function CompareModeModal({ isOpen, onClose }: CompareModeModalPr
           </button>
           <button
             onClick={() => setActiveTab("biodiversity")}
-            className={`px-4 py-2.5 text-xs font-semibold rounded-t-xl transition-all border-t border-x ${
+            className={`px-3 sm:px-4 py-2 sm:py-2.5 text-xs font-semibold rounded-t-xl transition-all border-t border-x whitespace-nowrap shrink-0 ${
               activeTab === "biodiversity"
                 ? "bg-white text-green-900 border-gray-200 shadow-2xs"
                 : "border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-200/60"
             }`}
           >
-            🧬 BDA Form III vs 2023 AYUSH Practitioner Relief
+            🧬 BDA Form III vs 2023 Relief
           </button>
         </div>
 

@@ -23,6 +23,7 @@ import {
   Trash3Fill,
   PlusCircleFill,
   ArrowLeftCircleFill,
+  JournalBookmarkFill,
 } from "react-bootstrap-icons";
 import { getTranslation } from "@/lib/i18n";
 import { DOMAIN_DATA } from "@/lib/domainData";
@@ -338,43 +339,48 @@ export default function ChatPage() {
       />
 
       {/* Domain selector bar */}
-      <div className="bg-white/85 backdrop-blur-md border-b border-gray-200/60 px-4 py-2.5 sticky top-[57px] z-20 shadow-2xs">
-        <div className="max-w-4xl mx-auto flex items-center justify-between gap-2">
-          <DomainSelector value={domain} onChange={setDomain} language={language} />
+      <div className="bg-white/85 backdrop-blur-md border-b border-gray-200/60 px-3 sm:px-4 py-2 sticky top-[49px] sm:top-[57px] z-20 shadow-2xs">
+        <div className="max-w-4xl mx-auto flex items-center justify-between gap-2 overflow-hidden">
+          <div className="flex-1 overflow-x-auto no-scrollbar">
+            <DomainSelector value={domain} onChange={setDomain} language={language} />
+          </div>
 
           <button
             onClick={() => setIsCompareOpen(true)}
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50/80 hover:bg-emerald-100/80 border border-emerald-200/80 rounded-xl transition-all shadow-2xs btn-spring shrink-0 cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50/80 hover:bg-emerald-100/80 border border-emerald-200/80 rounded-xl transition-all shadow-2xs btn-spring shrink-0 cursor-pointer"
+            title="Compare Indian IP & Regulatory Frameworks"
           >
             <ColumnsGap className="w-3.5 h-3.5 text-emerald-700" />
-            <span>Compare Statutes</span>
+            <span className="hidden sm:inline">Compare</span>
           </button>
         </div>
       </div>
 
       {/* Chat area */}
-      <main className="flex-1 overflow-y-auto px-4 py-6 relative z-10">
-        <div className="max-w-4xl mx-auto space-y-5">
+      <main className="flex-1 overflow-y-auto px-3 sm:px-4 py-4 sm:py-6 relative z-10">
+        <div className="max-w-4xl mx-auto space-y-4 sm:space-y-5">
           {/* Active Consultation Navigation Toolbar (When chatting) */}
           {!isEmpty && (
-            <div className="flex items-center justify-between bg-white border border-gray-200/90 rounded-2xl px-4 py-2.5 text-xs shadow-2xs animate-entrance-1">
+            <div className="flex items-center justify-between bg-white border border-gray-200/90 rounded-2xl px-3 sm:px-4 py-2 sm:py-2.5 text-xs shadow-2xs animate-entrance-1 gap-2">
               <button
                 onClick={handleGoHome}
-                className="flex items-center gap-1.5 font-bold text-gray-700 hover:text-emerald-800 transition-colors cursor-pointer"
+                className="flex items-center gap-1.5 font-bold text-gray-700 hover:text-emerald-800 transition-colors cursor-pointer shrink-0"
                 title="Return to Welcome Screen"
               >
                 <HouseDoorFill className="w-3.5 h-3.5 text-emerald-700" />
-                <span>← Return to Home Screen</span>
+                <span className="hidden sm:inline">← Return to Home Screen</span>
+                <span className="sm:hidden">← Home</span>
               </button>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <button
                   onClick={handleNewSession}
-                  className="px-3 py-1 text-[11px] font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-xl transition-all flex items-center gap-1 btn-spring cursor-pointer"
+                  className="px-2.5 sm:px-3 py-1 text-[11px] font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-xl transition-all flex items-center gap-1 btn-spring cursor-pointer shrink-0"
                   title="Start a fresh question"
                 >
                   <PlusCircleFill className="w-3 h-3 text-gray-500" />
-                  <span>New Chat</span>
+                  <span className="hidden sm:inline">New Chat</span>
+                  <span className="sm:hidden">New</span>
                 </button>
 
                 <button
@@ -387,11 +393,12 @@ export default function ChatPage() {
                       }
                     }
                   }}
-                  className="px-3 py-1 text-[11px] font-semibold text-red-600 hover:bg-red-50 border border-red-200 rounded-xl transition-all flex items-center gap-1 btn-spring cursor-pointer"
+                  className="px-2.5 sm:px-3 py-1 text-[11px] font-semibold text-red-600 hover:bg-red-50 border border-red-200 rounded-xl transition-all flex items-center gap-1 btn-spring cursor-pointer shrink-0"
                   title="Delete this conversation"
                 >
                   <Trash3Fill className="w-3 h-3" />
-                  <span>Delete Chat</span>
+                  <span className="hidden sm:inline">Delete Chat</span>
+                  <span className="sm:hidden">Delete</span>
                 </button>
               </div>
             </div>
@@ -419,62 +426,8 @@ export default function ChatPage() {
                 </p>
               </div>
 
-              {/* User Account / Data Isolation Status Banner */}
-              <div className="w-full max-w-2xl bg-white border border-gray-200/90 rounded-2xl p-3.5 flex items-center justify-between gap-3 text-xs shadow-2xs card-motion animate-entrance-3">
-                <div className="flex items-center gap-3 text-left">
-                  <div
-                    className={`w-9 h-9 rounded-xl flex items-center justify-center text-white shrink-0 font-bold text-sm shadow-xs ${
-                      userProfile.isLoggedIn ? "bg-emerald-700" : "bg-gray-400"
-                    }`}
-                  >
-                    {userProfile.isLoggedIn ? (userProfile.name[0]?.toUpperCase() || "K") : "G"}
-                  </div>
-                  <div>
-                    {userProfile.isLoggedIn ? (
-                      <>
-                        <div className="flex items-center gap-1.5">
-                          <span className="font-bold text-gray-900 text-sm">{userProfile.name}</span>
-                          <span className="text-[10px] bg-emerald-100 text-emerald-800 font-mono px-1.5 py-0.5 rounded uppercase font-bold tracking-wider">
-                            {userProfile.role}
-                          </span>
-                        </div>
-                        <span className="text-[11px] text-gray-500 font-mono block mt-0.5">
-                          Vault: {userProfile.email} (Strictly Isolated)
-                        </span>
-                      </>
-                    ) : (
-                      <>
-                        <span className="font-bold text-gray-800 text-sm">Guest Mode (No History Stored)</span>
-                        <p className="text-[11px] text-gray-500 mt-0.5">
-                          Sign in with your email & OTP to save private consultations and verify credentials.
-                        </p>
-                      </>
-                    )}
-                  </div>
-                </div>
-
-                <div>
-                  {userProfile.isLoggedIn ? (
-                    <button
-                      onClick={handleLogout}
-                      className="px-3.5 py-1.5 text-xs font-semibold text-red-600 hover:text-red-700 hover:bg-red-50 border border-red-200 rounded-xl transition-all btn-spring cursor-pointer"
-                    >
-                      Sign Out
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => setIsAuthOpen(true)}
-                      className="px-4 py-2 text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-xl shadow-xs transition-all flex items-center gap-1.5 btn-spring cursor-pointer"
-                    >
-                      <KeyFill className="w-3.5 h-3.5" />
-                      <span>Sign In with OTP</span>
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              {/* Quick Action Cards (3 Columns) */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-2xl text-left animate-entrance-4">
+              {/* Quick Action Cards (3 Columns - Purely Ayurvedic & IP Project Related) */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-2xl text-left animate-entrance-3">
                 <button
                   onClick={() => setIsCompareOpen(true)}
                   className="p-4 rounded-2xl border border-gray-200/90 bg-white hover:border-emerald-400 hover:bg-emerald-50/20 card-motion flex flex-col justify-between group shadow-2xs cursor-pointer select-none"
@@ -489,17 +442,18 @@ export default function ChatPage() {
                 </button>
 
                 <button
-                  onClick={() => setIsAuthOpen(true)}
+                  onClick={() => {
+                    setDomain("patents");
+                    handleSend("What are the Section 3(p) TKDL prior-art restrictions on Ayurvedic patents?");
+                  }}
                   className="p-4 rounded-2xl border border-gray-200/90 bg-white hover:border-emerald-400 hover:bg-emerald-50/20 card-motion flex flex-col justify-between group shadow-2xs cursor-pointer select-none"
                 >
                   <div className="flex items-center gap-2 text-xs font-bold text-gray-900 mb-1.5">
-                    <ShieldCheck className="w-4 h-4 text-blue-600 group-hover:scale-110 transition-transform duration-200" />
-                    <span>Email & OTP Access</span>
+                    <JournalBookmarkFill className="w-4 h-4 text-emerald-700 group-hover:scale-110 transition-transform duration-200" />
+                    <span>TKDL Prior-Art Search</span>
                   </div>
                   <p className="text-[11px] text-gray-500 leading-snug">
-                    {userProfile.isLoggedIn
-                      ? `Active: ${userProfile.email}`
-                      : "Instant 6-digit OTP to your Gmail."}
+                    300K+ formulations, Section 3(p) non-patentability & biological diversity checks.
                   </p>
                 </button>
 
@@ -509,12 +463,12 @@ export default function ChatPage() {
                 >
                   <div className="flex items-center gap-2 text-xs font-bold text-gray-900 mb-1.5">
                     <ChatLeftTextFill className="w-4 h-4 text-purple-600 group-hover:scale-110 transition-transform duration-200" />
-                    <span>Private Consultations</span>
+                    <span>Consultation History</span>
                   </div>
                   <p className="text-[11px] text-gray-500 leading-snug">
-                    {userProfile.isLoggedIn
-                      ? `${sessions.length} consultations in vault.`
-                      : "Sign in to save and manage history."}
+                    {sessions.length > 0
+                      ? `${sessions.length} consultations saved in your isolated vault.`
+                      : "Access verified citations, session transcripts & legal receipts."}
                   </p>
                 </button>
               </div>
