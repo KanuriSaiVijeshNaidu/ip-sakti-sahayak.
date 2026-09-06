@@ -1,4 +1,4 @@
-﻿"""
+"""
 backend/app/retrieval/reranker.py
 ──────────────────────────────────
 Cross-Encoder reranker for IP-SAKTI RAG pipeline.
@@ -87,7 +87,10 @@ def _load_cross_encoder(model_name: str):
     try:
         from sentence_transformers.cross_encoder import CrossEncoder
         logger.info(f"Loading cross-encoder: {model_name} ...")
-        model = CrossEncoder(model_name, device=settings.embed_device)
+        try:
+            model = CrossEncoder(model_name, device=settings.embed_device, local_files_only=True)
+        except Exception:
+            model = CrossEncoder(model_name, device=settings.embed_device)
         logger.info(f"Cross-encoder loaded: {model_name}")
         return model
     except Exception as exc:

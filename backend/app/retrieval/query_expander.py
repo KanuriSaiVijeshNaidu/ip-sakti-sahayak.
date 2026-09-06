@@ -80,6 +80,24 @@ LEGAL_EXPANSION_RULES = [
             "Biological Diversity Act 2002 Section 6 mandatory prior approval Form III National Biodiversity Authority NBA "
             "State Biodiversity Board biological resources fair equitable benefit sharing ABS"
         )
+    },
+    # Ayurveda Foundations & Principles
+    {
+        "pattern": r"\b(what is ayurveda|tridosha|dosha|vata|pitta|kapha|sapta dhatu|samadosha|principles of ayurveda|why ayurveda|swasthya|science of life)\b",
+        "domain": "ayurveda_foundations",
+        "expansion": (
+            "Ayurveda Science of Life Tridosha Vata Pitta Kapha Sapta Dhatus Samadosha "
+            "Swasthasya Swasthya Rakshanam Aturasya Vikara Prashamanam First Schedule Drugs and Cosmetics Act 1940 Section 3(a) NCISM Act 2020"
+        )
+    },
+    # D2C Commercialization, Selling without patent, and Brand protection
+    {
+        "pattern": r"\b(sell.*without.*patent|without.*patent|don't patent|dont.*patent|d2c|commercializ.*|sell.*direct|sell.*consumer|start.*ayurvedic.*brand|trade secret.*ayurvedic|licenses.*sell|non-patent)\b",
+        "domain": "ayurveda_commercialization",
+        "expansion": (
+            "Direct-to-consumer D2C commercialization without patent Form 25D manufacturing license "
+            "Schedule T GMP FSSAI Ayurveda Aahara Regulations 2022 Trade Marks Act 1999 Class 5 Class 3 trade secrets public domain classical formulation"
+        )
     }
 ]
 

@@ -61,7 +61,10 @@ def _load_model(model_name: str):
     from sentence_transformers import SentenceTransformer
     try:
         logger.info(f"Loading embedding model: {model_name} ...")
-        model = SentenceTransformer(model_name, device=settings.embed_device)
+        try:
+            model = SentenceTransformer(model_name, device=settings.embed_device, local_files_only=True)
+        except Exception:
+            model = SentenceTransformer(model_name, device=settings.embed_device)
         # Quick dimension check
         test_vec = model.encode(["test"], normalize_embeddings=True)
         actual_dim = test_vec.shape[1]

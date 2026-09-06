@@ -1001,6 +1001,182 @@ DOC_SPECS: List[StatutoryDocumentSpec] = [
                 "neg": "Regulation 5 of FSSAI requires the green Ayur-A logo on packaging."
             }
         ]
+    ),
+    # --------------------------------------------------------------------------
+    # 11. Foundations of Ayurveda: Philosophy, Tridosha Physiology & Statutory Scope
+    # --------------------------------------------------------------------------
+    StatutoryDocumentSpec(
+        title="Foundations of Ayurveda: Philosophy, Tridosha Physiology & Statutory Scope",
+        source_title="Ayurvedic Classical Principles, Physiological Framework and Statutory Scope (NCISM Act 2020 & Drugs and Cosmetics Act 1940)",
+        authority="Ministry of Ayush & National Commission for Indian System of Medicine (NCISM), Government of India",
+        domain="ayurveda_foundations",
+        jurisdiction="IN",
+        source_url="https://ayush.gov.in",
+        corpus_version="v2.0-docling",
+        raw_subdir="ayurveda_foundations",
+        raw_filename="ayurveda_principles_and_statutory_scope.txt",
+        sections=[
+            {
+                "heading": "Definition of Ayurveda, Etymology and Tridosha Physiology",
+                "content": (
+                    "Ayurveda, literally translating from Sanskrit as the 'Science of Life' (Ayus = life or longevity, Veda = sacred science or knowledge), "
+                    "is India's comprehensive classical system of healthcare originating from the Vedic tradition (Atharvaveda) over 5,000 years ago. "
+                    "Ayurveda conceptualizes human physiology and pathology through the fundamental doctrine of the Three Doshas (Tridoshas): "
+                    "Vata (kinetic energy governing biological movement, nerve impulses, respiration, and catabolism; composed of Space and Air), "
+                    "Pitta (thermal and metabolic energy governing digestion, enzymatic transformation, metabolism, and body temperature; composed of Fire and Water), and "
+                    "Kapha (anabolic and structural energy governing cohesion, lubrication, cellular immunity, and tissue stability; composed of Water and Earth). "
+                    "Optimal health (Swasthya) is defined as a harmonious equilibrium of the doshas (Samadosha), balanced digestive fire (Samagnischa), "
+                    "proper state of seven body tissues (Samadhatu: Rasa, Rakta, Mamsa, Meda, Asthi, Majja, and Shukra), normal waste excretion (Samamala), "
+                    "and a tranquil state of spirit, senses, and mind (Prasannatmendriyamana). Disease (Roga) occurs when doshic equilibrium is disrupted (Dhatuvaishamya)."
+                )
+            },
+            {
+                "heading": "Core Therapeutic Objectives, Clinical Importance and Polyherbal Synergy",
+                "content": (
+                    "Ayurveda serves two foundational statutory and clinical objectives: (1) Swasthasya Swasthya Rakshanam—preserving, protecting, "
+                    "and optimizing the health and vitality of the healthy individual; and (2) Aturasya Vikara Prashamanam—alleviating and treating disease "
+                    "and suffering in the sick. "
+                    "Why Ayurveda is used and valued: Unlike isolated active chemical molecules targeting single biological receptors, Ayurveda emphasizes "
+                    "holistic, multi-targeted therapeutics tailored to an individual's unique biological constitution (Prakriti), diurnal cycles (Dinacharya), "
+                    "and seasonal adaptations (Ritucharya). "
+                    "Polyherbal Formulations & Synergy (Samyoga and Samskara): Classical Ayurvedic formulations frequently combine multiple botanicals "
+                    "in precise ratios where secondary herbs neutralize potential toxicity, enhance gastrointestinal absorption, or potentiate bioavailability "
+                    "(e.g., Trikatu containing Piper longum and Piper nigrum enhancing systemic absorption of primary botanical extracts). "
+                    "Ayurvedic therapies emphasize cellular rejuvenation (Rasayana), preventive immunology (Ojas enhancement), and elimination of toxic metabolic waste (Ama) via Panchakarma."
+                )
+            },
+            {
+                "heading": "Statutory Definition and Legal Scope of Ayurvedic Medicine in India",
+                "content": (
+                    "Legal Definition under Indian Law: Under Section 3(a) of the Drugs and Cosmetics Act, 1940, an 'Ayurvedic, Siddha or Unani (ASU) drug' "
+                    "includes all medicines intended for internal or external use for or in the diagnosis, treatment, mitigation or prevention of disease or "
+                    "disorder in human beings or animals, and manufactured exclusively in accordance with the formulae described in the authoritative books "
+                    "of Ayurvedic medicine specified in the First Schedule to the Act. "
+                    "Statutory Recognition: Section 2(h) of the National Commission for Indian System of Medicine (NCISM) Act, 2020 recognizes Ayurveda as an "
+                    "official, legally accredited Indian System of Medicine. "
+                    "The First Schedule to the Drugs and Cosmetics Act lists 54 authoritative classical compendia—including Charaka Samhita, Sushruta Samhita, "
+                    "Ashtanga Hridaya, Sharangadhara Samhita, Bhavaprakasha, Bhaishajya Ratnavali, and Sahasrayogam. "
+                    "Public Domain Status: Because all formulations described in these 54 treatises belong to the public domain and form part of India's collective "
+                    "heritage, individual private patents claiming these classical compositions or their known therapeutic uses are statutorily prohibited under "
+                    "Section 3(p) of the Patents Act, 1970."
+                )
+            }
+        ],
+        triples=[
+            {
+                "query": "What is Ayurveda and what are its core principles?",
+                "pos": "Ayurveda is the ancient Indian 'Science of Life' based on the Tridoshas (Vata, Pitta, Kapha), Sapta Dhatus, and holistic balance for preventive and curative healthcare.",
+                "neg": "Section 3(e) requires showing synergistic efficacy over mere mixtures of known herbs."
+            },
+            {
+                "query": "Why is Ayurveda used and what are its primary objectives?",
+                "pos": "Ayurveda is used for preserving healthy life (Swasthasya Swasthya Rakshanam) and treating illness (Aturasya Vikara Prashamanam) through personalized constitution and polyherbal synergy.",
+                "neg": "Rule 158B requires safety studies for proprietary Ayurvedic medicines."
+            },
+            {
+                "query": "How is Ayurvedic medicine legally defined under the Drugs and Cosmetics Act?",
+                "pos": "Section 3(a) of the Drugs and Cosmetics Act 1940 defines Ayurvedic drugs as medicines manufactured in accordance with the authoritative books listed in the First Schedule.",
+                "neg": "Form III of the Biological Diversity Act is required for foreign patent filings."
+            }
+        ]
+    ),
+    # --------------------------------------------------------------------------
+    # 12. Commercialization of Ayurvedic Products Without Patents & Direct-to-Consumer (D2C) Compliance
+    # --------------------------------------------------------------------------
+    StatutoryDocumentSpec(
+        title="Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+        source_title="Regulatory and Statutory Playbook for Direct-to-Consumer (D2C) Ayurvedic Commerce, Licensing, and Non-Patent IP Protection",
+        authority="Ministry of Ayush, Central Drugs Standard Control Organisation (CDSCO), and Food Safety and Standards Authority of India (FSSAI)",
+        domain="ayurveda_commercialization",
+        jurisdiction="IN",
+        source_url="https://ayush.gov.in",
+        corpus_version="v2.0-docling",
+        raw_subdir="commercialization",
+        raw_filename="ayurvedic_d2c_commercialization_and_licensing.txt",
+        sections=[
+            {
+                "heading": "Selling Ayurvedic Products Without a Patent: The Direct-to-Consumer (D2C) Commercial Reality",
+                "content": (
+                    "Do you need a patent to manufacture, sell, or commercialize an Ayurvedic product? The definitive legal answer is NO. "
+                    "A patent is merely a 20-year negative right allowing an inventor to exclude others from commercially making or selling a novel, "
+                    "non-obvious technological invention. A patent is never a license, permit, or legal prerequisite to enter the market or sell directly to consumers. "
+                    "In practice, more than 85% of all Ayurvedic medicines, cosmetics, and wellness products sold in India and globally (by leading enterprises such as "
+                    "Dabur, Baidyanath, Himalaya, Forest Essentials, Kottakkal Arya Vaidya Sala, and emerging D2C brands) are commercialized without patents. "
+                    "Classical formulations (such as Chyawanprash, Triphala, Ashwagandharishta, Kumkumadi Taila, and Mahabhringraj Oil) cannot be patented under "
+                    "Section 3(p) of the Patents Act, 1970 because they are documented in First Schedule texts and constitute prior art in the public domain. "
+                    "Entrepreneurs can freely manufacture, package, market, and sell these classical formulations directly to consumers, provided they obtain the "
+                    "mandatory statutory licenses from the State Licensing Authority (SLA) or FSSAI."
+                )
+            },
+            {
+                "heading": "Mandatory Licensing Requirements to Sell Directly to Consumers (Form 25D & Schedule T GMP)",
+                "content": (
+                    "To manufacture and sell Ayurvedic products directly to consumers legally without a patent, a business must comply with the Drugs and Cosmetics "
+                    "Rules, 1945 by obtaining one of the following manufacturing licenses from the State Licensing Authority (AYUSH): "
+                    "(1) Classical / Shastric Formulation License (Form 25D): For products manufactured strictly following the exact recipe, ingredients, and processes "
+                    "prescribed in any of the 54 First Schedule authoritative texts. No animal toxicology or clinical efficacy trials are legally mandated; submission "
+                    "of the textual citation from classical treatises is sufficient for approval. "
+                    "(2) Patent or Proprietary (P&P) Medicine License (Form 25D / Rule 158B): For formulations containing ingredients mentioned in First Schedule texts "
+                    "but formulated in modern convenient dosage forms (capsules, effervescent tablets, syrups) or novel ratios. Requires safety data (acute oral toxicity "
+                    "per Rule 158B), stability data, and heavy metal testing. "
+                    "(3) Loan License (Form 25E) or Contract Third-Party Manufacturing: Startups and D2C brands do not need to build their own manufacturing plants. "
+                    "They can legally manufacture their branded Ayurvedic formulations via GMP-certified third-party or loan-license facilities. "
+                    "(4) Schedule T Good Manufacturing Practices (GMP): Every Ayurvedic manufacturing unit must comply with Schedule T requirements regarding infrastructure, "
+                    "sanitation, batch manufacturing records, quality control labs, and heavy metal testing limits (Lead <= 10 ppm, Arsenic <= 3 ppm, Cadmium <= 0.3 ppm, Mercury <= 1 ppm)."
+                )
+            },
+            {
+                "heading": "The FSSAI Ayurveda Aahara Direct-to-Consumer Alternative for Wellness Products",
+                "content": (
+                    "Entrepreneurs who do not wish to operate under pharmaceutical drug regulations can commercialize their formulations under the Food Safety and "
+                    "Standards (Ayurveda Aahara) Regulations, 2022. "
+                    "Scope & Advantages: Covers foods, food supplements, herbal beverages, and nutritional formulations prepared according to classical Ayurvedic recipes "
+                    "or using botanicals recognized in authoritative texts. Products are licensed via the online FoSCoS portal without requiring a pharmaceutical AYUSH drug license. "
+                    "Direct-to-Consumer Retail: Ayurveda Aahara products can be sold over-the-counter and through modern e-commerce channels directly to general consumers. "
+                    "Mandatory Labeling & Regulatory Boundaries: All products must prominently display the official green 'Ayurveda Aahara' logo. Products cannot be labeled "
+                    "or marketed as drugs, cannot claim to diagnose, treat, mitigate, or cure any specific disease, and must carry the disclaimer that the product is not intended "
+                    "as a medicinal substitute."
+                )
+            },
+            {
+                "heading": "Protecting Brand Equity and Commercial Assets Without Patents (Trademarks & Trade Secrets)",
+                "content": (
+                    "When product formulations cannot be patented due to Section 3(p) (traditional knowledge) or Section 3(e) (mere admixture), D2C Ayurvedic companies "
+                    "protect and maximize their enterprise value through alternative intellectual property mechanisms: "
+                    "(1) Trademark Protection (The Trade Marks Act, 1999): Brands protect their unique trade names, logos, slogans, and trade dress packaging. "
+                    "Section 13 Precaution: Descriptive Ayurvedic names (e.g. 'Ashwagandha', 'Triphala', 'Brahmi', 'Taila') cannot be registered as trademarks because they are generic "
+                    "public names. However, distinctive arbitrary coined names (e.g. 'Kama Ayurveda', 'Kapiva', 'Baidyanath Chyawan-Fit') are fully registerable under Class 5 (medicines/herbal supplements) "
+                    "and Class 3 (herbal cosmetics and skincare). "
+                    "(2) Trade Secrets & Proprietary Extraction Know-How: Companies protect proprietary extraction ratios, standardized extract percentages (e.g. Withanolides 5%), "
+                    "solvent temperature curves, and specialized taste-masking technologies under Common Law Trade Secret protection backed by robust employee and supplier Non-Disclosure Agreements (NDAs). "
+                    "(3) Advertising & Consumer Protection Compliance: Direct-to-consumer Ayurvedic sellers must strictly observe the Drugs and Magic Remedies (Objectionable Advertisements) Act, 1954 "
+                    "and the Consumer Protection Act, 2019. It is a criminal offense to advertise miraculous or guaranteed cures for chronic diseases specified in the Schedule (such as diabetes, "
+                    "cancer, heart disease, blindness, or kidney failure)."
+                )
+            }
+        ],
+        triples=[
+            {
+                "query": "Can I sell Ayurvedic products directly to consumers without a patent?",
+                "pos": "Yes, patents are not required to sell Ayurvedic products directly to consumers; businesses only need an AYUSH manufacturing license (Form 25D) or FSSAI Ayurveda Aahara registration.",
+                "neg": "Section 3(p) bars patenting traditional knowledge already published in classical treatises."
+            },
+            {
+                "query": "What licenses are needed to start a D2C Ayurvedic medicine brand?",
+                "pos": "To sell D2C Ayurvedic medicines, you need a State Licensing Authority Form 25D license (or Form 25E loan license) complying with Schedule T GMP, or FSSAI Ayurveda Aahara registration.",
+                "neg": "Section 2(1)(ja) defines inventive step for industrial patent applications."
+            },
+            {
+                "query": "How do Ayurvedic brands protect their business without patents?",
+                "pos": "Brands protect themselves without patents using distinctive trademarks under the Trade Marks Act 1999, trade dress protection, and proprietary trade secrets for extraction methods.",
+                "neg": "WHO heavy metal guidelines mandate Lead <= 10 ppm and Arsenic <= 3 ppm."
+            },
+            {
+                "query": "Can you trademark the name of an Ayurvedic herb like Ashwagandha or Triphala?",
+                "pos": "Under Section 13 of the Trade Marks Act 1999, generic Ayurvedic and botanical names cannot be trademarked; only coined distinctive brand names can be protected.",
+                "neg": "NBA Form III is filed before the National Biodiversity Authority."
+            }
+        ]
     )
 ]
 

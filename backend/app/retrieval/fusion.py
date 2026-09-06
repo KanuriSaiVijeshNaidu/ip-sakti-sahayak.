@@ -174,8 +174,15 @@ async def retrieve(
         from backend.app.retrieval.query_expander import expand_query
         expanded, detected_domains = expand_query(query)
         search_query = expanded
-        if not domain and detected_domains and len(detected_domains) == 1:
-            domain = detected_domains[0]
+        if not domain and detected_domains:
+            if "ayurveda_commercialization" in detected_domains:
+                domain = "ayurveda_commercialization"
+            elif "ayurveda_foundations" in detected_domains:
+                domain = "ayurveda_foundations"
+            elif len(detected_domains) == 1 and not any(
+                neg in query.lower() for neg in ["without", "no patent", "dont patent", "don't patent", "not patent", "instead"]
+            ):
+                domain = detected_domains[0]
 
     # ── Parallel retrieval ────────────────────────────────────────────────────
     import asyncio
