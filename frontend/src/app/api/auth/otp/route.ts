@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import fs from "fs";
+import path from "path";
 
 interface OtpRecord {
   otp: string;
@@ -11,12 +13,35 @@ const otpStore = ((globalThis as unknown as { __ayurlexOtpStore?: Map<string, Ot
   (globalThis as unknown as { __ayurlexOtpStore?: Map<string, OtpRecord> }).__ayurlexOtpStore ||
   new Map<string, OtpRecord>());
 
+function getRegistryFilePath(): string {
+  const primaryPath = path.resolve(process.cwd(), "..", "data", "users", "registry.json");
+  if (fs.existsSync(path.dirname(primaryPath))) {
+    return primaryPath;
+  }
+  return path.resolve(process.cwd(), "data", "users", "registry.json");
+}
+
+function readUsersFromFile(): any[] {
+  try {
+    const filePath = getRegistryFilePath();
+    if (fs.existsSync(filePath)) {
+      const data = fs.readFileSync(filePath, "utf-8");
+      return JSON.parse(data);
+    }
+  } catch (err) {
+    console.error("[AYURLEX OTP] Error reading users:", err);
+  }
+  return [];
+}
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { action, email, otp } = body;
+    const { action, email, username, otp } = body;
 
     const normalizedEmail = (email || "").trim().toLowerCase();
+    const normalizedUsername = (username || "").trim().toLowerCase();
+
     if (!normalizedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
       return NextResponse.json(
         { error: "Please provide a valid email address." },
@@ -26,6 +51,19 @@ export async function POST(req: Request) {
 
     // ── ACTION 1: SEND OTP TO GMAIL / EMAIL ──────────────────────────────────
     if (action === "send") {
+      // If username provided during registration step 1, verify uniqueness immediately
+      if (normalizedUsername) {
+        const users = readUsersFromFile();
+        const isTaken = users.some(
+          (u) => (u.username || "").toLowerCase() === normalizedUsername && (u.email || "").toLowerCase() !== normalizedEmail
+        );
+        if (isTaken) {
+          return NextResponse.json(
+            { error: "User name is already taken. Please choose another username." },
+            { status: 400 }
+          );
+        }
+      }
       // Generate 6-digit cryptographic numeric OTP
       const generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
       const expiresAt = Date.now() + 10 * 60 * 1000; // 10 minutes

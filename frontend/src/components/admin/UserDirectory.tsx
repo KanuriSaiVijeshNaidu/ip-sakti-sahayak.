@@ -39,6 +39,7 @@ interface BlockchainBlock {
 }
 
 interface StoredUserVault {
+  username?: string;
   email: string;
   name: string;
   role: string;
@@ -125,6 +126,7 @@ export default function UserDirectory() {
         const suEmail = su.email.toLowerCase();
         const local = localMap.get(suEmail);
         mergedMap.set(suEmail, {
+          username: su.username,
           email: su.email,
           name: su.name,
           role: su.role,
@@ -353,6 +355,11 @@ export default function UserDirectory() {
                             {user.role}
                           </span>
                         </div>
+                        {user.username && (
+                          <span className="text-[11px] font-mono font-bold text-emerald-700 block truncate">
+                            @{user.username}
+                          </span>
+                        )}
                         <span className="text-[11px] text-gray-500 font-mono block truncate">
                           {user.email}
                         </span>

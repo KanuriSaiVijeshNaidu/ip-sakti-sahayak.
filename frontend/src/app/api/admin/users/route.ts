@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 
 export interface StoredUserRecord {
+  username?: string;
   email: string;
   name: string;
   role: string;
@@ -180,6 +181,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     const {
       action = "register",
+      username,
       email,
       name,
       role = "citizen",
@@ -191,6 +193,8 @@ export async function POST(req: Request) {
     } = body;
 
     const normalizedEmail = (email || "").trim().toLowerCase();
+    const normalizedUsername = (username || "").trim().toLowerCase();
+
     if (!normalizedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
       return NextResponse.json(
         { error: "Valid email address is required to register user." },
@@ -207,6 +211,7 @@ export async function POST(req: Request) {
     if (action === "register" || action === "login") {
       if (existingIndex >= 0) {
         // Update existing user with fresh login timestamp and role
+        if (normalizedUsername) users[existingIndex].username = normalizedUsername;
         users[existingIndex].name = name || users[existingIndex].name;
         users[existingIndex].role = role || users[existingIndex].role;
         users[existingIndex].institution = institution || users[existingIndex].institution;
@@ -222,6 +227,7 @@ export async function POST(req: Request) {
         // Add new user entry
         const isMobile = req.headers.get("user-agent")?.includes("Mobile") || false;
         const newUser: StoredUserRecord = {
+          username: normalizedUsername || normalizedEmail.split("@")[0],
           email: normalizedEmail,
           name: name || normalizedEmail.split("@")[0],
           role: role || "citizen",

@@ -55,6 +55,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     const {
       action,
+      username,
       email,
       password,
       confirmPassword,
@@ -66,30 +67,34 @@ export async function POST(req: Request) {
       device,
     } = body;
 
-    const normalizedEmail = (email || "").trim().toLowerCase();
-
-    if (!normalizedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
-      return NextResponse.json(
-        { error: "Please provide a valid email address." },
-        { status: 400 }
-      );
-    }
-
     const users = readUsersFromFile();
-    const existingUserIndex = users.findIndex(
-      (u) => u.email.toLowerCase() === normalizedEmail
-    );
 
     // ─────────────────────────────────────────────────────────────────────────
-    // 1. ACTION: LOGIN (RETURNING USERS — NO OTP REQUIRED)
+    // 1. ACTION: LOGIN (RETURNING USERS — SIGN IN WITH USERNAME & PASSWORD)
     // ─────────────────────────────────────────────────────────────────────────
     if (action === "login") {
+      const loginIdentifier = (username || email || "").trim().toLowerCase();
+
+      if (!loginIdentifier) {
+        return NextResponse.json(
+          { error: "Please enter your username." },
+          { status: 400 }
+        );
+      }
+
       if (!password || !password.trim()) {
         return NextResponse.json(
           { error: "Please enter your password." },
           { status: 400 }
         );
       }
+
+      // Find user by unique username (or fallback to email if legacy)
+      const existingUserIndex = users.findIndex((u) => {
+        const uName = (u.username || "").toLowerCase();
+        const uEmail = (u.email || "").toLowerCase();
+        return uName === loginIdentifier || uEmail === loginIdentifier;
+      });
 
       if (existingUserIndex === -1) {
         return NextResponse.json(
@@ -103,8 +108,7 @@ export async function POST(req: Request) {
       const user = users[existingUserIndex];
       const submittedHash = hashPassword(password.trim());
 
-      // If user has a passwordHash, check match
-      // If legacy or seed user doesn't have a hash, allow default "ayurlex123" and set hash
+      // Check password match
       if (user.passwordHash) {
         if (user.passwordHash !== submittedHash) {
           return NextResponse.json(
@@ -134,6 +138,7 @@ export async function POST(req: Request) {
         sessionToken,
         user: {
           name: user.name,
+          username: user.username || user.email.split("@")[0],
           email: user.email,
           role: user.role,
           institution: user.institution || "Ayurvedic Medical Community",
@@ -146,10 +151,56 @@ export async function POST(req: Request) {
     }
 
     // ─────────────────────────────────────────────────────────────────────────
-    // 2. ACTION: REGISTER (FIRST-TIME USERS — PASSWORD + OTP VERIFICATION)
+    // 2. ACTION: REGISTER (FIRST-TIME USERS — USERNAME + PASSWORD + OTP)
     // ─────────────────────────────────────────────────────────────────────────
     if (action === "register") {
-      const finalName = (name || "").trim() || normalizedEmail.split("@")[0];
+      const normalizedUsername = (username || "").trim().toLowerCase();
+      const normalizedEmail = (email || "").trim().toLowerCase();
+
+      if (!normalizedUsername) {
+        return NextResponse.json(
+          { error: "Please enter a unique username." },
+          { status: 400 }
+        );
+      }
+
+      if (normalizedUsername.length < 3) {
+        return NextResponse.json(
+          { error: "Username must be at least 3 characters long." },
+          { status: 400 }
+        );
+      }
+
+      if (!/^[a-zA-Z0-9_.-]+$/.test(normalizedUsername)) {
+        return NextResponse.json(
+          { error: "Username can only contain letters, numbers, underscores, dashes, and periods." },
+          { status: 400 }
+        );
+      }
+
+      if (!normalizedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
+        return NextResponse.json(
+          { error: "Please provide a valid official or personal email address." },
+          { status: 400 }
+        );
+      }
+
+      // Check if username is already taken by another user
+      const usernameTaken = users.some(
+        (u) => (u.username || "").toLowerCase() === normalizedUsername && u.email.toLowerCase() !== normalizedEmail
+      );
+      if (usernameTaken) {
+        return NextResponse.json(
+          { error: "User name is already taken. Please choose another username." },
+          { status: 400 }
+        );
+      }
+
+      const existingUserIndex = users.findIndex(
+        (u) => u.email.toLowerCase() === normalizedEmail
+      );
+
+      const finalName = (name || "").trim() || normalizedUsername;
 
       if (!password || password.trim().length < 6) {
         return NextResponse.json(
@@ -202,6 +253,7 @@ export async function POST(req: Request) {
 
       if (existingUserIndex >= 0) {
         // Upgrade existing account
+        users[existingUserIndex].username = normalizedUsername;
         users[existingUserIndex].name = finalName;
         users[existingUserIndex].role = role;
         users[existingUserIndex].passwordHash = passwordHash;
@@ -214,6 +266,7 @@ export async function POST(req: Request) {
       } else {
         // Create brand new user
         users.unshift({
+          username: normalizedUsername,
           email: normalizedEmail,
           name: finalName,
           role,
@@ -237,6 +290,7 @@ export async function POST(req: Request) {
         sessionToken,
         user: {
           name: finalName,
+          username: normalizedUsername,
           email: normalizedEmail,
           role,
           institution: institution || "Ayurvedic Medical Community",

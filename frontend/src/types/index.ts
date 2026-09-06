@@ -8,6 +8,7 @@ export type UserRole = "vaidya" | "attorney" | "regulator" | "researcher" | "gue
 
 export interface UserProfile {
   name: string;
+  username?: string;
   email: string;
   role: UserRole;
   registrationNumber?: string;

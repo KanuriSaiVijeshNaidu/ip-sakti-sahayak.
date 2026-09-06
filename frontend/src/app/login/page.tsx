@@ -7,6 +7,7 @@ import {
   ShieldShaded,
   ShieldLockFill,
   PersonFill,
+  PersonBadgeFill,
   EnvelopeAtFill,
   KeyFill,
   EyeFill,
@@ -81,7 +82,7 @@ export default function LoginPage() {
   const [tab, setTab] = useState<"signin" | "signup">("signin");
 
   // Sign in fields
-  const [loginEmail, setLoginEmail] = useState("");
+  const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [showLoginPassword, setShowLoginPassword] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
@@ -89,6 +90,7 @@ export default function LoginPage() {
   // Sign up fields
   const [signupStep, setSignupStep] = useState<"form" | "otp">("form");
   const [name, setName] = useState("");
+  const [signupUsername, setSignupUsername] = useState("");
   const [signupEmail, setSignupEmail] = useState("");
   const [role, setRole] = useState<UserRole>("vaidya");
   const [signupPassword, setSignupPassword] = useState("");
@@ -128,16 +130,16 @@ export default function LoginPage() {
   }, [signupStep, resendTimer]);
 
   // ───────────────────────────────────────────────────────────────────────────
-  // HANDLER: Returning User Sign In (Zero OTP required)
+  // HANDLER: Returning User Sign In (Zero OTP required — Sign in with Username)
   // ───────────────────────────────────────────────────────────────────────────
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     setSuccessMsg(null);
 
-    const cleanEmail = loginEmail.trim().toLowerCase();
-    if (!cleanEmail) {
-      setError("Please enter your email address.");
+    const cleanUsername = loginUsername.trim().toLowerCase();
+    if (!cleanUsername) {
+      setError("Please enter your username.");
       return;
     }
     if (!loginPassword.trim()) {
@@ -153,7 +155,7 @@ export default function LoginPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: "login",
-          email: cleanEmail,
+          username: cleanUsername,
           password: loginPassword.trim(),
           device: isMobile ? "📱 Mobile (Phone)" : "💻 Desktop / Laptop",
         }),
@@ -189,10 +191,23 @@ export default function LoginPage() {
     setSuccessMsg(null);
 
     const cleanName = name.trim();
+    const cleanUsername = signupUsername.trim().toLowerCase();
     const cleanEmail = signupEmail.trim().toLowerCase();
 
     if (!cleanName) {
       setError("Please provide your full legal name or professional title.");
+      return;
+    }
+    if (!cleanUsername) {
+      setError("Please choose a unique username for your account.");
+      return;
+    }
+    if (cleanUsername.length < 3) {
+      setError("Username must be at least 3 characters long.");
+      return;
+    }
+    if (!/^[a-zA-Z0-9_.-]+$/.test(cleanUsername)) {
+      setError("Username can only contain letters, numbers, underscores, dashes, and periods.");
       return;
     }
     if (!cleanEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail)) {
@@ -210,11 +225,11 @@ export default function LoginPage() {
 
     setIsSendingOtp(true);
     try {
-      // Dispatch 6-digit OTP to user's email
+      // Dispatch 6-digit OTP to user's email after checking username availability
       const res = await fetch("/api/auth/otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "send", email: cleanEmail }),
+        body: JSON.stringify({ action: "send", email: cleanEmail, username: cleanUsername }),
       });
 
       const data = await res.json();
@@ -244,6 +259,7 @@ export default function LoginPage() {
     setError(null);
     setSuccessMsg(null);
 
+    const cleanUsername = signupUsername.trim().toLowerCase();
     const cleanEmail = signupEmail.trim().toLowerCase();
     const cleanOtp = enteredOtp.trim();
 
@@ -260,6 +276,7 @@ export default function LoginPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: "register",
+          username: cleanUsername,
           name: name.trim(),
           email: cleanEmail,
           role,
@@ -374,15 +391,15 @@ export default function LoginPage() {
           <form onSubmit={handleSignIn} className="space-y-4">
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-gray-700 flex items-center gap-1.5">
-                <EnvelopeAtFill className="w-3.5 h-3.5 text-emerald-700" />
-                <span>Registered Email Address</span>
+                <PersonFill className="w-3.5 h-3.5 text-emerald-700" />
+                <span>Username</span>
               </label>
               <input
-                type="email"
+                type="text"
                 required
-                value={loginEmail}
-                onChange={(e) => setLoginEmail(e.target.value)}
-                placeholder="e.g. yourname@ayush.gov.in or gmail.com"
+                value={loginUsername}
+                onChange={(e) => setLoginUsername(e.target.value)}
+                placeholder="Enter your unique username"
                 className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-xs text-gray-900 outline-none focus:bg-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all font-normal"
               />
             </div>
@@ -444,11 +461,11 @@ export default function LoginPage() {
           <>
             {signupStep === "form" ? (
               <form onSubmit={handleSendSignupOtp} className="space-y-3.5">
-                {/* Name */}
+                {/* Full Legal Name */}
                 <div className="space-y-1">
                   <label className="text-xs font-bold text-gray-700 flex items-center gap-1.5">
                     <PersonFill className="w-3.5 h-3.5 text-emerald-700" />
-                    <span>Full Legal Name / User Name</span>
+                    <span>Full Legal Name / Professional Title</span>
                   </label>
                   <input
                     type="text"
@@ -458,6 +475,28 @@ export default function LoginPage() {
                     placeholder="e.g. Dr. Rajesh Sharma or Adv. Sneha"
                     className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-xs text-gray-900 outline-none focus:bg-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all font-normal"
                   />
+                </div>
+
+                {/* Unique Username */}
+                <div className="space-y-1">
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-bold text-gray-700 flex items-center gap-1.5">
+                      <PersonBadgeFill className="w-3.5 h-3.5 text-emerald-700" />
+                      <span>Unique Username</span>
+                    </label>
+                    <span className="text-[10px] text-gray-400 font-mono">Unique ID for login</span>
+                  </div>
+                  <input
+                    type="text"
+                    required
+                    value={signupUsername}
+                    onChange={(e) => setSignupUsername(e.target.value.toLowerCase().replace(/\s+/g, ""))}
+                    placeholder="Choose unique username (e.g. rajesh_sharma)"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-xs text-gray-900 font-mono outline-none focus:bg-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
+                  />
+                  <span className="text-[10px] text-gray-400 block">
+                    Used for direct future logins without OTP. Must be unique.
+                  </span>
                 </div>
 
                 {/* Email */}
