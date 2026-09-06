@@ -290,19 +290,7 @@ export default function LoginPage() {
     }
   };
 
-  // Demo auto-fill helpers for instant reviewer testing
-  const handleFillDemo = (demoRole: UserRole) => {
-    if (demoRole === "vaidya") {
-      setLoginEmail("vaidya.sharma@ayush.gov.in");
-      setLoginPassword("ayurlex123");
-    } else if (demoRole === "researcher") {
-      setLoginEmail("saivijesh63@gmail.com");
-      setLoginPassword("ayurlex123");
-    } else {
-      setLoginEmail("mobile.tester@ayurlex.in");
-      setLoginPassword("ayurlex123");
-    }
-  };
+
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center px-4 py-8 relative overflow-hidden bg-slate-50/50">
@@ -445,35 +433,7 @@ export default function LoginPage() {
               )}
             </button>
 
-            {/* Quick Demonstration Fill Pills */}
-            <div className="pt-2 border-t border-gray-100">
-              <span className="text-[10px] uppercase font-mono font-bold text-gray-400 block mb-1.5">
-                Quick Demo Fill (Evaluator One-Click):
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                <button
-                  type="button"
-                  onClick={() => handleFillDemo("vaidya")}
-                  className="px-2.5 py-1 text-[11px] font-semibold bg-gray-100 hover:bg-emerald-50 hover:text-emerald-800 rounded-lg text-gray-700 border border-gray-200 transition-colors cursor-pointer"
-                >
-                  🌿 Vaidya
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleFillDemo("researcher")}
-                  className="px-2.5 py-1 text-[11px] font-semibold bg-gray-100 hover:bg-emerald-50 hover:text-emerald-800 rounded-lg text-gray-700 border border-gray-200 transition-colors cursor-pointer"
-                >
-                  🔬 Researcher (K sai)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleFillDemo("guest")}
-                  className="px-2.5 py-1 text-[11px] font-semibold bg-gray-100 hover:bg-emerald-50 hover:text-emerald-800 rounded-lg text-gray-700 border border-gray-200 transition-colors cursor-pointer"
-                >
-                  📱 Mobile User
-                </button>
-              </div>
-            </div>
+
           </form>
         )}
 

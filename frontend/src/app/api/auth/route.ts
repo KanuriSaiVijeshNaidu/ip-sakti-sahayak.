@@ -94,7 +94,7 @@ export async function POST(req: Request) {
       if (existingUserIndex === -1) {
         return NextResponse.json(
           {
-            error: "No account registered with this email. Please switch to 'Create Account' to sign up.",
+            error: "User does not exist in our database. Please click 'Create Account' to sign up.",
           },
           { status: 404 }
         );
@@ -108,7 +108,7 @@ export async function POST(req: Request) {
       if (user.passwordHash) {
         if (user.passwordHash !== submittedHash) {
           return NextResponse.json(
-            { error: "Incorrect password. Please verify and try again." },
+            { error: "Wrong password entered. Please check your password and try again." },
             { status: 401 }
           );
         }
