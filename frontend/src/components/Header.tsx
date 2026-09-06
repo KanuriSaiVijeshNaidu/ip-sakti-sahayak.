@@ -71,12 +71,12 @@ export default function Header({
           </div>
         </button>
 
-        {/* Action Buttons & Profile Controls */}
-        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        {/* Action Buttons & Profile Controls with smooth touch-scroll on mobile */}
+        <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar scroll-smooth py-1 max-w-[62%] sm:max-w-none ml-auto shrink-0">
           {/* Home Button */}
           <button
             onClick={onGoHome}
-            className="flex items-center gap-1 px-2 sm:px-3 py-1.5 text-xs font-semibold text-gray-700 bg-white hover:bg-gray-50 rounded-xl transition-all border border-gray-200/90 shadow-2xs btn-spring shrink-0 cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-gray-700 bg-white hover:bg-gray-50 rounded-xl transition-all border border-gray-200/90 shadow-2xs btn-spring shrink-0 cursor-pointer"
             title="Return to Home Screen"
           >
             <HouseDoorFill className="w-3.5 h-3.5 text-emerald-700" />
@@ -86,7 +86,7 @@ export default function Header({
           {/* History Drawer Trigger with Badge */}
           <button
             onClick={onOpenHistory}
-            className="flex items-center gap-1 px-2 sm:px-3 py-1.5 text-xs font-semibold text-gray-700 bg-white hover:bg-gray-50 rounded-xl transition-all border border-gray-200/90 shadow-2xs btn-spring shrink-0 cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-gray-700 bg-white hover:bg-gray-50 rounded-xl transition-all border border-gray-200/90 shadow-2xs btn-spring shrink-0 cursor-pointer"
             title="Open Consultation History"
           >
             <ClockHistory className="w-3.5 h-3.5 text-emerald-700" />
@@ -99,7 +99,7 @@ export default function Header({
           {/* Compare Mode Trigger (Visible on mobile & desktop) */}
           <button
             onClick={onOpenCompare}
-            className="flex items-center gap-1 px-2 sm:px-3 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50/80 hover:bg-emerald-100/80 border border-emerald-200/80 rounded-xl transition-all shadow-2xs btn-spring shrink-0 cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50/80 hover:bg-emerald-100/80 border border-emerald-200/80 rounded-xl transition-all shadow-2xs btn-spring shrink-0 cursor-pointer"
             title="Open Statutory Compare Mode"
           >
             <ColumnsGap className="w-3.5 h-3.5 text-emerald-700" />
@@ -114,7 +114,7 @@ export default function Header({
                   onLogout();
                 }
               }}
-              className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-red-600 bg-red-50 hover:bg-red-100 border border-red-200/80 rounded-xl transition-all btn-spring shrink-0 cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-red-600 bg-red-50 hover:bg-red-100 border border-red-200/80 rounded-xl transition-all btn-spring shrink-0 cursor-pointer"
               title="Sign Out"
             >
               <BoxArrowRight className="w-3.5 h-3.5" />
@@ -123,7 +123,7 @@ export default function Header({
           ) : (
             <button
               onClick={onOpenAuth}
-              className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-xl shadow-xs transition-all btn-spring shrink-0 cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-xl shadow-xs transition-all btn-spring shrink-0 cursor-pointer"
               title="Sign In with Official Email & OTP"
             >
               <KeyFill className="w-3.5 h-3.5" />
@@ -131,14 +131,14 @@ export default function Header({
             </button>
           )}
 
-          {/* Language selector */}
-          <div className="flex items-center gap-1 bg-white border border-gray-200/90 rounded-xl px-2 sm:px-2.5 py-1.5 text-xs hover:border-emerald-400 transition-colors shadow-2xs btn-spring shrink-0">
+          {/* Language selector - Full icon and dropdown size preserved */}
+          <div className="flex items-center gap-1.5 bg-white border border-gray-200/90 rounded-xl px-2.5 py-1.5 text-xs hover:border-emerald-400 transition-colors shadow-2xs btn-spring shrink-0">
             <Globe2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
             <select
               value={language}
               onChange={(e) => onLanguageChange(e.target.value as LanguageCode)}
               aria-label="Select Language"
-              className="bg-transparent text-gray-700 font-semibold outline-none cursor-pointer text-xs pr-0.5 max-w-[65px] sm:max-w-none"
+              className="bg-transparent text-gray-700 font-semibold outline-none cursor-pointer text-xs pr-1"
             >
               {LANGUAGES.map((l) => (
                 <option key={l.code} value={l.code}>
