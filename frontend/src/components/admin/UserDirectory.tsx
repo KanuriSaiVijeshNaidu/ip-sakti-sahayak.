@@ -14,6 +14,7 @@ import {
   KeyFill,
   Search,
   EyeFill,
+  ArrowRepeat,
 } from "react-bootstrap-icons";
 import { UserProfile } from "@/components/AuthModal";
 import { ChatSession } from "@/components/ChatHistoryDrawer";
@@ -41,9 +42,13 @@ interface StoredUserVault {
   email: string;
   name: string;
   role: string;
+  institution?: string;
+  registrationNumber?: string;
   isLoggedIn: boolean;
   sessions: ChatSession[];
   lastActive: string;
+  lastLogin?: string;
+  device?: string;
 }
 
 export default function UserDirectory() {
@@ -54,143 +59,128 @@ export default function UserDirectory() {
   const [searchQuery, setSearchQuery] = useState("");
   const [blockchainBlocks, setBlockchainBlocks] = useState<BlockchainBlock[]>([]);
   const [loadingBlocks, setLoadingBlocks] = useState(false);
+  const [loadingUsers, setLoadingUsers] = useState(false);
+  const [lastSyncTime, setLastSyncTime] = useState<string>("");
 
-  // 1. Load users from localStorage and initialize demo profiles if needed
-  useEffect(() => {
-    const loadedUsers: StoredUserVault[] = [];
-
+  // 1. Fetch real-time users from sovereign server registry & merge with local vaults
+  const loadAllUsers = async () => {
+    setLoadingUsers(true);
     try {
-      // Check active user profile
-      const activeProfileStr = localStorage.getItem("ayurlex_user_profile");
-      const activeProfile: UserProfile = activeProfileStr
-        ? JSON.parse(activeProfileStr)
-        : null;
+      // Fetch from centralized server endpoint
+      const res = await fetch("/api/admin/users");
+      let serverUsers: StoredUserVault[] = [];
+      if (res.ok) {
+        const data = await res.json();
+        serverUsers = data.users || [];
+      }
 
-      // Scan all localStorage keys for user session vaults
+      // Also scan current client localStorage to capture any unsynced local sessions
+      const localMap = new Map<string, StoredUserVault>();
+
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         if (key && key.startsWith("ayurlex_sessions_")) {
-          const email = key.replace("ayurlex_sessions_", "");
+          const email = key.replace("ayurlex_sessions_", "").toLowerCase();
           const sessionData = localStorage.getItem(key);
           const sessions: ChatSession[] = sessionData ? JSON.parse(sessionData) : [];
-
-          loadedUsers.push({
+          localMap.set(email, {
             email,
-            name: activeProfile && activeProfile.email.toLowerCase() === email.toLowerCase()
-              ? activeProfile.name
-              : email.split("@")[0],
-            role: activeProfile && activeProfile.email.toLowerCase() === email.toLowerCase()
-              ? activeProfile.role
-              : "citizen",
+            name: email.split("@")[0],
+            role: "citizen",
             isLoggedIn: true,
             sessions,
-            lastActive: sessions.length > 0 ? new Date(sessions[0].updatedAt).toLocaleString() : "Recently",
+            lastActive: sessions.length > 0 ? new Date(sessions[0].updatedAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : "Recently",
+            device: "💻 Local Client",
           });
         }
       }
 
-      // If active profile exists and wasn't added yet
-      if (activeProfile && activeProfile.email) {
-        const exists = loadedUsers.some(
-          (u) => u.email.toLowerCase() === activeProfile.email.toLowerCase()
-        );
-        if (!exists) {
-          loadedUsers.unshift({
-            email: activeProfile.email,
-            name: activeProfile.name || "K sai",
-            role: activeProfile.role || "guest",
-            isLoggedIn: activeProfile.isLoggedIn,
-            sessions: [],
-            lastActive: "Just now",
-          });
-        }
+      // Check active local user profile
+      const activeProfileStr = localStorage.getItem("ayurlex_user_profile");
+      if (activeProfileStr) {
+        try {
+          const activeProfile: UserProfile = JSON.parse(activeProfileStr);
+          if (activeProfile && activeProfile.email) {
+            const em = activeProfile.email.toLowerCase();
+            const existing = localMap.get(em);
+            localMap.set(em, {
+              email: em,
+              name: activeProfile.name || existing?.name || em.split("@")[0],
+              role: activeProfile.role || existing?.role || "citizen",
+              institution: activeProfile.institution,
+              registrationNumber: activeProfile.registrationNumber,
+              isLoggedIn: activeProfile.isLoggedIn ?? true,
+              sessions: existing?.sessions || [],
+              lastActive: "Active Now",
+              device: "💻 Active Session",
+            });
+          }
+        } catch {}
       }
 
-      // Add pre-populated administrative reference users for demonstration
-      if (!loadedUsers.some((u) => u.email === "saivijesh63@gmail.com")) {
-        loadedUsers.push({
-          email: "saivijesh63@gmail.com",
-          name: "K sai",
-          role: "researcher",
-          isLoggedIn: true,
-          lastActive: "Today",
-          sessions: [
-            {
-              id: "session_demo_01",
-              title: "Ashwagandha Synergy Patentability under Section 3(e)",
-              domain: "patents",
-              language: "en",
-              createdAt: Date.now() - 3600000,
-              updatedAt: Date.now() - 1800000,
-              messages: [
-                {
-                  id: "msg_1",
-                  role: "user",
-                  content: "Can I patent an Ayurvedic formulation with Ashwagandha?",
-                  timestamp: new Date(Date.now() - 3600000),
-                },
-                {
-                  id: "msg_2",
-                  role: "assistant",
-                  content:
-                    "Under Section 3(p) of the Patents Act, 1970, traditional Ayurvedic knowledge is non-patentable. However, if synergism is experimentally proven (Combination Index CI < 1.0) per Section 3(e), synergistic processing methods may qualify for patent grants.",
-                  timestamp: new Date(Date.now() - 3590000),
-                  cited_passages: [
-                    {
-                      section: "Section 3(p)",
-                      source_title: "The Patents Act, 1970",
-                      domain: "patents",
-                      jurisdiction: "IN",
-                      relevance_score: 0.94,
-                      passage_text: "Inventions relating to traditional knowledge are excluded from patentability.",
-                    },
-                    {
-                      section: "Section 3(e)",
-                      source_title: "The Patents Act, 1970",
-                      domain: "patents",
-                      jurisdiction: "IN",
-                      relevance_score: 0.91,
-                      passage_text: "A substance obtained by a mere admixture resulting only in the aggregation of the properties of the components is non-patentable.",
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
+      // Merge server and local records (server is authoritative)
+      const mergedMap = new Map<string, StoredUserVault>();
+
+      for (const su of serverUsers) {
+        const suEmail = su.email.toLowerCase();
+        const local = localMap.get(suEmail);
+        mergedMap.set(suEmail, {
+          email: su.email,
+          name: su.name,
+          role: su.role,
+          institution: su.institution,
+          registrationNumber: su.registrationNumber,
+          isLoggedIn: su.isLoggedIn,
+          sessions: su.sessions && su.sessions.length > 0 ? su.sessions : (local?.sessions || []),
+          lastActive: su.lastActive || "Recently",
+          lastLogin: su.lastLogin,
+          device: su.device || "🌐 Central Registry",
         });
       }
 
-      if (!loadedUsers.some((u) => u.email === "dr.sharma@ayush.gov.in")) {
-        loadedUsers.push({
-          email: "dr.sharma@ayush.gov.in",
-          name: "Dr. R. K. Sharma",
-          role: "ayush_doctor",
-          isLoggedIn: true,
-          lastActive: "Yesterday",
-          sessions: [
-            {
-              id: "session_demo_02",
-              title: "Rule 158B Manufacturing Compliance",
-              domain: "ayush",
-              language: "en",
-              createdAt: Date.now() - 86400000,
-              updatedAt: Date.now() - 85000000,
-              messages: [],
-            },
-          ],
-        });
-      }
-
-      setUsers(loadedUsers);
-      if (loadedUsers.length > 0) {
-        setSelectedUser(loadedUsers[0]);
-        if (loadedUsers[0].sessions.length > 0) {
-          setSelectedSession(loadedUsers[0].sessions[0]);
+      // Add any local client users not yet present on server
+      localMap.forEach((lu, emailKey) => {
+        if (!mergedMap.has(emailKey)) {
+          mergedMap.set(emailKey, lu);
         }
-      }
-    } catch {
-      setUsers([]);
+      });
+
+      const finalUsers = Array.from(mergedMap.values());
+      setUsers(finalUsers);
+      setLastSyncTime(new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" }));
+
+      // Retain or select active user
+      setSelectedUser((prev) => {
+        if (prev) {
+          const updated = finalUsers.find((u) => u.email.toLowerCase() === prev.email.toLowerCase());
+          if (updated) return updated;
+        }
+        return finalUsers.length > 0 ? finalUsers[0] : null;
+      });
+    } catch (err) {
+      console.error("[AYURLEX Admin] Error loading users:", err);
+    } finally {
+      setLoadingUsers(false);
     }
+  };
+
+  // Mount effect with live 4-second auto-sync & cross-tab storage listener
+  useEffect(() => {
+    loadAllUsers();
+
+    const interval = setInterval(() => {
+      loadAllUsers();
+    }, 4000);
+
+    const handleStorage = () => {
+      loadAllUsers();
+    };
+    window.addEventListener("storage", handleStorage);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("storage", handleStorage);
+    };
   }, []);
 
   // 2. Load Blockchain blocks for admin inspection
@@ -260,7 +250,29 @@ export default function UserDirectory() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
+          {/* Live Sync Status Badge */}
+          <div className="flex items-center gap-1.5 px-2.5 py-1 bg-emerald-50 border border-emerald-200/80 rounded-xl text-[11px] font-medium text-emerald-800">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span>Live Auto-Sync</span>
+            {lastSyncTime && (
+              <span className="text-gray-400 font-mono text-[10px] hidden sm:inline">
+                ({lastSyncTime})
+              </span>
+            )}
+          </div>
+
+          {/* Manual Refresh Button */}
+          <button
+            onClick={loadAllUsers}
+            disabled={loadingUsers}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-gray-700 bg-white hover:bg-gray-50 border border-gray-200/90 rounded-xl transition-all shadow-2xs cursor-pointer btn-spring"
+            title="Refresh user directory immediately"
+          >
+            <ArrowRepeat className={`w-3.5 h-3.5 text-emerald-700 ${loadingUsers ? "animate-spin" : ""}`} />
+            <span className="hidden sm:inline">Refresh</span>
+          </button>
+
           {/* Sub-tabs */}
           <div className="flex bg-gray-100 rounded-xl p-1 text-xs font-semibold">
             <button
@@ -344,6 +356,11 @@ export default function UserDirectory() {
                         <span className="text-[11px] text-gray-500 font-mono block truncate">
                           {user.email}
                         </span>
+                        {user.device && (
+                          <span className="text-[9px] text-gray-400 block mt-0.5">
+                            {user.device}
+                          </span>
+                        )}
                       </div>
                     </div>
 
@@ -372,7 +389,7 @@ export default function UserDirectory() {
                       {selectedUser.name[0]?.toUpperCase()}
                     </div>
                     <div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 flex-wrap">
                         <h3 className="text-sm font-bold text-gray-900">{selectedUser.name}</h3>
                         <span className="text-[10px] bg-emerald-100 text-emerald-800 font-mono px-1.5 py-0.2 rounded font-bold uppercase">
                           {selectedUser.role}
@@ -380,10 +397,20 @@ export default function UserDirectory() {
                         <span className="text-[10px] bg-blue-100 text-blue-800 font-semibold px-1.5 py-0.2 rounded flex items-center gap-1">
                           <CheckCircleFill className="w-2.5 h-2.5" /> OTP Verified
                         </span>
+                        {selectedUser.device && (
+                          <span className="text-[10px] bg-gray-100 text-gray-600 font-mono px-1.5 py-0.2 rounded">
+                            {selectedUser.device}
+                          </span>
+                        )}
                       </div>
-                      <span className="text-xs text-gray-500 font-mono">
+                      <span className="text-xs text-gray-500 font-mono block mt-0.5">
                         Vault: {selectedUser.email} (Strictly Isolated Storage)
                       </span>
+                      {selectedUser.institution && (
+                        <span className="text-[11px] text-gray-400 block mt-0.5">
+                          {selectedUser.institution} · {selectedUser.registrationNumber || "Verified Member"}
+                        </span>
+                      )}
                     </div>
                   </div>
 

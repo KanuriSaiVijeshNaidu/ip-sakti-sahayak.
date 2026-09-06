@@ -133,6 +133,24 @@ export default function ChatPage() {
       localStorage.setItem("ayurlex_user_profile", JSON.stringify(profile));
     } catch {}
     loadSessionsForProfile(profile);
+
+    // Immediately sync to sovereign centralized admin user directory
+    if (profile && profile.isLoggedIn && profile.email) {
+      const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+      fetch("/api/admin/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "register",
+          email: profile.email,
+          name: profile.name,
+          role: profile.role,
+          institution: profile.institution,
+          registrationNumber: profile.registrationNumber,
+          device: isMobile ? "📱 Mobile (Phone)" : "💻 Desktop / Laptop",
+        }),
+      }).catch((err) => console.error("Error syncing user to central admin directory:", err));
+    }
   };
 
   // 3. Reliable Sign Out Handler
@@ -211,6 +229,19 @@ export default function ChatPage() {
       try {
         const key = getUserStorageKey(userProfile);
         if (key) localStorage.setItem(key, JSON.stringify(updated));
+
+        // Sync consultation session to centralized admin registry
+        if (userProfile.isLoggedIn && userProfile.email) {
+          fetch("/api/admin/users", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              action: "sync_session",
+              email: userProfile.email,
+              sessions: updated,
+            }),
+          }).catch(() => {});
+        }
       } catch {}
       return updated;
     });

@@ -1,0 +1,92 @@
+[
+  {
+    "email": "mobile.tester@ayurlex.in",
+    "name": "Dr. Sunita Patel (BAMS)",
+    "role": "vaidya",
+    "institution": "Ayurvedic Practitioner / Enterprise",
+    "registrationNumber": "AYURLEX-VERIFIED",
+    "isLoggedIn": true,
+    "registeredAt": "2026-09-06T09:49:58.027Z",
+    "lastActive": "Just now",
+    "lastLogin": "2026-09-06T09:49:58.027Z",
+    "device": "?? Mobile (iPhone 15)",
+    "sessions": []
+  },
+  {
+    "email": "saivijesh63@gmail.com",
+    "name": "K sai",
+    "role": "researcher",
+    "institution": "AYUSH Research & IP Defense Cell",
+    "registrationNumber": "AYUSH-RES-882",
+    "isLoggedIn": true,
+    "registeredAt": "2026-09-05T09:48:32.932Z",
+    "lastActive": "Just now",
+    "lastLogin": "2026-09-06T08:48:32.932Z",
+    "device": "💻 Desktop / Laptop",
+    "sessions": [
+      {
+        "id": "session_demo_01",
+        "title": "Ashwagandha Synergy Patentability under Section 3(e)",
+        "domain": "patents",
+        "language": "en",
+        "createdAt": 1788684512932,
+        "updatedAt": 1788686312932,
+        "messages": [
+          {
+            "id": "msg_1",
+            "role": "user",
+            "content": "Can I patent an Ayurvedic formulation with Ashwagandha?",
+            "timestamp": "2026-09-06T08:48:32.932Z"
+          },
+          {
+            "id": "msg_2",
+            "role": "assistant",
+            "content": "Under Section 3(p) of the Patents Act, 1970, traditional Ayurvedic knowledge is non-patentable. However, if synergism is experimentally proven (Combination Index CI < 1.0) per Section 3(e), synergistic processing methods may qualify for patent grants.",
+            "timestamp": "2026-09-06T08:48:42.932Z",
+            "cited_passages": [
+              {
+                "section": "Section 3(p)",
+                "source_title": "The Patents Act, 1970",
+                "domain": "patents",
+                "jurisdiction": "IN",
+                "relevance_score": 0.94,
+                "passage_text": "Inventions relating to traditional knowledge are excluded from patentability."
+              },
+              {
+                "section": "Section 3(e)",
+                "source_title": "The Patents Act, 1970",
+                "domain": "patents",
+                "jurisdiction": "IN",
+                "relevance_score": 0.91,
+                "passage_text": "A substance obtained by a mere admixture resulting only in the aggregation of the properties of the components is non-patentable."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "email": "vaidya.sharma@ayush.gov.in",
+    "name": "Dr. Rajesh Sharma, BAMS MD",
+    "role": "vaidya",
+    "institution": "National Institute of Ayurveda, Jaipur",
+    "registrationNumber": "AYUSH-DL-9842",
+    "isLoggedIn": true,
+    "registeredAt": "2026-09-04T09:48:32.932Z",
+    "lastActive": "Today",
+    "lastLogin": "2026-09-06T07:48:32.932Z",
+    "device": "📱 Mobile (Phone)",
+    "sessions": [
+      {
+        "id": "session_demo_02",
+        "title": "Rule 158B Ayurvedic Proprietary Medicine Compliance",
+        "domain": "ayush",
+        "language": "en",
+        "createdAt": 1788680912932,
+        "updatedAt": 1788681012932,
+        "messages": []
+      }
+    ]
+  }
+]
