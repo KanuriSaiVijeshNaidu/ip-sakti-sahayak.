@@ -106,29 +106,46 @@ export default function Header({
             <span className="hidden sm:inline">Compare</span>
           </button>
 
-          {/* User Profile / Login Button - No Account Details clutter, only clean Sign Out when logged in */}
+          {/* User Profile Details & Sign Out Controls */}
           {userProfile.isLoggedIn ? (
-            <button
-              onClick={() => {
-                if (confirm("Sign out of AYURLEX?")) {
-                  onLogout();
-                }
-              }}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-red-600 bg-red-50 hover:bg-red-100 border border-red-200/80 rounded-xl transition-all btn-spring shrink-0 cursor-pointer"
-              title="Sign Out"
-            >
-              <BoxArrowRight className="w-3.5 h-3.5" />
-              <span className="text-xs">Sign Out</span>
-            </button>
+            <div className="flex items-center gap-1.5 shrink-0">
+              <Link
+                href="/profile"
+                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-emerald-900 bg-emerald-50 hover:bg-emerald-100/90 border border-emerald-300/80 rounded-xl transition-all shadow-2xs btn-spring shrink-0 cursor-pointer"
+                title="View & Manage User Details"
+              >
+                <div className="w-4 h-4 rounded-full bg-emerald-600 text-white text-[10px] font-bold flex items-center justify-center shrink-0">
+                  {userProfile.name ? userProfile.name.charAt(0).toUpperCase() : "U"}
+                </div>
+                <span className="max-w-[85px] sm:max-w-[120px] truncate text-xs font-bold text-emerald-950">
+                  {userProfile.name || `@${userProfile.username || "user"}`}
+                </span>
+                <span className="hidden md:inline text-[9px] font-mono px-1 py-0.5 bg-emerald-200/70 text-emerald-800 rounded font-semibold">
+                  Details
+                </span>
+              </Link>
+              <button
+                onClick={() => {
+                  if (confirm("Sign out of AYURLEX?")) {
+                    onLogout();
+                  }
+                }}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-red-600 bg-red-50 hover:bg-red-100 border border-red-200/80 rounded-xl transition-all btn-spring shrink-0 cursor-pointer"
+                title="Sign Out"
+              >
+                <BoxArrowRight className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline text-xs">Sign Out</span>
+              </button>
+            </div>
           ) : (
-            <button
-              onClick={onOpenAuth}
+            <Link
+              href="/login"
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-xl shadow-xs transition-all btn-spring shrink-0 cursor-pointer"
               title="Sign In with Official Email & OTP"
             >
               <KeyFill className="w-3.5 h-3.5" />
               <span className="text-xs">Sign In</span>
-            </button>
+            </Link>
           )}
 
           {/* Language selector - Full icon and dropdown size preserved */}

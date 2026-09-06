@@ -95,10 +95,27 @@ export async function POST(req: Request) {
       otpStore.set(normalizedEmail, { otp: generatedOtp, expiresAt });
 
       let emailSent = false;
-      let deliveryMethod = "Server Dispatch";
+      let deliveryMethod = "Supabase Cloud Service";
       let mailErrorMsg: string | null = null;
+      // 1. Primary Cloud Dispatch: Supabase Cloud Auth OTP (Native Supabase Service)
+      if (supabase) {
+        try {
+          const supaRes = await supabase.auth.signInWithOtp({
+            email: normalizedEmail,
+            options: { shouldCreateUser: true }
+          });
+          if (!supaRes.error) {
+            emailSent = true;
+            deliveryMethod = "Supabase Auth Cloud Dispatch";
+          } else {
+            console.warn("[Supabase Auth signInWithOtp note]:", supaRes.error.message);
+          }
+        } catch (supaErr) {
+          console.warn("[Supabase Auth signInWithOtp exception]:", supaErr);
+        }
+      }
 
-      // 1. Check for Gmail credentials (GMAIL_USER & GMAIL_APP_PASSWORD)
+      // 2. Secondary Dispatch: Gmail credentials (GMAIL_USER & GMAIL_APP_PASSWORD)
       const gmailUser = (process.env.GMAIL_USER || process.env.SMTP_USER || "").trim();
       const gmailPass = (process.env.GMAIL_APP_PASSWORD || process.env.SMTP_PASS || "").replace(/\s+/g, "");
 
@@ -214,8 +231,24 @@ export async function POST(req: Request) {
 
       const record = otpStore.get(normalizedEmail);
 
-      // Check if matches stored OTP or universal test bypass if matching server log
-      const isValid = record && record.otp === enteredOtp && Date.now() <= record.expiresAt;
+      // Check if matches stored OTP
+      let isValid = Boolean(record && record.otp === enteredOtp && Date.now() <= record.expiresAt);
+
+      // Verify with Supabase Auth cloud service if not matched locally
+      if (!isValid && supabase) {
+        try {
+          const supaVerify = await supabase.auth.verifyOtp({
+            email: normalizedEmail,
+            token: enteredOtp,
+            type: "email",
+          });
+          if (!supaVerify.error && supaVerify.data?.session) {
+            isValid = true;
+          }
+        } catch (supaErr) {
+          console.warn("[Supabase verifyOtp note]:", supaErr);
+        }
+      }
 
       if (!isValid) {
         return NextResponse.json(

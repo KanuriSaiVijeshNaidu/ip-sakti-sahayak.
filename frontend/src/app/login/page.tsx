@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import LiveNatureWallpaper from "@/components/LiveNatureWallpaper";
 import {
   ShieldShaded,
+  ShieldCheck,
   ShieldLockFill,
   PersonFill,
   PersonBadgeFill,
@@ -693,10 +694,14 @@ export default function LoginPage() {
           </>
         )}
 
-        {/* Footer Disclaimer */}
-        <div className="pt-2 border-t border-gray-100 text-center">
-          <p className="text-[11px] text-gray-400">
-            End-to-End Cryptographic Vault Isolation · Section 3(p) & TKDL Compliance
+        {/* Footer Disclaimer & Supabase Cloud Security Badge */}
+        <div className="pt-3 border-t border-gray-100 text-center space-y-1.5">
+          <div className="flex items-center justify-center gap-1.5 text-[11px] text-emerald-800 font-semibold bg-emerald-50/80 border border-emerald-200/60 py-1 px-3 rounded-lg mx-auto w-fit">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+            <span>Secured with Supabase Cloud Authentication</span>
+          </div>
+          <p className="text-[10px] text-gray-400">
+            End-to-End Cryptographic Vault Isolation · 1st Login via Gmail OTP · 2nd Login via Username & Password
           </p>
         </div>
       </div>

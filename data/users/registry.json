@@ -1,5 +1,20 @@
 [
   {
+    "username": "ayurdoctor2026",
+    "email": "ayurlex.tester2026@gmail.com",
+    "name": "Dr. Ayur Doctor",
+    "role": "vaidya",
+    "passwordHash": "ece35cea20d09f5805f023718efe657c8dd163f181fb3d49786bfec4500ab1c8",
+    "institution": "Ayurvedic Medical Community",
+    "registrationNumber": "AYUR-VERIFIED",
+    "isLoggedIn": true,
+    "registeredAt": "2026-09-06T19:58:45.813Z",
+    "lastActive": "Just now",
+    "lastLogin": "2026-09-06T19:58:45.884Z",
+    "device": "💻 Desktop / Laptop",
+    "sessions": []
+  },
+  {
     "username": "testpilot_1788707354",
     "email": "testpilot_1788707354@ayurlex.test",
     "name": "Test Pilot User",
