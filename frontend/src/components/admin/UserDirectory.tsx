@@ -300,7 +300,7 @@ export default function UserDirectory() {
       {activeTab === "vaults" && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
           {/* Left Column: Users List */}
-          <div className="lg:col-span-4 bg-white border border-gray-200/90 rounded-2xl p-4 shadow-2xs space-y-3">
+          <div className="lg:col-span-4 bg-white border border-gray-200/90 rounded-2xl p-4 shadow-sm space-y-3">
             <div className="relative">
               <Search className="w-3.5 h-3.5 text-gray-400 absolute left-3 top-3" />
               <input
@@ -324,7 +324,7 @@ export default function UserDirectory() {
                     }}
                     className={`w-full text-left p-3 rounded-xl border transition-all cursor-pointer select-none flex items-start justify-between gap-2.5 ${
                       isSelected
-                        ? "bg-emerald-50/70 border-emerald-300 shadow-2xs"
+                        ? "bg-emerald-50/70 border-emerald-300 shadow-sm"
                         : "bg-white border-gray-200/70 hover:border-gray-300 hover:bg-gray-50/80"
                     }`}
                   >
@@ -366,7 +366,7 @@ export default function UserDirectory() {
             {selectedUser ? (
               <>
                 {/* User Summary Card */}
-                <div className="bg-white border border-gray-200/90 rounded-2xl p-4 shadow-2xs flex flex-wrap items-center justify-between gap-3">
+                <div className="bg-white border border-gray-200/90 rounded-2xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-600 to-green-700 text-white font-bold text-sm flex items-center justify-center shadow-xs">
                       {selectedUser.name[0]?.toUpperCase()}
@@ -394,7 +394,7 @@ export default function UserDirectory() {
                 </div>
 
                 {/* Consultation Sessions for this User */}
-                <div className="bg-white border border-gray-200/90 rounded-2xl p-4 shadow-2xs space-y-4">
+                <div className="bg-white border border-gray-200/90 rounded-2xl p-4 shadow-sm space-y-4">
                   <div className="flex items-center justify-between border-b border-gray-100 pb-3">
                     <div className="flex items-center gap-1.5 text-xs font-bold text-gray-900">
                       <JournalText className="w-4 h-4 text-emerald-700" />
@@ -421,7 +421,7 @@ export default function UserDirectory() {
                               onClick={() => setSelectedSession(sess)}
                               className={`w-full text-left p-2.5 rounded-xl border text-xs transition-all cursor-pointer ${
                                 isSessSelected
-                                  ? "bg-emerald-50 border-emerald-300 font-semibold text-gray-900 shadow-2xs"
+                                  ? "bg-emerald-50 border-emerald-300 font-semibold text-gray-900 shadow-sm"
                                   : "bg-gray-50/70 border-gray-200/70 hover:bg-gray-100 text-gray-700"
                               }`}
                             >
@@ -496,7 +496,7 @@ export default function UserDirectory() {
 
       {/* ── TAB 2: BLOCKCHAIN IP APPLICATIONS REGISTRY ──────────────────────── */}
       {activeTab === "blockchain" && (
-        <div className="bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-5 shadow-2xs space-y-4">
+        <div className="bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-5 shadow-sm space-y-4">
           <div className="flex items-center justify-between border-b border-gray-100 pb-3">
             <div>
               <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2">
