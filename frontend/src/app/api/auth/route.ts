@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
+import { supabase } from "@/lib/supabase";
 
 interface OtpRecord {
   otp: string;
@@ -295,6 +296,34 @@ export async function POST(req: Request) {
       }
 
       writeUsersToFile(users);
+
+      // Async cloud sync to Supabase table
+      if (supabase) {
+        supabase
+          .from("ayurlex_users")
+          .upsert(
+            {
+              username: normalizedUsername,
+              email: normalizedEmail,
+              name: finalName,
+              role,
+              password_hash: passwordHash,
+              institution: institution || "Ayurvedic Medical Community",
+              registration_number: registrationNumber || "AYUR-VERIFIED",
+              is_logged_in: true,
+              last_login: nowIso,
+            },
+            { onConflict: "username" }
+          )
+          .then(({ error: supaErr }) => {
+            if (supaErr) {
+              console.log("[Supabase Sync Info]:", supaErr.message);
+            } else {
+              console.log("[Supabase Sync]: User synced to Supabase cloud successfully!");
+            }
+          })
+          .catch(() => {});
+      }
 
       return NextResponse.json({
         success: true,
