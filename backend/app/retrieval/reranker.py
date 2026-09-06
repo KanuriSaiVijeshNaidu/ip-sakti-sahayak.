@@ -12,12 +12,12 @@ Position in pipeline
 
 Model
 ─────
-  cross-encoder/ms-marco-MiniLM-L-6-v2
-  - Size: ~22 MB (tiny, downloads fast)
-  - Trained on MS-MARCO passage ranking
-  - Input: (query, passage) pair
-  - Output: relevance logit (higher = more relevant)
-  - Latency: ~5-15 ms per pair on CPU
+  BAAI/bge-reranker-v2-m3
+  - Parameters: 568 Million parameters (XLM-RoBERTa backbone)
+  - Multilingual: 100+ languages (Hindi, Telugu, Sanskrit transliterated, English, etc.)
+  - Input: (query, passage) cross-attention pair
+  - Output: Cross-attention relevance score (higher = more relevant)
+  - Fallback: cross-encoder/ms-marco-MiniLM-L-6-v2 (lightweight English fallback)
 
 Design
 ──────
@@ -83,19 +83,32 @@ class RerankedCandidate:
 # ─── CrossEncoder loader ──────────────────────────────────────────────────────
 
 def _load_cross_encoder(model_name: str):
-    """Load CrossEncoder with graceful error handling."""
+    """
+    Load CrossEncoder with graceful error handling.
+    Default: 'BAAI/bge-reranker-v2-m3' (568M parameters, 100+ languages).
+    Fallback: 'cross-encoder/ms-marco-MiniLM-L-6-v2' (English lightweight).
+    """
     try:
         from sentence_transformers.cross_encoder import CrossEncoder
-        logger.info(f"Loading cross-encoder: {model_name} ...")
+        logger.info(f"Loading multilingual cross-encoder: {model_name} (568M params) ...")
         try:
-            model = CrossEncoder(model_name, device=settings.embed_device, local_files_only=True)
+            model = CrossEncoder(model_name, max_length=512, device=settings.embed_device, local_files_only=True)
         except Exception:
-            model = CrossEncoder(model_name, device=settings.embed_device)
-        logger.info(f"Cross-encoder loaded: {model_name}")
+            model = CrossEncoder(model_name, max_length=512, device=settings.embed_device)
+        logger.info(f"Cross-encoder successfully loaded: {model_name}")
         return model
     except Exception as exc:
-        logger.warning(f"CrossEncoder load failed ({exc}) — reranker disabled.")
-        return None
+        fallback = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+        logger.warning(
+            f"Multilingual CrossEncoder {model_name} failed ({exc}). "
+            f"Falling back to {fallback}."
+        )
+        try:
+            from sentence_transformers.cross_encoder import CrossEncoder
+            return CrossEncoder(fallback, device=settings.embed_device)
+        except Exception as fb_exc:
+            logger.error(f"Fallback cross-encoder failed ({fb_exc}) — reranker disabled.")
+            return None
 
 
 # ─── Reranker ────────────────────────────────────────────────────────────────
