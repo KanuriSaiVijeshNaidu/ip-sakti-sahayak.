@@ -21,7 +21,7 @@
     "isLoggedIn": true,
     "registeredAt": "2026-09-05T09:48:32.932Z",
     "lastActive": "Just now",
-    "lastLogin": "2026-09-06T08:48:32.932Z",
+    "lastLogin": "2026-09-06T10:53:30.064Z",
     "device": "💻 Desktop / Laptop",
     "sessions": [
       {
@@ -64,7 +64,8 @@
           }
         ]
       }
-    ]
+    ],
+    "passwordHash": "a45e58ddf69e1f546b62bb60a058ac4d80f1ad4d75f43411bd6c336fa884cc31"
   },
   {
     "email": "vaidya.sharma@ayush.gov.in",

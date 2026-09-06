@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import DomainSelector from "@/components/DomainSelector";
 import ChatBubble from "@/components/ChatBubble";
@@ -49,9 +50,12 @@ function getUserStorageKey(profile: UserProfile): string {
 }
 
 export default function ChatPage() {
+  const router = useRouter();
+
   // User Profile state
   const [userProfile, setUserProfile] = useState<UserProfile>(GUEST_PROFILE);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [authChecked, setAuthChecked] = useState(false);
 
   // History & Compare Modals
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
@@ -105,7 +109,7 @@ export default function ChatPage() {
     }
   };
 
-  // 1. Initial Load: Check profile & load that user's private sessions
+  // 1. Initial Load: Check profile & load that user's private sessions, or redirect to /login
   useEffect(() => {
     try {
       const savedProfile = localStorage.getItem("ayurlex_user_profile");
@@ -114,17 +118,16 @@ export default function ChatPage() {
         if (parsedProfile && parsedProfile.isLoggedIn) {
           setUserProfile(parsedProfile);
           loadSessionsForProfile(parsedProfile);
+          setAuthChecked(true);
           return;
         }
       }
-      // Strictly guest mode with zero default history
-      setUserProfile(GUEST_PROFILE);
-      loadSessionsForProfile(GUEST_PROFILE);
+      // If not logged in, redirect to login page
+      router.replace("/login");
     } catch {
-      setUserProfile(GUEST_PROFILE);
-      loadSessionsForProfile(GUEST_PROFILE);
+      router.replace("/login");
     }
-  }, []);
+  }, [router]);
 
   // 2. Persist profile changes upon successful OTP login
   const handleSaveProfile = (profile: UserProfile) => {
@@ -153,13 +156,14 @@ export default function ChatPage() {
     }
   };
 
-  // 3. Reliable Sign Out Handler
+  // 3. Reliable Sign Out Handler - Clears profile and returns to /login
   const handleLogout = () => {
     try {
       localStorage.removeItem("ayurlex_user_profile");
     } catch {}
     setUserProfile(GUEST_PROFILE);
     loadSessionsForProfile(GUEST_PROFILE);
+    router.replace("/login");
   };
 
   // 4. Return to Home Screen
@@ -363,7 +367,7 @@ export default function ChatPage() {
         sessionCount={sessions.length}
         onOpenHistory={() => setIsHistoryOpen(true)}
         onOpenCompare={() => setIsCompareOpen(true)}
-        onOpenAuth={() => setIsAuthOpen(true)}
+        onOpenAuth={() => router.push("/login")}
         userProfile={userProfile}
         onLogout={handleLogout}
         onGoHome={handleGoHome}
