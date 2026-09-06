@@ -69,9 +69,35 @@
       "merkle_root": "76553f3ccd84b911880bd4e471ede6c3451d3d8fdfbcd0e6c0f766a6b06b7ab3",
       "nonce": 66,
       "hash": "0038a072e481f46bd56acb3ea897db17efee2917c2f6ec5ff2a5cb4b18d6082f"
+    },
+    {
+      "index": 3,
+      "timestamp": "2026-09-06T08:34:31.832881+00:00",
+      "transactions": [
+        {
+          "tx_id": "89d489c3c06762a954e4e20e76ebea5877c842334d4ce63a9749b68733af1a17",
+          "asset_id": "IP-NOTARY-AYUS-0004",
+          "ip_type": "ayush_formulation",
+          "title": "Novel Synergistic Ashwagandha-Curcumin Nano-Emulsion",
+          "applicant_name": "Dr. Kanuri Sai Vijesh",
+          "document_hash": "2410de45165255110f12ef9c5b93bbd02007f21167325fa85b3db4693e93628d",
+          "metadata": {
+            "herbs": [
+              "Ashwagandha",
+              "Curcumin"
+            ],
+            "applicant_email": "saivijesh63@gmail.com"
+          },
+          "timestamp": "2026-09-06T08:34:31.829219+00:00"
+        }
+      ],
+      "previous_hash": "0038a072e481f46bd56acb3ea897db17efee2917c2f6ec5ff2a5cb4b18d6082f",
+      "merkle_root": "89d489c3c06762a954e4e20e76ebea5877c842334d4ce63a9749b68733af1a17",
+      "nonce": 391,
+      "hash": "0078cbd1d86643677093e2d121829330058cd5a438bfc82a73640d38a01f0fb0"
     }
   ],
   "pending_transactions": [],
   "difficulty": 2,
-  "total_blocks": 3
+  "total_blocks": 4
 }

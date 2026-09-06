@@ -6,6 +6,7 @@ import { AdminTraceResponse, DomainType } from "@/types";
 import CandidateRow from "@/components/admin/CandidateRow";
 import PipelineStats from "@/components/admin/PipelineStats";
 import BenchmarkRunner from "@/components/admin/BenchmarkRunner";
+import UserDirectory from "@/components/admin/UserDirectory";
 import DomainSelector from "@/components/DomainSelector";
 import {
   Search,
@@ -15,10 +16,11 @@ import {
   BarChartFill,
   ChevronRight,
   Stars,
+  PeopleFill,
 } from "react-bootstrap-icons";
 import Link from "next/link";
 
-type Tab = "trace" | "benchmark";
+type Tab = "trace" | "benchmark" | "users";
 
 const DOMAIN_SAMPLE_QUERIES: Record<string, string> = {
   patents: "Can I patent an Ayurvedic herbal formulation with Ashwagandha?",
@@ -97,6 +99,7 @@ export default function AdminPage() {
           {([
             { key: "trace",     icon: Search,       label: "Retrieval Trace" },
             { key: "benchmark", icon: BarChartFill, label: "Benchmark" },
+            { key: "users",     icon: PeopleFill,   label: "Users & Consultation Vaults" },
           ] as { key: Tab; icon: React.ElementType; label: string }[]).map(({ key, icon: Icon, label }) => (
             <button
               key={key}
@@ -244,6 +247,9 @@ export default function AdminPage() {
             <BenchmarkRunner />
           </div>
         )}
+
+        {/* ── Users & Consultation Vaults tab ───────────────────────────────── */}
+        {tab === "users" && <UserDirectory />}
       </div>
     </div>
   );
