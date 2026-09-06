@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: ayurlex-api
+    env: python
+    region: singapore
+    plan: standard
+    buildCommand: "pip install -r backend/requirements.txt"
+    startCommand: "python -m uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHONUTF8
+        value: "1"
+      - key: HF_HUB_OFFLINE
+        value: "0"
+      - key: CORPUS_VERSION
+        value: "v2"
