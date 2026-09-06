@@ -27,7 +27,7 @@ flowchart TD
 
     subgraph FUSION["3. Fusion, Reranking & Evidence Validation"]
         C1 & C2 --> D1["Reciprocal Rank Fusion (RRF, k=60)"]
-        D1 -->|Top-10 Fused Candidates| D2["Cross-Encoder Reranker (ms-marco-MiniLM-L-6-v2)"]
+        D1 -->|Top-10 Fused Candidates| D2["Cross-Encoder Reranker (BAAI/bge-reranker-v2-m3 568M)"]
         D2 -->|Top-5 Re-scored Passages| D3["Evidence Validator (Heuristic Grounding & Dedup)"]
         D3 -->|Grounding Threshold >= 0.15| D4["Validated Evidence Block ([src-1] ... [src-N])"]
         D3 -->|Empty / Out-of-Domain| D5["Strict Zero-Hallucination Fallback Notice"]
@@ -77,7 +77,7 @@ Rather than relying purely on vector embeddings (which often miss exact alphanum
 | **Dense Vector Retriever** | `BAAI/bge-m3` (1024-dim) + `FAISS` Index | Understands semantic intent, natural language phrasing, synonyms, and conceptual relationships. |
 | **Lexical Retriever** | `Rank-BM25` (Okapi BM25) | Exact token matching for Act names, section numbers (`2(1)(zb)`), form names (`TM-A`, `Form 24D`), and technical terms. |
 | **Score Fusion** | **Reciprocal Rank Fusion (RRF)** | Merges rank lists with constant $k=60$: $RRF(d) = \sum_{r \in \{BM25, Dense\}} \frac{1}{k + rank_r(d)}$. |
-| **Cross-Encoder Reranker** | `cross-encoder/ms-marco-MiniLM-L-6-v2` | Performs joint query-document cross-attention scoring on the fused candidates to eliminate false positives. |
+| **Cross-Encoder Reranker** | `BAAI/bge-reranker-v2-m3` (568M params) | Performs joint query-document multilingual cross-attention scoring on the fused candidates to eliminate false positives. |
 
 ---
 
