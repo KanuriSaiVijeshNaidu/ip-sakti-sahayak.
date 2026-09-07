@@ -1,4 +1,4 @@
-﻿"""
+"""
 backend/app/llm/ollama_llm.py
 ───────────────────────────────
 Ollama adapter for locally-hosted open models (llama3, mistral, etc.).
@@ -25,11 +25,12 @@ class OllamaLLMAdapter(BaseLLMAdapter):
         context: str,
         language: str = "en",
         max_tokens: int = 1024,
+        jurisdiction: str = "IN",
     ) -> LLMResponse:
         t0 = time.perf_counter()
 
         prompt = (
-            f"{self._system_prompt(language)}\n\n"
+            f"{self._system_prompt(language, jurisdiction=jurisdiction)}\n\n"
             f"{context}\n\n"
             f"Question: {query}\n\n"
             f"Answer:"

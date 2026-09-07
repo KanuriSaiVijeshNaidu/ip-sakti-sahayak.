@@ -24,11 +24,13 @@ class CacheEntry:
     embedding: np.ndarray
     response_data: Dict[str, Any]
     created_at: float
+    jurisdiction: str = "IN"
+    language: str = "en"
     hit_count: int = 0
 
 
 class SemanticCache:
-    """In-memory cosine vector semantic cache."""
+    """In-memory cosine vector semantic cache partitioned by jurisdiction and language."""
 
     def __init__(
         self,
@@ -41,10 +43,16 @@ class SemanticCache:
         self._hits = 0
         self._misses = 0
 
-    def lookup(self, query_embedding: np.ndarray, threshold: Optional[float] = None) -> Optional[Dict[str, Any]]:
+    def lookup(
+        self,
+        query_embedding: np.ndarray,
+        threshold: Optional[float] = None,
+        jurisdiction: str = "IN",
+        language: str = "en",
+    ) -> Optional[Dict[str, Any]]:
         """
         Search cache for an entry exceeding the cosine similarity threshold.
-        Assumes query_embedding is L2-normalized.
+        Enforces strict jurisdictional and linguistic isolation.
         """
         if not self._entries:
             self._misses += 1
@@ -54,8 +62,10 @@ class SemanticCache:
         best_sim = -1.0
         best_entry: Optional[CacheEntry] = None
 
-        # Compute dot product across all cached vectors (since vectors are L2-normalized, dot product = cosine sim)
+        # Compute dot product across cached vectors matching exact jurisdiction and language
         for entry in self._entries:
+            if entry.jurisdiction != jurisdiction or entry.language != language:
+                continue
             sim = float(np.dot(query_embedding, entry.embedding))
             if sim > best_sim:
                 best_sim = sim
@@ -65,7 +75,7 @@ class SemanticCache:
             best_entry.hit_count += 1
             self._hits += 1
             logger.info(
-                f"Semantic cache HIT: sim={best_sim:.4f} >= {target_threshold} | "
+                f"Semantic cache HIT [{jurisdiction}|{language}]: sim={best_sim:.4f} >= {target_threshold} | "
                 f"original='{best_entry.query[:40]}' | hits={best_entry.hit_count}"
             )
             # Clone response data and add cache hit marker
@@ -77,8 +87,15 @@ class SemanticCache:
         self._misses += 1
         return None
 
-    def store(self, query: str, query_embedding: np.ndarray, response_data: Dict[str, Any]):
-        """Store a verified response in the semantic cache."""
+    def store(
+        self,
+        query: str,
+        query_embedding: np.ndarray,
+        response_data: Dict[str, Any],
+        jurisdiction: str = "IN",
+        language: str = "en",
+    ):
+        """Store a verified response in the semantic cache with jurisdictional tagging."""
         # Evict oldest if full
         if len(self._entries) >= self.max_entries:
             # Sort by hit_count and timestamp to keep popular entries
@@ -91,10 +108,12 @@ class SemanticCache:
             embedding=query_embedding,
             response_data=response_data,
             created_at=time.time(),
+            jurisdiction=jurisdiction,
+            language=language,
             hit_count=0,
         )
         self._entries.append(entry)
-        logger.debug(f"Stored in semantic cache: '{query[:40]}' (total={len(self._entries)})")
+        logger.debug(f"Stored in semantic cache [{jurisdiction}|{language}]: '{query[:40]}' (total={len(self._entries)})")
 
     def clear(self):
         """Flush cache."""

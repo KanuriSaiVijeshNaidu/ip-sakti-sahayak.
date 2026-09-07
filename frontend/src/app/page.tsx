@@ -13,7 +13,7 @@ import ChatHistoryDrawer, { ChatSession } from "@/components/ChatHistoryDrawer";
 import CompareModeModal from "@/components/CompareModeModal";
 import LiveNatureWallpaper from "@/components/LiveNatureWallpaper";
 import { sendChatMessage } from "@/lib/api";
-import { Message, DomainType, LanguageCode } from "@/types";
+import { Message, DomainType, LanguageCode, JurisdictionType } from "@/types";
 import {
   ShieldShaded,
   ExclamationCircleFill,
@@ -72,6 +72,7 @@ export default function ChatPage() {
   const [loading, setLoading] = useState(false);
   const [domain, setDomain] = useState<DomainType | "auto">("auto");
   const [language, setLanguage] = useState<LanguageCode>("en");
+  const [jurisdiction, setJurisdiction] = useState<JurisdictionType>("IN");
   const [error, setError] = useState<string | null>(null);
 
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -332,7 +333,7 @@ export default function ChatPage() {
       const res = await sendChatMessage({
         query,
         domain: domain === "auto" ? undefined : domain,
-        jurisdiction: "IN",
+        jurisdiction,
         language,
       });
 
@@ -366,6 +367,8 @@ export default function ChatPage() {
       <Header
         language={language}
         onLanguageChange={setLanguage}
+        jurisdiction={jurisdiction}
+        onJurisdictionChange={setJurisdiction}
         sessionCount={sessions.length}
         onOpenHistory={() => setIsHistoryOpen(true)}
         onOpenCompare={() => {}}
@@ -387,6 +390,60 @@ export default function ChatPage() {
       {/* Chat area */}
       <main className="flex-1 overflow-y-auto px-3 sm:px-4 py-4 sm:py-6 relative z-10">
         <div className="max-w-4xl mx-auto space-y-4 sm:space-y-5">
+          {/* Active Target Market & Legal Isolation Status Banner */}
+          <div className="bg-white/95 backdrop-blur-md rounded-2xl border border-gray-200/90 shadow-2xs p-3 sm:p-4 animate-entrance-1">
+            <div className="flex flex-wrap items-center justify-between gap-2.5">
+              <div className="flex items-center gap-2.5">
+                <span className="text-2xl sm:text-3xl shrink-0 select-none">
+                  {jurisdiction === "US" ? "🇺🇸" : jurisdiction === "IN" ? "🇮🇳" : jurisdiction === "EU" ? "🇪🇺" : jurisdiction === "DE" ? "🇩🇪" : "🌐"}
+                </span>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-xs sm:text-sm font-bold text-gray-900">
+                      {jurisdiction === "US" ? "Active Market: United States (USPTO & FDA)" :
+                       jurisdiction === "IN" ? "Active Market: India (CGPDTM & AYUSH)" :
+                       jurisdiction === "EU" ? "Active Market: European Union (EPO & EMA)" :
+                       jurisdiction === "DE" ? "Active Market: Germany (DPMA & BfArM)" :
+                       "Active Market: International (WIPO PCT)"}
+                    </h3>
+                    <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 shrink-0">
+                      STRICT BOUNDARY ISOLATION
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-gray-600 mt-0.5">
+                    {jurisdiction === "US" ? "Grounded in 35 U.S.C. 101/102/103/112, Lanham Act & FDA DSHEA. Foreign statutory data strictly excluded." :
+                     jurisdiction === "IN" ? "Grounded in Patents Act 1970, Drugs & Cosmetics Act, FSSAI & BDA. Foreign applicant guidance (NBA Sec 6) active." :
+                     jurisdiction === "EU" ? "Grounded in European Patent Convention (EPC Articles 52, 53, 54, 56) and EPO Guidelines." :
+                     jurisdiction === "DE" ? "Grounded in German Patent Act (Patentgesetz - PatG) and DPMA phytopharmaceutical standards." :
+                     "Grounded in Patent Cooperation Treaty (PCT Articles 8, 33) and WIPO Genetic Resources Treaty (2024)."}
+                  </p>
+                </div>
+              </div>
+              {/* Fast Market Switch Buttons */}
+              <div className="flex items-center gap-1.5 ml-auto">
+                <span className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider hidden sm:inline">Select Market:</span>
+                {(["US", "IN", "EU", "DE", "WO"] as JurisdictionType[]).map((code) => {
+                  const labels: Record<string, string> = { US: "🇺🇸 USA", IN: "🇮🇳 India", EU: "🇪🇺 Europe", DE: "🇩🇪 Germany", WO: "🌐 Global" };
+                  const active = jurisdiction === code;
+                  return (
+                    <button
+                      key={code}
+                      onClick={() => setJurisdiction(code)}
+                      className={`px-2.5 py-1 text-xs rounded-xl font-bold transition-all cursor-pointer ${
+                        active
+                          ? "bg-emerald-700 text-white shadow-xs"
+                          : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+                      }`}
+                      title={`Switch active target market to ${labels[code]}`}
+                    >
+                      {labels[code]}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
           {/* Active Consultation Navigation Toolbar (When chatting) */}
           {!isEmpty && (
             <div className="flex items-center justify-between bg-white border border-gray-200/90 rounded-2xl px-3 sm:px-4 py-2 sm:py-2.5 text-xs shadow-2xs animate-entrance-1 gap-2">
@@ -524,7 +581,7 @@ export default function ChatPage() {
 
               {/* Suggestions grid */}
               <div className="w-full animate-entrance-5">
-                <SuggestionsGrid onSelect={handleSend} language={language} domain={domain} />
+                <SuggestionsGrid onSelect={handleSend} language={language} domain={domain} jurisdiction={jurisdiction} />
               </div>
             </div>
           )}

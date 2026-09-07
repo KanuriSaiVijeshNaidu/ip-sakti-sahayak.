@@ -29,22 +29,354 @@ def _parse_context(context: str) -> list[dict]:
             parts = [p.strip() for p in header.split("|")]
             section = parts[0] if len(parts) > 0 else "Legal Provision"
             section = re.sub(r"^\[src-\d+\]\s*", "", section)
-            source = parts[1] if len(parts) > 1 else "Indian Legal Statute"
+            source = parts[1] if len(parts) > 1 else "Statute"
             domain = parts[2] if len(parts) > 2 else "IP"
+            jurisdiction = parts[3] if len(parts) > 3 else "IN"
 
             passages.append({
                 "key": current_key,
                 "section": section,
                 "source": source,
                 "domain": domain,
+                "jurisdiction": jurisdiction,
                 "text": body,
             })
             current_key = None
     return passages
 
 
-def _synthesize_answer(query: str, passages: list[dict]) -> str:
+def _synthesize_answer_us(query: str, passages: list[dict]) -> str:
+    """
+    Synthesize comprehensive, authoritative legal and regulatory answers under
+    United States Patent Code (35 U.S.C. 101/102/103/112, MPEP Guidelines),
+    the Lanham Act (15 U.S.C. § 1051 et seq. for Trademarks), and FDA Dietary
+    Supplement Health and Education Act (DSHEA 1994, 21 U.S.C. § 343(r)(6), 21 CFR Part 111).
+    Zero cross-contamination: absolutely NO Indian statutory sections or agencies.
+    """
+    q_lower = query.lower()
+
+    if not passages:
+        return (
+            "### ⚠️ Insufficient Statutory Evidence in AYURLEX Corpus (US Jurisdiction)\n"
+            "The retrieved United States statutory registers, USPTO examination guidelines, and FDA statutory corpora "
+            "do not contain verified evidence for your inquiry.\n\n"
+            "AYURLEX operates under a strict **Zero-Hallucination Policy**: we do not invent legal rules, "
+            "fabricate U.S.C. section numbers, or speculate on unverified regulatory procedures.\n\n"
+            "**Official US Verification Channels:**\n"
+            "- **Patents & Trademarks:** United States Patent and Trademark Office (USPTO) — [uspto.gov](https://www.uspto.gov)\n"
+            "- **Dietary Supplements & Cosmetics:** U.S. Food and Drug Administration (FDA) — [fda.gov](https://www.fda.gov)\n"
+            "- **Advertising & Consumer Claims:** Federal Trade Commission (FTC) — [ftc.gov](https://www.ftc.gov)"
+        )
+
+    domain_keywords = [
+        "trademark", "trade mark", "tm", "brand", "logo", "patent", "patents", "invention",
+        "inventor", "prior art", "novelty", "non-obvious", "obviousness", "101", "102", "103", "112",
+        "mpep", "uspto", "lanham", "teas", "principal register", "supplemental register",
+        "fda", "dshea", "supplement", "dietary supplement", "structure/function", "structure function",
+        "health claim", "disease claim", "herbal", "botanical", "ashwagandha", "turmeric", "synergy",
+        "admixture", "cgmp", "21 cfr", "extract", "formulation", "license", "registration", "infringement"
+    ]
+    if not any(kw in q_lower for kw in domain_keywords):
+        return (
+            "### ⚠️ Insufficient Statutory Evidence in AYURLEX Corpus (US Jurisdiction)\n"
+            "The inquiry is outside the scope of United States IP law (USPTO) and FDA regulatory datasets.\n\n"
+            "AYURLEX operates under a strict **Zero-Hallucination Policy**.\n\n"
+            "**Recommended Official Channels:**\n"
+            "- For USPTO Patent & Trademark Filings: [uspto.gov](https://www.uspto.gov)\n"
+            "- For FDA Dietary Supplement Regulations: [fda.gov](https://www.fda.gov)"
+        )
+
+    q_stripped = re.sub(r"[^\w\s]", "", q_lower).strip()
+
+    is_tm_definitional = (
+        q_stripped in [
+            "trademark", "trade mark", "tm", "what is a trademark", "what is trademark",
+            "define trademark", "meaning of trademark", "explain trademark",
+            "what is a trademark in us", "what is a trademark in usa"
+        ]
+        or (
+            any(w in q_lower for w in ["what is a trademark", "what is trademark", "define trademark", "meaning of trademark"])
+            and not any(w in q_lower for w in ["how to", "how do", "register", "apply", "process", "procedure", "filing", "fee", "cost"])
+        )
+    )
+
+    is_tm_procedural = any(w in q_lower for w in [
+        "how to register a trademark", "how do i register a trademark", "register my trademark",
+        "trademark registration process", "apply for trademark", "trademark filing",
+        "how to get a trademark", "trademark procedure", "register a trademark in us", "uspto trademark",
+        "how to register trademark in uspto"
+    ])
+
+    is_patent_definitional = (
+        q_stripped in [
+            "patent", "patents", "what is a patent", "what is patent", "define patent",
+            "meaning of patent", "explain patent", "what is a patent in us"
+        ]
+        or (
+            any(w in q_lower for w in ["what is a patent", "what is patent", "define patent", "meaning of patent"])
+            and not any(w in q_lower for w in ["how to", "how do", "file", "process", "apply", "register", "procedure", "fee", "cost", "ashwagandha", "formulation", "extract"])
+        )
+    )
+
+    is_patent_procedural = any(w in q_lower for w in [
+        "how to file a patent", "how do i file a patent", "how to get a patent",
+        "patent filing process", "how to apply for a patent", "patent application process",
+        "file a patent in us", "apply for a patent in uspto", "how to file patent in us"
+    ])
+
+    is_fda_dshea = any(w in q_lower for w in [
+        "fda", "dshea", "dietary supplement", "structure function", "structure/function",
+        "disease claim", "sell in america", "sell in us", "selling in us", "sell supplement in us",
+        "herbal product in us", "fda disclaimer", "cgmp", "21 cfr", "supplement rules",
+        "label requirements in us"
+    ])
+
+    is_patent_herbal = any(w in q_lower for w in [
+        "patent an herbal", "patent herbal", "patent botanical", "ashwagandha", "turmeric",
+        "natural product", "101", "102", "103", "112", "mpep", "synergy", "extract",
+        "patentable in us", "patent an ayurvedic in us"
+    ])
+
+    if is_fda_dshea:
+        answer = (
+            "### 🇺🇸 US FDA Regulatory Framework: Selling Herbal & Dietary Supplements in the United States\n\n"
+            "In the United States, botanical preparations and herbal products (such as Ashwagandha, Turmeric, or herbal extracts) "
+            "are regulated primarily as **Dietary Supplements** under the **Dietary Supplement Health and Education Act of 1994 (DSHEA)** "
+            "(Public Law 103-417, codified in **21 U.S.C. § 321(ff)** and **21 U.S.C. § 343(r)(6)**), enforced by the U.S. Food and Drug Administration (FDA):\n\n"
+            "#### 1️⃣ Statutory Classification: Food / Dietary Supplement vs. Drug\n"
+            "- **Dietary Supplement (21 U.S.C. § 321(ff)):** Defined as a product (other than tobacco) intended to supplement the diet that bears or contains "
+            "one or more dietary ingredients, including vitamins, minerals, herbs, or other botanicals.\n"
+            "- **No Pre-Market Drug Approval:** Dietary supplements do NOT require FDA pre-market approval or human clinical trials prior to commercial sale, "
+            "provided no new dietary ingredient (NDI) notification is triggered and all ingredients are grandfathered or generally recognized as safe.\n\n"
+            "#### 2️⃣ Permissible Structure/Function Claims vs. Prohibited Disease Claims\n"
+            "- **Permitted Structure/Function Claims (21 U.S.C. § 343(r)(6)):**\n"
+            "  - You may describe the role of an herbal ingredient intended to maintain the normal structure or function of the human body.\n"
+            "  - *Examples of Lawful Claims:* 'Promotes natural sleep cycles', 'Supports healthy immune defense', 'Helps maintain joint mobility'.\n"
+            "- **Strict Prohibition on Disease Claims:**\n"
+            "  - You **CANNOT** claim that your herbal product will diagnose, cure, mitigate, treat, or prevent any specific disease (e.g. 'Cures diabetes', 'Treats arthritis', 'Prevents viral infections').\n"
+            "  - Making disease claims causes the product to be legally deemed an **unapproved new drug** under Section 505 of the Federal Food, Drug, and Cosmetic Act (FD&C Act), resulting in immediate FDA Warning Letters, product seizure, and federal injunctions.\n\n"
+            "#### 3️⃣ Mandatory FDA Disclaimer Box & 30-Day Notification\n"
+            "- **Mandatory Label Box:** Any product label carrying a structure/function claim must prominently feature the verbatim statutory disclaimer:\n"
+            "  > *'This statement has not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.'*\n"
+            "- **FDA 30-Day Notification (Form FDA 3955):** Under 21 U.S.C. § 343(r)(6), the manufacturer or distributor must submit written notification of the text of the structure/function claim to the FDA within 30 days of first marketing the product.\n\n"
+            "#### 4️⃣ Current Good Manufacturing Practices (cGMP) — 21 CFR Part 111\n"
+            "- All dietary supplement manufacturing, packaging, labeling, and holding operations must comply strictly with **21 CFR Part 111**.\n"
+            "- Requires establish specifications for identity, purity, strength, and composition, as well as strict limits on microbiological contaminants and heavy metals (Lead, Mercury, Arsenic, Cadmium).\n"
+            "- **FSMA Facility Registration:** All facilities (domestic and foreign) manufacturing supplements for the US market must register with the FDA and designate a US Agent for regulatory correspondence."
+        )
+    elif is_patent_herbal:
+        answer = (
+            "### 🇺🇸 Patentability of Herbal & Botanical Formulations in the United States (USPTO)\n\n"
+            "Securing a patent on an herbal or botanical formulation before the **United States Patent and Trademark Office (USPTO)** "
+            "is governed strictly by Title 35 of the United States Code (**35 U.S.C.**) and the USPTO Manual of Patent Examining Procedure (MPEP):\n\n"
+            "#### 1️⃣ 35 U.S.C. § 101: The Natural Products Exclusion & The Alice/Mayo Framework\n"
+            "- **The Product of Nature Bar:** Following Supreme Court jurisprudence (*Association for Molecular Pathology v. Myriad Genetics*, *Mayo v. Prometheus*), "
+            "naturally occurring botanical plants, raw extracts, and unpurified herbal mixtures are classified as non-patentable **products of nature**.\n"
+            "- **Marked Difference Requirement:** To overcome § 101 subject matter eligibility rejection, the claimed invention must demonstrate a **markedly different** structural, biological, or pharmacological characteristic not possessed by the natural source. This is typically established through:\n"
+            "  - Novel synthetic derivatives or chemically altered isolated active constituents.\n"
+            "  - Specific synergistic combinations of standardized fractions demonstrating therapeutic behavior not found in nature.\n"
+            "  - Novel delivery platforms (e.g. liposomal, nanoparticle, or sustained-release herbal formulations).\n\n"
+            "#### 2️⃣ 35 U.S.C. § 102: Novelty & Global Prior Art (TKDL Citations)\n"
+            "- Under 35 U.S.C. § 102 (America Invents Act), an invention lacks novelty if it was patented, described in a printed publication, "
+            "or in public use or on sale anywhere in the world before the effective filing date.\n"
+            "- **Traditional Knowledge Prior Art:** The USPTO actively cross-references traditional knowledge repositories, including India's **Traditional Knowledge Digital Library (TKDL)** and classical codified treatises. If the formulation or therapeutic use is documented in traditional Ayurvedic literature, the USPTO examiner will reject the claims under § 102 as fully anticipated.\n\n"
+            "#### 3️⃣ 35 U.S.C. § 103: Non-Obviousness & Unexpected Synergistic Results\n"
+            "- Combining two or more known herbs (e.g. Ashwagandha + Turmeric) is considered *prima facie* obvious to a Person Having Ordinary Skill in the Art (PHOSITA).\n"
+            "- To establish patentability under § 103, the applicant must present **objective evidence of non-obviousness**, specifically **unexpected synergistic results** where the combined efficacy significantly exceeds the additive efficacy of the individual ingredients (e.g. Combination Index CI < 1.0 or comparative *in vitro*/*in vivo* bioassays).\n\n"
+            "#### 4️⃣ 35 U.S.C. § 112 & MPEP Section 2163: Enablement & Written Description\n"
+            "- The patent specification must provide reproducible technical detail enabling a PHOSITA to practice the invention without undue experimentation.\n"
+            "- For herbal preparations, the applicant must disclose exact standardization markers (e.g. withanolide concentration percentage via HPLC), extraction solvents, temperature ranges, and verifiable clinical or experimental working examples."
+        )
+    elif is_tm_definitional:
+        answer = (
+            "### 🏷️ What is a Trademark in the United States? (Simple Plain-Language Explanation)\n\n"
+            "In plain, everyday English, a **Trademark** in the United States is your brand's unique commercial identity. "
+            "It can be your brand name, logo, slogan, packaging design, or signature symbol that tells American consumers:\n"
+            "👉 **'This product was genuinely made by our company, not an imitator or counterfeit competitor.'**\n\n"
+            "Think of it as your official federal certificate of brand ownership. Registering your trademark with the **USPTO (United States Patent and Trademark Office)** "
+            "gives you nationwide priority and the legal right to shut down copycats across all 50 US states.\n\n"
+            "---\n\n"
+            "### 📜 Statutory Provisions: The Lanham Act (15 U.S.C. § 1051 et seq.)\n\n"
+            "1. **Statutory Definition (15 U.S.C. § 1127):**\n"
+            "   Under Section 45 of the Lanham Act, a trademark is defined as:\n"
+            "   > *'Any word, name, symbol, or device, or any combination thereof... used by a person to identify and distinguish his or her goods, "
+            "   including a unique product, from those manufactured or sold by others and to indicate the source of the goods.'*\n\n"
+            "2. **Filing Bases under 15 U.S.C. § 1051:**\n"
+            "   - **Section 1(a) (Actual Use in Commerce):** The mark is actively used in US interstate or foreign commerce on commercial goods. Requires submitting a verified specimen of use (e.g. product label or packaging).\n"
+            "   - **Section 1(b) (Intent to Use - ITU):** Allows reserving the trademark before commercial launch based on a bona fide intention to use it in US commerce. A Statement of Use (SOU) with specimen must be submitted after USPTO approval.\n\n"
+            "3. **Principal Register vs. Supplemental Register:**\n"
+            "   - **Principal Register:** Reserved for inherently distinctive marks (Arbitrary, Fanciful, or Suggestive). Grants nationwide constructive notice, prima facie evidence of validity, and incontestable status after 5 years (15 U.S.C. § 1065).\n"
+            "   - **Supplemental Register:** For merely descriptive marks that have not yet achieved secondary meaning; offers federal notice but lacks the statutory presumption of exclusive ownership.\n\n"
+            "4. **Nice Classification Classes for Herbal & Wellness Goods:**\n"
+            "   - **Class 5:** Dietary supplements, herbal medicines, and medicated therapeutic preparations.\n"
+            "   - **Class 3:** Non-medicated herbal cosmetics, essential oils, and skincare.\n\n"
+            "---\n\n"
+            "### 💡 Recommended Next Step: How to Register Your US Trademark\n\n"
+            "**Quick USPTO Filing Summary:**\n"
+            "1. **USPTO Clearance Search:** Check the USPTO Trademark Search system for conflicting live applications.\n"
+            "2. **Select Nice Class:** Identify Class 5 (Dietary Supplements) or Class 3 (Cosmetics) from the USPTO ID Manual.\n"
+            "3. **Submit via TEAS:** File an electronic application on `uspto.gov`. Statutory fee is **$250 per class** (TEAS Plus) or **$350 per class** (TEAS Standard).\n"
+            "4. **Registration Notice:** Once registered on the Principal Register, you may legally use the federal registration symbol **®**."
+        )
+    elif is_tm_procedural:
+        answer = (
+            "### 📋 Step-by-Step Statutory Process: How to Register a Trademark in the US (USPTO)\n\n"
+            "To legally register and protect a brand name or logo in the United States under the **Lanham Act (15 U.S.C. § 1051 et seq.)**, "
+            "you must follow the official electronic filing workflow through the **United States Patent and Trademark Office (USPTO)**:\n\n"
+            "#### 1️⃣ Step 1: Comprehensive Trademark Clearance Search\n"
+            "- Conduct a search on the **USPTO Trademark Search** database and common-law registries to confirm that no confusingly similar mark "
+            "is already registered or pending for related goods under **Lanham Act § 2(d)**.\n\n"
+            "#### 2️⃣ Step 2: Establish Filing Basis (Section 1(a) vs. Section 1(b))\n"
+            "- **Section 1(a) (Actual Use):** If you are already selling products in US interstate commerce, file under § 1(a) and upload a verified specimen (e.g. container label, packaging, or point-of-sale display).\n"
+            "- **Section 1(b) (Intent to Use - ITU):** If your product has not yet launched in the US, reserve rights under § 1(b) based on bona fide intent. You have up to 36 months after allowance to submit proof of use.\n\n"
+            "#### 3️⃣ Step 3: Identify Goods from the USPTO Trademark ID Manual\n"
+            "- Select pre-approved statutory descriptions from the official ID Manual to qualify for subsidized fees:\n"
+            "  - **Class 5:** Dietary supplements, botanical extracts for medicinal purposes.\n"
+            "  - **Class 3:** Cosmetics, non-medicated skincare, essential oils.\n\n"
+            "#### 4️⃣ Step 4: Electronic Submission via TEAS & Statutory Fees\n"
+            "- File online through the USPTO portal using the Trademark Electronic Application System (TEAS):\n"
+            "  - **TEAS Plus:** **$250 per class** (using standard ID Manual entries).\n"
+            "  - **TEAS Standard:** **$350 per class** (custom identification).\n"
+            "- Foreign-domiciled applicants must be represented by a licensed U.S. attorney.\n\n"
+            "#### 5️⃣ Step 5: USPTO Examining Attorney Review & Office Actions\n"
+            "- A USPTO Examining Attorney reviews the application for absolute and relative grounds for refusal.\n"
+            "- If an Office Action is issued (e.g., likelihood of confusion under § 2(d) or descriptiveness under § 2(e)(1)), the applicant has 3 months to submit a written response.\n\n"
+            "#### 6️⃣ Step 6: 30-Day Publication in the Official Gazette & Registration\n"
+            "- If approved, the mark is published in the weekly **USPTO Official Gazette** for a 30-day public opposition period.\n"
+            "- If no opposition is filed, the USPTO issues a **Certificate of Registration** (for § 1(a)) or a **Notice of Allowance** (for § 1(b))."
+        )
+    elif is_patent_definitional:
+        answer = (
+            "### 💡 What is a Patent in the United States? (Simple Plain-Language Explanation)\n\n"
+            "In simple, everyday terms, a **Patent** in the US is a powerful legal property right granted by the federal government "
+            "(through the USPTO). It grants an inventor the exclusive right to stop anyone else from making, using, offering for sale, "
+            "selling, or importing their invention into the United States for up to **20 years**.\n\n"
+            "Think of it as a government-enforced commercial monopoly granted in exchange for publicly disclosing the technical blueprints of your invention.\n\n"
+            "---\n\n"
+            "### 📜 Statutory Provisions: United States Patent Code (Title 35 U.S.C.)\n\n"
+            "1. **Patentable Inventions (35 U.S.C. § 101):**\n"
+            "   > *'Whoever invents or discovers any new and useful process, machine, manufacture, or composition of matter, "
+            "   or any new and useful improvement thereof, may obtain a patent therefor, subject to the conditions and requirements of this title.'*\n\n"
+            "2. **Three Core Statutory Benchmarks:**\n"
+            "   - **Novelty (35 U.S.C. § 102):** The invention must be new worldwide before the effective filing date.\n"
+            "   - **Non-Obviousness (35 U.S.C. § 103):** The differences between the claimed subject matter and the prior art must not have been obvious at the time of filing to a person having ordinary skill in the art (PHOSITA).\n"
+            "   - **Enablement & Written Description (35 U.S.C. § 112):** The specification must contain a full, clear, concise, and exact description of how to make and use the invention.\n\n"
+            "3. **Exclusive Monopoly Rights (35 U.S.C. § 271):**\n"
+            "   Authorizes the patentee to file civil infringement lawsuits in US Federal District Court for treble damages and permanent injunctions against infringing competitors.\n\n"
+            "4. **Term of Patent (35 U.S.C. § 154):**\n"
+            "   Utility patents expire 20 years from the earliest effective US filing date, subject to maintenance fees at 3.5, 7.5, and 11.5 years."
+        )
+    elif is_patent_procedural:
+        answer = (
+            "### 📋 Step-by-Step Statutory Process: How to File a Patent in the US (USPTO)\n\n"
+            "To file and secure a utility patent in the United States under **Title 35 of the United States Code (35 U.S.C.)**, "
+            "follow this statutory workflow through the **USPTO Patent Center**:\n\n"
+            "#### 1️⃣ Step 1: Global Prior Art Search\n"
+            "- Perform a comprehensive search using **USPTO Patent Public Search**, Google Patents, and international databases "
+            "(including TKDL for botanical formulations) to verify that no § 102 anticipating prior art exists.\n\n"
+            "#### 2️⃣ Step 2: Provisional Patent Application (35 U.S.C. § 111(b))\n"
+            "- Optional but highly recommended: File a **Provisional Application** to secure an immediate priority date for 12 months with lower filing fees and no formal claims required.\n"
+            "- Establishes official 'Patent Pending' status.\n\n"
+            "#### 3️⃣ Step 3: Non-Provisional Utility Patent Application (35 U.S.C. § 111(a))\n"
+            "- Must be filed within 12 months of any provisional application.\n"
+            "- **Required Elements:** Detailed specification, formal claims, drawings, abstract, and Inventor's Oath or Declaration under **35 U.S.C. § 115**.\n\n"
+            "#### 4️⃣ Step 4: Electronic Filing on USPTO Patent Center & Statutory Fees\n"
+            "- Submitted electronically via `patentcenter.uspto.gov`.\n"
+            "- Statutory fees (filing, search, and examination fees) are discounted by **60% for Small Entities** (fewer than 500 employees or universities) and **80% for Micro Entities**.\n\n"
+            "#### 5️⃣ Step 5: Examination, Office Actions & Patent Grant\n"
+            "- A USPTO Patent Examiner conducts a prior art search and issues a First Office Action (typically § 101, § 102, or § 103 rejections).\n"
+            "- Applicant submits claim amendments and legal arguments within 3 months (extendable up to 6 months).\n"
+            "- Upon allowance, the applicant pays the statutory Issue Fee, and the USPTO issues Letters Patent under **35 U.S.C. § 151**."
+        )
+    else:
+        best_p = passages[0]
+        answer = (
+            f"### ⚖️ United States Statutory Position (USPTO / US Code)\n"
+            f"According to **{best_p['source']}** under US federal legal standards:\n\n"
+            f"**{best_p['section']}**:\n"
+            f"{best_p['text']}\n\n"
+        )
+
+    answer += "\n\n---\n**📚 US Statutory & Regulatory References:**\n"
+    for p in passages[:4]:
+        answer += f"- `{p['key']}` **{p['source']}** — *{p['section']}* ({p['domain'].upper()} · {p.get('jurisdiction', 'US')})\n"
+
+    return answer
+
+
+def _synthesize_answer_eu(query: str, passages: list[dict]) -> str:
+    """European Patent Convention (EPC Articles 52, 53, 54, 56) and German Patent Act (PatG)."""
+    answer = (
+        "### 🇪🇺 European & German Patent Law Framework (EPO & DPMA)\n\n"
+        "Patentability in the European Union and Germany is governed by the **European Patent Convention (EPC)** "
+        "and national laws such as the **German Patent Act (Patentgesetz - PatG)**:\n\n"
+        "#### 1️⃣ EPC Article 52 & PatG § 1: Patentable Inventions\n"
+        "- European patents are granted for inventions in all fields of technology provided they are **new**, "
+        "involve an **inventive step**, and are susceptible of **industrial application**.\n"
+        "- Discoveries and natural substances in their natural state are excluded as lacking technical character.\n\n"
+        "#### 2️⃣ EPC Article 53(c): Medical Method Exclusions & Second Medical Use\n"
+        "- Under EPC Article 53(c), methods for treatment of the human or animal body by surgery or therapy and "
+        "diagnostic methods are excluded from patentability.\n"
+        "- However, products, substances, or compositions (such as botanical extracts) for use in such methods are patentable "
+        "under EPC Article 54(4) (first medical use) and Article 54(5) (second or further medical use in EPC 2000 format: "
+        "'*Substance X for use in the treatment of disease Y*').\n\n"
+        "#### 3️⃣ EPC Article 54 & 56: Absolute Novelty & The Problem-Solution Approach\n"
+        "- **Article 54 (Absolute Novelty):** Any publication worldwide prior to the filing or priority date forms part of the state of the art. "
+        "Traditional knowledge and documented Ayurvedic literature destroy novelty if accessible anywhere.\n"
+        "- **Article 56 (Inventive Step):** The EPO strictly applies the **Problem-Solution Approach**: (1) determine closest prior art, "
+        "(2) formulate objective technical problem, (3) assess whether the claimed solution was obvious to the skilled person.\n\n"
+        "#### 4️⃣ German Practice (DPMA & BfArM Phytopharmaceuticals)\n"
+        "- Under DPMA practice and German case law (*Knorpelbildung*), botanical extracts defined by standardized active fractions "
+        "or multi-component synergies can be patented as defined pharmaceutical compositions.\n"
+        "- Regulatory marketing as a phytopharmaceutical in Germany requires marketing authorization from the **BfArM (Federal Institute for Drugs and Medical Devices)**."
+    )
+    answer += "\n\n---\n**📚 European & German Statutory References:**\n"
+    for p in passages[:4]:
+        answer += f"- `{p['key']}` **{p['source']}** — *{p['section']}* ({p['domain'].upper()} · {p.get('jurisdiction', 'EU')})\n"
+    return answer
+
+
+def _synthesize_answer_wo(query: str, passages: list[dict]) -> str:
+    """Patent Cooperation Treaty (PCT) and WIPO Genetic Resources Treaty."""
+    answer = (
+        "### 🌐 International Patent Architecture (WIPO / PCT)\n\n"
+        "International patent protection for botanical formulations and inventions utilizing genetic resources is governed by "
+        "the **Patent Cooperation Treaty (PCT)** and the **WIPO Diplomatic Treaty (May 2024)**:\n\n"
+        "#### 1️⃣ PCT International Filing & Priority (Articles 8 & 11)\n"
+        "- A single international patent application filed with a Receiving Office (RO) preserves patent filing rights across 157 Contracting States.\n"
+        "- **Article 8 Priority:** Applicants can claim priority within 12 months of their initial national filing under the Paris Convention.\n"
+        "- **National Phase Entry:** Under PCT Article 22/39, applicants have 30 or 31 months from priority to enter national phases (e.g. USPTO, EPO, CGPDTM India).\n\n"
+        "#### 2️⃣ PCT Article 33: International Preliminary Examination\n"
+        "- Evaluates International Search Report (ISR) and Written Opinion (WO-ISA) on Novelty, Inventive Step, and Industrial Applicability.\n\n"
+        "#### 3️⃣ WIPO Treaty on IP, Genetic Resources & Associated Traditional Knowledge (May 2024)\n"
+        "- Mandates compulsory patent disclosure: Patent applicants worldwide MUST disclose the country of origin of genetic resources "
+        "or the indigenous/traditional community providing the associated traditional knowledge upon which the invention is based."
+    )
+    answer += "\n\n---\n**📚 International Statutory References (WIPO):**\n"
+    for p in passages[:4]:
+        answer += f"- `{p['key']}` **{p['source']}** — *{p['section']}* ({p['domain'].upper()} · {p.get('jurisdiction', 'WO')})\n"
+    return answer
+
+
+def _synthesize_answer(query: str, passages: list[dict], target_jurisdiction: str = "IN") -> str:
     """Generate a rich, direct, domain-specific answer answering the user's question."""
+    jur = (target_jurisdiction or "IN").upper()
+    if jur == "US":
+        return _synthesize_answer_us(query, passages)
+    elif jur in ("EU", "DE"):
+        return _synthesize_answer_eu(query, passages)
+    elif jur == "WO":
+        return _synthesize_answer_wo(query, passages)
+
+    # Check if passages themselves are exclusively foreign (e.g. when jurisdiction was auto-detected)
+    passage_jurs = set(p.get("jurisdiction", "").upper() for p in passages if p.get("jurisdiction"))
+    if passage_jurs == {"US"}:
+        return _synthesize_answer_us(query, passages)
+    elif passage_jurs.issubset({"EU", "DE"}):
+        return _synthesize_answer_eu(query, passages)
+    elif passage_jurs == {"WO"}:
+        return _synthesize_answer_wo(query, passages)
+
     q_lower = query.lower()
 
     if not passages:
@@ -181,12 +513,57 @@ def _synthesize_answer(query: str, passages: list[dict]) -> str:
     is_gi = any(w in q_lower for w in ["gi tag", "geographical indication", "gi act"])
 
     # 9. Patentability & Innovation queries (e.g. Ashwagandha formulation)
-    is_patent_ayurveda = any(w in q_lower for w in [
-        "patent an ayurvedic", "ashwagandha", "section 3(e)", "section 3(p)",
-        "admixture", "synergy", "tkdl", "patentable"
+    # 10. Foreign Entrant queries (e.g. American citizen or overseas company wanting to sell/import into India)
+    is_foreign_entrant = any(w in q_lower for w in [
+        "foreign", "american", "usa", "us company", "from america", "selling in india",
+        "sell in india", "sell my product in india", "sell product in india", "export to india",
+        "import to india", "import into india", "non-indian", "nba form iii", "foreign applicant",
+        "foreign entity", "us citizen", "american citizen"
     ])
 
-    if is_registration_ayush:
+    if is_foreign_entrant:
+        answer = (
+            "### 🌐 Statutory Compliance Roadmap: Foreign & US Companies Selling Herbal & Ayurvedic Products in India\n\n"
+            "If you are an American company, overseas entity, or non-Indian citizen planning to commercialize, export, "
+            "or patent herbal and Ayurvedic products in India, you must navigate four critical statutory pillars under Indian federal law:\n\n"
+            "#### 1️⃣ National Biodiversity Authority (NBA) Clearance (Biological Diversity Act, 2002)\n"
+            "- **Mandatory Statutory Clearance (Section 3(2) & Section 6):**\n"
+            "  Under Section 3(2) of the Biological Diversity Act, 2002, any non-Indian citizen, foreign entity, or Indian company "
+            "  with non-Indian equity or foreign management **CANNOT** access Indian biological resources (herbs, raw plants, extracts) "
+            "  or associated traditional knowledge without prior written approval from the National Biodiversity Authority (NBA).\n"
+            "- **Statutory Bar on IP Filings (Section 6(1)):**\n"
+            "  Non-Indian entities cannot file for any patent or intellectual property right in India or abroad based on Indian biological resources "
+            "  without obtaining prior NBA approval via **Form III**.\n"
+            "- **Commercial Access:** For commercial utilization of Indian bio-resources, submit **Form I** to the NBA in Chennai and enter into a "
+            "  statutory Access and Benefit Sharing (ABS) agreement.\n\n"
+            "#### 2️⃣ CDSCO Import Registration for ASU Drugs (Drugs and Cosmetics Act, 1940 & Rules, 1945)\n"
+            "- **Import License on Form 10 (Rule 24A):**\n"
+            "  If marketing a therapeutic or medicinal Ayurvedic/ASU product in India, the overseas manufacturer must obtain an **Import License on Form 10** "
+            "  from the Central Drugs Standard Control Organization (CDSCO) via the SUGAM portal.\n"
+            "- **Authorized Indian Agent:**\n"
+            "  Foreign applicants must appoint an **Authorized Indian Agent** who holds a valid wholesale drug license (Form 20B/21B) and an active Indian establishment registration.\n"
+            "- **Facility Audit:** The foreign manufacturing site must demonstrate GMP compliance equivalent to WHO-GMP or Schedule T standards.\n\n"
+            "#### 3️⃣ FSSAI Import Clearance for Ayurveda Aahara (Food Safety Regulations, 2022)\n"
+            "- **FoSCoS Importer Registration:**\n"
+            "  If your product is classified as a dietary supplement or wellness food, it is regulated under the **Food Safety and Standards (Ayurveda Aahara) Regulations, 2022**.\n"
+            "- **Statutory Standards:**\n"
+            "  - Ingredients must strictly conform to recipes in authoritative treatises listed in Schedule A.\n"
+            "  - The official **'Ayurveda Aahara' logo** must be prominently displayed on the front label alongside the statutory category designation.\n"
+            "  - **Prohibition on Disease Claims (Regulation 2.3):** No claims to cure, treat, or mitigate specific diseases are permitted.\n\n"
+            "#### 4️⃣ Intellectual Property Protection in India (Patents & Trademarks)\n"
+            "- **The Patents Act, 1970:**\n"
+            "  - Formulations must overcome **Section 3(p)** (traditional knowledge exclusion) and **Section 3(e)** (mere admixture bar, requiring synergy bioassays CI < 1.0).\n"
+            "  - Foreign applicants must maintain an **Address for Service in India** (Rule 18) and file through a registered Indian Patent Agent.\n"
+            "- **The Trade Marks Act, 1999:**\n"
+            "  - Secure trademark protection via **Form TM-A** on `ipindia.gov.in` under Class 5 (Medicines) and Class 3/30 (Cosmetics/Dietary Foods).\n\n"
+            "---\n\n"
+            "### 🚀 Action Checklist for US / Foreign Entrants:\n"
+            "1. **Corporate Presence:** Establish an Indian liaison office, subsidiary, or appoint an authorized Indian distributor.\n"
+            "2. **NBA Form III Approval:** Ensure biodiversity clearances are secured before filing Indian patent applications.\n"
+            "3. **Regulatory Route:** Choose between CDSCO Form 10 (medicinal ASU drug) or FSSAI FoSCoS (Ayurveda Aahara wellness product).\n"
+            "4. **Trademark Filing:** File Form TM-A with an Indian address for service to reserve brand rights prior to importation."
+        )
+    elif is_registration_ayush:
         answer = (
             "### 📋 Step-by-Step Statutory Process: Registering an Ayurvedic Product in India\n\n"
             "To legally register and manufacture an Ayurvedic product in India, you must follow the statutory licensing "
@@ -1026,22 +1403,34 @@ class MockLLMAdapter(BaseLLMAdapter):
         context: str,
         language: str = "en",
         max_tokens: int = 1024,
+        jurisdiction: str = "IN",
     ) -> LLMResponse:
         t0 = time.perf_counter()
 
         passages = _parse_context(context)
+        target_jur = (jurisdiction or "IN").upper()
+        if target_jur in ("AUTO", "GLOBAL", ""):
+            passage_jurs = [p.get("jurisdiction", "IN").upper() for p in passages if p.get("jurisdiction")]
+            target_jur = passage_jurs[0] if passage_jurs else "IN"
+
         is_telugu = language == "te" or bool(re.search(r"[\u0C00-\u0C7F]", query))
         is_tamil = language == "ta" or bool(re.search(r"[\u0B80-\u0BFF]", query))
         is_hindi = language == "hi" or bool(re.search(r"[\u0900-\u097F]", query))
 
-        if is_telugu:
+        if target_jur == "US":
+            answer = _synthesize_answer_us(query, passages)
+        elif target_jur in ("EU", "DE"):
+            answer = _synthesize_answer_eu(query, passages)
+        elif target_jur == "WO":
+            answer = _synthesize_answer_wo(query, passages)
+        elif is_telugu:
             answer = _synthesize_answer_telugu(query, passages)
         elif is_tamil:
             answer = _synthesize_answer_tamil(query, passages)
         elif is_hindi:
             answer = _synthesize_answer_hindi(query, passages)
         else:
-            answer = _synthesize_answer(query, passages)
+            answer = _synthesize_answer(query, passages, target_jurisdiction=target_jur)
 
         latency_ms = int((time.perf_counter() - t0) * 1000)
         return LLMResponse(

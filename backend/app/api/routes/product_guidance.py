@@ -1,4 +1,4 @@
-﻿"""
+"""
 backend/app/api/routes/product_guidance.py
 ────────────────────────────────────────────
 POST /api/product-guidance
@@ -87,6 +87,7 @@ async def product_guidance(request: ProductGuidanceRequest) -> ProductGuidanceRe
         query=enriched_query,
         context=context,
         language=request.language or "en",
+        jurisdiction=request.jurisdiction or "IN",
     )
 
     cited_passages = [

@@ -1,0 +1,28 @@
+{
+  "document_id": "US-LANHAM-TRADEMARKS-USPTO",
+  "title": "United States Trademark Statutes (15 U.S.C. Lanham Act) & USPTO Examination Standards",
+  "authority": "United States Patent and Trademark Office (USPTO)",
+  "jurisdiction": "US",
+  "domain": "trademarks",
+  "source_url": "https://www.uspto.gov/trademarks",
+  "document_hash": "cf1c7c7548dd6d817ba5135e2a578250ed7c9d8229cb83cfdd37cbd73f4d2da3",
+  "section_count": 4,
+  "sections": [
+    {
+      "title": "Section 1: Lanham Act 15 U.S.C. 1051 — Trademark Registration, Use in Commerce and Intent-to-Use",
+      "content": "Section 1: Lanham Act 15 U.S.C. 1051 — Trademark Registration, Use in Commerce and Intent-to-Use\n\nUnder Section 1 of the Lanham Act (15 U.S.C. § 1051), the owner of a trademark used in commerce may request registration of its trademark on the Principal Register.\n1. Section 1(a) (Actual Use in Commerce): The mark is currently in bona fide use in interstate or international commerce on goods. The applicant must submit a verified specimen showing how the mark is used on the packaging, label, or point-of-sale display of the product.\n2. Section 1(b) (Intent to Use - ITU): An applicant may file based on a bona fide intention to use the mark in commerce. This reserves nationwide priority while commercial manufacturing or marketing is prepared. A Notice of Allowance is issued, after which the applicant must file an Allegation of Use / Statement of Use (SOU) with a specimen within 6 months (extendable up to 36 months)."
+    },
+    {
+      "title": "Section 2: Lanham Act 15 U.S.C. 1052 & 1127 — Definition of Trademark & Grounds for Refusal",
+      "content": "Section 2: Lanham Act 15 U.S.C. 1052 & 1127 — Definition of Trademark & Grounds for Refusal\n\nUnder 15 U.S.C. § 1127, a trademark includes any word, name, symbol, or device, or any combination thereof used by a person to identify and distinguish goods, including a unique product, from those manufactured or sold by others and to indicate the source of the goods.\nUnder 15 U.S.C. § 1052:\n1. Distinctiveness Spectrum: Fanciful (coined), Arbitrary, and Suggestive marks are inherently distinctive and registrable without proof of secondary meaning.\n2. Merely Descriptive Marks (§ 2(e)(1)): Generic botanical plant names (e.g. attempting to trademark Ashwagandha or Turmeric alone) cannot be registered. Descriptive terms require proof of acquired distinctiveness under Section 2(f) through continuous exclusive commercial use.\n3. Likelihood of Confusion (§ 2(d)): A mark is refused if it so resembles a registered mark or previously filed application as to be likely to cause confusion, mistake, or deception in the minds of the consuming public."
+    },
+    {
+      "title": "Section 3: Principal Register vs Supplemental Register & Incontestable Status",
+      "content": "Section 3: Principal Register vs Supplemental Register & Incontestable Status\n\n1. Principal Register: Offers the highest level of legal protection under federal law, granting nationwide constructive notice of ownership, prima facie presumption of validity and ownership, federal court jurisdiction, and the right to register with U.S. Customs and Border Protection (CBP) to block infringing imports. Under Section 15 (15 U.S.C. § 1065), a mark on the Principal Register can achieve Incontestable Status after five consecutive years of registered use.\n2. Supplemental Register: Intended for descriptive marks capable of distinguishing goods that have not yet acquired secondary meaning. Provides basis for USPTO examiners to cite against confusingly similar future applications, but does not carry statutory presumptions of ownership or validity."
+    },
+    {
+      "title": "Section 4: Nice Classification Classes for Herbal Products & USPTO TEAS Filing Fees",
+      "content": "Section 4: Nice Classification Classes for Herbal Products & USPTO TEAS Filing Fees\n\n1. Classification for Botanical & Herbal Goods:\n   - International Class 5: Dietary supplements, herbal medicines, nutraceuticals, herbal teas for medicinal purposes.\n   - International Class 3: Non-medicated herbal cosmetics, skincare oils, botanical soaps, essential oils.\n2. USPTO Filing Systems & Fees:\n   - TEAS Plus: \\ per class (utilizing predetermined identifications from the official USPTO ID Manual and agreeing to electronic communication).\n   - TEAS Standard: \\ per class (custom goods/services descriptions).\n   - Legal Symbol Usage: The federal registration symbol (R) may only be used after formal issuance of a registration certificate from the USPTO. While pending, TM (trademark) or SM (service mark) should be used."
+    }
+  ]
+}

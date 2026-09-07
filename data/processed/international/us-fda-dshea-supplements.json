@@ -1,0 +1,32 @@
+{
+  "document_id": "US-FDA-DSHEA-SUPPLEMENTS",
+  "title": "U.S. FDA Dietary Supplement Health and Education Act (DSHEA 1994 & 21 CFR Part 111)",
+  "authority": "U.S. Food and Drug Administration (FDA)",
+  "jurisdiction": "US",
+  "domain": "ayush",
+  "source_url": "https://www.fda.gov/food/dietary-supplements",
+  "document_hash": "b4a73135bcd07097b7ffcdbe8c35b9c890f3adb0ead8bab43277b22edc676e39",
+  "section_count": 5,
+  "sections": [
+    {
+      "title": "# FDA Dietary Supplement & Herbal Product Statutes (DSHEA 1994 & 21 CFR Part 111)",
+      "content": "# FDA Dietary Supplement & Herbal Product Statutes (DSHEA 1994 & 21 CFR Part 111)\n\n# Jurisdiction: US | Authority: U.S. Food and Drug Administration (FDA)\n# Document Type: STATUTE & FEDERAL REGULATIONS"
+    },
+    {
+      "title": "Section 1: FDA DSHEA (21 U.S.C. 321(ff) & 343(r)(6)) — Dietary Supplement Classification & Structure/Function Claims",
+      "content": "Section 1: FDA DSHEA (21 U.S.C. 321(ff) & 343(r)(6)) — Dietary Supplement Classification & Structure/Function Claims\n\nIn the United States, botanical preparations and herbal products (such as Ashwagandha, Turmeric, Boswellia) are marketed primarily as Dietary Supplements under the Dietary Supplement Health and Education Act of 1994 (DSHEA) (codified in 21 U.S.C. § 321(ff) and § 343(r)(6)).\n1. Pre-Market Status: Dietary supplements do not require pre-market approval or NDA clinical trial submissions before marketing, provided ingredients are grandfathered or established dietary ingredients.\n2. Structure/Function Claims: Statements describing the role of a nutrient or dietary ingredient intended to affect or maintain the normal structure or function in humans (e.g., 'Supports joint flexibility', 'Promotes restful sleep', 'Helps maintain healthy immune function')."
+    },
+    {
+      "title": "Section 2: Strict Prohibition on Disease Claims & Mandatory FDA Disclaimer Box",
+      "content": "Section 2: Strict Prohibition on Disease Claims & Mandatory FDA Disclaimer Box\n\n1. Prohibition on Disease Claims: A dietary supplement label or marketing claim cannot state or imply that the product will diagnose, treat, cure, mitigate, or prevent any disease (e.g. claims to treat diabetes, cure arthritis, or reduce blood pressure). Making disease claims legally renders the product an unapproved new drug under Section 505 of the FD&C Act, subjecting the distributor to FDA Warning Letters, federal seizure, and nationwide injunctions.\n2. Mandatory Statutory Disclaimer: Every label displaying a structure/function claim must prominently feature the verbatim statutory disclaimer box:\n'This statement has not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.'"
+    },
+    {
+      "title": "Section 3: 30-Day Notification Requirement (Form FDA 3955) & FSMA Facility Registration",
+      "content": "Section 3: 30-Day Notification Requirement (Form FDA 3955) & FSMA Facility Registration\n\n1. 30-Day Notification: Under 21 U.S.C. § 343(r)(6), the dietary supplement manufacturer, packer, or distributor must submit written notification to the FDA within 30 calendar days of first commercial marketing of a product bearing a structure/function claim, using Form FDA 3955.\n2. Facility Registration (21 CFR Part 1): Domestic and foreign facilities that manufacture, process, pack, or hold dietary supplements for consumption in the US must register with the FDA under the Food Safety Modernization Act (FSMA). Foreign facilities must designate a registered U.S. Agent."
+    },
+    {
+      "title": "Section 4: Current Good Manufacturing Practice (cGMP) for Dietary Supplements (21 CFR Part 111)",
+      "content": "Section 4: Current Good Manufacturing Practice (cGMP) for Dietary Supplements (21 CFR Part 111)\n\nAll dietary supplement manufacturing, packaging, labeling, and holding must comply strictly with 21 CFR Part 111:\n1. Master Manufacturing Record (MMR) and Batch Production Records (BPR).\n2. Specifications: Establish specifications for identity, purity, strength, and composition of each component and finished batch.\n3. Contaminant Limits: Mandatory testing to verify limits on heavy metals (Lead, Arsenic, Cadmium, Mercury), microbial pathogens (Salmonella, E. coli), pesticides, and residual solvents."
+    }
+  ]
+}

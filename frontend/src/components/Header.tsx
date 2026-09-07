@@ -8,13 +8,15 @@ import {
   BoxArrowRight,
   Globe2,
 } from "react-bootstrap-icons";
-import { LanguageCode, UserProfile } from "@/types";
+import { JurisdictionType, LanguageCode, UserProfile } from "@/types";
 import { getTranslation } from "@/lib/i18n";
 import Link from "next/link";
 
 interface HeaderProps {
   language: LanguageCode;
   onLanguageChange: (lang: LanguageCode) => void;
+  jurisdiction?: JurisdictionType;
+  onJurisdictionChange?: (jur: JurisdictionType) => void;
   sessionCount: number;
   onOpenHistory: () => void;
   onOpenCompare: () => void;
@@ -23,6 +25,14 @@ interface HeaderProps {
   onLogout: () => void;
   onGoHome: () => void;
 }
+
+const COUNTRIES: { code: JurisdictionType; label: string; flag: string; sub: string }[] = [
+  { code: "US", label: "USA", flag: "🇺🇸", sub: "USPTO / FDA" },
+  { code: "IN", label: "India", flag: "🇮🇳", sub: "CGPDTM / AYUSH" },
+  { code: "EU", label: "Europe", flag: "🇪🇺", sub: "EPO / EMA" },
+  { code: "DE", label: "Germany", flag: "🇩🇪", sub: "DPMA" },
+  { code: "WO", label: "Global", flag: "🌐", sub: "WIPO PCT" },
+];
 
 const LANGUAGES: { code: LanguageCode; label: string }[] = [
   { code: "en", label: "English" },
@@ -36,6 +46,8 @@ const LANGUAGES: { code: LanguageCode; label: string }[] = [
 export default function Header({
   language,
   onLanguageChange,
+  jurisdiction = "IN",
+  onJurisdictionChange,
   sessionCount,
   onOpenHistory,
   onOpenCompare,
@@ -169,6 +181,26 @@ export default function Header({
               <span className="text-xs">Sign In</span>
             </Link>
           )}
+
+          {/* Target Country / Market Selector */}
+          <div className="flex items-center gap-1.5 bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-300 rounded-xl px-2.5 py-1.5 text-xs hover:border-emerald-500 transition-colors shadow-2xs btn-spring shrink-0">
+            <span className="text-sm shrink-0">
+              {COUNTRIES.find((c) => c.code === jurisdiction)?.flag || "🇮🇳"}
+            </span>
+            <select
+              value={jurisdiction || "IN"}
+              onChange={(e) => onJurisdictionChange?.(e.target.value as JurisdictionType)}
+              aria-label="Select Target Market Country"
+              className="bg-transparent text-emerald-950 font-bold outline-none cursor-pointer text-xs pr-1"
+              title="Select Target Market & Statutory Jurisdiction (Isolates rules & statutes)"
+            >
+              {COUNTRIES.map((c) => (
+                <option key={c.code} value={c.code} className="text-gray-900 bg-white font-medium">
+                  {c.flag} {c.label} ({c.sub})
+                </option>
+              ))}
+            </select>
+          </div>
 
           {/* Language selector - Full icon and dropdown size preserved */}
           <div className="flex items-center gap-1.5 bg-white border border-gray-200/90 rounded-xl px-2.5 py-1.5 text-xs hover:border-emerald-400 transition-colors shadow-2xs btn-spring shrink-0">

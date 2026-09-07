@@ -61,15 +61,20 @@ async def chat(request: ChatRequest) -> ChatResponse:
 
     # ── 1b. Vector Semantic Cache Lookup (< 5ms) ──────────────────────────────
     query_emb = None
+    target_jurisdiction = request.jurisdiction or "IN"
     from backend.app.core.config import settings
     from backend.app.retrieval.semantic_cache import semantic_cache
     if settings.enable_semantic_cache and vector_retriever._model is not None:
         try:
             query_emb = vector_retriever.embed_query(query)
-            cached_resp = semantic_cache.lookup(query_emb)
+            cached_resp = semantic_cache.lookup(
+                query_emb,
+                jurisdiction=target_jurisdiction,
+                language=request.language,
+            )
             if cached_resp:
                 total_ms = int((time.perf_counter() - t0) * 1000)
-                logger.info(f"chat | semantic cache HIT for '{query[:50]}' in {total_ms}ms")
+                logger.info(f"chat | semantic cache HIT [{target_jurisdiction}|{request.language}] for '{query[:50]}' in {total_ms}ms")
                 return ChatResponse(
                     answer=cached_resp["answer"],
                     cited_passages=[CitedPassage(**p) for p in cached_resp.get("cited_passages", [])],
@@ -87,7 +92,7 @@ async def chat(request: ChatRequest) -> ChatResponse:
     retrieval_result = await retrieve(
         query=query,
         domain=request.domain,
-        jurisdiction=request.jurisdiction,
+        jurisdiction=target_jurisdiction,
         final_top_k=10,
     )
     fused = retrieval_result["fused_candidates"]
@@ -115,6 +120,7 @@ async def chat(request: ChatRequest) -> ChatResponse:
         query=query,
         context=context,
         language=request.language,
+        jurisdiction=target_jurisdiction,
     )
 
     # ── 6. Build user-facing cited passages (no internal scores) ──────────────
@@ -148,7 +154,9 @@ async def chat(request: ChatRequest) -> ChatResponse:
                     "answer": llm_response.answer,
                     "cited_passages": [p.model_dump() for p in cited_passages],
                     "model_used": llm_response.model_used,
-                }
+                },
+                jurisdiction=target_jurisdiction,
+                language=request.language,
             )
         except Exception as e:
             logger.debug(f"Failed to store in semantic cache: {e}")

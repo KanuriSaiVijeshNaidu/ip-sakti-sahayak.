@@ -126,8 +126,21 @@ def metadata_filter(
     for c in candidates:
         if domain and domain not in ("auto", "unknown") and c.domain != domain:
             continue
-        if jurisdiction and jurisdiction not in ("auto", "GLOBAL") and c.jurisdiction != jurisdiction:
-            continue
+        if jurisdiction and jurisdiction not in ("auto", "GLOBAL", "ALL"):
+            req_j = jurisdiction.upper()
+            c_j = c.jurisdiction.upper()
+            if req_j == "US" and c_j != "US":
+                continue
+            elif req_j == "IN" and c_j != "IN":
+                continue
+            elif req_j == "EU" and c_j not in ("EU", "WO"):
+                continue
+            elif req_j == "DE" and c_j not in ("DE", "EU"):
+                continue
+            elif req_j == "WO" and c_j not in ("WO", "GLOBAL"):
+                continue
+            elif req_j not in ("US", "IN", "EU", "DE", "WO") and c_j != req_j:
+                continue
         filtered.append(c)
 
     if len(filtered) < len(candidates):

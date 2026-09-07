@@ -29,6 +29,26 @@ DOCUMENTS_CONFIG = [
         "prefix": "US-PATENT"
     },
     {
+        "file_path": RAW_INT_DIR / "usa" / "lanham_act_trademarks_uspto.txt",
+        "doc_id": "US-LANHAM-TRADEMARKS-USPTO",
+        "title": "United States Trademark Statutes (15 U.S.C. Lanham Act) & USPTO Examination Standards",
+        "authority": "United States Patent and Trademark Office (USPTO)",
+        "jurisdiction": "US",
+        "source_url": "https://www.uspto.gov/trademarks",
+        "domain": "trademarks",
+        "prefix": "US-TM"
+    },
+    {
+        "file_path": RAW_INT_DIR / "usa" / "fda_dshea_dietary_supplements.txt",
+        "doc_id": "US-FDA-DSHEA-SUPPLEMENTS",
+        "title": "U.S. FDA Dietary Supplement Health and Education Act (DSHEA 1994 & 21 CFR Part 111)",
+        "authority": "U.S. Food and Drug Administration (FDA)",
+        "jurisdiction": "US",
+        "source_url": "https://www.fda.gov/food/dietary-supplements",
+        "domain": "ayush",
+        "prefix": "US-FDA"
+    },
+    {
         "file_path": RAW_INT_DIR / "europe" / "epc_articles_and_guidelines.txt",
         "doc_id": "EP-EPC-ARTICLES-GUIDELINES",
         "title": "European Patent Convention (EPC Articles 52, 53, 54, 56) & EPO Guidelines",

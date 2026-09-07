@@ -1,4 +1,4 @@
-﻿"""
+"""
 backend/app/llm/openai_llm.py
 ───────────────────────────────
 OpenAI adapter (GPT-4o / GPT-4o-mini).
@@ -30,11 +30,12 @@ class OpenAILLMAdapter(BaseLLMAdapter):
         context: str,
         language: str = "en",
         max_tokens: int = 1024,
+        jurisdiction: str = "IN",
     ) -> LLMResponse:
         t0 = time.perf_counter()
 
         messages = [
-            {"role": "system", "content": self._system_prompt(language)},
+            {"role": "system", "content": self._system_prompt(language, jurisdiction=jurisdiction)},
             {"role": "user", "content": f"{context}\n\nQuestion: {query}"},
         ]
 

@@ -276,8 +276,21 @@ class VectorRetriever:
             meta = self._chunk_meta.get(chunk_id, {})
             if domain and domain != "auto" and meta.get("domain") != domain:
                 continue
-            if jurisdiction and jurisdiction not in ("auto", "GLOBAL", "ALL") and meta.get("jurisdiction") != jurisdiction:
-                continue
+            if jurisdiction and jurisdiction not in ("auto", "GLOBAL", "ALL"):
+                req_j = jurisdiction.upper()
+                c_j = meta.get("jurisdiction", "").upper()
+                if req_j == "US" and c_j != "US":
+                    continue
+                elif req_j == "IN" and c_j != "IN":
+                    continue
+                elif req_j == "EU" and c_j not in ("EU", "WO"):
+                    continue
+                elif req_j == "DE" and c_j not in ("DE", "EU"):
+                    continue
+                elif req_j == "WO" and c_j not in ("WO", "GLOBAL"):
+                    continue
+                elif req_j not in ("US", "IN", "EU", "DE", "WO") and c_j != req_j:
+                    continue
             candidates.append(VectorCandidate(
                 chunk_id=chunk_id,
                 text=meta.get("text", ""),
