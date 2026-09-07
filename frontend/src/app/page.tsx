@@ -26,6 +26,7 @@ import {
   PlusCircleFill,
   ArrowLeftCircleFill,
   JournalBookmarkFill,
+  Globe2,
 } from "react-bootstrap-icons";
 import { getTranslation } from "@/lib/i18n";
 import { DOMAIN_DATA } from "@/lib/domainData";
@@ -453,8 +454,8 @@ export default function ChatPage() {
                 </p>
               </div>
 
-              {/* Quick Action Cards (3 Columns - Purely Ayurvedic & IP Project Related) */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-2xl text-left animate-entrance-3">
+              {/* Quick Action Cards (4 Cards Grid - Including Indian to International Transition) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full max-w-4xl text-left animate-entrance-3">
                 <Link
                   href="/profile"
                   className="p-4 rounded-2xl border border-emerald-300/80 bg-gradient-to-br from-emerald-50/80 via-teal-50/40 to-white hover:border-emerald-500 hover:shadow-sm card-motion flex flex-col justify-between group shadow-2xs cursor-pointer select-none"
@@ -463,13 +464,29 @@ export default function ChatPage() {
                     <div className="w-5 h-5 rounded-full bg-emerald-700 text-white text-[10px] font-bold flex items-center justify-center shrink-0">
                       {userProfile.name ? userProfile.name.charAt(0).toUpperCase() : "U"}
                     </div>
-                    <span>My Profile & Details</span>
+                    <span>My Profile</span>
                     <span className="text-[9px] font-mono px-1.5 py-0.5 bg-emerald-200/80 text-emerald-900 rounded font-bold ml-auto">
                       ACCOUNT
                     </span>
                   </div>
                   <p className="text-[11px] text-gray-600 leading-snug">
                     View Full Name, Verified Gmail, Position ({userProfile.role || "Citizen"}), and Username.
+                  </p>
+                </Link>
+
+                <Link
+                  href="/indian-to-international"
+                  className="p-4 rounded-2xl border border-blue-300/80 bg-gradient-to-br from-blue-50/80 via-indigo-50/40 to-white hover:border-blue-500 hover:shadow-sm card-motion flex flex-col justify-between group shadow-2xs cursor-pointer select-none"
+                >
+                  <div className="flex items-center gap-2 text-xs font-bold text-blue-950 mb-1.5">
+                    <Globe2 className="w-4 h-4 text-blue-700 group-hover:scale-110 transition-transform duration-200" />
+                    <span>IN → International IP</span>
+                    <span className="text-[9px] font-mono px-1.5 py-0.5 bg-blue-200/80 text-blue-900 rounded font-bold ml-auto">
+                      NEW
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-gray-600 leading-snug">
+                    Convert Indian Patents (Form 1) to PCT, USPTO & EPO with Section 39 FFL and NBA clearance.
                   </p>
                 </Link>
 
@@ -482,7 +499,7 @@ export default function ChatPage() {
                 >
                   <div className="flex items-center gap-2 text-xs font-bold text-gray-900 mb-1.5">
                     <JournalBookmarkFill className="w-4 h-4 text-emerald-700 group-hover:scale-110 transition-transform duration-200" />
-                    <span>TKDL Prior-Art Search</span>
+                    <span>TKDL Search</span>
                   </div>
                   <p className="text-[11px] text-gray-500 leading-snug">
                     300K+ formulations, Section 3(p) non-patentability & biological diversity checks.
@@ -495,7 +512,7 @@ export default function ChatPage() {
                 >
                   <div className="flex items-center gap-2 text-xs font-bold text-gray-900 mb-1.5">
                     <ChatLeftTextFill className="w-4 h-4 text-purple-600 group-hover:scale-110 transition-transform duration-200" />
-                    <span>Consultation History</span>
+                    <span>History</span>
                   </div>
                   <p className="text-[11px] text-gray-500 leading-snug">
                     {sessions.length > 0

@@ -274,3 +274,60 @@ export interface JurisdictionComparisonResponse {
   evidence: CitedPassage[];
 }
 
+export interface StatutoryDeadline {
+  milestone: string;
+  deadline_date: string;
+  months_from_priority: number;
+  days_remaining: number;
+  status: "PASSED" | "URGENT" | "UPCOMING";
+  statutory_basis: string;
+  description: string;
+}
+
+export interface ClearanceCheck {
+  requirement: string;
+  status: "COMPLIANT" | "ACTION_REQUIRED" | "CRITICAL_BAR" | "NOT_APPLICABLE";
+  governing_statute: string;
+  details: string;
+  remedy_step?: string | null;
+}
+
+export interface JurisdictionRoadmap {
+  jurisdiction: string;
+  jurisdiction_name: string;
+  authority: string;
+  filing_route: string;
+  key_statutory_requirements: string[];
+  estimated_official_fee: string;
+  recommended_action: string;
+}
+
+export interface IndianToInternationalRequest {
+  indian_application_number: string;
+  priority_date: string; // YYYY-MM-DD
+  title: string;
+  ip_type?: "PATENT" | "TRADEMARK" | "FORMULATION";
+  biological_materials?: string[];
+  has_foreign_filing_license?: boolean;
+  has_nba_approval?: boolean;
+  target_jurisdictions?: string[];
+  applicant_type?: "NATURAL_PERSON" | "STARTUP_SME" | "LARGE_ENTITY";
+  language?: LanguageCode;
+}
+
+export interface IndianToInternationalResponse {
+  indian_application_number: string;
+  title: string;
+  priority_date: string;
+  transition_readiness_score: number;
+  overall_status: string;
+  deadlines: StatutoryDeadline[];
+  clearances: ClearanceCheck[];
+  roadmaps: JurisdictionRoadmap[];
+  estimated_fees: Record<string, string>;
+  required_documents: string[];
+  action_plan: ActionPlanStep[];
+  evidence: CitedPassage[];
+}
+
+

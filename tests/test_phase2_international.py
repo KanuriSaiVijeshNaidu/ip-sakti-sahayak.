@@ -160,3 +160,40 @@ def test_evaluation_benchmarks():
     assert "sk" in multilingual
     assert "ta" in multilingual
     assert "en" in multilingual
+
+
+def test_indian_to_international_transition():
+    """Verify Indian to International IP transition gateway logic, deadlines, and clearances."""
+    from backend.app.services.indian_to_international import convert_indian_to_international
+    from backend.app.models.schemas import IndianToInternationalRequest
+
+    req = IndianToInternationalRequest(
+        indian_application_number="IN202511099234",
+        priority_date="2025-11-01",
+        title="Synergistic Curcumin Nano-Emulsion Formulation",
+        biological_materials=["Curcuma longa L."],
+        has_foreign_filing_license=False,
+        has_nba_approval=False,
+        target_jurisdictions=["WO", "US", "EP", "DE"],
+        applicant_type="STARTUP_SME",
+    )
+    res = convert_indian_to_international(req)
+
+    assert res.indian_application_number == req.indian_application_number
+    assert 0 <= res.transition_readiness_score <= 100
+    assert len(res.deadlines) == 6
+    assert any("PCT" in d.milestone for d in res.deadlines)
+    assert any("US National Stage" in d.milestone for d in res.deadlines)
+    assert any("European Regional" in d.milestone for d in res.deadlines)
+
+    # Clearance checks
+    clearance_reqs = {c.requirement: c for c in res.clearances}
+    assert "Foreign Filing License (Section 39 Patents Act)" in clearance_reqs
+    assert "National Biodiversity Authority (NBA) Clearance" in clearance_reqs
+
+    # Roadmaps & document checklist
+    assert len(res.roadmaps) >= 3
+    assert len(res.required_documents) >= 5
+    assert len(res.action_plan) >= 4
+    assert len(res.evidence) >= 1
+

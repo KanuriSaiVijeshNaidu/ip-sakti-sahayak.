@@ -165,3 +165,26 @@ export async function fetchEvaluationMetrics(jurisdiction = "ALL"): Promise<any>
   throw new Error("Evaluation metrics service temporarily unavailable.");
 }
 
+export async function convertIndianToInternational(
+  req: import("@/types").IndianToInternationalRequest
+): Promise<import("@/types").IndianToInternationalResponse> {
+  const endpoints = ["/api/convert/indian-to-international"];
+  if (API_BASE && API_BASE !== "/api") endpoints.push(`${API_BASE}/convert/indian-to-international`);
+  if (typeof window !== "undefined" && window.location.hostname === "localhost") {
+    endpoints.push("http://127.0.0.1:8000/api/convert/indian-to-international");
+  }
+
+  for (const url of endpoints) {
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(req),
+      });
+      if (res.ok) return await res.json();
+    } catch {}
+  }
+  throw new Error("Indian to International IP transition gateway temporarily unavailable.");
+}
+
+

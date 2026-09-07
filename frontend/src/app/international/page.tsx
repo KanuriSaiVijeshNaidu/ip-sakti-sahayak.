@@ -28,6 +28,13 @@ export default function InternationalPage() {
 
         <div className="flex items-center gap-2">
           <Link
+            href="/indian-to-international"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-blue-200 bg-blue-900/60 hover:bg-blue-800/80 rounded-xl border border-blue-700 transition-all shadow-sm"
+          >
+            <Globe2 className="w-3.5 h-3.5 text-blue-400" />
+            <span>IN → International Gateway</span>
+          </Link>
+          <Link
             href="/compare-jurisdictions"
             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-300 bg-slate-900 hover:bg-slate-800 rounded-xl border border-slate-700 transition-all"
           >

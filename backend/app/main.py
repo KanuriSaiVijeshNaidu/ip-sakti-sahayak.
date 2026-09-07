@@ -113,6 +113,7 @@ def create_app() -> FastAPI:
     from backend.app.api.routes.patentability import router as patentability_router
     from backend.app.api.routes.compare import router as compare_router
     from backend.app.api.routes.evaluation import router as evaluation_router
+    from backend.app.api.routes.convert import router as convert_router
 
     prefix = settings.api_prefix  # "/api"
     app.include_router(chat_router, prefix=prefix, tags=["Chat"])
@@ -124,6 +125,7 @@ def create_app() -> FastAPI:
     app.include_router(patentability_router, prefix=prefix, tags=["Patentability Engine"])
     app.include_router(compare_router, prefix=prefix, tags=["Jurisdiction Comparison"])
     app.include_router(evaluation_router, prefix=prefix, tags=["Evaluation Benchmark"])
+    app.include_router(convert_router, prefix=prefix, tags=["Indian to International IP Transition"])
 
     @app.get(f"{prefix}/health", tags=["Health"])
     async def health():
