@@ -1,0 +1,235 @@
+{
+  "schema_name": "DoclingDocument",
+  "version": "1.10.0",
+  "name": "de_dpma_patent_act",
+  "origin": null,
+  "furniture": {
+    "self_ref": "#/furniture",
+    "parent": null,
+    "children": [],
+    "content_layer": "furniture",
+    "meta": null,
+    "name": "_root_",
+    "label": "unspecified"
+  },
+  "body": {
+    "self_ref": "#/body",
+    "parent": null,
+    "children": [
+      {
+        "cref": "#/texts/0"
+      },
+      {
+        "cref": "#/texts/1"
+      },
+      {
+        "cref": "#/texts/2"
+      },
+      {
+        "cref": "#/texts/3"
+      },
+      {
+        "cref": "#/texts/4"
+      },
+      {
+        "cref": "#/texts/5"
+      },
+      {
+        "cref": "#/texts/6"
+      },
+      {
+        "cref": "#/texts/7"
+      },
+      {
+        "cref": "#/texts/8"
+      },
+      {
+        "cref": "#/texts/9"
+      },
+      {
+        "cref": "#/texts/10"
+      }
+    ],
+    "content_layer": "body",
+    "meta": null,
+    "name": "_root_",
+    "label": "unspecified"
+  },
+  "groups": [],
+  "texts": [
+    {
+      "self_ref": "#/texts/0",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "title",
+      "prov": [],
+      "orig": "German Patent Act (Patentgesetz - PatG) & DPMA Examination Standards",
+      "text": "German Patent Act (Patentgesetz - PatG) & DPMA Examination Standards",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/1",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 1: PatG § 1 — Patentfähige Erfindungen (Patentable Inventions)",
+      "text": "Section 1: PatG § 1 — Patentfähige Erfindungen (Patentable Inventions)",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/2",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "(1) Patente werden für Erfindungen auf allen Gebieten der Technik erteilt, sofern sie neu sind, auf einer erfinderischen Tätigkeit beruhen und gewerblich anwendbar sind.\n(Patents are granted for inventions in any technical field, provided that they are new, involve an inventive step, and are industrially applicable.)\n(2) Nicht als Erfindungen im Sinne des Absatzes 1 werden insbesondere angesehen:\n1. Entdeckungen sowie wissenschaftliche Theorien und mathematische Methoden;\n2. Ästhetische Formschöpfungen;\n3. Pläne, Regeln und Verfahren für gedankliche Tätigkeiten, für Spiele oder für geschäftliche Tätigkeiten sowie Programme für Datenverarbeitungsanlagen;\n4. Die Wiedergabe von Informationen.\n(3) Absatz 2 steht der Patentierung nur insoweit entgegen, als für die genannten Gegenstände oder Tätigkeiten als solche Schutz begehrt wird.",
+      "text": "(1) Patente werden für Erfindungen auf allen Gebieten der Technik erteilt, sofern sie neu sind, auf einer erfinderischen Tätigkeit beruhen und gewerblich anwendbar sind.\n(Patents are granted for inventions in any technical field, provided that they are new, involve an inventive step, and are industrially applicable.)\n(2) Nicht als Erfindungen im Sinne des Absatzes 1 werden insbesondere angesehen:\n1. Entdeckungen sowie wissenschaftliche Theorien und mathematische Methoden;\n2. Ästhetische Formschöpfungen;\n3. Pläne, Regeln und Verfahren für gedankliche Tätigkeiten, für Spiele oder für geschäftliche Tätigkeiten sowie Programme für Datenverarbeitungsanlagen;\n4. Die Wiedergabe von Informationen.\n(3) Absatz 2 steht der Patentierung nur insoweit entgegen, als für die genannten Gegenstände oder Tätigkeiten als solche Schutz begehrt wird.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/3",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 2: PatG § 2a — Ausschlüsse bei biologischem Material und Naturstoffen",
+      "text": "Section 2: PatG § 2a — Ausschlüsse bei biologischem Material und Naturstoffen",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/4",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "(1) Patente werden nicht erteilt für:\n1. Pflanzensorten und Tierrassen sowie im Wesentlichen biologische Verfahren zur Züchtung von Pflanzen oder Tieren;\n2. Verfahren zur chirurgischen oder therapeutischen Behandlung des menschlichen oder tierischen Körpers und Diagnostizierverfahren, die am menschlichen oder tierischen Körper angewendet werden. Dies gilt nicht für Erzeugnisse, insbesondere Stoffe oder Stoffgemische, zur Anwendung in einem dieser Verfahren.\n(2) Biologisches Material, das mit Hilfe eines technischen Verfahrens aus seiner natürlichen Umgebung isoliert oder hergestellt wird, kann auch dann Gegenstand einer Erfindung sein, wenn es in der Natur schon vorhanden war. Ein aus einer ayurvedischen Pflanze isolierter Wirkstoff kann patentiert werden, wenn er technisch gereinigt oder strukturell modifiziert wird und eine überraschende technische Wirkung aufweist.",
+      "text": "(1) Patente werden nicht erteilt für:\n1. Pflanzensorten und Tierrassen sowie im Wesentlichen biologische Verfahren zur Züchtung von Pflanzen oder Tieren;\n2. Verfahren zur chirurgischen oder therapeutischen Behandlung des menschlichen oder tierischen Körpers und Diagnostizierverfahren, die am menschlichen oder tierischen Körper angewendet werden. Dies gilt nicht für Erzeugnisse, insbesondere Stoffe oder Stoffgemische, zur Anwendung in einem dieser Verfahren.\n(2) Biologisches Material, das mit Hilfe eines technischen Verfahrens aus seiner natürlichen Umgebung isoliert oder hergestellt wird, kann auch dann Gegenstand einer Erfindung sein, wenn es in der Natur schon vorhanden war. Ein aus einer ayurvedischen Pflanze isolierter Wirkstoff kann patentiert werden, wenn er technisch gereinigt oder strukturell modifiziert wird und eine überraschende technische Wirkung aufweist.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/5",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 3: PatG § 3 — Stand der Technik & Neuheit (Prior Art & Novelty)",
+      "text": "Section 3: PatG § 3 — Stand der Technik & Neuheit (Prior Art & Novelty)",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/6",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "(1) Eine Erfindung gilt als neu, wenn sie nicht zum Stand der Technik gehört.\n(2) Den Stand der Technik bildet alles, was vor dem für den Zeitrang der Anmeldung maßgeblichen Tag durch schriftliche oder mündliche Beschreibung, durch Benutzung oder in sonstiger Weise der Öffentlichkeit zugänglich gemacht worden ist.\n(3) Indische klassische Ayurveda-Texte (Charaka Samhita, Sushruta Samhita, Ashtanga Hridaya), das Ayurveda Formulary of India (AFI) und die Traditional Knowledge Digital Library (TKDL) gehören vollinhaltlich zum Stand der Technik nach PatG § 3. Wenn eine Formulierung bereits in diesen Quellen beschrieben ist, fehlt ihr die Neuheit.",
+      "text": "(1) Eine Erfindung gilt als neu, wenn sie nicht zum Stand der Technik gehört.\n(2) Den Stand der Technik bildet alles, was vor dem für den Zeitrang der Anmeldung maßgeblichen Tag durch schriftliche oder mündliche Beschreibung, durch Benutzung oder in sonstiger Weise der Öffentlichkeit zugänglich gemacht worden ist.\n(3) Indische klassische Ayurveda-Texte (Charaka Samhita, Sushruta Samhita, Ashtanga Hridaya), das Ayurveda Formulary of India (AFI) und die Traditional Knowledge Digital Library (TKDL) gehören vollinhaltlich zum Stand der Technik nach PatG § 3. Wenn eine Formulierung bereits in diesen Quellen beschrieben ist, fehlt ihr die Neuheit.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/7",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 4: PatG § 4 — Erfinderische Tätigkeit & Synergismus (Inventive Step)",
+      "text": "Section 4: PatG § 4 — Erfinderische Tätigkeit & Synergismus (Inventive Step)",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/8",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "(1) Eine Erfindung gilt als auf einer erfinderischen Tätigkeit beruhend, wenn sie sich für den Fachmann nicht in naheliegender Weise aus dem Stand der Technik ergibt.\n(2) Prüfungspraxis bei pflanzlichen Kombinationen (Phytopharmaka) vor dem DPMA und BPatG:\n- Eine bloße Mischung bekannter Heilkräuter (Aggregation) gilt als naheliegend und begründet keine erfinderische Tätigkeit.\n- Zur Erlangung eines Patents für eine polyherbale Zusammensetzung muss der Anmelder einen unerwarteten synergistischen Effekt (überraschende Wirkungssteigerung) im Vergleich zu den Einzelkomponenten durch vergleichende experimentelle pharmakologische Daten belegen.",
+      "text": "(1) Eine Erfindung gilt als auf einer erfinderischen Tätigkeit beruhend, wenn sie sich für den Fachmann nicht in naheliegender Weise aus dem Stand der Technik ergibt.\n(2) Prüfungspraxis bei pflanzlichen Kombinationen (Phytopharmaka) vor dem DPMA und BPatG:\n- Eine bloße Mischung bekannter Heilkräuter (Aggregation) gilt als naheliegend und begründet keine erfinderische Tätigkeit.\n- Zur Erlangung eines Patents für eine polyherbale Zusammensetzung muss der Anmelder einen unerwarteten synergistischen Effekt (überraschende Wirkungssteigerung) im Vergleich zu den Einzelkomponenten durch vergleichende experimentelle pharmakologische Daten belegen.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/9",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 5: Gebrauchsmustergesetz (GebrMG) — Der \"Kleine Patentschutz\" für Rezepturen",
+      "text": "Section 5: Gebrauchsmustergesetz (GebrMG) — Der \"Kleine Patentschutz\" für Rezepturen",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/10",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "(1) Nach § 1 GebrMG werden als Gebrauchsmuster Erfindungen geschützt, die neu sind, auf einem erfinderischen Schritt beruhen und gewerblich anwendbar sind.\n(2) Vorteile für pharmazeutische Zubereitungen:\n- Schnelle Eintragung ohne vorherige behördliche Sachprüfung (Registrierungsdauer in der Regel 2 bis 4 Monate);\n- Sechsmonatige Neuheitsschonfrist (§ 3 GebrMG): Eine eigene Vorveröffentlichung des Anmelders innerhalb von 6 Monaten vor dem Anmeldetag schadet der Neuheit nicht;\n- Schutzdauer: Bis zu 10 Jahre ab Anmeldetag.\n(3) Ausschluss: Verfahrenserfindungen (Herstellungsverfahren) sind vom Gebrauchsmusterschutz ausgeschlossen (§ 2 Nr. 3 GebrMG); Erzeugnisansprüche auf pflanzliche Stoffgemische sind jedoch voll zulässig.",
+      "text": "(1) Nach § 1 GebrMG werden als Gebrauchsmuster Erfindungen geschützt, die neu sind, auf einem erfinderischen Schritt beruhen und gewerblich anwendbar sind.\n(2) Vorteile für pharmazeutische Zubereitungen:\n- Schnelle Eintragung ohne vorherige behördliche Sachprüfung (Registrierungsdauer in der Regel 2 bis 4 Monate);\n- Sechsmonatige Neuheitsschonfrist (§ 3 GebrMG): Eine eigene Vorveröffentlichung des Anmelders innerhalb von 6 Monaten vor dem Anmeldetag schadet der Neuheit nicht;\n- Schutzdauer: Bis zu 10 Jahre ab Anmeldetag.\n(3) Ausschluss: Verfahrenserfindungen (Herstellungsverfahren) sind vom Gebrauchsmusterschutz ausgeschlossen (§ 2 Nr. 3 GebrMG); Erzeugnisansprüche auf pflanzliche Stoffgemische sind jedoch voll zulässig.",
+      "formatting": null,
+      "hyperlink": null
+    }
+  ],
+  "pictures": [],
+  "tables": [],
+  "key_value_items": [],
+  "pages": {}
+}

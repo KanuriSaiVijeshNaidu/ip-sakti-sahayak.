@@ -1,0 +1,32 @@
+{
+  "document_id": "EU-THMPD-DIRECTIVE-2004-24",
+  "title": "Directive 2004/24/EC — Traditional Herbal Medicinal Products Directive (THMPD)",
+  "authority": "European Medicines Agency (EMA) / HMPC",
+  "jurisdiction": "EU",
+  "domain": "ayush",
+  "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32004L0024",
+  "document_hash": "4f8bbf4117402b5ad8b1e003de1857c0e9fd779c4aae574e2c6f6ee1f23efc20",
+  "section_count": 5,
+  "sections": [
+    {
+      "title": "# Directive 2004/24/EC — Traditional Herbal Medicinal Products Directive (THMPD)",
+      "content": "# Directive 2004/24/EC — Traditional Herbal Medicinal Products Directive (THMPD)\n\n# Jurisdiction: EU / European Union | Authority: European Medicines Agency (EMA) / HMPC / European Commission\n# Statutory Reference: Directive 2004/24/EC amending Directive 2001/83/EC as regards traditional herbal medicinal products"
+    },
+    {
+      "title": "Section 1: Harmonized Regulatory Framework for Traditional Herbal Medicines in the EU",
+      "content": "Section 1: Harmonized Regulatory Framework for Traditional Herbal Medicines in the EU\n\n(1) Directive 2004/24/EC established a simplified registration procedure for herbal medicinal products which have a long tradition of safe and effective use, recognizing that standard non-clinical tests and clinical trials are not necessary where traditional use is documented.\n(2) Scope: The Directive applies exclusively to herbal medicinal products fulfilling specific statutory criteria set forth in Article 16a of Directive 2001/83/EC:\n1. They have indications exclusively appropriate to traditional herbal medicinal products which, by virtue of their composition and purpose, are intended and designed for use without the supervision of a medical practitioner for diagnostic purposes or for prescription or monitoring of treatment;\n2. They are exclusively for administration in accordance with a specified strength and posology;\n3. They are an oral, external and/or inhalation preparation;\n4. The period of traditional use (Article 16c(1)(c)) of at least 30 years preceding the date of the application, including at least 15 years within the European Community, has elapsed;\n5. The data on the traditional use of the medicinal product are sufficient; in particular the product proves not to be harmful in the specified conditions of use and the pharmacological effects or efficacy of the medicinal product are plausible on the basis of long-standing use and experience."
+    },
+    {
+      "title": "Section 2: Registration Dossier & Quality Dossier Requirements (Article 16c)",
+      "content": "Section 2: Registration Dossier & Quality Dossier Requirements (Article 16c)\n\n(1) Even though efficacy is demonstrated through traditional use plausibility, applicants must submit a complete pharmaceutical quality dossier conforming to Module 3 of the Common Technical Document (CTD):\n1. Compliance with Good Manufacturing Practice (GMP) for active substances and finished herbal products;\n2. Qualitative and quantitative particulars of all constituents, including botanical scientific name (binomial system: genus, species, variety, and author), plant part used, and physical state;\n3. Description of the manufacturing method, in-process controls, and process validation;\n4. Specifications for herbal substances and preparations in accordance with the European Pharmacopoeia (Ph. Eur.) monographs;\n5. Analytical test procedures for identity, purity, content, and assay of active markers;\n6. Stability testing conducted under ICH guidelines (climatic zones I and II for Europe)."
+    },
+    {
+      "title": "Section 3: The 15-Year EU Use Rule & Cross-Border Ayurvedic Applications",
+      "content": "Section 3: The 15-Year EU Use Rule & Cross-Border Ayurvedic Applications\n\n(1) Article 16c(1)(c) mandates proof that the herbal medicinal product or a corresponding product has been in medicinal use for at least 30 years, of which at least 15 years must be within the European Community.\n(2) Referral to the Committee on Herbal Medicinal Products (HMPC) under Article 16c(4):\n- If an Ayurvedic herbal formulation has been used in India for more than 30 years, but has not been marketed or used in the EU for the requisite 15 years, the national competent authority (such as BfArM in Germany or HPRA in Ireland) may refer the product to the HMPC at the European Medicines Agency (EMA).\n- The HMPC evaluates the safety and plausibility of efficacy. If favorable, the HMPC establishes a Community Herbal Monograph or includes the botanical substance in the EU Herbal List (Article 16f). Once included, other EU Member States cannot refuse registration on grounds of lack of 15-year EU use."
+    },
+    {
+      "title": "Section 4: Mutual Recognition & Decentralized Procedures (MRP / DCP)",
+      "content": "Section 4: Mutual Recognition & Decentralized Procedures (MRP / DCP)\n\n(1) Under Article 16d, where an application for traditional herbal registration has been granted by one Member State (Reference Member State - RMS) based on an HMPC monograph or mutual recognition, other Member States (Concerned Member States - CMS) shall recognize the registration, unless there are serious public health grounds under Article 29.\n(2) Labelling and Package Leaflet Requirements (Article 16g):\n- The label and package leaflet must prominently display: \"Traditional herbal medicinal product for use in specified indication exclusively based upon long-standing use.\"\n- The user must be advised to consult a doctor or qualified health care practitioner if symptoms persist during use or if adverse events occur."
+    }
+  ]
+}

@@ -251,7 +251,7 @@ export default function ChatBubble({
             {/* Expanded full passages */}
             {showPassages && (
               <div className="pt-2 border-t border-zinc-800">
-                <CitationCard passages={message.cited_passages!} />
+                <CitationCard passages={message.cited_passages!} language={language} />
               </div>
             )}
           </div>
@@ -264,17 +264,17 @@ export default function ChatBubble({
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-3.5 h-3.5 text-white" />
                 <span className="font-semibold text-[11px] text-white">
-                  AYURLEX Sovereign Audit Ledger
+                  {t.citations.ledgerReceipt}
                 </span>
                 <span className="bg-zinc-900 text-zinc-300 border border-zinc-700 px-1.5 py-0.2 rounded text-[10px] font-mono">
-                  SHA-256 Grounded
+                  {t.citations.sha256Proof}
                 </span>
               </div>
               <button
                 onClick={() => setShowBlockchain(!showBlockchain)}
                 className="text-[10px] text-zinc-400 hover:text-white flex items-center gap-1 font-mono transition-colors cursor-pointer"
               >
-                <span>{showBlockchain ? "Hide Ledger" : "View Proof"}</span>
+                <span>{showBlockchain ? t.citations.hideLedger : t.citations.viewProof}</span>
                 {showBlockchain ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
               </button>
             </div>
@@ -295,7 +295,7 @@ export default function ChatBubble({
                     </span>
                     <button
                       onClick={handleCopyHash}
-                      title="Copy SHA-256 Hash"
+                      title={t.citations.copyHash}
                       className="p-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition-colors shrink-0 cursor-pointer"
                     >
                       {copiedHash ? (
@@ -308,17 +308,17 @@ export default function ChatBubble({
                 </div>
 
                 <div className="flex items-center justify-between text-zinc-300 text-[10px]">
-                  <span className="text-zinc-500">Consensus Validator:</span>
+                  <span className="text-zinc-500">{t.citations.consensusValidator}:</span>
                   <span className="text-zinc-300 truncate max-w-[220px]">
                     {receipt.node_validator}
                   </span>
                 </div>
 
                 <div className="flex items-center justify-between text-[10px] pt-1 text-zinc-400 border-t border-zinc-800">
-                  <span>Block #{receipt.block_height}</span>
+                  <span>{t.citations.block} #{receipt.block_height}</span>
                   <span className="text-white flex items-center gap-1">
                     <Check2Circle className="w-3 h-3" />
-                    Zero Hallucination Verified
+                    {t.citations.zeroHallucination}
                   </span>
                   <span>{new Date(receipt.timestamp).toLocaleTimeString()}</span>
                 </div>

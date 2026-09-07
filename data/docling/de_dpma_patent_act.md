@@ -1,4 +1,8 @@
 # German Patent Act (Patentgesetz - PatG) & DPMA Examination Standards
+
+**Authority**: Deutsches Patent- und Markenamt (DPMA) | **Jurisdiction**: DE | **Domain**: patents
+
+# German Patent Act (Patentgesetz - PatG) & DPMA Examination Standards
 # Jurisdiction: DE / Germany | Authority: Deutsches Patent- und Markenamt (DPMA) / Bundespatentgericht (BPatG)
 # Document Type: NATIONAL STATUTE & JURISPRUDENCE (PatG §§ 1-5, 9, 21; GebrMG §§ 1-3)
 

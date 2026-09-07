@@ -1,0 +1,32 @@
+# German Nagoya Protocol Implementation Act & EU ABS Due Diligence (BNatSchG)
+
+**Authority**: Bundesamt für Naturschutz (BfN) / BMUV | **Jurisdiction**: DE | **Domain**: ayush
+
+# German Nagoya Protocol Implementation Act & EU ABS Regulation
+# Jurisdiction: DE / Germany & EU | Authority: Bundesamt für Naturschutz (BfN) / BMUV
+# Statutory Reference: Gesetz zur Umsetzung der Verpflichtungen nach dem Nagoya-Protokoll / BNatSchG §§ 40a-40g / Verordnung (EU) Nr. 511/2014
+
+## Section 1: Gesetzliche Grundlagen in Deutschland
+(1) Das "Gesetz zur Umsetzung der Verpflichtungen nach dem Nagoya-Protokoll und zur Durchführung der Verordnung (EU) Nr. 511/2014" vom 25. November 2015 (BGBl. I S. 2092) regelt die Verpflichtungen von Nutzern genetischer Ressourcen und damit verbundenen traditionellen Wissens in Deutschland.
+(2) Zuständige nationale Behörde (Competent National Authority): Das Bundesamt für Naturschutz (BfN) führt die behördlichen Kontrollen nach § 4 des Nagoya-Umsetzungsgesetzes durch.
+(3) Ziel: Sicherstellung des gerechten und ausgewogenen Vorteilsausgleichs (Access and Benefit-Sharing - ABS) bei der Nutzung genetischer Ressourcen und Schutz des traditionellen Wissens vor Biopiraterie.
+
+## Section 2: Sorgfaltspflichten nach Verordnung (EU) Nr. 511/2014 (Due Diligence)
+(1) Artikel 4 Abs. 1 Verordnung (EU) Nr. 511/2014: Nutzer in Deutschland müssen mit der gebotenen Sorgfalt (Due Diligence) feststellen, dass:
+1. Der Zugang zu genetischen Ressourcen und traditionellem Wissen im Einklang mit den geltenden Zugangs- und Vorteilsausgleichsgesetzen des Bereitstellerstaates erfolgt ist;
+2. Vorteile einvernehmlich vereinbart und ausgewogen geteilt werden (Mutually Agreed Terms - MAT);
+3. Eine vorherige Zustimmung nach Inkenntnissetzung (Prior Informed Consent - PIC) vorliegt.
+(2) Nutzer müssen die Informationen und Nachweise (z.B. international anerkanntes Konformitätszertifikat - IRCC) für 20 Jahre nach dem Ende der Nutzung aufbewahren und an nachfolgende Nutzer weitergeben.
+
+## Section 3: Relevanz für indische Arzneipflanzen und Ayurveda-Wissen
+(1) Nutzung indischer botanischer Ressourcen (z.B. Neem, Ashwagandha, Tulsi, Curcuma):
+- Nach dem indischen Biological Diversity Act 2002 (BDA) und den Biological Diversity Rules bedarf der Zugang durch ausländische Personen oder Unternehmen der vorherigen schriftlichen Genehmigung der indischen National Biodiversity Authority (NBA, Form I / Form III).
+- Deutsche forschende Unternehmen, Universitäten oder pharmazeutische Hersteller, die indische Heilpflanzen erforschen oder kommerziell verwerten, müssen gegenüber dem BfN nachweisen, dass eine gültige NBA-Genehmigung und eine Vereinbarung über Vorteilsausgleich vorliegen.
+(2) Traditionelles Wissen, das mit genetischen Ressourcen verbunden ist (TK-aGR):
+- Bezieht sich eine Forschung oder Entwicklung auf ayurvedisches Wissen, das in traditionellen Gemeinschaften überliefert ist oder in der TKDL dokumentiert wurde, greift die Sorgfaltspflicht nach Artikel 4 der EU-Verordnung.
+- Die Patentierung eines Produkts ohne Offenlegung des Zugangs und ohne PIC/MAT verstößt gegen europäisches und deutsches Recht und kann zu behördlichen Bußgeldern und Nichtigkeitseinreden führen.
+
+## Section 4: Sorgfaltserklärungen nach Artikel 7 (Due Diligence Declarations)
+(1) Erklärung auf der Stufe der Forschungsförderung: Empfänger von Forschungsgeldern müssen erklären, dass sie die Sorgfaltspflichten für die verwendeten Ressourcen erfüllen.
+(2) Erklärung auf der letzten Stufe der Entwicklung eines Produkts: Vor dem Inverkehrbringen eines pflanzlichen Arzneimittels, Nahrungsergänzungsmittels oder Kosmetikums in Deutschland oder vor der Beantragung eines Patents muss der Nutzer beim BfN eine Due-Diligence-Erklärung über das DECLARE-Portal der Europäischen Kommission einreichen.
+(3) Sanktionen: Nach § 7 des deutschen Nagoya-Umsetzungsgesetzes können Verstöße gegen die Aufbewahrungs-, Nachweis- oder Erklärungspflichten mit Geldbußen bis zu 50.000 Euro geahndet werden. Zudem können betroffene Produkte beschlagnahmt oder vom Markt genommen werden.

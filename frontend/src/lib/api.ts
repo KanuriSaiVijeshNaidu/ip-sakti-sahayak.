@@ -6,7 +6,7 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || "/api";
 const clientCache = new Map<string, ChatResponse>();
 
 export async function sendChatMessage(req: ChatRequest): Promise<ChatResponse> {
-  const cacheKey = `${(req.query || "").trim().toLowerCase()}_${req.language || "en"}_${req.domain || "auto"}`;
+  const cacheKey = `${(req.query || "").trim().toLowerCase()}_${req.language || "en"}_${req.jurisdiction || "IN"}_${req.domain || "auto"}`;
   if (clientCache.has(cacheKey)) {
     return clientCache.get(cacheKey)!;
   }

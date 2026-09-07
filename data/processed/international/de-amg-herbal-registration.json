@@ -1,0 +1,28 @@
+{
+  "document_id": "DE-AMG-HERBAL-REGISTRATION",
+  "title": "German Medicines Act (Arzneimittelgesetz - AMG §§ 39a-39d) — Herbal Registration",
+  "authority": "Bundesinstitut für Arzneimittel und Medizinprodukte (BfArM)",
+  "jurisdiction": "DE",
+  "domain": "ayush",
+  "source_url": "https://www.gesetze-im-internet.de/amg_1976/__39a.html",
+  "document_hash": "38a6a0bc59aead73d2e4d2cc0725cd51ef8641bf69ed9a079eda4c5f945086c0",
+  "section_count": 4,
+  "sections": [
+    {
+      "title": "Section 1: AMG § 39a — Voraussetzungen der Registrierung (Conditions of Registration)",
+      "content": "Section 1: AMG § 39a — Voraussetzungen der Registrierung (Conditions of Registration)\n\n(1) Ein traditionelles pflanzliches Arzneimittel bedarf einer Registrierung durch die zuständige Bundesoberbehörde (Bundesinstitut für Arzneimittel und Medizinprodukte - BfArM), bevor es in Verkehr gebracht wird. Ein Arzneimittel wird als traditionelles pflanzliches Arzneimittel registriert, wenn:\n1. Es ausschließlich pflanzliche Stoffe oder pflanzliche Zubereitungen als Wirkstoffe enthält;\n2. Es nach seiner Zusammensetzung und Zweckbestimmung dazu bestimmt ist, ohne ärztliche Überwachung angewendet zu werden;\n3. Es ausschließlich nach festgelegten Stärken und Dosierungen angewendet wird;\n4. Es ein zur oralen, äußeren oder inhalativen Anwendung bestimmtes Arzneimittel ist;\n5. Die Frist für die traditionelle Anwendung von mindestens 30 Jahren vor der Antragstellung abgelaufen ist, davon mindestens 15 Jahre in der Europäischen Union oder dem Europäischen Wirtschaftsraum;\n6. Seine Unbedenklichkeit bei normaler Anwendung hinreichend belegt ist und die pharmakologischen Wirkungen oder die Wirksamkeit des Arzneimittels aufgrund langjähriger Anwendung und Erfahrung plausibel sind.\n\n(2) Das Vorhandensein von Vitaminen oder Mineralstoffen schließt die Registrierung nicht aus, sofern deren Wirkung die der pflanzlichen Wirkstoffe im Hinblick auf die angegebenen Anwendungsgebiete lediglich ergänzt."
+    },
+    {
+      "title": "Section 2: AMG § 39b — Registrierungsunterlagen (Registration Dossier)",
+      "content": "Section 2: AMG § 39b — Registrierungsunterlagen (Registration Dossier)\n\n(1) Dem Antrag auf Registrierung sind folgende Unterlagen beizufügen:\n1. Die Angaben und Unterlagen nach § 22 Abs. 1 Nr. 1 bis 10 und Abs. 2 (Qualitätsdokumentation entsprechend Module 3 des Common Technical Document - CTD);\n2. Ergebnisse der pharmazeutischen Prüfungen (Analytische Verfahren, Validierung, Stabilitätsprüfungen nach ICH-Leitlinien);\n3. Nachweis, dass das Arzneimittel oder ein entsprechendes Erzeugnis seit mindestens 30 Jahren, davon mindestens 15 Jahre in der EU, medizinisch verwendet worden ist;\n4. Eine bibliographische Übersicht über die Sicherheitsdaten zusammen mit einem Sachverständigengutachten;\n5. Eine Zusammenfassung der Merkmale des Arzneimittels (Fachinformation / SmPC) ohne Angaben zu klinischen Studien;\n6. Der Entwurf der Verpackung und der Packungsbeilage mit dem verpflichtenden Hinweis: \"Traditionelles pflanzliches Arzneimittel zur Anwendung bei [Anwendungsgebiet] ausschließlich auf der Grundlage langjähriger Verwendung\"."
+    },
+    {
+      "title": "Section 3: AMG § 39c — Versagung der Registrierung (Grounds for Refusal)",
+      "content": "Section 3: AMG § 39c — Versagung der Registrierung (Grounds for Refusal)\n\n(1) Die Registrierung ist zu versagen, wenn:\n1. Die qualitative oder quantitative Zusammensetzung nicht den Angaben entspricht;\n2. Das Arzneimittel bei bestimmungsgemäßem Gebrauch schädliche Wirkungen hat;\n3. Die traditionelle Verwendung von 30 Jahren (davon 15 Jahre in der EU) nicht nachgewiesen ist;\n4. Die therapeutische Wirksamkeit oder Plausibilität nicht gegeben ist;\n5. Die pharmazeutische Qualität nicht hinreichend nachgewiesen ist (insbesondere Nichteinhaltung der GMP-Richtlinien oder Überschreitung von Kontaminantengrenzwerten für Schwermetalle, Pestizidrückstände, Mykotoxine und mikrobiologische Verunreinigungen)."
+    },
+    {
+      "title": "Section 4: AMG § 39d — Befugnisse des BfArM & Europäisches HMPC-Verfahren",
+      "content": "Section 4: AMG § 39d — Befugnisse des BfArM & Europäisches HMPC-Verfahren\n\n(1) Das Bundesinstitut für Arzneimittel und Medizinprodukte (BfArM) prüft, ob für den pflanzlichen Stoff eine Monographie des Ausschusses für pflanzliche Arzneimittel (Committee on Herbal Medicinal Products - HMPC) der Europäischen Arzneimittel-Agentur (EMA) vorliegt. Liegt eine EU-Monographie vor, ist diese maßgeblich für die Plausibilität der Wirksamkeit und Unbedenklichkeit.\n(2) Besteht die traditionelle Verwendung von mindestens 30 Jahren, jedoch weniger als 15 Jahren in der EU (z.B. bei rein indischen klassischen Ayurveda-Rezepturen), befasst das BfArM das HMPC mit der Prüfung, ob eine EU-Gemeinschaftsmonographie erstellt werden kann.\n(3) Für traditionelle pflanzliche Arzneimittel gelten die allgemeinen Bestimmungen über die Pharmakovigilanz (§§ 62-63b AMG) sowie die behördliche Überwachung der Guten Herstellungspraxis (GMP) nach § 64 AMG."
+    }
+  ]
+}

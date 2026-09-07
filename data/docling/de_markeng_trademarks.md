@@ -1,0 +1,29 @@
+# German Trade Marks Act (Markengesetz - MarkenG §§ 3, 8, 126-139)
+
+**Authority**: Deutsches Patent- und Markenamt (DPMA) | **Jurisdiction**: DE | **Domain**: trademarks
+
+# German Trade Marks Act (Markengesetz - MarkenG) & DPMA Examination Practice
+# Jurisdiction: DE / Germany | Authority: Deutsches Patent- und Markenamt (DPMA) / Bundespatentgericht (BPatG)
+# Statutory Reference: Gesetz über den Schutz von Marken und sonstigen Kennzeichen (MarkenG §§ 3, 8, 126-139)
+
+## Section 1: MarkenG § 3 — Als Marke schutzfähige Zeichen (Signs Capable of Being Protected)
+(1) Als Marke können alle Zeichen, insbesondere Wörter einschließlich Personennamen, Abbildungen, Buchstaben, Zahlen, Klänge, dreidimensionale Gestaltungen einschließlich der Form einer Ware oder ihrer Verpackung sowie sonstige Aufmachungen einschließlich Farben und Farbzusammenstellungen geschützt werden, die geeignet sind, Waren oder Dienstleistungen eines Unternehmens von denjenigen anderer Unternehmen zu unterscheiden.
+(2) Dem Markenschutz nicht zugänglich sind Zeichen, die ausschließlich aus einer Form bestehen, die durch die Art der Ware selbst bedingt ist, die zur Erreichung einer technischen Wirkung erforderlich ist, oder die der Ware einen wesentlichen Wert verleiht.
+
+## Section 2: MarkenG § 8 — Absolute Schutzhindernisse (Absolute Grounds for Refusal)
+(1) Von der Eintragung ausgeschlossen sind Zeichen, die keine Unterscheidungskraft besitzen (§ 8 Abs. 2 Nr. 1 MarkenG).
+(2) Von der Eintragung ausgeschlossen sind Marken, die ausschließlich aus Zeichen oder Angaben bestehen, die im Verkehr zur Bezeichnung der Art, der Beschaffenheit, der Menge, der Bestimmung, des Wertes, der geografischen Herkunft oder der Zeit der Herstellung der Waren oder der Erbringung der Dienstleistungen oder zur Bezeichnung sonstiger Merkmale der Waren oder Dienstleistungen dienen können (§ 8 Abs. 2 Nr. 2 MarkenG - Freihaltebedürfnis).
+
+### Anwendung auf botanische & ayurvedische Begriffe in Deutschland:
+1. Botanische Gattungsnamen (z.B. "Ashwagandha", "Withania", "Triphala", "Tulsi", "Brahmi", "Curcuma"): Werden für Waren der Nizza-Klassen 5 (Pharmazeutika, pflanzliche Heilmittel), 29/30 (Nahrungsergänzungsmittel) und 3 (Kosmetika) als rein beschreibende Beschaffenheitsangaben nach § 8 Abs. 2 Nr. 2 MarkenG zurückgewiesen. Das Freihaltebedürfnis schützt Mitbewerber davor, dass der gebräuchliche Name einer Heilpflanze monopolisiert wird.
+2. Zusammengesetzte Marken (Wort-Bild-Marken / Phantasienamen): Kombinationen eines Pflanzenbegriffs mit phantasievollen Elementen (z.B. "AshwaVeda BioPure" oder "Triphalex Pro") können eingetragen werden, sofern der Wortbestandteil nicht als bloße Eigenschaftsbeschreibung wahrgenommen wird. Der Schutzumfang erstreckt sich jedoch nicht auf das isolierte Wortelement der Pflanze.
+3. Irreführungsverbot (§ 8 Abs. 2 Nr. 4 MarkenG): Marken, die über die Art, Beschaffenheit oder geografische Herkunft der Waren täuschen können (z.B. die Bezeichnung "Original Himalaya Shilajit" für ein synthetisches Produkt oder ein Erzeugnis aus nicht-himalayischen Quellen), sind von der Eintragung ausgeschlossen.
+
+## Section 3: MarkenG §§ 126-139 — Schutz geografischer Herkunftsangaben
+(1) Geografische Herkunftsangaben sind Namen von Orten, Gegenden, Gebieten oder Ländern sowie sonstige Angaben oder Zeichen, die im geschäftlichen Verkehr zur Kennzeichnung der geografischen Herkunft von Waren oder Dienstleistungen benutzt werden (§ 126 MarkenG).
+(2) Werden Waren oder Dienstleistungen im geschäftlichen Verkehr unter einer geografischen Herkunftsangabe vertrieben, die nicht die tatsächliche geografische Herkunft aufweisen, und besteht die Gefahr einer Irreführung über die geografische Herkunft, kann Unterlassung nach § 128 MarkenG verlangt werden.
+(3) Indische geografische Angaben (wie "Kashmir Saffron", "Darjeeling Tea", "Malabar Pepper"), die als geschützte geografische Angaben (g.g.A.) oder Ursprungsbezeichnungen (g.U.) auf EU-Ebene registriert oder bilateral geschützt sind, genießen absoluten Schutz gegen unbefugte Nutzung, Anlehnung und Verwässerung.
+
+## Section 4: Kollektivmarken & Gewährleistungsmarken (§§ 97-106 MarkenG)
+(1) Wirtschaftsverbände und Erzeugergemeinschaften können Kollektivmarken anmelden (§ 97 MarkenG), um die gemeinsame Herkunft oder traditionelle Herstellungsmethode von Erzeugnissen (z.B. Verband zertifizierter Ayurveda-Produzenten) zu schützen.
+(2) Gewährleistungsmarken (§§ 106a-106h MarkenG) dienen dazu, Waren oder Dienstleistungen zu kennzeichnen, für die der Markeninhaber bestimmte Merkmale (wie Bio-Qualität, Reinheit, Einhaltung von Schwermetallgrenzwerten oder fairen Handel) zertifiziert.

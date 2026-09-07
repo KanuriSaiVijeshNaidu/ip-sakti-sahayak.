@@ -74,6 +74,13 @@ export default function ChatPage() {
   const [language, setLanguage] = useState<LanguageCode>("en");
   const [jurisdiction, setJurisdiction] = useState<JurisdictionType>("IN");
 
+  const handleLanguageChange = (lang: LanguageCode) => {
+    setLanguage(lang);
+    try {
+      localStorage.setItem("ayurlex_language", lang);
+    } catch {}
+  };
+
   const handleJurisdictionChange = (jur: JurisdictionType) => {
     setJurisdiction(jur);
     try {
@@ -122,6 +129,11 @@ export default function ChatPage() {
   // 1. Initial Load: Check profile & load that user's private sessions, or redirect to /login
   useEffect(() => {
     try {
+      const savedLang = localStorage.getItem("ayurlex_language") as LanguageCode;
+      if (savedLang && ["en", "te", "hi", "de", "ta", "kn", "ml"].includes(savedLang)) {
+        setLanguage(savedLang);
+      }
+
       const savedJur = localStorage.getItem("ayurlex_jurisdiction") as JurisdictionType;
       if (savedJur && ["US", "IN", "EU", "DE", "WO"].includes(savedJur)) {
         setJurisdiction(savedJur);
@@ -378,7 +390,7 @@ export default function ChatPage() {
       {/* Header with Home & User Profile Controls */}
       <Header
         language={language}
-        onLanguageChange={setLanguage}
+        onLanguageChange={handleLanguageChange}
         jurisdiction={jurisdiction}
         onJurisdictionChange={handleJurisdictionChange}
         sessionCount={sessions.length}
@@ -469,20 +481,16 @@ export default function ChatPage() {
                 <Link
                   href="/location"
                   className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/90 border border-zinc-700 hover:border-zinc-500 hover:bg-zinc-800 text-xs text-zinc-300 transition-all shadow-md group"
-                  title="Tap to change active jurisdiction"
+                  title={t.nav.changeMarket}
                 >
                   <span className="text-base">
                     {jurisdiction === "US" ? "🇺🇸" : jurisdiction === "IN" ? "🇮🇳" : jurisdiction === "EU" ? "🇪🇺" : jurisdiction === "DE" ? "🇩🇪" : "🌐"}
                   </span>
                   <span className="font-bold text-white">
-                    {jurisdiction === "US" ? "Active Market: United States (USPTO & FDA)" :
-                     jurisdiction === "IN" ? "Active Market: India (CGPDTM & AYUSH)" :
-                     jurisdiction === "EU" ? "Active Market: European Union (EPO & EMA)" :
-                     jurisdiction === "DE" ? "Active Market: Germany (DPMA & BfArM)" :
-                     "Active Market: International (WIPO PCT)"}
+                    {t.nav.activeMarket}: {t.locationPage.markets[jurisdiction]?.country || jurisdiction}
                   </span>
                   <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700 group-hover:text-white">
-                    Change Location →
+                    {t.nav.changeMarket} →
                   </span>
                 </Link>
               </div>
@@ -495,9 +503,8 @@ export default function ChatPage() {
                 <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
                   {t.subtitle} —{" "}
                   <span className="text-white font-bold">
-                    Zero-Hallucination Grounded AI
-                  </span>{" "}
-                  backed by 12 Official Gazette Corpora and SHA-256 Sovereign Audit Ledger.
+                    {t.tagline}
+                  </span>
                 </p>
               </div>
 
@@ -511,13 +518,13 @@ export default function ChatPage() {
                     <div className="w-5 h-5 rounded-full bg-white text-black text-[10px] font-bold flex items-center justify-center shrink-0">
                       {userProfile.name ? userProfile.name.charAt(0).toUpperCase() : "U"}
                     </div>
-                    <span>My Profile</span>
+                    <span>{t.nav.profile}</span>
                     <span className="text-[9px] font-mono px-1.5 py-0.5 bg-zinc-800 text-zinc-300 border border-zinc-700 rounded font-bold ml-auto">
                       ACCOUNT
                     </span>
                   </div>
                   <p className="text-[11px] text-zinc-400 leading-snug">
-                    View Full Name, Verified Gmail, Position ({userProfile.role || "Citizen"}), and Account Vault.
+                    {userProfile.name || "Citizen"} · {userProfile.email || "Official Session"}
                   </p>
                 </Link>
 
@@ -527,31 +534,28 @@ export default function ChatPage() {
                 >
                   <div className="flex items-center gap-2 text-xs font-bold text-white mb-1.5">
                     <Globe2 className="w-4 h-4 text-white group-hover:scale-110 transition-transform duration-200" />
-                    <span>Select Location</span>
+                    <span>{t.nav.changeMarket}</span>
                     <span className="text-[9px] font-mono px-1.5 py-0.5 bg-zinc-800 text-zinc-300 border border-zinc-700 rounded font-bold ml-auto">
                       MARKET
                     </span>
                   </div>
                   <p className="text-[11px] text-zinc-400 leading-snug">
-                    Switch between United States, India, European Union, Germany & Global PCT.
+                    {t.locationPage.markets[jurisdiction]?.country || "Active Jurisdiction"} ({jurisdiction})
                   </p>
                 </Link>
 
-                <button
-                  onClick={() => {
-                    setDomain("patents");
-                    handleSend("What are the Section 3(p) TKDL prior-art restrictions on Ayurvedic patents?");
-                  }}
+                <Link
+                  href="/patentability"
                   className="p-4 rounded-2xl border border-zinc-800 bg-zinc-950/80 backdrop-blur-md hover:border-zinc-600 hover:bg-zinc-900/90 card-motion flex flex-col justify-between group shadow-lg cursor-pointer select-none text-left"
                 >
                   <div className="flex items-center gap-2 text-xs font-bold text-white mb-1.5">
                     <JournalBookmarkFill className="w-4 h-4 text-zinc-300 group-hover:scale-110 transition-transform duration-200" />
-                    <span>TKDL Search</span>
+                    <span>{t.nav.patentability}</span>
                   </div>
                   <p className="text-[11px] text-zinc-400 leading-snug">
-                    300K+ formulations, Section 3(p) non-patentability & biological diversity checks.
+                    {t.nav.specializedEngines}
                   </p>
-                </button>
+                </Link>
 
                 <button
                   onClick={() => setIsHistoryOpen(true)}
@@ -559,12 +563,12 @@ export default function ChatPage() {
                 >
                   <div className="flex items-center gap-2 text-xs font-bold text-white mb-1.5">
                     <ChatLeftTextFill className="w-4 h-4 text-zinc-300 group-hover:scale-110 transition-transform duration-200" />
-                    <span>History</span>
+                    <span>{t.nav.history}</span>
                   </div>
                   <p className="text-[11px] text-zinc-400 leading-snug">
                     {sessions.length > 0
-                      ? `${sessions.length} consultations saved in your isolated vault.`
-                      : "Access verified citations, session transcripts & legal receipts."}
+                      ? `${sessions.length} ${t.nav.consultationHistory}`
+                      : t.citations.zeroHallucination}
                   </p>
                 </button>
               </div>
@@ -592,7 +596,7 @@ export default function ChatPage() {
                 <div className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:-0.15s]" />
                 <div className="w-1.5 h-1.5 bg-white rounded-full animate-bounce" />
                 <span className="font-mono text-zinc-400 ml-1">
-                  Querying BGE-M3 & Verifying Gazette Citations...
+                  {t.searchingCorpus}
                 </span>
               </div>
             </div>

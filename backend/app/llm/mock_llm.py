@@ -358,6 +358,212 @@ def _synthesize_answer_wo(query: str, passages: list[dict]) -> str:
     return answer
 
 
+
+
+def _synthesize_answer_germany(query: str, passages: list[dict]) -> str:
+    """Authoritative legal answer under German national law (PatG, AMG §§ 39a-39d, MarkenG, BfArM, BNatSchG)."""
+    q_lower = query.lower()
+    
+    if not passages:
+        return (
+            "### ⚠️ Insufficient Statutory Evidence in AYURLEX Corpus (Germany Jurisdiction)\n"
+            "The retrieved German statutory registers (DPMA, BfArM, BPatG, BfN) do not contain verified legal evidence for your inquiry.\n\n"
+            "AYURLEX operates under a strict **Zero-Hallucination Policy**: we do not speculate on unverified regulatory procedures.\n\n"
+            "**Official German Verification Authorities:**\n"
+            "- **Patents, Utility Models & Trademarks:** Deutsches Patent- und Markenamt (DPMA) — [dpma.de](https://www.dpma.de)\n"
+            "- **Medicines & Commission E Monographs:** Bundesinstitut für Arzneimittel und Medizinprodukte (BfArM) — [bfarm.de](https://www.bfarm.de)\n"
+            "- **Nagoya Protocol & ABS Due Diligence:** Bundesamt für Naturschutz (BfN) — [bfn.de](https://www.bfn.de)"
+        )
+
+    is_amg = any(w in q_lower for w in ["amg", "medicines act", "traditional herbal", "herbal medicine", "39a", "registration", "dossier", "market in germany", "sell in germany"])
+    is_patent = any(w in q_lower for w in ["patg", "patent", "utility model", "gebrauchsmuster", "synergy", "inventive step", "novelty", "extract"])
+    is_tm = any(w in q_lower for w in ["trademark", "markeng", "brand", "ashwagandha", "class 5", "absolute grounds", "section 8", "freihaltebedürfnis"])
+    is_abs = any(w in q_lower for w in ["nagoya", "abs", "benefit sharing", "due diligence", "declare", "bnatschg", "bfn"])
+    is_bfarm = any(w in q_lower for w in ["bfarm", "commission e", "monograph", "heavy metals", "pyrrolizidine", "quality", "safety"])
+
+    if is_amg or (not is_patent and not is_tm and not is_abs and not is_bfarm):
+        answer = (
+            "### 🇩🇪 German Traditional Herbal Medicinal Products Framework (AMG §§ 39a-39d & BfArM)\n\n"
+            "In Germany, commercial distribution of herbal and Ayurvedic products as medicinal products is strictly governed "
+            "by the **German Medicines Act (Arzneimittelgesetz - AMG)** and administered by the **Federal Institute for Drugs and Medical Devices (BfArM)**:\n\n"
+            "#### 1️⃣ Simplified Registration under AMG § 39a\n"
+            "- **Exclusive Herbal Ingredients:** The medicinal product must exclusively contain herbal substances or herbal preparations as active ingredients (AMG § 39a(1) Nr. 1).\n"
+            "- **Non-Prescription Self-Medication:** Designed for use without medical supervision, administered according to specified strength and posology orally, externally, or by inhalation.\n"
+            "- **30-Year Traditional Use Period (15 Years in the EU):** Under AMG § 39a(1) Nr. 5, the applicant must document at least 30 years of continuous medicinal use, of which at least **15 years must be within the European Union (EU/EEA)**.\n"
+            "- **Plausible Efficacy & Proven Safety:** Preclinical and clinical trials are replaced by documentation showing plausible pharmacological efficacy and long-standing safety experience (AMG § 39a(1) Nr. 6).\n\n"
+            "#### 2️⃣ The 15-Year EU Use Requirement for Classical Ayurvedic Formulations\n"
+            "- Classical Indian formulations documented in the Ayurvedic Pharmacopoeia of India (API) easily satisfy the 30-year global use requirement.\n"
+            "- However, if the 15-year European use threshold is not met, the applicant may request the BfArM to refer the herbal substance to the **Committee on Herbal Medicinal Products (HMPC)** at the European Medicines Agency (EMA) under AMG § 39d to establish an EU Community Herbal Monograph.\n\n"
+            "#### 3️⃣ Mandatory Pharmaceutical Quality Dossier (AMG § 39b / Module 3)\n"
+            "- A full pharmaceutical quality dossier (CTD Module 3) is compulsory: Good Manufacturing Practice (GMP) certification, validated analytical methods, stability data under ICH climatic zones, and adherence to European Pharmacopoeia (Ph. Eur.) limits for heavy metals (Lead ≤5.0 ppm, Cadmium ≤1.0 ppm, Mercury ≤0.1 ppm) and aflatoxins."
+        )
+    elif is_patent:
+        answer = (
+            "### 🇩🇪 German Patent Law for Botanical Formulations (PatG & GebrMG)\n\n"
+            "Patent protection for botanical inventions in Germany is governed by the **German Patent Act (Patentgesetz - PatG)** "
+            "and the **Utility Model Act (Gebrauchsmustergesetz - GebrMG)** before the **DPMA (Deutsches Patent- und Markenamt)**:\n\n"
+            "#### 1️⃣ Patentability of Botanical Inventions (PatG § 1 & § 2a)\n"
+            "- Natural substances and biological materials isolated from their natural environment using a technical process are patentable (PatG § 2a(2)), provided they are new, involve an inventive step, and are industrially applicable.\n"
+            "- Mere unpurified traditional herbs as found in nature are excluded as discoveries.\n\n"
+            "#### 2️⃣ Inventive Step & Synergistic Effect Requirement (PatG § 4)\n"
+            "- The DPMA and the Federal Patent Court (Bundespatentgericht - BPatG) reject mere aggregations of known herbal actives.\n"
+            "- To overcome obviousness, polyherbal formulations must be backed by comparative pharmacological data demonstrating an **unexpected synergistic effect (überraschender synergistischer Effekt)** over the individual botanical components.\n\n"
+            "#### 3️⃣ Prior Art Bar from TKDL & Classical Literature (PatG § 3)\n"
+            "- Any written description worldwide forms part of the state of the art (*Stand der Technik*). Classical Sanskrit formulations and TKDL references destroy novelty ab initio under PatG § 3.\n\n"
+            "#### 4️⃣ German Utility Model (Gebrauchsmuster - GebrMG): The Rapid Protection Alternative\n"
+            "- For herbal product formulations, applicants can register a German Utility Model (*Gebrauchsmuster*). It is registered within 2-4 months without prior substantive examination, provides up to 10 years of statutory protection, and offers a **6-month novelty grace period (Neuheitsschonfrist)**."
+        )
+    elif is_tm:
+        answer = (
+            "### 🇩🇪 Trademark Protection under the German Trade Marks Act (MarkenG)\n\n"
+            "Brand registration for herbal and Ayurvedic goods in Germany is administered by the **DPMA** under the **Markengesetz (MarkenG)**:\n\n"
+            "#### 1️⃣ Absolute Grounds for Refusal (§ 8 MarkenG) & Generic Plant Names\n"
+            "- Under **§ 8(2) Nr. 2 MarkenG**, signs that serve in trade to designate the kind, quality, quantity, or intended purpose of the goods are barred from registration due to the public need to keep them free (**Freihaltebedürfnis**).\n"
+            "- Common botanical names such as '*Ashwagandha*', '*Turmeric*', '*Triphala*', '*Tulsi*', or '*Brahmi*' CANNOT be registered as individual word marks for pharmaceuticals (Class 5), health foods (Class 30), or cosmetics (Class 3).\n\n"
+            "#### 2️⃣ Distinctive Composite & Device Marks\n"
+            "- Combinations of a botanical term with distinctive invented elements or stylized logos (e.g. '*AshwaPure BioShield*') are registrable, but the trademark monopoly extends only to the composite mark, not to the generic plant name.\n\n"
+            "#### 3️⃣ Prohibition of Deceptive Marks (§ 8(2) Nr. 4 MarkenG)\n"
+            "- Marks suggesting therapeutic or regional origins that do not match reality (e.g. '*Himalayan Shilajit*' for synthetic resin) are rejected as misleading to the public."
+        )
+    elif is_abs:
+        answer = (
+            "### 🇩🇪 Access & Benefit-Sharing (Nagoya Protocol & EU Regulation 511/2014 in Germany)\n\n"
+            "Utilization of foreign genetic resources and traditional knowledge in Germany is strictly regulated under the **German Nagoya Protocol Implementation Act (BNatSchG §§ 40a-40g)** and monitored by the **Federal Agency for Nature Conservation (Bundesamt für Naturschutz - BfN)**:\n\n"
+            "#### 1️⃣ Due Diligence Obligations (Article 4 of Regulation (EU) 511/2014)\n"
+            "- Users of botanical genetic resources in Germany must exercise due diligence to ascertain that the biological resources were accessed in accordance with applicable ABS legislation of the provider country.\n"
+            "- For Indian medicinal plants (such as Withania somnifera, Curcuma longa, or Azadirachta indica), German researchers and enterprises must verify that **National Biodiversity Authority (NBA) approval (Form I / Form III)** was duly obtained.\n\n"
+            "#### 2️⃣ Due Diligence Declarations via DECLARE Portal (Article 7)\n"
+            "- Users must submit formal due diligence declarations to the BfN at the stage of research funding and at the final stage of product commercialization or patent application.\n"
+            "- Violations are punishable by administrative fines of up to **€50,000** under Section 7 of the German Nagoya Implementation Act."
+        )
+    else:
+        answer = (
+            "### 🇩🇪 BfArM Regulatory Standards & Commission E Phytotherapy Monographs\n\n"
+            "The **Federal Institute for Drugs and Medical Devices (BfArM)** establishes quality, safety, and therapeutic guidance "
+            "based on the official **German Commission E Monographs (Aufbereitungsmonographien der Kommission E)**:\n\n"
+            "#### 1️⃣ Legal Standing of Commission E Monographs\n"
+            "- Commission E monographs published in the Federal Gazette (*Bundesanzeiger*) represent the recognized scientific standard for herbal drugs in Germany.\n"
+            "- A positive monograph provides statutory recognition of a favorable risk-benefit balance and specifies approved therapeutic indications, daily dosage ranges, and contraindications.\n\n"
+            "#### 2️⃣ European Pharmacopoeia (Ph. Eur.) Quality Limits\n"
+            "- Herbal extracts must strictly meet Ph. Eur. monograph specifications for active marker content, residual extraction solvents, and contaminant limits: Lead ≤ 5.0 mg/kg, Cadmium ≤ 1.0 mg/kg, Mercury ≤ 0.1 mg/kg, and Pyrrolizidine Alkaloids < 1.0 µg/day."
+        )
+
+    answer += "\n\n---\n**📚 German Statutory & Regulatory References (BfArM / DPMA / BfN):**\n"
+    for p in passages[:4]:
+        answer += f"- `{p['key']}` **{p['source']}** — *{p['section']}* ({p['domain'].upper()} · {p.get('jurisdiction', 'DE')})\n"
+    return answer
+
+
+def _synthesize_answer_de(query: str, passages: list[dict], target_jurisdiction: str = "DE") -> str:
+    """Generate high-quality, legally rigorous, authoritative answers in the German language (Deutsch)."""
+    q_lower = query.lower()
+    jur = (target_jurisdiction or "DE").upper()
+
+    if not passages:
+        return (
+            "### ⚠️ Unzureichende amtliche Rechtsquellen im AYURLEX-Korpus\n"
+            "Im aktuellen Rechtsdatenbestand liegen für diesen Rechtskreis keine verifizierten gesetzlichen Nachweise zu Ihrer Anfrage vor.\n\n"
+            "AYURLEX verfolgt eine strikte **Null-Halluzinations-Garantie (Zero-Hallucination Policy)**: "
+            "Es werden keine Gesetzesparagraphen erfunden oder rechtliche Mutmaßungen angestellt.\n\n"
+            "**Amtliche deutsche und europäische Verifikationsstellen:**\n"
+            "- **Gewerblicher Rechtsschutz (Patente, Gebrauchsmuster, Marken):** Deutsches Patent- und Markenamt (DPMA) — [dpma.de](https://www.dpma.de)\n"
+            "- **Arzneimittel, Registrierung & Kommission E:** Bundesinstitut für Arzneimittel und Medizinprodukte (BfArM) — [bfarm.de](https://www.bfarm.de)\n"
+            "- **Nagoya-Protokoll & ABS-Sorgfaltspflichten:** Bundesamt für Naturschutz (BfN) — [bfn.de](https://www.bfn.de)\n"
+            "- **Europäisches Patentrecht:** Europäisches Patentamt (EPA) — [epo.org](https://www.epo.org)"
+        )
+
+    if jur == "IN":
+        answer = (
+            "### 🇮🇳 Indischer Rechtsrahmen für geistiges Eigentum & AYUSH (CGPDTM & Ayush-Ministerium)\n\n"
+            "Für den Vertrieb und Patentschutz pflanzlicher Erzeugnisse in Indien gelten verbindlich folgende Gesetzesgrundlagen:\n\n"
+            "#### 1️⃣ Patentrecht: Section 3(e) & 3(p) des Patents Act 1970\n"
+            "- **Section 3(p):** Traditionelles Wissen (Traditional Knowledge - TK) ist von der Patentierung ausgeschlossen. Die Traditional Knowledge Digital Library (TKDL) zerstört als Stand der Technik die Neuheit.\n"
+            "- **Section 3(e):** Eine bloße Mischung bekannter Heilpflanzen (Admixture) ist nicht patentfähig. Es muss ein unerwarteter synergistischer Effekt (Synergismus) durch bioanalytische Daten belegt werden.\n"
+            "- **Section 10(4)(ii)(D):** Pflicht zur Offenlegung der biologischen Herkunft und Genehmigung durch die National Biodiversity Authority (NBA, Form III).\n\n"
+            "#### 2️⃣ Arzneimittelzulassung nach dem Drugs and Cosmetics Act 1940\n"
+            "- Zulassung als ayurvedische Arznei (*Patent or Proprietary Medicine*) nach **Rule 158B** mit Wirksamkeits- und Sicherheitsnachweisen.\n"
+            "- Einhaltung der Guten Herstellungspraxis (GMP) nach **Schedule T** mit behördlicher Zertifizierung (Form 26D).\n\n"
+            "#### 3️⃣ Lebensmittelrecht: FSSAI Ayurveda Aahara 2022\n"
+            "- Einstufung als diätetisches Lebensmittel unter den **Food Safety and Standards (Ayurveda Aahara) Regulations 2022** mit vorgeschriebenem Ayurveda-Aahara-Logo und Verbot von Heilversprechen."
+        )
+    elif jur == "US":
+        answer = (
+            "### 🇺🇸 US-Rechtsrahmen für geistiges Eigentum & Nahrungsergänzungsmittel (USPTO & FDA)\n\n"
+            "In den Vereinigten Staaten gelten für botanische Erzeugnisse folgende Bundesgesetze:\n\n"
+            "#### 1️⃣ Patentrecht nach 35 U.S.C. §§ 101, 102, 103 (USPTO)\n"
+            "- Nach der Alice/Mayo-Doktrin sind reine Naturstoffe (*products of nature*) nicht patentierbar. Erforderlich ist eine technisch modifizierte, standardisierte Zubereitung mit unerwarteter Wirkung.\n"
+            "- Die indische TKDL-Datenbank wird von USPTO-Prüfern als Stand der Technik (*prior art*) herangezogen.\n\n"
+            "#### 2️⃣ FDA DSHEA 1994 & 21 CFR Part 111\n"
+            "- Pflanzliche Nahrungsergänzungsmittel (*Dietary Supplements*) unterliegen dem **Dietary Supplement Health and Education Act (DSHEA 1994)**.\n"
+            "- Zulässig sind Struktur- und Funktionsangaben (*Structure/Function Claims*) mit FDA-Disclaimern; krankheitsbezogene Heilaussagen (*Disease Claims*) sind streng verboten.\n"
+            "- Verbindliche Einhaltung der cGMP-Standards für Produktionsstätten nach **21 CFR Part 111**."
+        )
+    else:
+        # Default German jurisdiction (DE / EU)
+        is_amg = any(w in q_lower for w in ["amg", "arzneimittel", "registrier", "39a", "traditionell", "pflanzlich", "zulass"])
+        is_patent = any(w in q_lower for w in ["patg", "patent", "gebrauchsmuster", "synerg", "erfinderisch", "neuheit", "extrakt"])
+        is_tm = any(w in q_lower for w in ["marke", "markeng", "zeichen", "ashwagandha", "klasse 5", "freihalte", "schutzhindernis"])
+        is_abs = any(w in q_lower for w in ["nagoya", "abs", "vorteilsausgleich", "sorgfalt", "declare", "bnatschg", "bfn"])
+
+        if is_amg or (not is_patent and not is_tm and not is_abs):
+            answer = (
+                "### 🇩🇪 Deutsches Arzneimittelrecht für traditionelle pflanzliche Arzneimittel (AMG §§ 39a-39d & BfArM)\n\n"
+                "In Deutschland richtet sich das Inverkehrbringen traditioneller pflanzlicher und ayurvedischer Arzneimittel nach dem **Arzneimittelgesetz (AMG)** "
+                "unter der Aufsicht des **Bundesinstituts für Arzneimittel und Medizinprodukte (BfArM)**:\n\n"
+                "#### 1️⃣ Voraussetzungen der vereinfachten Registrierung nach § 39a AMG\n"
+                "- **Ausschließlich pflanzliche Wirkstoffe:** Das Arzneimittel darf als arzneilich wirksame Bestandteile nur pflanzliche Stoffe oder Zubereitungen enthalten (§ 39a Abs. 1 Nr. 1 AMG).\n"
+                "- **Rezeptfreie Selbstmedikation:** Die Zusammensetzung und Zweckbestimmung muss auf eine Anwendung ohne ärztliche Überwachung ausgelegt sein (orale, äußere oder inhalative Verabreichung).\n"
+                "- **Nachweis der 30-jährigen traditionellen Verwendung (davon 15 Jahre in der EU):** Nach § 39a Abs. 1 Nr. 5 AMG muss belegt werden, dass das Produkt oder ein entsprechendes Erzeugnis seit mindestens **30 Jahren medizinisch verwendet wird, davon mindestens 15 Jahre im EU/EWR-Raum**.\n"
+                "- **Plausible Wirksamkeit & Unbedenklichkeit:** Aufwendige klinische Studien entfallen; stattdessen genügt der Nachweis der Unbedenklichkeit und Plausibilität auf Basis langjähriger Erfahrung (§ 39a Abs. 1 Nr. 6 AMG).\n\n"
+                "#### 2️⃣ Handhabung bei rein indischer Vorverwendung (Die 15-Jahres-EU-Regelung)\n"
+                "- Für klassische ayurvedische Rezepturen, die zwar seit Jahrhunderten in Indien, aber noch keine 15 Jahre in Europa vertrieben wurden, greift § 39d AMG: "
+                "Das BfArM kann den pflanzlichen Stoff an den **Ausschuss für pflanzliche Arzneimittel (HMPC)** bei der Europäischen Arzneimittel-Agentur (EMA) verweisen, um eine EU-Gemeinschaftsmonographie zu erstellen.\n\n"
+                "#### 3️⃣ Pharmazeutische Qualität & GMP-Zertifizierung (§ 39b AMG / Modul 3)\n"
+                "- Erforderlich ist ein vollständiges Qualitätsdossier nach CTD-Modul 3: Einhaltung der Guten Herstellungspraxis (GMP) nach § 64 AMG, Stabilitätsprüfungen und Grenzwerte des Europäischen Arzneibuchs (Ph. Eur.) für Schwermetalle (Blei ≤ 5,0 ppm, Cadmium ≤ 1,0 ppm, Quecksilber ≤ 0,1 ppm)."
+            )
+        elif is_patent:
+            answer = (
+                "### 🇩🇪 Deutsches Patentrecht für pflanzliche Rezepturen (PatG & GebrMG)\n\n"
+                "Der Schutz pflanzlicher Innovationen in Deutschland richtet sich nach dem **Patentgesetz (PatG)** und dem **Gebrauchsmustergesetz (GebrMG)** beim **DPMA**:\n\n"
+                "#### 1️⃣ Patentierbarkeit von Naturstoffen (PatG § 1 & § 2a)\n"
+                "- Nach § 2a Abs. 2 PatG kann biologisches Material, das mittels eines technischen Verfahrens isoliert oder verarbeitet wird, Gegenstand einer patentfähigen Erfindung sein.\n"
+                "- Unveränderte Naturstoffe in ihrer natürlichen Umgebung sind als reine Entdeckungen von der Patentierung ausgeschlossen (§ 1 Abs. 2 Nr. 1 PatG).\n\n"
+                "#### 2️⃣ Erfinderische Tätigkeit & Nachweis des Synergismus (PatG § 4)\n"
+                "- Eine bloße Kombination bekannter Heilpflanzen (Aggregation) gilt als naheliegend und begründet keine erfinderische Tätigkeit.\n"
+                "- Das DPMA und das Bundespatentgericht (BPatG) fordern den Nachweis eines **überraschenden synergistischen Effekts** durch vergleichende pharmakologische Versuchsdaten im Vergleich zu den Einzelkomponenten.\n\n"
+                "#### 3️⃣ Schneller Schutz durch das deutsche Gebrauchsmuster (GebrMG)\n"
+                "- Für Rezepturen und Zubereitungen bietet das **Gebrauchsmuster** schnellen und kostengünstigen Schutz (Eintragung innerhalb von 2 bis 4 Monaten ohne vorherige materielle Prüfung).\n"
+                "- Ein bedeutender strategischer Vorteil ist die **6-monatige Neuheitsschonfrist** nach § 3 GebrMG."
+            )
+        elif is_tm:
+            answer = (
+                "### 🇩🇪 Markenschutz für Heilmittel & Ayurveda-Waren beim DPMA (MarkenG)\n\n"
+                "Die Eintragung und der Schutz von Kennzeichen richtet sich nach dem **Markengesetz (MarkenG)**:\n\n"
+                "#### 1️⃣ Absolute Schutzhindernisse (§ 8 MarkenG) & Freihaltebedürfnis\n"
+                "- Nach **§ 8 Abs. 2 Nr. 2 MarkenG** sind Marken von der Eintragung ausgeschlossen, die ausschließlich aus beschreibenden Gattungsbezeichnungen bestehen.\n"
+                "- Botanische Artnamen (z.B. '*Ashwagandha*', '*Curcuma*', '*Triphala*', '*Tulsi*') dürfen nicht als Wortmarke monopolisiert werden, da an diesen Begriffen ein **Freihaltebedürfnis** für alle Wettbewerber besteht.\n\n"
+                "#### 2️⃣ Eintragungsfähige Wort-Bild-Marken & Phantasiebezeichnungen\n"
+                "- Schützbar sind hinreichend unterscheidungskräftige Neuschöpfungen oder Kombinationen (z.B. '*AshwaVeda BioDyn*'). Das Monopolrecht bezieht sich dabei jedoch nicht isoliert auf den Pflanzennamen.\n\n"
+                "#### 3️⃣ Irreführungsverbot nach § 8 Abs. 2 Nr. 4 MarkenG\n"
+                "- Marken, die das Publikum über die tatsächliche Beschaffenheit, Wirksamkeit oder geografische Herkunft der Waren täuschen, werden von Amts wegen gelöscht oder zurückgewiesen."
+            )
+        else:
+            answer = (
+                "### 🇩🇪 BfArM-Regulierung & Kommission E Monographien für Phytotherapie\n\n"
+                "Die regulatorische Bewertung pflanzlicher Stoffe erfolgt beim **BfArM** anhand der amtlichen **Aufbereitungsmonographien der Kommission E**:\n\n"
+                "#### 1️⃣ Verbindliche Wirkung der Kommission E Monographien\n"
+                "- Die im Bundesanzeiger veröffentlichten Monographien definieren den anerkannten Stand der medizinischen Wissenschaft für pflanzliche Drogen in Deutschland.\n"
+                "- Positive Monographien legen anerkannte Indikationen, Dosierungen und Gegenanzeigen fest und erleichtern das Zulassungs- und Registrierungsverfahren erheblich.\n\n"
+                "#### 2️⃣ Kontaminantengrenzen und Arzneibuchstandards (Ph. Eur.)\n"
+                "- Vorgeschrieben ist die strikte Einhaltung der Grenzwerte für Schwermetalle (Ph. Eur. 2.8.20), Pyrrolizidinalkaloide (Stufenplanbescheid des BfArM: max. 1,0 µg/Tag) sowie Mykotoxine und Pestizidrückstände."
+            )
+
+    answer += "\n\n---\n**📚 Amtliche deutsche Rechtsquellen (BfArM / DPMA / BfN):**\n"
+    for p in passages[:4]:
+        answer += f"- `{p['key']}` **{p['source']}** — *{p['section']}* ({p['domain'].upper()} · {p.get('jurisdiction', jur)})\n"
+    return answer
+
+
 def _synthesize_answer(query: str, passages: list[dict], target_jurisdiction: str = "IN") -> str:
     """Generate a rich, direct, domain-specific answer answering the user's question."""
     jur = (target_jurisdiction or "IN").upper()
@@ -800,7 +1006,7 @@ def _synthesize_answer(query: str, passages: list[dict], target_jurisdiction: st
     return answer
 
 
-def _synthesize_answer_hindi(query: str, passages: list[dict]) -> str:
+def _synthesize_answer_hindi(query: str, passages: list[dict], target_jurisdiction: str = "IN") -> str:
     """Generate high-quality, legally accurate answer in Hindi (Devanagari)."""
     q_lower = query.lower()
 
@@ -810,6 +1016,46 @@ def _synthesize_answer_hindi(query: str, passages: list[dict]) -> str:
             "वर्तमान कानूनी डेटाबेस में आपके प्रश्न से संबंधित सत्यापित वैधानिक प्रावधान उपलब्ध नहीं हैं। "
             "AYURLEX शून्य-भ्रम (Zero-Hallucination) नीति का पालन करता है और अपुष्ट कानूनी नियमों का निर्माण नहीं करता है।"
         )
+
+    jur = (target_jurisdiction or "IN").upper()
+    passage_jurs = set(p.get("jurisdiction", "").upper() for p in passages if p.get("jurisdiction"))
+    if "DE" in passage_jurs or jur == "DE":
+        answer = (
+            "### 🇩🇪 जर्मनी कानूनी एवं विनियामक ढांचा (German Framework: AMG, PatG एवं BfArM)\n\n"
+            "जर्मनी में हर्बल एवं आयुर्वेदिक उत्पादों के विपणन और बौद्धिक संपदा संरक्षण के लिए निम्नलिखित राष्ट्रीय वैधानिक प्रावधान लागू होते हैं:\n\n"
+            "#### 1️⃣ जर्मन औषधि अधिनियम (AMG §§ 39a-39d) के तहत सरलीकृत पंजीकरण\n"
+            "- **पारंपरिक हर्बल दवा के रूप में पंजीकरण (§ 39a AMG):** दवा में केवल हर्बल घटक होने चाहिए और यह बिना डॉक्टर की देखरेख के स्व-दवा (Self-Medication) के लिए निर्धारित होनी चाहिए।\n"
+            "- **30-वर्षीय पारंपरिक उपयोग की शर्त (15 वर्ष यूरोपीय संघ में):** आवेदक को कम से कम 30 वर्षों के निरंतर उपयोग का प्रमाण देना होगा, जिसमें से **कम से कम 15 वर्ष यूरोपीय संघ (EU/EEA)** में होने चाहिए।\n"
+            "- **15 वर्ष की यूरोपीय संघ शर्त का समाधान:** यदि उत्पाद केवल भारत में उपयोग हुआ है, तो BfArM यूरोपीय औषधि एजेंसी (EMA) की HMPC समिति को ईयू-मोनोग्राफ तैयार करने के लिए मामला संदर्भित कर सकता है (§ 39d AMG)।\n"
+            "- **गुणवत्ता डोजियर (Modul 3 CTD):** भारी धातुओं (सीसा ≤5 ppm, कैडमियम ≤1 ppm, पारा ≤0.1 ppm) के लिए यूरोपीय फार्माकोपिया (Ph. Eur.) मानकों और जीएमपी का पालन अनिवार्य है।\n\n"
+            "#### 2️⃣ जर्मन पेटेंट कानून (Patentgesetz - PatG) एवं उपयोगिता मॉडल (GebrMG)\n"
+            "- **प्राकृतिक पदार्थों की पेटेंट योग्यता (PatG § 2a):** तकनीकी रूप से पृथक और मानकीकृत किए गए अर्क पेटेंट योग्य हैं।\n"
+            "- **सहक्रियात्मक प्रभाव (Synergy) की आवश्यकता (PatG § 4):** जड़ी-बूटियों के साधारण मिश्रण को स्पष्ट (Obvious) मानकर खारिज कर दिया जाता है। पेटेंट प्राप्त करने के लिए अप्रत्याशित सहक्रियात्मक प्रभाव (*überraschender synergistischer Effekt*) सिद्ध करना अनिवार्य है।\n"
+            "- **जर्मन उपयोगिता मॉडल (Gebrauchsmuster):** त्वरित पंजीकरण (2-4 महीने) और 6 महीने की नवीनता छूट प्रदान करता है।\n\n"
+            "#### 3️⃣ ट्रेडमार्क अधिनियम (MarkenG § 8) एवं सामान्य वनस्पति नाम\n"
+            "- धारा 8(2) सं. 2 MarkenG (Freihaltebedürfnis) के तहत 'अश्वगंधा', 'तुलसी', या 'त्रिफला' जैसे सामान्य पौधों के नामों को अकेले ट्रेडमार्क के रूप में पंजीकृत नहीं किया जा सकता।"
+        )
+        answer += "\n\n---\n**📚 संदर्भित जर्मन कानूनी स्रोत (BfArM / DPMA / PatG):**\n"
+        for p in passages[:4]:
+            answer += f"- `{p['key']}` **{p['source']}** — *{p['section']}* ({p['domain'].upper()} · {p.get('jurisdiction', 'DE')})\n"
+        return answer
+
+    if "US" in passage_jurs or jur == "US":
+        answer = (
+            "### 🇺🇸 संयुक्त राज्य अमेरिका कानूनी ढांचा (USPTO, Lanham Act एवं FDA DSHEA)\n\n"
+            "संयुक्त राज्य अमेरिका में हर्बल उत्पादों के लिए अमेरिकी संघीय कानून लागू होते हैं:\n\n"
+            "#### 1️⃣ पेटेंट कानून (35 U.S.C. §§ 101, 102, 103)\n"
+            "- प्राकृतिक अवस्था में पाए जाने वाले उत्पादों का पेटेंट नहीं कराया जा सकता (Alice/Mayo ढांचा)।\n"
+            "- भारतीय TKDL डेटाबेस को USPTO परीक्षकों द्वारा पूर्व कला (Prior Art) के रूप में उद्धृत किया जाता है।\n\n"
+            "#### 2️⃣ FDA DSHEA 1994 एवं आहार पूरक विनियम\n"
+            "- हर्बल उत्पादों को आहार पूरक (*Dietary Supplements*) के रूप में विनियमित किया जाता है।\n"
+            "- बीमारी के इलाज के दावे (*Disease Claims*) पूरी तरह से प्रतिबंधित हैं; केवल संरचना/कार्य दावे (*Structure/Function Claims*) अनिवार्य FDA अस्वीकरण के साथ अनुमत हैं।\n"
+            "- निर्माण के लिए 21 CFR Part 111 cGMP मानकों का पालन अनिवार्य है।"
+        )
+        answer += "\n\n---\n**📚 संदर्भित अमेरिकी कानूनी स्रोत (USPTO / FDA):**\n"
+        for p in passages[:4]:
+            answer += f"- `{p['key']}` **{p['source']}** — *{p['section']}* ({p['domain'].upper()} · {p.get('jurisdiction', 'US')})\n"
+        return answer
 
     domain_keywords = [
         "ट्रेडमार्क", "ट्रेड मार्क", "पेटेंट", "आयुर्वेद", "आयुष", "दवा", "औषधि", "हर्बल",
@@ -1055,7 +1301,7 @@ def _synthesize_answer_hindi(query: str, passages: list[dict]) -> str:
     return answer
 
 
-def _synthesize_answer_telugu(query: str, passages: list[dict]) -> str:
+def _synthesize_answer_telugu(query: str, passages: list[dict], target_jurisdiction: str = "IN") -> str:
     """Generate high-quality, legally accurate answer in Telugu."""
     q_lower = query.lower()
 
@@ -1065,6 +1311,46 @@ def _synthesize_answer_telugu(query: str, passages: list[dict]) -> str:
             "ప్రస్తుత చట్టపరమైన డేటాబేస్‌లో మీ ప్రశ్నకు సంబంధించిన ధృవీకరించబడిన చట్టపరమైన నిబంధనలు లభించలేదు. "
             "AYURLEX సున్నా-భ్రమ (Zero-Hallucination) విధానాన్ని అనుసరిస్తుంది."
         )
+
+    jur = (target_jurisdiction or "IN").upper()
+    passage_jurs = set(p.get("jurisdiction", "").upper() for p in passages if p.get("jurisdiction"))
+    if "DE" in passage_jurs or jur == "DE":
+        answer = (
+            "### 🇩🇪 జర్మనీ చట్టపరమైన & నియంత్రణ నిబంధనలు (German Statutory Framework: AMG, PatG & BfArM)\n\n"
+            "జర్మనీలో మీ మూలికా/ఆయుర్వేద ఉత్పత్తుల విక్రయం మరియు మేధో సంపత్తి రక్షణ కోసం జర్మన్ జాతీయ చట్టాలు వర్తిస్తాయి:\n\n"
+            "#### 1️⃣ జర్మన్ ఔషధాల చట్టం (AMG §§ 39a-39d) కింద సరళీకృత నమోదు\n"
+            "- **సాంప్రదాయ మూలికా ఔషధంగా నమోదు (§ 39a AMG):** ఉత్పత్తిలో మూలికా పదార్థాలు మాత్రమే క్రియాశీల పదార్థాలుగా ఉండాలి మరియు ఇది వైద్యుల పర్యవేక్షణ లేని స్వీయ-చికిత్స కోసం నిర్దేశించబడి ఉండాలి.\n"
+            "- **30 సంవత్సరాల సాంప్రదాయ ఉపయోగ నిరూపణ (EU లో 15 సంవత్సరాలు):** దరఖాస్తుదారుడు కనీసం 30 సంవత్సరాల వైద్య వినియోగాన్ని నిరూపించాలి, అందులో **కనీసం 15 సంవత్సరాలు యూరోపియన్ యూనియన్ (EU/EEA)** లో ఉండాలి.\n"
+            "- **15 సంవత్సరాల EU నిబంధనకు పరిష్కారం:** భారతదేశంలో మాత్రమే వాడబడిన శాస్త్రీయ ఆయుర్వేద సూత్రాల కోసం, BfArM యూరోపియన్ మెడిసిన్స్ ఏజెన్సీ (EMA) యొక్క HMPC కమిటీకి EU-మోనోగ్రాఫ్ రూపకల్పన కోసం సిఫార్సు చేయవచ్చు (§ 39d AMG).\n"
+            "- **నాణ్యతా పత్రాలు (Modul 3 CTD):** భారీ లోహాల పరిమితులు (సీసం ≤5 ppm, కాడ్మియం ≤1 ppm, పాదరసం ≤0.1 ppm) కోసం యూరోపియన్ ఫార్మాకోపియా (Ph. Eur.) ప్రమాణాలు మరియు GMP తప్పనిసరి.\n\n"
+            "#### 2️⃣ జర్మన్ పేటెంట్ చట్టం (Patentgesetz - PatG) & యుటిలిటీ మోడల్ (GebrMG)\n"
+            "- **సహజ పదార్థాల పేటెంట్ అర్హత (PatG § 2a):** సాంకేతిక ప్రక్రియ ద్వారా వేరు చేయబడిన మరియు శుద్ధి చేయబడిన మూలికా సారం పేటెంట్ పొందవచ్చు.\n"
+            "- **సినర్జీ ప్రభావం నిరూపణ (PatG § 4):** తెలిసిన మూలికల సాధారణ మిశ్రమానికి పేటెంట్ లభించదు. ఆశ్చర్యకరమైన సినర్జిస్టిక్ ప్రభావాన్ని (*überraschender synergistischer Effekt*) ప్రయోగశాల డేటా ద్వారా నిరూపించాలి.\n"
+            "- **జర్మన్ యుటిలిటీ మోడల్ (Gebrauchsmuster):** వేగవంతమైన నమోదు (2-4 నెలలు) మరియు 6 నెలల నవీనత మినహాయింపును అందిస్తుంది.\n\n"
+            "#### 3️⃣ ట్రేడ్‌మార్క్ చట్టం (MarkenG § 8) & సాధారణ మొక్కల పేర్లు\n"
+            "- సెక్షన్ 8(2) ప్రకారం 'అశ్వగంధ', 'తులసి', లేదా 'త్రిఫల' వంటి సాధారణ మొక్కల పేర్లను ఎవరూ వ్యక్తిగత ట్రేడ్‌మార్క్‌గా నమోదు చేసుకోలేరు."
+        )
+        answer += "\n\n---\n**📚 సూచించబడిన జర్మన్ చట్టపరమైన పత్రాలు (BfArM / DPMA / PatG):**\n"
+        for p in passages[:4]:
+            answer += f"- `{p['key']}` **{p['source']}** — *{p['section']}* ({p['domain'].upper()} · {p.get('jurisdiction', 'DE')})\n"
+        return answer
+
+    if "US" in passage_jurs or jur == "US":
+        answer = (
+            "### 🇺🇸 యునైటెడ్ స్టేట్స్ చట్టపరమైన నిబంధనలు (USPTO, Lanham Act & FDA DSHEA)\n\n"
+            "యునైటెడ్ స్టేట్స్ మార్కెట్‌లో మూలికా ఉత్పత్తుల కోసం క్రింది అమెరికన్ ఫెడరల్ చట్టాలు వర్తిస్తాయి:\n\n"
+            "#### 1️⃣ పేటెంట్ చట్టం (35 U.S.C. §§ 101, 102, 103 - USPTO)\n"
+            "- సహజ సిద్ధంగా లభించే పదార్థాలకు నేరుగా పేటెంట్ లభించదు (Alice/Mayo ఫ్రేమ్‌వర్క్).\n"
+            "- భారత సాంప్రదాయ విజ్ఞాన డేటాబేస్ (TKDL) ను USPTO పరీక్షకులు పూర్వ కళ (Prior Art) గా పరిగణిస్తారు.\n\n"
+            "#### 2️⃣ FDA DSHEA 1994 & ఆహార పదార్ధాల నిబంధనలు\n"
+            "- మూలికా ఉత్పత్తులను డైటరీ సప్లిమెంట్స్ (*Dietary Supplements*) గా పరిగణిస్తారు.\n"
+            "- వ్యాధిని నయం చేస్తామనే వాదనలు (*Disease Claims*) చట్టవిరుద్ధం; కేవలం శరీర నిర్మాణం/పనితీరు వాదనలు (*Structure/Function Claims*) మాత్రమే FDA డిస్క్లైమర్‌తో అనుమతించబడతాయి.\n"
+            "- తయారీ కోసం 21 CFR Part 111 cGMP ప్రమాణాలను ఖచ్చితంగా పాటించాలి."
+        )
+        answer += "\n\n---\n**📚 సూచించబడిన US చట్టపరమైన పత్రాలు (USPTO / FDA):**\n"
+        for p in passages[:4]:
+            answer += f"- `{p['key']}` **{p['source']}** — *{p['section']}* ({p['domain'].upper()} · {p.get('jurisdiction', 'US')})\n"
+        return answer
 
     domain_keywords = [
         "ట్రేడ్‌మార్క్", "ట్రేడ్ మార్క్", "పేటెంట్", "ఆయుర్వేద", "ఆయుష్", "లైసెన్స్", "రిజిస్టర్",
@@ -1417,18 +1703,24 @@ class MockLLMAdapter(BaseLLMAdapter):
         is_tamil = language == "ta" or bool(re.search(r"[\u0B80-\u0BFF]", query))
         is_hindi = language == "hi" or bool(re.search(r"[\u0900-\u097F]", query))
 
-        if target_jur == "US":
-            answer = _synthesize_answer_us(query, passages)
-        elif target_jur in ("EU", "DE"):
-            answer = _synthesize_answer_eu(query, passages)
-        elif target_jur == "WO":
-            answer = _synthesize_answer_wo(query, passages)
+        is_german = language == "de"
+        
+        if is_german:
+            answer = _synthesize_answer_de(query, passages, target_jurisdiction=target_jur)
         elif is_telugu:
-            answer = _synthesize_answer_telugu(query, passages)
+            answer = _synthesize_answer_telugu(query, passages, target_jurisdiction=target_jur)
         elif is_tamil:
             answer = _synthesize_answer_tamil(query, passages)
         elif is_hindi:
-            answer = _synthesize_answer_hindi(query, passages)
+            answer = _synthesize_answer_hindi(query, passages, target_jurisdiction=target_jur)
+        elif target_jur == "US":
+            answer = _synthesize_answer_us(query, passages)
+        elif target_jur == "DE":
+            answer = _synthesize_answer_germany(query, passages)
+        elif target_jur == "EU":
+            answer = _synthesize_answer_eu(query, passages)
+        elif target_jur == "WO":
+            answer = _synthesize_answer_wo(query, passages)
         else:
             answer = _synthesize_answer(query, passages, target_jurisdiction=target_jur)
 

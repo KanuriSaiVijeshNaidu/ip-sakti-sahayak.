@@ -1,0 +1,216 @@
+{
+  "schema_name": "DoclingDocument",
+  "version": "1.10.0",
+  "name": "de_amg_medicines_act",
+  "origin": null,
+  "furniture": {
+    "self_ref": "#/furniture",
+    "parent": null,
+    "children": [],
+    "content_layer": "furniture",
+    "meta": null,
+    "name": "_root_",
+    "label": "unspecified"
+  },
+  "body": {
+    "self_ref": "#/body",
+    "parent": null,
+    "children": [
+      {
+        "cref": "#/texts/0"
+      },
+      {
+        "cref": "#/texts/1"
+      },
+      {
+        "cref": "#/texts/2"
+      },
+      {
+        "cref": "#/texts/3"
+      },
+      {
+        "cref": "#/texts/4"
+      },
+      {
+        "cref": "#/texts/5"
+      },
+      {
+        "cref": "#/texts/6"
+      },
+      {
+        "cref": "#/texts/7"
+      },
+      {
+        "cref": "#/texts/8"
+      },
+      {
+        "cref": "#/texts/9"
+      }
+    ],
+    "content_layer": "body",
+    "meta": null,
+    "name": "_root_",
+    "label": "unspecified"
+  },
+  "groups": [],
+  "texts": [
+    {
+      "self_ref": "#/texts/0",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "title",
+      "prov": [],
+      "orig": "German Medicines Act (Arzneimittelgesetz - AMG §§ 39a-39d) — Herbal Registration",
+      "text": "German Medicines Act (Arzneimittelgesetz - AMG §§ 39a-39d) — Herbal Registration",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/1",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 1: AMG § 39a — Voraussetzungen der Registrierung (Conditions of Registration)",
+      "text": "Section 1: AMG § 39a — Voraussetzungen der Registrierung (Conditions of Registration)",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/2",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "(1) Ein traditionelles pflanzliches Arzneimittel bedarf einer Registrierung durch die zuständige Bundesoberbehörde (Bundesinstitut für Arzneimittel und Medizinprodukte - BfArM), bevor es in Verkehr gebracht wird. Ein Arzneimittel wird als traditionelles pflanzliches Arzneimittel registriert, wenn:\n1. Es ausschließlich pflanzliche Stoffe oder pflanzliche Zubereitungen als Wirkstoffe enthält;\n2. Es nach seiner Zusammensetzung und Zweckbestimmung dazu bestimmt ist, ohne ärztliche Überwachung angewendet zu werden;\n3. Es ausschließlich nach festgelegten Stärken und Dosierungen angewendet wird;\n4. Es ein zur oralen, äußeren oder inhalativen Anwendung bestimmtes Arzneimittel ist;\n5. Die Frist für die traditionelle Anwendung von mindestens 30 Jahren vor der Antragstellung abgelaufen ist, davon mindestens 15 Jahre in der Europäischen Union oder dem Europäischen Wirtschaftsraum;\n6. Seine Unbedenklichkeit bei normaler Anwendung hinreichend belegt ist und die pharmakologischen Wirkungen oder die Wirksamkeit des Arzneimittels aufgrund langjähriger Anwendung und Erfahrung plausibel sind.",
+      "text": "(1) Ein traditionelles pflanzliches Arzneimittel bedarf einer Registrierung durch die zuständige Bundesoberbehörde (Bundesinstitut für Arzneimittel und Medizinprodukte - BfArM), bevor es in Verkehr gebracht wird. Ein Arzneimittel wird als traditionelles pflanzliches Arzneimittel registriert, wenn:\n1. Es ausschließlich pflanzliche Stoffe oder pflanzliche Zubereitungen als Wirkstoffe enthält;\n2. Es nach seiner Zusammensetzung und Zweckbestimmung dazu bestimmt ist, ohne ärztliche Überwachung angewendet zu werden;\n3. Es ausschließlich nach festgelegten Stärken und Dosierungen angewendet wird;\n4. Es ein zur oralen, äußeren oder inhalativen Anwendung bestimmtes Arzneimittel ist;\n5. Die Frist für die traditionelle Anwendung von mindestens 30 Jahren vor der Antragstellung abgelaufen ist, davon mindestens 15 Jahre in der Europäischen Union oder dem Europäischen Wirtschaftsraum;\n6. Seine Unbedenklichkeit bei normaler Anwendung hinreichend belegt ist und die pharmakologischen Wirkungen oder die Wirksamkeit des Arzneimittels aufgrund langjähriger Anwendung und Erfahrung plausibel sind.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/3",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "(2) Das Vorhandensein von Vitaminen oder Mineralstoffen schließt die Registrierung nicht aus, sofern deren Wirkung die der pflanzlichen Wirkstoffe im Hinblick auf die angegebenen Anwendungsgebiete lediglich ergänzt.",
+      "text": "(2) Das Vorhandensein von Vitaminen oder Mineralstoffen schließt die Registrierung nicht aus, sofern deren Wirkung die der pflanzlichen Wirkstoffe im Hinblick auf die angegebenen Anwendungsgebiete lediglich ergänzt.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/4",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 2: AMG § 39b — Registrierungsunterlagen (Registration Dossier)",
+      "text": "Section 2: AMG § 39b — Registrierungsunterlagen (Registration Dossier)",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/5",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "(1) Dem Antrag auf Registrierung sind folgende Unterlagen beizufügen:\n1. Die Angaben und Unterlagen nach § 22 Abs. 1 Nr. 1 bis 10 und Abs. 2 (Qualitätsdokumentation entsprechend Module 3 des Common Technical Document - CTD);\n2. Ergebnisse der pharmazeutischen Prüfungen (Analytische Verfahren, Validierung, Stabilitätsprüfungen nach ICH-Leitlinien);\n3. Nachweis, dass das Arzneimittel oder ein entsprechendes Erzeugnis seit mindestens 30 Jahren, davon mindestens 15 Jahre in der EU, medizinisch verwendet worden ist;\n4. Eine bibliographische Übersicht über die Sicherheitsdaten zusammen mit einem Sachverständigengutachten;\n5. Eine Zusammenfassung der Merkmale des Arzneimittels (Fachinformation / SmPC) ohne Angaben zu klinischen Studien;\n6. Der Entwurf der Verpackung und der Packungsbeilage mit dem verpflichtenden Hinweis: \"Traditionelles pflanzliches Arzneimittel zur Anwendung bei [Anwendungsgebiet] ausschließlich auf der Grundlage langjähriger Verwendung\".",
+      "text": "(1) Dem Antrag auf Registrierung sind folgende Unterlagen beizufügen:\n1. Die Angaben und Unterlagen nach § 22 Abs. 1 Nr. 1 bis 10 und Abs. 2 (Qualitätsdokumentation entsprechend Module 3 des Common Technical Document - CTD);\n2. Ergebnisse der pharmazeutischen Prüfungen (Analytische Verfahren, Validierung, Stabilitätsprüfungen nach ICH-Leitlinien);\n3. Nachweis, dass das Arzneimittel oder ein entsprechendes Erzeugnis seit mindestens 30 Jahren, davon mindestens 15 Jahre in der EU, medizinisch verwendet worden ist;\n4. Eine bibliographische Übersicht über die Sicherheitsdaten zusammen mit einem Sachverständigengutachten;\n5. Eine Zusammenfassung der Merkmale des Arzneimittels (Fachinformation / SmPC) ohne Angaben zu klinischen Studien;\n6. Der Entwurf der Verpackung und der Packungsbeilage mit dem verpflichtenden Hinweis: \"Traditionelles pflanzliches Arzneimittel zur Anwendung bei [Anwendungsgebiet] ausschließlich auf der Grundlage langjähriger Verwendung\".",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/6",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 3: AMG § 39c — Versagung der Registrierung (Grounds for Refusal)",
+      "text": "Section 3: AMG § 39c — Versagung der Registrierung (Grounds for Refusal)",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/7",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "(1) Die Registrierung ist zu versagen, wenn:\n1. Die qualitative oder quantitative Zusammensetzung nicht den Angaben entspricht;\n2. Das Arzneimittel bei bestimmungsgemäßem Gebrauch schädliche Wirkungen hat;\n3. Die traditionelle Verwendung von 30 Jahren (davon 15 Jahre in der EU) nicht nachgewiesen ist;\n4. Die therapeutische Wirksamkeit oder Plausibilität nicht gegeben ist;\n5. Die pharmazeutische Qualität nicht hinreichend nachgewiesen ist (insbesondere Nichteinhaltung der GMP-Richtlinien oder Überschreitung von Kontaminantengrenzwerten für Schwermetalle, Pestizidrückstände, Mykotoxine und mikrobiologische Verunreinigungen).",
+      "text": "(1) Die Registrierung ist zu versagen, wenn:\n1. Die qualitative oder quantitative Zusammensetzung nicht den Angaben entspricht;\n2. Das Arzneimittel bei bestimmungsgemäßem Gebrauch schädliche Wirkungen hat;\n3. Die traditionelle Verwendung von 30 Jahren (davon 15 Jahre in der EU) nicht nachgewiesen ist;\n4. Die therapeutische Wirksamkeit oder Plausibilität nicht gegeben ist;\n5. Die pharmazeutische Qualität nicht hinreichend nachgewiesen ist (insbesondere Nichteinhaltung der GMP-Richtlinien oder Überschreitung von Kontaminantengrenzwerten für Schwermetalle, Pestizidrückstände, Mykotoxine und mikrobiologische Verunreinigungen).",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/8",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 4: AMG § 39d — Befugnisse des BfArM & Europäisches HMPC-Verfahren",
+      "text": "Section 4: AMG § 39d — Befugnisse des BfArM & Europäisches HMPC-Verfahren",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/9",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "(1) Das Bundesinstitut für Arzneimittel und Medizinprodukte (BfArM) prüft, ob für den pflanzlichen Stoff eine Monographie des Ausschusses für pflanzliche Arzneimittel (Committee on Herbal Medicinal Products - HMPC) der Europäischen Arzneimittel-Agentur (EMA) vorliegt. Liegt eine EU-Monographie vor, ist diese maßgeblich für die Plausibilität der Wirksamkeit und Unbedenklichkeit.\n(2) Besteht die traditionelle Verwendung von mindestens 30 Jahren, jedoch weniger als 15 Jahren in der EU (z.B. bei rein indischen klassischen Ayurveda-Rezepturen), befasst das BfArM das HMPC mit der Prüfung, ob eine EU-Gemeinschaftsmonographie erstellt werden kann.\n(3) Für traditionelle pflanzliche Arzneimittel gelten die allgemeinen Bestimmungen über die Pharmakovigilanz (§§ 62-63b AMG) sowie die behördliche Überwachung der Guten Herstellungspraxis (GMP) nach § 64 AMG.",
+      "text": "(1) Das Bundesinstitut für Arzneimittel und Medizinprodukte (BfArM) prüft, ob für den pflanzlichen Stoff eine Monographie des Ausschusses für pflanzliche Arzneimittel (Committee on Herbal Medicinal Products - HMPC) der Europäischen Arzneimittel-Agentur (EMA) vorliegt. Liegt eine EU-Monographie vor, ist diese maßgeblich für die Plausibilität der Wirksamkeit und Unbedenklichkeit.\n(2) Besteht die traditionelle Verwendung von mindestens 30 Jahren, jedoch weniger als 15 Jahren in der EU (z.B. bei rein indischen klassischen Ayurveda-Rezepturen), befasst das BfArM das HMPC mit der Prüfung, ob eine EU-Gemeinschaftsmonographie erstellt werden kann.\n(3) Für traditionelle pflanzliche Arzneimittel gelten die allgemeinen Bestimmungen über die Pharmakovigilanz (§§ 62-63b AMG) sowie die behördliche Überwachung der Guten Herstellungspraxis (GMP) nach § 64 AMG.",
+      "formatting": null,
+      "hyperlink": null
+    }
+  ],
+  "pictures": [],
+  "tables": [],
+  "key_value_items": [],
+  "pages": {}
+}

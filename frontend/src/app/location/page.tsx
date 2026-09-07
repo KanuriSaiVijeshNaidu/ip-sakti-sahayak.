@@ -12,98 +12,30 @@ import {
   ArrowRightCircleFill,
   PersonBadgeFill,
 } from "react-bootstrap-icons";
-import { JurisdictionType } from "@/types";
+import { JurisdictionType, LanguageCode } from "@/types";
+import { getTranslation } from "@/lib/i18n";
 
-interface MarketOption {
-  code: JurisdictionType;
-  country: string;
-  flag: string;
-  authority: string;
-  tagline: string;
-  statutes: string[];
-  isolationNotice: string;
-}
-
-const MARKETS: MarketOption[] = [
-  {
-    code: "US",
-    country: "United States",
-    flag: "🇺🇸",
-    authority: "USPTO · FDA · Lanham Act",
-    tagline: "Dietary supplements, natural product patentability bars, and US federal trademarks.",
-    statutes: [
-      "35 U.S.C. §§ 101, 102, 103, 112 (Alice/Mayo Framework)",
-      "FDA Dietary Supplement Health and Education Act (DSHEA 1994)",
-      "Lanham Act (15 U.S.C. § 1051 et seq.) Trademark Registers",
-      "Prior Art Defense with TKDL Database Citations",
-    ],
-    isolationNotice: "STRICT ISOLATION: Answers strictly grounded in US Code and FDA CFR. Indian statutory acts strictly excluded.",
-  },
-  {
-    code: "IN",
-    country: "India (Domestic & Foreign Inbound)",
-    flag: "🇮🇳",
-    authority: "CGPDTM · AYUSH · FSSAI · NBA",
-    tagline: "Ayurvedic formulations, Section 3(e)/3(p) patent bars, and mandatory NBA approval.",
-    statutes: [
-      "The Patents Act, 1970 (Section 3(e) Synergism & 3(p) TK)",
-      "Drugs and Cosmetics Act, 1940 (Rule 158B Proof of Effectiveness)",
-      "FSSAI Food Safety & Standards (Ayurveda Aahara) Regulations, 2022",
-      "Biological Diversity Act (Section 6 Form III Prior Approval)",
-    ],
-    isolationNotice: "STRICT ISOLATION: Answers strictly grounded in Indian Law. Inbound foreign commercial guidance active.",
-  },
-  {
-    code: "EU",
-    country: "European Union",
-    flag: "🇪🇺",
-    authority: "EPO · EMA · HMPC",
-    tagline: "European Patent Convention and EMA Traditional Herbal Medicinal Products.",
-    statutes: [
-      "EPC Articles 52, 53(c), 54(5) Novelty & Second Medical Use",
-      "Problem-Solution Approach for botanical inventive step (Art. 56)",
-      "EMA Traditional Herbal Medicinal Products Directive (2004/24/EC)",
-      "European Community Trademark (EUIPO Nice Classes 3, 5, 30)",
-    ],
-    isolationNotice: "STRICT ISOLATION: Answers grounded in EPC Articles and EPO Board of Appeal case law.",
-  },
-  {
-    code: "DE",
-    country: "Germany",
-    flag: "🇩🇪",
-    authority: "DPMA · BfArM · Commission E",
-    tagline: "German national patent law and phytopharmaceutical monograph standards.",
-    statutes: [
-      "German Patent Act (Patentgesetz - PatG § 1-5)",
-      "Federal Institute for Drugs and Medical Devices (BfArM)",
-      "German Commission E Phytotherapy Monographs",
-      "DPMA national patent & utility model (Gebrauchsmuster) filings",
-    ],
-    isolationNotice: "STRICT ISOLATION: Answers grounded in German national jurisdiction and DPMA examination guidelines.",
-  },
-  {
-    code: "WO",
-    country: "International / Global",
-    flag: "🌐",
-    authority: "WIPO · PCT · Genetic Resources",
-    tagline: "International patent cooperation, priority claims, and 30-month national phase entry.",
-    statutes: [
-      "Patent Cooperation Treaty (PCT Articles 8, 19, 33, 34)",
-      "WIPO Treaty on IP, Genetic Resources & Associated TK (2024)",
-      "Paris Convention for the Protection of Industrial Property (12-Mo Priority)",
-      "Madrid System for the International Registration of Marks",
-    ],
-    isolationNotice: "STRICT ISOLATION: Answers grounded in WIPO treaties, PCT guidelines, and international filing protocols.",
-  },
+const MARKET_METADATA: { code: JurisdictionType; flag: string }[] = [
+  { code: "US", flag: "🇺🇸" },
+  { code: "IN", flag: "🇮🇳" },
+  { code: "EU", flag: "🇪🇺" },
+  { code: "DE", flag: "🇩🇪" },
+  { code: "WO", flag: "🌐" },
 ];
 
 export default function LocationPage() {
   const router = useRouter();
   const [selectedMarket, setSelectedMarket] = useState<JurisdictionType>("IN");
   const [confirmedMarket, setConfirmedMarket] = useState<JurisdictionType>("IN");
+  const [language, setLanguage] = useState<LanguageCode>("en");
 
   useEffect(() => {
     try {
+      const savedLang = localStorage.getItem("ayurlex_language") as LanguageCode;
+      if (savedLang && ["en", "te", "hi", "de", "ta", "kn", "ml"].includes(savedLang)) {
+        setLanguage(savedLang);
+      }
+
       const saved = localStorage.getItem("ayurlex_jurisdiction") as JurisdictionType;
       if (saved && ["US", "IN", "EU", "DE", "WO"].includes(saved)) {
         setSelectedMarket(saved);
@@ -111,6 +43,8 @@ export default function LocationPage() {
       }
     } catch {}
   }, []);
+
+  const t = getTranslation(language);
 
   const handleSelectMarket = (code: JurisdictionType) => {
     setSelectedMarket(code);
@@ -125,6 +59,9 @@ export default function LocationPage() {
     router.push("/");
   };
 
+  const currentMarketDetails = t.locationPage.markets[confirmedMarket] || t.locationPage.markets.IN;
+  const currentMarketFlag = MARKET_METADATA.find((m) => m.code === confirmedMarket)?.flag || "🇮🇳";
+
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center p-3 sm:p-6 relative overflow-x-hidden">
       {/* Top Navbar */}
@@ -135,12 +72,12 @@ export default function LocationPage() {
           </div>
           <div>
             <h1 className="text-sm font-bold text-white leading-tight flex items-center gap-1.5">
-              <span>AYURLEX</span>
+              <span>{t.title}</span>
               <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700">
-                MARKET SELECTOR
+                PRO
               </span>
             </h1>
-            <p className="text-[10px] text-zinc-400 hidden sm:block">Ministry of Ayush · SIH26045</p>
+            <p className="text-[10px] text-zinc-400 hidden sm:block">{t.subtitle}</p>
           </div>
         </Link>
 
@@ -150,7 +87,7 @@ export default function LocationPage() {
             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-zinc-300 bg-zinc-900 hover:bg-zinc-800 rounded-xl border border-zinc-800 transition-all"
           >
             <PersonBadgeFill className="w-3.5 h-3.5 text-zinc-400" />
-            <span className="hidden sm:inline">User Profile</span>
+            <span className="hidden sm:inline">{t.nav.profile}</span>
           </Link>
 
           <Link
@@ -158,7 +95,7 @@ export default function LocationPage() {
             className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-black bg-white hover:bg-zinc-200 rounded-xl transition-all shadow-md"
           >
             <HouseDoorFill className="w-3.5 h-3.5 text-black" />
-            <span>Chat Workspace</span>
+            <span>{t.locationPage.backToChat}</span>
           </Link>
         </div>
       </header>
@@ -170,22 +107,22 @@ export default function LocationPage() {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-700 text-xs text-zinc-300 mb-3">
               <Globe2 className="w-3.5 h-3.5 text-white" />
-              <span>Multi-Jurisdiction Regulatory Co-Pilot</span>
+              <span>{t.tagline}</span>
             </div>
             <h2 className="text-xl sm:text-3xl font-extrabold text-white tracking-tight">
-              Select Operating Jurisdiction & Regulatory Market
+              {t.locationPage.title}
             </h2>
             <p className="text-xs sm:text-sm text-zinc-400 mt-2 leading-relaxed">
-              AYURLEX uses strict jurisdictional boundary isolation. When you choose a country, all queries, patentability checks, prior art citations, and regulatory guidelines are exclusively powered by that country's legal framework without cross-contamination.
+              {t.locationPage.subtitle}
             </p>
           </div>
 
           <div className="mt-4 pt-4 border-t border-zinc-800/80 flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2 text-xs text-zinc-300">
-              <span className="text-zinc-500 font-mono">Currently Active:</span>
+              <span className="text-zinc-500 font-mono">{t.locationPage.currentActiveMarket}:</span>
               <span className="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-700 font-bold text-white flex items-center gap-1.5">
-                <span>{MARKETS.find((m) => m.code === confirmedMarket)?.flag}</span>
-                <span>{MARKETS.find((m) => m.code === confirmedMarket)?.country}</span>
+                <span>{currentMarketFlag}</span>
+                <span>{currentMarketDetails?.country}</span>
               </span>
             </div>
 
@@ -193,7 +130,7 @@ export default function LocationPage() {
               onClick={() => router.push("/")}
               className="px-4 py-1.5 text-xs font-bold text-black bg-white hover:bg-zinc-200 rounded-xl transition-all shadow-sm flex items-center gap-1.5 cursor-pointer ml-auto"
             >
-              <span>Continue to Chat</span>
+              <span>{t.locationPage.backToChat}</span>
               <ArrowRightCircleFill className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -201,12 +138,15 @@ export default function LocationPage() {
 
         {/* Vertical Market Cards List (Mobile-Optimized Vertical Stacking) */}
         <div className="flex flex-col gap-4">
-          {MARKETS.map((m) => {
-            const isSelected = selectedMarket === m.code;
+          {MARKET_METADATA.map((meta) => {
+            const m = t.locationPage.markets[meta.code];
+            if (!m) return null;
+            const isSelected = selectedMarket === meta.code;
+
             return (
               <div
-                key={m.code}
-                onClick={() => handleSelectMarket(m.code)}
+                key={meta.code}
+                onClick={() => handleSelectMarket(meta.code)}
                 className={`w-full p-4 sm:p-5 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-left ${
                   isSelected
                     ? "bg-zinc-900/90 border-white shadow-xl ring-1 ring-white/30"
@@ -215,7 +155,7 @@ export default function LocationPage() {
               >
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-2xl sm:text-3xl shrink-0 shadow-inner">
-                    {m.flag}
+                    {meta.flag}
                   </div>
 
                   <div className="space-y-1 flex-1">
@@ -228,7 +168,7 @@ export default function LocationPage() {
                       </span>
                       {isSelected && (
                         <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-white text-black shrink-0">
-                          <CheckCircleFill className="w-3 h-3" /> ACTIVE
+                          <CheckCircleFill className="w-3 h-3" /> {t.locationPage.activeBadge}
                         </span>
                       )}
                     </div>
@@ -238,7 +178,7 @@ export default function LocationPage() {
                     </p>
 
                     <div className="flex flex-wrap gap-1.5 pt-1.5">
-                      {m.statutes.map((s, idx) => (
+                      {m.statutes?.map((s, idx) => (
                         <span
                           key={idx}
                           className="text-[10px] font-mono text-zinc-400 bg-black/60 border border-zinc-800 px-2 py-0.5 rounded-md"
@@ -259,7 +199,7 @@ export default function LocationPage() {
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleConfirmAndGo(m.code);
+                      handleConfirmAndGo(meta.code);
                     }}
                     className={`w-full sm:w-36 py-2 px-3 rounded-xl text-xs font-bold transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer ${
                       isSelected
@@ -267,7 +207,7 @@ export default function LocationPage() {
                         : "bg-zinc-800 text-zinc-200 hover:bg-zinc-700 border border-zinc-700"
                     }`}
                   >
-                    <span>{isSelected ? "Active Market" : "Select Market"}</span>
+                    <span>{isSelected ? t.locationPage.activeBadge : t.locationPage.setActiveButton}</span>
                     <ArrowRightCircleFill className="w-3.5 h-3.5" />
                   </button>
                 </div>
@@ -281,14 +221,14 @@ export default function LocationPage() {
           <div className="flex items-center gap-2.5">
             <ShieldCheck className="w-5 h-5 text-white shrink-0" />
             <span>
-              <strong>Zero Cross-Contamination Architecture:</strong> In accordance with SIH26045 Phase 2 standards, selecting a market isolates the retrieval vector index, statutory corpus, and legal validation prompts.
+              <strong>{t.locationPage.strictIsolation}:</strong> {t.locationPage.subtitle}
             </span>
           </div>
           <Link
             href="/"
             className="w-full sm:w-auto text-center px-4 py-2 bg-white hover:bg-zinc-200 text-black font-bold rounded-xl transition-all shadow-sm shrink-0"
           >
-            Launch Chat Workspace
+            {t.locationPage.backToChat}
           </Link>
         </div>
       </main>

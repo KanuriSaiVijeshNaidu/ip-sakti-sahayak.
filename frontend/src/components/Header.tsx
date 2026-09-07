@@ -35,7 +35,7 @@ const COUNTRIES: Record<string, { label: string; flag: string; sub: string }> = 
   US: { label: "USA", flag: "🇺🇸", sub: "USPTO / FDA" },
   IN: { label: "India", flag: "🇮🇳", sub: "CGPDTM / AYUSH" },
   EU: { label: "Europe", flag: "🇪🇺", sub: "EPO / EMA" },
-  DE: { label: "Germany", flag: "🇩🇪", sub: "DPMA" },
+  DE: { label: "Germany", flag: "🇩🇪", sub: "DPMA / BfArM" },
   WO: { label: "Global", flag: "🌐", sub: "WIPO PCT" },
 };
 
@@ -43,6 +43,7 @@ const LANGUAGES: { code: LanguageCode; label: string }[] = [
   { code: "en", label: "English" },
   { code: "te", label: "తెలుగు (Telugu)" },
   { code: "hi", label: "हिन्दी (Hindi)" },
+  { code: "de", label: "Deutsch (German)" },
   { code: "ta", label: "தமிழ் (Tamil)" },
   { code: "kn", label: "ಕನ್ನಡ (Kannada)" },
   { code: "ml", label: "മലയാളം (Malayalam)" },
@@ -82,7 +83,7 @@ export default function Header({
               </span>
             </h1>
             <p className="text-[10px] sm:text-[11px] text-zinc-400 leading-none mt-0.5 hidden sm:block">
-              SIH26045 · Ministry of Ayush · Multilingual Legal Co-Pilot
+              {t.subtitle} · {t.tagline}
             </p>
           </div>
         </button>
@@ -93,7 +94,7 @@ export default function Header({
           <Link
             href="/location"
             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-zinc-200 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 rounded-xl transition-all shadow-sm cursor-pointer"
-            title="Active Jurisdiction - Click to change operating market"
+            title={`${t.nav.activeMarket} - ${t.nav.changeMarket}`}
           >
             <span className="text-sm">{activeMarket.flag}</span>
             <span className="font-bold text-white">{activeMarket.label}</span>
@@ -107,49 +108,49 @@ export default function Header({
             title="Return to Home Screen"
           >
             <HouseDoorFill className="w-3.5 h-3.5 text-zinc-400" />
-            <span>Home</span>
+            <span>{t.nav.home}</span>
           </button>
 
           {/* History Drawer Trigger */}
           <button
             onClick={onOpenHistory}
             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-zinc-300 hover:text-white bg-zinc-900/80 hover:bg-zinc-800 rounded-xl transition-all border border-zinc-800 shadow-sm cursor-pointer"
-            title="Open Consultation History"
+            title={t.nav.consultationHistory}
           >
             <ClockHistory className="w-3.5 h-3.5 text-zinc-400" />
-            <span>History</span>
+            <span>{t.nav.history}</span>
             <span className="w-4 h-4 rounded-full bg-white text-black text-[10px] font-bold flex items-center justify-center font-mono">
               {sessionCount}
             </span>
           </button>
 
-          {/* Other Diagnostic Engines */}
+          {/* Specialized Diagnostic Engines */}
           <Link
             href="/formulation-analyzer"
             className="px-2.5 py-1.5 text-xs font-semibold text-zinc-400 hover:text-white bg-zinc-900/50 hover:bg-zinc-800 rounded-xl transition-all border border-zinc-800/80"
           >
-            Formulations
+            {t.nav.formulations}
           </Link>
 
           <Link
             href="/patentability"
             className="px-2.5 py-1.5 text-xs font-semibold text-zinc-400 hover:text-white bg-zinc-900/50 hover:bg-zinc-800 rounded-xl transition-all border border-zinc-800/80"
           >
-            Patentability
+            {t.nav.patentability}
           </Link>
 
           <Link
             href="/tk-risk"
             className="px-2.5 py-1.5 text-xs font-semibold text-zinc-400 hover:text-white bg-zinc-900/50 hover:bg-zinc-800 rounded-xl transition-all border border-zinc-800/80"
           >
-            TK Risk
+            {t.nav.tkRisk}
           </Link>
 
           <Link
             href="/compare-jurisdictions"
             className="px-2.5 py-1.5 text-xs font-semibold text-zinc-400 hover:text-white bg-zinc-900/50 hover:bg-zinc-800 rounded-xl transition-all border border-zinc-800/80"
           >
-            Compare
+            {t.nav.compare}
           </Link>
 
           {/* Language Selector */}
@@ -158,7 +159,7 @@ export default function Header({
             <select
               value={language}
               onChange={(e) => onLanguageChange(e.target.value as LanguageCode)}
-              aria-label="Select Language"
+              aria-label={t.nav.selectLanguage}
               className="bg-transparent text-zinc-200 font-semibold outline-none cursor-pointer text-xs pr-1"
             >
               {LANGUAGES.map((l) => (
@@ -190,7 +191,7 @@ export default function Header({
               title="Sign In with Official Email & OTP"
             >
               <KeyFill className="w-3.5 h-3.5" />
-              <span>Sign In</span>
+              <span>{t.nav.signIn}</span>
             </Link>
           )}
         </div>
@@ -201,7 +202,7 @@ export default function Header({
           <Link
             href="/location"
             className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-bold text-white bg-zinc-900 border border-zinc-700 rounded-xl shadow-sm"
-            title="Change Operating Jurisdiction"
+            title={t.nav.changeMarket}
           >
             <span>{activeMarket.flag}</span>
             <span className="text-[11px] font-bold">{activeMarket.label}</span>
@@ -239,7 +240,7 @@ export default function Header({
                   </div>
                 </div>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-zinc-800 text-zinc-300 border border-zinc-700">
-                  Profile →
+                  {t.nav.profile} →
                 </span>
               </Link>
             ) : (
@@ -249,7 +250,7 @@ export default function Header({
                 className="flex items-center justify-center gap-2 p-3 rounded-xl bg-white text-black font-bold text-xs shadow-md"
               >
                 <KeyFill className="w-4 h-4" />
-                <span>Sign In to AYURLEX</span>
+                <span>{t.nav.signIn}</span>
               </Link>
             )}
 
@@ -261,7 +262,7 @@ export default function Header({
             >
               <div className="flex items-center gap-2.5">
                 <Globe2 className="w-4 h-4 text-white" />
-                <span className="text-xs font-semibold">Change Target Market</span>
+                <span className="text-xs font-semibold">{t.nav.changeMarket}</span>
               </div>
               <span className="text-xs font-bold text-white px-2 py-0.5 bg-black border border-zinc-700 rounded-lg flex items-center gap-1">
                 <span>{activeMarket.flag}</span>
@@ -278,7 +279,7 @@ export default function Header({
               className="w-full flex items-center gap-2.5 p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 text-zinc-200 hover:text-white text-xs font-semibold text-left cursor-pointer"
             >
               <HouseDoorFill className="w-4 h-4 text-zinc-400" />
-              <span>Chat Workspace</span>
+              <span>{t.nav.chatWorkspace}</span>
             </button>
 
             {/* Consultation History */}
@@ -291,7 +292,7 @@ export default function Header({
             >
               <div className="flex items-center gap-2.5">
                 <ClockHistory className="w-4 h-4 text-zinc-400" />
-                <span>Consultation History</span>
+                <span>{t.nav.consultationHistory}</span>
               </div>
               <span className="w-5 h-5 rounded-full bg-white text-black text-[11px] font-bold flex items-center justify-center font-mono">
                 {sessionCount}
@@ -301,7 +302,7 @@ export default function Header({
             {/* Vertical Module Tools Stack */}
             <div className="pt-2 border-t border-zinc-800/80 space-y-1.5">
               <span className="text-[10px] uppercase tracking-wider text-zinc-400 font-semibold px-1">
-                Specialized Diagnostic Engines
+                {t.nav.specializedEngines}
               </span>
 
               <Link
@@ -309,7 +310,7 @@ export default function Header({
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-800/60 text-xs text-zinc-300"
               >
-                <span>🧬 Formulation Analyzer</span>
+                <span>🧬 {t.nav.formulations}</span>
                 <span className="text-zinc-400 text-[11px]">→</span>
               </Link>
 
@@ -318,7 +319,7 @@ export default function Header({
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-800/60 text-xs text-zinc-300"
               >
-                <span>💡 Patentability Assessor</span>
+                <span>💡 {t.nav.patentability}</span>
                 <span className="text-zinc-400 text-[11px]">→</span>
               </Link>
 
@@ -327,7 +328,7 @@ export default function Header({
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-800/60 text-xs text-zinc-300"
               >
-                <span>🌿 Traditional Knowledge (TK) Risk</span>
+                <span>🌿 {t.nav.tkRisk}</span>
                 <span className="text-zinc-400 text-[11px]">→</span>
               </Link>
 
@@ -336,7 +337,7 @@ export default function Header({
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-800/60 text-xs text-zinc-300"
               >
-                <span>⚖️ Cross-Jurisdiction Matrix</span>
+                <span>⚖️ {t.nav.compare}</span>
                 <span className="text-zinc-400 text-[11px]">→</span>
               </Link>
             </div>
@@ -344,7 +345,7 @@ export default function Header({
             {/* Mobile Language Selector */}
             <div className="pt-2 border-t border-zinc-800/80">
               <label className="text-[10px] uppercase tracking-wider text-zinc-400 font-semibold block mb-1 px-1">
-                Select Interface Language
+                {t.nav.selectLanguage}
               </label>
               <div className="grid grid-cols-2 gap-1.5">
                 {LANGUAGES.map((l) => (

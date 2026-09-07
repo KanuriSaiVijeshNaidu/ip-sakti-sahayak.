@@ -2,7 +2,7 @@
 
 export type DomainType = "patents" | "trademarks" | "gi" | "ayush" | "fssai";
 export type JurisdictionType = "IN" | "WO" | "EU" | "US" | "DE" | "GLOBAL" | "auto";
-export type LanguageCode = "en" | "hi" | "ta" | "te" | "kn" | "ml" | "auto";
+export type LanguageCode = "en" | "hi" | "ta" | "te" | "kn" | "ml" | "de" | "auto";
 
 export type UserRole = "vaidya" | "attorney" | "regulator" | "researcher" | "guest";
 

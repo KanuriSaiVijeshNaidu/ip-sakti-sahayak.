@@ -29,8 +29,9 @@ import {
   Globe2,
   ArrowRightCircleFill,
 } from "react-bootstrap-icons";
-import { UserProfile, UserRole, JurisdictionType } from "@/types";
+import { UserProfile, UserRole, JurisdictionType, LanguageCode } from "@/types";
 import { signOutFromSupabase, upsertSupabaseUserProfile, setSupabaseUserPassword } from "@/lib/supabase";
+import { getTranslation } from "@/lib/i18n";
 
 const ROLE_DETAILS: Record<string, { label: string; icon: any; desc: string }> = {
   vaidya: {
@@ -73,6 +74,7 @@ export default function ProfilePage() {
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeJurisdiction, setActiveJurisdiction] = useState<JurisdictionType>("IN");
+  const [language, setLanguage] = useState<LanguageCode>("en");
 
   // Edit Mode states
   const [isEditing, setIsEditing] = useState(false);
@@ -92,6 +94,11 @@ export default function ProfilePage() {
 
   useEffect(() => {
     try {
+      const savedLang = localStorage.getItem("ayurlex_language") as LanguageCode;
+      if (savedLang && ["en", "te", "hi", "de", "ta", "kn", "ml"].includes(savedLang)) {
+        setLanguage(savedLang);
+      }
+
       const stored = localStorage.getItem("ayurlex_user_profile");
       if (stored) {
         const parsed: UserProfile = JSON.parse(stored);
@@ -202,6 +209,8 @@ export default function ProfilePage() {
     }
   };
 
+  const t = getTranslation(language);
+
   return (
     <div className="min-h-screen bg-black text-zinc-100 p-3 sm:p-6 flex flex-col items-center relative overflow-x-hidden">
       {/* Top Navbar */}
@@ -215,12 +224,12 @@ export default function ProfilePage() {
           </div>
           <div>
             <h1 className="text-sm font-bold text-white leading-tight flex items-center gap-1.5">
-              <span>AYURLEX</span>
+              <span>{t.title}</span>
               <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700">
-                USER PROFILE
+                PRO
               </span>
             </h1>
-            <p className="text-[10px] text-zinc-400 hidden sm:block">Ministry of Ayush · SIH26045</p>
+            <p className="text-[10px] text-zinc-400 hidden sm:block">{t.subtitle}</p>
           </div>
         </Link>
 
@@ -230,7 +239,7 @@ export default function ProfilePage() {
             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-zinc-300 bg-zinc-900 hover:bg-zinc-800 rounded-xl border border-zinc-800 transition-all"
           >
             <Globe2 className="w-3.5 h-3.5 text-white" />
-            <span className="hidden sm:inline">Location:</span>
+            <span className="hidden sm:inline">{t.nav.activeMarket}:</span>
             <span>{jurMeta.flag}</span>
           </Link>
 
@@ -239,7 +248,7 @@ export default function ProfilePage() {
             className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-black bg-white hover:bg-zinc-200 rounded-xl transition-all shadow-md"
           >
             <HouseDoorFill className="w-3.5 h-3.5 text-black" />
-            <span>Chat Workspace</span>
+            <span>{t.locationPage.backToChat}</span>
           </Link>
         </div>
       </header>
@@ -445,14 +454,17 @@ export default function ProfilePage() {
               <div>
                 <div className="flex items-center gap-2">
                   <h3 className="text-sm sm:text-base font-bold text-white">
-                    Active Regulatory Jurisdiction: {jurMeta.label}
+                    {t.profilePage.targetMarketCardTitle}: {jurMeta.label}
                   </h3>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700 font-semibold">
-                    STRICT ISOLATION
+                    {t.locationPage.strictIsolation}
                   </span>
                 </div>
                 <p className="text-xs text-zinc-400 mt-1 leading-snug">
                   {jurMeta.desc}
+                </p>
+                <p className="text-[11px] text-zinc-500 mt-1 italic">
+                  {t.profilePage.jurisdictionNote}
                 </p>
               </div>
             </div>
@@ -461,7 +473,7 @@ export default function ProfilePage() {
               href="/location"
               className="w-full sm:w-auto px-4 py-2.5 text-xs font-bold text-black bg-white hover:bg-zinc-200 rounded-xl transition-all shadow-md flex items-center justify-center gap-1.5 shrink-0 cursor-pointer"
             >
-              <span>Change Location / Market</span>
+              <span>{t.profilePage.changeMarketButton}</span>
               <ArrowRightCircleFill className="w-3.5 h-3.5 text-black" />
             </Link>
           </div>

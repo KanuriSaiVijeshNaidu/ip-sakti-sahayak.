@@ -69,6 +69,56 @@ DOCUMENTS_CONFIG = [
         "prefix": "DE-PATENT"
     },
     {
+        "file_path": RAW_INT_DIR / "germany" / "amg_german_medicines_act_herbal.txt",
+        "doc_id": "DE-AMG-HERBAL-REGISTRATION",
+        "title": "German Medicines Act (Arzneimittelgesetz - AMG §§ 39a-39d) — Herbal Registration",
+        "authority": "Bundesinstitut für Arzneimittel und Medizinprodukte (BfArM)",
+        "jurisdiction": "DE",
+        "source_url": "https://www.gesetze-im-internet.de/amg_1976/__39a.html",
+        "domain": "ayush",
+        "prefix": "DE-AMG"
+    },
+    {
+        "file_path": RAW_INT_DIR / "germany" / "german_trademark_act_markeng.txt",
+        "doc_id": "DE-MARKENG-TRADEMARKS",
+        "title": "German Trade Marks Act (Markengesetz - MarkenG §§ 3, 8, 126-139)",
+        "authority": "Deutsches Patent- und Markenamt (DPMA)",
+        "jurisdiction": "DE",
+        "source_url": "https://www.gesetze-im-internet.de/markeng/",
+        "domain": "trademarks",
+        "prefix": "DE-TM"
+    },
+    {
+        "file_path": RAW_INT_DIR / "germany" / "bfarm_phytotherapy_commission_e.txt",
+        "doc_id": "DE-BFARM-COMMISSION-E",
+        "title": "BfArM Regulatory Guidelines & German Commission E Phytotherapy Monographs",
+        "authority": "Bundesinstitut für Arzneimittel und Medizinprodukte (BfArM) / Kommission E",
+        "jurisdiction": "DE",
+        "source_url": "https://www.bfarm.de/DE/Arzneimittel/Zulassung/Besondere-Therapierichtungen-und-traditionelle-Arzneimittel/Pflanzliche-Arzneimittel/_node.html",
+        "domain": "ayush",
+        "prefix": "DE-BFARM"
+    },
+    {
+        "file_path": RAW_INT_DIR / "germany" / "german_abs_nagoya_protocol.txt",
+        "doc_id": "DE-NAGOYA-ABS-BNATSCHG",
+        "title": "German Nagoya Protocol Implementation Act & EU ABS Due Diligence (BNatSchG)",
+        "authority": "Bundesamt für Naturschutz (BfN) / BMUV",
+        "jurisdiction": "DE",
+        "source_url": "https://www.bfn.de/thema/nagoya-protokoll-abs",
+        "domain": "ayush",
+        "prefix": "DE-ABS"
+    },
+    {
+        "file_path": RAW_INT_DIR / "europe" / "eu_thmpd_directive_2004_24_ec.txt",
+        "doc_id": "EU-THMPD-DIRECTIVE-2004-24",
+        "title": "Directive 2004/24/EC — Traditional Herbal Medicinal Products Directive (THMPD)",
+        "authority": "European Medicines Agency (EMA) / HMPC",
+        "jurisdiction": "EU",
+        "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32004L0024",
+        "domain": "ayush",
+        "prefix": "EU-THMPD"
+    },
+    {
         "file_path": RAW_INT_DIR / "wipo" / "pct_articles_and_wipo_tk_framework.txt",
         "doc_id": "WIPO-PCT-TREATY-TK",
         "title": "Patent Cooperation Treaty (PCT Articles 8, 33) & WIPO Genetic Resources Treaty (2024)",

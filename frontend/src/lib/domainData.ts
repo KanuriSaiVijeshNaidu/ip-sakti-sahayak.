@@ -411,5 +411,106 @@ export const DOMAIN_DATA: Partial<Record<LanguageCode, Record<DomainType | "auto
         { emoji: "💰", text: "2014 ABS விதிகளின் கீழ் மருந்து நிறுவனங்கள் செலுத்த வேண்டிய பயன் பகிர்வு சதவீதம் என்ன?" }
       ]
     }
+  },
+  de: {
+    auto: {
+      title: "Alle Fachgebiete & Normenregister",
+      badge: "Amtlicher Rechtskorpus (PatG, AMG, MarkenG, BfArM, EPÜ)",
+      statutes: [
+        "Patentgesetz (PatG §§ 1, 2a, 3, 4, 5)",
+        "Arzneimittelgesetz (AMG §§ 39a-39d Traditionelle pflanzliche Arzneimittel)",
+        "Markengesetz (MarkenG § 8 Absolute Schutzhindernisse)",
+        "BfArM Monographien der Kommission E für Phytotherapie",
+        "Nagoya-Protokoll-Umsetzungsgesetz & EU-Verordnung 511/2014"
+      ],
+      prompts: [
+        { emoji: "💡", text: "Kann eine ayurvedische Rezeptur mit Ashwagandha in Deutschland patentiert werden?" },
+        { emoji: "🏷️", text: "Welche Anforderungen stellt AMG § 39a an die Registrierung pflanzlicher Arzneimittel?" },
+        { emoji: "™️", text: "Wie registriere ich eine Marke für pflanzliche Heilmittel beim DPMA nach dem Markengesetz?" },
+        { emoji: "🌿", text: "Wie wird der Schutz geografischer Herkunftsangaben für traditionelle Erzeugnisse erlangt?" },
+        { emoji: "⚖️", text: "Wie beurteilt das DPMA die erfinderische Tätigkeit bei Pflanzenextrakten?" },
+        { emoji: "📋", text: "Welche Dokumentationspflichten für traditionelle Anwendung (30 Jahre) fordert das BfArM?" }
+      ]
+    },
+    patents: {
+      title: "Patente & Innovationen bei Naturstoffen",
+      badge: "Patentgesetz (PatG) & Europäisches Patentübereinkommen (EPÜ)",
+      statutes: [
+        "PatG § 1 & § 3: Neuheit und erfinderische Tätigkeit bei Extrakten",
+        "PatG § 2a: Ausschluss rein biologischer Verfahren und Naturstoffe",
+        "EPÜ Art. 54(5): Zweite medizinische Indikation für bekannte Pflanzenstoffe",
+        "Gebrauchsmustergesetz (GebrMG): Schneller Schutz für pflanzliche Zubereitungen"
+      ],
+      prompts: [
+        { emoji: "🔬", text: "Wie wird der synergistische Effekt zur Patentierung polyherbaler Zubereitungen nachgewiesen?" },
+        { emoji: "📜", text: "Welche Abgrenzung zum Stand der Technik (TKDL) verlangt das DPMA bei Naturstoffen?" },
+        { emoji: "🧬", text: "Welche Offenlegungspflichten über die geografische Herkunft biologischer Ressourcen bestehen?" },
+        { emoji: "⏱️", text: "Wie läuft das Anmelde- und Prüfungsverfahren vor dem Deutschen Patent- und Markenamt ab?" }
+      ]
+    },
+    trademarks: {
+      title: "Markenrecht & Kennzeichenschutz",
+      badge: "Markengesetz (MarkenG)",
+      statutes: [
+        "Nizza-Klasse 5: Pharmazeutische und pflanzliche Erzeugnisse",
+        "Nizza-Klassen 29 & 30: Nahrungsergänzungsmittel und diätetische Lebensmittel",
+        "Nizza-Klasse 3: Pflanzliche Kosmetika, Salben und Öle",
+        "MarkenG § 8: Absolute Schutzhindernisse für beschreibende Freihaltebedürfnisse"
+      ],
+      prompts: [
+        { emoji: "™️", text: "Können Bezeichnungen wie 'Ashwagandha' oder 'Triphala' als Marken geschützt werden?" },
+        { emoji: "🚫", text: "Wann weist das DPMA eine botanische Markenanmeldung wegen Freihaltebedürfnis ab?" },
+        { emoji: "🔍", text: "Wie führt man eine Markenrecherche im DPMA-Register (DPMAregister) durch?" },
+        { emoji: "🛡️", text: "Welche Abwehrmöglichkeiten bestehen gegen Nachahmungen und Markenpiraterie?" }
+      ]
+    },
+    gi: {
+      title: "Geografische Angaben & Herkunftsschutz",
+      badge: "MarkenG §§ 126-139 & EU-Verordnung 1151/2012",
+      statutes: [
+        "MarkenG § 126: Schutz von geografischen Herkunftsangaben",
+        "EU-Qualitätsregelungen: geschützte geografische Angabe (g.g.A.)",
+        "Schutz traditioneller Bezeichnungen und kollektiver Herkunftsnachweise",
+        "Präzedenzfälle botanischer und regionaler Qualitätskräuter"
+      ],
+      prompts: [
+        { emoji: "🌿", text: "Wie beantragt ein Erzeugerverband Schutz für eine regionale Heilkräuterspezialität?" },
+        { emoji: "⚖️", text: "Welche Rechtsbehelfe bestehen bei unberechtigter Nutzung geografischer Angaben?" },
+        { emoji: "🌾", text: "Kann ein einzelnes Unternehmen Inhaber einer geschützten Herkunftsangabe sein?" },
+        { emoji: "🏷️", text: "Welche Kennzeichnungspflichten gelten für geschützte geografische Angaben in der EU?" }
+      ]
+    },
+    fssai: {
+      title: "Lebensmittelrecht & Nahrungsergänzung",
+      badge: "LFGB, NemV & Health-Claims-Verordnung (EG) Nr. 1924/2006",
+      statutes: [
+        "Nahrungsergänzungsmittelverordnung (NemV): Anzeigepflicht beim BVL",
+        "Health-Claims-Verordnung (EG) 1924/2006: Zulässige gesundheitsbezogene Angaben",
+        "BVL Stofflisten: Einstufung pflanzlicher Stoffe als Lebensmittel oder Arzneimittel",
+        "Kontaminanten-Verordnung: Grenzwerte für Schwermetalle, Pestizide und Aflatoxine"
+      ],
+      prompts: [
+        { emoji: "🏷️", text: "Welche gesundheitsbezogenen Angaben (Health Claims) sind für pflanzliche Stoffe erlaubt?" },
+        { emoji: "🚫", text: "Wo verläuft die Abgrenzung zwischen Nahrungsergänzungsmittel und Arzneimittel nach BVL?" },
+        { emoji: "🧪", text: "Welche Grenzwerte für Schwermetalle (Blei, Cadmium, Quecksilber) gelten in Deutschland?" },
+        { emoji: "📑", text: "Wie läuft die Meldung eines pflanzlichen Nahrungsergänzungsmittels beim BVL ab?" }
+      ]
+    },
+    ayush: {
+      title: "Arzneimittelgesetz & BfArM-Zulassung",
+      badge: "Arzneimittelgesetz (AMG §§ 39a-39d) & BfArM",
+      statutes: [
+        "AMG § 39a: Voraussetzungen für die Registrierung traditioneller pflanzlicher Arzneimittel",
+        "AMG § 39b: Unterlagen über die 30-jährige traditionelle Anwendung (15 Jahre in der EU)",
+        "BfArM Aufbereitungsmonographien der Kommission E für pflanzliche Drogen",
+        "EU-Richtlinie 2004/24/EG über traditionelle pflanzliche Arzneimittel (THMPD)"
+      ],
+      prompts: [
+        { emoji: "📋", text: "Welche Nachweise zur 30-jährigen medizinischen Verwendung verlangt das BfArM?" },
+        { emoji: "🏭", text: "Welche GMP-Anforderungen gelten für Hersteller traditioneller pflanzlicher Arzneimittel?" },
+        { emoji: "🌳", text: "Welche Sorgfaltspflichten nach der EU-Verordnung 511/2014 (Nagoya-Protokoll) müssen beachtet werden?" },
+        { emoji: "💰", text: "Wie läuft das Registrierungsverfahren traditioneller pflanzlicher Arzneimittel beim BfArM ab?" }
+      ]
+    }
   }
 };

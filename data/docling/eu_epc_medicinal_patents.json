@@ -1,0 +1,236 @@
+{
+  "schema_name": "DoclingDocument",
+  "version": "1.10.0",
+  "name": "eu_epc_medicinal_patents",
+  "origin": null,
+  "furniture": {
+    "self_ref": "#/furniture",
+    "parent": null,
+    "children": [],
+    "content_layer": "furniture",
+    "meta": null,
+    "name": "_root_",
+    "label": "unspecified"
+  },
+  "body": {
+    "self_ref": "#/body",
+    "parent": null,
+    "children": [
+      {
+        "cref": "#/texts/0"
+      },
+      {
+        "cref": "#/texts/1"
+      },
+      {
+        "cref": "#/texts/2"
+      },
+      {
+        "cref": "#/texts/3"
+      },
+      {
+        "cref": "#/texts/4"
+      },
+      {
+        "cref": "#/texts/5"
+      },
+      {
+        "cref": "#/texts/6"
+      },
+      {
+        "cref": "#/texts/7"
+      },
+      {
+        "cref": "#/texts/8"
+      },
+      {
+        "cref": "#/texts/9"
+      },
+      {
+        "cref": "#/texts/10"
+      }
+    ],
+    "content_layer": "body",
+    "meta": null,
+    "name": "_root_",
+    "label": "unspecified"
+  },
+  "groups": [],
+  "texts": [
+    {
+      "self_ref": "#/texts/0",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "title",
+      "prov": [],
+      "orig": "European Patent Convention (EPC Articles 52, 53, 54, 56) & EPO Guidelines",
+      "text": "European Patent Convention (EPC Articles 52, 53, 54, 56) & EPO Guidelines",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/1",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 1: EPC Article 52 — Patentable Inventions",
+      "text": "Section 1: EPC Article 52 — Patentable Inventions",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/2",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "(1) European patents shall be granted for any inventions, in all fields of technology, provided that they are new, involve an inventive step and are susceptible of industrial application.\n(2) The following in particular shall not be regarded as inventions:\n(a) discoveries, scientific theories and mathematical methods;\n(b) aesthetic creations;\n(c) schemes, rules and methods for performing mental acts, playing games or doing business;\n(d) presentations of information.",
+      "text": "(1) European patents shall be granted for any inventions, in all fields of technology, provided that they are new, involve an inventive step and are susceptible of industrial application.\n(2) The following in particular shall not be regarded as inventions:\n(a) discoveries, scientific theories and mathematical methods;\n(b) aesthetic creations;\n(c) schemes, rules and methods for performing mental acts, playing games or doing business;\n(d) presentations of information.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/3",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Traditional Medicine & Natural Substance Doctrine at the EPO\nUnder EPO Guidelines for Examination G-II, 3.1:\nIf a substance found in nature has first to be isolated from its surroundings and a process for obtaining it is developed, that process is patentable. Moreover, if this substance can be properly characterized by its structure, chemical fingerprint, or extraction parameters, and it has a technical effect, the substance per se may be patentable. However, mere natural extracts without technical modification are considered non-patentable discoveries.",
+      "text": "Traditional Medicine & Natural Substance Doctrine at the EPO\nUnder EPO Guidelines for Examination G-II, 3.1:\nIf a substance found in nature has first to be isolated from its surroundings and a process for obtaining it is developed, that process is patentable. Moreover, if this substance can be properly characterized by its structure, chemical fingerprint, or extraction parameters, and it has a technical effect, the substance per se may be patentable. However, mere natural extracts without technical modification are considered non-patentable discoveries.",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 3
+    },
+    {
+      "self_ref": "#/texts/4",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 2: EPC Article 53 — Exceptions to Patentability",
+      "text": "Section 2: EPC Article 53 — Exceptions to Patentability",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/5",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "European patents shall not be granted in respect of:\n(a) inventions the commercial exploitation of which would be contrary to \"ordre public\" or morality;\n(b) plant or animal varieties or essentially biological processes for the production of plants or animals;\n(c) methods for treatment of the human or animal body by surgery or therapy and diagnostic methods practiced on the human or animal body (this provision does not apply to products, substances and compositions for use in any of these methods).",
+      "text": "European patents shall not be granted in respect of:\n(a) inventions the commercial exploitation of which would be contrary to \"ordre public\" or morality;\n(b) plant or animal varieties or essentially biological processes for the production of plants or animals;\n(c) methods for treatment of the human or animal body by surgery or therapy and diagnostic methods practiced on the human or animal body (this provision does not apply to products, substances and compositions for use in any of these methods).",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/6",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "First & Second Medical Use Claims for Herbal Formulations\nWhile therapeutic treatment methods are excluded under Article 53(c), the EPO allows substance-for-use claims:\n- First Medical Use (Article 54(4)): \"Substance X for use as a medicament.\"\n- Second Medical Use (Article 54(5)): \"Substance X for use in the treatment of disease Y.\"\nIf an Ayurvedic plant extract is already known for one therapeutic use in classical treatises, a novel second medical indication can be patented under Article 54(5) provided the technical therapeutic effect is proven and non-obvious.",
+      "text": "First & Second Medical Use Claims for Herbal Formulations\nWhile therapeutic treatment methods are excluded under Article 53(c), the EPO allows substance-for-use claims:\n- First Medical Use (Article 54(4)): \"Substance X for use as a medicament.\"\n- Second Medical Use (Article 54(5)): \"Substance X for use in the treatment of disease Y.\"\nIf an Ayurvedic plant extract is already known for one therapeutic use in classical treatises, a novel second medical indication can be patented under Article 54(5) provided the technical therapeutic effect is proven and non-obvious.",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 3
+    },
+    {
+      "self_ref": "#/texts/7",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 3: EPC Article 54 — Absolute Novelty Standard",
+      "text": "Section 3: EPC Article 54 — Absolute Novelty Standard",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/8",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "(1) An invention shall be considered to be new if it does not form part of the state of the art.\n(2) The state of the art shall be held to comprise everything made available to the public by means of a written or oral description, by use, or in any other way, before the date of filing of the European patent application.\nClassical Sanskrit treatises, Indian government gazettes, and TKDL records constitute prior art under Article 54(2) regardless of language or geographic location.",
+      "text": "(1) An invention shall be considered to be new if it does not form part of the state of the art.\n(2) The state of the art shall be held to comprise everything made available to the public by means of a written or oral description, by use, or in any other way, before the date of filing of the European patent application.\nClassical Sanskrit treatises, Indian government gazettes, and TKDL records constitute prior art under Article 54(2) regardless of language or geographic location.",
+      "formatting": null,
+      "hyperlink": null
+    },
+    {
+      "self_ref": "#/texts/9",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "section_header",
+      "prov": [],
+      "orig": "Section 4: EPC Article 56 — Inventive Step & The Problem-Solution Approach",
+      "text": "Section 4: EPC Article 56 — Inventive Step & The Problem-Solution Approach",
+      "formatting": null,
+      "hyperlink": null,
+      "level": 2
+    },
+    {
+      "self_ref": "#/texts/10",
+      "parent": {
+        "cref": "#/body"
+      },
+      "children": [],
+      "content_layer": "body",
+      "meta": null,
+      "label": "paragraph",
+      "prov": [],
+      "orig": "An invention shall be considered as involving an inventive step if, having regard to the state of the art, it is not obvious to a person skilled in the art.\nUnder the Problem-Solution Approach applied by the EPO Technical Boards of Appeal:\n1. Identify the closest prior art (e.g. classical Ayurvedic formulation);\n2. Formulate the objective technical problem based on the technical effect achieved;\n3. Determine whether the skilled person would have arrived at the claimed combination:\nPrecedent T 181/82 & T 386/89: In synergistic herbal mixtures, the presence of a surprising synergistic effect must be credible and substantiated by comparative experimental data across the entire claimed range.\nPrecedent: Revocation of Neem Patent EP 0436257 (Method for controlling fungi on plants using Neem oil). Revoked in 2000 by the EPO Opposition Division for lack of novelty and inventive step based on prior traditional use in India.",
+      "text": "An invention shall be considered as involving an inventive step if, having regard to the state of the art, it is not obvious to a person skilled in the art.\nUnder the Problem-Solution Approach applied by the EPO Technical Boards of Appeal:\n1. Identify the closest prior art (e.g. classical Ayurvedic formulation);\n2. Formulate the objective technical problem based on the technical effect achieved;\n3. Determine whether the skilled person would have arrived at the claimed combination:\nPrecedent T 181/82 & T 386/89: In synergistic herbal mixtures, the presence of a surprising synergistic effect must be credible and substantiated by comparative experimental data across the entire claimed range.\nPrecedent: Revocation of Neem Patent EP 0436257 (Method for controlling fungi on plants using Neem oil). Revoked in 2000 by the EPO Opposition Division for lack of novelty and inventive step based on prior traditional use in India.",
+      "formatting": null,
+      "hyperlink": null
+    }
+  ],
+  "pictures": [],
+  "tables": [],
+  "key_value_items": [],
+  "pages": {}
+}

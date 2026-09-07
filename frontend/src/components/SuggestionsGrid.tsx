@@ -10,34 +10,6 @@ interface SuggestionsGridProps {
   jurisdiction?: JurisdictionType;
 }
 
-const US_SUGGESTIONS = [
-  { emoji: "🇺🇸", text: "Can I patent an herbal extract under 35 U.S.C. § 101 in the US?" },
-  { emoji: "💊", text: "What are FDA DSHEA rules for dietary supplement structure/function claims?" },
-  { emoji: "🏷️", text: "How do I register a trademark with the USPTO under the Lanham Act?" },
-  { emoji: "📚", text: "Can Indian traditional medicine (TKDL) be cited as prior art against a US patent?" },
-];
-
-const EU_SUGGESTIONS = [
-  { emoji: "🇪🇺", text: "What are EPC Articles 52 and 54 novelty rules for botanical extracts at the EPO?" },
-  { emoji: "🔬", text: "How does the EPO evaluate inventive step using the Problem-Solution Approach?" },
-  { emoji: "🏥", text: "Are second medical use claims allowed for herbal formulations under EPC Article 54(5)?" },
-  { emoji: "🇩🇪", text: "What are the patent requirements for phytopharmaceuticals under the German Patent Act (PatG)?" },
-];
-
-const WO_SUGGESTIONS = [
-  { emoji: "🌐", text: "How does PCT Article 33 international preliminary examination work?" },
-  { emoji: "📜", text: "What are the mandatory disclosure rules under the WIPO Genetic Resources Treaty (2024)?" },
-  { emoji: "⏱️", text: "What are the 12-month priority and 30-month national phase entry deadlines under the PCT?" },
-  { emoji: "🛡️", text: "How to claim priority from an Indian patent application under PCT Article 8?" },
-];
-
-const IN_FOREIGN_SUGGESTIONS = [
-  { emoji: "🌐", text: "I am an American company. How can I register and sell my herbal product in India?" },
-  { emoji: "⚖️", text: "What are the Section 3(e) and 3(p) patentability bars under The Patents Act, 1970?" },
-  { emoji: "🏷️", text: "How do I register a trademark under The Trade Marks Act, 1999?" },
-  { emoji: "🥗", text: "What are the FSSAI Ayurveda Aahara 2022 labelling and logo standards?" },
-];
-
 export default function SuggestionsGrid({
   onSelect,
   language = "en",
@@ -46,22 +18,29 @@ export default function SuggestionsGrid({
 }: SuggestionsGridProps) {
   const t = getTranslation(language);
 
-  let suggestions = t.suggestions;
+  let suggestions: { emoji: string; text: string }[] = [];
 
-  if (jurisdiction === "US") {
-    suggestions = US_SUGGESTIONS;
-  } else if (jurisdiction === "EU" || jurisdiction === "DE") {
-    suggestions = EU_SUGGESTIONS;
-  } else if (jurisdiction === "WO") {
-    suggestions = WO_SUGGESTIONS;
-  } else if (jurisdiction === "IN") {
-    suggestions = IN_FOREIGN_SUGGESTIONS;
-  } else {
+  // 1. If domain is specifically selected and has custom prompts, prioritize domain prompts
+  if (domain && domain !== "auto") {
     const langPack = DOMAIN_DATA[language] || DOMAIN_DATA["en"];
-    const domainInfo = langPack ? (langPack[domain] || langPack["auto"]) : null;
+    const domainInfo = langPack ? langPack[domain] : null;
     if (domainInfo?.prompts && domainInfo.prompts.length > 0) {
       suggestions = domainInfo.prompts;
     }
+  }
+
+  // 2. Otherwise use localized jurisdiction-specific suggestions
+  if (suggestions.length === 0 && jurisdiction && t.jurisdictionSuggestions) {
+    if (t.jurisdictionSuggestions[jurisdiction]) {
+      suggestions = t.jurisdictionSuggestions[jurisdiction];
+    } else if (jurisdiction === "GLOBAL" && t.jurisdictionSuggestions.WO) {
+      suggestions = t.jurisdictionSuggestions.WO;
+    }
+  }
+
+  // 3. Fallback to general localized suggestions
+  if (suggestions.length === 0) {
+    suggestions = t.suggestions || [];
   }
 
   return (

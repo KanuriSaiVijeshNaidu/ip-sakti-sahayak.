@@ -98,6 +98,42 @@ LEGAL_EXPANSION_RULES = [
             "Direct-to-consumer D2C commercialization without patent Form 25D manufacturing license "
             "Schedule T GMP FSSAI Ayurveda Aahara Regulations 2022 Trade Marks Act 1999 Class 5 Class 3 trade secrets public domain classical formulation"
         )
+    },
+    # Germany PatG & DPMA
+    {
+        "pattern": r"\b(patg|dpma|german patent|patentgesetz|bpatg|gebrauchsmuster)\b",
+        "domain": "patents",
+        "expansion": (
+            "Patentgesetz PatG Section 1 patentable inventions Section 2a biological material Section 3 prior art novelty "
+            "Section 4 inventive step synergistic combination DPMA Gebrauchsmuster utility model"
+        )
+    },
+    # Germany AMG & BfArM
+    {
+        "pattern": r"\b(amg|arzneimittelgesetz|bfarm|kommission e|commission e|pflanzliche arzneimittel|herbal medicine germany)\b",
+        "domain": "ayush",
+        "expansion": (
+            "Arzneimittelgesetz AMG Section 39a registration requirements 30 years traditional use 15 years EU "
+            "Section 39b quality dossier Module 3 BfArM Commission E phytotherapy monographs HMPC EMA"
+        )
+    },
+    # Germany MarkenG
+    {
+        "pattern": r"\b(markeng|markengesetz|dpma marke|german trademark)\b",
+        "domain": "trademarks",
+        "expansion": (
+            "Markengesetz MarkenG Section 3 protectable signs Section 8 absolute grounds descriptive plant names generic "
+            "Section 126 geographical indications DPMA register collective marks"
+        )
+    },
+    # EU EPC & THMPD
+    {
+        "pattern": r"\b(epc|epo|thmpd|directive 2004/24/ec|european patent|hmpc|ema)\b",
+        "domain": "patents",
+        "expansion": (
+            "European Patent Convention EPC Article 52 patentable Article 53c exceptions Article 54 novelty "
+            "Article 54 5 second medical use Article 56 problem solution approach THMPD Directive 2004 24 EC"
+        )
     }
 ]
 
