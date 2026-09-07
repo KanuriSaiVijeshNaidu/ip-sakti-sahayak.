@@ -138,9 +138,8 @@ export default function Header({
             className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-bold text-blue-900 bg-blue-50 hover:bg-blue-100 rounded-xl transition-all border border-blue-200/90 shadow-2xs btn-spring shrink-0 cursor-pointer"
             title="Convert Indian IP to International Filings (PCT, USPTO, EPO)"
           >
-            <Globe2 className="w-3.5 h-3.5 text-blue-600" />
-            <span className="hidden sm:inline">IN → Global IP</span>
-            <span className="sm:hidden">IN→Intl</span>
+            <Globe2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+            <span>IN → Global IP</span>
           </Link>
 
           {/* User Profile Button — Links to /profile (User Details Page) */}
