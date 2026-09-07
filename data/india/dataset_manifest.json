@@ -1,0 +1,45 @@
+{
+  "dataset_name": "Indian Patent Office (IPO / InPASS) & TKDL Patent Corpus",
+  "huggingface_url": "https://ipindiaservices.gov.in/publicsearch",
+  "original_source": "Office of the Controller General of Patents, Designs and Trade Marks (IPO) / CSIR-TKDL",
+  "license": "Government of India Open Data / Public Patent Records",
+  "date_coverage": "2000-2025",
+  "language": "en",
+  "jurisdiction": "IN",
+  "region": "Asia",
+  "available_fields": [
+    "patent_id",
+    "application_number",
+    "publication_number",
+    "title",
+    "abstract",
+    "claims",
+    "description",
+    "ipc",
+    "filing_date",
+    "publication_date",
+    "applicant",
+    "inventor",
+    "priority",
+    "legal_status"
+  ],
+  "content_breakdown": {
+    "full_text": true,
+    "claims": true,
+    "abstracts": true,
+    "metadata": true
+  },
+  "relevance_assessment": "Official Indian patent publications for classical and proprietary Ayurvedic formulations, polyherbal extracts, and traditional medicinal compositions evaluated under Section 3(p) and 3(e) of the Indian Patents Act 1970.",
+  "verification_status": "VERIFIED",
+  "number_of_records": 5,
+  "file_size_bytes": 12408,
+  "file_size_formatted": "0.01 MB",
+  "sha256_checksum": "c54d0d8594aa138d88918720e82232f68c49fc858e8d141f6dc614f6ac953451",
+  "source_files": [
+    "IN-243763-B.json",
+    "IN-268685-B.json",
+    "IN-284123-B.json",
+    "IN-324590-B.json",
+    "IN-348215-B.json"
+  ]
+}

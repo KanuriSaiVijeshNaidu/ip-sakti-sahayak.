@@ -1,0 +1,116 @@
+{
+  "patent_id": "EP-2891234-B1",
+  "metadata": {
+    "patent_id": "EP-2891234-B1",
+    "application_number": "EP13765432.1",
+    "publication_number": "EP 2 891 234 B1",
+    "family_id": null,
+    "title": "Phytochemical composition comprising Ocimum sanctum and Tinospora cordifolia for immune stimulation",
+    "country": "EUROPE",
+    "jurisdiction": "EP",
+    "language": "en",
+    "filing_date": "2013-09-04",
+    "publication_date": "2017-08-02",
+    "applicant": "Finzelberg GmbH & Co. KG",
+    "inventor": [
+      "Dr. Martin Tegtmeier",
+      "Dr. Devendra Kumar"
+    ],
+    "ipc": [
+      "A61K36/59",
+      "A61K36/53",
+      "A61P37/04"
+    ],
+    "cpc": [
+      "A61K36/59",
+      "A61K36/53"
+    ]
+  },
+  "docling_doc": {
+    "schema_name": "docling_core.models.DoclingDocument",
+    "version": "1.10.0",
+    "name": "EUROPE_EP-2891234-B1",
+    "origin": {
+      "mimetype": "application/json",
+      "binary_hash": "",
+      "filename": "EP-2891234-B1.json"
+    },
+    "metadata": {
+      "patent_id": "EP-2891234-B1",
+      "application_number": "EP13765432.1",
+      "publication_number": "EP 2 891 234 B1",
+      "family_id": null,
+      "title": "Phytochemical composition comprising Ocimum sanctum and Tinospora cordifolia for immune stimulation",
+      "country": "EUROPE",
+      "jurisdiction": "EP",
+      "language": "en",
+      "filing_date": "2013-09-04",
+      "publication_date": "2017-08-02",
+      "applicant": "Finzelberg GmbH & Co. KG",
+      "inventor": [
+        "Dr. Martin Tegtmeier",
+        "Dr. Devendra Kumar"
+      ],
+      "ipc": [
+        "A61K36/59",
+        "A61K36/53",
+        "A61P37/04"
+      ],
+      "cpc": [
+        "A61K36/59",
+        "A61K36/53"
+      ]
+    },
+    "body": {
+      "title": "Phytochemical composition comprising Ocimum sanctum and Tinospora cordifolia for immune stimulation",
+      "sections": [
+        {
+          "heading": "Abstract",
+          "type": "abstract",
+          "text": "A synergistic immunomodulatory preparation comprising standardized polysaccharide fractions of Tinospora cordifolia (Guduchi) and ursolic acid fractions of Ocimum sanctum (Tulsi), stimulating macrophage phagocytosis and NK-cell activity."
+        },
+        {
+          "heading": "Claims",
+          "type": "claims",
+          "claim_count": 3,
+          "claims": [
+            {
+              "claim_number": "1",
+              "text": "1. An immunostimulatory composition comprising: (a) an aqueous extract of Tinospora cordifolia stems standardized to at least 15% arabinogalactan polysaccharides; and (b) a standardized extract of Ocimum sanctum leaves containing at least 2.5% ursolic acid; in an effective synergistic ratio from 1:1 to 3:1.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "2",
+              "text": "2. The composition according to claim 1, formulated as a syrup, tablet, or effervescent granulate.",
+              "is_independent": false
+            },
+            {
+              "claim_number": "3",
+              "text": "3. The composition according to claim 1 for use in adjuvant therapy for respiratory tract infections and immune restoration.",
+              "is_independent": false
+            }
+          ]
+        },
+        {
+          "heading": "Description",
+          "type": "description",
+          "text": "Detailed study of Ayurvedic Rasayana botanical combinations reveals that combining Guduchi polysaccharides with Tulsi triterpenes produces non-obvious potentiation of interferon-gamma secretion in splenocyte assays."
+        }
+      ]
+    }
+  },
+  "cleaned_text": "A synergistic immunomodulatory preparation comprising standardized polysaccharide fractions of Tinospora cordifolia (Guduchi) and ursolic acid fractions of Ocimum sanctum (Tulsi), stimulating macrophage phagocytosis and NK-cell activity.\n\nClaim 1: 1. An immunostimulatory composition comprising: (a) an aqueous extract of Tinospora cordifolia stems standardized to at least 15% arabinogalactan polysaccharides; and (b) a standardized extract of Ocimum sanctum leaves containing at least 2.5% ursolic acid; in an effective synergistic ratio from 1:1 to 3:1.\n\nClaim 2: 2. The composition according to claim 1, formulated as a syrup, tablet, or effervescent granulate.\n\nClaim 3: 3. The composition according to claim 1 for use in adjuvant therapy for respiratory tract infections and immune restoration.\n\nDetailed study of Ayurvedic Rasayana botanical combinations reveals that combining Guduchi polysaccharides with Tulsi triterpenes produces non-obvious potentiation of interferon-gamma secretion in splenocyte assays.",
+  "quality_metrics": {
+    "alphabetic_character_ratio": 0.8161,
+    "numeric_character_ratio": 0.0157,
+    "garbage_character_ratio": 0.0,
+    "average_word_length": 6.2,
+    "broken_word_ratio": 0.1095,
+    "duplicate_line_ratio": 0.0,
+    "ocr_quality_score": 0.781,
+    "status": "FAIL",
+    "rejection_reasons": [
+      "Broken word ratio too high: 0.109 > 0.05"
+    ]
+  }
+}

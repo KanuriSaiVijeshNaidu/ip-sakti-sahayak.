@@ -1,0 +1,32 @@
+{
+  "country": "EUROPE",
+  "region": "EUROPE",
+  "source_dataset": "EPO Patent All Claims & Authoritative EP Granted Specifications",
+  "source_url": "https://huggingface.co/datasets/mhurhangee/ep-patent-all-claims",
+  "patent_id": "EP-2744498-B1",
+  "application_number": "EP12753556.5",
+  "publication_number": "EP 2 744 498 B1",
+  "family_id": null,
+  "title": "Standardized herbal composition comprising Withania somnifera and Curcuma longa for treatment of inflammatory diseases",
+  "section": "abstract",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/9066",
+    "A61K36/81",
+    "A61P19/02",
+    "A61P29/00"
+  ],
+  "cpc": [
+    "A61K36/9066",
+    "A61K36/81",
+    "A61K2236/333",
+    "A61K2236/39"
+  ],
+  "language": "en",
+  "filing_date": "2012-08-14",
+  "publication_date": "2016-04-20",
+  "chunk_id": "EUROPE-CHK-0000-1575ad5f",
+  "chunk_index": 0,
+  "token_count": 67,
+  "text": "The present invention relates to a synergistic pharmaceutical or nutraceutical composition comprising standardized extracts of Withania somnifera containing at least 5% withanolides and Curcuma longa containing at least 95% curcuminoids in a weight ratio of 1:1 to 1:5, and a pharmaceutically acceptable carrier, providing enhanced inhibition of inflammatory cytokines TNF-alpha and IL-6."
+}

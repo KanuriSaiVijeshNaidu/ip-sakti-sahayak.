@@ -1,0 +1,73 @@
+{
+  "schema_name": "docling_core.models.DoclingDocument",
+  "version": "1.10.0",
+  "name": "GERMANY_DE-102012015247-A1",
+  "origin": {
+    "mimetype": "application/json",
+    "binary_hash": "",
+    "filename": "DE-102012015247-A1.json"
+  },
+  "metadata": {
+    "patent_id": "DE-102012015247-A1",
+    "application_number": "DE102012015247.9",
+    "publication_number": "DE 10 2012 015 247 A1",
+    "family_id": null,
+    "title": "Standardisierte Zubereitung aus Boswellia serrata und Zingiber officinale mit synergistischem antiarthritischem Effekt",
+    "country": "GERMANY",
+    "jurisdiction": "DE",
+    "language": "de",
+    "filing_date": "2012-07-31",
+    "publication_date": "2014-02-06",
+    "applicant": "Bionorica Research GmbH",
+    "inventor": [
+      "Prof. Dr. Michael Popp",
+      "Dr. Reinhard Sailer"
+    ],
+    "ipc": [
+      "A61K36/324",
+      "A61K36/9068",
+      "A61P29/00"
+    ],
+    "cpc": [
+      "A61K36/324",
+      "A61K36/9068"
+    ]
+  },
+  "body": {
+    "title": "Standardisierte Zubereitung aus Boswellia serrata und Zingiber officinale mit synergistischem antiarthritischem Effekt",
+    "sections": [
+      {
+        "heading": "Abstract",
+        "type": "abstract",
+        "text": "Die Erfindung betrifft eine feste Darreichungsform umfassend einen an Acetyl-11-keto-beta-Boswelliasäure (AKBA) angereicherten Weihrauchextrakt (Boswellia serrata) in Kombination mit einem standardisierten Ingwerextrakt (Zingiber officinale) zur Behandlung chronisch-entzündlicher Darmerkrankungen und Arthrosen."
+      },
+      {
+        "heading": "Claims",
+        "type": "claims",
+        "claim_count": 3,
+        "claims": [
+          {
+            "claim_number": "1",
+            "text": "1. Pflanzliche Arzneimittelkombination, umfassend: einen ethanolischen Trockenextrakt aus Boswellia serrata Harz mit mindestens 30 Gew.-% Boswelliasäuren und mindestens 10 Gew.-% AKBA; sowie einen lipophilen CO2-Extrakt aus Zingiber officinale mit mindestens 25 Gew.-% Gesamtgingerolen, im Gewichtsverhältnis von 2:1 bis 5:1.",
+            "is_independent": true
+          },
+          {
+            "claim_number": "2",
+            "text": "2. Zusammensetzung nach Anspruch 1, dadurch gekennzeichnet, dass sie als magensaftresistente Hartkapsel formuliert ist.",
+            "is_independent": true
+          },
+          {
+            "claim_number": "3",
+            "text": "3. Verwendung der Kombination nach Anspruch 1 oder 2 zur Herstellung eines Arzneimittels zur Behandlung von Colitis ulcerosa oder Gonarthrose.",
+            "is_independent": true
+          }
+        ]
+      },
+      {
+        "heading": "Description",
+        "type": "description",
+        "text": "Die Verwendung von Weihrauch (Shallaki) und Ingwer (Sunthi) in der traditionellen indischen Medizin ist historisch belegt. Vorliegende Erfindung löst das technische Problem der geringen Wasserlöslichkeit von Boswelliasäuren durch Einbettung in eine Lipidmatrix unter Mitwirkung der ätherischen Öle des Ingwers."
+      }
+    ]
+  }
+}

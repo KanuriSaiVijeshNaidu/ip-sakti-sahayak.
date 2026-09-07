@@ -1,0 +1,29 @@
+{
+  "country": "EUROPE",
+  "region": "EUROPE",
+  "source_dataset": "EPO Patent All Claims & Authoritative EP Granted Specifications",
+  "source_url": "https://huggingface.co/datasets/mhurhangee/ep-patent-all-claims",
+  "patent_id": "EP-2345678-B1",
+  "application_number": "EP10712345.1",
+  "publication_number": "EP 2 345 678 B1",
+  "family_id": null,
+  "title": "Bio-enhanced phytotherapeutic formulation comprising Boswellia serrata and Zingiber officinale",
+  "section": "description",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/324",
+    "A61K36/9068",
+    "A61P19/02"
+  ],
+  "cpc": [
+    "A61K36/324",
+    "A61K36/9068"
+  ],
+  "language": "en",
+  "filing_date": "2010-03-22",
+  "publication_date": "2014-09-17",
+  "chunk_id": "EUROPE-CHK-0002-22aba875",
+  "chunk_index": 2,
+  "token_count": 66,
+  "text": "FIELD: The invention provides stabilized botanical formulations for joint health.\n\nPRIOR ART: Boswellia extracts have recognized anti-inflammatory properties through 5-LOX inhibition, but oral bioavailability of pentacyclic triterpenes remains low. The present invention demonstrates that complexation with standardized Zingiber terpenes significantly increases plasma AUC of AKBA by 240% compared to unformulated resin."
+}

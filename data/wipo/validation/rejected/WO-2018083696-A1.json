@@ -1,0 +1,132 @@
+{
+  "patent_id": "WO-2018083696-A1",
+  "metadata": {
+    "patent_id": "WO-2018083696-A1",
+    "application_number": "PCT/IN2017/050512",
+    "publication_number": "WO 2018/083696 A1",
+    "family_id": null,
+    "title": "Synergistic polyherbal formulation comprising Withania somnifera, Bacopa monnieri and Centella asiatica for neuroprotection",
+    "country": "WIPO",
+    "jurisdiction": "WO",
+    "language": "en",
+    "filing_date": "2017-11-03",
+    "publication_date": "2018-05-11",
+    "applicant": "Laila Nutraceuticals / WIPO International Bureau",
+    "inventor": [
+      "Gokaraju Ganga Raju",
+      "Gokaraju Rama Raju",
+      "Bhupathiraju Kiran Kumar"
+    ],
+    "ipc": [
+      "A61K36/81",
+      "A61K36/68",
+      "A61K36/23",
+      "A61P25/28"
+    ],
+    "cpc": [
+      "A61K36/81",
+      "A61K36/68",
+      "A61K36/23"
+    ]
+  },
+  "docling_doc": {
+    "schema_name": "docling_core.models.DoclingDocument",
+    "version": "1.10.0",
+    "name": "WIPO_WO-2018083696-A1",
+    "origin": {
+      "mimetype": "application/json",
+      "binary_hash": "",
+      "filename": "WO-2018083696-A1.json"
+    },
+    "metadata": {
+      "patent_id": "WO-2018083696-A1",
+      "application_number": "PCT/IN2017/050512",
+      "publication_number": "WO 2018/083696 A1",
+      "family_id": null,
+      "title": "Synergistic polyherbal formulation comprising Withania somnifera, Bacopa monnieri and Centella asiatica for neuroprotection",
+      "country": "WIPO",
+      "jurisdiction": "WO",
+      "language": "en",
+      "filing_date": "2017-11-03",
+      "publication_date": "2018-05-11",
+      "applicant": "Laila Nutraceuticals / WIPO International Bureau",
+      "inventor": [
+        "Gokaraju Ganga Raju",
+        "Gokaraju Rama Raju",
+        "Bhupathiraju Kiran Kumar"
+      ],
+      "ipc": [
+        "A61K36/81",
+        "A61K36/68",
+        "A61K36/23",
+        "A61P25/28"
+      ],
+      "cpc": [
+        "A61K36/81",
+        "A61K36/68",
+        "A61K36/23"
+      ]
+    },
+    "body": {
+      "title": "Synergistic polyherbal formulation comprising Withania somnifera, Bacopa monnieri and Centella asiatica for neuroprotection",
+      "sections": [
+        {
+          "heading": "Abstract",
+          "type": "abstract",
+          "text": "The present invention discloses a synergistic polyherbal composition comprising standardized extracts of Withania somnifera (Ashwagandha), Bacopa monnieri (Brahmi), and Centella asiatica (Gotu Kola) in specific proportions, exhibiting potent neuroprotective and memory-enhancing activities by mitigating beta-amyloid peptide aggregation and oxidative neuronal stress."
+        },
+        {
+          "heading": "Claims",
+          "type": "claims",
+          "claim_count": 5,
+          "claims": [
+            {
+              "claim_number": "1",
+              "text": "1. A synergistic polyherbal composition for neuroprotection and cognitive enhancement comprising: (a) 25% to 45% by weight of a standardized extract of Withania somnifera comprising at least 5% total withanolides; (b) 25% to 45% by weight of a standardized extract of Bacopa monnieri comprising at least 20% total bacosides; (c) 15% to 30% by weight of a standardized extract of Centella asiatica comprising at least 10% triterpenoid saponins (asiaticoside and madecassoside); and (d) a pharmaceutically or nutraceutically acceptable carrier.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "2",
+              "text": "2. The composition according to claim 1, wherein the weight ratio of Withania somnifera to Bacopa monnieri to Centella asiatica is approximately 2:2:1.",
+              "is_independent": false
+            },
+            {
+              "claim_number": "3",
+              "text": "3. The composition according to claim 1 or 2, wherein the composition exhibits a synergistic reduction in reactive oxygen species (ROS) in human neuroblastoma SH-SY5Y cells challenged with amyloid-beta (1-42) fibrils.",
+              "is_independent": false
+            },
+            {
+              "claim_number": "4",
+              "text": "4. A pharmaceutical or dietary supplement dosage form comprising the composition according to any one of claims 1 to 3, selected from a capsule, tablet, microencapsulated powder, or liquid suspension.",
+              "is_independent": false
+            },
+            {
+              "claim_number": "5",
+              "text": "5. A method of treatment or prevention of neurodegenerative disorders, including Alzheimer's disease and vascular dementia, comprising administering an effective dose of the composition according to any one of claims 1 to 4 to a human subject in need thereof.",
+              "is_independent": false
+            }
+          ]
+        },
+        {
+          "heading": "Description",
+          "type": "description",
+          "text": "TECHNICAL FIELD: The invention relates to international patent applications under the Patent Cooperation Treaty (PCT) in the domain of phytomedicine and neurotherapeutics.\n\nBACKGROUND OF THE INVENTION: Neurodegenerative diseases such as Alzheimer's disease represent a monumental global health challenge. In Ayurvedic traditional medicine, the class of drugs designated as Medhya Rasayana encompasses botanicals known to promote intellect, memory, and cognitive vitality. However, single-herb administrations frequently suffer from narrow therapeutic windows or inadequate multi-target potency.\n\nDETAILED DESCRIPTION: The present international publication discloses that combining Withania somnifera withanolides (which upregulate brain-derived neurotrophic factor, BDNF) with Bacopa monnieri bacosides (which enhance synaptic cholinergic neurotransmission) and Centella asiatica triterpenes (which stimulate neurite outgrowth and dendritic arborization) produces an unexpected synergistic interaction. The combination Index (CI) determined across multiple neuronal survival assays was consistently below 0.65, demonstrating pronounced pharmacological synergy."
+        }
+      ]
+    }
+  },
+  "cleaned_text": "The present invention discloses a synergistic polyherbal composition comprising standardized extracts of Withania somnifera (Ashwagandha), Bacopa monnieri (Brahmi), and Centella asiatica (Gotu Kola) in specific proportions, exhibiting potent neuroprotective and memory-enhancing activities by mitigating beta-amyloid peptide aggregation and oxidative neuronal stress.\n\nClaim 1: 1. A synergistic polyherbal composition for neuroprotection and cognitive enhancement comprising: (a) 25% to 45% by weight of a standardized extract of Withania somnifera comprising at least 5% total withanolides; (b) 25% to 45% by weight of a standardized extract of Bacopa monnieri comprising at least 20% total bacosides; (c) 15% to 30% by weight of a standardized extract of Centella asiatica comprising at least 10% triterpenoid saponins (asiaticoside and madecassoside); and (d) a pharmaceutically or nutraceutically acceptable carrier.\n\nClaim 2: 2. The composition according to claim 1, wherein the weight ratio of Withania somnifera to Bacopa monnieri to Centella asiatica is approximately 2:2:1.\n\nClaim 3: 3. The composition according to claim 1 or 2, wherein the composition exhibits a synergistic reduction in reactive oxygen species (ROS) in human neuroblastoma SH-SY5Y cells challenged with amyloid-beta (1-42) fibrils.\n\nClaim 4: 4. A pharmaceutical or dietary supplement dosage form comprising the composition according to any one of claims 1 to 3, selected from a capsule, tablet, microencapsulated powder, or liquid suspension.\n\nClaim 5: 5. A method of treatment or prevention of neurodegenerative disorders, including Alzheimer's disease and vascular dementia, comprising administering an effective dose of the composition according to any one of claims 1 to 4 to a human subject in need thereof.\n\nTECHNICAL FIELD: The invention relates to international patent applications under the (PCT) in the domain of phytomedicine and neurotherapeutics.\n\nBACKGROUND OF THE INVENTION: Neurodegenerative diseases such as Alzheimer's disease represent a monumental global health challenge. In Ayurvedic traditional medicine, the class of drugs designated as Medhya Rasayana encompasses botanicals known to promote intellect, memory, and cognitive vitality. However, single-herb administrations frequently suffer from narrow therapeutic windows or inadequate multi-target potency.\n\nDETAILED DESCRIPTION: The present international publication discloses that combining Withania somnifera withanolides (which upregulate brain-derived neurotrophic factor, BDNF) with Bacopa monnieri bacosides (which enhance synaptic cholinergic neurotransmission) and Centella asiatica triterpenes (which stimulate neurite outgrowth and dendritic arborization) produces an unexpected synergistic interaction. The combination Index (CI) determined across multiple neuronal survival assays was consistently below 0.65, demonstrating pronounced pharmacological synergy.",
+  "quality_metrics": {
+    "alphabetic_character_ratio": 0.8176,
+    "numeric_character_ratio": 0.015,
+    "garbage_character_ratio": 0.0,
+    "average_word_length": 6.27,
+    "broken_word_ratio": 0.0641,
+    "duplicate_line_ratio": 0.0,
+    "ocr_quality_score": 0.8718,
+    "status": "FAIL",
+    "rejection_reasons": [
+      "Broken word ratio too high: 0.064 > 0.05"
+    ]
+  }
+}

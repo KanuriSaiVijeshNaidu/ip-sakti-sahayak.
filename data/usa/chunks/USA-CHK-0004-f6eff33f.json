@@ -1,0 +1,27 @@
+{
+  "country": "USA",
+  "region": "USA",
+  "source_dataset": "Harvard USPTO Patent Dataset (HUPD) - Utility Applications",
+  "source_url": "https://huggingface.co/datasets/HUPD/hupd",
+  "patent_id": "US-8512767-B2",
+  "application_number": "13/012,345",
+  "publication_number": "US 8,512,767 B2",
+  "family_id": null,
+  "title": "Standardized Bacopa monnieri composition and methods for improving cognitive performance",
+  "section": "description",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/68",
+    "A61P25/28"
+  ],
+  "cpc": [
+    "A61K36/68"
+  ],
+  "language": "en",
+  "filing_date": "2011-01-24",
+  "publication_date": "2013-08-20",
+  "chunk_id": "USA-CHK-0004-f6eff33f",
+  "chunk_index": 4,
+  "token_count": 35,
+  "text": "Bacopa monnieri has historical utilization as a Medhya Rasayana botanical. Modern standardized processing ensures removal of non-specific glycosides while maintaining exact ratios of memory-active dammarane-type triterpenoid saponins."
+}

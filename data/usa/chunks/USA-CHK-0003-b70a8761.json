@@ -1,0 +1,30 @@
+{
+  "country": "USA",
+  "region": "USA",
+  "source_dataset": "Harvard USPTO Patent Dataset (HUPD) - Utility Applications",
+  "source_url": "https://huggingface.co/datasets/HUPD/hupd",
+  "patent_id": "US-9144590-B2",
+  "application_number": "13/988,245",
+  "publication_number": "US 9,144,590 B2",
+  "family_id": null,
+  "title": "Synergistic botanical composition comprising Withania somnifera and Curcuma longa for treatment of inflammatory disorders",
+  "section": "claims",
+  "claim_number": "1",
+  "ipc": [
+    "A61K36/81",
+    "A61K36/9066",
+    "A61P29/00",
+    "A61P19/02"
+  ],
+  "cpc": [
+    "A61K36/81",
+    "A61K36/9066"
+  ],
+  "language": "en",
+  "filing_date": "2011-11-18",
+  "publication_date": "2015-09-29",
+  "chunk_id": "USA-CHK-0003-b70a8761",
+  "chunk_index": 3,
+  "token_count": 189,
+  "text": "Claim 1: 1. A synergistic oral composition comprising: (a) a standardized extract of Withania somnifera roots comprising at least 5.0% by weight of withanolide glycosides and withaferin A; (b) a standardized extract of Curcuma longa rhizomes comprising at least 95.0% by weight of total curcuminoids; and (c) a pharmaceutically acceptable excipient; wherein the weight ratio of the Withania somnifera extract to the Curcuma longa extract is between 1:1 and 1:3.\n\nClaim 2: 2. The composition of claim 1, further comprising from 0.5% to 2.5% by weight of a bioavailability enhancer selected from piperine.\n\nClaim 3: 3. The composition of claim 1, wherein the composition is formulated as an oral solid dosage form selected from a tablet, capsule, or enteric granule.\n\nClaim 4: 4. A method for alleviating symptoms of osteoarthritis in a human subject comprising orally administering an effective amount of the composition of claim 1."
+}

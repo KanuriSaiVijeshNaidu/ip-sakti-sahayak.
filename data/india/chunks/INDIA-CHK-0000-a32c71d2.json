@@ -1,0 +1,29 @@
+{
+  "country": "INDIA",
+  "region": "INDIA",
+  "source_dataset": "Indian Patent Office (IPO / InPASS) & TKDL Patent Corpus",
+  "source_url": "https://ipindiaservices.gov.in/publicsearch",
+  "patent_id": "IN-243763-B",
+  "application_number": "890/DEL/2005",
+  "publication_number": "IN 243763 B",
+  "family_id": null,
+  "title": "A process for preparation of standardized extract from Withania somnifera with enhanced withanolide glycosides content",
+  "section": "abstract",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/81",
+    "B01D15/00",
+    "A61P25/22"
+  ],
+  "cpc": [
+    "A61K36/81",
+    "B01D15/00"
+  ],
+  "language": "en",
+  "filing_date": "2005-04-12",
+  "publication_date": "2010-10-29",
+  "chunk_id": "INDIA-CHK-0000-a32c71d2",
+  "chunk_index": 0,
+  "token_count": 46,
+  "text": "The invention discloses an improved industrial extraction process for Withania somnifera roots yielding a dry extract containing >= 8.0% withanolide glycosides and <= 0.1% withaferin A, free of cytotoxic aglycones, exhibiting superior anxiolytic and adaptogenic efficacy."
+}

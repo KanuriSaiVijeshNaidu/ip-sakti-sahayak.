@@ -1,0 +1,118 @@
+{
+  "patent_id": "IN-284123-B",
+  "metadata": {
+    "patent_id": "IN-284123-B",
+    "application_number": "2104/MUM/2009",
+    "publication_number": "IN 284123 B",
+    "family_id": null,
+    "title": "Polyherbal formulation for hepatoprotective activity comprising Phyllanthus amarus, Picrorhiza kurroa, and Boerhavia diffusa",
+    "country": "INDIA",
+    "jurisdiction": "IN",
+    "language": "en",
+    "filing_date": "2009-09-15",
+    "publication_date": "2017-06-09",
+    "applicant": "Himalaya Drug Company / Himalaya Global Holdings",
+    "inventor": [
+      "Dr. Pralhad S. Patki",
+      "Dr. S. K. Mitra",
+      "Dr. U. V. Babu"
+    ],
+    "ipc": [
+      "A61K36/47",
+      "A61K36/68",
+      "A61K36/185",
+      "A61P1/16"
+    ],
+    "cpc": [
+      "A61K36/47",
+      "A61K36/68"
+    ]
+  },
+  "docling_doc": {
+    "schema_name": "docling_core.models.DoclingDocument",
+    "version": "1.10.0",
+    "name": "INDIA_IN-284123-B",
+    "origin": {
+      "mimetype": "application/json",
+      "binary_hash": "",
+      "filename": "IN-284123-B.json"
+    },
+    "metadata": {
+      "patent_id": "IN-284123-B",
+      "application_number": "2104/MUM/2009",
+      "publication_number": "IN 284123 B",
+      "family_id": null,
+      "title": "Polyherbal formulation for hepatoprotective activity comprising Phyllanthus amarus, Picrorhiza kurroa, and Boerhavia diffusa",
+      "country": "INDIA",
+      "jurisdiction": "IN",
+      "language": "en",
+      "filing_date": "2009-09-15",
+      "publication_date": "2017-06-09",
+      "applicant": "Himalaya Drug Company / Himalaya Global Holdings",
+      "inventor": [
+        "Dr. Pralhad S. Patki",
+        "Dr. S. K. Mitra",
+        "Dr. U. V. Babu"
+      ],
+      "ipc": [
+        "A61K36/47",
+        "A61K36/68",
+        "A61K36/185",
+        "A61P1/16"
+      ],
+      "cpc": [
+        "A61K36/47",
+        "A61K36/68"
+      ]
+    },
+    "body": {
+      "title": "Polyherbal formulation for hepatoprotective activity comprising Phyllanthus amarus, Picrorhiza kurroa, and Boerhavia diffusa",
+      "sections": [
+        {
+          "heading": "Abstract",
+          "type": "abstract",
+          "text": "A synergistic polyherbal therapeutic composition for treatment of drug-induced liver injury and hepatitis, comprising standardized extract fractions of Phyllanthus amarus (phyllanthin >= 2%), Picrorhiza kurroa (kutkoside and picroside >= 10%), and Boerhavia diffusa (punarnavoside >= 1.5%)."
+        },
+        {
+          "heading": "Claims",
+          "type": "claims",
+          "claim_count": 3,
+          "claims": [
+            {
+              "claim_number": "1",
+              "text": "1. A polyherbal hepatoprotective pharmaceutical composition comprising: (a) 30% to 40% w/w of standardized Phyllanthus amarus extract containing at least 2.0% phyllanthin; (b) 25% to 35% w/w of standardized Picrorhiza kurroa rhizome extract containing at least 10.0% picrosides; (c) 20% to 30% w/w of Boerhavia diffusa root extract containing at least 1.5% punarnavoside; and (d) pharmaceutical glidants and lubricants.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "2",
+              "text": "2. The composition as claimed in claim 1, wherein the composition accelerates normalization of serum transaminases (ALT, AST) and bilirubin by 45% compared to monotherapy controls in carbon tetrachloride (CCl4)-induced hepatic necrosis.",
+              "is_independent": false
+            },
+            {
+              "claim_number": "3",
+              "text": "3. The composition as claimed in claim 1, formulated as enteric-coated granules or film-coated tablets.",
+              "is_independent": false
+            }
+          ]
+        },
+        {
+          "heading": "Description",
+          "type": "description",
+          "text": "The classical herbs Bhumyamalaki, Katuki, and Punarnava are revered in Yakrit Roga chikitsa. The present applicants established that a precise ratio produces non-obvious stabilization of the hepatocyte mitochondrial membrane against paracetamol and rifampicin toxicity."
+        }
+      ]
+    }
+  },
+  "cleaned_text": "A synergistic polyherbal therapeutic composition for treatment of drug-induced liver injury and hepatitis, comprising standardized extract fractions of Phyllanthus amarus (phyllanthin >= 2%), Picrorhiza kurroa (kutkoside and picroside >= 10%), and Boerhavia diffusa (punarnavoside >= 1.5%).\n\nClaim 1: 1. A polyherbal hepatoprotective pharmaceutical composition comprising: (a) 30% to 40% w/w of standardized Phyllanthus amarus extract containing at least 2.0% phyllanthin; (b) 25% to 35% w/w of standardized Picrorhiza kurroa rhizome extract containing at least 10.0% picrosides; (c) 20% to 30% w/w of Boerhavia diffusa root extract containing at least 1.5% punarnavoside; and (d) pharmaceutical glidants and lubricants.\n\nClaim 2: 2. The composition as claimed in claim 1, wherein the composition accelerates normalization of serum transaminases (ALT, AST) and bilirubin by 45% compared to monotherapy controls in carbon tetrachloride (CCl4)-induced hepatic necrosis.\n\nClaim 3: 3. The composition as claimed in claim 1, formulated as enteric-coated granules or film-coated tablets.\n\nThe classical herbs Bhumyamalaki, Katuki, and Punarnava are revered in Yakrit Roga chikitsa. The present applicants established that a precise ratio produces non-obvious stabilization of the hepatocyte mitochondrial membrane against paracetamol and rifampicin toxicity.",
+  "quality_metrics": {
+    "alphabetic_character_ratio": 0.7833,
+    "numeric_character_ratio": 0.0259,
+    "garbage_character_ratio": 0.0,
+    "average_word_length": 5.98,
+    "broken_word_ratio": 0.0,
+    "duplicate_line_ratio": 0.0,
+    "ocr_quality_score": 1.0,
+    "status": "PASS",
+    "rejection_reasons": []
+  }
+}

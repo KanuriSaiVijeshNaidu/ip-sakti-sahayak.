@@ -1,0 +1,39 @@
+{
+  "patent_id": "US-7879368-B2",
+  "application_number": "11/987,654",
+  "publication_number": "US 7,879,368 B2",
+  "title": "Herbal anti-diabetic formulation comprising Gymnema sylvestre and Cinnamomum zeylanicum",
+  "abstract": "A synergistic composition comprising extracts of Gymnema sylvestre and Cinnamomum zeylanicum, effective in stimulating insulin secretion and sensitizing peripheral glucose uptake.",
+  "claims": [
+    "1. A herbal anti-diabetic composition comprising: (a) an extract of Gymnema sylvestre leaves comprising at least 25% gymnemic acids; and (b) an aqueous extract of Cinnamomum zeylanicum bark comprising at least 15% type-A proanthocyanidins; wherein the weight ratio of Gymnema to Cinnamomum is from 1:1 to 3:1.",
+    "2. The composition of claim 1, formulated as a sustained release tablet.",
+    "3. A method of reducing fasting plasma glucose in a patient with Type 2 diabetes comprising administering the composition of claim 1."
+  ],
+  "full_description": "The combination of Gymnema sylvestre and Cinnamomum bark extract produces complementary therapeutic actions: beta-cell regeneration and insulin receptor kinase activation.",
+  "background": "Type 2 diabetes mellitus is characterized by insulin resistance and progressive pancreatic beta-cell dysfunction.",
+  "summary": "A synergistic botanical combination providing improved glycemic control without hypoglycemic episodes.",
+  "ipc": [
+    "A61K36/27",
+    "A61K36/54",
+    "A61P3/10"
+  ],
+  "cpc": [
+    "A61K36/27",
+    "A61K36/54"
+  ],
+  "filing_date": "2007-11-20",
+  "publication_date": "2011-02-01",
+  "applicant": "OmniActive Health Technologies",
+  "inventor_list": [
+    {
+      "inventor_name_last": "Deshpande",
+      "inventor_name_first": "Jayant",
+      "inventor_country": "IN"
+    }
+  ],
+  "country": "USA",
+  "jurisdiction": "US",
+  "language": "en",
+  "source_dataset": "USPTO Patent Grants / HUPD",
+  "source_url": "https://patents.google.com/patent/US7879368B2/en"
+}

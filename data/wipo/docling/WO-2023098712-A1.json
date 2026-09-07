@@ -1,0 +1,73 @@
+{
+  "schema_name": "docling_core.models.DoclingDocument",
+  "version": "1.10.0",
+  "name": "WIPO_WO-2023098712-A1",
+  "origin": {
+    "mimetype": "application/json",
+    "binary_hash": "",
+    "filename": "WO-2023098712-A1.json"
+  },
+  "metadata": {
+    "patent_id": "WO-2023098712-A1",
+    "application_number": "PCT/IN2022/051045",
+    "publication_number": "WO 2023/098712 A1",
+    "family_id": null,
+    "title": "Synergistic composition containing standardized extracts of Tinospora cordifolia and Piper longum for immunomodulation",
+    "country": "WIPO",
+    "jurisdiction": "WO",
+    "language": "en",
+    "filing_date": "2022-11-25",
+    "publication_date": "2023-06-01",
+    "applicant": "Aurea Biolabs Pvt. Ltd. / WIPO International Bureau",
+    "inventor": [
+      "Dr. Balu Maliakel",
+      "Dr. Krishnakumar I. M."
+    ],
+    "ipc": [
+      "A61K36/59",
+      "A61K36/67",
+      "A61P37/04"
+    ],
+    "cpc": [
+      "A61K36/59",
+      "A61K36/67"
+    ]
+  },
+  "body": {
+    "title": "Synergistic composition containing standardized extracts of Tinospora cordifolia and Piper longum for immunomodulation",
+    "sections": [
+      {
+        "heading": "Abstract",
+        "type": "abstract",
+        "text": "A synergistic immunotherapeutic composition comprising water-soluble polysaccharide fractions of Tinospora cordifolia (Guduchi) and standardized Piper longum (Pippali) fruit extract (piperine >= 20%), providing significant stimulation of cellular and humoral immunity."
+      },
+      {
+        "heading": "Claims",
+        "type": "claims",
+        "claim_count": 3,
+        "claims": [
+          {
+            "claim_number": "1",
+            "text": "1. A synergistic oral composition comprising: (a) an aqueous extract of Tinospora cordifolia standardized to >= 15% arabinogalactans; (b) an ethanolic extract of Piper longum standardized to >= 20% piperine and piperlongumine; in a weight ratio of 3:1 to 6:1; and (c) an oral acceptable excipient.",
+            "is_independent": true
+          },
+          {
+            "claim_number": "2",
+            "text": "2. The composition according to claim 1, wherein piperlongumine enhances lymphocyte uptake of Tinospora polysaccharides by 210%.",
+            "is_independent": false
+          },
+          {
+            "claim_number": "3",
+            "text": "3. The composition according to claim 1 for use as an adjuvant immunomodulator in immunocompromised individuals.",
+            "is_independent": false
+          }
+        ]
+      },
+      {
+        "heading": "Description",
+        "type": "description",
+        "text": "Rasayana botanicals described in Charaka Samhita emphasize the co-administration of Guduchi with Pippali to enhance bio-assimilation (Agni deepana and Srotoshodhana). Modern bioavailability studies confirmed significant upregulation of systemic cytokine expression."
+      }
+    ]
+  }
+}

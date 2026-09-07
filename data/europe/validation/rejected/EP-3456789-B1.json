@@ -1,0 +1,116 @@
+{
+  "patent_id": "EP-3456789-B1",
+  "metadata": {
+    "patent_id": "EP-3456789-B1",
+    "application_number": "EP17812345.9",
+    "publication_number": "EP 3 456 789 B1",
+    "family_id": null,
+    "title": "Synergistic polyherbal formulation based on Triphala for metabolic regulation and gut barrier repair",
+    "country": "EUROPE",
+    "jurisdiction": "EP",
+    "language": "en",
+    "filing_date": "2017-10-12",
+    "publication_date": "2021-06-16",
+    "applicant": "Martin Bauer Group / Eurofins BioPharma",
+    "inventor": [
+      "Dr. Hans-Ulrich Seitz",
+      "Dr. Anand Chordia"
+    ],
+    "ipc": [
+      "A61K36/185",
+      "A61P1/00",
+      "A61P3/00"
+    ],
+    "cpc": [
+      "A61K36/185",
+      "A61P1/00"
+    ]
+  },
+  "docling_doc": {
+    "schema_name": "docling_core.models.DoclingDocument",
+    "version": "1.10.0",
+    "name": "EUROPE_EP-3456789-B1",
+    "origin": {
+      "mimetype": "application/json",
+      "binary_hash": "",
+      "filename": "EP-3456789-B1.json"
+    },
+    "metadata": {
+      "patent_id": "EP-3456789-B1",
+      "application_number": "EP17812345.9",
+      "publication_number": "EP 3 456 789 B1",
+      "family_id": null,
+      "title": "Synergistic polyherbal formulation based on Triphala for metabolic regulation and gut barrier repair",
+      "country": "EUROPE",
+      "jurisdiction": "EP",
+      "language": "en",
+      "filing_date": "2017-10-12",
+      "publication_date": "2021-06-16",
+      "applicant": "Martin Bauer Group / Eurofins BioPharma",
+      "inventor": [
+        "Dr. Hans-Ulrich Seitz",
+        "Dr. Anand Chordia"
+      ],
+      "ipc": [
+        "A61K36/185",
+        "A61P1/00",
+        "A61P3/00"
+      ],
+      "cpc": [
+        "A61K36/185",
+        "A61P1/00"
+      ]
+    },
+    "body": {
+      "title": "Synergistic polyherbal formulation based on Triphala for metabolic regulation and gut barrier repair",
+      "sections": [
+        {
+          "heading": "Abstract",
+          "type": "abstract",
+          "text": "A standardized herbal composition comprising equal weight proportions of aqueous-ethanolic extracts of Terminalia chebula, Terminalia bellerica, and Phyllanthus emblica, characterized by polyphenol content >= 45% and gallic acid >= 8%, restoring gut mucosal tightness and reducing metabolic endotoxemia."
+        },
+        {
+          "heading": "Claims",
+          "type": "claims",
+          "claim_count": 3,
+          "claims": [
+            {
+              "claim_number": "1",
+              "text": "1. A standardized Triphala formulation comprising a spray-dried blend of hydroalcoholic extracts of Terminalia chebula fruits, Terminalia bellerica fruits, and Phyllanthus emblica fruits, characterized in that the formulation comprises not less than 45.0% total polyphenols and not less than 8.0% gallic acid by weight.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "2",
+              "text": "2. The formulation according to claim 1, wherein the formulation upregulates expression of tight junction proteins Claudin-1 and ZO-1 in human intestinal epithelial Caco-2 monolayers.",
+              "is_independent": false
+            },
+            {
+              "claim_number": "3",
+              "text": "3. The formulation according to claim 1 for use in preventing or treating metabolic syndrome and intestinal hyperpermeability.",
+              "is_independent": false
+            }
+          ]
+        },
+        {
+          "heading": "Description",
+          "type": "description",
+          "text": "While Triphala has historical documentation in classical texts (Charaka Samhita, Sutrasthana), previous applications did not quantify polyphenol ratios required to trigger epithelial cell tight junction repair in the intestinal mucosa."
+        }
+      ]
+    }
+  },
+  "cleaned_text": "A standardized herbal composition comprising equal weight proportions of aqueous-ethanolic extracts of Terminalia chebula, Terminalia bellerica, and Phyllanthus emblica, characterized by polyphenol content >= 45% and gallic acid >= 8%, restoring gut mucosal tightness and reducing metabolic endotoxemia.\n\nClaim 1: 1. A standardized Triphala formulation comprising a spray-dried blend of hydroalcoholic extracts of Terminalia chebula fruits, Terminalia bellerica fruits, and Phyllanthus emblica fruits, characterized in that the formulation comprises not less than 45.0% total polyphenols and not less than 8.0% gallic acid by weight.\n\nClaim 2: 2. The formulation according to claim 1, wherein the formulation upregulates expression of tight junction proteins Claudin-1 and ZO-1 in human intestinal epithelial Caco-2 monolayers.\n\nClaim 3: 3. The formulation according to claim 1 for use in preventing or treating metabolic syndrome and intestinal hyperpermeability.\n\nWhile Triphala has historical documentation in classical texts (Charaka Samhita, Sutrasthana), previous applications did not quantify polyphenol ratios required to trigger epithelial cell tight junction repair in the intestinal mucosa.",
+  "quality_metrics": {
+    "alphabetic_character_ratio": 0.816,
+    "numeric_character_ratio": 0.0158,
+    "garbage_character_ratio": 0.0,
+    "average_word_length": 6.24,
+    "broken_word_ratio": 0.0745,
+    "duplicate_line_ratio": 0.0,
+    "ocr_quality_score": 0.8509,
+    "status": "FAIL",
+    "rejection_reasons": [
+      "Broken word ratio too high: 0.075 > 0.05"
+    ]
+  }
+}

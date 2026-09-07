@@ -1,0 +1,30 @@
+{
+  "country": "INDIA",
+  "region": "INDIA",
+  "source_dataset": "Indian Patent Office (IPO / InPASS) & TKDL Patent Corpus",
+  "source_url": "https://ipindiaservices.gov.in/publicsearch",
+  "patent_id": "IN-268685-B",
+  "application_number": "1456/DEL/2008",
+  "publication_number": "IN 268685 B",
+  "family_id": null,
+  "title": "A novel synergistic herbal formulation for management of metabolic disorders comprising extracts of Tinospora cordifolia, Salacia reticulata, and Curcuma longa",
+  "section": "description",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/59",
+    "A61K36/9066",
+    "A61K36/37",
+    "A61P3/10"
+  ],
+  "cpc": [
+    "A61K36/59",
+    "A61K36/9066"
+  ],
+  "language": "en",
+  "filing_date": "2008-06-18",
+  "publication_date": "2015-09-11",
+  "chunk_id": "INDIA-CHK-0002-ac5737b4",
+  "chunk_index": 2,
+  "token_count": 161,
+  "text": "FIELD OF INVENTION: The present invention relates to herbal medicinal chemistry and pharmacology, specifically to a synergistic botanical composition for glycemic control and metabolic syndrome.\n\nCOMPLIANCE WITH SECTION 3(p) & 3(e): Traditional Knowledge Digital Library (TKDL) references recognize individual herbs for Prameha (diabetes). However, under Section 3(e) of the Indian Patents Act 1970, a mere admixture resulting only in aggregation of properties is non-patentable. In contrast, the present applicants have produced rigorous in vitro and in vivo pharmacological evidence demonstrating an unexpected synergistic interaction between the specified ratios of tinosporide, salacinol, and curcuminoids, achieving a 3.4-fold enhancement in GLUT-4 translocation in L6 myotubes.\n\nFurthermore, NBA clearance was secured under Section 19 of the Biological Diversity Act 2002 for commercial utilization of Indian biological resources."
+}

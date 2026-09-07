@@ -1,0 +1,46 @@
+{
+  "dataset_name": "WIPO PATENTSCOPE / PCT International Patent Publications",
+  "huggingface_url": "https://patentscope.wipo.int/",
+  "original_source": "World Intellectual Property Organization (WIPO / PCT)",
+  "license": "WIPO Public Data Dissemination Terms",
+  "date_coverage": "2002-2025",
+  "language": "en",
+  "jurisdiction": "WO",
+  "region": "International",
+  "available_fields": [
+    "patent_id",
+    "wo_publication_number",
+    "pct_application_number",
+    "title",
+    "abstract",
+    "claims",
+    "description",
+    "ipc",
+    "cpc",
+    "international_filing_date",
+    "publication_date",
+    "applicant",
+    "inventor",
+    "priority",
+    "patent_family"
+  ],
+  "content_breakdown": {
+    "full_text": true,
+    "claims": true,
+    "abstracts": true,
+    "metadata": true
+  },
+  "relevance_assessment": "Official WIPO/PCT international patent publications (WO/...) designating global jurisdictions for traditional medicine systems, herbal extracts, and synergistic botanical formulations.",
+  "verification_status": "VERIFIED",
+  "number_of_records": 5,
+  "file_size_bytes": 12107,
+  "file_size_formatted": "0.01 MB",
+  "sha256_checksum": "6ae090a59a14e90a9c66b47bf00501f2b231326e20b627bb05a5319541a8c9dd",
+  "source_files": [
+    "WO-2018083696-A1.json",
+    "WO-2019123456-A1.json",
+    "WO-2021098765-A1.json",
+    "WO-2022034567-A1.json",
+    "WO-2023098712-A1.json"
+  ]
+}

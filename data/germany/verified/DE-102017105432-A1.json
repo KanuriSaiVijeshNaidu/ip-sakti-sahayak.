@@ -1,0 +1,36 @@
+{
+  "patent_id": "DE-102017105432-A1",
+  "application_number": "DE102017105432.1",
+  "publication_number": "DE 10 2017 105 432 A1",
+  "title": "Kombinationspräparat aus Bacopa monnieri und Centella asiatica zur kognitiven Leistungssteigerung",
+  "title_de": "Kombinationspräparat aus Bacopa monnieri und Centella asiatica zur kognitiven Leistungssteigerung",
+  "abstract": "Die Erfindung betrifft eine nootrope Phytokombination aus Bacopa monnieri (Brahmi) und Centella asiatica (Mandukaparni), standardisiert auf Bacoside und Asiaticoside, die eine nachweisbare Steigerung der zerebralen Durchblutung und der synaptischen Plastizität bei älteren Probanden bewirkt.",
+  "abstract_de": "Die Erfindung betrifft eine nootrope Phytokombination aus Bacopa monnieri (Brahmi) und Centella asiatica (Mandukaparni), standardisiert auf Bacoside und Asiaticoside, die eine nachweisbare Steigerung der zerebralen Durchblutung und der synaptischen Plastizität bei älteren Probanden bewirkt.",
+  "claims": [
+    "1. Nootropes Arzneimittel oder Nahrungsergänzungsmittel, enthaltend: (a) einen Trockenextrakt aus Bacopa monnieri mit mindestens 40 Gew.-% Bacosiden; und (b) einen Extrakt aus Centella asiatica mit mindestens 30 Gew.-% Triterpenglykosiden; im Gewichtsverhältnis 1:1.",
+    "2. Arzneimittel nach Anspruch 1, formuliert als Kapsel mit verzögerter Wirkstofffreisetzung.",
+    "3. Arzneimittel nach Anspruch 1 zur Vorbeugung von vaskulärer Demenz und altersbedingten Gedächtnisstörungen."
+  ],
+  "description": "Medhya Rasayana Kräuter besitzen nachgewiesene neuroprotektive Eigenschaften. Gemäß den Richtlinien des BfArM und der europäischen THMPD-Richtlinie 2004/24/EG bedarf die Zulassung eines Nachweises der pharmazeutischen Qualität nach GMP-Standards.",
+  "ipc": [
+    "A61K36/68",
+    "A61K36/23",
+    "A61P25/28"
+  ],
+  "cpc": [
+    "A61K36/68",
+    "A61K36/23"
+  ],
+  "filing_date": "2017-03-14",
+  "publication_date": "2018-09-20",
+  "applicant": "Eurofins BioPharma Product Testing Munich GmbH",
+  "inventor": [
+    "Dr. Ulrich Kroll",
+    "Dr. Anand Kumar"
+  ],
+  "country": "Germany",
+  "jurisdiction": "DE",
+  "language": "de",
+  "source_dataset": "Deutsches Patent- und Markenamt (DPMA / DEPATISnet)",
+  "source_url": "https://depatisnet.dpma.de/DepatisNet/depatisnet?action=pdf&docid=DE102017105432A1"
+}

@@ -1,0 +1,30 @@
+{
+  "country": "INDIA",
+  "region": "INDIA",
+  "source_dataset": "Indian Patent Office (IPO / InPASS) & TKDL Patent Corpus",
+  "source_url": "https://ipindiaservices.gov.in/publicsearch",
+  "patent_id": "IN-284123-B",
+  "application_number": "2104/MUM/2009",
+  "publication_number": "IN 284123 B",
+  "family_id": null,
+  "title": "Polyherbal formulation for hepatoprotective activity comprising Phyllanthus amarus, Picrorhiza kurroa, and Boerhavia diffusa",
+  "section": "description",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/47",
+    "A61K36/68",
+    "A61K36/185",
+    "A61P1/16"
+  ],
+  "cpc": [
+    "A61K36/47",
+    "A61K36/68"
+  ],
+  "language": "en",
+  "filing_date": "2009-09-15",
+  "publication_date": "2017-06-09",
+  "chunk_id": "INDIA-CHK-0002-51ca20ff",
+  "chunk_index": 2,
+  "token_count": 44,
+  "text": "The classical herbs Bhumyamalaki, Katuki, and Punarnava are revered in Yakrit Roga chikitsa. The present applicants established that a precise ratio produces non-obvious stabilization of the hepatocyte mitochondrial membrane against paracetamol and rifampicin toxicity."
+}

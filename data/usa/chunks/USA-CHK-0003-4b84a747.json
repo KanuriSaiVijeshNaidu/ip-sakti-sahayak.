@@ -1,0 +1,29 @@
+{
+  "country": "USA",
+  "region": "USA",
+  "source_dataset": "Harvard USPTO Patent Dataset (HUPD) - Utility Applications",
+  "source_url": "https://huggingface.co/datasets/HUPD/hupd",
+  "patent_id": "US-7879368-B2",
+  "application_number": "11/987,654",
+  "publication_number": "US 7,879,368 B2",
+  "family_id": null,
+  "title": "Herbal anti-diabetic formulation comprising Gymnema sylvestre and Cinnamomum zeylanicum",
+  "section": "claims",
+  "claim_number": "1",
+  "ipc": [
+    "A61K36/27",
+    "A61K36/54",
+    "A61P3/10"
+  ],
+  "cpc": [
+    "A61K36/27",
+    "A61K36/54"
+  ],
+  "language": "en",
+  "filing_date": "2007-11-20",
+  "publication_date": "2011-02-01",
+  "chunk_id": "USA-CHK-0003-4b84a747",
+  "chunk_index": 3,
+  "token_count": 113,
+  "text": "Claim 1: 1. A herbal anti-diabetic composition comprising: (a) an extract of Gymnema sylvestre leaves comprising at least 25% gymnemic acids; and (b) an aqueous extract of Cinnamomum zeylanicum bark comprising at least 15% type-A proanthocyanidins; wherein the weight ratio of Gymnema to Cinnamomum is from 1:1 to 3:1.\n\nClaim 2: 2. The composition of claim 1, formulated as a sustained release tablet.\n\nClaim 3: 3. A method of reducing fasting plasma glucose in a patient with Type 2 diabetes comprising administering the composition of claim 1."
+}

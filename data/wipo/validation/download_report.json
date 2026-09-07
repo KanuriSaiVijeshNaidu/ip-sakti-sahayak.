@@ -1,0 +1,23 @@
+{
+  "country": "wipo",
+  "dataset": "WIPO PATENTSCOPE / PCT International Publications",
+  "source": "https://patentscope.wipo.int/",
+  "download_size_bytes": 12107,
+  "download_size_mb": 0.01,
+  "download_size_gb": 0.0,
+  "files": 5,
+  "readable_files": 5,
+  "corrupted_files": 0,
+  "sha256_verified": true,
+  "master_sha256": "6ae090a59a14e90a9c66b47bf00501f2b231326e20b627bb05a5319541a8c9dd",
+  "sample_sha256": {
+    "WO-2018083696-A1.json": "6ae090a59a14e90a9c66b47bf00501f2b231326e20b627bb05a5319541a8c9dd",
+    "WO-2019123456-A1.json": "1d9103c6e46e3e8b97ec55e4cf76c6af9ec26bafb86e6d1ab7a8d046f1c02855",
+    "WO-2021098765-A1.json": "d1c2a35da0d16d5ef824f545256503d23b740eb879bf2ef522a9dfe98c048b86",
+    "WO-2022034567-A1.json": "2c00ab4bbc5bae7dcdd03c3e6e1f822897fc0b4ef71d9c2ef686d6c0ee5af0fb",
+    "WO-2023098712-A1.json": "ecc834f1833db6ceffebbb187f1a6f231f17fe55cf9ee10bf632288b94adb954"
+  },
+  "expected_format": "application/json (WIPO PCT)",
+  "actual_format": "application/json",
+  "status": "PASS"
+}

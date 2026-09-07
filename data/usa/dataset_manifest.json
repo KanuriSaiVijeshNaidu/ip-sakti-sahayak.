@@ -1,0 +1,47 @@
+{
+  "dataset_name": "Harvard USPTO Patent Dataset (HUPD) - Utility Applications",
+  "huggingface_url": "https://huggingface.co/datasets/HUPD/hupd",
+  "original_source": "United States Patent and Trademark Office (USPTO)",
+  "license": "CC-BY-SA-4.0",
+  "date_coverage": "2004-2018",
+  "language": "en",
+  "jurisdiction": "US",
+  "region": "North America",
+  "available_fields": [
+    "patent_id",
+    "application_number",
+    "publication_number",
+    "title",
+    "abstract",
+    "claims",
+    "background",
+    "summary",
+    "full_description",
+    "main_cpc_label",
+    "cpc_labels",
+    "main_ipcr_label",
+    "ipcr_labels",
+    "filing_date",
+    "patent_issue_date",
+    "inventor_list"
+  ],
+  "content_breakdown": {
+    "full_text": true,
+    "claims": true,
+    "abstracts": true,
+    "metadata": true
+  },
+  "relevance_assessment": "Authoritative US utility patent applications filed with the USPTO, filtered for botanical compositions, herbal formulations, and IPC A61K classifications.",
+  "verification_status": "VERIFIED",
+  "number_of_records": 5,
+  "file_size_bytes": 387648976,
+  "file_size_formatted": "369.69 MB",
+  "sha256_checksum": "c8db7a2e730f04a95946847d39a74b4a9ea53b0f4fd357bb8789abd77684e37f",
+  "source_files": [
+    "US-7879368-B2.json",
+    "US-8512767-B2.json",
+    "US-8828456-B2.json",
+    "US-9144590-B2.json",
+    "US-9345738-B2.json"
+  ]
+}

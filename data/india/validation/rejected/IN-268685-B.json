@@ -1,0 +1,130 @@
+{
+  "patent_id": "IN-268685-B",
+  "metadata": {
+    "patent_id": "IN-268685-B",
+    "application_number": "1456/DEL/2008",
+    "publication_number": "IN 268685 B",
+    "family_id": null,
+    "title": "A novel synergistic herbal formulation for management of metabolic disorders comprising extracts of Tinospora cordifolia, Salacia reticulata, and Curcuma longa",
+    "country": "INDIA",
+    "jurisdiction": "IN",
+    "language": "en",
+    "filing_date": "2008-06-18",
+    "publication_date": "2015-09-11",
+    "applicant": "Council of Scientific and Industrial Research (CSIR) & CCRAS",
+    "inventor": [
+      "Dr. V. M. Katoch",
+      "Dr. Rama Kant Sharma",
+      "Dr. Arvind Kumar"
+    ],
+    "ipc": [
+      "A61K36/59",
+      "A61K36/9066",
+      "A61K36/37",
+      "A61P3/10"
+    ],
+    "cpc": [
+      "A61K36/59",
+      "A61K36/9066"
+    ]
+  },
+  "docling_doc": {
+    "schema_name": "docling_core.models.DoclingDocument",
+    "version": "1.10.0",
+    "name": "INDIA_IN-268685-B",
+    "origin": {
+      "mimetype": "application/json",
+      "binary_hash": "",
+      "filename": "IN-268685-B.json"
+    },
+    "metadata": {
+      "patent_id": "IN-268685-B",
+      "application_number": "1456/DEL/2008",
+      "publication_number": "IN 268685 B",
+      "family_id": null,
+      "title": "A novel synergistic herbal formulation for management of metabolic disorders comprising extracts of Tinospora cordifolia, Salacia reticulata, and Curcuma longa",
+      "country": "INDIA",
+      "jurisdiction": "IN",
+      "language": "en",
+      "filing_date": "2008-06-18",
+      "publication_date": "2015-09-11",
+      "applicant": "Council of Scientific and Industrial Research (CSIR) & CCRAS",
+      "inventor": [
+        "Dr. V. M. Katoch",
+        "Dr. Rama Kant Sharma",
+        "Dr. Arvind Kumar"
+      ],
+      "ipc": [
+        "A61K36/59",
+        "A61K36/9066",
+        "A61K36/37",
+        "A61P3/10"
+      ],
+      "cpc": [
+        "A61K36/59",
+        "A61K36/9066"
+      ]
+    },
+    "body": {
+      "title": "A novel synergistic herbal formulation for management of metabolic disorders comprising extracts of Tinospora cordifolia, Salacia reticulata, and Curcuma longa",
+      "sections": [
+        {
+          "heading": "Abstract",
+          "type": "abstract",
+          "text": "The invention relates to a synergistic pharmaceutical and nutraceutical composition for management of Type-2 diabetes and insulin resistance, comprising aqueous-ethanolic extracts of Tinospora cordifolia (15-30% w/w), Salacia reticulata (20-40% w/w), and Curcuma longa (10-25% w/w), demonstrating superior inhibition of alpha-glucosidase and reduction of HbA1c without hypoglycemia."
+        },
+        {
+          "heading": "Claims",
+          "type": "claims",
+          "claim_count": 5,
+          "claims": [
+            {
+              "claim_number": "1",
+              "text": "1. A novel synergistic herbal formulation for management of metabolic syndrome and Type-2 diabetes comprising: (a) 20% to 35% by weight of a hydroalcoholic extract of Tinospora cordifolia stems standardized to 2.5% tinosporide; (b) 25% to 45% by weight of an aqueous extract of Salacia reticulata roots standardized to 1.5% salacinol and kotalanol; (c) 15% to 30% by weight of a standardized Curcuma longa rhizome extract containing 95% total curcuminoids; and (d) pharmaceutically acceptable excipients.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "2",
+              "text": "2. The formulation as claimed in claim 1, wherein the combination exhibits a synergistic alpha-glucosidase inhibitory activity (IC50 = 42 mcg/mL) which is significantly lower than individual components tested alone.",
+              "is_independent": false
+            },
+            {
+              "claim_number": "3",
+              "text": "3. The formulation as claimed in claim 1, wherein the composition is formulated into oral tablets, capsules, sachets, or sustained release pellets.",
+              "is_independent": false
+            },
+            {
+              "claim_number": "4",
+              "text": "4. A process for preparing the formulation as claimed in claim 1, comprising counter-current percolation of pulverized botanical raw materials with 60:40 ethanol-water at 50°C, concentration under reduced pressure, and spray drying.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "5",
+              "text": "5. The formulation as claimed in claim 1, wherein said formulation is non-toxic up to 2000 mg/kg body weight in acute oral toxicity testing in accordance with OECD Guideline 423.",
+              "is_independent": false
+            }
+          ]
+        },
+        {
+          "heading": "Description",
+          "type": "description",
+          "text": "FIELD OF INVENTION: The present invention relates to herbal medicinal chemistry and pharmacology, specifically to a synergistic botanical composition for glycemic control and metabolic syndrome.\n\nCOMPLIANCE WITH SECTION 3(p) & 3(e): Traditional Knowledge Digital Library (TKDL) references recognize individual herbs for Prameha (diabetes). However, under Section 3(e) of the Indian Patents Act 1970, a mere admixture resulting only in aggregation of properties is non-patentable. In contrast, the present applicants have produced rigorous in vitro and in vivo pharmacological evidence demonstrating an unexpected synergistic interaction between the specified ratios of tinosporide, salacinol, and curcuminoids, achieving a 3.4-fold enhancement in GLUT-4 translocation in L6 myotubes.\n\nFurthermore, NBA clearance was secured under Section 19 of the Biological Diversity Act 2002 for commercial utilization of Indian biological resources."
+        }
+      ]
+    }
+  },
+  "cleaned_text": "The invention relates to a synergistic pharmaceutical and nutraceutical composition for management of Type-2 diabetes and insulin resistance, comprising aqueous-ethanolic extracts of Tinospora cordifolia (15-30% w/w), Salacia reticulata (20-40% w/w), and Curcuma longa (10-25% w/w), demonstrating superior inhibition of alpha-glucosidase and reduction of HbA1c without hypoglycemia.\n\nClaim 1: 1. A novel synergistic herbal formulation for management of metabolic syndrome and Type-2 diabetes comprising: (a) 20% to 35% by weight of a hydroalcoholic extract of Tinospora cordifolia stems standardized to 2.5% tinosporide; (b) 25% to 45% by weight of an aqueous extract of Salacia reticulata roots standardized to 1.5% salacinol and kotalanol; (c) 15% to 30% by weight of a standardized Curcuma longa rhizome extract containing 95% total curcuminoids; and (d) pharmaceutically acceptable excipients.\n\nClaim 2: 2. The formulation as claimed in claim 1, wherein the combination exhibits a synergistic alpha-glucosidase inhibitory activity (IC50 = 42 mcg/mL) which is significantly lower than individual components tested alone.\n\nClaim 3: 3. The formulation as claimed in claim 1, wherein the composition is formulated into oral tablets, capsules, sachets, or sustained release pellets.\n\nClaim 4: 4. A process for preparing the formulation as claimed in claim 1, comprising counter-current percolation of pulverized botanical raw materials with 60:40 ethanol-water at 50°C, concentration under reduced pressure, and spray drying.\n\nClaim 5: 5. The formulation as claimed in claim 1, wherein said formulation is non-toxic up to 2000 mg/kg body weight in acute oral toxicity testing in accordance with OECD Guideline 423.\n\nFIELD OF INVENTION: The present invention relates to herbal medicinal chemistry and pharmacology, specifically to a synergistic botanical composition for glycemic control and metabolic syndrome.\n\nCOMPLIANCE WITH SECTION 3(p) & 3(e): Traditional Knowledge Digital Library (TKDL) references recognize individual herbs for Prameha (diabetes). However, under Section 3(e) of the Indian Patents Act 1970, a mere admixture resulting only in aggregation of properties is non-patentable. In contrast, the present applicants have produced rigorous in vitro and in vivo pharmacological evidence demonstrating an unexpected synergistic interaction between the specified ratios of tinosporide, salacinol, and curcuminoids, achieving a 3.4-fold enhancement in GLUT-4 translocation in L6 myotubes.\n\nFurthermore, NBA clearance was secured under Section 19 of the Biological Diversity Act 2002 for commercial utilization of Indian biological resources.",
+  "quality_metrics": {
+    "alphabetic_character_ratio": 0.7854,
+    "numeric_character_ratio": 0.0306,
+    "garbage_character_ratio": 0.0,
+    "average_word_length": 5.82,
+    "broken_word_ratio": 0.072,
+    "duplicate_line_ratio": 0.0,
+    "ocr_quality_score": 0.856,
+    "status": "FAIL",
+    "rejection_reasons": [
+      "Broken word ratio too high: 0.072 > 0.05"
+    ]
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "patent_id": "DE-102016008912-A1",
+  "metadata": {
+    "patent_id": "DE-102016008912-A1",
+    "application_number": "DE102016008912.3",
+    "publication_number": "DE 10 2016 008 912 A1",
+    "family_id": null,
+    "title": "Phytotherapeutische Darreichungsform umfassend Ocimum sanctum und Tinospora cordifolia zur Immunmodulation",
+    "country": "GERMANY",
+    "jurisdiction": "DE",
+    "language": "de",
+    "filing_date": "2016-07-20",
+    "publication_date": "2018-01-25",
+    "applicant": "Finzelberg Phytochemicals GmbH",
+    "inventor": [
+      "Dr. Martin Tegtmeier",
+      "Dr. Ramesh Chandra"
+    ],
+    "ipc": [
+      "A61K36/59",
+      "A61K36/53",
+      "A61P37/04"
+    ],
+    "cpc": [
+      "A61K36/59",
+      "A61K36/53"
+    ]
+  },
+  "docling_doc": {
+    "schema_name": "docling_core.models.DoclingDocument",
+    "version": "1.10.0",
+    "name": "GERMANY_DE-102016008912-A1",
+    "origin": {
+      "mimetype": "application/json",
+      "binary_hash": "",
+      "filename": "DE-102016008912-A1.json"
+    },
+    "metadata": {
+      "patent_id": "DE-102016008912-A1",
+      "application_number": "DE102016008912.3",
+      "publication_number": "DE 10 2016 008 912 A1",
+      "family_id": null,
+      "title": "Phytotherapeutische Darreichungsform umfassend Ocimum sanctum und Tinospora cordifolia zur Immunmodulation",
+      "country": "GERMANY",
+      "jurisdiction": "DE",
+      "language": "de",
+      "filing_date": "2016-07-20",
+      "publication_date": "2018-01-25",
+      "applicant": "Finzelberg Phytochemicals GmbH",
+      "inventor": [
+        "Dr. Martin Tegtmeier",
+        "Dr. Ramesh Chandra"
+      ],
+      "ipc": [
+        "A61K36/59",
+        "A61K36/53",
+        "A61P37/04"
+      ],
+      "cpc": [
+        "A61K36/59",
+        "A61K36/53"
+      ]
+    },
+    "body": {
+      "title": "Phytotherapeutische Darreichungsform umfassend Ocimum sanctum und Tinospora cordifolia zur Immunmodulation",
+      "sections": [
+        {
+          "heading": "Abstract",
+          "type": "abstract",
+          "text": "Die Erfindung betrifft eine standardisierte Pflanzenzubereitung aus Ocimum sanctum Blattextrakt (Ursolsäure >= 2,5 %) und Tinospora cordifolia Stängelextrakt (Polysaccharide >= 18 %), die eine signifikant gesteigerte Freisetzung von Interleukin-2 und Interferon-gamma in humanen Lymphozyten induziert."
+        },
+        {
+          "heading": "Claims",
+          "type": "claims",
+          "claim_count": 3,
+          "claims": [
+            {
+              "claim_number": "1",
+              "text": "1. Phytotherapeutische Zubereitung, umfassend einen wässrigen Auszug aus Tinospora cordifolia mit mindestens 15 Gew.-% Arabinogalactan-Polysacchariden und einen ethanolischen Auszug aus Ocimum sanctum mit mindestens 2 Gew.-% Ursolsäure im Mischungsverhältnis 1:1 bis 3:1.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "2",
+              "text": "2. Zubereitung nach Anspruch 1 in Form eines Sirups oder einer Brausetablette.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "3",
+              "text": "3. Zubereitung nach Anspruch 1 zur Anwendung als Immunstimulans bei rezidivierenden Infekten der oberen Atemwege.",
+              "is_independent": true
+            }
+          ]
+        },
+        {
+          "heading": "Description",
+          "type": "description",
+          "text": "Die Kombination der traditionellen Heilpflanzen Guduchi und Tulsi bewirkt eine synergistische Aktivierung der Makrophagen-Phagozytose. Das deutsche Arzneibuch (DAB) sowie Monographien der Kommission E bilden die regulatorische Grundlage für die Qualitätsprüfung der pflanzlichen Drogen."
+        }
+      ]
+    }
+  },
+  "cleaned_text": "Die Erfindung betrifft eine standardisierte Pflanzenzubereitung aus Ocimum sanctum Blattextrakt (Ursolsäure >= 2,5 %) und Tinospora cordifolia Stängelextrakt (Polysaccharide >= 18 %), die eine signifikant gesteigerte Freisetzung von Interleukin-2 und Interferon-gamma in humanen Lymphozyten induziert.\n\nClaim 1: 1. Phytotherapeutische Zubereitung, umfassend einen wässrigen Auszug aus Tinospora cordifolia mit mindestens 15 Gew.-% Arabinogalactan-Polysacchariden und einen ethanolischen Auszug aus Ocimum sanctum mit mindestens 2 Gew.-% Ursolsäure im Mischungsverhältnis 1:1 bis 3:1.\n\nClaim 2: 2. Zubereitung nach Anspruch 1 in Form eines Sirups oder einer Brausetablette.\n\nClaim 3: 3. Zubereitung nach Anspruch 1 zur Anwendung als Immunstimulans bei rezidivierenden Infekten der oberen Atemwege.\n\nDie Kombination der traditionellen Heilpflanzen Guduchi und Tulsi bewirkt eine synergistische Aktivierung der Makrophagen-Phagozytose. Das deutsche Arzneibuch (DAB) sowie Monographien der Kommission E bilden die regulatorische Grundlage für die Qualitätsprüfung der pflanzlichen Drogen.",
+  "quality_metrics": {
+    "alphabetic_character_ratio": 0.8201,
+    "numeric_character_ratio": 0.0185,
+    "garbage_character_ratio": 0.0,
+    "average_word_length": 6.92,
+    "broken_word_ratio": 0.1136,
+    "duplicate_line_ratio": 0.0,
+    "ocr_quality_score": 0.7727,
+    "status": "FAIL",
+    "rejection_reasons": [
+      "Broken word ratio too high: 0.114 > 0.05"
+    ]
+  }
+}

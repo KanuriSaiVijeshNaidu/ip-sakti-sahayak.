@@ -1,0 +1,29 @@
+{
+  "country": "USA",
+  "region": "USA",
+  "source_dataset": "Harvard USPTO Patent Dataset (HUPD) - Utility Applications",
+  "source_url": "https://huggingface.co/datasets/HUPD/hupd",
+  "patent_id": "US-7879368-B2",
+  "application_number": "11/987,654",
+  "publication_number": "US 7,879,368 B2",
+  "family_id": null,
+  "title": "Herbal anti-diabetic formulation comprising Gymnema sylvestre and Cinnamomum zeylanicum",
+  "section": "description",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/27",
+    "A61K36/54",
+    "A61P3/10"
+  ],
+  "cpc": [
+    "A61K36/27",
+    "A61K36/54"
+  ],
+  "language": "en",
+  "filing_date": "2007-11-20",
+  "publication_date": "2011-02-01",
+  "chunk_id": "USA-CHK-0004-ee7ae206",
+  "chunk_index": 4,
+  "token_count": 26,
+  "text": "The combination of Gymnema sylvestre and Cinnamomum bark extract produces complementary therapeutic actions: beta-cell regeneration and insulin receptor kinase activation."
+}

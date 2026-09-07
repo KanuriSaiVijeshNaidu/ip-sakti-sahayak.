@@ -1,0 +1,29 @@
+{
+  "country": "USA",
+  "region": "USA",
+  "source_dataset": "Harvard USPTO Patent Dataset (HUPD) - Utility Applications",
+  "source_url": "https://huggingface.co/datasets/HUPD/hupd",
+  "patent_id": "US-9345738-B2",
+  "application_number": "14/123,456",
+  "publication_number": "US 9,345,738 B2",
+  "family_id": null,
+  "title": "Phytochemical composition comprising Boswellia serrata and Commiphora mukul for synovial protection",
+  "section": "background",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/324",
+    "A61K36/328",
+    "A61P19/02"
+  ],
+  "cpc": [
+    "A61K36/324",
+    "A61K36/328"
+  ],
+  "language": "en",
+  "filing_date": "2013-12-05",
+  "publication_date": "2016-05-24",
+  "chunk_id": "USA-CHK-0001-1893d887",
+  "chunk_index": 1,
+  "token_count": 16,
+  "text": "Cartilage matrix destruction in osteoarthritic joints involves matrix metalloproteinases induced by pro-inflammatory cytokines."
+}

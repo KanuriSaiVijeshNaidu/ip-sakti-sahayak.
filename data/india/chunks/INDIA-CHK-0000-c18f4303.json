@@ -1,0 +1,30 @@
+{
+  "country": "INDIA",
+  "region": "INDIA",
+  "source_dataset": "Indian Patent Office (IPO / InPASS) & TKDL Patent Corpus",
+  "source_url": "https://ipindiaservices.gov.in/publicsearch",
+  "patent_id": "IN-348215-B",
+  "application_number": "1892/CHE/2012",
+  "publication_number": "IN 348215 B",
+  "family_id": null,
+  "title": "Standardized herbal anti-diabetic composition comprising Gymnema sylvestre, Momordica charantia, and Cinnamomum zeylanicum",
+  "section": "abstract",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/27",
+    "A61K36/42",
+    "A61K36/54",
+    "A61P3/10"
+  ],
+  "cpc": [
+    "A61K36/27",
+    "A61K36/42"
+  ],
+  "language": "en",
+  "filing_date": "2012-05-14",
+  "publication_date": "2020-09-30",
+  "chunk_id": "INDIA-CHK-0000-c18f4303",
+  "chunk_index": 0,
+  "token_count": 49,
+  "text": "A novel standardized herbal composition for insulin sensitization and beta-cell protection comprising extracts of Gymnema sylvestre (gymnemic acids >= 25%), Momordica charantia (charantin >= 1.5%), and Cinnamomum zeylanicum (proanthocyanidins >= 10%), demonstrating enhanced glucose uptake in skeletal muscle."
+}

@@ -1,0 +1,29 @@
+{
+  "country": "USA",
+  "region": "USA",
+  "source_dataset": "Harvard USPTO Patent Dataset (HUPD) - Utility Applications",
+  "source_url": "https://huggingface.co/datasets/HUPD/hupd",
+  "patent_id": "US-8828456-B2",
+  "application_number": "12/890,123",
+  "publication_number": "US 8,828,456 B2",
+  "family_id": null,
+  "title": "Bioavailable curcuminoid compositions with enhanced absorption and methods of preparing the same",
+  "section": "claims",
+  "claim_number": "1",
+  "ipc": [
+    "A61K36/9066",
+    "A61K9/14",
+    "A61P29/00"
+  ],
+  "cpc": [
+    "A61K36/9066",
+    "A61K9/14"
+  ],
+  "language": "en",
+  "filing_date": "2010-09-24",
+  "publication_date": "2014-09-09",
+  "chunk_id": "USA-CHK-0003-9d5db264",
+  "chunk_index": 3,
+  "token_count": 123,
+  "text": "Claim 1: 1. A bioavailable curcumin composition comprising: (a) a curcuminoid extract comprising at least 95% total curcuminoids; and (b) an essential oil of turmeric comprising at least 45% ar-turmerone; wherein the weight ratio of curcuminoids to essential oil of turmeric is from 10:1 to 15:1.\n\nClaim 2: 2. The composition of claim 1, wherein the oral bioavailability in humans is at least 7-fold higher than that of unformulated 95% curcuminoids.\n\nClaim 3: 3. A method for treating chronic inflammatory conditions comprising administering to a mammal an effective amount of the composition of claim 1."
+}

@@ -1,0 +1,36 @@
+{
+  "patent_id": "DE-102012015247-A1",
+  "application_number": "DE102012015247.9",
+  "publication_number": "DE 10 2012 015 247 A1",
+  "title": "Standardisierte Zubereitung aus Boswellia serrata und Zingiber officinale mit synergistischem antiarthritischem Effekt",
+  "title_de": "Standardisierte Zubereitung aus Boswellia serrata und Zingiber officinale mit synergistischem antiarthritischem Effekt",
+  "abstract": "Die Erfindung betrifft eine feste Darreichungsform umfassend einen an Acetyl-11-keto-beta-Boswelliasäure (AKBA) angereicherten Weihrauchextrakt (Boswellia serrata) in Kombination mit einem standardisierten Ingwerextrakt (Zingiber officinale) zur Behandlung chronisch-entzündlicher Darmerkrankungen und Arthrosen.",
+  "abstract_de": "Die Erfindung betrifft eine feste Darreichungsform umfassend einen an Acetyl-11-keto-beta-Boswelliasäure (AKBA) angereicherten Weihrauchextrakt (Boswellia serrata) in Kombination mit einem standardisierten Ingwerextrakt (Zingiber officinale) zur Behandlung chronisch-entzündlicher Darmerkrankungen und Arthrosen.",
+  "claims": [
+    "1. Pflanzliche Arzneimittelkombination, umfassend: einen ethanolischen Trockenextrakt aus Boswellia serrata Harz mit mindestens 30 Gew.-% Boswelliasäuren und mindestens 10 Gew.-% AKBA; sowie einen lipophilen CO2-Extrakt aus Zingiber officinale mit mindestens 25 Gew.-% Gesamtgingerolen, im Gewichtsverhältnis von 2:1 bis 5:1.",
+    "2. Zusammensetzung nach Anspruch 1, dadurch gekennzeichnet, dass sie als magensaftresistente Hartkapsel formuliert ist.",
+    "3. Verwendung der Kombination nach Anspruch 1 oder 2 zur Herstellung eines Arzneimittels zur Behandlung von Colitis ulcerosa oder Gonarthrose."
+  ],
+  "description": "Die Verwendung von Weihrauch (Shallaki) und Ingwer (Sunthi) in der traditionellen indischen Medizin ist historisch belegt. Vorliegende Erfindung löst das technische Problem der geringen Wasserlöslichkeit von Boswelliasäuren durch Einbettung in eine Lipidmatrix unter Mitwirkung der ätherischen Öle des Ingwers.",
+  "ipc": [
+    "A61K36/324",
+    "A61K36/9068",
+    "A61P29/00"
+  ],
+  "cpc": [
+    "A61K36/324",
+    "A61K36/9068"
+  ],
+  "filing_date": "2012-07-31",
+  "publication_date": "2014-02-06",
+  "applicant": "Bionorica Research GmbH",
+  "inventor": [
+    "Prof. Dr. Michael Popp",
+    "Dr. Reinhard Sailer"
+  ],
+  "country": "Germany",
+  "jurisdiction": "DE",
+  "language": "de",
+  "source_dataset": "Deutsches Patent- und Markenamt (DPMA / DEPATISnet)",
+  "source_url": "https://depatisnet.dpma.de/DepatisNet/depatisnet?action=pdf&docid=DE102012015247A1"
+}

@@ -1,0 +1,137 @@
+{
+  "patent_id": "US-9144590-B2",
+  "metadata": {
+    "patent_id": "US-9144590-B2",
+    "application_number": "13/988,245",
+    "publication_number": "US 9,144,590 B2",
+    "family_id": null,
+    "title": "Synergistic botanical composition comprising Withania somnifera and Curcuma longa for treatment of inflammatory disorders",
+    "country": "USA",
+    "jurisdiction": "US",
+    "language": "en",
+    "filing_date": "2011-11-18",
+    "publication_date": "2015-09-29",
+    "applicant": "Sabinsa Corporation / Sami Labs Limited",
+    "inventor": [
+      {
+        "inventor_name_last": "Majeed",
+        "inventor_name_first": "Muhammed",
+        "inventor_country": "US"
+      }
+    ],
+    "ipc": [
+      "A61K36/81",
+      "A61K36/9066",
+      "A61P29/00",
+      "A61P19/02"
+    ],
+    "cpc": [
+      "A61K36/81",
+      "A61K36/9066"
+    ]
+  },
+  "docling_doc": {
+    "schema_name": "docling_core.models.DoclingDocument",
+    "version": "1.10.0",
+    "name": "USA_US-9144590-B2",
+    "origin": {
+      "mimetype": "application/json",
+      "binary_hash": "",
+      "filename": "US-9144590-B2.json"
+    },
+    "metadata": {
+      "patent_id": "US-9144590-B2",
+      "application_number": "13/988,245",
+      "publication_number": "US 9,144,590 B2",
+      "family_id": null,
+      "title": "Synergistic botanical composition comprising Withania somnifera and Curcuma longa for treatment of inflammatory disorders",
+      "country": "USA",
+      "jurisdiction": "US",
+      "language": "en",
+      "filing_date": "2011-11-18",
+      "publication_date": "2015-09-29",
+      "applicant": "Sabinsa Corporation / Sami Labs Limited",
+      "inventor": [
+        {
+          "inventor_name_last": "Majeed",
+          "inventor_name_first": "Muhammed",
+          "inventor_country": "US"
+        }
+      ],
+      "ipc": [
+        "A61K36/81",
+        "A61K36/9066",
+        "A61P29/00",
+        "A61P19/02"
+      ],
+      "cpc": [
+        "A61K36/81",
+        "A61K36/9066"
+      ]
+    },
+    "body": {
+      "title": "Synergistic botanical composition comprising Withania somnifera and Curcuma longa for treatment of inflammatory disorders",
+      "sections": [
+        {
+          "heading": "Abstract",
+          "type": "abstract",
+          "text": "The present invention relates to a synergistic pharmaceutical or dietary supplement composition comprising standardized extracts of Withania somnifera (Ashwagandha) root and Curcuma longa (Turmeric) rhizome in a specific weight ratio, providing enhanced cellular anti-inflammatory and chondroprotective activity."
+        },
+        {
+          "heading": "Background of the Invention",
+          "type": "background",
+          "text": "Osteoarthritis and rheumatoid arthritis represent degenerative and inflammatory conditions of joints with substantial healthcare costs. Long-term NSAID therapy produces gastrointestinal toxicity."
+        },
+        {
+          "heading": "Summary of the Invention",
+          "type": "summary",
+          "text": "The invention provides a synergistic botanical composition of standardized Withania somnifera root extract and Curcuma longa rhizome extract exhibiting enhanced anti-inflammatory and cartilage-protective properties."
+        },
+        {
+          "heading": "Claims",
+          "type": "claims",
+          "claim_count": 4,
+          "claims": [
+            {
+              "claim_number": "1",
+              "text": "1. A synergistic oral composition comprising: (a) a standardized extract of Withania somnifera roots comprising at least 5.0% by weight of withanolide glycosides and withaferin A; (b) a standardized extract of Curcuma longa rhizomes comprising at least 95.0% by weight of total curcuminoids; and (c) a pharmaceutically acceptable excipient; wherein the weight ratio of the Withania somnifera extract to the Curcuma longa extract is between 1:1 and 1:3.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "2",
+              "text": "2. The composition of claim 1, further comprising from 0.5% to 2.5% by weight of a bioavailability enhancer selected from piperine.",
+              "is_independent": false
+            },
+            {
+              "claim_number": "3",
+              "text": "3. The composition of claim 1, wherein the composition is formulated as an oral solid dosage form selected from a tablet, capsule, or enteric granule.",
+              "is_independent": false
+            },
+            {
+              "claim_number": "4",
+              "text": "4. A method for alleviating symptoms of osteoarthritis in a human subject comprising orally administering an effective amount of the composition of claim 1.",
+              "is_independent": true
+            }
+          ]
+        },
+        {
+          "heading": "Description",
+          "type": "description",
+          "text": "TECHNICAL FIELD: The present invention relates to standardized herbal compositions and methods for the prevention and treatment of inflammatory and degenerative joint disorders.\n\nBACKGROUND OF THE INVENTION: Osteoarthritis and rheumatoid arthritis affect millions of individuals worldwide. Standard non-steroidal anti-inflammatory drugs (NSAIDs) carry significant adverse event profiles, including gastric ulceration and renal toxicity. In the Ayurvedic traditional system of medicine, Withania somnifera (known as Ashwagandha) and Curcuma longa (known as Haridra) have been utilized for millennia. However, traditional crude powders lack standardized bioactive concentrations and reproducible efficacy.\n\nDETAILED DESCRIPTION: Standardized extracts were evaluated for synergy using the median-effect principle of Chou and Talalay. Unexpectedly, a 2:1 combination of Withania somnifera standardized to 5.2% withanolides and Curcuma longa standardized to 95.3% curcuminoids produced a Combination Index (CI) of 0.58, demonstrating pronounced synergy in inhibiting prostaglandin E2 (PGE-2) and TNF-alpha in LPS-stimulated human monocytes."
+        }
+      ]
+    }
+  },
+  "cleaned_text": "The present invention relates to a synergistic pharmaceutical or dietary supplement composition comprising standardized extracts of Withania somnifera (Ashwagandha) root and Curcuma longa (Turmeric) rhizome in a specific weight ratio, providing enhanced cellular anti-inflammatory and chondroprotective activity.\n\nOsteoarthritis and rheumatoid arthritis represent degenerative and inflammatory conditions of joints with substantial healthcare costs. Long-term NSAID therapy produces gastrointestinal toxicity.\n\nThe invention provides a synergistic botanical composition of standardized Withania somnifera root extract and Curcuma longa rhizome extract exhibiting enhanced anti-inflammatory and cartilage-protective properties.\n\nClaim 1: 1. A synergistic oral composition comprising: (a) a standardized extract of Withania somnifera roots comprising at least 5.0% by weight of withanolide glycosides and withaferin A; (b) a standardized extract of Curcuma longa rhizomes comprising at least 95.0% by weight of total curcuminoids; and (c) a pharmaceutically acceptable excipient; wherein the weight ratio of the Withania somnifera extract to the Curcuma longa extract is between 1:1 and 1:3.\n\nClaim 2: 2. The composition of claim 1, further comprising from 0.5% to 2.5% by weight of a bioavailability enhancer selected from piperine.\n\nClaim 3: 3. The composition of claim 1, wherein the composition is formulated as an oral solid dosage form selected from a tablet, capsule, or enteric granule.\n\nClaim 4: 4. A method for alleviating symptoms of osteoarthritis in a human subject comprising orally administering an effective amount of the composition of claim 1.\n\nTECHNICAL FIELD: The present invention relates to standardized herbal compositions and methods for the prevention and treatment of inflammatory and degenerative joint disorders.\n\nBACKGROUND OF THE INVENTION: Osteoarthritis and rheumatoid arthritis affect millions of individuals worldwide. Standard non-steroidal anti-inflammatory drugs (NSAIDs) carry significant adverse event profiles, including gastric ulceration and renal toxicity. In the Ayurvedic traditional system of medicine, Withania somnifera (known as Ashwagandha) and Curcuma longa (known as Haridra) have been utilized for millennia. However, traditional crude powders lack standardized bioactive concentrations and reproducible efficacy.\n\nDETAILED DESCRIPTION: Standardized extracts were evaluated for synergy using the median-effect principle of Chou and Talalay. Unexpectedly, a 2:1 combination of Withania somnifera standardized to 5.2% withanolides and Curcuma longa standardized to 95.3% curcuminoids produced a Combination Index (CI) of 0.58, demonstrating pronounced synergy in inhibiting prostaglandin E2 (PGE-2) and TNF-alpha in LPS-stimulated human monocytes.",
+  "quality_metrics": {
+    "alphabetic_character_ratio": 0.8215,
+    "numeric_character_ratio": 0.0129,
+    "garbage_character_ratio": 0.0,
+    "average_word_length": 6.18,
+    "broken_word_ratio": 0.0,
+    "duplicate_line_ratio": 0.0,
+    "ocr_quality_score": 1.0,
+    "status": "PASS",
+    "rejection_reasons": []
+  }
+}

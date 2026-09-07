@@ -1,0 +1,31 @@
+{
+  "country": "GERMANY",
+  "region": "GERMANY",
+  "source_dataset": "DPMA / DEPATIS German Patent & Utility Model Corpus",
+  "source_url": "https://dpma.de/patente/patentrecherche/index.html",
+  "patent_id": "DE-102014002621-A1",
+  "application_number": "DE102014002621.4",
+  "publication_number": "DE 10 2014 002 621 A1",
+  "family_id": null,
+  "title": "Pflanzliche Arzneimittelzusammensetzung enthaltend Extrakte aus Withania somnifera und Curcuma longa zur Behandlung von chronischen Entzündungen",
+  "section": "abstract",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/9066",
+    "A61K36/81",
+    "A61P29/00",
+    "A61P19/02"
+  ],
+  "cpc": [
+    "A61K36/9066",
+    "A61K36/81",
+    "A61K2236/00"
+  ],
+  "language": "de",
+  "filing_date": "2014-01-22",
+  "publication_date": "2015-07-23",
+  "chunk_id": "GERMANY-CHK-0000-6ca09eca",
+  "chunk_index": 0,
+  "token_count": 59,
+  "text": "Die vorliegende Erfindung betrifft eine pharmazeutische Zubereitung, umfassend einen wässrig-alkoholischen Trockenextrakt aus Wurzeln von Withania somnifera (Ashwagandha) mit einem Withanolid-Gehalt von mindestens 4,5 Gew.-% sowie einen standardisierten Extrakt aus Curcuma longa mit einem Curcuminoid-Gehalt von mindestens 90 Gew.-%, zur synergistischen Hemmung von entzündungsfördernden Prostaglandinen und Cytokinen."
+}

@@ -1,0 +1,116 @@
+{
+  "patent_id": "DE-102017105432-A1",
+  "metadata": {
+    "patent_id": "DE-102017105432-A1",
+    "application_number": "DE102017105432.1",
+    "publication_number": "DE 10 2017 105 432 A1",
+    "family_id": null,
+    "title": "Kombinationspräparat aus Bacopa monnieri und Centella asiatica zur kognitiven Leistungssteigerung",
+    "country": "GERMANY",
+    "jurisdiction": "DE",
+    "language": "de",
+    "filing_date": "2017-03-14",
+    "publication_date": "2018-09-20",
+    "applicant": "Eurofins BioPharma Product Testing Munich GmbH",
+    "inventor": [
+      "Dr. Ulrich Kroll",
+      "Dr. Anand Kumar"
+    ],
+    "ipc": [
+      "A61K36/68",
+      "A61K36/23",
+      "A61P25/28"
+    ],
+    "cpc": [
+      "A61K36/68",
+      "A61K36/23"
+    ]
+  },
+  "docling_doc": {
+    "schema_name": "docling_core.models.DoclingDocument",
+    "version": "1.10.0",
+    "name": "GERMANY_DE-102017105432-A1",
+    "origin": {
+      "mimetype": "application/json",
+      "binary_hash": "",
+      "filename": "DE-102017105432-A1.json"
+    },
+    "metadata": {
+      "patent_id": "DE-102017105432-A1",
+      "application_number": "DE102017105432.1",
+      "publication_number": "DE 10 2017 105 432 A1",
+      "family_id": null,
+      "title": "Kombinationspräparat aus Bacopa monnieri und Centella asiatica zur kognitiven Leistungssteigerung",
+      "country": "GERMANY",
+      "jurisdiction": "DE",
+      "language": "de",
+      "filing_date": "2017-03-14",
+      "publication_date": "2018-09-20",
+      "applicant": "Eurofins BioPharma Product Testing Munich GmbH",
+      "inventor": [
+        "Dr. Ulrich Kroll",
+        "Dr. Anand Kumar"
+      ],
+      "ipc": [
+        "A61K36/68",
+        "A61K36/23",
+        "A61P25/28"
+      ],
+      "cpc": [
+        "A61K36/68",
+        "A61K36/23"
+      ]
+    },
+    "body": {
+      "title": "Kombinationspräparat aus Bacopa monnieri und Centella asiatica zur kognitiven Leistungssteigerung",
+      "sections": [
+        {
+          "heading": "Abstract",
+          "type": "abstract",
+          "text": "Die Erfindung betrifft eine nootrope Phytokombination aus Bacopa monnieri (Brahmi) und Centella asiatica (Mandukaparni), standardisiert auf Bacoside und Asiaticoside, die eine nachweisbare Steigerung der zerebralen Durchblutung und der synaptischen Plastizität bei älteren Probanden bewirkt."
+        },
+        {
+          "heading": "Claims",
+          "type": "claims",
+          "claim_count": 3,
+          "claims": [
+            {
+              "claim_number": "1",
+              "text": "1. Nootropes Arzneimittel oder Nahrungsergänzungsmittel, enthaltend: (a) einen Trockenextrakt aus Bacopa monnieri mit mindestens 40 Gew.-% Bacosiden; und (b) einen Extrakt aus Centella asiatica mit mindestens 30 Gew.-% Triterpenglykosiden; im Gewichtsverhältnis 1:1.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "2",
+              "text": "2. Arzneimittel nach Anspruch 1, formuliert als Kapsel mit verzögerter Wirkstofffreisetzung.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "3",
+              "text": "3. Arzneimittel nach Anspruch 1 zur Vorbeugung von vaskulärer Demenz und altersbedingten Gedächtnisstörungen.",
+              "is_independent": true
+            }
+          ]
+        },
+        {
+          "heading": "Description",
+          "type": "description",
+          "text": "Medhya Rasayana Kräuter besitzen nachgewiesene neuroprotektive Eigenschaften. Gemäß den Richtlinien des BfArM und der europäischen THMPD-Richtlinie 2004/24/EG bedarf die Zulassung eines Nachweises der pharmazeutischen Qualität nach GMP-Standards."
+        }
+      ]
+    }
+  },
+  "cleaned_text": "Die Erfindung betrifft eine nootrope Phytokombination aus Bacopa monnieri (Brahmi) und Centella asiatica (Mandukaparni), standardisiert auf Bacoside und Asiaticoside, die eine nachweisbare Steigerung der zerebralen Durchblutung und der synaptischen Plastizität bei älteren Probanden bewirkt.\n\nClaim 1: 1. Nootropes Arzneimittel oder Nahrungsergänzungsmittel, enthaltend: (a) einen Trockenextrakt aus Bacopa monnieri mit mindestens 40 Gew.-% Bacosiden; und (b) einen Extrakt aus Centella asiatica mit mindestens 30 Gew.-% Triterpenglykosiden; im Gewichtsverhältnis 1:1.\n\nClaim 2: 2. Arzneimittel nach Anspruch 1, formuliert als Kapsel mit verzögerter Wirkstofffreisetzung.\n\nClaim 3: 3. Arzneimittel nach Anspruch 1 zur Vorbeugung von vaskulärer Demenz und altersbedingten Gedächtnisstörungen.\n\nMedhya Rasayana Kräuter besitzen nachgewiesene neuroprotektive Eigenschaften. Gemäß den Richtlinien des BfArM und der europäischen THMPD-Richtlinie 2004/24/EG bedarf die Zulassung eines Nachweises der pharmazeutischen Qualität nach GMP-Standards.",
+  "quality_metrics": {
+    "alphabetic_character_ratio": 0.8229,
+    "numeric_character_ratio": 0.0192,
+    "garbage_character_ratio": 0.0,
+    "average_word_length": 7.09,
+    "broken_word_ratio": 0.0887,
+    "duplicate_line_ratio": 0.0,
+    "ocr_quality_score": 0.8226,
+    "status": "FAIL",
+    "rejection_reasons": [
+      "Broken word ratio too high: 0.089 > 0.05"
+    ]
+  }
+}

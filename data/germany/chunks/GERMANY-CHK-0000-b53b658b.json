@@ -1,0 +1,29 @@
+{
+  "country": "GERMANY",
+  "region": "GERMANY",
+  "source_dataset": "DPMA / DEPATIS German Patent & Utility Model Corpus",
+  "source_url": "https://dpma.de/patente/patentrecherche/index.html",
+  "patent_id": "DE-102016008912-A1",
+  "application_number": "DE102016008912.3",
+  "publication_number": "DE 10 2016 008 912 A1",
+  "family_id": null,
+  "title": "Phytotherapeutische Darreichungsform umfassend Ocimum sanctum und Tinospora cordifolia zur Immunmodulation",
+  "section": "abstract",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/59",
+    "A61K36/53",
+    "A61P37/04"
+  ],
+  "cpc": [
+    "A61K36/59",
+    "A61K36/53"
+  ],
+  "language": "de",
+  "filing_date": "2016-07-20",
+  "publication_date": "2018-01-25",
+  "chunk_id": "GERMANY-CHK-0000-b53b658b",
+  "chunk_index": 0,
+  "token_count": 45,
+  "text": "Die Erfindung betrifft eine standardisierte Pflanzenzubereitung aus Ocimum sanctum Blattextrakt (Ursolsäure >= 2,5 %) und Tinospora cordifolia Stängelextrakt (Polysaccharide >= 18 %), die eine signifikant gesteigerte Freisetzung von Interleukin-2 und Interferon-gamma in humanen Lymphozyten induziert."
+}

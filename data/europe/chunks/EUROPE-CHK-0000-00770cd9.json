@@ -1,0 +1,29 @@
+{
+  "country": "EUROPE",
+  "region": "EUROPE",
+  "source_dataset": "EPO Patent All Claims & Authoritative EP Granted Specifications",
+  "source_url": "https://huggingface.co/datasets/mhurhangee/ep-patent-all-claims",
+  "patent_id": "EP-2345678-B1",
+  "application_number": "EP10712345.1",
+  "publication_number": "EP 2 345 678 B1",
+  "family_id": null,
+  "title": "Bio-enhanced phytotherapeutic formulation comprising Boswellia serrata and Zingiber officinale",
+  "section": "abstract",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/324",
+    "A61K36/9068",
+    "A61P19/02"
+  ],
+  "cpc": [
+    "A61K36/324",
+    "A61K36/9068"
+  ],
+  "language": "en",
+  "filing_date": "2010-03-22",
+  "publication_date": "2014-09-17",
+  "chunk_id": "EUROPE-CHK-0000-00770cd9",
+  "chunk_index": 0,
+  "token_count": 39,
+  "text": "An oral formulation for cartilage protection comprising standardized boswellic acids enriched in 3-O-acetyl-11-keto-beta-boswellic acid (AKBA) and gingerols from Zingiber officinale, demonstrating synergistic suppression of 5-lipoxygenase (5-LOX) and matrix metalloproteinase-3 (MMP-3)."
+}

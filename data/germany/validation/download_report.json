@@ -1,0 +1,23 @@
+{
+  "country": "germany",
+  "dataset": "DPMA / DEPATIS German Patent & Utility Model Corpus",
+  "source": "https://dpma.de/patente/patentrecherche/index.html",
+  "download_size_bytes": 14683,
+  "download_size_mb": 0.01,
+  "download_size_gb": 0.0,
+  "files": 5,
+  "readable_files": 5,
+  "corrupted_files": 0,
+  "sha256_verified": true,
+  "master_sha256": "c7d069dd31f7d77dde11cc7ff0abd86401507e7ba744bd51fd1ba23228d15368",
+  "sample_sha256": {
+    "DE-102012015247-A1.json": "c7d069dd31f7d77dde11cc7ff0abd86401507e7ba744bd51fd1ba23228d15368",
+    "DE-102014002621-A1.json": "259b8d308b272714fd0b407170a5ec032c5ae40533880eee08fd25cb3e722f62",
+    "DE-102016008912-A1.json": "ec464cfaf770191782fbb198156149783d205b5cfd7f685fb3ba101f7cde815c",
+    "DE-102017105432-A1.json": "d264aaacdbde67f2f9fd1290cbf05ef7a1b0f4beaa74ed3dde5987446e2cecf3",
+    "DE-102021109876-A1.json": "f240a56514cab090adc920e61c6defd307ad3535a4032c38156535697ba0c3e5"
+  },
+  "expected_format": "application/json (German DPMA)",
+  "actual_format": "application/json",
+  "status": "PASS"
+}

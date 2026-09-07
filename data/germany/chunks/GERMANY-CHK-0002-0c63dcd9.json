@@ -1,0 +1,28 @@
+{
+  "country": "GERMANY",
+  "region": "GERMANY",
+  "source_dataset": "DPMA / DEPATIS German Patent & Utility Model Corpus",
+  "source_url": "https://dpma.de/patente/patentrecherche/index.html",
+  "patent_id": "DE-102021109876-A1",
+  "application_number": "DE102021109876.8",
+  "publication_number": "DE 10 2021 109 876 A1",
+  "family_id": null,
+  "title": "Synergistisches Polyherbal-Präparat basierend auf Triphala zur Unterstützung der gastrointestinalen Integrität",
+  "section": "description",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/185",
+    "A61P1/00"
+  ],
+  "cpc": [
+    "A61K36/185",
+    "A61P1/00"
+  ],
+  "language": "de",
+  "filing_date": "2021-04-20",
+  "publication_date": "2022-10-27",
+  "chunk_id": "GERMANY-CHK-0002-0c63dcd9",
+  "chunk_index": 2,
+  "token_count": 45,
+  "text": "Die klassische Rezeptur Triphala ist ein Grundpfeiler der ayurvedischen Pharmakopöe. Die Erfindung zeigt, dass eine gezielte Standardisierung auf Ellagsäure und Chebulinsäure die Genexpression von Occludin und Claudin-1 in Darmepithelzellen um mehr als 180 % steigert."
+}

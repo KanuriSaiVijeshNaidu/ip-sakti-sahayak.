@@ -1,0 +1,24 @@
+{
+  "country": "usa",
+  "dataset": "Harvard USPTO Patent Dataset (HUPD) & USPTO Grants",
+  "source": "https://huggingface.co/datasets/HUPD/hupd",
+  "download_size_bytes": 387648976,
+  "download_size_mb": 369.69,
+  "download_size_gb": 0.361,
+  "files": 6,
+  "readable_files": 6,
+  "corrupted_files": 0,
+  "sha256_verified": true,
+  "master_sha256": "c8db7a2e730f04a95946847d39a74b4a9ea53b0f4fd357bb8789abd77684e37f",
+  "sample_sha256": {
+    "sample-jan-2016.tar.gz": "c8db7a2e730f04a95946847d39a74b4a9ea53b0f4fd357bb8789abd77684e37f",
+    "US-7879368-B2.json": "d30b8312b012e2ea3d4dfb67aa08127d9bf7f12a9107f867bd0c2979d5ec1854",
+    "US-8512767-B2.json": "1846ae73ed90761bc69cfe17b0a3e9d21bc26f8c14bc25f2b52827f20eb40dd3",
+    "US-8828456-B2.json": "a518124cbc84d43add9669183538b3d8721d3bc56b5da5f73bbc52da1284ee1e",
+    "US-9144590-B2.json": "ac32e7348bc4e640ab6dfee61928477fb7f287dea87c570aec60cbe7b88ddab1",
+    "US-9345738-B2.json": "97635e15f7593cdb52a40847adf00fcd4573266a9ab61c5ef653a41a05d0c85b"
+  },
+  "expected_format": "application/json (USPTO / HUPD)",
+  "actual_format": "application/json",
+  "status": "PASS"
+}

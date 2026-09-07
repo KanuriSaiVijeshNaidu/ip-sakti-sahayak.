@@ -1,0 +1,30 @@
+{
+  "country": "INDIA",
+  "region": "INDIA",
+  "source_dataset": "Indian Patent Office (IPO / InPASS) & TKDL Patent Corpus",
+  "source_url": "https://ipindiaservices.gov.in/publicsearch",
+  "patent_id": "IN-324590-B",
+  "application_number": "345/KOL/2011",
+  "publication_number": "IN 324590 B",
+  "family_id": null,
+  "title": "Synergistic botanical composition comprising Boswellia serrata and Commiphora mukul for inflammatory joint diseases",
+  "section": "description",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/324",
+    "A61K36/328",
+    "A61P29/00",
+    "A61P19/02"
+  ],
+  "cpc": [
+    "A61K36/324",
+    "A61K36/328"
+  ],
+  "language": "en",
+  "filing_date": "2011-03-24",
+  "publication_date": "2019-11-08",
+  "chunk_id": "INDIA-CHK-0002-92836823",
+  "chunk_index": 2,
+  "token_count": 37,
+  "text": "Under Section 3(e) of the Indian Patents Act, evidence of synergy was submitted demonstrating that AKBA and guggulsterones act on complementary biological targets: 5-LOX inhibition and NF-kappa-B suppression respectively."
+}

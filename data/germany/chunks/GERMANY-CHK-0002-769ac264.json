@@ -1,0 +1,31 @@
+{
+  "country": "GERMANY",
+  "region": "GERMANY",
+  "source_dataset": "DPMA / DEPATIS German Patent & Utility Model Corpus",
+  "source_url": "https://dpma.de/patente/patentrecherche/index.html",
+  "patent_id": "DE-102014002621-A1",
+  "application_number": "DE102014002621.4",
+  "publication_number": "DE 10 2014 002 621 A1",
+  "family_id": null,
+  "title": "Pflanzliche Arzneimittelzusammensetzung enthaltend Extrakte aus Withania somnifera und Curcuma longa zur Behandlung von chronischen Entzündungen",
+  "section": "description",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/9066",
+    "A61K36/81",
+    "A61P29/00",
+    "A61P19/02"
+  ],
+  "cpc": [
+    "A61K36/9066",
+    "A61K36/81",
+    "A61K2236/00"
+  ],
+  "language": "de",
+  "filing_date": "2014-01-22",
+  "publication_date": "2015-07-23",
+  "chunk_id": "GERMANY-CHK-0002-769ac264",
+  "chunk_index": 2,
+  "token_count": 191,
+  "text": "TECHNISCHES GEBIET: Die Erfindung betrifft das Gebiet der Phytopharmaka und pflanzlichen Arzneimittel gemäß § 39a AMG sowie der Patentierung pflanzlicher Kombinationen nach dem deutschen Patentgesetz (PatG § 1-5).\n\nSTAND DER TECHNIK: Das indische Gesundheitssystem (Ayurveda) nutzt Ashwagandha und Curcuma seit Jahrhunderten als Naturheilmittel. Gemäß PatG § 3 und § 4 begründet die bloße Mischung bekannter Heilkräuter jedoch keine Erfindungshöhe, es sei denn, es wird ein überraschender synergistischer Effekt dargelegt. Bei herkömmlichen Zubereitungen reicht die orale Bioverfügbarkeit der lipophilen Curcuminoide im menschlichen Gastrointestinaltrakt oft nicht aus.\n\nAUSFÜHRLICHE BESCHREIBUNG: Durch den Einsatz eines spezifischen überkritischen CO2-Extraktionsverfahrens und einer anschließenden Ethanolfraktionierung konnte ein standardisierter Extrakt erzeugt werden, der bei Kombination mit einem wässrig-ethanolischen Withania-Extrakt eine überadditive Hemmung der COX-2-Expression in vitro bewirkt (Synergismus-Index nach Chou-Talalay < 0,7).\n\nDie Schwermetallbelastung erfüllt streng die Grenzwerte des Europäischen Arzneibuchs (Ph. Eur.): Blei <= 5,0 ppm, Cadmium <= 1,0 ppm, Quecksilber <= 0,1 ppm."
+}

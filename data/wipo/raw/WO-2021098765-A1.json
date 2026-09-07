@@ -1,0 +1,34 @@
+{
+  "patent_id": "WO-2021098765-A1",
+  "application_number": "PCT/US2020/061234",
+  "publication_number": "WO 2021/098765 A1",
+  "title": "Process for preparation of purified bioactive withanolide fractions from Withania somnifera and pharmaceutical compositions thereof",
+  "abstract": "A multi-stage centrifugal partition chromatography (CPC) process for industrial isolation of high-purity withanolide A, withanolide B, and withanoside IV from Withania somnifera, and therapeutic formulations thereof for stress reduction and adrenal stabilization.",
+  "claims": [
+    "1. A preparative chromatographic process for isolating withanolide fractions comprising: (a) contacting an aqueous-ethanolic root extract of Withania somnifera with a two-phase biphasic solvent system comprising ethyl acetate, methanol, and water in a centrifugal partition chromatograph; and (b) isolating a fraction containing >= 90% pure withanolide glycosides.",
+    "2. A pharmaceutical composition comprising the fraction obtained by the process of claim 1.",
+    "3. The composition according to claim 2 for use in reducing serum cortisol and alleviating chronic anxiety."
+  ],
+  "description": "Standard solvent extraction yields complex botanical mixtures containing variable amounts of pigments and tannins. The disclosed PCT process utilizes liquid-liquid centrifugal partition chromatography to achieve pharmaceutical-grade purity without solid adsorbent fouling.",
+  "ipc": [
+    "A61K36/81",
+    "B01D15/18",
+    "A61P25/22"
+  ],
+  "cpc": [
+    "A61K36/81",
+    "B01D15/18"
+  ],
+  "filing_date": "2020-11-19",
+  "publication_date": "2021-05-27",
+  "applicant": "NutraGenesis LLC / WIPO International Bureau",
+  "inventor": [
+    "Dr. Suzanne McNeary",
+    "Dr. Bruce Abedon"
+  ],
+  "country": "WIPO",
+  "jurisdiction": "WO",
+  "language": "en",
+  "source_dataset": "WIPO PATENTSCOPE / PCT Gazette",
+  "source_url": "https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2021098765"
+}

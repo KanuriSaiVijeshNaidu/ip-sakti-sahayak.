@@ -1,0 +1,36 @@
+{
+  "patent_id": "IN-284123-B",
+  "application_number": "2104/MUM/2009",
+  "publication_number": "IN 284123 B",
+  "title": "Polyherbal formulation for hepatoprotective activity comprising Phyllanthus amarus, Picrorhiza kurroa, and Boerhavia diffusa",
+  "abstract": "A synergistic polyherbal therapeutic composition for treatment of drug-induced liver injury and hepatitis, comprising standardized extract fractions of Phyllanthus amarus (phyllanthin >= 2%), Picrorhiza kurroa (kutkoside and picroside >= 10%), and Boerhavia diffusa (punarnavoside >= 1.5%).",
+  "claims": [
+    "1. A polyherbal hepatoprotective pharmaceutical composition comprising: (a) 30% to 40% w/w of standardized Phyllanthus amarus extract containing at least 2.0% phyllanthin; (b) 25% to 35% w/w of standardized Picrorhiza kurroa rhizome extract containing at least 10.0% picrosides; (c) 20% to 30% w/w of Boerhavia diffusa root extract containing at least 1.5% punarnavoside; and (d) pharmaceutical glidants and lubricants.",
+    "2. The composition as claimed in claim 1, wherein the composition accelerates normalization of serum transaminases (ALT, AST) and bilirubin by 45% compared to monotherapy controls in carbon tetrachloride (CCl4)-induced hepatic necrosis.",
+    "3. The composition as claimed in claim 1, formulated as enteric-coated granules or film-coated tablets."
+  ],
+  "description": "The classical herbs Bhumyamalaki, Katuki, and Punarnava are revered in Yakrit Roga chikitsa. The present applicants established that a precise ratio produces non-obvious stabilization of the hepatocyte mitochondrial membrane against paracetamol and rifampicin toxicity.",
+  "ipc": [
+    "A61K36/47",
+    "A61K36/68",
+    "A61K36/185",
+    "A61P1/16"
+  ],
+  "cpc": [
+    "A61K36/47",
+    "A61K36/68"
+  ],
+  "filing_date": "2009-09-15",
+  "publication_date": "2017-06-09",
+  "applicant": "Himalaya Drug Company / Himalaya Global Holdings",
+  "inventor": [
+    "Dr. Pralhad S. Patki",
+    "Dr. S. K. Mitra",
+    "Dr. U. V. Babu"
+  ],
+  "country": "India",
+  "jurisdiction": "IN",
+  "language": "en",
+  "source_dataset": "Indian Patent Office (IPO / InPASS)",
+  "source_url": "https://ipindiaservices.gov.in/publicsearch/patent/284123"
+}

@@ -1,4 +1,4 @@
-﻿# Python
+# Python
 __pycache__/
 *.py[cod]
 .venv/
@@ -26,3 +26,8 @@ pgdata/
 # Models cache (large)
 .cache/
 models/
+
+# Large dataset archives (>100MB)
+*.tar.gz
+*.tar
+*.parquet

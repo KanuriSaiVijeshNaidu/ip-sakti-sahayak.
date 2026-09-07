@@ -1,0 +1,30 @@
+{
+  "country": "INDIA",
+  "region": "INDIA",
+  "source_dataset": "Indian Patent Office (IPO / InPASS) & TKDL Patent Corpus",
+  "source_url": "https://ipindiaservices.gov.in/publicsearch",
+  "patent_id": "IN-348215-B",
+  "application_number": "1892/CHE/2012",
+  "publication_number": "IN 348215 B",
+  "family_id": null,
+  "title": "Standardized herbal anti-diabetic composition comprising Gymnema sylvestre, Momordica charantia, and Cinnamomum zeylanicum",
+  "section": "claims",
+  "claim_number": "1",
+  "ipc": [
+    "A61K36/27",
+    "A61K36/42",
+    "A61K36/54",
+    "A61P3/10"
+  ],
+  "cpc": [
+    "A61K36/27",
+    "A61K36/42"
+  ],
+  "language": "en",
+  "filing_date": "2012-05-14",
+  "publication_date": "2020-09-30",
+  "chunk_id": "INDIA-CHK-0001-8f81cb8c",
+  "chunk_index": 1,
+  "token_count": 139,
+  "text": "Claim 1: 1. A standardized anti-diabetic herbal formulation comprising: (a) 30% to 45% w/w of a standardized extract of Gymnema sylvestre containing not less than 25% gymnemic acids; (b) 25% to 35% w/w of a standardized extract of Momordica charantia containing not less than 1.5% charantin; and (c) 15% to 25% w/w of an extract of Cinnamomum zeylanicum bark containing not less than 10% type-A proanthocyanidins.\n\nClaim 2: 2. The formulation as claimed in claim 1, wherein the formulation enhances glucose uptake in insulin-resistant adipocytes by 82% over baseline.\n\nClaim 3: 3. A dosage form comprising the formulation of claim 1 formulated as sustained-release tablets or capsules."
+}

@@ -1,0 +1,29 @@
+{
+  "country": "GERMANY",
+  "region": "GERMANY",
+  "source_dataset": "DPMA / DEPATIS German Patent & Utility Model Corpus",
+  "source_url": "https://dpma.de/patente/patentrecherche/index.html",
+  "patent_id": "DE-102017105432-A1",
+  "application_number": "DE102017105432.1",
+  "publication_number": "DE 10 2017 105 432 A1",
+  "family_id": null,
+  "title": "Kombinationspräparat aus Bacopa monnieri und Centella asiatica zur kognitiven Leistungssteigerung",
+  "section": "abstract",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/68",
+    "A61K36/23",
+    "A61P25/28"
+  ],
+  "cpc": [
+    "A61K36/68",
+    "A61K36/23"
+  ],
+  "language": "de",
+  "filing_date": "2017-03-14",
+  "publication_date": "2018-09-20",
+  "chunk_id": "GERMANY-CHK-0000-067b825a",
+  "chunk_index": 0,
+  "token_count": 44,
+  "text": "Die Erfindung betrifft eine nootrope Phytokombination aus Bacopa monnieri (Brahmi) und Centella asiatica (Mandukaparni), standardisiert auf Bacoside und Asiaticoside, die eine nachweisbare Steigerung der zerebralen Durchblutung und der synaptischen Plastizität bei älteren Probanden bewirkt."
+}

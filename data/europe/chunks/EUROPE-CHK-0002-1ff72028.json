@@ -1,0 +1,32 @@
+{
+  "country": "EUROPE",
+  "region": "EUROPE",
+  "source_dataset": "EPO Patent All Claims & Authoritative EP Granted Specifications",
+  "source_url": "https://huggingface.co/datasets/mhurhangee/ep-patent-all-claims",
+  "patent_id": "EP-2744498-B1",
+  "application_number": "EP12753556.5",
+  "publication_number": "EP 2 744 498 B1",
+  "family_id": null,
+  "title": "Standardized herbal composition comprising Withania somnifera and Curcuma longa for treatment of inflammatory diseases",
+  "section": "description",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/9066",
+    "A61K36/81",
+    "A61P19/02",
+    "A61P29/00"
+  ],
+  "cpc": [
+    "A61K36/9066",
+    "A61K36/81",
+    "A61K2236/333",
+    "A61K2236/39"
+  ],
+  "language": "en",
+  "filing_date": "2012-08-14",
+  "publication_date": "2016-04-20",
+  "chunk_id": "EUROPE-CHK-0002-1ff72028",
+  "chunk_index": 2,
+  "token_count": 208,
+  "text": "FIELD OF THE INVENTION: The present invention pertains to the technical field of herbal therapeutics and standardized phytomedicinal compositions. In particular, it relates to a synergistic combination of standardized extracts of Withania somnifera (Ashwagandha) and Curcuma longa (Turmeric) for therapeutic modulation of chronic inflammatory cascades.\n\nBACKGROUND: Inflammatory joint pathologies represent a major clinical burden globally. While conventional NSAIDs offer symptomatic relief, prolonged administration induces severe gastrointestinal ulcerations and cardiovascular risks. Ayurvedic tradition identifies Ashwagandha and Turmeric as potent Rasayana and Shothahara herbs, respectively. However, conventional cruder herbal powders lack reproducibility and adequate bioavailability.\n\nDETAILED DESCRIPTION: The extraction of Withania somnifera roots was conducted via aqueous-alcoholic counter-current percolation at 45°C to preserve thermolabile withanolide glycosides. Quantitative HPLC confirms 5.2% total withanolides. Curcuma longa rhizomes were extracted via supercritical CO2 followed by ethanolic crystallization to yield 95.4% curcuminoids (curcumin, demethoxycurcumin, and bisdemethoxycurcumin).\n\nUnexpectedly, combination at specific ratios produced a synergistic down-regulation of pro-inflammatory mediators including TNF-alpha, IL-1beta, and COX-2 without cytotoxic effects."
+}

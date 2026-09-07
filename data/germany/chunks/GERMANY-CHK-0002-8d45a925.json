@@ -1,0 +1,29 @@
+{
+  "country": "GERMANY",
+  "region": "GERMANY",
+  "source_dataset": "DPMA / DEPATIS German Patent & Utility Model Corpus",
+  "source_url": "https://dpma.de/patente/patentrecherche/index.html",
+  "patent_id": "DE-102016008912-A1",
+  "application_number": "DE102016008912.3",
+  "publication_number": "DE 10 2016 008 912 A1",
+  "family_id": null,
+  "title": "Phytotherapeutische Darreichungsform umfassend Ocimum sanctum und Tinospora cordifolia zur Immunmodulation",
+  "section": "description",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/59",
+    "A61K36/53",
+    "A61P37/04"
+  ],
+  "cpc": [
+    "A61K36/59",
+    "A61K36/53"
+  ],
+  "language": "de",
+  "filing_date": "2016-07-20",
+  "publication_date": "2018-01-25",
+  "chunk_id": "GERMANY-CHK-0002-8d45a925",
+  "chunk_index": 2,
+  "token_count": 42,
+  "text": "Die Kombination der traditionellen Heilpflanzen Guduchi und Tulsi bewirkt eine synergistische Aktivierung der Makrophagen-Phagozytose. Das deutsche Arzneibuch (DAB) sowie Monographien der Kommission E bilden die regulatorische Grundlage für die Qualitätsprüfung der pflanzlichen Drogen."
+}

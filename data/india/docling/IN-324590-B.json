@@ -1,0 +1,74 @@
+{
+  "schema_name": "docling_core.models.DoclingDocument",
+  "version": "1.10.0",
+  "name": "INDIA_IN-324590-B",
+  "origin": {
+    "mimetype": "application/json",
+    "binary_hash": "",
+    "filename": "IN-324590-B.json"
+  },
+  "metadata": {
+    "patent_id": "IN-324590-B",
+    "application_number": "345/KOL/2011",
+    "publication_number": "IN 324590 B",
+    "family_id": null,
+    "title": "Synergistic botanical composition comprising Boswellia serrata and Commiphora mukul for inflammatory joint diseases",
+    "country": "INDIA",
+    "jurisdiction": "IN",
+    "language": "en",
+    "filing_date": "2011-03-24",
+    "publication_date": "2019-11-08",
+    "applicant": "National Botanical Research Institute (CSIR-NBRI)",
+    "inventor": [
+      "Dr. Sharad Srivastava",
+      "Dr. A. K. S. Rawat"
+    ],
+    "ipc": [
+      "A61K36/324",
+      "A61K36/328",
+      "A61P29/00",
+      "A61P19/02"
+    ],
+    "cpc": [
+      "A61K36/324",
+      "A61K36/328"
+    ]
+  },
+  "body": {
+    "title": "Synergistic botanical composition comprising Boswellia serrata and Commiphora mukul for inflammatory joint diseases",
+    "sections": [
+      {
+        "heading": "Abstract",
+        "type": "abstract",
+        "text": "A synergistic anti-arthritic oral composition combining standardized 3-O-acetyl-11-keto-beta-boswellic acid (AKBA >= 30%) with guggulsterones E and Z (>= 2.5%) from Commiphora mukul, significantly inhibiting joint swelling and pro-inflammatory TNF-alpha in adjuvant-induced arthritis models."
+      },
+      {
+        "heading": "Claims",
+        "type": "claims",
+        "claim_count": 3,
+        "claims": [
+          {
+            "claim_number": "1",
+            "text": "1. A synergistic oral botanical composition comprising: (a) a standardized extract of Boswellia serrata resin comprising at least 30.0% by weight of 3-O-acetyl-11-keto-beta-boswellic acid (AKBA); and (b) a standardized extract of Commiphora mukul gum resin comprising at least 2.5% by weight of combined guggulsterones E and Z; in a weight ratio of 2:1 to 4:1.",
+            "is_independent": true
+          },
+          {
+            "claim_number": "2",
+            "text": "2. The composition as claimed in claim 1, wherein the combination produces greater than 70% reduction in paw edema in Freund's complete adjuvant arthritis models.",
+            "is_independent": false
+          },
+          {
+            "claim_number": "3",
+            "text": "3. The composition as claimed in claim 1, wherein said composition is formulated into hard gelatin capsules.",
+            "is_independent": false
+          }
+        ]
+      },
+      {
+        "heading": "Description",
+        "type": "description",
+        "text": "Under Section 3(e) of the Indian Patents Act, evidence of synergy was submitted demonstrating that AKBA and guggulsterones act on complementary biological targets: 5-LOX inhibition and NF-kappa-B suppression respectively."
+      }
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_name": "docling_core.models.DoclingDocument",
+  "version": "1.10.0",
+  "name": "GERMANY_DE-102021109876-A1",
+  "origin": {
+    "mimetype": "application/json",
+    "binary_hash": "",
+    "filename": "DE-102021109876-A1.json"
+  },
+  "metadata": {
+    "patent_id": "DE-102021109876-A1",
+    "application_number": "DE102021109876.8",
+    "publication_number": "DE 10 2021 109 876 A1",
+    "family_id": null,
+    "title": "Synergistisches Polyherbal-Präparat basierend auf Triphala zur Unterstützung der gastrointestinalen Integrität",
+    "country": "GERMANY",
+    "jurisdiction": "DE",
+    "language": "de",
+    "filing_date": "2021-04-20",
+    "publication_date": "2022-10-27",
+    "applicant": "Martin Bauer Phytomedicine GmbH",
+    "inventor": [
+      "Dr. Stefan Schmidt",
+      "Dr. Priya Deshmukh"
+    ],
+    "ipc": [
+      "A61K36/185",
+      "A61P1/00"
+    ],
+    "cpc": [
+      "A61K36/185",
+      "A61P1/00"
+    ]
+  },
+  "body": {
+    "title": "Synergistisches Polyherbal-Präparat basierend auf Triphala zur Unterstützung der gastrointestinalen Integrität",
+    "sections": [
+      {
+        "heading": "Abstract",
+        "type": "abstract",
+        "text": "Die Erfindung offenbart eine standardisierte Triphala-Zubereitung bestehend aus gleichen Teilen wässrig-methanolischer Fruchtextrakte von Terminalia chebula, Terminalia bellerica und Phyllanthus emblica, standardisiert auf Gesamtpolyphenole >= 45 % und Ellagsäure >= 10 %, zur Wiederherstellung der gastrointestinalen Schleimhautbarriere."
+      },
+      {
+        "heading": "Claims",
+        "type": "claims",
+        "claim_count": 3,
+        "claims": [
+          {
+            "claim_number": "1",
+            "text": "1. Standardisierte pflanzliche Zubereitung aus Früchten von Terminalia chebula, Terminalia bellerica und Phyllanthus emblica zu gleichen Gewichtsanteilen, gekennzeichnet durch einen Gesamtgehalt an Polyphenolen von mindestens 45 Gew.-% und einen Ellagsäure-Gehalt von mindestens 10 Gew.-%.",
+            "is_independent": true
+          },
+          {
+            "claim_number": "2",
+            "text": "2. Zubereitung nach Anspruch 1 zur Anwendung bei der Behandlung des Leaky-Gut-Syndroms und chronischen funktionellen Magen-Darm-Beschwerden.",
+            "is_independent": true
+          },
+          {
+            "claim_number": "3",
+            "text": "3. Orale Darreichungsform enthaltend die Zubereitung nach Anspruch 1 in Kombination mit Präbiotika.",
+            "is_independent": true
+          }
+        ]
+      },
+      {
+        "heading": "Description",
+        "type": "description",
+        "text": "Die klassische Rezeptur Triphala ist ein Grundpfeiler der ayurvedischen Pharmakopöe. Die Erfindung zeigt, dass eine gezielte Standardisierung auf Ellagsäure und Chebulinsäure die Genexpression von Occludin und Claudin-1 in Darmepithelzellen um mehr als 180 % steigert."
+      }
+    ]
+  }
+}

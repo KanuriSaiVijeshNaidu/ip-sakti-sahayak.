@@ -1,0 +1,29 @@
+{
+  "country": "WIPO",
+  "region": "WIPO",
+  "source_dataset": "WIPO PATENTSCOPE / PCT International Patent Publications",
+  "source_url": "https://patentscope.wipo.int/",
+  "patent_id": "WO-2021098765-A1",
+  "application_number": "PCT/US2020/061234",
+  "publication_number": "WO 2021/098765 A1",
+  "family_id": null,
+  "title": "Process for preparation of purified bioactive withanolide fractions from Withania somnifera and pharmaceutical compositions thereof",
+  "section": "abstract",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/81",
+    "B01D15/18",
+    "A61P25/22"
+  ],
+  "cpc": [
+    "A61K36/81",
+    "B01D15/18"
+  ],
+  "language": "en",
+  "filing_date": "2020-11-19",
+  "publication_date": "2021-05-27",
+  "chunk_id": "WIPO-CHK-0000-b0a152dc",
+  "chunk_index": 0,
+  "token_count": 41,
+  "text": "A multi-stage centrifugal partition chromatography (CPC) process for industrial isolation of high-purity withanolide A, withanolide B, and withanoside IV from Withania somnifera, and therapeutic formulations thereof for stress reduction and adrenal stabilization."
+}

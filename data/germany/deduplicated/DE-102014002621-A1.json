@@ -1,0 +1,130 @@
+{
+  "patent_id": "DE-102014002621-A1",
+  "metadata": {
+    "patent_id": "DE-102014002621-A1",
+    "application_number": "DE102014002621.4",
+    "publication_number": "DE 10 2014 002 621 A1",
+    "family_id": null,
+    "title": "Pflanzliche Arzneimittelzusammensetzung enthaltend Extrakte aus Withania somnifera und Curcuma longa zur Behandlung von chronischen Entzündungen",
+    "country": "GERMANY",
+    "jurisdiction": "DE",
+    "language": "de",
+    "filing_date": "2014-01-22",
+    "publication_date": "2015-07-23",
+    "applicant": "Dr. Willmar Schwabe GmbH & Co. KG / Phytocare Deutschland",
+    "inventor": [
+      "Dr. Klaus-Dieter Hanke",
+      "Dr. Hans-Jürgen Schroll",
+      "Dr. Vikram Seth"
+    ],
+    "ipc": [
+      "A61K36/9066",
+      "A61K36/81",
+      "A61P29/00",
+      "A61P19/02"
+    ],
+    "cpc": [
+      "A61K36/9066",
+      "A61K36/81",
+      "A61K2236/00"
+    ]
+  },
+  "docling_doc": {
+    "schema_name": "docling_core.models.DoclingDocument",
+    "version": "1.10.0",
+    "name": "GERMANY_DE-102014002621-A1",
+    "origin": {
+      "mimetype": "application/json",
+      "binary_hash": "",
+      "filename": "DE-102014002621-A1.json"
+    },
+    "metadata": {
+      "patent_id": "DE-102014002621-A1",
+      "application_number": "DE102014002621.4",
+      "publication_number": "DE 10 2014 002 621 A1",
+      "family_id": null,
+      "title": "Pflanzliche Arzneimittelzusammensetzung enthaltend Extrakte aus Withania somnifera und Curcuma longa zur Behandlung von chronischen Entzündungen",
+      "country": "GERMANY",
+      "jurisdiction": "DE",
+      "language": "de",
+      "filing_date": "2014-01-22",
+      "publication_date": "2015-07-23",
+      "applicant": "Dr. Willmar Schwabe GmbH & Co. KG / Phytocare Deutschland",
+      "inventor": [
+        "Dr. Klaus-Dieter Hanke",
+        "Dr. Hans-Jürgen Schroll",
+        "Dr. Vikram Seth"
+      ],
+      "ipc": [
+        "A61K36/9066",
+        "A61K36/81",
+        "A61P29/00",
+        "A61P19/02"
+      ],
+      "cpc": [
+        "A61K36/9066",
+        "A61K36/81",
+        "A61K2236/00"
+      ]
+    },
+    "body": {
+      "title": "Pflanzliche Arzneimittelzusammensetzung enthaltend Extrakte aus Withania somnifera und Curcuma longa zur Behandlung von chronischen Entzündungen",
+      "sections": [
+        {
+          "heading": "Abstract",
+          "type": "abstract",
+          "text": "Die vorliegende Erfindung betrifft eine pharmazeutische Zubereitung, umfassend einen wässrig-alkoholischen Trockenextrakt aus Wurzeln von Withania somnifera (Ashwagandha) mit einem Withanolid-Gehalt von mindestens 4,5 Gew.-% sowie einen standardisierten Extrakt aus Curcuma longa mit einem Curcuminoid-Gehalt von mindestens 90 Gew.-%, zur synergistischen Hemmung von entzündungsfördernden Prostaglandinen und Cytokinen."
+        },
+        {
+          "heading": "Claims",
+          "type": "claims",
+          "claim_count": 5,
+          "claims": [
+            {
+              "claim_number": "1",
+              "text": "1. Pharmazeutische oder phytotherapeutische Zusammensetzung, dadurch gekennzeichnet, dass sie umfasst: (a) einen standardisierten Trockenextrakt aus Wurzeln von Withania somnifera mit einem Gesamtwishanolid-Gehalt von 4,5 bis 7,5 Gew.-%; (b) einen standardisierten Extrakt aus dem Rhizom von Curcuma longa mit einem Gesamtcurcuminoid-Gehalt von mindestens 90 Gew.-%; wobei das Gewichtsverhältnis von Withania somnifera Extrakt zu Curcuma longa Extrakt im Bereich von 1:1 bis 1:3 liegt; und (c) mindestens einen pharmazeutisch verträglichen Hilfsstoff.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "2",
+              "text": "2. Zusammensetzung nach Anspruch 1, dadurch gekennzeichnet, dass der Withania somnifera Extrakt ein Drogen-Extrakt-Verhältnis (DEV) von 8:1 bis 12:1 und der Curcuma longa Extrakt ein DEV von 20:1 bis 30:1 aufweist.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "3",
+              "text": "3. Zusammensetzung nach Anspruch 1 oder 2, dadurch gekennzeichnet, dass sie ferner einen Bioverfügbarkeitsförderer in Form eines Extrakts aus Piper nigrum mit mindestens 95 Gew.-% Piperin in einer Menge von 0,5 bis 2,0 Gew.-% bezogen auf die Gesamtzusammensetzung enthält.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "4",
+              "text": "4. Zusammensetzung nach einem der Ansprüche 1 bis 3 zur Verwendung bei der Vorbeugung oder Behandlung von degenerativen Gelenkerkrankungen, insbesondere Osteoarthritis und rheumatoider Arthritis.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "5",
+              "text": "5. Feste Darreichungsform, insbesondere magensaftresistente Tablette oder Kapsel, enthaltend die Zusammensetzung nach einem der Ansprüche 1 bis 4.",
+              "is_independent": true
+            }
+          ]
+        },
+        {
+          "heading": "Description",
+          "type": "description",
+          "text": "TECHNISCHES GEBIET: Die Erfindung betrifft das Gebiet der Phytopharmaka und pflanzlichen Arzneimittel gemäß § 39a AMG sowie der Patentierung pflanzlicher Kombinationen nach dem deutschen Patentgesetz (PatG § 1-5).\n\nSTAND DER TECHNIK: Das indische Gesundheitssystem (Ayurveda) nutzt Ashwagandha und Curcuma seit Jahrhunderten als Naturheilmittel. Gemäß PatG § 3 und § 4 begründet die bloße Mischung bekannter Heilkräuter jedoch keine Erfindungshöhe, es sei denn, es wird ein überraschender synergistischer Effekt dargelegt. Bei herkömmlichen Zubereitungen reicht die orale Bioverfügbarkeit der lipophilen Curcuminoide im menschlichen Gastrointestinaltrakt oft nicht aus.\n\nAUSFÜHRLICHE BESCHREIBUNG: Durch den Einsatz eines spezifischen überkritischen CO2-Extraktionsverfahrens und einer anschließenden Ethanolfraktionierung konnte ein standardisierter Extrakt erzeugt werden, der bei Kombination mit einem wässrig-ethanolischen Withania-Extrakt eine überadditive Hemmung der COX-2-Expression in vitro bewirkt (Synergismus-Index nach Chou-Talalay < 0,7).\n\nDie Schwermetallbelastung erfüllt streng die Grenzwerte des Europäischen Arzneibuchs (Ph. Eur.): Blei <= 5,0 ppm, Cadmium <= 1,0 ppm, Quecksilber <= 0,1 ppm."
+        }
+      ]
+    }
+  },
+  "cleaned_text": "Die vorliegende Erfindung betrifft eine pharmazeutische Zubereitung, umfassend einen wässrig-alkoholischen Trockenextrakt aus Wurzeln von Withania somnifera (Ashwagandha) mit einem Withanolid-Gehalt von mindestens 4,5 Gew.-% sowie einen standardisierten Extrakt aus Curcuma longa mit einem Curcuminoid-Gehalt von mindestens 90 Gew.-%, zur synergistischen Hemmung von entzündungsfördernden Prostaglandinen und Cytokinen.\n\nClaim 1: 1. Pharmazeutische oder phytotherapeutische Zusammensetzung, dadurch gekennzeichnet, dass sie umfasst: (a) einen standardisierten Trockenextrakt aus Wurzeln von Withania somnifera mit einem Gesamtwishanolid-Gehalt von 4,5 bis 7,5 Gew.-%; (b) einen standardisierten Extrakt aus dem Rhizom von Curcuma longa mit einem Gesamtcurcuminoid-Gehalt von mindestens 90 Gew.-%; wobei das Gewichtsverhältnis von Withania somnifera Extrakt zu Curcuma longa Extrakt im Bereich von 1:1 bis 1:3 liegt; und (c) mindestens einen pharmazeutisch verträglichen Hilfsstoff.\n\nClaim 2: 2. Zusammensetzung nach Anspruch 1, dadurch gekennzeichnet, dass der Withania somnifera Extrakt ein Drogen-Extrakt-Verhältnis (DEV) von 8:1 bis 12:1 und der Curcuma longa Extrakt ein DEV von 20:1 bis 30:1 aufweist.\n\nClaim 3: 3. Zusammensetzung nach Anspruch 1 oder 2, dadurch gekennzeichnet, dass sie ferner einen Bioverfügbarkeitsförderer in Form eines Extrakts aus Piper nigrum mit mindestens 95 Gew.-% Piperin in einer Menge von 0,5 bis 2,0 Gew.-% bezogen auf die Gesamtzusammensetzung enthält.\n\nClaim 4: 4. Zusammensetzung nach einem der Ansprüche 1 bis 3 zur Verwendung bei der Vorbeugung oder Behandlung von degenerativen Gelenkerkrankungen, insbesondere Osteoarthritis und rheumatoider Arthritis.\n\nClaim 5: 5. Feste Darreichungsform, insbesondere magensaftresistente Tablette oder Kapsel, enthaltend die Zusammensetzung nach einem der Ansprüche 1 bis 4.\n\nTECHNISCHES GEBIET: Die Erfindung betrifft das Gebiet der Phytopharmaka und pflanzlichen Arzneimittel gemäß § 39a AMG sowie der Patentierung pflanzlicher Kombinationen nach dem deutschen Patentgesetz (PatG § 1-5).\n\nSTAND DER TECHNIK: Das indische Gesundheitssystem (Ayurveda) nutzt Ashwagandha und Curcuma seit Jahrhunderten als Naturheilmittel. Gemäß PatG § 3 und § 4 begründet die bloße Mischung bekannter Heilkräuter jedoch keine Erfindungshöhe, es sei denn, es wird ein überraschender synergistischer Effekt dargelegt. Bei herkömmlichen Zubereitungen reicht die orale Bioverfügbarkeit der lipophilen Curcuminoide im menschlichen Gastrointestinaltrakt oft nicht aus.\n\nAUSFÜHRLICHE BESCHREIBUNG: Durch den Einsatz eines spezifischen überkritischen CO2-Extraktionsverfahrens und einer anschließenden Ethanolfraktionierung konnte ein standardisierter Extrakt erzeugt werden, der bei Kombination mit einem wässrig-ethanolischen Withania-Extrakt eine überadditive Hemmung der COX-2-Expression in vitro bewirkt (Synergismus-Index nach Chou-Talalay < 0,7).\n\nDie Schwermetallbelastung erfüllt streng die Grenzwerte des Europäischen Arzneibuchs (Ph. Eur.): Blei <= 5,0 ppm, Cadmium <= 1,0 ppm, Quecksilber <= 0,1 ppm.",
+  "quality_metrics": {
+    "alphabetic_character_ratio": 0.8104,
+    "numeric_character_ratio": 0.0209,
+    "garbage_character_ratio": 0.0,
+    "average_word_length": 6.55,
+    "broken_word_ratio": 0.0,
+    "duplicate_line_ratio": 0.0,
+    "ocr_quality_score": 1.0,
+    "status": "PASS",
+    "rejection_reasons": []
+  }
+}

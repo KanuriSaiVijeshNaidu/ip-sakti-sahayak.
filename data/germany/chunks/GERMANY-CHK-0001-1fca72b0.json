@@ -1,0 +1,29 @@
+{
+  "country": "GERMANY",
+  "region": "GERMANY",
+  "source_dataset": "DPMA / DEPATIS German Patent & Utility Model Corpus",
+  "source_url": "https://dpma.de/patente/patentrecherche/index.html",
+  "patent_id": "DE-102017105432-A1",
+  "application_number": "DE102017105432.1",
+  "publication_number": "DE 10 2017 105 432 A1",
+  "family_id": null,
+  "title": "Kombinationspräparat aus Bacopa monnieri und Centella asiatica zur kognitiven Leistungssteigerung",
+  "section": "claims",
+  "claim_number": "1",
+  "ipc": [
+    "A61K36/68",
+    "A61K36/23",
+    "A61P25/28"
+  ],
+  "cpc": [
+    "A61K36/68",
+    "A61K36/23"
+  ],
+  "language": "de",
+  "filing_date": "2017-03-14",
+  "publication_date": "2018-09-20",
+  "chunk_id": "GERMANY-CHK-0001-1fca72b0",
+  "chunk_index": 1,
+  "token_count": 80,
+  "text": "Claim 1: 1. Nootropes Arzneimittel oder Nahrungsergänzungsmittel, enthaltend: (a) einen Trockenextrakt aus Bacopa monnieri mit mindestens 40 Gew.-% Bacosiden; und (b) einen Extrakt aus Centella asiatica mit mindestens 30 Gew.-% Triterpenglykosiden; im Gewichtsverhältnis 1:1.\n\nClaim 2: 2. Arzneimittel nach Anspruch 1, formuliert als Kapsel mit verzögerter Wirkstofffreisetzung.\n\nClaim 3: 3. Arzneimittel nach Anspruch 1 zur Vorbeugung von vaskulärer Demenz und altersbedingten Gedächtnisstörungen."
+}

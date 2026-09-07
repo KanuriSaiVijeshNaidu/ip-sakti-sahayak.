@@ -1,0 +1,29 @@
+{
+  "country": "INDIA",
+  "region": "INDIA",
+  "source_dataset": "Indian Patent Office (IPO / InPASS) & TKDL Patent Corpus",
+  "source_url": "https://ipindiaservices.gov.in/publicsearch",
+  "patent_id": "IN-243763-B",
+  "application_number": "890/DEL/2005",
+  "publication_number": "IN 243763 B",
+  "family_id": null,
+  "title": "A process for preparation of standardized extract from Withania somnifera with enhanced withanolide glycosides content",
+  "section": "description",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/81",
+    "B01D15/00",
+    "A61P25/22"
+  ],
+  "cpc": [
+    "A61K36/81",
+    "B01D15/00"
+  ],
+  "language": "en",
+  "filing_date": "2005-04-12",
+  "publication_date": "2010-10-29",
+  "chunk_id": "INDIA-CHK-0002-2d9208d2",
+  "chunk_index": 2,
+  "token_count": 49,
+  "text": "BACKGROUND: Traditional churna powders contain low (0.2-0.5%) active withanolides and vary widely between agricultural batches. Furthermore, withaferin A at high concentrations exhibits cytotoxic rather than adaptogenic properties. The present process selectively enriches withanolide glycosides while depleting cytotoxic aglycones."
+}

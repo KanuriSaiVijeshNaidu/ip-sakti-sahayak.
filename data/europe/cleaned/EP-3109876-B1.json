@@ -1,0 +1,114 @@
+{
+  "patent_id": "EP-3109876-B1",
+  "metadata": {
+    "patent_id": "EP-3109876-B1",
+    "application_number": "EP15723456.8",
+    "publication_number": "EP 3 109 876 B1",
+    "family_id": null,
+    "title": "Standardized Bacopa monnieri extract formulation for cognitive enhancement and synaptic plasticity",
+    "country": "EUROPE",
+    "jurisdiction": "EP",
+    "language": "en",
+    "filing_date": "2015-05-18",
+    "publication_date": "2019-11-27",
+    "applicant": "Bionorica SE",
+    "inventor": [
+      "Prof. Dr. Michael Popp",
+      "Dr. Amit V. Joshi"
+    ],
+    "ipc": [
+      "A61K36/68",
+      "A61P25/28",
+      "A61K9/50"
+    ],
+    "cpc": [
+      "A61K36/68",
+      "A61P25/28"
+    ]
+  },
+  "docling_doc": {
+    "schema_name": "docling_core.models.DoclingDocument",
+    "version": "1.10.0",
+    "name": "EUROPE_EP-3109876-B1",
+    "origin": {
+      "mimetype": "application/json",
+      "binary_hash": "",
+      "filename": "EP-3109876-B1.json"
+    },
+    "metadata": {
+      "patent_id": "EP-3109876-B1",
+      "application_number": "EP15723456.8",
+      "publication_number": "EP 3 109 876 B1",
+      "family_id": null,
+      "title": "Standardized Bacopa monnieri extract formulation for cognitive enhancement and synaptic plasticity",
+      "country": "EUROPE",
+      "jurisdiction": "EP",
+      "language": "en",
+      "filing_date": "2015-05-18",
+      "publication_date": "2019-11-27",
+      "applicant": "Bionorica SE",
+      "inventor": [
+        "Prof. Dr. Michael Popp",
+        "Dr. Amit V. Joshi"
+      ],
+      "ipc": [
+        "A61K36/68",
+        "A61P25/28",
+        "A61K9/50"
+      ],
+      "cpc": [
+        "A61K36/68",
+        "A61P25/28"
+      ]
+    },
+    "body": {
+      "title": "Standardized Bacopa monnieri extract formulation for cognitive enhancement and synaptic plasticity",
+      "sections": [
+        {
+          "heading": "Abstract",
+          "type": "abstract",
+          "text": "A sustained-release formulation containing standardized bacoside A3, bacoside II, and jujubogenin isomer fractions from Bacopa monnieri, stabilized against degradation, providing improved cholinergic transmission and memory consolidation."
+        },
+        {
+          "heading": "Claims",
+          "type": "claims",
+          "claim_count": 3,
+          "claims": [
+            {
+              "claim_number": "1",
+              "text": "1. A solid oral pharmaceutical composition comprising a standardized extract of Bacopa monnieri containing not less than 40.0% by weight of total bacosides calculated as the sum of bacoside A3, bacopaside II, and bacopasaponin C, dispersed in an enteric hydrophilic polymer matrix.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "2",
+              "text": "2. The composition according to claim 1, wherein the composition maintains sustained release of bacosides over an 8-hour dissolution profile in simulated intestinal fluid pH 6.8.",
+              "is_independent": false
+            },
+            {
+              "claim_number": "3",
+              "text": "3. The composition according to claim 1 for use in the treatment of cognitive impairment, age-associated memory loss, and attention deficit.",
+              "is_independent": false
+            }
+          ]
+        },
+        {
+          "heading": "Description",
+          "type": "description",
+          "text": "The botanical Bacopa monnieri (Brahmi) has been used in Medhya Rasayana systems for over 2500 years. The isolation of specific triterpenoid saponins presents challenges due to rapid hydrolytic breakdown in acidic gastric juice. The present invention solves this via pH-dependent microsphere encapsulation."
+        }
+      ]
+    }
+  },
+  "cleaned_text": "A sustained-release formulation containing standardized bacoside A3, bacoside II, and jujubogenin isomer fractions from Bacopa monnieri, stabilized against degradation, providing improved cholinergic transmission and memory consolidation.\n\nClaim 1: 1. A solid oral pharmaceutical composition comprising a standardized extract of Bacopa monnieri containing not less than 40.0% by weight of total bacosides calculated as the sum of bacoside A3, bacopaside II, and bacopasaponin C, dispersed in an enteric hydrophilic polymer matrix.\n\nClaim 2: 2. The composition according to claim 1, wherein the composition maintains sustained release of bacosides over an 8-hour dissolution profile in simulated intestinal fluid pH 6.8.\n\nClaim 3: 3. The composition according to claim 1 for use in the treatment of cognitive impairment, age-associated memory loss, and attention deficit.\n\nThe botanical Bacopa monnieri (Brahmi) has been used in Medhya Rasayana systems for over 2500 years. The isolation of specific triterpenoid saponins presents challenges due to rapid hydrolytic breakdown in acidic gastric juice. The present invention solves this via pH-dependent microsphere encapsulation.",
+  "quality_metrics": {
+    "alphabetic_character_ratio": 0.8148,
+    "numeric_character_ratio": 0.017,
+    "garbage_character_ratio": 0.0,
+    "average_word_length": 5.96,
+    "broken_word_ratio": 0.0,
+    "duplicate_line_ratio": 0.0,
+    "ocr_quality_score": 1.0,
+    "status": "PASS",
+    "rejection_reasons": []
+  }
+}

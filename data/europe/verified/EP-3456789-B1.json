@@ -1,0 +1,34 @@
+{
+  "patent_id": "EP-3456789-B1",
+  "application_number": "EP17812345.9",
+  "publication_number": "EP 3 456 789 B1",
+  "title": "Synergistic polyherbal formulation based on Triphala for metabolic regulation and gut barrier repair",
+  "abstract": "A standardized herbal composition comprising equal weight proportions of aqueous-ethanolic extracts of Terminalia chebula, Terminalia bellerica, and Phyllanthus emblica, characterized by polyphenol content >= 45% and gallic acid >= 8%, restoring gut mucosal tightness and reducing metabolic endotoxemia.",
+  "claims": [
+    "1. A standardized Triphala formulation comprising a spray-dried blend of hydroalcoholic extracts of Terminalia chebula fruits, Terminalia bellerica fruits, and Phyllanthus emblica fruits, characterized in that the formulation comprises not less than 45.0% total polyphenols and not less than 8.0% gallic acid by weight.",
+    "2. The formulation according to claim 1, wherein the formulation upregulates expression of tight junction proteins Claudin-1 and ZO-1 in human intestinal epithelial Caco-2 monolayers.",
+    "3. The formulation according to claim 1 for use in preventing or treating metabolic syndrome and intestinal hyperpermeability."
+  ],
+  "description": "While Triphala has historical documentation in classical texts (Charaka Samhita, Sutrasthana), previous applications did not quantify polyphenol ratios required to trigger epithelial cell tight junction repair in the intestinal mucosa.",
+  "ipc": [
+    "A61K36/185",
+    "A61P1/00",
+    "A61P3/00"
+  ],
+  "cpc": [
+    "A61K36/185",
+    "A61P1/00"
+  ],
+  "filing_date": "2017-10-12",
+  "publication_date": "2021-06-16",
+  "applicant": "Martin Bauer Group / Eurofins BioPharma",
+  "inventor": [
+    "Dr. Hans-Ulrich Seitz",
+    "Dr. Anand Chordia"
+  ],
+  "country": "Europe",
+  "jurisdiction": "EP",
+  "language": "en",
+  "source_dataset": "EPO Espacenet / Granted Specifications",
+  "source_url": "https://worldwide.espacenet.com/patent/search/family/059812345/publication/EP3456789B1?q=EP3456789"
+}

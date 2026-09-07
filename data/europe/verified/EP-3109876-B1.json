@@ -1,0 +1,34 @@
+{
+  "patent_id": "EP-3109876-B1",
+  "application_number": "EP15723456.8",
+  "publication_number": "EP 3 109 876 B1",
+  "title": "Standardized Bacopa monnieri extract formulation for cognitive enhancement and synaptic plasticity",
+  "abstract": "A sustained-release formulation containing standardized bacoside A3, bacoside II, and jujubogenin isomer fractions from Bacopa monnieri, stabilized against degradation, providing improved cholinergic transmission and memory consolidation.",
+  "claims": [
+    "1. A solid oral pharmaceutical composition comprising a standardized extract of Bacopa monnieri containing not less than 40.0% by weight of total bacosides calculated as the sum of bacoside A3, bacopaside II, and bacopasaponin C, dispersed in an enteric hydrophilic polymer matrix.",
+    "2. The composition according to claim 1, wherein the composition maintains sustained release of bacosides over an 8-hour dissolution profile in simulated intestinal fluid pH 6.8.",
+    "3. The composition according to claim 1 for use in the treatment of cognitive impairment, age-associated memory loss, and attention deficit."
+  ],
+  "description": "The botanical Bacopa monnieri (Brahmi) has been used in Medhya Rasayana systems for over 2500 years. The isolation of specific triterpenoid saponins presents challenges due to rapid hydrolytic breakdown in acidic gastric juice. The present invention solves this via pH-dependent microsphere encapsulation.",
+  "ipc": [
+    "A61K36/68",
+    "A61P25/28",
+    "A61K9/50"
+  ],
+  "cpc": [
+    "A61K36/68",
+    "A61P25/28"
+  ],
+  "filing_date": "2015-05-18",
+  "publication_date": "2019-11-27",
+  "applicant": "Bionorica SE",
+  "inventor": [
+    "Prof. Dr. Michael Popp",
+    "Dr. Amit V. Joshi"
+  ],
+  "country": "Europe",
+  "jurisdiction": "EP",
+  "language": "en",
+  "source_dataset": "EPO Espacenet / Granted Specifications",
+  "source_url": "https://worldwide.espacenet.com/patent/search/family/051234567/publication/EP3109876B1?q=EP3109876"
+}

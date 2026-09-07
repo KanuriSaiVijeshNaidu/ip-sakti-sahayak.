@@ -1,0 +1,29 @@
+{
+  "country": "GERMANY",
+  "region": "GERMANY",
+  "source_dataset": "DPMA / DEPATIS German Patent & Utility Model Corpus",
+  "source_url": "https://dpma.de/patente/patentrecherche/index.html",
+  "patent_id": "DE-102012015247-A1",
+  "application_number": "DE102012015247.9",
+  "publication_number": "DE 10 2012 015 247 A1",
+  "family_id": null,
+  "title": "Standardisierte Zubereitung aus Boswellia serrata und Zingiber officinale mit synergistischem antiarthritischem Effekt",
+  "section": "description",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/324",
+    "A61K36/9068",
+    "A61P29/00"
+  ],
+  "cpc": [
+    "A61K36/324",
+    "A61K36/9068"
+  ],
+  "language": "de",
+  "filing_date": "2012-07-31",
+  "publication_date": "2014-02-06",
+  "chunk_id": "GERMANY-CHK-0002-2db3f301",
+  "chunk_index": 2,
+  "token_count": 50,
+  "text": "Die Verwendung von Weihrauch (Shallaki) und Ingwer (Sunthi) in der traditionellen indischen Medizin ist historisch belegt. Vorliegende Erfindung löst das technische Problem der geringen Wasserlöslichkeit von Boswelliasäuren durch Einbettung in eine Lipidmatrix unter Mitwirkung der ätherischen Öle des Ingwers."
+}

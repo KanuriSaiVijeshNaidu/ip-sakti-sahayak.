@@ -1,0 +1,29 @@
+{
+  "country": "EUROPE",
+  "region": "EUROPE",
+  "source_dataset": "EPO Patent All Claims & Authoritative EP Granted Specifications",
+  "source_url": "https://huggingface.co/datasets/mhurhangee/ep-patent-all-claims",
+  "patent_id": "EP-3109876-B1",
+  "application_number": "EP15723456.8",
+  "publication_number": "EP 3 109 876 B1",
+  "family_id": null,
+  "title": "Standardized Bacopa monnieri extract formulation for cognitive enhancement and synaptic plasticity",
+  "section": "abstract",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/68",
+    "A61P25/28",
+    "A61K9/50"
+  ],
+  "cpc": [
+    "A61K36/68",
+    "A61P25/28"
+  ],
+  "language": "en",
+  "filing_date": "2015-05-18",
+  "publication_date": "2019-11-27",
+  "chunk_id": "EUROPE-CHK-0000-86a8b15a",
+  "chunk_index": 0,
+  "token_count": 33,
+  "text": "A sustained-release formulation containing standardized bacoside A3, bacoside II, and jujubogenin isomer fractions from Bacopa monnieri, stabilized against degradation, providing improved cholinergic transmission and memory consolidation."
+}

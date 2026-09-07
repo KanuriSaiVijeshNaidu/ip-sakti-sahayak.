@@ -1,0 +1,29 @@
+{
+  "country": "EUROPE",
+  "region": "EUROPE",
+  "source_dataset": "EPO Patent All Claims & Authoritative EP Granted Specifications",
+  "source_url": "https://huggingface.co/datasets/mhurhangee/ep-patent-all-claims",
+  "patent_id": "EP-2891234-B1",
+  "application_number": "EP13765432.1",
+  "publication_number": "EP 2 891 234 B1",
+  "family_id": null,
+  "title": "Phytochemical composition comprising Ocimum sanctum and Tinospora cordifolia for immune stimulation",
+  "section": "description",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/59",
+    "A61K36/53",
+    "A61P37/04"
+  ],
+  "cpc": [
+    "A61K36/59",
+    "A61K36/53"
+  ],
+  "language": "en",
+  "filing_date": "2013-09-04",
+  "publication_date": "2017-08-02",
+  "chunk_id": "EUROPE-CHK-0002-3e9a21b4",
+  "chunk_index": 2,
+  "token_count": 31,
+  "text": "Detailed study of Ayurvedic Rasayana botanical combinations reveals that combining Guduchi polysaccharides with Tulsi triterpenes produces non-obvious potentiation of interferon-gamma secretion in splenocyte assays."
+}

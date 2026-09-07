@@ -1,0 +1,128 @@
+{
+  "patent_id": "US-8512767-B2",
+  "metadata": {
+    "patent_id": "US-8512767-B2",
+    "application_number": "13/012,345",
+    "publication_number": "US 8,512,767 B2",
+    "family_id": null,
+    "title": "Standardized Bacopa monnieri composition and methods for improving cognitive performance",
+    "country": "USA",
+    "jurisdiction": "US",
+    "language": "en",
+    "filing_date": "2011-01-24",
+    "publication_date": "2013-08-20",
+    "applicant": "Natural Remedies LLC",
+    "inventor": [
+      {
+        "inventor_name_last": "Agarwal",
+        "inventor_name_first": "Amit",
+        "inventor_country": "IN"
+      }
+    ],
+    "ipc": [
+      "A61K36/68",
+      "A61P25/28"
+    ],
+    "cpc": [
+      "A61K36/68"
+    ]
+  },
+  "docling_doc": {
+    "schema_name": "docling_core.models.DoclingDocument",
+    "version": "1.10.0",
+    "name": "USA_US-8512767-B2",
+    "origin": {
+      "mimetype": "application/json",
+      "binary_hash": "",
+      "filename": "US-8512767-B2.json"
+    },
+    "metadata": {
+      "patent_id": "US-8512767-B2",
+      "application_number": "13/012,345",
+      "publication_number": "US 8,512,767 B2",
+      "family_id": null,
+      "title": "Standardized Bacopa monnieri composition and methods for improving cognitive performance",
+      "country": "USA",
+      "jurisdiction": "US",
+      "language": "en",
+      "filing_date": "2011-01-24",
+      "publication_date": "2013-08-20",
+      "applicant": "Natural Remedies LLC",
+      "inventor": [
+        {
+          "inventor_name_last": "Agarwal",
+          "inventor_name_first": "Amit",
+          "inventor_country": "IN"
+        }
+      ],
+      "ipc": [
+        "A61K36/68",
+        "A61P25/28"
+      ],
+      "cpc": [
+        "A61K36/68"
+      ]
+    },
+    "body": {
+      "title": "Standardized Bacopa monnieri composition and methods for improving cognitive performance",
+      "sections": [
+        {
+          "heading": "Abstract",
+          "type": "abstract",
+          "text": "A standardized Bacopa monnieri extract containing a unique profile of bacoside A3, bacopaside II, and jujubogenin isomers, demonstrating enhanced synaptic transmission and protection against scopolamine-induced amnesia."
+        },
+        {
+          "heading": "Background of the Invention",
+          "type": "background",
+          "text": "Age-related cognitive decline affects processing speed and memory retention without current safe pharmaceutical cures."
+        },
+        {
+          "heading": "Summary of the Invention",
+          "type": "summary",
+          "text": "The present invention provides a highly enriched standardized Bacopa extract with verified safety and clinical efficacy in cognitive performance."
+        },
+        {
+          "heading": "Claims",
+          "type": "claims",
+          "claim_count": 3,
+          "claims": [
+            {
+              "claim_number": "1",
+              "text": "1. A standardized Bacopa monnieri extract comprising not less than 55.0% total bacosides by weight, wherein the ratio of bacoside A3 to bacopaside II is between 1:1 and 1:2.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "2",
+              "text": "2. A dietary supplement composition comprising the standardized extract of claim 1 and an acceptable excipient.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "3",
+              "text": "3. A method of improving memory acquisition and retention in a subject comprising administering the composition of claim 2.",
+              "is_independent": true
+            }
+          ]
+        },
+        {
+          "heading": "Description",
+          "type": "description",
+          "text": "Bacopa monnieri has historical utilization as a Medhya Rasayana botanical. Modern standardized processing ensures removal of non-specific glycosides while maintaining exact ratios of memory-active dammarane-type triterpenoid saponins."
+        }
+      ]
+    }
+  },
+  "cleaned_text": "A standardized Bacopa monnieri extract containing a unique profile of bacoside A3, bacopaside II, and jujubogenin isomers, demonstrating enhanced synaptic transmission and protection against scopolamine-induced amnesia.\n\nAge-related cognitive decline affects processing speed and memory retention without current safe pharmaceutical cures.\n\nThe present invention provides a highly enriched standardized Bacopa extract with verified safety and clinical efficacy in cognitive performance.\n\nClaim 1: 1. A standardized Bacopa monnieri extract comprising not less than 55.0% total bacosides by weight, wherein the ratio of bacoside A3 to bacopaside II is between 1:1 and 1:2.\n\nClaim 2: 2. A dietary supplement composition comprising the standardized extract of claim 1 and an acceptable excipient.\n\nClaim 3: 3. A method of improving memory acquisition and retention in a subject comprising administering the composition of claim 2.\n\nBacopa monnieri has historical utilization as a Medhya Rasayana botanical. Modern standardized processing ensures removal of non-specific glycosides while maintaining exact ratios of memory-active dammarane-type triterpenoid saponins.",
+  "quality_metrics": {
+    "alphabetic_character_ratio": 0.8236,
+    "numeric_character_ratio": 0.0146,
+    "garbage_character_ratio": 0.0,
+    "average_word_length": 6.16,
+    "broken_word_ratio": 0.0818,
+    "duplicate_line_ratio": 0.0,
+    "ocr_quality_score": 0.8365,
+    "status": "FAIL",
+    "rejection_reasons": [
+      "Broken word ratio too high: 0.082 > 0.05"
+    ]
+  }
+}

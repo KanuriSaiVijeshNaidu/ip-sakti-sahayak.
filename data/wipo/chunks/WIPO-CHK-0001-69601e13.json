@@ -1,0 +1,30 @@
+{
+  "country": "WIPO",
+  "region": "WIPO",
+  "source_dataset": "WIPO PATENTSCOPE / PCT International Patent Publications",
+  "source_url": "https://patentscope.wipo.int/",
+  "patent_id": "WO-2019123456-A1",
+  "application_number": "PCT/EP2018/086123",
+  "publication_number": "WO 2019/123456 A1",
+  "family_id": null,
+  "title": "Standardized botanical extract of Curcuma longa and Zingiber officinale with enhanced bioavailability and anti-inflammatory activity",
+  "section": "claims",
+  "claim_number": "1",
+  "ipc": [
+    "A61K36/9066",
+    "A61K36/9068",
+    "A61K9/107",
+    "A61P29/00"
+  ],
+  "cpc": [
+    "A61K36/9066",
+    "A61K36/9068"
+  ],
+  "language": "en",
+  "filing_date": "2018-12-19",
+  "publication_date": "2019-06-27",
+  "chunk_id": "WIPO-CHK-0001-69601e13",
+  "chunk_index": 1,
+  "token_count": 139,
+  "text": "Claim 1: 1. A self-emulsifying botanical formulation comprising: (a) 15% to 30% by weight of a Curcuma longa extract standardized to >= 95% curcuminoids; (b) 5% to 15% by weight of a supercritical Zingiber officinale extract standardized to >= 20% gingerols; (c) 30% to 50% by weight of medium-chain triglycerides; and (d) 20% to 35% by weight of a non-ionic surfactant.\n\nClaim 2: 2. The formulation according to claim 1, forming spontaneously an emulsion having a mean droplet size of less than 150 nm upon dilution with water.\n\nClaim 3: 3. The formulation according to claim 1 for use in the treatment of osteoarthritis and metabolic inflammation."
+}

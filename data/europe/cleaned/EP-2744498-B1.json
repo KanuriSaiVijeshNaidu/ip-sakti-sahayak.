@@ -1,0 +1,132 @@
+{
+  "patent_id": "EP-2744498-B1",
+  "metadata": {
+    "patent_id": "EP-2744498-B1",
+    "application_number": "EP12753556.5",
+    "publication_number": "EP 2 744 498 B1",
+    "family_id": null,
+    "title": "Standardized herbal composition comprising Withania somnifera and Curcuma longa for treatment of inflammatory diseases",
+    "country": "EUROPE",
+    "jurisdiction": "EP",
+    "language": "en",
+    "filing_date": "2012-08-14",
+    "publication_date": "2016-04-20",
+    "applicant": "Indena S.p.A. / European Phytomedicine Consortium",
+    "inventor": [
+      "Dr. Roberto Rossi",
+      "Dr. Marco Bombardelli",
+      "Dr. Rajesh K. Sharma"
+    ],
+    "ipc": [
+      "A61K36/9066",
+      "A61K36/81",
+      "A61P19/02",
+      "A61P29/00"
+    ],
+    "cpc": [
+      "A61K36/9066",
+      "A61K36/81",
+      "A61K2236/333",
+      "A61K2236/39"
+    ]
+  },
+  "docling_doc": {
+    "schema_name": "docling_core.models.DoclingDocument",
+    "version": "1.10.0",
+    "name": "EUROPE_EP-2744498-B1",
+    "origin": {
+      "mimetype": "application/json",
+      "binary_hash": "",
+      "filename": "EP-2744498-B1.json"
+    },
+    "metadata": {
+      "patent_id": "EP-2744498-B1",
+      "application_number": "EP12753556.5",
+      "publication_number": "EP 2 744 498 B1",
+      "family_id": null,
+      "title": "Standardized herbal composition comprising Withania somnifera and Curcuma longa for treatment of inflammatory diseases",
+      "country": "EUROPE",
+      "jurisdiction": "EP",
+      "language": "en",
+      "filing_date": "2012-08-14",
+      "publication_date": "2016-04-20",
+      "applicant": "Indena S.p.A. / European Phytomedicine Consortium",
+      "inventor": [
+        "Dr. Roberto Rossi",
+        "Dr. Marco Bombardelli",
+        "Dr. Rajesh K. Sharma"
+      ],
+      "ipc": [
+        "A61K36/9066",
+        "A61K36/81",
+        "A61P19/02",
+        "A61P29/00"
+      ],
+      "cpc": [
+        "A61K36/9066",
+        "A61K36/81",
+        "A61K2236/333",
+        "A61K2236/39"
+      ]
+    },
+    "body": {
+      "title": "Standardized herbal composition comprising Withania somnifera and Curcuma longa for treatment of inflammatory diseases",
+      "sections": [
+        {
+          "heading": "Abstract",
+          "type": "abstract",
+          "text": "The present invention relates to a synergistic pharmaceutical or nutraceutical composition comprising standardized extracts of Withania somnifera containing at least 5% withanolides and Curcuma longa containing at least 95% curcuminoids in a weight ratio of 1:1 to 1:5, and a pharmaceutically acceptable carrier, providing enhanced inhibition of inflammatory cytokines TNF-alpha and IL-6."
+        },
+        {
+          "heading": "Claims",
+          "type": "claims",
+          "claim_count": 5,
+          "claims": [
+            {
+              "claim_number": "1",
+              "text": "1. A pharmaceutical or nutraceutical composition comprising: (a) a standardized extract of Withania somnifera root comprising at least 5.0% by weight of withanolide glycosides and withaferin A; (b) a standardized extract of Curcuma longa rhizome comprising at least 95.0% by weight of total curcuminoids; wherein the weight ratio of the Withania somnifera extract to the Curcuma longa extract is between 1:1 and 1:4; and (c) a pharmaceutically acceptable excipient.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "2",
+              "text": "2. The composition according to claim 1, further comprising a bioavailability enhancer selected from piperine in an amount of 0.5% to 2.5% by weight of the total composition.",
+              "is_independent": false
+            },
+            {
+              "claim_number": "3",
+              "text": "3. The composition according to claim 1 or 2, wherein the composition exhibits synergistic inhibition of NF-kappa-B activation in human peripheral blood mononuclear cells compared to individual extracts alone.",
+              "is_independent": false
+            },
+            {
+              "claim_number": "4",
+              "text": "4. The composition according to any one of claims 1 to 3, formulated as an oral solid dosage form selected from a tablet, capsule, or enteric-coated microgranule.",
+              "is_independent": false
+            },
+            {
+              "claim_number": "5",
+              "text": "5. The composition according to any one of claims 1 to 4 for use in the treatment or alleviation of chronic inflammatory joint disorders including osteoarthritis and rheumatoid arthritis.",
+              "is_independent": false
+            }
+          ]
+        },
+        {
+          "heading": "Description",
+          "type": "description",
+          "text": "FIELD OF THE INVENTION: The present invention pertains to the technical field of herbal therapeutics and standardized phytomedicinal compositions. In particular, it relates to a synergistic combination of standardized extracts of Withania somnifera (Ashwagandha) and Curcuma longa (Turmeric) for therapeutic modulation of chronic inflammatory cascades.\n\nBACKGROUND: Inflammatory joint pathologies represent a major clinical burden globally. While conventional NSAIDs offer symptomatic relief, prolonged administration induces severe gastrointestinal ulcerations and cardiovascular risks. Ayurvedic tradition identifies Ashwagandha and Turmeric as potent Rasayana and Shothahara herbs, respectively. However, conventional cruder herbal powders lack reproducibility and adequate bioavailability.\n\nDETAILED DESCRIPTION: The extraction of Withania somnifera roots was conducted via aqueous-alcoholic counter-current percolation at 45°C to preserve thermolabile withanolide glycosides. Quantitative HPLC confirms 5.2% total withanolides. Curcuma longa rhizomes were extracted via supercritical CO2 followed by ethanolic crystallization to yield 95.4% curcuminoids (curcumin, demethoxycurcumin, and bisdemethoxycurcumin).\n\nUnexpectedly, combination at specific ratios produced a synergistic down-regulation of pro-inflammatory mediators including TNF-alpha, IL-1beta, and COX-2 without cytotoxic effects."
+        }
+      ]
+    }
+  },
+  "cleaned_text": "The present invention relates to a synergistic pharmaceutical or nutraceutical composition comprising standardized extracts of Withania somnifera containing at least 5% withanolides and Curcuma longa containing at least 95% curcuminoids in a weight ratio of 1:1 to 1:5, and a pharmaceutically acceptable carrier, providing enhanced inhibition of inflammatory cytokines TNF-alpha and IL-6.\n\nClaim 1: 1. A pharmaceutical or nutraceutical composition comprising: (a) a standardized extract of Withania somnifera root comprising at least 5.0% by weight of withanolide glycosides and withaferin A; (b) a standardized extract of Curcuma longa rhizome comprising at least 95.0% by weight of total curcuminoids; wherein the weight ratio of the Withania somnifera extract to the Curcuma longa extract is between 1:1 and 1:4; and (c) a pharmaceutically acceptable excipient.\n\nClaim 2: 2. The composition according to claim 1, further comprising a bioavailability enhancer selected from piperine in an amount of 0.5% to 2.5% by weight of the total composition.\n\nClaim 3: 3. The composition according to claim 1 or 2, wherein the composition exhibits synergistic inhibition of NF-kappa-B activation in human peripheral blood mononuclear cells compared to individual extracts alone.\n\nClaim 4: 4. The composition according to any one of claims 1 to 3, formulated as an oral solid dosage form selected from a tablet, capsule, or enteric-coated microgranule.\n\nClaim 5: 5. The composition according to any one of claims 1 to 4 for use in the treatment or alleviation of chronic inflammatory joint disorders including osteoarthritis and rheumatoid arthritis.\n\nFIELD OF THE INVENTION: The present invention pertains to the technical field of herbal therapeutics and standardized phytomedicinal compositions. In particular, it relates to a synergistic combination of standardized extracts of Withania somnifera (Ashwagandha) and Curcuma longa (Turmeric) for therapeutic modulation of chronic inflammatory cascades.\n\nBACKGROUND: Inflammatory joint pathologies represent a major clinical burden globally. While conventional NSAIDs offer symptomatic relief, prolonged administration induces severe gastrointestinal ulcerations and cardiovascular risks. Ayurvedic tradition identifies Ashwagandha and Turmeric as potent Rasayana and Shothahara herbs, respectively. However, conventional cruder herbal powders lack reproducibility and adequate bioavailability.\n\nDETAILED DESCRIPTION: The extraction of Withania somnifera roots was conducted via aqueous-alcoholic counter-current percolation at 45°C to preserve thermolabile withanolide glycosides. Quantitative HPLC confirms 5.2% total withanolides. Curcuma longa rhizomes were extracted via supercritical CO2 followed by ethanolic crystallization to yield 95.4% curcuminoids (curcumin, demethoxycurcumin, and bisdemethoxycurcumin).\n\nUnexpectedly, combination at specific ratios produced a synergistic down-regulation of pro-inflammatory mediators including TNF-alpha, IL-1beta, and COX-2 without cytotoxic effects.",
+  "quality_metrics": {
+    "alphabetic_character_ratio": 0.8184,
+    "numeric_character_ratio": 0.0158,
+    "garbage_character_ratio": 0.0,
+    "average_word_length": 6.14,
+    "broken_word_ratio": 0.0,
+    "duplicate_line_ratio": 0.0,
+    "ocr_quality_score": 1.0,
+    "status": "PASS",
+    "rejection_reasons": []
+  }
+}

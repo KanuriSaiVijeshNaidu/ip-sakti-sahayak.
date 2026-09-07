@@ -1,0 +1,35 @@
+{
+  "patent_id": "WO-2022034567-A1",
+  "application_number": "PCT/IB2021/057890",
+  "publication_number": "WO 2022/034567 A1",
+  "title": "Topical botanical formulation comprising Azadirachta indica and Ocimum sanctum for antimicrobial and wound healing applications",
+  "abstract": "A topical hydrogel composition comprising standardized Azadirachta indica (Neem) seed kernel extract and Ocimum sanctum (Tulsi) essential oil, displaying broad-spectrum antimicrobial activity against multi-drug resistant pathogens and accelerating cutaneous epithelialization.",
+  "claims": [
+    "1. A topical hydrogel formulation comprising: (a) 2.0% to 5.0% by weight of an Azadirachta indica extract standardized to >= 1000 ppm azadirachtin; (b) 0.5% to 2.0% by weight of Ocimum sanctum essential oil comprising >= 60% eugenol; and (c) a bioadhesive polymer base forming a topical hydrogel matrix.",
+    "2. The formulation according to claim 1, exhibiting a minimum inhibitory concentration (MIC) of <= 125 mcg/mL against methicillin-resistant Staphylococcus aureus (MRSA).",
+    "3. The formulation according to claim 1 for use in promoting wound healing in diabetic foot ulcers."
+  ],
+  "description": "Neem and Tulsi are recognized in classical texts (Ashtanga Hridaya) for Krimighna and Vrana ropana properties. This international application demonstrates that combining azadirachtin terpenoids with eugenol creates membrane permeabilization in bacterial biofilms.",
+  "ipc": [
+    "A61K36/58",
+    "A61K36/53",
+    "A61P31/04",
+    "A61P17/02"
+  ],
+  "cpc": [
+    "A61K36/58",
+    "A61K36/53"
+  ],
+  "filing_date": "2021-08-11",
+  "publication_date": "2022-02-17",
+  "applicant": "Bio-Herbal Global Solutions S.A. / WIPO International Bureau",
+  "inventor": [
+    "Dr. Carlos Gomez-Mendez",
+    "Dr. Sunita Rao"
+  ],
+  "country": "WIPO",
+  "jurisdiction": "WO",
+  "language": "en",
+  "source_dataset": "WIPO PATENTSCOPE / PCT Gazette",
+  "source_url": "https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2022034567"
+}

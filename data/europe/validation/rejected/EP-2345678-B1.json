@@ -1,0 +1,116 @@
+{
+  "patent_id": "EP-2345678-B1",
+  "metadata": {
+    "patent_id": "EP-2345678-B1",
+    "application_number": "EP10712345.1",
+    "publication_number": "EP 2 345 678 B1",
+    "family_id": null,
+    "title": "Bio-enhanced phytotherapeutic formulation comprising Boswellia serrata and Zingiber officinale",
+    "country": "EUROPE",
+    "jurisdiction": "EP",
+    "language": "en",
+    "filing_date": "2010-03-22",
+    "publication_date": "2014-09-17",
+    "applicant": "Schwabe Pharma Europe GmbH",
+    "inventor": [
+      "Dr. Klaus Peter Becker",
+      "Dr. Suresh Patel"
+    ],
+    "ipc": [
+      "A61K36/324",
+      "A61K36/9068",
+      "A61P19/02"
+    ],
+    "cpc": [
+      "A61K36/324",
+      "A61K36/9068"
+    ]
+  },
+  "docling_doc": {
+    "schema_name": "docling_core.models.DoclingDocument",
+    "version": "1.10.0",
+    "name": "EUROPE_EP-2345678-B1",
+    "origin": {
+      "mimetype": "application/json",
+      "binary_hash": "",
+      "filename": "EP-2345678-B1.json"
+    },
+    "metadata": {
+      "patent_id": "EP-2345678-B1",
+      "application_number": "EP10712345.1",
+      "publication_number": "EP 2 345 678 B1",
+      "family_id": null,
+      "title": "Bio-enhanced phytotherapeutic formulation comprising Boswellia serrata and Zingiber officinale",
+      "country": "EUROPE",
+      "jurisdiction": "EP",
+      "language": "en",
+      "filing_date": "2010-03-22",
+      "publication_date": "2014-09-17",
+      "applicant": "Schwabe Pharma Europe GmbH",
+      "inventor": [
+        "Dr. Klaus Peter Becker",
+        "Dr. Suresh Patel"
+      ],
+      "ipc": [
+        "A61K36/324",
+        "A61K36/9068",
+        "A61P19/02"
+      ],
+      "cpc": [
+        "A61K36/324",
+        "A61K36/9068"
+      ]
+    },
+    "body": {
+      "title": "Bio-enhanced phytotherapeutic formulation comprising Boswellia serrata and Zingiber officinale",
+      "sections": [
+        {
+          "heading": "Abstract",
+          "type": "abstract",
+          "text": "An oral formulation for cartilage protection comprising standardized boswellic acids enriched in 3-O-acetyl-11-keto-beta-boswellic acid (AKBA) and gingerols from Zingiber officinale, demonstrating synergistic suppression of 5-lipoxygenase (5-LOX) and matrix metalloproteinase-3 (MMP-3)."
+        },
+        {
+          "heading": "Claims",
+          "type": "claims",
+          "claim_count": 3,
+          "claims": [
+            {
+              "claim_number": "1",
+              "text": "1. An oral phytotherapeutic formulation comprising: a standardized extract of Boswellia serrata gum resin comprising at least 30% 3-O-acetyl-11-keto-beta-boswellic acid (AKBA); and a standardized supercritical CO2 extract of Zingiber officinale rhizome comprising at least 20% total gingerols and shogaols; wherein the ratio of Boswellia extract to Zingiber extract is from 2:1 to 4:1 by weight.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "2",
+              "text": "2. The formulation according to claim 1, further comprising a phospholipid complex forming phytosomes to enhance intestinal permeability of AKBA.",
+              "is_independent": false
+            },
+            {
+              "claim_number": "3",
+              "text": "3. The formulation according to claim 1 or 2, for use in inhibiting cartilage degradation and synovial inflammation in mammalian joints.",
+              "is_independent": false
+            }
+          ]
+        },
+        {
+          "heading": "Description",
+          "type": "description",
+          "text": "FIELD: The invention provides stabilized botanical formulations for joint health.\n\nPRIOR ART: Boswellia extracts have recognized anti-inflammatory properties through 5-LOX inhibition, but oral bioavailability of pentacyclic triterpenes remains low. The present invention demonstrates that complexation with standardized Zingiber terpenes significantly increases plasma AUC of AKBA by 240% compared to unformulated resin."
+        }
+      ]
+    }
+  },
+  "cleaned_text": "An oral formulation for cartilage protection comprising standardized boswellic acids enriched in 3-O-acetyl-11-keto-beta-boswellic acid (AKBA) and gingerols from Zingiber officinale, demonstrating synergistic suppression of 5-lipoxygenase (5-LOX) and matrix metalloproteinase-3 (MMP-3).\n\nClaim 1: 1. An oral phytotherapeutic formulation comprising: a standardized extract of Boswellia serrata gum resin comprising at least 30% 3-O-acetyl-11-keto-beta-boswellic acid (AKBA); and a standardized supercritical CO2 extract of Zingiber officinale rhizome comprising at least 20% total gingerols and shogaols; wherein the ratio of Boswellia extract to Zingiber extract is from 2:1 to 4:1 by weight.\n\nClaim 2: 2. The formulation according to claim 1, further comprising a phospholipid complex forming phytosomes to enhance intestinal permeability of AKBA.\n\nClaim 3: 3. The formulation according to claim 1 or 2, for use in inhibiting cartilage degradation and synovial inflammation in mammalian joints.\n\nFIELD: The invention provides stabilized botanical formulations for joint health.\n\nPRIOR ART: Boswellia extracts have recognized anti-inflammatory properties through 5-LOX inhibition, but oral bioavailability of pentacyclic triterpenes remains low. The present invention demonstrates that complexation with standardized Zingiber terpenes significantly increases plasma AUC of AKBA by 240% compared to unformulated resin.",
+  "quality_metrics": {
+    "alphabetic_character_ratio": 0.808,
+    "numeric_character_ratio": 0.0226,
+    "garbage_character_ratio": 0.0,
+    "average_word_length": 6.46,
+    "broken_word_ratio": 0.0703,
+    "duplicate_line_ratio": 0.0,
+    "ocr_quality_score": 0.8595,
+    "status": "FAIL",
+    "rejection_reasons": [
+      "Broken word ratio too high: 0.070 > 0.05"
+    ]
+  }
+}

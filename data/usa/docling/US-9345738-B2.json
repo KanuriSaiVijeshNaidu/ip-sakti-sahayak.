@@ -1,0 +1,86 @@
+{
+  "schema_name": "docling_core.models.DoclingDocument",
+  "version": "1.10.0",
+  "name": "USA_US-9345738-B2",
+  "origin": {
+    "mimetype": "application/json",
+    "binary_hash": "",
+    "filename": "US-9345738-B2.json"
+  },
+  "metadata": {
+    "patent_id": "US-9345738-B2",
+    "application_number": "14/123,456",
+    "publication_number": "US 9,345,738 B2",
+    "family_id": null,
+    "title": "Phytochemical composition comprising Boswellia serrata and Commiphora mukul for synovial protection",
+    "country": "USA",
+    "jurisdiction": "US",
+    "language": "en",
+    "filing_date": "2013-12-05",
+    "publication_date": "2016-05-24",
+    "applicant": "PLT Health Solutions Inc.",
+    "inventor": [
+      {
+        "inventor_name_last": "Gokaraju",
+        "inventor_name_first": "Rama",
+        "inventor_country": "IN"
+      }
+    ],
+    "ipc": [
+      "A61K36/324",
+      "A61K36/328",
+      "A61P19/02"
+    ],
+    "cpc": [
+      "A61K36/324",
+      "A61K36/328"
+    ]
+  },
+  "body": {
+    "title": "Phytochemical composition comprising Boswellia serrata and Commiphora mukul for synovial protection",
+    "sections": [
+      {
+        "heading": "Abstract",
+        "type": "abstract",
+        "text": "A synergistic oral botanical composition combining 3-O-acetyl-11-keto-beta-boswellic acid (AKBA) and guggulsterones, providing dual inhibition of 5-lipoxygenase and NF-kappa-B for cartilage integrity in osteoarthritis."
+      },
+      {
+        "heading": "Background of the Invention",
+        "type": "background",
+        "text": "Cartilage matrix destruction in osteoarthritic joints involves matrix metalloproteinases induced by pro-inflammatory cytokines."
+      },
+      {
+        "heading": "Summary of the Invention",
+        "type": "summary",
+        "text": "Dual inhibition of 5-LOX and NF-kappa-B through synergistic combinations of Boswellia and Commiphora standardized extracts."
+      },
+      {
+        "heading": "Claims",
+        "type": "claims",
+        "claim_count": 3,
+        "claims": [
+          {
+            "claim_number": "1",
+            "text": "1. A botanical composition comprising: (a) a standardized extract of Boswellia serrata comprising at least 30% by weight of AKBA; (b) a standardized extract of Commiphora mukul comprising at least 2.5% by weight of guggulsterones E and Z; wherein the weight ratio of Boswellia extract to Commiphora extract is from 2:1 to 4:1; and (c) a pharmaceutically acceptable carrier.",
+            "is_independent": true
+          },
+          {
+            "claim_number": "2",
+            "text": "2. The composition of claim 1, formulated as a solid oral tablet or capsule.",
+            "is_independent": false
+          },
+          {
+            "claim_number": "3",
+            "text": "3. A method for suppressing joint cartilage degradation comprising administering the composition of claim 1.",
+            "is_independent": true
+          }
+        ]
+      },
+      {
+        "heading": "Description",
+        "type": "description",
+        "text": "DETAILED DESCRIPTION: The invention addresses joint degradation through non-overlapping pathways. AKBA binds directly to 5-lipoxygenase, while guggulsterone antagonizes the farnesoid X receptor and prevents degradation of I-kappa-B-alpha, preventing NF-kappa-B nuclear translocation."
+      }
+    ]
+  }
+}

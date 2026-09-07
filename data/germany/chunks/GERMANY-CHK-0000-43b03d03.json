@@ -1,0 +1,28 @@
+{
+  "country": "GERMANY",
+  "region": "GERMANY",
+  "source_dataset": "DPMA / DEPATIS German Patent & Utility Model Corpus",
+  "source_url": "https://dpma.de/patente/patentrecherche/index.html",
+  "patent_id": "DE-102021109876-A1",
+  "application_number": "DE102021109876.8",
+  "publication_number": "DE 10 2021 109 876 A1",
+  "family_id": null,
+  "title": "Synergistisches Polyherbal-Präparat basierend auf Triphala zur Unterstützung der gastrointestinalen Integrität",
+  "section": "abstract",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/185",
+    "A61P1/00"
+  ],
+  "cpc": [
+    "A61K36/185",
+    "A61P1/00"
+  ],
+  "language": "de",
+  "filing_date": "2021-04-20",
+  "publication_date": "2022-10-27",
+  "chunk_id": "GERMANY-CHK-0000-43b03d03",
+  "chunk_index": 0,
+  "token_count": 46,
+  "text": "Die Erfindung offenbart eine standardisierte Triphala-Zubereitung bestehend aus gleichen Teilen wässrig-methanolischer Fruchtextrakte von Terminalia chebula, Terminalia bellerica und Phyllanthus emblica, standardisiert auf Gesamtpolyphenole >= 45 % und Ellagsäure >= 10 %, zur Wiederherstellung der gastrointestinalen Schleimhautbarriere."
+}

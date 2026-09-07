@@ -1,0 +1,34 @@
+{
+  "patent_id": "EP-2345678-B1",
+  "application_number": "EP10712345.1",
+  "publication_number": "EP 2 345 678 B1",
+  "title": "Bio-enhanced phytotherapeutic formulation comprising Boswellia serrata and Zingiber officinale",
+  "abstract": "An oral formulation for cartilage protection comprising standardized boswellic acids enriched in 3-O-acetyl-11-keto-beta-boswellic acid (AKBA) and gingerols from Zingiber officinale, demonstrating synergistic suppression of 5-lipoxygenase (5-LOX) and matrix metalloproteinase-3 (MMP-3).",
+  "claims": [
+    "1. An oral phytotherapeutic formulation comprising: a standardized extract of Boswellia serrata gum resin comprising at least 30% 3-O-acetyl-11-keto-beta-boswellic acid (AKBA); and a standardized supercritical CO2 extract of Zingiber officinale rhizome comprising at least 20% total gingerols and shogaols; wherein the ratio of Boswellia extract to Zingiber extract is from 2:1 to 4:1 by weight.",
+    "2. The formulation according to claim 1, further comprising a phospholipid complex forming phytosomes to enhance intestinal permeability of AKBA.",
+    "3. The formulation according to claim 1 or 2, for use in inhibiting cartilage degradation and synovial inflammation in mammalian joints."
+  ],
+  "description": "FIELD: The invention provides stabilized botanical formulations for joint health.\n\nPRIOR ART: Boswellia extracts have recognized anti-inflammatory properties through 5-LOX inhibition, but oral bioavailability of pentacyclic triterpenes remains low. The present invention demonstrates that complexation with standardized Zingiber terpenes significantly increases plasma AUC of AKBA by 240% compared to unformulated resin.",
+  "ipc": [
+    "A61K36/324",
+    "A61K36/9068",
+    "A61P19/02"
+  ],
+  "cpc": [
+    "A61K36/324",
+    "A61K36/9068"
+  ],
+  "filing_date": "2010-03-22",
+  "publication_date": "2014-09-17",
+  "applicant": "Schwabe Pharma Europe GmbH",
+  "inventor": [
+    "Dr. Klaus Peter Becker",
+    "Dr. Suresh Patel"
+  ],
+  "country": "Europe",
+  "jurisdiction": "EP",
+  "language": "en",
+  "source_dataset": "EPO Espacenet / Granted Specifications",
+  "source_url": "https://worldwide.espacenet.com/patent/search/family/039871234/publication/EP2345678B1?q=EP2345678"
+}

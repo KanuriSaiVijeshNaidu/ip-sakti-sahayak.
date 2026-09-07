@@ -1,0 +1,35 @@
+{
+  "patent_id": "WO-2019123456-A1",
+  "application_number": "PCT/EP2018/086123",
+  "publication_number": "WO 2019/123456 A1",
+  "title": "Standardized botanical extract of Curcuma longa and Zingiber officinale with enhanced bioavailability and anti-inflammatory activity",
+  "abstract": "An international patent publication disclosing a lipidic self-emulsifying drug delivery system (SEDDS) containing standardized Curcuma longa and Zingiber officinale extracts, demonstrating a 12-fold increase in oral bioavailability of total curcuminoids and 6-gingerol in human clinical pharmacokinetic trials.",
+  "claims": [
+    "1. A self-emulsifying botanical formulation comprising: (a) 15% to 30% by weight of a Curcuma longa extract standardized to >= 95% curcuminoids; (b) 5% to 15% by weight of a supercritical Zingiber officinale extract standardized to >= 20% gingerols; (c) 30% to 50% by weight of medium-chain triglycerides; and (d) 20% to 35% by weight of a non-ionic surfactant.",
+    "2. The formulation according to claim 1, forming spontaneously an emulsion having a mean droplet size of less than 150 nm upon dilution with water.",
+    "3. The formulation according to claim 1 for use in the treatment of osteoarthritis and metabolic inflammation."
+  ],
+  "description": "Curcuminoids suffer from poor aqueous solubility, rapid systemic elimination via glucuronidation, and negligible intestinal permeability. The present invention solves this via spontaneous nano-emulsification incorporating ginger essential oils as co-solvents and permeation enhancers.",
+  "ipc": [
+    "A61K36/9066",
+    "A61K36/9068",
+    "A61K9/107",
+    "A61P29/00"
+  ],
+  "cpc": [
+    "A61K36/9066",
+    "A61K36/9068"
+  ],
+  "filing_date": "2018-12-19",
+  "publication_date": "2019-06-27",
+  "applicant": "OmniActive Health Technologies Ltd. / WIPO International Bureau",
+  "inventor": [
+    "Dr. Jayant Deshpande",
+    "Dr. Vandita Srivastava"
+  ],
+  "country": "WIPO",
+  "jurisdiction": "WO",
+  "language": "en",
+  "source_dataset": "WIPO PATENTSCOPE / PCT Gazette",
+  "source_url": "https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2019123456"
+}

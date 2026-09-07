@@ -1,0 +1,30 @@
+{
+  "country": "USA",
+  "region": "USA",
+  "source_dataset": "Harvard USPTO Patent Dataset (HUPD) - Utility Applications",
+  "source_url": "https://huggingface.co/datasets/HUPD/hupd",
+  "patent_id": "US-9144590-B2",
+  "application_number": "13/988,245",
+  "publication_number": "US 9,144,590 B2",
+  "family_id": null,
+  "title": "Synergistic botanical composition comprising Withania somnifera and Curcuma longa for treatment of inflammatory disorders",
+  "section": "description",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/81",
+    "A61K36/9066",
+    "A61P29/00",
+    "A61P19/02"
+  ],
+  "cpc": [
+    "A61K36/81",
+    "A61K36/9066"
+  ],
+  "language": "en",
+  "filing_date": "2011-11-18",
+  "publication_date": "2015-09-29",
+  "chunk_id": "USA-CHK-0004-601bbc45",
+  "chunk_index": 4,
+  "token_count": 183,
+  "text": "TECHNICAL FIELD: The present invention relates to standardized herbal compositions and methods for the prevention and treatment of inflammatory and degenerative joint disorders.\n\nBACKGROUND OF THE INVENTION: Osteoarthritis and rheumatoid arthritis affect millions of individuals worldwide. Standard non-steroidal anti-inflammatory drugs (NSAIDs) carry significant adverse event profiles, including gastric ulceration and renal toxicity. In the Ayurvedic traditional system of medicine, Withania somnifera (known as Ashwagandha) and Curcuma longa (known as Haridra) have been utilized for millennia. However, traditional crude powders lack standardized bioactive concentrations and reproducible efficacy.\n\nDETAILED DESCRIPTION: Standardized extracts were evaluated for synergy using the median-effect principle of Chou and Talalay. Unexpectedly, a 2:1 combination of Withania somnifera standardized to 5.2% withanolides and Curcuma longa standardized to 95.3% curcuminoids produced a Combination Index (CI) of 0.58, demonstrating pronounced synergy in inhibiting prostaglandin E2 (PGE-2) and TNF-alpha in LPS-stimulated human monocytes."
+}

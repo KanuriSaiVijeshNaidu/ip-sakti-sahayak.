@@ -1,0 +1,30 @@
+{
+  "country": "USA",
+  "region": "USA",
+  "source_dataset": "Harvard USPTO Patent Dataset (HUPD) - Utility Applications",
+  "source_url": "https://huggingface.co/datasets/HUPD/hupd",
+  "patent_id": "US-9144590-B2",
+  "application_number": "13/988,245",
+  "publication_number": "US 9,144,590 B2",
+  "family_id": null,
+  "title": "Synergistic botanical composition comprising Withania somnifera and Curcuma longa for treatment of inflammatory disorders",
+  "section": "summary",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/81",
+    "A61K36/9066",
+    "A61P29/00",
+    "A61P19/02"
+  ],
+  "cpc": [
+    "A61K36/81",
+    "A61K36/9066"
+  ],
+  "language": "en",
+  "filing_date": "2011-11-18",
+  "publication_date": "2015-09-29",
+  "chunk_id": "USA-CHK-0002-0ea24d4b",
+  "chunk_index": 2,
+  "token_count": 31,
+  "text": "The invention provides a synergistic botanical composition of standardized Withania somnifera root extract and Curcuma longa rhizome extract exhibiting enhanced anti-inflammatory and cartilage-protective properties."
+}

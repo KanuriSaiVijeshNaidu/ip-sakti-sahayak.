@@ -1,0 +1,118 @@
+{
+  "patent_id": "IN-348215-B",
+  "metadata": {
+    "patent_id": "IN-348215-B",
+    "application_number": "1892/CHE/2012",
+    "publication_number": "IN 348215 B",
+    "family_id": null,
+    "title": "Standardized herbal anti-diabetic composition comprising Gymnema sylvestre, Momordica charantia, and Cinnamomum zeylanicum",
+    "country": "INDIA",
+    "jurisdiction": "IN",
+    "language": "en",
+    "filing_date": "2012-05-14",
+    "publication_date": "2020-09-30",
+    "applicant": "Natural Remedies Pvt. Ltd. & Rajiv Gandhi University",
+    "inventor": [
+      "Dr. Deepak M.",
+      "Dr. Amit Agarwal"
+    ],
+    "ipc": [
+      "A61K36/27",
+      "A61K36/42",
+      "A61K36/54",
+      "A61P3/10"
+    ],
+    "cpc": [
+      "A61K36/27",
+      "A61K36/42"
+    ]
+  },
+  "docling_doc": {
+    "schema_name": "docling_core.models.DoclingDocument",
+    "version": "1.10.0",
+    "name": "INDIA_IN-348215-B",
+    "origin": {
+      "mimetype": "application/json",
+      "binary_hash": "",
+      "filename": "IN-348215-B.json"
+    },
+    "metadata": {
+      "patent_id": "IN-348215-B",
+      "application_number": "1892/CHE/2012",
+      "publication_number": "IN 348215 B",
+      "family_id": null,
+      "title": "Standardized herbal anti-diabetic composition comprising Gymnema sylvestre, Momordica charantia, and Cinnamomum zeylanicum",
+      "country": "INDIA",
+      "jurisdiction": "IN",
+      "language": "en",
+      "filing_date": "2012-05-14",
+      "publication_date": "2020-09-30",
+      "applicant": "Natural Remedies Pvt. Ltd. & Rajiv Gandhi University",
+      "inventor": [
+        "Dr. Deepak M.",
+        "Dr. Amit Agarwal"
+      ],
+      "ipc": [
+        "A61K36/27",
+        "A61K36/42",
+        "A61K36/54",
+        "A61P3/10"
+      ],
+      "cpc": [
+        "A61K36/27",
+        "A61K36/42"
+      ]
+    },
+    "body": {
+      "title": "Standardized herbal anti-diabetic composition comprising Gymnema sylvestre, Momordica charantia, and Cinnamomum zeylanicum",
+      "sections": [
+        {
+          "heading": "Abstract",
+          "type": "abstract",
+          "text": "A novel standardized herbal composition for insulin sensitization and beta-cell protection comprising extracts of Gymnema sylvestre (gymnemic acids >= 25%), Momordica charantia (charantin >= 1.5%), and Cinnamomum zeylanicum (proanthocyanidins >= 10%), demonstrating enhanced glucose uptake in skeletal muscle."
+        },
+        {
+          "heading": "Claims",
+          "type": "claims",
+          "claim_count": 3,
+          "claims": [
+            {
+              "claim_number": "1",
+              "text": "1. A standardized anti-diabetic herbal formulation comprising: (a) 30% to 45% w/w of a standardized extract of Gymnema sylvestre containing not less than 25% gymnemic acids; (b) 25% to 35% w/w of a standardized extract of Momordica charantia containing not less than 1.5% charantin; and (c) 15% to 25% w/w of an extract of Cinnamomum zeylanicum bark containing not less than 10% type-A proanthocyanidins.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "2",
+              "text": "2. The formulation as claimed in claim 1, wherein the formulation enhances glucose uptake in insulin-resistant adipocytes by 82% over baseline.",
+              "is_independent": false
+            },
+            {
+              "claim_number": "3",
+              "text": "3. A dosage form comprising the formulation of claim 1 formulated as sustained-release tablets or capsules.",
+              "is_independent": true
+            }
+          ]
+        },
+        {
+          "heading": "Description",
+          "type": "description",
+          "text": "Detailed investigation of Indian medicinal plants recognized for Madhumeha revealed that combining gymnemic acids (which stimulate insulin secretion from beta-cells) with charantin (which mimics insulin activity) and cinnamon polyphenols (which enhance insulin receptor phosphorylation) produces an unprecedented multi-target therapeutic benefit."
+        }
+      ]
+    }
+  },
+  "cleaned_text": "A novel standardized herbal composition for insulin sensitization and beta-cell protection comprising extracts of Gymnema sylvestre (gymnemic acids >= 25%), Momordica charantia (charantin >= 1.5%), and Cinnamomum zeylanicum (proanthocyanidins >= 10%), demonstrating enhanced glucose uptake in skeletal muscle.\n\nClaim 1: 1. A standardized anti-diabetic herbal formulation comprising: (a) 30% to 45% w/w of a standardized extract of Gymnema sylvestre containing not less than 25% gymnemic acids; (b) 25% to 35% w/w of a standardized extract of Momordica charantia containing not less than 1.5% charantin; and (c) 15% to 25% w/w of an extract of Cinnamomum zeylanicum bark containing not less than 10% type-A proanthocyanidins.\n\nClaim 2: 2. The formulation as claimed in claim 1, wherein the formulation enhances glucose uptake in insulin-resistant adipocytes by 82% over baseline.\n\nClaim 3: 3. A dosage form comprising the formulation of claim 1 formulated as sustained-release tablets or capsules.\n\nDetailed investigation of Indian medicinal plants recognized for Madhumeha revealed that combining gymnemic acids (which stimulate insulin secretion from beta-cells) with charantin (which mimics insulin activity) and cinnamon polyphenols (which enhance insulin receptor phosphorylation) produces an unprecedented multi-target therapeutic benefit.",
+  "quality_metrics": {
+    "alphabetic_character_ratio": 0.785,
+    "numeric_character_ratio": 0.0253,
+    "garbage_character_ratio": 0.0,
+    "average_word_length": 5.97,
+    "broken_word_ratio": 0.0761,
+    "duplicate_line_ratio": 0.0,
+    "ocr_quality_score": 0.8478,
+    "status": "FAIL",
+    "rejection_reasons": [
+      "Broken word ratio too high: 0.076 > 0.05"
+    ]
+  }
+}

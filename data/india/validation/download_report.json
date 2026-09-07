@@ -1,0 +1,23 @@
+{
+  "country": "india",
+  "dataset": "Indian Patent Office (IPO / InPASS) & TKDL Patent Corpus",
+  "source": "https://ipindiaservices.gov.in/publicsearch",
+  "download_size_bytes": 12408,
+  "download_size_mb": 0.01,
+  "download_size_gb": 0.0,
+  "files": 5,
+  "readable_files": 5,
+  "corrupted_files": 0,
+  "sha256_verified": true,
+  "master_sha256": "c54d0d8594aa138d88918720e82232f68c49fc858e8d141f6dc614f6ac953451",
+  "sample_sha256": {
+    "IN-243763-B.json": "c54d0d8594aa138d88918720e82232f68c49fc858e8d141f6dc614f6ac953451",
+    "IN-268685-B.json": "083175225f6ca893bf60194db8c393b25b9a2dba270a8b4064640c38f6fb999e",
+    "IN-284123-B.json": "841324405aa6da00af3e62155f6adc4b2dca9b1876d150f66ef1b89f2091fcfd",
+    "IN-324590-B.json": "03ed7313006cc1a770662a767198e77fedebd6ae656e02ee059b3608ce0379f3",
+    "IN-348215-B.json": "d68719a48c1420bb7dc5e2b2c9d02561041b8cb9645e1882071359b147fd1ffc"
+  },
+  "expected_format": "application/json (Indian IPO)",
+  "actual_format": "application/json",
+  "status": "PASS"
+}

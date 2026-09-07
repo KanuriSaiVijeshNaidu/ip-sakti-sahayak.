@@ -1,0 +1,29 @@
+{
+  "country": "GERMANY",
+  "region": "GERMANY",
+  "source_dataset": "DPMA / DEPATIS German Patent & Utility Model Corpus",
+  "source_url": "https://dpma.de/patente/patentrecherche/index.html",
+  "patent_id": "DE-102017105432-A1",
+  "application_number": "DE102017105432.1",
+  "publication_number": "DE 10 2017 105 432 A1",
+  "family_id": null,
+  "title": "Kombinationspräparat aus Bacopa monnieri und Centella asiatica zur kognitiven Leistungssteigerung",
+  "section": "description",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/68",
+    "A61K36/23",
+    "A61P25/28"
+  ],
+  "cpc": [
+    "A61K36/68",
+    "A61K36/23"
+  ],
+  "language": "de",
+  "filing_date": "2017-03-14",
+  "publication_date": "2018-09-20",
+  "chunk_id": "GERMANY-CHK-0002-31bd84b0",
+  "chunk_index": 2,
+  "token_count": 35,
+  "text": "Medhya Rasayana Kräuter besitzen nachgewiesene neuroprotektive Eigenschaften. Gemäß den Richtlinien des BfArM und der europäischen THMPD-Richtlinie 2004/24/EG bedarf die Zulassung eines Nachweises der pharmazeutischen Qualität nach GMP-Standards."
+}

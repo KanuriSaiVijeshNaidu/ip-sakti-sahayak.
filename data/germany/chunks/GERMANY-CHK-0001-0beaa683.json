@@ -1,0 +1,31 @@
+{
+  "country": "GERMANY",
+  "region": "GERMANY",
+  "source_dataset": "DPMA / DEPATIS German Patent & Utility Model Corpus",
+  "source_url": "https://dpma.de/patente/patentrecherche/index.html",
+  "patent_id": "DE-102014002621-A1",
+  "application_number": "DE102014002621.4",
+  "publication_number": "DE 10 2014 002 621 A1",
+  "family_id": null,
+  "title": "Pflanzliche Arzneimittelzusammensetzung enthaltend Extrakte aus Withania somnifera und Curcuma longa zur Behandlung von chronischen Entzündungen",
+  "section": "claims",
+  "claim_number": "1",
+  "ipc": [
+    "A61K36/9066",
+    "A61K36/81",
+    "A61P29/00",
+    "A61P19/02"
+  ],
+  "cpc": [
+    "A61K36/9066",
+    "A61K36/81",
+    "A61K2236/00"
+  ],
+  "language": "de",
+  "filing_date": "2014-01-22",
+  "publication_date": "2015-07-23",
+  "chunk_id": "GERMANY-CHK-0001-0beaa683",
+  "chunk_index": 1,
+  "token_count": 248,
+  "text": "Claim 1: 1. Pharmazeutische oder phytotherapeutische Zusammensetzung, dadurch gekennzeichnet, dass sie umfasst: (a) einen standardisierten Trockenextrakt aus Wurzeln von Withania somnifera mit einem Gesamtwishanolid-Gehalt von 4,5 bis 7,5 Gew.-%; (b) einen standardisierten Extrakt aus dem Rhizom von Curcuma longa mit einem Gesamtcurcuminoid-Gehalt von mindestens 90 Gew.-%; wobei das Gewichtsverhältnis von Withania somnifera Extrakt zu Curcuma longa Extrakt im Bereich von 1:1 bis 1:3 liegt; und (c) mindestens einen pharmazeutisch verträglichen Hilfsstoff.\n\nClaim 2: 2. Zusammensetzung nach Anspruch 1, dadurch gekennzeichnet, dass der Withania somnifera Extrakt ein Drogen-Extrakt-Verhältnis (DEV) von 8:1 bis 12:1 und der Curcuma longa Extrakt ein DEV von 20:1 bis 30:1 aufweist.\n\nClaim 3: 3. Zusammensetzung nach Anspruch 1 oder 2, dadurch gekennzeichnet, dass sie ferner einen Bioverfügbarkeitsförderer in Form eines Extrakts aus Piper nigrum mit mindestens 95 Gew.-% Piperin in einer Menge von 0,5 bis 2,0 Gew.-% bezogen auf die Gesamtzusammensetzung enthält.\n\nClaim 4: 4. Zusammensetzung nach einem der Ansprüche 1 bis 3 zur Verwendung bei der Vorbeugung oder Behandlung von degenerativen Gelenkerkrankungen, insbesondere Osteoarthritis und rheumatoider Arthritis.\n\nClaim 5: 5. Feste Darreichungsform, insbesondere magensaftresistente Tablette oder Kapsel, enthaltend die Zusammensetzung nach einem der Ansprüche 1 bis 4."
+}

@@ -1,0 +1,130 @@
+{
+  "patent_id": "US-8828456-B2",
+  "metadata": {
+    "patent_id": "US-8828456-B2",
+    "application_number": "12/890,123",
+    "publication_number": "US 8,828,456 B2",
+    "family_id": null,
+    "title": "Bioavailable curcuminoid compositions with enhanced absorption and methods of preparing the same",
+    "country": "USA",
+    "jurisdiction": "US",
+    "language": "en",
+    "filing_date": "2010-09-24",
+    "publication_date": "2014-09-09",
+    "applicant": "Arjuna Natural Extracts Ltd.",
+    "inventor": [
+      {
+        "inventor_name_last": "Antony",
+        "inventor_name_first": "Benny",
+        "inventor_country": "IN"
+      }
+    ],
+    "ipc": [
+      "A61K36/9066",
+      "A61K9/14",
+      "A61P29/00"
+    ],
+    "cpc": [
+      "A61K36/9066",
+      "A61K9/14"
+    ]
+  },
+  "docling_doc": {
+    "schema_name": "docling_core.models.DoclingDocument",
+    "version": "1.10.0",
+    "name": "USA_US-8828456-B2",
+    "origin": {
+      "mimetype": "application/json",
+      "binary_hash": "",
+      "filename": "US-8828456-B2.json"
+    },
+    "metadata": {
+      "patent_id": "US-8828456-B2",
+      "application_number": "12/890,123",
+      "publication_number": "US 8,828,456 B2",
+      "family_id": null,
+      "title": "Bioavailable curcuminoid compositions with enhanced absorption and methods of preparing the same",
+      "country": "USA",
+      "jurisdiction": "US",
+      "language": "en",
+      "filing_date": "2010-09-24",
+      "publication_date": "2014-09-09",
+      "applicant": "Arjuna Natural Extracts Ltd.",
+      "inventor": [
+        {
+          "inventor_name_last": "Antony",
+          "inventor_name_first": "Benny",
+          "inventor_country": "IN"
+        }
+      ],
+      "ipc": [
+        "A61K36/9066",
+        "A61K9/14",
+        "A61P29/00"
+      ],
+      "cpc": [
+        "A61K36/9066",
+        "A61K9/14"
+      ]
+    },
+    "body": {
+      "title": "Bioavailable curcuminoid compositions with enhanced absorption and methods of preparing the same",
+      "sections": [
+        {
+          "heading": "Abstract",
+          "type": "abstract",
+          "text": "Compositions comprising curcuminoids and essential oil of turmeric having ar-turmerone, demonstrating superior intestinal bioavailability and prolonged systemic residence time compared to standard curcumin formulations."
+        },
+        {
+          "heading": "Background of the Invention",
+          "type": "background",
+          "text": "Curcuminoids are poorly absorbed from the gastrointestinal tract due to low water solubility and rapid metabolism."
+        },
+        {
+          "heading": "Summary of the Invention",
+          "type": "summary",
+          "text": "Reconstitution of purified curcuminoids with volatile sesquiterpenoid fractions of Curcuma longa produces unexpected pharmacokinetic synergy."
+        },
+        {
+          "heading": "Claims",
+          "type": "claims",
+          "claim_count": 3,
+          "claims": [
+            {
+              "claim_number": "1",
+              "text": "1. A bioavailable curcumin composition comprising: (a) a curcuminoid extract comprising at least 95% total curcuminoids; and (b) an essential oil of turmeric comprising at least 45% ar-turmerone; wherein the weight ratio of curcuminoids to essential oil of turmeric is from 10:1 to 15:1.",
+              "is_independent": true
+            },
+            {
+              "claim_number": "2",
+              "text": "2. The composition of claim 1, wherein the oral bioavailability in humans is at least 7-fold higher than that of unformulated 95% curcuminoids.",
+              "is_independent": false
+            },
+            {
+              "claim_number": "3",
+              "text": "3. A method for treating chronic inflammatory conditions comprising administering to a mammal an effective amount of the composition of claim 1.",
+              "is_independent": true
+            }
+          ]
+        },
+        {
+          "heading": "Description",
+          "type": "description",
+          "text": "FIELD: The invention provides compositions of curcuminoids with essential oils from Curcuma rhizomes for enhanced oral bioavailability.\n\nDISCUSSION: Curcumin has extensive preclinical documentation for anti-inflammatory, antioxidant, and chemoprotective properties, but exhibits rapid intestinal and hepatic metabolism. Addition of natural turmeric essential oil sesquiterpenes delays glucuronidation and improves systemic AUC significantly."
+        }
+      ]
+    }
+  },
+  "cleaned_text": "Compositions comprising curcuminoids and essential oil of turmeric having ar-turmerone, demonstrating superior intestinal bioavailability and prolonged systemic residence time compared to standard curcumin formulations.\n\nCurcuminoids are poorly absorbed from the gastrointestinal tract due to low water solubility and rapid metabolism.\n\nReconstitution of purified curcuminoids with volatile sesquiterpenoid fractions of Curcuma longa produces unexpected pharmacokinetic synergy.\n\nClaim 1: 1. A bioavailable curcumin composition comprising: (a) a curcuminoid extract comprising at least 95% total curcuminoids; and (b) an essential oil of turmeric comprising at least 45% ar-turmerone; wherein the weight ratio of curcuminoids to essential oil of turmeric is from 10:1 to 15:1.\n\nClaim 2: 2. The composition of claim 1, wherein the oral bioavailability in humans is at least 7-fold higher than that of unformulated 95% curcuminoids.\n\nClaim 3: 3. A method for treating chronic inflammatory conditions comprising administering to a mammal an effective amount of the composition of claim 1.\n\nFIELD: The invention provides compositions of curcuminoids with essential oils from Curcuma rhizomes for enhanced oral bioavailability.\n\nDISCUSSION: Curcumin has extensive preclinical documentation for anti-inflammatory, antioxidant, and chemoprotective properties, but exhibits rapid intestinal and hepatic metabolism. Addition of natural turmeric essential oil sesquiterpenes delays glucuronidation and improves systemic AUC significantly.",
+  "quality_metrics": {
+    "alphabetic_character_ratio": 0.8266,
+    "numeric_character_ratio": 0.0137,
+    "garbage_character_ratio": 0.0,
+    "average_word_length": 6.38,
+    "broken_word_ratio": 0.0,
+    "duplicate_line_ratio": 0.0,
+    "ocr_quality_score": 1.0,
+    "status": "PASS",
+    "rejection_reasons": []
+  }
+}

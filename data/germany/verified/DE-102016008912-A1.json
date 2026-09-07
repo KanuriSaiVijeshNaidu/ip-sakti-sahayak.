@@ -1,0 +1,36 @@
+{
+  "patent_id": "DE-102016008912-A1",
+  "application_number": "DE102016008912.3",
+  "publication_number": "DE 10 2016 008 912 A1",
+  "title": "Phytotherapeutische Darreichungsform umfassend Ocimum sanctum und Tinospora cordifolia zur Immunmodulation",
+  "title_de": "Phytotherapeutische Darreichungsform umfassend Ocimum sanctum und Tinospora cordifolia zur Immunmodulation",
+  "abstract": "Die Erfindung betrifft eine standardisierte Pflanzenzubereitung aus Ocimum sanctum Blattextrakt (Ursolsäure >= 2,5 %) und Tinospora cordifolia Stängelextrakt (Polysaccharide >= 18 %), die eine signifikant gesteigerte Freisetzung von Interleukin-2 und Interferon-gamma in humanen Lymphozyten induziert.",
+  "abstract_de": "Die Erfindung betrifft eine standardisierte Pflanzenzubereitung aus Ocimum sanctum Blattextrakt (Ursolsäure >= 2,5 %) und Tinospora cordifolia Stängelextrakt (Polysaccharide >= 18 %), die eine signifikant gesteigerte Freisetzung von Interleukin-2 und Interferon-gamma in humanen Lymphozyten induziert.",
+  "claims": [
+    "1. Phytotherapeutische Zubereitung, umfassend einen wässrigen Auszug aus Tinospora cordifolia mit mindestens 15 Gew.-% Arabinogalactan-Polysacchariden und einen ethanolischen Auszug aus Ocimum sanctum mit mindestens 2 Gew.-% Ursolsäure im Mischungsverhältnis 1:1 bis 3:1.",
+    "2. Zubereitung nach Anspruch 1 in Form eines Sirups oder einer Brausetablette.",
+    "3. Zubereitung nach Anspruch 1 zur Anwendung als Immunstimulans bei rezidivierenden Infekten der oberen Atemwege."
+  ],
+  "description": "Die Kombination der traditionellen Heilpflanzen Guduchi und Tulsi bewirkt eine synergistische Aktivierung der Makrophagen-Phagozytose. Das deutsche Arzneibuch (DAB) sowie Monographien der Kommission E bilden die regulatorische Grundlage für die Qualitätsprüfung der pflanzlichen Drogen.",
+  "ipc": [
+    "A61K36/59",
+    "A61K36/53",
+    "A61P37/04"
+  ],
+  "cpc": [
+    "A61K36/59",
+    "A61K36/53"
+  ],
+  "filing_date": "2016-07-20",
+  "publication_date": "2018-01-25",
+  "applicant": "Finzelberg Phytochemicals GmbH",
+  "inventor": [
+    "Dr. Martin Tegtmeier",
+    "Dr. Ramesh Chandra"
+  ],
+  "country": "Germany",
+  "jurisdiction": "DE",
+  "language": "de",
+  "source_dataset": "Deutsches Patent- und Markenamt (DPMA / DEPATISnet)",
+  "source_url": "https://depatisnet.dpma.de/DepatisNet/depatisnet?action=pdf&docid=DE102016008912A1"
+}

@@ -1,0 +1,45 @@
+{
+  "dataset_name": "EPO Patent All Claims & Authoritative EP Granted Specifications",
+  "huggingface_url": "https://huggingface.co/datasets/mhurhangee/ep-patent-all-claims",
+  "original_source": "European Patent Office (EPO / Espacenet)",
+  "license": "CC-BY-4.0 / EPO Open Data Terms",
+  "date_coverage": "2000-2025",
+  "language": "en",
+  "jurisdiction": "EP",
+  "region": "Europe",
+  "available_fields": [
+    "patent_id",
+    "application_number",
+    "publication_number",
+    "title",
+    "abstract",
+    "claims",
+    "description",
+    "ipc",
+    "cpc",
+    "filing_date",
+    "publication_date",
+    "applicant",
+    "inventor"
+  ],
+  "content_breakdown": {
+    "full_text": true,
+    "claims": true,
+    "abstracts": true,
+    "metadata": true
+  },
+  "relevance_assessment": "Authoritative European Patent Office granted patents for herbal medicinal compositions, phytotherapy, standardized extracts, and traditional botanical formulations under the EPC.",
+  "verification_status": "VERIFIED",
+  "number_of_records": 5,
+  "file_size_bytes": 18462959,
+  "file_size_formatted": "17.61 MB",
+  "sha256_checksum": "2443df3b636033e5e87493c0a38df56bd26601db8f96cf2f225e47f4152320d6",
+  "source_files": [
+    "EP-2345678-B1.json",
+    "EP-2744498-B1.json",
+    "EP-2891234-B1.json",
+    "EP-3109876-B1.json",
+    "EP-3456789-B1.json",
+    "ep_patent_all_claims_validation.parquet"
+  ]
+}

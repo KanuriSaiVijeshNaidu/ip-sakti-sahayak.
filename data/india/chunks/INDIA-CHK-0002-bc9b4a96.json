@@ -1,0 +1,30 @@
+{
+  "country": "INDIA",
+  "region": "INDIA",
+  "source_dataset": "Indian Patent Office (IPO / InPASS) & TKDL Patent Corpus",
+  "source_url": "https://ipindiaservices.gov.in/publicsearch",
+  "patent_id": "IN-348215-B",
+  "application_number": "1892/CHE/2012",
+  "publication_number": "IN 348215 B",
+  "family_id": null,
+  "title": "Standardized herbal anti-diabetic composition comprising Gymnema sylvestre, Momordica charantia, and Cinnamomum zeylanicum",
+  "section": "description",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/27",
+    "A61K36/42",
+    "A61K36/54",
+    "A61P3/10"
+  ],
+  "cpc": [
+    "A61K36/27",
+    "A61K36/42"
+  ],
+  "language": "en",
+  "filing_date": "2012-05-14",
+  "publication_date": "2020-09-30",
+  "chunk_id": "INDIA-CHK-0002-bc9b4a96",
+  "chunk_index": 2,
+  "token_count": 52,
+  "text": "Detailed investigation of Indian medicinal plants recognized for Madhumeha revealed that combining gymnemic acids (which stimulate insulin secretion from beta-cells) with charantin (which mimics insulin activity) and cinnamon polyphenols (which enhance insulin receptor phosphorylation) produces an unprecedented multi-target therapeutic benefit."
+}

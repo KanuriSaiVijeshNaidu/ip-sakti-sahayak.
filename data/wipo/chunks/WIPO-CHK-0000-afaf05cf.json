@@ -1,0 +1,29 @@
+{
+  "country": "WIPO",
+  "region": "WIPO",
+  "source_dataset": "WIPO PATENTSCOPE / PCT International Patent Publications",
+  "source_url": "https://patentscope.wipo.int/",
+  "patent_id": "WO-2023098712-A1",
+  "application_number": "PCT/IN2022/051045",
+  "publication_number": "WO 2023/098712 A1",
+  "family_id": null,
+  "title": "Synergistic composition containing standardized extracts of Tinospora cordifolia and Piper longum for immunomodulation",
+  "section": "abstract",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/59",
+    "A61K36/67",
+    "A61P37/04"
+  ],
+  "cpc": [
+    "A61K36/59",
+    "A61K36/67"
+  ],
+  "language": "en",
+  "filing_date": "2022-11-25",
+  "publication_date": "2023-06-01",
+  "chunk_id": "WIPO-CHK-0000-afaf05cf",
+  "chunk_index": 0,
+  "token_count": 39,
+  "text": "A synergistic immunotherapeutic composition comprising water-soluble polysaccharide fractions of Tinospora cordifolia (Guduchi) and standardized Piper longum (Pippali) fruit extract (piperine >= 20%), providing significant stimulation of cellular and humoral immunity."
+}

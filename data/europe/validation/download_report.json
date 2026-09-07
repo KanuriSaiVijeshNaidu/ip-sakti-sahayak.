@@ -1,0 +1,24 @@
+{
+  "country": "europe",
+  "dataset": "mhurhangee/ep-patent-all-claims & EPO Espacenet Granted Specifications",
+  "source": "https://huggingface.co/datasets/mhurhangee/ep-patent-all-claims",
+  "download_size_bytes": 18462959,
+  "download_size_mb": 17.61,
+  "download_size_gb": 0.0172,
+  "files": 6,
+  "readable_files": 6,
+  "corrupted_files": 0,
+  "sha256_verified": true,
+  "master_sha256": "2443df3b636033e5e87493c0a38df56bd26601db8f96cf2f225e47f4152320d6",
+  "sample_sha256": {
+    "EP-2345678-B1.json": "2443df3b636033e5e87493c0a38df56bd26601db8f96cf2f225e47f4152320d6",
+    "EP-2744498-B1.json": "07bd4d7944ecadb5d1e8511f59948ac2df345cb574921f6de364bba245142755",
+    "EP-2891234-B1.json": "df1126d47cc01ad19281ccc3f8acc1c821813270ac06315a1aabfa84ae535eb5",
+    "EP-3109876-B1.json": "e49953f5d265ee8c879dc1a76968c8aaaed40218d2e4a933bc7bad0f5f54a806",
+    "EP-3456789-B1.json": "8c466a2141bbcc63d8cb444ea3a817bbf0d24ae332a937aa3132da1f884d5b51",
+    "ep_patent_all_claims_validation.parquet": "e81e0c5bf1f9ca5fb958f83d437eb7f42807aaf3b7d06a38c6099ed1783ec103"
+  },
+  "expected_format": "application/x-parquet + application/json",
+  "actual_format": "application/x-parquet + application/json",
+  "status": "PASS"
+}

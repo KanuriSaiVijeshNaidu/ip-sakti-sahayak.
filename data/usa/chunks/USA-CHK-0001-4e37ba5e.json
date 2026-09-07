@@ -1,0 +1,30 @@
+{
+  "country": "USA",
+  "region": "USA",
+  "source_dataset": "Harvard USPTO Patent Dataset (HUPD) - Utility Applications",
+  "source_url": "https://huggingface.co/datasets/HUPD/hupd",
+  "patent_id": "US-9144590-B2",
+  "application_number": "13/988,245",
+  "publication_number": "US 9,144,590 B2",
+  "family_id": null,
+  "title": "Synergistic botanical composition comprising Withania somnifera and Curcuma longa for treatment of inflammatory disorders",
+  "section": "background",
+  "claim_number": null,
+  "ipc": [
+    "A61K36/81",
+    "A61K36/9066",
+    "A61P29/00",
+    "A61P19/02"
+  ],
+  "cpc": [
+    "A61K36/81",
+    "A61K36/9066"
+  ],
+  "language": "en",
+  "filing_date": "2011-11-18",
+  "publication_date": "2015-09-29",
+  "chunk_id": "USA-CHK-0001-4e37ba5e",
+  "chunk_index": 1,
+  "token_count": 27,
+  "text": "Osteoarthritis and rheumatoid arthritis represent degenerative and inflammatory conditions of joints with substantial healthcare costs. Long-term NSAID therapy produces gastrointestinal toxicity."
+}

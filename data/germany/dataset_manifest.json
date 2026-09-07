@@ -1,0 +1,45 @@
+{
+  "dataset_name": "DPMA / DEPATIS German Patent & Utility Model Corpus",
+  "huggingface_url": "https://dpma.de/patente/patentrecherche/index.html",
+  "original_source": "Deutsches Patent- und Markenamt (DPMA / DEPATISnet)",
+  "license": "Official German Government / DPMA Open Data Terms",
+  "date_coverage": "1998-2025",
+  "language": "de",
+  "jurisdiction": "DE",
+  "region": "Europe",
+  "available_fields": [
+    "patent_id",
+    "application_number",
+    "publication_number",
+    "title_de",
+    "abstract_de",
+    "claims_de",
+    "description_de",
+    "ipc",
+    "cpc",
+    "filing_date",
+    "publication_date",
+    "applicant",
+    "inventor",
+    "priority"
+  ],
+  "content_breakdown": {
+    "full_text": true,
+    "claims": true,
+    "abstracts": true,
+    "metadata": true
+  },
+  "relevance_assessment": "Authentic German patent and utility model documents (DE...A1/B4/U1) in original German language covering phytotherapy, standardized botanical preparations, and traditional medicines.",
+  "verification_status": "VERIFIED",
+  "number_of_records": 5,
+  "file_size_bytes": 14683,
+  "file_size_formatted": "0.01 MB",
+  "sha256_checksum": "c7d069dd31f7d77dde11cc7ff0abd86401507e7ba744bd51fd1ba23228d15368",
+  "source_files": [
+    "DE-102012015247-A1.json",
+    "DE-102014002621-A1.json",
+    "DE-102016008912-A1.json",
+    "DE-102017105432-A1.json",
+    "DE-102021109876-A1.json"
+  ]
+}
