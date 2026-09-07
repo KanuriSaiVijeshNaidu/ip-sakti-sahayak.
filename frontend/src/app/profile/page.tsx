@@ -26,47 +26,53 @@ import {
   EyeSlashFill,
   ArrowRepeat,
   ExclamationCircleFill,
+  Globe2,
+  ArrowRightCircleFill,
 } from "react-bootstrap-icons";
-import { UserProfile, UserRole } from "@/types";
+import { UserProfile, UserRole, JurisdictionType } from "@/types";
 import { signOutFromSupabase, upsertSupabaseUserProfile, setSupabaseUserPassword } from "@/lib/supabase";
 
-const ROLE_DETAILS: Record<string, { label: string; icon: any; color: string; desc: string }> = {
+const ROLE_DETAILS: Record<string, { label: string; icon: any; desc: string }> = {
   vaidya: {
     label: "Ayurvedic Doctor / Vaidya",
     icon: HeartPulseFill,
-    color: "from-emerald-600 to-teal-700",
     desc: "ISM Registered Practitioner with BDA 2023 exemptions and AFI classical formulations.",
   },
   attorney: {
     label: "Patent Attorney / IP Agent",
     icon: BriefcaseFill,
-    color: "from-blue-600 to-indigo-700",
     desc: "Registered with CGPDTM. Focus on Section 3(e), 3(p), Form III NBA and prior art defense.",
   },
   regulator: {
     label: "Regulatory Auditor / FSSAI Officer",
     icon: BuildingFillGear,
-    color: "from-purple-600 to-violet-800",
     desc: "State Licensing Authority or Food Safety Officer monitoring Rule 158B and Schedule T GMP.",
   },
   researcher: {
     label: "AYUSH Enterprise / Scientist",
     icon: Flower1,
-    color: "from-amber-600 to-orange-700",
     desc: "Research Scientist or Herbal Exporter managing commercial ABS, API monographs and TLC markers.",
   },
   guest: {
     label: "Public Citizen / Researcher",
     icon: PersonFill,
-    color: "from-gray-600 to-slate-700",
     desc: "General statutory inquiries, herbal heritage rights, and traditional knowledge.",
   },
+};
+
+const JURISDICTION_DETAILS: Record<string, { label: string; flag: string; desc: string }> = {
+  US: { label: "United States", flag: "🇺🇸", desc: "USPTO Patent Examination (35 U.S.C.) · FDA DSHEA 1994 · Lanham Act" },
+  IN: { label: "India", flag: "🇮🇳", desc: "CGPDTM Patents Act 1970 · AYUSH Rule 158B · FSSAI 2022 · NBA Section 6" },
+  EU: { label: "European Union", flag: "🇪🇺", desc: "EPO European Patent Convention (EPC Art. 52-56) · EMA Herbal Directive" },
+  DE: { label: "Germany", flag: "🇩🇪", desc: "DPMA Patentgesetz (PatG) · BfArM · Commission E Herbal Standards" },
+  WO: { label: "International / Global", flag: "🌐", desc: "WIPO Patent Cooperation Treaty (PCT) · Genetic Resources Treaty 2024" },
 };
 
 export default function ProfilePage() {
   const router = useRouter();
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
+  const [activeJurisdiction, setActiveJurisdiction] = useState<JurisdictionType>("IN");
 
   // Edit Mode states
   const [isEditing, setIsEditing] = useState(false);
@@ -95,6 +101,12 @@ export default function ProfilePage() {
           setEditRole((parsed.role as UserRole) || "vaidya");
           setEditInstitution(parsed.institution || "");
           setEditRegNum(parsed.registrationNumber || "");
+
+          const savedJur = localStorage.getItem("ayurlex_jurisdiction") as JurisdictionType;
+          if (savedJur && ["US", "IN", "EU", "DE", "WO"].includes(savedJur)) {
+            setActiveJurisdiction(savedJur);
+          }
+
           setLoading(false);
           return;
         }
@@ -107,9 +119,9 @@ export default function ProfilePage() {
 
   if (loading || !profile) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
-        <div className="text-center text-emerald-400 font-mono flex items-center gap-3">
-          <ArrowRepeat className="w-6 h-6 animate-spin" />
+      <div className="min-h-screen bg-black flex items-center justify-center p-4">
+        <div className="text-center text-zinc-300 font-mono flex items-center gap-3">
+          <ArrowRepeat className="w-6 h-6 animate-spin text-white" />
           <span>Loading AYURLEX User Profile...</span>
         </div>
       </div>
@@ -118,6 +130,7 @@ export default function ProfilePage() {
 
   const roleMeta = ROLE_DETAILS[profile.role || "guest"] || ROLE_DETAILS.guest;
   const RoleIcon = roleMeta.icon;
+  const jurMeta = JURISDICTION_DETAILS[activeJurisdiction] || JURISDICTION_DETAILS.IN;
 
   const handleSaveProfile = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -133,7 +146,6 @@ export default function ProfilePage() {
         registrationNumber: editRegNum.trim() || profile.registrationNumber,
       };
 
-      // 1. Sync to Supabase Cloud Database
       await upsertSupabaseUserProfile({
         username: updatedProfile.username || profile.email.split("@")[0],
         email: updatedProfile.email,
@@ -143,7 +155,6 @@ export default function ProfilePage() {
         registrationNumber: updatedProfile.registrationNumber,
       });
 
-      // 2. Sync to local client storage
       localStorage.setItem("ayurlex_user_profile", JSON.stringify(updatedProfile));
       setProfile(updatedProfile);
       setIsEditing(false);
@@ -192,51 +203,60 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-emerald-950 text-slate-100 p-3 sm:p-6 flex flex-col items-center">
+    <div className="min-h-screen bg-black text-zinc-100 p-3 sm:p-6 flex flex-col items-center relative overflow-x-hidden">
       {/* Top Navbar */}
-      <header className="w-full max-w-4xl flex items-center justify-between py-3 px-4 bg-slate-900/80 backdrop-blur-md border border-slate-800 rounded-2xl mb-6 shadow-xl">
+      <header className="w-full max-w-4xl flex items-center justify-between py-3 px-4 bg-zinc-950/90 backdrop-blur-xl border border-zinc-800 rounded-2xl mb-6 shadow-2xl">
         <Link
           href="/"
           className="flex items-center gap-2.5 text-left hover:opacity-90 transition-opacity"
         >
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center shadow-sm">
-            <ShieldShaded className="w-4 h-4 text-white" />
+          <div className="w-8 h-8 rounded-xl bg-white text-black flex items-center justify-center font-bold shadow-md shrink-0">
+            <ShieldShaded className="w-4 h-4 text-black" />
           </div>
           <div>
             <h1 className="text-sm font-bold text-white leading-tight flex items-center gap-1.5">
               <span>AYURLEX</span>
-              <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                USER VAULT
+              <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700">
+                USER PROFILE
               </span>
             </h1>
-            <p className="text-[10px] text-slate-400 hidden sm:block">Ministry of Ayush · SIH26045</p>
+            <p className="text-[10px] text-zinc-400 hidden sm:block">Ministry of Ayush · SIH26045</p>
           </div>
         </Link>
 
         <div className="flex items-center gap-2">
           <Link
-            href="/"
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-300 bg-slate-800/80 hover:bg-slate-700/80 rounded-xl border border-slate-700 transition-all"
+            href="/location"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-zinc-300 bg-zinc-900 hover:bg-zinc-800 rounded-xl border border-zinc-800 transition-all"
           >
-            <HouseDoorFill className="w-3.5 h-3.5 text-emerald-400" />
+            <Globe2 className="w-3.5 h-3.5 text-white" />
+            <span className="hidden sm:inline">Location:</span>
+            <span>{jurMeta.flag}</span>
+          </Link>
+
+          <Link
+            href="/"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-black bg-white hover:bg-zinc-200 rounded-xl transition-all shadow-md"
+          >
+            <HouseDoorFill className="w-3.5 h-3.5 text-black" />
             <span>Chat Workspace</span>
           </Link>
         </div>
       </header>
 
       {/* Main Container */}
-      <main className="w-full max-w-4xl flex flex-col gap-6">
+      <main className="w-full max-w-4xl flex flex-col gap-5 text-left">
         {/* Status Notification */}
         {statusMsg && (
           <div
             className={`p-3.5 rounded-xl border text-xs font-medium flex items-center gap-2.5 animate-in fade-in ${
               statusMsg.type === "success"
-                ? "bg-emerald-950/60 border-emerald-700 text-emerald-300"
-                : "bg-red-950/60 border-red-700 text-red-300"
+                ? "bg-zinc-900 border-zinc-700 text-white"
+                : "bg-red-950/60 border-red-800 text-red-300"
             }`}
           >
             {statusMsg.type === "success" ? (
-              <Check2Circle className="w-4 h-4 shrink-0 text-emerald-400" />
+              <Check2Circle className="w-4 h-4 shrink-0 text-white" />
             ) : (
               <ExclamationCircleFill className="w-4 h-4 shrink-0 text-red-400" />
             )}
@@ -245,35 +265,33 @@ export default function ProfilePage() {
         )}
 
         {/* Hero User Card */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 sm:p-7 shadow-2xl relative overflow-hidden backdrop-blur-xl">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-slate-800/80">
+        <div className="bg-zinc-950/90 border border-zinc-800 rounded-2xl p-5 sm:p-7 shadow-2xl relative overflow-hidden backdrop-blur-xl">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-zinc-800/80">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-800 flex items-center justify-center text-white text-2xl font-bold shadow-lg shadow-emerald-900/40 border border-emerald-400/20 shrink-0">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-zinc-900 border border-zinc-700 flex items-center justify-center text-white text-2xl font-bold shadow-lg shrink-0">
                 {profile.name ? profile.name.charAt(0).toUpperCase() : "A"}
               </div>
               <div>
                 <div className="flex items-center gap-2 flex-wrap">
                   <h2 className="text-xl sm:text-2xl font-bold text-white">{profile.name}</h2>
-                  <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-semibold">
+                  <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700 font-semibold">
                     @{profile.username || profile.email.split("@")[0]}
                   </span>
                 </div>
-                <p className="text-xs sm:text-sm text-slate-400 mt-1 flex items-center gap-2 flex-wrap">
-                  <span className="flex items-center gap-1 text-emerald-400 font-medium">
-                    <RoleIcon className="w-3.5 h-3.5" />
+                <p className="text-xs sm:text-sm text-zinc-400 mt-1 flex items-center gap-2 flex-wrap">
+                  <span className="flex items-center gap-1 text-zinc-200 font-medium">
+                    <RoleIcon className="w-3.5 h-3.5 text-white" />
                     {roleMeta.label}
                   </span>
-                  <span className="text-slate-600">•</span>
+                  <span className="text-zinc-600">•</span>
                   <span>{profile.institution || "Ayurvedic Medical Community"}</span>
                 </p>
-                <div className="flex items-center gap-2 mt-2">
-                  <span className="inline-flex items-center gap-1 text-[11px] text-teal-300 bg-teal-950/80 border border-teal-800/80 px-2 py-0.5 rounded-md">
-                    <ShieldCheck className="w-3 h-3 text-teal-400" />
+                <div className="flex items-center gap-2 mt-2 flex-wrap">
+                  <span className="inline-flex items-center gap-1 text-[11px] text-zinc-300 bg-zinc-900 border border-zinc-700 px-2 py-0.5 rounded-md">
+                    <ShieldCheck className="w-3 h-3 text-white" />
                     Supabase Cloud Authenticated
                   </span>
-                  <span className="inline-flex items-center gap-1 text-[11px] text-amber-300 bg-amber-950/60 border border-amber-800/60 px-2 py-0.5 rounded-md font-mono">
+                  <span className="inline-flex items-center gap-1 text-[11px] text-zinc-300 bg-zinc-900 border border-zinc-700 px-2 py-0.5 rounded-md font-mono">
                     ID: {profile.registrationNumber || "AYUR-VERIFIED"}
                   </span>
                 </div>
@@ -282,37 +300,37 @@ export default function ProfilePage() {
 
             <button
               onClick={() => setIsEditing(!isEditing)}
-              className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-emerald-300 bg-emerald-950/70 hover:bg-emerald-900/80 border border-emerald-700/80 rounded-xl transition-all shadow-sm cursor-pointer"
+              className="w-full sm:w-auto flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-semibold text-zinc-200 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 rounded-xl transition-all shadow-sm cursor-pointer"
             >
-              <PencilSquare className="w-3.5 h-3.5" />
+              <PencilSquare className="w-3.5 h-3.5 text-white" />
               <span>{isEditing ? "Cancel Edit" : "Edit Profile"}</span>
             </button>
           </div>
 
           {/* Edit Profile Form (Conditional) */}
           {isEditing && (
-            <form onSubmit={handleSaveProfile} className="pt-5 pb-2 border-b border-slate-800/80 animate-in fade-in">
+            <form onSubmit={handleSaveProfile} className="pt-5 pb-2 border-b border-zinc-800/80 animate-in fade-in">
               <h3 className="text-sm font-bold text-white mb-3 flex items-center gap-2">
-                <PencilSquare className="w-4 h-4 text-emerald-400" />
+                <PencilSquare className="w-4 h-4 text-white" />
                 Edit Profile Details
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-4">
                 <div>
-                  <label className="text-xs text-slate-400 block mb-1 font-medium">Full Name</label>
+                  <label className="text-xs text-zinc-400 block mb-1 font-medium">Full Name</label>
                   <input
                     type="text"
                     value={editName}
                     onChange={(e) => setEditName(e.target.value)}
                     required
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-black border border-zinc-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-white"
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-slate-400 block mb-1 font-medium">Professional Role</label>
+                  <label className="text-xs text-zinc-400 block mb-1 font-medium">Professional Role</label>
                   <select
                     value={editRole}
                     onChange={(e) => setEditRole(e.target.value as UserRole)}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500 cursor-pointer"
+                    className="w-full bg-black border border-zinc-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-white cursor-pointer"
                   >
                     {Object.entries(ROLE_DETAILS).map(([key, r]) => (
                       <option key={key} value={key}>
@@ -322,21 +340,21 @@ export default function ProfilePage() {
                   </select>
                 </div>
                 <div>
-                  <label className="text-xs text-slate-400 block mb-1 font-medium">Institution / Organization</label>
+                  <label className="text-xs text-zinc-400 block mb-1 font-medium">Institution / Organization</label>
                   <input
                     type="text"
                     value={editInstitution}
                     onChange={(e) => setEditInstitution(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-black border border-zinc-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-white"
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-slate-400 block mb-1 font-medium">Registration / AYUR-ID</label>
+                  <label className="text-xs text-zinc-400 block mb-1 font-medium">Registration / AYUR-ID</label>
                   <input
                     type="text"
                     value={editRegNum}
                     onChange={(e) => setEditRegNum(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-black border border-zinc-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-white"
                   />
                 </div>
               </div>
@@ -345,105 +363,137 @@ export default function ProfilePage() {
                 <button
                   type="button"
                   onClick={() => setIsEditing(false)}
-                  className="px-3 py-1.5 text-xs text-slate-400 hover:text-white transition-colors"
+                  className="px-3 py-1.5 text-xs text-zinc-400 hover:text-white transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSaving}
-                  className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl transition-all shadow-md cursor-pointer disabled:opacity-50"
+                  className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-black bg-white hover:bg-zinc-200 rounded-xl transition-all shadow-md cursor-pointer disabled:opacity-50"
                 >
                   {isSaving ? <ArrowRepeat className="w-3.5 h-3.5 animate-spin" /> : <CheckCircleFill className="w-3.5 h-3.5" />}
-                  <span>Save to Supabase</span>
+                  <span>Save Changes</span>
                 </button>
               </div>
             </form>
           )}
 
-          {/* Details Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-5">
-            <div className="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3.5 flex items-start gap-3">
-              <div className="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 mt-0.5">
-                <EnvelopeAtFill className="w-4 h-4 text-emerald-400" />
+          {/* Details Grid (Mobile-Optimized Vertical Cards) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-5">
+            <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-3.5 flex items-start gap-3">
+              <div className="w-9 h-9 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center shrink-0 mt-0.5">
+                <EnvelopeAtFill className="w-4 h-4 text-white" />
               </div>
               <div className="overflow-hidden">
-                <span className="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">Verified Email / Gmail</span>
+                <span className="text-[11px] uppercase tracking-wider text-zinc-400 font-semibold block">Verified Email / Gmail</span>
                 <span className="text-xs sm:text-sm font-semibold text-white truncate block mt-0.5">{profile.email}</span>
-                <span className="text-[10px] text-emerald-400 flex items-center gap-1 mt-0.5 font-medium">
-                  <Check2Circle className="w-3 h-3" /> Supabase OTP Verified
+                <span className="text-[10px] text-zinc-400 flex items-center gap-1 mt-0.5 font-medium">
+                  <Check2Circle className="w-3 h-3 text-white" /> Supabase OTP Verified
                 </span>
               </div>
             </div>
 
-            <div className="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3.5 flex items-start gap-3">
-              <div className="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 mt-0.5">
-                <PersonBadgeFill className="w-4 h-4 text-blue-400" />
+            <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-3.5 flex items-start gap-3">
+              <div className="w-9 h-9 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center shrink-0 mt-0.5">
+                <PersonBadgeFill className="w-4 h-4 text-white" />
               </div>
               <div>
-                <span className="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">Unique Username</span>
+                <span className="text-[11px] uppercase tracking-wider text-zinc-400 font-semibold block">Unique Username</span>
                 <span className="text-xs sm:text-sm font-semibold text-white block mt-0.5">
                   @{profile.username || profile.email.split("@")[0]}
                 </span>
-                <span className="text-[10px] text-slate-400 block mt-0.5">Used for direct password login</span>
+                <span className="text-[10px] text-zinc-400 block mt-0.5">Used for direct password login</span>
               </div>
             </div>
 
-            <div className="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3.5 flex items-start gap-3">
-              <div className="w-9 h-9 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center shrink-0 mt-0.5">
-                <CalendarCheck className="w-4 h-4 text-purple-400" />
+            <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-3.5 flex items-start gap-3">
+              <div className="w-9 h-9 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center shrink-0 mt-0.5">
+                <CalendarCheck className="w-4 h-4 text-white" />
               </div>
               <div>
-                <span className="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">Last Login & Activity</span>
+                <span className="text-[11px] uppercase tracking-wider text-zinc-400 font-semibold block">Last Login & Activity</span>
                 <span className="text-xs sm:text-sm font-semibold text-white block mt-0.5">
                   {profile.lastLogin ? new Date(profile.lastLogin).toLocaleString() : "Active Now"}
                 </span>
-                <span className="text-[10px] text-slate-400 block mt-0.5">Device: {profile.device || "💻 Desktop / Laptop"}</span>
+                <span className="text-[10px] text-zinc-400 block mt-0.5">Device: {profile.device || "📱 Mobile / Laptop"}</span>
               </div>
             </div>
 
-            <div className="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3.5 flex items-start gap-3">
-              <div className="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0 mt-0.5">
-                <KeyFill className="w-4 h-4 text-amber-400" />
+            <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-3.5 flex items-start gap-3">
+              <div className="w-9 h-9 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center shrink-0 mt-0.5">
+                <KeyFill className="w-4 h-4 text-white" />
               </div>
               <div className="overflow-hidden">
-                <span className="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">Security & Session Vault</span>
-                <span className="text-xs sm:text-sm font-mono text-emerald-400 font-bold block mt-0.5 truncate">
+                <span className="text-[11px] uppercase tracking-wider text-zinc-400 font-semibold block">Security Vault</span>
+                <span className="text-xs sm:text-sm font-mono text-zinc-200 font-bold block mt-0.5 truncate">
                   {profile.sessionToken || "AYUR-SECURE-SESSION"}
                 </span>
-                <span className="text-[10px] text-slate-400 block mt-0.5">256-Bit Encrypted · Supabase Protected</span>
+                <span className="text-[10px] text-zinc-400 block mt-0.5">256-Bit Encrypted · Supabase Protected</span>
               </div>
             </div>
           </div>
         </div>
 
+        {/* Operating Location & Jurisdiction Card (User can view and change location here!) */}
+        <div className="bg-zinc-950/90 border border-zinc-800 rounded-2xl p-5 sm:p-7 shadow-xl backdrop-blur-xl">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-700 flex items-center justify-center text-2xl shrink-0">
+                {jurMeta.flag}
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h3 className="text-sm sm:text-base font-bold text-white">
+                    Active Regulatory Jurisdiction: {jurMeta.label}
+                  </h3>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700 font-semibold">
+                    STRICT ISOLATION
+                  </span>
+                </div>
+                <p className="text-xs text-zinc-400 mt-1 leading-snug">
+                  {jurMeta.desc}
+                </p>
+              </div>
+            </div>
+
+            <Link
+              href="/location"
+              className="w-full sm:w-auto px-4 py-2.5 text-xs font-bold text-black bg-white hover:bg-zinc-200 rounded-xl transition-all shadow-md flex items-center justify-center gap-1.5 shrink-0 cursor-pointer"
+            >
+              <span>Change Location / Market</span>
+              <ArrowRightCircleFill className="w-3.5 h-3.5 text-black" />
+            </Link>
+          </div>
+        </div>
+
         {/* Security & Password Settings Card */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 sm:p-7 shadow-xl backdrop-blur-xl">
-          <div className="flex items-center justify-between">
+        <div className="bg-zinc-950/90 border border-zinc-800 rounded-2xl p-5 sm:p-7 shadow-xl backdrop-blur-xl">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-emerald-400 border border-slate-700">
+              <div className="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center text-white border border-zinc-800 shrink-0">
                 <LockFill className="w-5 h-5" />
               </div>
               <div>
                 <h3 className="text-sm sm:text-base font-bold text-white">Password & Authentication Management</h3>
-                <p className="text-xs text-slate-400">
-                  First login was verified via Gmail OTP. Subsequent logins use Username & Password.
+                <p className="text-xs text-zinc-400">
+                  Update your AYURLEX login password for fast direct sign-in.
                 </p>
               </div>
             </div>
             <button
               onClick={() => setShowPasswordSection(!showPasswordSection)}
-              className="px-3 py-1.5 text-xs font-semibold text-slate-300 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl transition-all cursor-pointer"
+              className="w-full sm:w-auto px-3.5 py-1.5 text-xs font-semibold text-zinc-300 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 rounded-xl transition-all cursor-pointer"
             >
               {showPasswordSection ? "Close" : "Change Password"}
             </button>
           </div>
 
           {showPasswordSection && (
-            <form onSubmit={handleChangePassword} className="mt-5 pt-4 border-t border-slate-800 animate-in fade-in">
+            <form onSubmit={handleChangePassword} className="mt-5 pt-4 border-t border-zinc-800 animate-in fade-in">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-4">
                 <div>
-                  <label className="text-xs text-slate-400 block mb-1 font-medium">New Password</label>
+                  <label className="text-xs text-zinc-400 block mb-1 font-medium">New Password</label>
                   <div className="relative">
                     <input
                       type={showPassword ? "text" : "password"}
@@ -451,26 +501,26 @@ export default function ProfilePage() {
                       onChange={(e) => setNewPassword(e.target.value)}
                       placeholder="At least 6 characters"
                       required
-                      className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 pr-9 text-xs text-white focus:outline-none focus:border-emerald-500"
+                      className="w-full bg-black border border-zinc-700 rounded-xl px-3 py-2 pr-9 text-xs text-white focus:outline-none focus:border-white"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white"
                     >
                       {showPassword ? <EyeSlashFill className="w-3.5 h-3.5" /> : <EyeFill className="w-3.5 h-3.5" />}
                     </button>
                   </div>
                 </div>
                 <div>
-                  <label className="text-xs text-slate-400 block mb-1 font-medium">Confirm New Password</label>
+                  <label className="text-xs text-zinc-400 block mb-1 font-medium">Confirm New Password</label>
                   <input
                     type={showPassword ? "text" : "password"}
                     value={confirmNewPassword}
                     onChange={(e) => setConfirmNewPassword(e.target.value)}
                     placeholder="Re-enter new password"
                     required
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-black border border-zinc-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-white"
                   />
                 </div>
               </div>
@@ -479,55 +529,39 @@ export default function ProfilePage() {
                 <button
                   type="button"
                   onClick={() => setShowPasswordSection(false)}
-                  className="px-3 py-1.5 text-xs text-slate-400 hover:text-white transition-colors"
+                  className="px-3 py-1.5 text-xs text-zinc-400 hover:text-white transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isChangingPassword}
-                  className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl transition-all shadow-md cursor-pointer disabled:opacity-50"
+                  className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-black bg-white hover:bg-zinc-200 rounded-xl transition-all shadow-md cursor-pointer disabled:opacity-50"
                 >
                   {isChangingPassword ? <ArrowRepeat className="w-3.5 h-3.5 animate-spin" /> : <CheckCircleFill className="w-3.5 h-3.5" />}
-                  <span>Update Password in Supabase</span>
+                  <span>Update Password</span>
                 </button>
               </div>
             </form>
           )}
         </div>
 
-        {/* Cloud Architecture Badge */}
-        <div className="bg-emerald-950/30 border border-emerald-800/40 rounded-2xl p-4 flex items-center justify-between gap-4 text-xs text-emerald-300">
-          <div className="flex items-center gap-2.5">
-            <ShieldLockFill className="w-5 h-5 text-emerald-400 shrink-0" />
-            <span>
-              <strong>Supabase Cloud Security Active:</strong> All user records, roles, and session tokens are isolated with Row-Level Security (RLS) and encrypted password digests.
-            </span>
-          </div>
-          <Link
-            href="/"
-            className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition-all shadow-sm shrink-0"
-          >
-            Launch Chat
-          </Link>
-        </div>
-
-        {/* Bottom Sign Out Card */}
-        <div className="bg-red-950/20 border border-red-900/40 rounded-2xl p-5 shadow-xl backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-4 mt-2 mb-6">
-          <div className="flex items-center gap-3.5 text-left">
-            <div className="w-11 h-11 rounded-xl bg-red-900/30 flex items-center justify-center text-red-400 border border-red-800/50 shrink-0">
+        {/* Bottom Sign Out Card (Clear and Prominent at Bottom) */}
+        <div className="bg-zinc-950/80 border border-zinc-800 rounded-2xl p-5 shadow-xl backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
+          <div className="flex items-center gap-3.5 text-left w-full sm:w-auto">
+            <div className="w-11 h-11 rounded-xl bg-zinc-900 flex items-center justify-center text-red-400 border border-zinc-800 shrink-0">
               <BoxArrowRight className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-white">Sign Out of AYURLEX Account</h4>
-              <p className="text-xs text-slate-400 mt-0.5">
-                Currently logged in as <span className="font-semibold text-white">{profile.name}</span> ({profile.email}). Click to safely end your session and lock consultation history.
+              <h4 className="text-sm font-bold text-white">Sign Out of AYURLEX</h4>
+              <p className="text-xs text-zinc-400 mt-0.5">
+                Logged in as <span className="font-semibold text-white">{profile.name}</span> ({profile.email}). Safely end your active session.
               </p>
             </div>
           </div>
           <button
             onClick={handleLogout}
-            className="w-full sm:w-auto px-5 py-2.5 text-xs font-bold text-white bg-red-600 hover:bg-red-500 active:bg-red-700 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 btn-spring cursor-pointer shrink-0"
+            className="w-full sm:w-auto px-6 py-2.5 text-xs font-bold text-white bg-red-600 hover:bg-red-500 active:bg-red-700 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 btn-spring cursor-pointer shrink-0"
           >
             <BoxArrowRight className="w-4 h-4" />
             <span>Sign Out</span>

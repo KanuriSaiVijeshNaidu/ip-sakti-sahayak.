@@ -9,17 +9,17 @@
     -moz-osx-font-smoothing: grayscale;
   }
   body {
-    background-color: #f9fafb;
-    color: #111827;
+    background-color: #000000;
+    color: #f4f4f5;
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   }
   ::selection {
-    background-color: rgba(16, 185, 129, 0.2);
-    color: #064e3b;
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
   }
 }
 
-/* motion.sites spring easing curves */
+/* motion spring easing curves */
 :root {
   --ease-spring-snappy: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -37,7 +37,7 @@
 
 .card-motion:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px -6px rgba(16, 185, 129, 0.09), 0 4px 8px -2px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 12px 24px -6px rgba(255, 255, 255, 0.08), 0 4px 8px -2px rgba(0, 0, 0, 0.6);
 }
 
 .card-motion:active {
@@ -82,18 +82,6 @@
   }
 }
 
-@keyframes kenBurns {
-  0% {
-    transform: scale(1) translate(0, 0);
-  }
-  50% {
-    transform: scale(1.06) translate(-1.2%, -1.2%);
-  }
-  100% {
-    transform: scale(1) translate(0, 0);
-  }
-}
-
 .animate-entrance-1 {
   animation: slideUpFade 0.45s var(--ease-spring-snappy) 0.05s both;
 }
@@ -116,13 +104,13 @@
 
 /* Smooth Legal Prose */
 .prose-legal {
-  @apply text-sm leading-relaxed text-gray-700;
+  @apply text-sm leading-relaxed text-zinc-300;
 }
 .prose-legal strong {
-  @apply text-gray-900 font-semibold;
+  @apply text-white font-semibold;
 }
 
-/* Custom Clean Scrollbar */
+/* Custom Clean Monochrome Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -131,9 +119,9 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(156, 163, 175, 0.4);
+  background: rgba(255, 255, 255, 0.18);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(107, 114, 128, 0.6);
+  background: rgba(255, 255, 255, 0.35);
 }

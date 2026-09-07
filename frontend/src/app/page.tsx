@@ -73,6 +73,13 @@ export default function ChatPage() {
   const [domain, setDomain] = useState<DomainType | "auto">("auto");
   const [language, setLanguage] = useState<LanguageCode>("en");
   const [jurisdiction, setJurisdiction] = useState<JurisdictionType>("IN");
+
+  const handleJurisdictionChange = (jur: JurisdictionType) => {
+    setJurisdiction(jur);
+    try {
+      localStorage.setItem("ayurlex_jurisdiction", jur);
+    } catch {}
+  };
   const [error, setError] = useState<string | null>(null);
 
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -115,6 +122,11 @@ export default function ChatPage() {
   // 1. Initial Load: Check profile & load that user's private sessions, or redirect to /login
   useEffect(() => {
     try {
+      const savedJur = localStorage.getItem("ayurlex_jurisdiction") as JurisdictionType;
+      if (savedJur && ["US", "IN", "EU", "DE", "WO"].includes(savedJur)) {
+        setJurisdiction(savedJur);
+      }
+
       const savedProfile = localStorage.getItem("ayurlex_user_profile");
       if (savedProfile) {
         const parsedProfile: UserProfile = JSON.parse(savedProfile);
@@ -359,7 +371,7 @@ export default function ChatPage() {
   const t = getTranslation(language);
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50/40 relative overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-black text-white relative overflow-x-hidden">
       {/* Live Animated Motion Nature Wallpaper */}
       <LiveNatureWallpaper />
 
@@ -368,7 +380,7 @@ export default function ChatPage() {
         language={language}
         onLanguageChange={setLanguage}
         jurisdiction={jurisdiction}
-        onJurisdictionChange={setJurisdiction}
+        onJurisdictionChange={handleJurisdictionChange}
         sessionCount={sessions.length}
         onOpenHistory={() => setIsHistoryOpen(true)}
         onOpenCompare={() => {}}
@@ -379,7 +391,7 @@ export default function ChatPage() {
       />
 
       {/* Domain selector bar */}
-      <div className="bg-white/85 backdrop-blur-md border-b border-gray-200/60 px-3 sm:px-4 py-2 sticky top-[49px] sm:top-[57px] z-20 shadow-2xs">
+      <div className="bg-black/90 backdrop-blur-xl border-b border-zinc-800/80 px-3 sm:px-4 py-2 sticky top-[49px] sm:top-[57px] z-20 shadow-2xl">
         <div className="max-w-4xl mx-auto flex items-center justify-between gap-2 overflow-hidden">
           <div className="flex-1 overflow-x-auto no-scrollbar">
             <DomainSelector value={domain} onChange={setDomain} language={language} />
@@ -390,80 +402,35 @@ export default function ChatPage() {
       {/* Chat area */}
       <main className="flex-1 overflow-y-auto px-3 sm:px-4 py-4 sm:py-6 relative z-10">
         <div className="max-w-4xl mx-auto space-y-4 sm:space-y-5">
-          {/* Active Target Market & Legal Isolation Status Banner */}
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl border border-gray-200/90 shadow-2xs p-3 sm:p-4 animate-entrance-1">
-            <div className="flex flex-wrap items-center justify-between gap-2.5">
-              <div className="flex items-center gap-2.5">
-                <span className="text-2xl sm:text-3xl shrink-0 select-none">
-                  {jurisdiction === "US" ? "🇺🇸" : jurisdiction === "IN" ? "🇮🇳" : jurisdiction === "EU" ? "🇪🇺" : jurisdiction === "DE" ? "🇩🇪" : "🌐"}
-                </span>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h3 className="text-xs sm:text-sm font-bold text-gray-900">
-                      {jurisdiction === "US" ? "Active Market: United States (USPTO & FDA)" :
-                       jurisdiction === "IN" ? "Active Market: India (CGPDTM & AYUSH)" :
-                       jurisdiction === "EU" ? "Active Market: European Union (EPO & EMA)" :
-                       jurisdiction === "DE" ? "Active Market: Germany (DPMA & BfArM)" :
-                       "Active Market: International (WIPO PCT)"}
-                    </h3>
-                    <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 shrink-0">
-                      STRICT BOUNDARY ISOLATION
-                    </span>
-                  </div>
-                  <p className="text-[11px] text-gray-600 mt-0.5">
-                    {jurisdiction === "US" ? "Grounded in 35 U.S.C. 101/102/103/112, Lanham Act & FDA DSHEA. Foreign statutory data strictly excluded." :
-                     jurisdiction === "IN" ? "Grounded in Patents Act 1970, Drugs & Cosmetics Act, FSSAI & BDA. Foreign applicant guidance (NBA Sec 6) active." :
-                     jurisdiction === "EU" ? "Grounded in European Patent Convention (EPC Articles 52, 53, 54, 56) and EPO Guidelines." :
-                     jurisdiction === "DE" ? "Grounded in German Patent Act (Patentgesetz - PatG) and DPMA phytopharmaceutical standards." :
-                     "Grounded in Patent Cooperation Treaty (PCT Articles 8, 33) and WIPO Genetic Resources Treaty (2024)."}
-                  </p>
-                </div>
-              </div>
-              {/* Fast Market Switch Buttons */}
-              <div className="flex items-center gap-1.5 ml-auto">
-                <span className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider hidden sm:inline">Select Market:</span>
-                {(["US", "IN", "EU", "DE", "WO"] as JurisdictionType[]).map((code) => {
-                  const labels: Record<string, string> = { US: "🇺🇸 USA", IN: "🇮🇳 India", EU: "🇪🇺 Europe", DE: "🇩🇪 Germany", WO: "🌐 Global" };
-                  const active = jurisdiction === code;
-                  return (
-                    <button
-                      key={code}
-                      onClick={() => setJurisdiction(code)}
-                      className={`px-2.5 py-1 text-xs rounded-xl font-bold transition-all cursor-pointer ${
-                        active
-                          ? "bg-emerald-700 text-white shadow-xs"
-                          : "bg-gray-100 hover:bg-gray-200 text-gray-700"
-                      }`}
-                      title={`Switch active target market to ${labels[code]}`}
-                    >
-                      {labels[code]}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
           {/* Active Consultation Navigation Toolbar (When chatting) */}
           {!isEmpty && (
-            <div className="flex items-center justify-between bg-white border border-gray-200/90 rounded-2xl px-3 sm:px-4 py-2 sm:py-2.5 text-xs shadow-2xs animate-entrance-1 gap-2">
+            <div className="flex flex-wrap items-center justify-between bg-zinc-950/90 border border-zinc-800 rounded-2xl px-3 sm:px-4 py-2 sm:py-2.5 text-xs shadow-xl animate-entrance-1 gap-2">
               <button
                 onClick={handleGoHome}
-                className="flex items-center gap-1.5 font-bold text-gray-700 hover:text-emerald-800 transition-colors cursor-pointer shrink-0"
+                className="flex items-center gap-1.5 font-bold text-zinc-300 hover:text-white transition-colors cursor-pointer shrink-0"
                 title="Return to Welcome Screen"
               >
-                <HouseDoorFill className="w-3.5 h-3.5 text-emerald-700" />
+                <HouseDoorFill className="w-3.5 h-3.5 text-white" />
                 <span className="hidden sm:inline">← Return to Home Screen</span>
                 <span className="sm:hidden">← Home</span>
               </button>
 
               <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <Link
+                  href="/location"
+                  className="px-2.5 sm:px-3 py-1 text-[11px] font-bold text-white bg-zinc-900 border border-zinc-700 rounded-xl transition-all flex items-center gap-1 cursor-pointer"
+                  title="Change Active Jurisdiction"
+                >
+                  <span>{jurisdiction === "US" ? "🇺🇸" : jurisdiction === "IN" ? "🇮🇳" : jurisdiction === "EU" ? "🇪🇺" : jurisdiction === "DE" ? "🇩🇪" : "🌐"}</span>
+                  <span className="hidden sm:inline">Market</span>
+                </Link>
+
                 <button
                   onClick={handleNewSession}
-                  className="px-2.5 sm:px-3 py-1 text-[11px] font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-xl transition-all flex items-center gap-1 btn-spring cursor-pointer shrink-0"
+                  className="px-2.5 sm:px-3 py-1 text-[11px] font-semibold text-zinc-200 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 rounded-xl transition-all flex items-center gap-1 btn-spring cursor-pointer shrink-0"
                   title="Start a fresh question"
                 >
-                  <PlusCircleFill className="w-3 h-3 text-gray-500" />
+                  <PlusCircleFill className="w-3 h-3 text-zinc-400" />
                   <span className="hidden sm:inline">New Chat</span>
                   <span className="sm:hidden">New</span>
                 </button>
@@ -478,7 +445,7 @@ export default function ChatPage() {
                       }
                     }
                   }}
-                  className="px-2.5 sm:px-3 py-1 text-[11px] font-semibold text-red-600 hover:bg-red-50 border border-red-200 rounded-xl transition-all flex items-center gap-1 btn-spring cursor-pointer shrink-0"
+                  className="px-2.5 sm:px-3 py-1 text-[11px] font-semibold text-red-400 hover:bg-red-950/60 border border-red-900/60 rounded-xl transition-all flex items-center gap-1 btn-spring cursor-pointer shrink-0"
                   title="Delete this conversation"
                 >
                   <Trash3Fill className="w-3 h-3" />
@@ -491,59 +458,82 @@ export default function ChatPage() {
 
           {/* Welcome screen */}
           {isEmpty && (
-            <div className="flex flex-col items-center text-center py-4 sm:py-6 space-y-5">
-              {/* Emblem Logo */}
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-gradient-to-br from-emerald-600 via-green-600 to-amber-600 p-3.5 sm:p-4 flex items-center justify-center shadow-lg shadow-emerald-900/10 ring-1 ring-emerald-500/20 animate-entrance-1">
-                <ShieldShaded className="w-9 h-9 sm:w-11 sm:h-11 text-white drop-shadow-sm" />
+            <div className="flex flex-col items-center text-center py-4 sm:py-6 space-y-4 sm:space-y-5">
+              {/* Sleek Darkened Emblem */}
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-zinc-900 border border-zinc-700 p-3.5 sm:p-4 flex items-center justify-center shadow-2xl animate-entrance-1">
+                <ShieldShaded className="w-9 h-9 sm:w-11 sm:h-11 text-white drop-shadow-md" />
+              </div>
+
+              {/* Minimal Active Jurisdiction Link Pill */}
+              <div className="animate-entrance-1">
+                <Link
+                  href="/location"
+                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/90 border border-zinc-700 hover:border-zinc-500 hover:bg-zinc-800 text-xs text-zinc-300 transition-all shadow-md group"
+                  title="Tap to change active jurisdiction"
+                >
+                  <span className="text-base">
+                    {jurisdiction === "US" ? "🇺🇸" : jurisdiction === "IN" ? "🇮🇳" : jurisdiction === "EU" ? "🇪🇺" : jurisdiction === "DE" ? "🇩🇪" : "🌐"}
+                  </span>
+                  <span className="font-bold text-white">
+                    {jurisdiction === "US" ? "Active Market: United States (USPTO & FDA)" :
+                     jurisdiction === "IN" ? "Active Market: India (CGPDTM & AYUSH)" :
+                     jurisdiction === "EU" ? "Active Market: European Union (EPO & EMA)" :
+                     jurisdiction === "DE" ? "Active Market: Germany (DPMA & BfArM)" :
+                     "Active Market: International (WIPO PCT)"}
+                  </span>
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700 group-hover:text-white">
+                    Change Location →
+                  </span>
+                </Link>
               </div>
 
               {/* Title & Subtitle */}
-              <div className="space-y-1.5 max-w-2xl mx-auto animate-entrance-2">
-                <h2 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">
+              <div className="space-y-1.5 max-w-2xl mx-auto animate-entrance-2 px-2">
+                <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                   {t.title}
                 </h2>
-                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
                   {t.subtitle} —{" "}
-                  <span className="text-emerald-700 font-bold">
+                  <span className="text-white font-bold">
                     Zero-Hallucination Grounded AI
                   </span>{" "}
-                  backed by 12 Official Gazette Corpora and SHA-256 Ledger Provenance.
+                  backed by 12 Official Gazette Corpora and SHA-256 Sovereign Audit Ledger.
                 </p>
               </div>
 
-              {/* Quick Action Cards (4 Cards Grid - Including Indian to International Transition) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full max-w-4xl text-left animate-entrance-3">
+              {/* Quick Action Cards (Mobile-friendly vertical stacking cards) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 w-full max-w-4xl text-left animate-entrance-3">
                 <Link
                   href="/profile"
-                  className="p-4 rounded-2xl border border-emerald-300/80 bg-gradient-to-br from-emerald-50/80 via-teal-50/40 to-white hover:border-emerald-500 hover:shadow-sm card-motion flex flex-col justify-between group shadow-2xs cursor-pointer select-none"
+                  className="p-4 rounded-2xl border border-zinc-800 bg-zinc-950/80 backdrop-blur-md hover:border-zinc-600 hover:bg-zinc-900/90 card-motion flex flex-col justify-between group shadow-lg cursor-pointer select-none"
                 >
-                  <div className="flex items-center gap-2 text-xs font-bold text-emerald-950 mb-1.5">
-                    <div className="w-5 h-5 rounded-full bg-emerald-700 text-white text-[10px] font-bold flex items-center justify-center shrink-0">
+                  <div className="flex items-center gap-2 text-xs font-bold text-white mb-1.5">
+                    <div className="w-5 h-5 rounded-full bg-white text-black text-[10px] font-bold flex items-center justify-center shrink-0">
                       {userProfile.name ? userProfile.name.charAt(0).toUpperCase() : "U"}
                     </div>
                     <span>My Profile</span>
-                    <span className="text-[9px] font-mono px-1.5 py-0.5 bg-emerald-200/80 text-emerald-900 rounded font-bold ml-auto">
+                    <span className="text-[9px] font-mono px-1.5 py-0.5 bg-zinc-800 text-zinc-300 border border-zinc-700 rounded font-bold ml-auto">
                       ACCOUNT
                     </span>
                   </div>
-                  <p className="text-[11px] text-gray-600 leading-snug">
-                    View Full Name, Verified Gmail, Position ({userProfile.role || "Citizen"}), and Username.
+                  <p className="text-[11px] text-zinc-400 leading-snug">
+                    View Full Name, Verified Gmail, Position ({userProfile.role || "Citizen"}), and Account Vault.
                   </p>
                 </Link>
 
                 <Link
-                  href="/indian-to-international"
-                  className="p-4 rounded-2xl border border-blue-300/80 bg-gradient-to-br from-blue-50/80 via-indigo-50/40 to-white hover:border-blue-500 hover:shadow-sm card-motion flex flex-col justify-between group shadow-2xs cursor-pointer select-none"
+                  href="/location"
+                  className="p-4 rounded-2xl border border-zinc-800 bg-zinc-950/80 backdrop-blur-md hover:border-zinc-600 hover:bg-zinc-900/90 card-motion flex flex-col justify-between group shadow-lg cursor-pointer select-none"
                 >
-                  <div className="flex items-center gap-2 text-xs font-bold text-blue-950 mb-1.5">
-                    <Globe2 className="w-4 h-4 text-blue-700 group-hover:scale-110 transition-transform duration-200" />
-                    <span>IN → International IP</span>
-                    <span className="text-[9px] font-mono px-1.5 py-0.5 bg-blue-200/80 text-blue-900 rounded font-bold ml-auto">
-                      NEW
+                  <div className="flex items-center gap-2 text-xs font-bold text-white mb-1.5">
+                    <Globe2 className="w-4 h-4 text-white group-hover:scale-110 transition-transform duration-200" />
+                    <span>Select Location</span>
+                    <span className="text-[9px] font-mono px-1.5 py-0.5 bg-zinc-800 text-zinc-300 border border-zinc-700 rounded font-bold ml-auto">
+                      MARKET
                     </span>
                   </div>
-                  <p className="text-[11px] text-gray-600 leading-snug">
-                    Convert Indian Patents (Form 1) to PCT, USPTO & EPO with Section 39 FFL and NBA clearance.
+                  <p className="text-[11px] text-zinc-400 leading-snug">
+                    Switch between United States, India, European Union, Germany & Global PCT.
                   </p>
                 </Link>
 
@@ -552,26 +542,26 @@ export default function ChatPage() {
                     setDomain("patents");
                     handleSend("What are the Section 3(p) TKDL prior-art restrictions on Ayurvedic patents?");
                   }}
-                  className="p-4 rounded-2xl border border-gray-200/90 bg-white hover:border-emerald-400 hover:bg-emerald-50/20 card-motion flex flex-col justify-between group shadow-2xs cursor-pointer select-none"
+                  className="p-4 rounded-2xl border border-zinc-800 bg-zinc-950/80 backdrop-blur-md hover:border-zinc-600 hover:bg-zinc-900/90 card-motion flex flex-col justify-between group shadow-lg cursor-pointer select-none text-left"
                 >
-                  <div className="flex items-center gap-2 text-xs font-bold text-gray-900 mb-1.5">
-                    <JournalBookmarkFill className="w-4 h-4 text-emerald-700 group-hover:scale-110 transition-transform duration-200" />
+                  <div className="flex items-center gap-2 text-xs font-bold text-white mb-1.5">
+                    <JournalBookmarkFill className="w-4 h-4 text-zinc-300 group-hover:scale-110 transition-transform duration-200" />
                     <span>TKDL Search</span>
                   </div>
-                  <p className="text-[11px] text-gray-500 leading-snug">
+                  <p className="text-[11px] text-zinc-400 leading-snug">
                     300K+ formulations, Section 3(p) non-patentability & biological diversity checks.
                   </p>
                 </button>
 
                 <button
                   onClick={() => setIsHistoryOpen(true)}
-                  className="p-4 rounded-2xl border border-gray-200/90 bg-white hover:border-emerald-400 hover:bg-emerald-50/20 card-motion flex flex-col justify-between group shadow-2xs cursor-pointer select-none"
+                  className="p-4 rounded-2xl border border-zinc-800 bg-zinc-950/80 backdrop-blur-md hover:border-zinc-600 hover:bg-zinc-900/90 card-motion flex flex-col justify-between group shadow-lg cursor-pointer select-none text-left"
                 >
-                  <div className="flex items-center gap-2 text-xs font-bold text-gray-900 mb-1.5">
-                    <ChatLeftTextFill className="w-4 h-4 text-purple-600 group-hover:scale-110 transition-transform duration-200" />
+                  <div className="flex items-center gap-2 text-xs font-bold text-white mb-1.5">
+                    <ChatLeftTextFill className="w-4 h-4 text-zinc-300 group-hover:scale-110 transition-transform duration-200" />
                     <span>History</span>
                   </div>
-                  <p className="text-[11px] text-gray-500 leading-snug">
+                  <p className="text-[11px] text-zinc-400 leading-snug">
                     {sessions.length > 0
                       ? `${sessions.length} consultations saved in your isolated vault.`
                       : "Access verified citations, session transcripts & legal receipts."}
@@ -593,15 +583,15 @@ export default function ChatPage() {
 
           {/* Loading indicator */}
           {loading && (
-            <div className="flex gap-3 items-center text-gray-500 text-xs px-2 py-3 bg-white border border-gray-200 rounded-2xl shadow-2xs max-w-sm">
-              <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center animate-pulse">
-                <ShieldShaded className="w-3.5 h-3.5 text-green-700" />
+            <div className="flex gap-3 items-center text-zinc-300 text-xs px-3 py-3 bg-zinc-950 border border-zinc-800 rounded-2xl shadow-xl max-w-sm">
+              <div className="w-6 h-6 rounded-full bg-zinc-800 flex items-center justify-center animate-pulse">
+                <ShieldShaded className="w-3.5 h-3.5 text-white" />
               </div>
               <div className="flex items-center gap-1.5">
-                <div className="w-1.5 h-1.5 bg-green-600 rounded-full animate-bounce [animation-delay:-0.3s]" />
-                <div className="w-1.5 h-1.5 bg-green-600 rounded-full animate-bounce [animation-delay:-0.15s]" />
-                <div className="w-1.5 h-1.5 bg-green-600 rounded-full animate-bounce" />
-                <span className="font-mono text-gray-600 ml-1">
+                <div className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:-0.3s]" />
+                <div className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:-0.15s]" />
+                <div className="w-1.5 h-1.5 bg-white rounded-full animate-bounce" />
+                <span className="font-mono text-zinc-400 ml-1">
                   Querying BGE-M3 & Verifying Gazette Citations...
                 </span>
               </div>
@@ -621,12 +611,12 @@ export default function ChatPage() {
       </main>
 
       {/* Input bar */}
-      <footer className="bg-gradient-to-t from-gray-50 via-gray-50 to-transparent pt-2 pb-4 px-4 sticky bottom-0 z-20">
+      <footer className="bg-gradient-to-t from-black via-black/90 to-transparent pt-2 pb-4 px-3 sm:px-4 sticky bottom-0 z-20">
         <div className="max-w-2xl mx-auto space-y-2">
           <ChatInput onSend={handleSend} loading={loading} placeholder={t.inputPlaceholder} />
-          <p className="text-[11px] text-center text-gray-500 font-medium select-none">
+          <p className="text-[11px] text-center text-zinc-500 font-medium select-none">
             {t.legalDisclaimer} ·{" "}
-            <span className="font-mono text-gray-600 font-semibold">AYURLEX V2.0 Enterprise</span>
+            <span className="font-mono text-zinc-400 font-semibold">AYURLEX V2.0 Enterprise</span>
           </p>
         </div>
       </footer>

@@ -65,17 +65,17 @@ export default function SuggestionsGrid({
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl w-full mx-auto">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 max-w-2xl w-full mx-auto">
       {suggestions.map((s) => (
         <button
           key={s.text}
           onClick={() => onSelect(s.text)}
-          className="flex items-start gap-3.5 p-4 rounded-2xl border border-gray-200/90 bg-white hover:border-emerald-400/90 hover:bg-emerald-50/30 text-left text-xs sm:text-sm text-gray-800 card-motion group shadow-2xs cursor-pointer select-none"
+          className="flex items-start gap-3 p-3.5 sm:p-4 rounded-2xl border border-zinc-800 bg-zinc-950/80 backdrop-blur-md hover:border-zinc-500 hover:bg-zinc-900/90 text-left text-xs sm:text-sm text-zinc-200 hover:text-white card-motion group shadow-lg cursor-pointer select-none"
         >
-          <span className="text-xl mt-0.5 group-hover:scale-115 transition-transform duration-200 shrink-0">
+          <span className="text-xl mt-0.5 group-hover:scale-110 transition-transform duration-200 shrink-0">
             {s.emoji}
           </span>
-          <span className="leading-snug font-semibold text-gray-800 group-hover:text-emerald-950">
+          <span className="leading-snug font-semibold text-zinc-300 group-hover:text-white">
             {s.text}
           </span>
         </button>

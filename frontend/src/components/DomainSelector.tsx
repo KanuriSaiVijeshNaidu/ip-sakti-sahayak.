@@ -21,7 +21,7 @@ export default function DomainSelector({ value, onChange, language = "en" }: Pro
   const t = getTranslation(language);
 
   return (
-    <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar scroll-smooth py-0.5 w-full shrink-0">
+    <div className="flex flex-wrap sm:flex-nowrap items-center gap-1.5 py-0.5 w-full sm:overflow-x-auto no-scrollbar">
       {DOMAIN_KEYS.map((d) => {
         const isSelected = value === d.value;
         return (
@@ -30,12 +30,12 @@ export default function DomainSelector({ value, onChange, language = "en" }: Pro
             onClick={() => onChange(d.value as DomainType | "auto")}
             className={`px-3 py-1.5 rounded-full text-xs font-semibold pill-spring border flex items-center gap-1.5 cursor-pointer select-none whitespace-nowrap shrink-0 ${
               isSelected
-                ? "bg-emerald-600 text-white border-emerald-600 shadow-sm shadow-emerald-600/30 scale-100"
-                : "bg-white text-gray-700 border-gray-200/90 hover:border-emerald-400 hover:text-emerald-800 shadow-2xs"
+                ? "bg-white text-black border-white shadow-md font-bold scale-100"
+                : "bg-zinc-900/90 text-zinc-400 border-zinc-800 hover:border-zinc-600 hover:text-white"
             }`}
           >
             {d.isDot ? (
-              <span className={`text-[9px] ${isSelected ? "text-teal-200" : "text-emerald-600"}`}>
+              <span className={`text-[9px] ${isSelected ? "text-black" : "text-zinc-400"}`}>
                 ●
               </span>
             ) : (
