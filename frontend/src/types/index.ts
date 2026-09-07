@@ -109,3 +109,168 @@ export interface AdminTraceResponse {
   validated_count: number;
   candidates: RetrievalCandidate[];
 }
+
+// ─── Phase 1 & 2 Intelligence Types ──────────────────────────────────────────
+
+export interface NormalizedBotanicalEntity {
+  common_name: string;
+  botanical_name: string;
+  sanskrit_name: string;
+  family?: string;
+  part_used?: string;
+  active_compounds: string[];
+  classical_treatises: string[];
+  ayush_system: string;
+}
+
+export interface FormulationAnalysisRequest {
+  formulation_name?: string;
+  ingredients: string[];
+  botanical_names?: string[];
+  sanskrit_names?: string[];
+  ingredient_quantities?: Record<string, string>;
+  ingredient_ratios?: Record<string, number>;
+  preparation_method?: string;
+  dosage_form?: string;
+  intended_use?: string;
+  therapeutic_claims?: string[];
+  geographical_source?: string;
+  language?: LanguageCode;
+}
+
+export interface FormulationAnalysisResponse {
+  formulation_name: string;
+  ingredients: string[];
+  botanical_entities: NormalizedBotanicalEntity[];
+  traditional_names: string[];
+  ratios: Record<string, number>;
+  preparation_method: string;
+  dosage_form: string;
+  claimed_use: string;
+  geographical_origin: string;
+  taxonomic_hierarchy: Record<string, string>;
+  mono_ingredient_flag: boolean;
+  classical_formulation_matches: Array<{
+    formulation_name: string;
+    statutory_reference: string;
+    matched_herbs_count: string;
+    dosage_form: string;
+    classical_indications: string;
+  }>;
+}
+
+export type TKRiskLevel = "CONFIRMED" | "LIKELY" | "POSSIBLE" | "NOT FOUND" | "INSUFFICIENT EVIDENCE";
+export type PatentabilityRiskLevel = "LOW" | "MEDIUM" | "HIGH" | "INSUFFICIENT_EVIDENCE";
+export type EvidenceSupportStatus = "SUPPORTED" | "PARTIALLY_SUPPORTED" | "UNSUPPORTED";
+
+export interface IngredientRiskItem {
+  ingredient: string;
+  botanical_name: string;
+  traditional_name: string;
+  risk_level: TKRiskLevel;
+  citations: string[];
+  classical_source?: string;
+  rationale: string;
+}
+
+export interface TKRiskRequest {
+  formulation_name?: string;
+  ingredients: string[];
+  botanical_names?: string[];
+  therapeutic_claims?: string[];
+  language?: LanguageCode;
+}
+
+export interface TKRiskResponse {
+  overall_tk_risk: TKRiskLevel;
+  ingredient_risks: IngredientRiskItem[];
+  potential_traditional_knowledge_overlap: string;
+  classical_formulation_matches: string[];
+  historical_revocation_precedents: string[];
+  evidence: CitedPassage[];
+  limitations: string[];
+}
+
+export interface ClaimVerification {
+  claim_text: string;
+  status: EvidenceSupportStatus;
+  supporting_passage?: string;
+  source_title?: string;
+  section?: string;
+  authority?: string;
+  confidence_score: number;
+}
+
+export interface ActionPlanStep {
+  step_number: number;
+  title: string;
+  description: string;
+  authority_or_portal: string;
+  statutory_basis?: string;
+  urgency: "REQUIRED" | "RECOMMENDED" | "OPTIONAL";
+}
+
+export interface ConfidenceExplanation {
+  level: "HIGH" | "MEDIUM" | "LOW";
+  score: number;
+  reasons_positive: string[];
+  warnings: string[];
+  abstain: boolean;
+  abstention_message?: string;
+}
+
+export interface PatentabilityRequest {
+  invention_title: string;
+  abstract_or_summary: string;
+  ingredients?: string[];
+  is_combination?: boolean;
+  claims?: string[];
+  jurisdiction?: JurisdictionType;
+  biological_source_country?: string;
+  language?: LanguageCode;
+  user_role?: string;
+}
+
+export interface PatentabilityResponse {
+  invention_title: string;
+  overall_risk: PatentabilityRiskLevel;
+  novelty_risk: PatentabilityRiskLevel;
+  section_3e_risk: PatentabilityRiskLevel;
+  section_3p_risk: PatentabilityRiskLevel;
+  tk_risk: TKRiskLevel;
+  biodiversity_review: string;
+  claim_verifications: ClaimVerification[];
+  confidence: ConfidenceExplanation;
+  evidence: CitedPassage[];
+  action_plan: ActionPlanStep[];
+  limitations: string[];
+  role_adapted_guidance: string;
+}
+
+export interface JurisdictionComparisonRow {
+  dimension: string;
+  india: string;
+  usa: string;
+  europe: string;
+  wipo_pct: string;
+  key_statutory_difference: string;
+  evidence_citation: string;
+}
+
+export interface JurisdictionComparisonRequest {
+  invention_title: string;
+  ingredients?: string[];
+  claims?: string[];
+  therapeutic_claims?: string[];
+  jurisdictions?: string[];
+  language?: LanguageCode;
+}
+
+export interface JurisdictionComparisonResponse {
+  invention_title: string;
+  comparison_matrix: JurisdictionComparisonRow[];
+  overall_summary: string;
+  action_plan: ActionPlanStep[];
+  evidence: CitedPassage[];
+}
+

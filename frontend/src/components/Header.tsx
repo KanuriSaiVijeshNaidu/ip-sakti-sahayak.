@@ -96,6 +96,42 @@ export default function Header({
             </span>
           </button>
 
+          {/* Formulations Engine */}
+          <Link
+            href="/formulation-analyzer"
+            className="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-gray-700 bg-white hover:bg-gray-50 rounded-xl transition-all border border-gray-200/90 shadow-2xs btn-spring shrink-0 cursor-pointer"
+            title="Formulation Analyzer"
+          >
+            <span>Formulations</span>
+          </Link>
+
+          {/* Patentability Engine */}
+          <Link
+            href="/patentability"
+            className="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-gray-700 bg-white hover:bg-gray-50 rounded-xl transition-all border border-gray-200/90 shadow-2xs btn-spring shrink-0 cursor-pointer"
+            title="Patentability Assessment"
+          >
+            <span>Patentability</span>
+          </Link>
+
+          {/* TK Risk Engine */}
+          <Link
+            href="/tk-risk"
+            className="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-gray-700 bg-white hover:bg-gray-50 rounded-xl transition-all border border-gray-200/90 shadow-2xs btn-spring shrink-0 cursor-pointer"
+            title="Traditional Knowledge Risk"
+          >
+            <span>TK Risk</span>
+          </Link>
+
+          {/* Compare Jurisdictions */}
+          <Link
+            href="/compare-jurisdictions"
+            className="hidden lg:flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-gray-700 bg-white hover:bg-gray-50 rounded-xl transition-all border border-gray-200/90 shadow-2xs btn-spring shrink-0 cursor-pointer"
+            title="Compare Jurisdictions (IN, US, EP, WIPO)"
+          >
+            <span>Compare</span>
+          </Link>
+
           {/* User Profile Button — Links to /profile (User Details Page) */}
           {userProfile.isLoggedIn ? (
             <Link

@@ -108,12 +108,22 @@ def create_app() -> FastAPI:
     from backend.app.api.routes.product_guidance import router as pg_router
     from backend.app.api.routes.admin import router as admin_router
     from backend.app.api.routes.blockchain import router as blockchain_router
+    from backend.app.api.routes.formulation import router as formulation_router
+    from backend.app.api.routes.tk_risk import router as tk_risk_router
+    from backend.app.api.routes.patentability import router as patentability_router
+    from backend.app.api.routes.compare import router as compare_router
+    from backend.app.api.routes.evaluation import router as evaluation_router
 
     prefix = settings.api_prefix  # "/api"
     app.include_router(chat_router, prefix=prefix, tags=["Chat"])
     app.include_router(pg_router, prefix=prefix, tags=["Product Guidance"])
     app.include_router(admin_router, prefix=prefix, tags=["Admin"])
     app.include_router(blockchain_router, prefix=prefix, tags=["Blockchain"])
+    app.include_router(formulation_router, prefix=prefix, tags=["Formulation Analyzer"])
+    app.include_router(tk_risk_router, prefix=prefix, tags=["TK Risk Engine"])
+    app.include_router(patentability_router, prefix=prefix, tags=["Patentability Engine"])
+    app.include_router(compare_router, prefix=prefix, tags=["Jurisdiction Comparison"])
+    app.include_router(evaluation_router, prefix=prefix, tags=["Evaluation Benchmark"])
 
     @app.get(f"{prefix}/health", tags=["Health"])
     async def health():
