@@ -1,0 +1,20 @@
+{
+  "document_id": "DE-DPMA-PATG",
+  "title": "German Patent Act (Patentgesetz - PatG) & DPMA Examination Standards",
+  "authority": "Deutsches Patent- und Markenamt (DPMA)",
+  "jurisdiction": "DE",
+  "domain": "patents",
+  "source_url": "https://www.gesetze-im-internet.de/patg/",
+  "document_hash": "65c00af9ff659bd6714b17277fc9261eb221a63178495a77695466c881c39d05",
+  "section_count": 2,
+  "sections": [
+    {
+      "title": "Section 1: PatG § 1 — Patentfähige Erfindungen (Patentable Inventions)",
+      "content": "Section 1: PatG § 1 — Patentfähige Erfindungen (Patentable Inventions)\n\n(1) Patente werden für Erfindungen auf allen Gebieten der Technik erteilt, sofern sie neu sind, auf einer erfinderischen Tätigkeit beruhen und gewerblich anwendbar sind.\n(Patents are granted for inventions in any technical field, provided that they are new, involve an inventive step, and are industrially applicable.)\n(2) Nicht als Erfindungen im Sinne des Absatzes 1 werden insbesondere angesehen:\n1. Entdeckungen sowie wissenschaftliche Theorien und mathematische Methoden;\n(Discoveries as well as scientific theories and mathematical methods are not regarded as inventions.)"
+    },
+    {
+      "title": "Section 2: Phytopharmaceuticals & Herbal Extracts in German Practice",
+      "content": "Section 2: Phytopharmaceuticals & Herbal Extracts in German Practice\n\nUnder German patent practice (DPMA and the Federal Patent Court - BPatG):\n1. Standardized Extract Claims (\"Standardisierter Gesamtextrakt\"): A complex herbal extract may be patented as a composition if it is defined by a standardized extraction solvent, drug-to-extract ratio (Droge-Extrakt-Verhältnis DEV), and quantitative marker substance ranges (Leitsubstanzen).\n2. Combination Formulations: Combining traditional herbal actives requires proof of unexpected therapeutic synergy (überraschender synergistischer Effekt). Mere aggregation of known pharmacological effects of herbal components is rejected for lack of inventive step under PatG § 4.\n3. Prior Art Defense: Classical Ayurvedic literature and TKDL publications constitute state of the art under PatG § 3 (Stand der Technik)."
+    }
+  ]
+}

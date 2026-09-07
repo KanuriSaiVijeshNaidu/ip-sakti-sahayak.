@@ -272,18 +272,18 @@ async def _main() -> None:
         format="%(asctime)s | %(levelname)s | %(message)s",
         stream=sys.stdout,
     )
-    print("\n╔═════════════════════════════════════════════════════════════╗")
-    print("║   AYURLEX Docling-Powered Legal Document Ingestion CLI      ║")
-    print("╚═════════════════════════════════════════════════════════════╝\n")
+    print("\n+-------------------------------------------------------------+")
+    print("|   AYURLEX Docling-Powered Legal Document Ingestion CLI      |")
+    print("+-------------------------------------------------------------+\n")
 
     from backend.app.ingestion.docling_pipeline import run_pipeline
     total_chunks, doclings, triples = run_pipeline()
 
-    print("\n✅ Docling Ingestion Summary:")
+    print("\n[OK] Docling Ingestion Summary:")
     print(f"   Docling documents built : {doclings}")
     print(f"   Noise-free chunks added : {total_chunks}")
     print(f"   Contrastive triples     : {triples}")
-    print("\n🚀 Ingestion successfully completed via Docling Document Engine!\n")
+    print("\n[SUCCESS] Ingestion successfully completed via Docling Document Engine!\n")
 
 
 if __name__ == "__main__":

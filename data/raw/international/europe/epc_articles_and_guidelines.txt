@@ -1,0 +1,41 @@
+# European Patent Convention (EPC) & EPO Examination Guidelines
+# Jurisdiction: EU / EP | Authority: European Patent Office (EPO)
+# Document Type: INTERNATIONAL TREATY & OFFICIAL GUIDANCE
+
+## Section 1: EPC Article 52 — Patentable Inventions
+(1) European patents shall be granted for any inventions, in all fields of technology, provided that they are new, involve an inventive step and are susceptible of industrial application.
+(2) The following in particular shall not be regarded as inventions:
+(a) discoveries, scientific theories and mathematical methods;
+(b) aesthetic creations;
+(c) schemes, rules and methods for performing mental acts, playing games or doing business;
+(d) presentations of information.
+
+### Traditional Medicine & Natural Substance Doctrine at the EPO
+Under EPO Guidelines for Examination G-II, 3.1:
+If a substance found in nature has first to be isolated from its surroundings and a process for obtaining it is developed, that process is patentable. Moreover, if this substance can be properly characterized by its structure, chemical fingerprint, or extraction parameters, and it has a technical effect, the substance per se may be patentable. However, mere natural extracts without technical modification are considered non-patentable discoveries.
+
+## Section 2: EPC Article 53 — Exceptions to Patentability
+European patents shall not be granted in respect of:
+(a) inventions the commercial exploitation of which would be contrary to "ordre public" or morality;
+(b) plant or animal varieties or essentially biological processes for the production of plants or animals;
+(c) methods for treatment of the human or animal body by surgery or therapy and diagnostic methods practiced on the human or animal body (this provision does not apply to products, substances and compositions for use in any of these methods).
+
+### First & Second Medical Use Claims for Herbal Formulations
+While therapeutic treatment methods are excluded under Article 53(c), the EPO allows substance-for-use claims:
+- First Medical Use (Article 54(4)): "Substance X for use as a medicament."
+- Second Medical Use (Article 54(5)): "Substance X for use in the treatment of disease Y."
+If an Ayurvedic plant extract is already known for one therapeutic use in classical treatises, a novel second medical indication can be patented under Article 54(5) provided the technical therapeutic effect is proven and non-obvious.
+
+## Section 3: EPC Article 54 — Absolute Novelty Standard
+(1) An invention shall be considered to be new if it does not form part of the state of the art.
+(2) The state of the art shall be held to comprise everything made available to the public by means of a written or oral description, by use, or in any other way, before the date of filing of the European patent application.
+Classical Sanskrit treatises, Indian government gazettes, and TKDL records constitute prior art under Article 54(2) regardless of language or geographic location.
+
+## Section 4: EPC Article 56 — Inventive Step & The Problem-Solution Approach
+An invention shall be considered as involving an inventive step if, having regard to the state of the art, it is not obvious to a person skilled in the art.
+Under the Problem-Solution Approach applied by the EPO Technical Boards of Appeal:
+1. Identify the closest prior art (e.g. classical Ayurvedic formulation);
+2. Formulate the objective technical problem based on the technical effect achieved;
+3. Determine whether the skilled person would have arrived at the claimed combination:
+Precedent T 181/82 & T 386/89: In synergistic herbal mixtures, the presence of a surprising synergistic effect must be credible and substantiated by comparative experimental data across the entire claimed range.
+Precedent: Revocation of Neem Patent EP 0436257 (Method for controlling fungi on plants using Neem oil). Revoked in 2000 by the EPO Opposition Division for lack of novelty and inventive step based on prior traditional use in India.

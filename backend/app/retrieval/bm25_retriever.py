@@ -168,7 +168,7 @@ class BM25Retriever:
                 continue
             if domain and domain != "auto" and chunk_meta["domain"] != domain:
                 continue
-            if jurisdiction and jurisdiction != "auto" and chunk_meta["jurisdiction"] != jurisdiction:
+            if jurisdiction and jurisdiction not in ("auto", "GLOBAL", "ALL") and chunk_meta["jurisdiction"] != jurisdiction:
                 continue
             candidates.append(BM25Candidate(
                 chunk_id=chunk_meta["chunk_id"],

@@ -1,0 +1,37 @@
+# USPTO Authoritative Patent Statutes & Examination Guidance (35 U.S.C. & MPEP)
+# Jurisdiction: US | Authority: United States Patent and Trademark Office (USPTO)
+# Document Type: STATUTE & OFFICIAL GUIDANCE
+
+## Section 1: 35 U.S.C. 101 — Inventions Patentable & Natural Product Exclusions
+Whoever invents or discovers any new and useful process, machine, manufacture, or composition of matter, or any new and useful improvement thereof, may obtain a patent therefor, subject to the conditions and requirements of this title.
+
+### Judicial Exceptions (Alice/Mayo Framework) in Herbal & Natural Products
+Under the Supreme Court decisions in Association for Molecular Pathology v. Myriad Genetics (2013) and Mayo Collaborative Services v. Prometheus Laboratories (2012), naturally occurring biological materials, isolated botanical chemicals, and unrefined plant extracts are non-patentable judicial exceptions (products of nature).
+To satisfy 35 U.S.C. 101, an herbal or Ayurvedic formulation claim must demonstrate:
+1. Marked different characteristics (structural, physical, or chemical) from the natural biological source; OR
+2. An inventive concept ("significantly more") that transforms the natural product into a specific, non-conventional pharmaceutical delivery matrix, standardized synergistic composition, or synthetic derivative.
+
+## Section 2: 35 U.S.C. 102 — Conditions for Patentability; Novelty and Prior Art
+A person shall be entitled to a patent unless:
+(1) the claimed invention was patented, described in a printed publication, or in public use, on sale, or otherwise available to the public before the effective filing date of the claimed invention; or
+(2) the claimed invention was described in a patent issued under section 151, or in an application for patent published or deemed published under section 122(b).
+
+### Traditional Knowledge Prior Art under 35 U.S.C. 102
+Under the Leahy-Smith America Invents Act (AIA), the geographical distinction for prior art has been eliminated. Printed publications anywhere in the world—including classical Ayurvedic Samhitas (Charaka Samhita, Sushruta Samhita), Indian Pharmacopoeial monographs (API), and digitized public traditional knowledge (TKDL)—qualify as prior art under 35 U.S.C. 102(a)(1) as of their publication date.
+Precedent: Revocation of US Patent 5,401,504 (Curcuma longa / Turmeric for Wound Healing). Granted in 1995 to the University of Mississippi Medical Center, all claims were revoked by the USPTO in 1997 after the CSIR submitted 32 classical printed publications establishing lack of novelty under 35 U.S.C. 102.
+
+## Section 3: 35 U.S.C. 103 — Conditions for Patentability; Non-Obvious Subject Matter
+A patent for a claimed invention may not be obtained, notwithstanding that the claimed invention is not identically disclosed, if the differences between the claimed invention and the prior art are such that the claimed invention as a whole would have been obvious before the effective filing date of the claimed invention to a person having ordinary skill in the art to which the claimed invention pertains.
+
+### Synergism and Combination Therapies under U.S. Law
+Under KSR International Co. v. Teleflex Inc. (2007), combining known active herbal ingredients (e.g., Curcumin + Piperine) is prima facie obvious if the combination yields predictable results or represents a design choice.
+To rebut obviousness under 35 U.S.C. 103:
+1. The applicant must demonstrate "unexpected results" or synergistic bio-enhancement;
+2. Quantitative bioassay data comparing the combination against the individual components must be submitted via Rule 132 declaration;
+3. The synergistic improvement must be commensurate in scope with the claimed dosage range.
+
+## Section 4: MPEP Section 2163 — Written Description and Enablement (35 U.S.C. 112)
+Every botanical patent application must provide full, clear, concise, and exact description of:
+1. The precise botanical species and plant part utilized (e.g., Curcuma longa rhizome);
+2. Standardized extraction solvent, temperature, yield, and HPLC/LC-MS chemical fingerprint;
+3. Enablement allowing a person skilled in the art of pharmacognosy to reproduce the therapeutic effect without undue experimentation.

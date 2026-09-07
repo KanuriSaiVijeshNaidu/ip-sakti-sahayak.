@@ -276,7 +276,7 @@ class VectorRetriever:
             meta = self._chunk_meta.get(chunk_id, {})
             if domain and domain != "auto" and meta.get("domain") != domain:
                 continue
-            if jurisdiction and jurisdiction != "auto" and meta.get("jurisdiction") != jurisdiction:
+            if jurisdiction and jurisdiction not in ("auto", "GLOBAL", "ALL") and meta.get("jurisdiction") != jurisdiction:
                 continue
             candidates.append(VectorCandidate(
                 chunk_id=chunk_id,

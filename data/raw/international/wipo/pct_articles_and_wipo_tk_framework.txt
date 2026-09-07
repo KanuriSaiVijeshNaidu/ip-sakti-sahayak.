@@ -1,0 +1,19 @@
+# Patent Cooperation Treaty (PCT) & WIPO Traditional Knowledge Treaties
+# Jurisdiction: WO / International | Authority: World Intellectual Property Organization (WIPO)
+# Document Type: INTERNATIONAL TREATIES & FRAMEWORKS
+
+## Section 1: PCT Article 33 — The International Preliminary Examination
+(1) The objective of the international preliminary examination is to formulate a preliminary and non-binding opinion on the questions whether the claimed invention appears to be novel, to involve an inventive step (to be non-obvious), and to be industrially applicable.
+(2) For the purposes of the international preliminary examination, a claimed invention shall be considered novel if it is not anticipated by the prior art as defined in the Regulations.
+(3) For the purposes of the international preliminary examination, a claimed invention shall be considered to involve an inventive step if, having regard to the prior art as defined in the Regulations, it is not, at the prescribed relevant date, obvious to a person skilled in the art.
+
+## Section 2: PCT Article 8 — Claiming Priority
+(1) The international application may contain a declaration claiming the priority of one or more earlier applications filed in or for any country party to the Paris Convention for the Protection of Industrial Property or any Member of the World Trade Organization.
+(2) Priority window: 12 months from the filing date of the initial Indian priority application (Form 1).
+
+## Section 3: WIPO Diplomatic Treaty on IP, Genetic Resources and Associated TK (May 2024)
+Adopted by consensus at the WIPO Diplomatic Conference in Geneva (May 24, 2024):
+Article 3 — Mandatory Disclosure Requirement:
+1. Patent applicants are required to disclose the country of origin of the genetic resources if the claims in a patent application are materially based on genetic resources;
+2. Where the claims are materially based on traditional knowledge associated with genetic resources, applicants must disclose the indigenous peoples or local community who provided the traditional knowledge;
+3. Information sharing systems: Contracting parties are mandated to establish digital information systems (databases of genetic resources and traditional knowledge, modeled after India's TKDL) in consultation with local communities, accessible to patent examiners worldwide to prevent wrongful patent grants.
