@@ -36,8 +36,10 @@ def parse_patent_to_docling(raw_record: Dict[str, Any], country: str) -> Dict[st
                 "is_independent": "according to" not in c_text.lower() and "claim" not in c_text.lower()[:30]
             })
     elif isinstance(claims_raw, str):
-        # Split string claims into separate numbered claims
-        claim_blocks = re.split(r"(?:\n|^)(?=\d+[\.\s\)])", claims_raw)
+        # Split on whitespace/newline followed by claim numbering
+        claim_blocks = re.split(r"(?:\s+|\n|^)(?=\d+\.\s+[A-Z])", claims_raw)
+        if len(claim_blocks) <= 1:
+            claim_blocks = re.split(r"(?:\n|^)(?=\d+[\.\s\)])", claims_raw)
         for i, c_text in enumerate(claim_blocks, 1):
             c_text = c_text.strip()
             if not c_text:
@@ -99,7 +101,6 @@ def parse_patent_to_docling(raw_record: Dict[str, Any], country: str) -> Dict[st
         }
     }
 
-    # Add background and summary if present (HUPD)
     if raw_record.get("background"):
         docling_doc["body"]["sections"].insert(1, {
             "heading": "Background of the Invention",

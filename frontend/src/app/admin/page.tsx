@@ -7,6 +7,8 @@ import CandidateRow from "@/components/admin/CandidateRow";
 import PipelineStats from "@/components/admin/PipelineStats";
 import BenchmarkRunner from "@/components/admin/BenchmarkRunner";
 import UserDirectory from "@/components/admin/UserDirectory";
+import DataSufficiencyDashboard from "@/components/admin/DataSufficiencyDashboard";
+import { DatabaseFillCheck } from "react-bootstrap-icons";
 import DomainSelector from "@/components/DomainSelector";
 import {
   Search,
@@ -20,7 +22,7 @@ import {
 } from "react-bootstrap-icons";
 import Link from "next/link";
 
-type Tab = "trace" | "benchmark" | "users";
+type Tab = "trace" | "benchmark" | "users" | "sufficiency";
 
 const DOMAIN_SAMPLE_QUERIES: Record<string, string> = {
   patents: "Can I patent an Ayurvedic herbal formulation with Ashwagandha?",
@@ -97,9 +99,10 @@ export default function AdminPage() {
         {/* Tab switcher */}
         <div className="flex gap-1 bg-white border border-gray-200 rounded-xl p-1 w-fit">
           {([
-            { key: "trace",     icon: Search,       label: "Retrieval Trace" },
-            { key: "benchmark", icon: BarChartFill, label: "Benchmark" },
-            { key: "users",     icon: PeopleFill,   label: "Users & Consultation Vaults" },
+            { key: "trace",       icon: Search,            label: "Retrieval Trace" },
+            { key: "sufficiency", icon: DatabaseFillCheck, label: "Data Sufficiency Audit" },
+            { key: "benchmark",   icon: BarChartFill,      label: "Benchmark" },
+            { key: "users",       icon: PeopleFill,        label: "Users & Consultation Vaults" },
           ] as { key: Tab; icon: React.ElementType; label: string }[]).map(({ key, icon: Icon, label }) => (
             <button
               key={key}
@@ -245,6 +248,13 @@ export default function AdminPage() {
         {tab === "benchmark" && (
           <div className="bg-white rounded-2xl border border-gray-200 p-6">
             <BenchmarkRunner />
+          </div>
+        )}
+
+        {/* ── Data Sufficiency Audit tab ────────────────────────────────────── */}
+        {tab === "sufficiency" && (
+          <div className="bg-white rounded-2xl border border-gray-200 p-6">
+            <DataSufficiencyDashboard />
           </div>
         )}
 

@@ -1,0 +1,1117 @@
+{
+  "NekoNeko512/wipo-semiconductors": {
+    "author": "NekoNeko512",
+    "downloads": 114,
+    "likes": 4,
+    "tags": [
+      "size_categories:10K<n<100K",
+      "format:arrow",
+      "modality:text",
+      "library:datasets",
+      "library:mlcroissant",
+      "region:us"
+    ],
+    "files": [
+      {
+        "path": ".gitattributes",
+        "size_mb": 0.0
+      },
+      {
+        "path": "data-00000-of-00006.arrow",
+        "size_mb": 420.46
+      },
+      {
+        "path": "data-00001-of-00006.arrow",
+        "size_mb": 420.97
+      },
+      {
+        "path": "data-00002-of-00006.arrow",
+        "size_mb": 425.57
+      },
+      {
+        "path": "data-00003-of-00006.arrow",
+        "size_mb": 419.29
+      },
+      {
+        "path": "data-00004-of-00006.arrow",
+        "size_mb": 418.64
+      },
+      {
+        "path": "data-00005-of-00006.arrow",
+        "size_mb": 431.04
+      },
+      {
+        "path": "dataset_info.json",
+        "size_mb": 0.0
+      },
+      {
+        "path": "state.json",
+        "size_mb": 0.0
+      }
+    ],
+    "card_preview": ""
+  },
+  "FrancophonIA/COVID-19_WIPO": {
+    "author": "FrancophonIA",
+    "downloads": 27,
+    "likes": 0,
+    "tags": [
+      "task_categories:translation",
+      "language:eng",
+      "language:ara",
+      "language:deu",
+      "language:spa",
+      "language:fra",
+      "language:por",
+      "language:rus",
+      "language:zho",
+      "region:us"
+    ],
+    "files": [
+      {
+        "path": ".gitattributes",
+        "size_mb": 0.0
+      },
+      {
+        "path": "README.md",
+        "size_mb": 0.0
+      },
+      {
+        "path": "data/en-ar.tmx",
+        "size_mb": 0.16
+      },
+      {
+        "path": "data/en-de.tmx",
+        "size_mb": 0.06
+      },
+      {
+        "path": "data/en-es.tmx",
+        "size_mb": 0.4
+      },
+      {
+        "path": "data/en-fr.tmx",
+        "size_mb": 0.4
+      },
+      {
+        "path": "data/en-pt.tmx",
+        "size_mb": 0.06
+      },
+      {
+        "path": "data/en-ru.tmx",
+        "size_mb": 0.43
+      },
+      {
+        "path": "data/en-zh.tmx",
+        "size_mb": 0.01
+      }
+    ],
+    "card_preview": "---\nlanguage:\n- eng\n- ara\n- deu\n- spa\n- fra\n- por\n- rus\n- zho\nmultilingulality:\n- multilingual\ntask_categories:\n- translation\nviewer: false\n---\n\n> [!NOTE]\n> Dataset origin: https://live.european-language-grid.eu/catalogue/corpus/21211\n\n## Description\nMultilingual (EN, ES, FR, DE, PT, RU, AR, ZH) corpus acquired (10th August 2020) from website (https://www.wipo.int/) of the World intellectual Property Organization. It contains 2427 TUs in total.\n\n## Citation\n```\nCOVID-19 WIPO dataset v2. Multilingual (EN, ES, FR, DE, PT, RU, AR, ZH) (2020, August 11). Version 2.0. [Dataset (Text corpus)]. Source: European Language Grid. https://live.european-language-grid.eu/catalogue/corpus/21211\n```"
+  },
+  "datalyes/DAPFAM_patent": {
+    "author": "datalyes",
+    "downloads": 497,
+    "likes": 9,
+    "tags": [
+      "task_categories:text-retrieval",
+      "language:en",
+      "license:cc-by-nc-sa-4.0",
+      "size_categories:10K<n<100K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "arxiv:2506.22141",
+      "region:us",
+      "patents",
+      "retrieval",
+      "information\u2011retrieval",
+      "cross\u2011domain",
+      "patent",
+      "fulltext"
+    ],
+    "files": [
+      {
+        "path": ".gitattributes",
+        "size_mb": 0.0
+      },
+      {
+        "path": "README.md",
+        "size_mb": 0.01
+      },
+      {
+        "path": "corpus.parquet",
+        "size_mb": 1096.66
+      },
+      {
+        "path": "qrels_all.parquet",
+        "size_mb": 0.79
+      },
+      {
+        "path": "queries.parquet",
+        "size_mb": 59.76
+      }
+    ],
+    "card_preview": "---\nlanguage:\n- en\nlicense: cc-by-nc-sa-4.0\nsize_categories:\n- 10K<n<100K\npretty_name: DAPFAM \u2013\u00a0Domain\u2011Aware Patent Retrieval at the Family level\ntags:\n- patents\n- retrieval\n- information\u2011retrieval\n- cross\u2011domain\n- patent\n- fulltext\ntask_categories:\n- text-retrieval\nconfigs:\n- config_name: corpus\n  data_files: corpus.parquet\n- config_name: queries\n  data_files: queries.parquet\n- config_name: relations\n  data_files: qrels_all.parquet\n---\n\n# **DAPFAM** dataset\n\n> **What\u2019s new (Sept\u00a02025)** \u2014 **DAPFAM patent family retrieval tasks are now in MTEB.** 18 tasks (ALL / IN / OUT \u00d7 3 query views \u00d7 3 target views) are available, including the 6 main ones used in our paper. You can benchmark any model with a single script and reproduce the paper\u2019s results by selecting the same encoder (Snowflake/snowflake-arctic-embed-m-v2.0). Our paper used int8 quantization for hardware reasons; results may vary very slightly (not significantly) if you run in float16/32.\n\n### DAPFAM \u2014 A Domain\u2011Aware Family\u2011leve"
+  },
+  "AI-Growth-Lab/patents_claims_1.5m_traim_test": {
+    "author": "AI-Growth-Lab",
+    "downloads": 316,
+    "likes": 10,
+    "tags": [
+      "size_categories:1M<n<10M",
+      "format:csv",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "files": [
+      {
+        "path": ".gitattributes",
+        "size_mb": 0.0
+      },
+      {
+        "path": "df_claim_test_1M_pre_duplicates_removed_663.csv",
+        "size_mb": 269.55
+      },
+      {
+        "path": "df_claim_train_1M_pre_duplicates_removed_663.csv",
+        "size_mb": 3099.48
+      }
+    ],
+    "card_preview": ""
+  },
+  "patent/AIPD_nlp_granted_claims": {
+    "author": "patent",
+    "downloads": 87,
+    "likes": 1,
+    "tags": [
+      "size_categories:1M<n<10M",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "files": [
+      {
+        "path": ".gitattributes",
+        "size_mb": 0.0
+      },
+      {
+        "path": "README.md",
+        "size_mb": 0.0
+      },
+      {
+        "path": "data/test-00000-of-00001-c623f239b6fc6455.parquet",
+        "size_mb": 26.8
+      },
+      {
+        "path": "data/train-00000-of-00003-f713242ad380a88b.parquet",
+        "size_mb": 160.93
+      },
+      {
+        "path": "data/train-00001-of-00003-673ee259e7c547a0.parquet",
+        "size_mb": 160.74
+      },
+      {
+        "path": "data/train-00002-of-00003-1b87dbbc5248089c.parquet",
+        "size_mb": 160.91
+      },
+      {
+        "path": "data/valid-00000-of-00001-4b4154f6c153765b.parquet",
+        "size_mb": 26.66
+      }
+    ],
+    "card_preview": "---\nconfigs:\n- config_name: default\n  data_files:\n  - split: train\n    path: data/train-*\n  - split: test\n    path: data/test-*\n  - split: valid\n    path: data/valid-*\ndataset_info:\n  features:\n  - name: patent_num\n    dtype: int64\n  - name: claim_num1\n    dtype: int64\n  - name: claim_num2\n    dtype: int64\n  - name: instruction\n    dtype: string\n  - name: input\n    dtype: string\n  - name: output\n    dtype: string\n  splits:\n  - name: train\n    num_bytes: 1311491690.1458514\n    num_examples: 906087\n  - name: test\n    num_bytes: 72861855.63886473\n    num_examples: 50339\n  - name: valid\n    num_bytes: 72860408.21528383\n    num_examples: 50338\n  download_size: 562077206\n  dataset_size: 1457213954.0\n---\n# Dataset Card for \"AIPD_nlp_granted_claims\"\n\n[More Information needed](https://github.com/huggingface/datasets/blob/main/CONTRIBUTING.md#how-to-contribute-to-the-dataset-cards)"
+  },
+  "bikashpatra/sample_patent_claims_labelled": {
+    "author": "bikashpatra",
+    "downloads": 24,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "files": [
+      {
+        "path": ".gitattributes",
+        "size_mb": 0.0
+      },
+      {
+        "path": "README.md",
+        "size_mb": 0.0
+      },
+      {
+        "path": "data/train-00000-of-00001.parquet",
+        "size_mb": 0.0
+      },
+      {
+        "path": "data/validation-00000-of-00001.parquet",
+        "size_mb": 0.0
+      }
+    ],
+    "card_preview": "---\ndataset_info:\n  features:\n  - name: tokens\n    sequence: string\n  - name: ner_tags\n    sequence:\n      class_label:\n        names:\n          '0': I-Product\n          '1': I-Machine\n          '2': I-System\n          '3': B-Machine\n          '4': B-Product\n          '5': O\n          '6': B-Method of Use\n          '7': I-Method of Use\n          '8': B-System\n  splits:\n  - name: train\n    num_bytes: 283\n    num_examples: 1\n  - name: validation\n    num_bytes: 1328\n    num_examples: 1\n  download_size: 4666\n  dataset_size: 1611\nconfigs:\n- config_name: default\n  data_files:\n  - split: train\n    path: data/train-*\n  - split: validation\n    path: data/validation-*\n---\n"
+  },
+  "mhurhangee/ep-patent-all-claims": {
+    "author": "mhurhangee",
+    "downloads": 57,
+    "likes": 0,
+    "tags": [
+      "language:en",
+      "license:cc-by-4.0",
+      "size_categories:1M<n<10M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us",
+      "patents",
+      "claims",
+      "legal",
+      "gpt-training"
+    ],
+    "files": [
+      {
+        "path": ".gitattributes",
+        "size_mb": 0.0
+      },
+      {
+        "path": "README.md",
+        "size_mb": 0.0
+      },
+      {
+        "path": "data/test-00000-of-00001.parquet",
+        "size_mb": 17.63
+      },
+      {
+        "path": "data/train-00000-of-00006.parquet",
+        "size_mb": 140.52
+      },
+      {
+        "path": "data/train-00001-of-00006.parquet",
+        "size_mb": 140.57
+      },
+      {
+        "path": "data/train-00002-of-00006.parquet",
+        "size_mb": 140.33
+      },
+      {
+        "path": "data/train-00003-of-00006.parquet",
+        "size_mb": 140.11
+      },
+      {
+        "path": "data/train-00004-of-00006.parquet",
+        "size_mb": 140.46
+      },
+      {
+        "path": "data/train-00005-of-00006.parquet",
+        "size_mb": 140.58
+      },
+      {
+        "path": "data/validation-00000-of-00001.parquet",
+        "size_mb": 17.6
+      }
+    ],
+    "card_preview": "---\nlicense: cc-by-4.0\nlanguage:\n- en\ntags:\n- patents\n- claims\n- legal\n- gpt-training\n---\n\n# Patent All Claims\n\nEP granted claim sets (indepdendent and dependent claims). One claim per line. Claims from 20210915-20250806 \n\n## Splits\n- Train: 96%\n- Validation: 2%\n- Test: 2%\n\n## Usage\n```python\nfrom datasets import load_dataset\nds = load_dataset(\"mhurhangee/ep-patent-all-claims\")\n```\n"
+  },
+  "NortheasternUniversity/big_patent": {
+    "author": "NortheasternUniversity",
+    "downloads": 6008,
+    "likes": 72,
+    "tags": [
+      "task_categories:summarization",
+      "annotations_creators:no-annotation",
+      "language_creators:found",
+      "multilinguality:monolingual",
+      "source_datasets:original",
+      "language:en",
+      "license:cc-by-4.0",
+      "size_categories:1M<n<10M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "arxiv:1906.03741",
+      "region:us",
+      "patent-summarization"
+    ],
+    "files": [
+      {
+        "path": ".gitattributes",
+        "size_mb": 0.0
+      },
+      {
+        "path": "README.md",
+        "size_mb": 0.01
+      },
+      {
+        "path": "a/test-00000-of-00001.parquet",
+        "size_mb": 125.26
+      },
+      {
+        "path": "a/train-00000-of-00012.parquet",
+        "size_mb": 187.41
+      },
+      {
+        "path": "a/train-00001-of-00012.parquet",
+        "size_mb": 187.29
+      },
+      {
+        "path": "a/train-00002-of-00012.parquet",
+        "size_mb": 187.17
+      },
+      {
+        "path": "a/train-00003-of-00012.parquet",
+        "size_mb": 190.58
+      },
+      {
+        "path": "a/train-00004-of-00012.parquet",
+        "size_mb": 187.67
+      },
+      {
+        "path": "a/train-00005-of-00012.parquet",
+        "size_mb": 186.58
+      },
+      {
+        "path": "a/train-00006-of-00012.parquet",
+        "size_mb": 188.26
+      },
+      {
+        "path": "a/train-00007-of-00012.parquet",
+        "size_mb": 186.64
+      },
+      {
+        "path": "a/train-00008-of-00012.parquet",
+        "size_mb": 185.76
+      },
+      {
+        "path": "a/train-00009-of-00012.parquet",
+        "size_mb": 186.88
+      },
+      {
+        "path": "a/train-00010-of-00012.parquet",
+        "size_mb": 187.61
+      },
+      {
+        "path": "a/train-00011-of-00012.parquet",
+        "size_mb": 189.24
+      },
+      {
+        "path": "a/validation-00000-of-00001.parquet",
+        "size_mb": 124.63
+      },
+      {
+        "path": "all/test-00000-of-00005.parquet",
+        "size_mb": 163.79
+      },
+      {
+        "path": "all/test-00001-of-00005.parquet",
+        "size_mb": 171.76
+      },
+      {
+        "path": "all/test-00002-of-00005.parquet",
+        "size_mb": 160.66
+      },
+      {
+        "path": "all/test-00003-of-00005.parquet",
+        "size_mb": 163.39
+      },
+      {
+        "path": "all/test-00004-of-00005.parquet",
+        "size_mb": 155.11
+      },
+      {
+        "path": "all/train-00000-of-00077.parquet",
+        "size_mb": 202.32
+      },
+      {
+        "path": "all/train-00001-of-00077.parquet",
+        "size_mb": 202.35
+      },
+      {
+        "path": "all/train-00002-of-00077.parquet",
+        "size_mb": 204.24
+      },
+      {
+        "path": "all/train-00003-of-00077.parquet",
+        "size_mb": 203.58
+      },
+      {
+        "path": "all/train-00004-of-00077.parquet",
+        "size_mb": 203.42
+      },
+      {
+        "path": "all/train-00005-of-00077.parquet",
+        "size_mb": 201.77
+      },
+      {
+        "path": "all/train-00006-of-00077.parquet",
+        "size_mb": 202.56
+      },
+      {
+        "path": "all/train-00007-of-00077.parquet",
+        "size_mb": 199.76
+      },
+      {
+        "path": "all/train-00008-of-00077.parquet",
+        "size_mb": 202.13
+      },
+      {
+        "path": "all/train-00009-of-00077.parquet",
+        "size_mb": 203.4
+      },
+      {
+        "path": "all/train-00010-of-00077.parquet",
+        "size_mb": 204.15
+      },
+      {
+        "path": "all/train-00011-of-00077.parquet",
+        "size_mb": 166.92
+      },
+      {
+        "path": "all/train-00012-of-00077.parquet",
+        "size_mb": 162.73
+      },
+      {
+        "path": "all/train-00013-of-00077.parquet",
+        "size_mb": 163.78
+      },
+      {
+        "path": "all/train-00014-of-00077.parquet",
+        "size_mb": 163.37
+      },
+      {
+        "path": "all/train-00015-of-00077.parquet",
+        "size_mb": 162.64
+      },
+      {
+        "path": "all/train-00016-of-00077.parquet",
+        "size_mb": 163.7
+      },
+      {
+        "path": "all/train-00017-of-00077.parquet",
+        "size_mb": 162.07
+      },
+      {
+        "path": "all/train-00018-of-00077.parquet",
+        "size_mb": 163.13
+      },
+      {
+        "path": "all/train-00019-of-00077.parquet",
+        "size_mb": 163.48
+      },
+      {
+        "path": "all/train-00020-of-00077.parquet",
+        "size_mb": 163.14
+      },
+      {
+        "path": "all/train-00021-of-00077.parquet",
+        "size_mb": 216.64
+      },
+      {
+        "path": "all/train-00022-of-00077.parquet",
+        "size_mb": 255.04
+      },
+      {
+        "path": "all/train-00023-of-00077.parquet",
+        "size_mb": 253.31
+      },
+      {
+        "path": "all/train-00024-of-00077.parquet",
+        "size_mb": 256.3
+      },
+      {
+        "path": "all/train-00025-of-00077.parquet",
+        "size_mb": 256.11
+      },
+      {
+        "path": "all/train-00026-of-00077.parquet",
+        "size_mb": 259.02
+      },
+      {
+        "path": "all/train-00027-of-00077.parquet",
+        "size_mb": 241.7
+      },
+      {
+        "path": "all/train-00028-of-00077.parquet",
+        "size_mb": 161.93
+      },
+      {
+        "path": "all/train-00029-of-00077.parquet",
+        "size_mb": 161.35
+      },
+      {
+        "path": "all/train-00030-of-00077.parquet",
+        "size_mb": 158.89
+      },
+      {
+        "path": "all/train-00031-of-00077.parquet",
+        "size_mb": 153.36
+      },
+      {
+        "path": "all/train-00032-of-00077.parquet",
+        "size_mb": 153.31
+      },
+      {
+        "path": "all/train-00033-of-00077.parquet",
+        "size_mb": 153.15
+      },
+      {
+        "path": "all/train-00034-of-00077.parquet",
+        "size_mb": 152.96
+      },
+      {
+        "path": "all/train-00035-of-00077.parquet",
+        "size_mb": 153.21
+      },
+      {
+        "path": "all/train-00036-of-00077.parquet",
+        "size_mb": 197.11
+      },
+      {
+        "path": "all/train-00037-of-00077.parquet",
+        "size_mb": 202.47
+      },
+      {
+        "path": "all/train-00038-of-00077.parquet",
+        "size_mb": 204.59
+      },
+      {
+        "path": "all/train-00039-of-00077.parquet",
+        "size_mb": 202.11
+      },
+      {
+        "path": "all/train-00040-of-00077.parquet",
+        "size_mb": 203.84
+      },
+      {
+        "path": "all/train-00041-of-00077.parquet",
+        "size_mb": 204.22
+      },
+      {
+        "path": "all/train-00042-of-00077.parquet",
+        "size_mb": 205.11
+      },
+      {
+        "path": "all/train-00043-of-00077.parquet",
+        "size_mb": 205.21
+      },
+      {
+        "path": "all/train-00044-of-00077.parquet",
+        "size_mb": 204.58
+      },
+      {
+        "path": "all/train-00045-of-00077.parquet",
+        "size_mb": 203.64
+      },
+      {
+        "path": "all/train-00046-of-00077.parquet",
+        "size_mb": 205.09
+      },
+      {
+        "path": "all/train-00047-of-00077.parquet",
+        "size_mb": 202.97
+      },
+      {
+        "path": "all/train-00048-of-00077.parquet",
+        "size_mb": 204.35
+      },
+      {
+        "path": "all/train-00049-of-00077.parquet",
+        "size_mb": 202.51
+      },
+      {
+        "path": "all/train-00050-of-00077.parquet",
+        "size_mb": 202.92
+      },
+      {
+        "path": "all/train-00051-of-00077.parquet",
+        "size_mb": 204.25
+      },
+      {
+        "path": "all/train-00052-of-00077.parquet",
+        "size_mb": 195.48
+      },
+      {
+        "path": "all/train-00053-of-00077.parquet",
+        "size_mb": 181.17
+      },
+      {
+        "path": "all/train-00054-of-00077.parquet",
+        "size_mb": 181.51
+      },
+      {
+        "path": "all/train-00055-of-00077.parquet",
+        "size_mb": 181.51
+      },
+      {
+        "path": "all/train-00056-of-00077.parquet",
+        "size_mb": 183.3
+      },
+      {
+        "path": "all/train-00057-of-00077.parquet",
+        "size_mb": 182.47
+      },
+      {
+        "path": "all/train-00058-of-00077.parquet",
+        "size_mb": 181.4
+      },
+      {
+        "path": "all/train-00059-of-00077.parquet",
+        "size_mb": 180.14
+      },
+      {
+        "path": "all/train-00060-of-00077.parquet",
+        "size_mb": 180.66
+      },
+      {
+        "path": "all/train-00061-of-00077.parquet",
+        "size_mb": 182.01
+      },
+      {
+        "path": "all/train-00062-of-00077.parquet",
+        "size_mb": 182.54
+      },
+      {
+        "path": "all/train-00063-of-00077.parquet",
+        "size_mb": 182.33
+      },
+      {
+        "path": "all/train-00064-of-00077.parquet",
+        "size_mb": 181.07
+      },
+      {
+        "path": "all/train-00065-of-00077.parquet",
+        "size_mb": 181.96
+      },
+      {
+        "path": "all/train-00066-of-00077.parquet",
+        "size_mb": 182.84
+      },
+      {
+        "path": "all/train-00067-of-00077.parquet",
+        "size_mb": 182.35
+      },
+      {
+        "path": "all/train-00068-of-00077.parquet",
+        "size_mb": 181.53
+      },
+      {
+        "path": "all/train-00069-of-00077.parquet",
+        "size_mb": 184.71
+      },
+      {
+        "path": "all/train-00070-of-00077.parquet",
+        "size_mb": 185.32
+      },
+      {
+        "path": "all/train-00071-of-00077.parquet",
+        "size_mb": 182.31
+      },
+      {
+        "path": "all/train-00072-of-00077.parquet",
+        "size_mb": 182.73
+      },
+      {
+        "path": "all/train-00073-of-00077.parquet",
+        "size_mb": 183.18
+      },
+      {
+        "path": "all/train-00074-of-00077.parquet",
+        "size_mb": 182.52
+      },
+      {
+        "path": "all/train-00075-of-00077.parquet",
+        "size_mb": 182.6
+      },
+      {
+        "path": "all/train-00076-of-00077.parquet",
+        "size_mb": 183.68
+      },
+      {
+        "path": "all/validation-00000-of-00005.parquet",
+        "size_mb": 163.97
+      },
+      {
+        "path": "all/validation-00001-of-00005.parquet",
+        "size_mb": 170.37
+      },
+      {
+        "path": "all/validation-00002-of-00005.parquet",
+        "size_mb": 160.01
+      },
+      {
+        "path": "all/validation-00003-of-00005.parquet",
+        "size_mb": 163.23
+      },
+      {
+        "path": "all/validation-00004-of-00005.parquet",
+        "size_mb": 154.56
+      },
+      {
+        "path": "b/test-00000-of-00001.parquet",
+        "size_mb": 92.15
+      },
+      {
+        "path": "b/train-00000-of-00009.parquet",
+        "size_mb": 185.93
+      },
+      {
+        "path": "b/train-00001-of-00009.parquet",
+        "size_mb": 187.25
+      },
+      {
+        "path": "b/train-00002-of-00009.parquet",
+        "size_mb": 187.68
+      },
+      {
+        "path": "b/train-00003-of-00009.parquet",
+        "size_mb": 186.33
+      },
+      {
+        "path": "b/train-00004-of-00009.parquet",
+        "size_mb": 187.44
+      },
+      {
+        "path": "b/train-00005-of-00009.parquet",
+        "size_mb": 185.01
+      },
+      {
+        "path": "b/train-00006-of-00009.parquet",
+        "size_mb": 187.07
+      },
+      {
+        "path": "b/train-00007-of-00009.parquet",
+        "size_mb": 187.45
+      },
+      {
+        "path": "b/train-00008-of-00009.parquet",
+        "size_mb": 185.71
+      },
+      {
+        "path": "b/validation-00000-of-00001.parquet",
+        "size_mb": 93.09
+      },
+      {
+        "path": "c/test-00000-of-00001.parquet",
+        "size_mb": 91.91
+      },
+      {
+        "path": "c/train-00000-of-00010.parquet",
+        "size_mb": 164.17
+      },
+      {
+        "path": "c/train-00001-of-00010.parquet",
+        "size_mb": 163.31
+      },
+      {
+        "path": "c/train-00002-of-00010.parquet",
+        "size_mb": 166.66
+      },
+      {
+        "path": "c/train-00003-of-00010.parquet",
+        "size_mb": 161.24
+      },
+      {
+        "path": "c/train-00004-of-00010.parquet",
+        "size_mb": 164.99
+      },
+      {
+        "path": "c/train-00005-of-00010.parquet",
+        "size_mb": 165.97
+      },
+      {
+        "path": "c/train-00006-of-00010.parquet",
+        "size_mb": 163.89
+      },
+      {
+        "path": "c/train-00007-of-00010.parquet",
+        "size_mb": 168.25
+      },
+      {
+        "path": "c/train-00008-of-00010.parquet",
+        "size_mb": 165.18
+      },
+      {
+        "path": "c/train-00009-of-00010.parquet",
+        "size_mb": 164.21
+      },
+      {
+        "path": "c/validation-00000-of-00001.parquet",
+        "size_mb": 90.48
+      },
+      {
+        "path": "d/test-00000-of-00001.parquet",
+        "size_mb": 5.76
+      },
+      {
+        "path": "d/train-00000-of-00001.parquet",
+        "size_mb": 105.94
+      },
+      {
+        "path": "d/validation-00000-of-00001.parquet",
+        "size_mb": 5.86
+      },
+      {
+        "path": "e/test-00000-of-00001.parquet",
+        "size_mb": 19.62
+      },
+      {
+        "path": "e/train-00000-of-00002.parquet",
+        "size_mb": 176.76
+      },
+      {
+        "path": "e/train-00001-of-00002.parquet",
+        "size_mb": 177.46
+      },
+      {
+        "path": "e/validation-00000-of-00001.parquet",
+        "size_mb": 19.33
+      },
+      {
+        "path": "f/test-00000-of-00001.parquet",
+        "size_mb": 46.49
+      },
+      {
+        "path": "f/train-00000-of-00005.parquet",
+        "size_mb": 167.38
+      },
+      {
+        "path": "f/train-00001-of-00005.parquet",
+        "size_mb": 166.88
+      },
+      {
+        "path": "f/train-00002-of-00005.parquet",
+        "size_mb": 167.64
+      },
+      {
+        "path": "f/train-00003-of-00005.parquet",
+        "size_mb": 166.92
+      },
+      {
+        "path": "f/train-00004-of-00005.parquet",
+        "size_mb": 167.35
+      },
+      {
+        "path": "f/validation-00000-of-00001.parquet",
+        "size_mb": 46.61
+      },
+      {
+        "path": "g/test-00000-of-00001.parquet",
+        "size_mb": 187.96
+      },
+      {
+        "path": "g/train-00000-of-00018.parquet",
+        "size_mb": 187.69
+      },
+      {
+        "path": "g/train-00001-of-00018.parquet",
+        "size_mb": 186.03
+      },
+      {
+        "path": "g/train-00002-of-00018.parquet",
+        "size_mb": 186.96
+      },
+      {
+        "path": "g/train-00003-of-00018.parquet",
+        "size_mb": 186.59
+      },
+      {
+        "path": "g/train-00004-of-00018.parquet",
+        "size_mb": 186.76
+      },
+      {
+        "path": "g/train-00005-of-00018.parquet",
+        "size_mb": 187.16
+      },
+      {
+        "path": "g/train-00006-of-00018.parquet",
+        "size_mb": 187.88
+      },
+      {
+        "path": "g/train-00007-of-00018.parquet",
+        "size_mb": 188.81
+      },
+      {
+        "path": "g/train-00008-of-00018.parquet",
+        "size_mb": 187.47
+      },
+      {
+        "path": "g/train-00009-of-00018.parquet",
+        "size_mb": 186.9
+      },
+      {
+        "path": "g/train-00010-of-00018.parquet",
+        "size_mb": 188.01
+      },
+      {
+        "path": "g/train-00011-of-00018.parquet",
+        "size_mb": 187.62
+      },
+      {
+        "path": "g/train-00012-of-00018.parquet",
+        "size_mb": 187.0
+      },
+      {
+        "path": "g/train-00013-of-00018.parquet",
+        "size_mb": 186.64
+      },
+      {
+        "path": "g/train-00014-of-00018.parquet",
+        "size_mb": 185.91
+      },
+      {
+        "path": "g/train-00015-of-00018.parquet",
+        "size_mb": 186.18
+      },
+      {
+        "path": "g/train-00016-of-00018.parquet",
+        "size_mb": 186.92
+      },
+      {
+        "path": "g/train-00017-of-00018.parquet",
+        "size_mb": 186.06
+      },
+      {
+        "path": "g/validation-00000-of-00001.parquet",
+        "size_mb": 187.64
+      },
+      {
+        "path": "h/test-00000-of-00001.parquet",
+        "size_mb": 164.76
+      },
+      {
+        "path": "h/train-00000-of-00017.parquet",
+        "size_mb": 174.72
+      },
+      {
+        "path": "h/train-00001-of-00017.parquet",
+        "size_mb": 175.33
+      },
+      {
+        "path": "h/train-00002-of-00017.parquet",
+        "size_mb": 175.11
+      },
+      {
+        "path": "h/train-00003-of-00017.parquet",
+        "size_mb": 175.95
+      },
+      {
+        "path": "h/train-00004-of-00017.parquet",
+        "size_mb": 176.83
+      },
+      {
+        "path": "h/train-00005-of-00017.parquet",
+        "size_mb": 174.96
+      },
+      {
+        "path": "h/train-00006-of-00017.parquet",
+        "size_mb": 174.16
+      },
+      {
+        "path": "h/train-00007-of-00017.parquet",
+        "size_mb": 174.78
+      },
+      {
+        "path": "h/train-00008-of-00017.parquet",
+        "size_mb": 174.41
+      },
+      {
+        "path": "h/train-00009-of-00017.parquet",
+        "size_mb": 175.21
+      },
+      {
+        "path": "h/train-00010-of-00017.parquet",
+        "size_mb": 175.99
+      },
+      {
+        "path": "h/train-00011-of-00017.parquet",
+        "size_mb": 175.54
+      },
+      {
+        "path": "h/train-00012-of-00017.parquet",
+        "size_mb": 175.17
+      },
+      {
+        "path": "h/train-00013-of-00017.parquet",
+        "size_mb": 175.04
+      },
+      {
+        "path": "h/train-00014-of-00017.parquet",
+        "size_mb": 176.77
+      },
+      {
+        "path": "h/train-00015-of-00017.parquet",
+        "size_mb": 175.44
+      },
+      {
+        "path": "h/train-00016-of-00017.parquet",
+        "size_mb": 175.44
+      },
+      {
+        "path": "h/validation-00000-of-00001.parquet",
+        "size_mb": 165.09
+      },
+      {
+        "path": "y/test-00000-of-00001.parquet",
+        "size_mb": 80.83
+      },
+      {
+        "path": "y/train-00000-of-00008.parquet",
+        "size_mb": 183.11
+      },
+      {
+        "path": "y/train-00001-of-00008.parquet",
+        "size_mb": 183.97
+      },
+      {
+        "path": "y/train-00002-of-00008.parquet",
+        "size_mb": 180.59
+      },
+      {
+        "path": "y/train-00003-of-00008.parquet",
+        "size_mb": 181.29
+      },
+      {
+        "path": "y/train-00004-of-00008.parquet",
+        "size_mb": 181.1
+      },
+      {
+        "path": "y/train-00005-of-00008.parquet",
+        "size_mb": 181.59
+      },
+      {
+        "path": "y/train-00006-of-00008.parquet",
+        "size_mb": 181.14
+      },
+      {
+        "path": "y/train-00007-of-00008.parquet",
+        "size_mb": 182.0
+      },
+      {
+        "path": "y/validation-00000-of-00001.parquet",
+        "size_mb": 79.47
+      }
+    ],
+    "card_preview": "---\nannotations_creators:\n- no-annotation\nlanguage_creators:\n- found\nlanguage:\n- en\nlicense:\n- cc-by-4.0\nmultilinguality:\n- monolingual\nsize_categories:\n- 100K<n<1M\n- 10K<n<100K\n- 1M<n<10M\nsource_datasets:\n- original\ntask_categories:\n- summarization\ntask_ids: []\npaperswithcode_id: bigpatent\npretty_name: Big Patent\ntags:\n- patent-summarization\ndataset_info:\n- config_name: a\n  features:\n  - name: description\n    dtype: string\n  - name: abstract\n    dtype: string\n  splits:\n  - name: train\n    num_bytes: 5683460620\n    num_examples: 174134\n  - name: validation\n    num_bytes: 313324505\n    num_examples: 9674\n  - name: test\n    num_bytes: 316633277\n    num_examples: 9675\n  download_size: 2622492121\n  dataset_size: 6313418402\n- config_name: all\n  default: true\n  features:\n  - name: description\n    dtype: string\n  - name: abstract\n    dtype: string\n  splits:\n  - name: train\n    num_bytes: 38367048389\n    num_examples: 1207222\n  - name: validation\n    num_bytes: 2115827002\n    num_examples: 670"
+  }
+}

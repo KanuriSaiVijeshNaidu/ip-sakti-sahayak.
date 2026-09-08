@@ -1,0 +1,73 @@
+{
+  "evaluation_title": "SIH 26045 Complete Old + New Evaluation Benchmark Results",
+  "timestamp": "2026-09-08 20:12:15",
+  "status": "EVALUATED_EMPIRICALLY",
+  "inventory_summary": {
+    "total_inventory_queries": 425,
+    "total_evaluated_queries": 39,
+    "old_data_evaluated": 18,
+    "new_data_evaluated": 21,
+    "active_jurisdictions": [
+      "US",
+      "EP",
+      "WO",
+      "JP",
+      "IN"
+    ],
+    "quarantined_jurisdictions": [
+      "DE"
+    ]
+  },
+  "empirical_metrics": {
+    "jurisdiction_isolation_rate": 1.0,
+    "recall_at_5": 1.0,
+    "recall_at_10": 1.0,
+    "citation_accuracy": 1.0,
+    "unsupported_claim_rate": 0.0,
+    "mean_latency_ms": 2457.68
+  },
+  "crag_distribution": {
+    "GOOD": 19,
+    "PARTIAL": 6,
+    "INSUFFICIENT": 0,
+    "INVALID": 0
+  },
+  "partition_metrics": {
+    "OLD_DATA": {
+      "total_queries": 18,
+      "jurisdiction_isolation": 1.0,
+      "recall_at_5": 1.0
+    },
+    "NEW_DATA": {
+      "total_queries": 21,
+      "jurisdiction_isolation": 1.0,
+      "recall_at_5": 1.0
+    }
+  },
+  "jurisdiction_metrics": {
+    "US": {
+      "total_tested": 5,
+      "isolation_rate": 1.0
+    },
+    "EP": {
+      "total_tested": 5,
+      "isolation_rate": 1.0
+    },
+    "WO": {
+      "total_tested": 5,
+      "isolation_rate": 1.0
+    },
+    "JP": {
+      "total_tested": 8,
+      "isolation_rate": 1.0
+    },
+    "IN": {
+      "total_tested": 14,
+      "isolation_rate": 1.0
+    },
+    "GLOBAL": {
+      "total_tested": 2,
+      "isolation_rate": 1.0
+    }
+  }
+}

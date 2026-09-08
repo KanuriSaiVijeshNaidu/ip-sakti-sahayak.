@@ -89,4 +89,51 @@ export interface TranslationSchema {
     changeMarketButton: string;
     jurisdictionNote: string;
   };
+  crag: {
+    good: string;
+    partial: string;
+    insufficient: string;
+    invalid: string;
+    confidenceLabel: string;
+    evidenceCountLabel: string;
+    legalCaveatNotice: string;
+  };
+  evidenceViewer: {
+    drawerTitle: string;
+    pubNumber: string;
+    jurisdiction: string;
+    section: string;
+    filingDate: string;
+    pubDate: string;
+    relevanceScore: string;
+    sourceUrl: string;
+    viewOnGooglePatents: string;
+    originalTextNotice: string;
+    authenticChunkText: string;
+    close: string;
+  };
+  international: {
+    pageTitle: string;
+    pageSubtitle: string;
+    ragTab: string;
+    retrievalTab: string;
+    familyTab: string;
+    searchPlaceholder: string;
+    searchAndGenerateBtn: string;
+    retrievalOnlyBtn: string;
+    generatingAnswer: string;
+    retrievingEvidence: string;
+    jurisdictionFilter: string;
+    autoDetect: string;
+    topKLabel: string;
+    auditedAnswerTitle: string;
+    claimValidationTitle: string;
+    totalClaims: string;
+    supportedClaims: string;
+    unsupportedClaims: string;
+    disclaimerTitle: string;
+    evidenceSelectedTitle: string;
+    clickToInspect: string;
+    noResultsFound: string;
+  };
 }

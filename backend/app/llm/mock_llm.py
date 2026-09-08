@@ -719,6 +719,12 @@ def _synthesize_answer(query: str, passages: list[dict], target_jurisdiction: st
     is_gi = any(w in q_lower for w in ["gi tag", "geographical indication", "gi act"])
 
     # 9. Patentability & Innovation queries (e.g. Ashwagandha formulation)
+    is_patent_ayurveda = any(w in q_lower for w in [
+        "patent", "patentable", "patentability", "can i patent", "how to patent",
+        "novelty", "inventive step", "section 3(e)", "section 3(p)", "admixture",
+        "synergy", "synergistic", "ayurvedic formulation", "herbal formulation",
+        "ashwagandha"
+    ])
     # 10. Foreign Entrant queries (e.g. American citizen or overseas company wanting to sell/import into India)
     is_foreign_entrant = any(w in q_lower for w in [
         "foreign", "american", "usa", "us company", "from america", "selling in india",

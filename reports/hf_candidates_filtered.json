@@ -1,0 +1,3003 @@
+{
+  "NortheasternUniversity/big_patent": {
+    "id": "NortheasternUniversity/big_patent",
+    "author": "NortheasternUniversity",
+    "downloads": 6008,
+    "likes": 72,
+    "tags": [
+      "task_categories:summarization",
+      "annotations_creators:no-annotation",
+      "language_creators:found",
+      "multilinguality:monolingual",
+      "source_datasets:original",
+      "language:en",
+      "license:cc-by-4.0",
+      "size_categories:1M<n<10M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "arxiv:1906.03741",
+      "region:us",
+      "patent-summarization"
+    ],
+    "created_at": "2022-03-02 23:29:22+00:00",
+    "last_modified": "2025-09-25 14:26:17+00:00"
+  },
+  "allenai/us-patents": {
+    "id": "allenai/us-patents",
+    "author": "allenai",
+    "downloads": 1322,
+    "likes": 13,
+    "tags": [
+      "task_categories:text-generation",
+      "task_categories:fill-mask",
+      "license:odc-by",
+      "size_categories:1M<n<10M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:polars",
+      "library:mlcroissant",
+      "region:us",
+      "biology",
+      "chemistry",
+      "engineering",
+      "computer science",
+      "material science",
+      "economics",
+      "business"
+    ],
+    "created_at": "2025-12-04 19:18:38+00:00",
+    "last_modified": "2025-12-18 23:35:39+00:00"
+  },
+  "joelchan/contextualizing-scientific-claims": {
+    "id": "joelchan/contextualizing-scientific-claims",
+    "author": "joelchan",
+    "downloads": 381,
+    "likes": 4,
+    "tags": [
+      "task_categories:question-answering",
+      "language:en",
+      "license:cc-by-4.0",
+      "size_categories:1K<n<10K",
+      "format:imagefolder",
+      "modality:image",
+      "library:datasets",
+      "library:mlcroissant",
+      "doi:10.57967/hf/2773",
+      "region:us",
+      "biology",
+      "scientific-papers"
+    ],
+    "created_at": "2024-07-05 03:50:12+00:00",
+    "last_modified": "2024-07-05 04:17:18+00:00"
+  },
+  "AI-Growth-Lab/patents_claims_1.5m_traim_test": {
+    "id": "AI-Growth-Lab/patents_claims_1.5m_traim_test",
+    "author": "AI-Growth-Lab",
+    "downloads": 316,
+    "likes": 10,
+    "tags": [
+      "size_categories:1M<n<10M",
+      "format:csv",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2022-07-31 20:01:19+00:00",
+    "last_modified": "2022-07-31 20:48:51+00:00"
+  },
+  "osanseviero/us-patents": {
+    "id": "osanseviero/us-patents",
+    "author": "osanseviero",
+    "downloads": 265,
+    "likes": 0,
+    "tags": [
+      "size_categories:10K<n<100K",
+      "format:csv",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2022-10-09 14:47:17+00:00",
+    "last_modified": "2022-10-09 15:09:02+00:00"
+  },
+  "climatebert/environmental_claims": {
+    "id": "climatebert/environmental_claims",
+    "author": "climatebert",
+    "downloads": 248,
+    "likes": 15,
+    "tags": [
+      "task_categories:text-classification",
+      "annotations_creators:expert-generated",
+      "language_creators:found",
+      "multilinguality:monolingual",
+      "source_datasets:original",
+      "language:en",
+      "license:cc-by-nc-sa-4.0",
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "arxiv:2209.00507",
+      "region:us"
+    ],
+    "created_at": "2022-09-01 14:19:17+00:00",
+    "last_modified": "2023-05-23 08:53:10+00:00"
+  },
+  "LASR-Callum/2026-08-20-odcv-feature-discovery-difficult-advice-716-5-pct-vs-numina-control": {
+    "id": "LASR-Callum/2026-08-20-odcv-feature-discovery-difficult-advice-716-5-pct-vs-numina-control",
+    "author": "LASR-Callum",
+    "downloads": 232,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:json",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:polars",
+      "library:mlcroissant",
+      "region:us"
+    ],
+    "created_at": "2026-08-20 18:14:04+00:00",
+    "last_modified": "2026-08-31 18:08:22+00:00"
+  },
+  "LASR-Callum/2026-07-31-tulu3-replay-80-pct-qwen36-mixture": {
+    "id": "LASR-Callum/2026-07-31-tulu3-replay-80-pct-qwen36-mixture",
+    "author": "LASR-Callum",
+    "downloads": 188,
+    "likes": 0,
+    "tags": [
+      "task_categories:text-generation",
+      "language:en",
+      "license:odc-by",
+      "size_categories:1K<n<10K",
+      "region:us",
+      "tulu3",
+      "replay",
+      "sft",
+      "qwen3.6",
+      "training-data",
+      "kind:mixture",
+      "pipeline:tulu3-replay-80pct-qwen3.6-27b",
+      "constitution:unknown",
+      "stage:final",
+      "backfilled-2026-08-25"
+    ],
+    "created_at": "2026-07-31 10:22:06+00:00",
+    "last_modified": "2026-08-31 18:06:05+00:00"
+  },
+  "Jrhoss/DrivaerML-PCTR": {
+    "id": "Jrhoss/DrivaerML-PCTR",
+    "author": "Jrhoss",
+    "downloads": 136,
+    "likes": 1,
+    "tags": [
+      "task_categories:other",
+      "license:cc-by-sa-4.0",
+      "size_categories:100K<n<1M",
+      "arxiv:2408.11969",
+      "region:us",
+      "CFD",
+      "aerodynamics",
+      "point-cloud",
+      "pytorch",
+      "fluid-dynamics",
+      "regression"
+    ],
+    "created_at": "2026-03-18 07:43:37+00:00",
+    "last_modified": "2026-03-22 03:18:33+00:00"
+  },
+  "NekoNeko512/wipo-semiconductors": {
+    "id": "NekoNeko512/wipo-semiconductors",
+    "author": "NekoNeko512",
+    "downloads": 114,
+    "likes": 4,
+    "tags": [
+      "size_categories:10K<n<100K",
+      "format:arrow",
+      "modality:text",
+      "library:datasets",
+      "library:mlcroissant",
+      "region:us"
+    ],
+    "created_at": "2024-05-16 01:44:37+00:00",
+    "last_modified": "2024-05-16 01:45:27+00:00"
+  },
+  "copenlu/llm-pct-tropes": {
+    "id": "copenlu/llm-pct-tropes",
+    "author": "copenlu",
+    "downloads": 89,
+    "likes": 5,
+    "tags": [
+      "task_categories:text-generation",
+      "language:en",
+      "license:mit",
+      "size_categories:100K<n<1M",
+      "format:csv",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "arxiv:2406.19238",
+      "region:us"
+    ],
+    "created_at": "2024-06-27 11:30:47+00:00",
+    "last_modified": "2024-07-03 13:19:21+00:00"
+  },
+  "patent/AIPD_nlp_granted_claims": {
+    "id": "patent/AIPD_nlp_granted_claims",
+    "author": "patent",
+    "downloads": 87,
+    "likes": 1,
+    "tags": [
+      "size_categories:1M<n<10M",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2023-11-12 12:50:26+00:00",
+    "last_modified": "2023-11-12 13:39:40+00:00"
+  },
+  "tingchih/classification_claims": {
+    "id": "tingchih/classification_claims",
+    "author": "tingchih",
+    "downloads": 79,
+    "likes": 0,
+    "tags": [
+      "size_categories:100K<n<1M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2023-11-04 17:29:33+00:00",
+    "last_modified": "2023-11-04 17:33:31+00:00"
+  },
+  "tingchih/Multi_News_fact_checking_claims": {
+    "id": "tingchih/Multi_News_fact_checking_claims",
+    "author": "tingchih",
+    "downloads": 71,
+    "likes": 0,
+    "tags": [
+      "size_categories:1M<n<10M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2023-09-07 01:11:45+00:00",
+    "last_modified": "2023-09-07 01:13:02+00:00"
+  },
+  "farleyknight/big_patent_10_percent": {
+    "id": "farleyknight/big_patent_10_percent",
+    "author": "farleyknight",
+    "downloads": 63,
+    "likes": 0,
+    "tags": [
+      "size_categories:100K<n<1M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2022-09-19 22:07:58+00:00",
+    "last_modified": "2022-09-19 22:08:51+00:00"
+  },
+  "tinkersnot/tb2-v2-pctl": {
+    "id": "tinkersnot/tb2-v2-pctl",
+    "author": "tinkersnot",
+    "downloads": 62,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2026-08-29 23:38:44+00:00",
+    "last_modified": "2026-08-30 00:47:12+00:00"
+  },
+  "mhurhangee/ep-patent-all-claims": {
+    "id": "mhurhangee/ep-patent-all-claims",
+    "author": "mhurhangee",
+    "downloads": 57,
+    "likes": 0,
+    "tags": [
+      "language:en",
+      "license:cc-by-4.0",
+      "size_categories:1M<n<10M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us",
+      "patents",
+      "claims",
+      "legal",
+      "gpt-training"
+    ],
+    "created_at": "2025-08-12 04:22:31+00:00",
+    "last_modified": "2025-08-12 04:45:17+00:00"
+  },
+  "AI-Growth-Lab/patents_claims_1.5m_traim_test_embeddings": {
+    "id": "AI-Growth-Lab/patents_claims_1.5m_traim_test_embeddings",
+    "author": "AI-Growth-Lab",
+    "downloads": 56,
+    "likes": 0,
+    "tags": [
+      "license:other",
+      "region:us"
+    ],
+    "created_at": "2022-07-31 20:22:11+00:00",
+    "last_modified": "2022-07-31 20:45:39+00:00"
+  },
+  "farleyknight/big_patent_5_percent": {
+    "id": "farleyknight/big_patent_5_percent",
+    "author": "farleyknight",
+    "downloads": 54,
+    "likes": 0,
+    "tags": [
+      "size_categories:10K<n<100K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2022-09-19 21:58:22+00:00",
+    "last_modified": "2022-09-19 21:58:56+00:00"
+  },
+  "jamieoliver/us-patents-240918": {
+    "id": "jamieoliver/us-patents-240918",
+    "author": "jamieoliver",
+    "downloads": 44,
+    "likes": 0,
+    "tags": [
+      "license:cc-by-4.0",
+      "size_categories:10K<n<100K",
+      "format:csv",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-09-18 18:47:28+00:00",
+    "last_modified": "2024-09-18 19:34:54+00:00"
+  },
+  "technicolor/HiCaD_claims": {
+    "id": "technicolor/HiCaD_claims",
+    "author": "technicolor",
+    "downloads": 41,
+    "likes": 0,
+    "tags": [
+      "license:apache-2.0",
+      "size_categories:n<1K",
+      "format:csv",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "arxiv:2304.03512",
+      "arxiv:2407.16148",
+      "region:us"
+    ],
+    "created_at": "2024-09-09 13:44:58+00:00",
+    "last_modified": "2024-09-09 13:53:27+00:00"
+  },
+  "osanseviero/us-patents-test": {
+    "id": "osanseviero/us-patents-test",
+    "author": "osanseviero",
+    "downloads": 39,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:csv",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2022-10-09 15:21:29+00:00",
+    "last_modified": "2022-10-09 15:21:40+00:00"
+  },
+  "ctu-aic/west-slavic-claims": {
+    "id": "ctu-aic/west-slavic-claims",
+    "author": "ctu-aic",
+    "downloads": 39,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2024-03-15 09:30:55+00:00",
+    "last_modified": "2024-03-15 09:31:38+00:00"
+  },
+  "Hamyrappy/emnlp-2020-2025-atomic-claims": {
+    "id": "Hamyrappy/emnlp-2020-2025-atomic-claims",
+    "author": "Hamyrappy",
+    "downloads": 32,
+    "likes": 1,
+    "tags": [
+      "task_categories:feature-extraction",
+      "task_categories:text-classification",
+      "annotations_creators:machine-generated",
+      "language_creators:machine-generated",
+      "multilinguality:monolingual",
+      "source_datasets:original",
+      "language:en",
+      "license:cc-by-4.0",
+      "size_categories:10K<n<100K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:polars",
+      "library:mlcroissant",
+      "region:us",
+      "synthetic",
+      "scientometrics",
+      "science-of-science",
+      "acl-anthology",
+      "emnlp",
+      "atomic-claims",
+      "claim-extraction",
+      "clustering",
+      "scientific-text",
+      "nlp"
+    ],
+    "created_at": "2026-07-08 18:44:58+00:00",
+    "last_modified": "2026-07-08 18:46:36+00:00"
+  },
+  "pctoby/claude-opus-4.6-4.7-reasoning-8.7k": {
+    "id": "pctoby/claude-opus-4.6-4.7-reasoning-8.7k",
+    "author": "pctoby",
+    "downloads": 31,
+    "likes": 0,
+    "tags": [
+      "task_categories:text-generation",
+      "task_categories:question-answering",
+      "language:en",
+      "license:apache-2.0",
+      "size_categories:10K<n<100K",
+      "format:json",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "region:us",
+      "sft",
+      "chain-of-thought",
+      "coding",
+      "math",
+      "roleplay",
+      "science",
+      "humanities",
+      "art",
+      "multi-turn",
+      "text",
+      "json"
+    ],
+    "created_at": "2026-05-18 03:48:13+00:00",
+    "last_modified": "2026-05-18 03:48:14+00:00"
+  },
+  "rubrix/big_patent_a_test_100": {
+    "id": "rubrix/big_patent_a_test_100",
+    "author": "rubrix",
+    "downloads": 28,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2022-03-11 17:22:10+00:00",
+    "last_modified": "2022-03-11 17:22:14+00:00"
+  },
+  "autoevaluate/autoeval-eval-big_patent-g-9d42aa-1581555947": {
+    "id": "autoevaluate/autoeval-eval-big_patent-g-9d42aa-1581555947",
+    "author": "autoevaluate",
+    "downloads": 28,
+    "likes": 0,
+    "tags": [
+      "size_categories:10K<n<100K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us",
+      "autotrain",
+      "evaluation"
+    ],
+    "created_at": "2022-09-28 09:54:38+00:00",
+    "last_modified": "2022-09-28 11:15:24+00:00"
+  },
+  "FrancophonIA/COVID-19_WIPO": {
+    "id": "FrancophonIA/COVID-19_WIPO",
+    "author": "FrancophonIA",
+    "downloads": 27,
+    "likes": 0,
+    "tags": [
+      "task_categories:translation",
+      "language:eng",
+      "language:ara",
+      "language:deu",
+      "language:spa",
+      "language:fra",
+      "language:por",
+      "language:rus",
+      "language:zho",
+      "region:us"
+    ],
+    "created_at": "2024-11-27 19:58:50+00:00",
+    "last_modified": "2025-03-30 15:06:08+00:00"
+  },
+  "autoevaluate/autoeval-eval-big_patent-y-3c6f0a-1465253965": {
+    "id": "autoevaluate/autoeval-eval-big_patent-y-3c6f0a-1465253965",
+    "author": "autoevaluate",
+    "downloads": 26,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us",
+      "autotrain",
+      "evaluation"
+    ],
+    "created_at": "2022-09-14 23:24:36+00:00",
+    "last_modified": "2022-09-16 09:16:49+00:00"
+  },
+  "autoevaluate/autoeval-eval-big_patent-y-b4cccf-1519855005": {
+    "id": "autoevaluate/autoeval-eval-big_patent-y-b4cccf-1519855005",
+    "author": "autoevaluate",
+    "downloads": 26,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us",
+      "autotrain",
+      "evaluation"
+    ],
+    "created_at": "2022-09-21 02:15:04+00:00",
+    "last_modified": "2022-09-22 06:24:35+00:00"
+  },
+  "patent/AIPD_nlp_g_all_claims_grpo_nc": {
+    "id": "patent/AIPD_nlp_g_all_claims_grpo_nc",
+    "author": "patent",
+    "downloads": 25,
+    "likes": 0,
+    "tags": [
+      "size_categories:100K<n<1M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-07-31 00:41:51+00:00",
+    "last_modified": "2025-07-31 00:42:55+00:00"
+  },
+  "Eugleo/echr-claims": {
+    "id": "Eugleo/echr-claims",
+    "author": "Eugleo",
+    "downloads": 24,
+    "likes": 0,
+    "tags": [
+      "size_categories:10K<n<100K",
+      "format:json",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-07-02 18:36:08+00:00",
+    "last_modified": "2024-07-02 19:47:48+00:00"
+  },
+  "bikashpatra/sample_patent_claims_labelled": {
+    "id": "bikashpatra/sample_patent_claims_labelled",
+    "author": "bikashpatra",
+    "downloads": 24,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-07-27 11:54:55+00:00",
+    "last_modified": "2024-07-27 11:54:57+00:00"
+  },
+  "autoevaluate/autoeval-staging-eval-big_patent-y-7d0862-15806176": {
+    "id": "autoevaluate/autoeval-staging-eval-big_patent-y-7d0862-15806176",
+    "author": "autoevaluate",
+    "downloads": 22,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us",
+      "autotrain",
+      "evaluation"
+    ],
+    "created_at": "2022-09-05 23:51:53+00:00",
+    "last_modified": "2022-09-07 03:32:35+00:00"
+  },
+  "autoevaluate/autoeval-staging-eval-big_patent-y-7d0862-15806177": {
+    "id": "autoevaluate/autoeval-staging-eval-big_patent-y-7d0862-15806177",
+    "author": "autoevaluate",
+    "downloads": 21,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us",
+      "autotrain",
+      "evaluation"
+    ],
+    "created_at": "2022-09-05 23:51:57+00:00",
+    "last_modified": "2022-09-06 10:16:50+00:00"
+  },
+  "Domino-ai/amazon_polarity_10_pct": {
+    "id": "Domino-ai/amazon_polarity_10_pct",
+    "author": "Domino-ai",
+    "downloads": 21,
+    "likes": 0,
+    "tags": [
+      "size_categories:100K<n<1M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2023-10-25 00:12:18+00:00",
+    "last_modified": "2023-10-25 00:14:52+00:00"
+  },
+  "ben-epstein/amazon_polarity_10_pct": {
+    "id": "ben-epstein/amazon_polarity_10_pct",
+    "author": "ben-epstein",
+    "downloads": 19,
+    "likes": 0,
+    "tags": [
+      "size_categories:100K<n<1M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2023-09-30 14:10:33+00:00",
+    "last_modified": "2023-09-30 15:00:45+00:00"
+  },
+  "bikashpatra/sample_claims_annotated_01": {
+    "id": "bikashpatra/sample_claims_annotated_01",
+    "author": "bikashpatra",
+    "downloads": 18,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-07-27 14:25:48+00:00",
+    "last_modified": "2024-07-27 14:25:49+00:00"
+  },
+  "patent/AIPD_nlp_g_all_claims_grpo": {
+    "id": "patent/AIPD_nlp_g_all_claims_grpo",
+    "author": "patent",
+    "downloads": 18,
+    "likes": 0,
+    "tags": [
+      "size_categories:100K<n<1M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-07-19 02:55:12+00:00",
+    "last_modified": "2025-07-19 02:55:52+00:00"
+  },
+  "autoevaluate/autoeval-staging-eval-big_patent-y-7d0862-15806178": {
+    "id": "autoevaluate/autoeval-staging-eval-big_patent-y-7d0862-15806178",
+    "author": "autoevaluate",
+    "downloads": 17,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us",
+      "autotrain",
+      "evaluation"
+    ],
+    "created_at": "2022-09-05 23:52:02+00:00",
+    "last_modified": "2022-09-06 16:50:20+00:00"
+  },
+  "bikashpatra/sample_claims_annotated": {
+    "id": "bikashpatra/sample_claims_annotated",
+    "author": "bikashpatra",
+    "downloads": 17,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-07-27 14:11:51+00:00",
+    "last_modified": "2024-07-27 14:11:53+00:00"
+  },
+  "lymei/ESP-PCT": {
+    "id": "lymei/ESP-PCT",
+    "author": "lymei",
+    "downloads": 16,
+    "likes": 0,
+    "tags": [
+      "license:mit",
+      "region:us"
+    ],
+    "created_at": "2024-05-07 14:17:28+00:00",
+    "last_modified": "2024-05-17 15:36:44+00:00"
+  },
+  "AI-555/DIFF_PCT_RUN": {
+    "id": "AI-555/DIFF_PCT_RUN",
+    "author": "AI-555",
+    "downloads": 16,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:imagefolder",
+      "modality:image",
+      "library:datasets",
+      "library:mlcroissant",
+      "region:us"
+    ],
+    "created_at": "2026-04-09 22:35:40+00:00",
+    "last_modified": "2026-04-09 22:37:08+00:00"
+  },
+  "arbml/ArCOV19_claims": {
+    "id": "arbml/ArCOV19_claims",
+    "author": "arbml",
+    "downloads": 15,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2022-10-28 13:56:36+00:00",
+    "last_modified": "2022-10-28 13:56:50+00:00"
+  },
+  "masternodedata1/www3.wipo.int": {
+    "id": "masternodedata1/www3.wipo.int",
+    "author": "masternodedata1",
+    "downloads": 15,
+    "likes": 0,
+    "tags": [
+      "license:unlicense",
+      "region:us"
+    ],
+    "created_at": "2026-07-31 01:46:24+00:00",
+    "last_modified": "2026-07-31 01:46:24+00:00"
+  },
+  "AI-555/BACKUP_APR6_5_PCT_MODEL": {
+    "id": "AI-555/BACKUP_APR6_5_PCT_MODEL",
+    "author": "AI-555",
+    "downloads": 15,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:imagefolder",
+      "modality:image",
+      "library:datasets",
+      "library:mlcroissant",
+      "region:us"
+    ],
+    "created_at": "2026-04-06 18:49:44+00:00",
+    "last_modified": "2026-04-06 18:51:01+00:00"
+  },
+  "jamieoliver/us-patents-test-240918": {
+    "id": "jamieoliver/us-patents-test-240918",
+    "author": "jamieoliver",
+    "downloads": 14,
+    "likes": 0,
+    "tags": [
+      "license:cc-by-4.0",
+      "size_categories:n<1K",
+      "format:csv",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-09-18 18:52:50+00:00",
+    "last_modified": "2024-09-18 19:35:29+00:00"
+  },
+  "yottan-wywy/patent-claims-alkyl_glyceryl_ether_ipc": {
+    "id": "yottan-wywy/patent-claims-alkyl_glyceryl_ether_ipc",
+    "author": "yottan-wywy",
+    "downloads": 14,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-09-04 01:37:56+00:00",
+    "last_modified": "2025-09-04 01:38:05+00:00"
+  },
+  "yottan-wywy/patent-claims-peg-240_and_decyl-tetradecyl-20_and_HDI_enterprise": {
+    "id": "yottan-wywy/patent-claims-peg-240_and_decyl-tetradecyl-20_and_HDI_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 14,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "format:optimized-parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:polars",
+      "library:mlcroissant",
+      "region:us"
+    ],
+    "created_at": "2025-09-21 21:23:43+00:00",
+    "last_modified": "2025-09-21 21:23:47+00:00"
+  },
+  "technicolor/HiCaD_claims_with_prompt": {
+    "id": "technicolor/HiCaD_claims_with_prompt",
+    "author": "technicolor",
+    "downloads": 13,
+    "likes": 0,
+    "tags": [
+      "license:apache-2.0",
+      "size_categories:n<1K",
+      "format:csv",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "arxiv:2304.03512",
+      "arxiv:2407.16148",
+      "region:us"
+    ],
+    "created_at": "2024-09-09 14:21:27+00:00",
+    "last_modified": "2024-09-09 14:22:24+00:00"
+  },
+  "vinhtran2611/wipo_generated_v2_formated": {
+    "id": "vinhtran2611/wipo_generated_v2_formated",
+    "author": "vinhtran2611",
+    "downloads": 13,
+    "likes": 0,
+    "tags": [
+      "size_categories:10K<n<100K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-06-08 15:33:29+00:00",
+    "last_modified": "2024-06-08 15:34:14+00:00"
+  },
+  "saumyamalik/olmo-2-0325-32b-preference-mix-5-pct-perturbed": {
+    "id": "saumyamalik/olmo-2-0325-32b-preference-mix-5-pct-perturbed",
+    "author": "saumyamalik",
+    "downloads": 13,
+    "likes": 0,
+    "tags": [
+      "size_categories:100K<n<1M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-07-12 10:45:16+00:00",
+    "last_modified": "2025-07-12 10:45:58+00:00"
+  },
+  "electricsheepafrica/africa-owid-change-co2-annual-pct": {
+    "id": "electricsheepafrica/africa-owid-change-co2-annual-pct",
+    "author": "electricsheepafrica",
+    "downloads": 13,
+    "likes": 0,
+    "tags": [
+      "task_categories:tabular-classification",
+      "task_categories:tabular-regression",
+      "multilinguality:monolingual",
+      "language:en",
+      "license:cc-by-4.0",
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:polars",
+      "library:mlcroissant",
+      "region:us",
+      "africa",
+      "electric-sheep-africa",
+      "open-data",
+      "metadata-backed",
+      "other-unclassified",
+      "parquet",
+      "tabular",
+      "text",
+      "our-world-in-data",
+      "change-co2-annual-pct",
+      "owid",
+      "long-run-series",
+      "time-series"
+    ],
+    "created_at": "2026-06-02 18:13:37+00:00",
+    "last_modified": "2026-08-12 12:03:17+00:00"
+  },
+  "bikashpatra/claims_annotated_01": {
+    "id": "bikashpatra/claims_annotated_01",
+    "author": "bikashpatra",
+    "downloads": 12,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-07-27 14:34:28+00:00",
+    "last_modified": "2024-07-27 14:34:29+00:00"
+  },
+  "bikashpatra/claims_annotated_hf": {
+    "id": "bikashpatra/claims_annotated_hf",
+    "author": "bikashpatra",
+    "downloads": 12,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-07-28 00:57:22+00:00",
+    "last_modified": "2024-07-28 00:57:26+00:00"
+  },
+  "yottan-wywy/patent-claims-chunked_patents_enterprise": {
+    "id": "yottan-wywy/patent-claims-chunked_patents_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 12,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:04:17+00:00",
+    "last_modified": "2025-08-25 20:04:27+00:00"
+  },
+  "yottan-wywy/patent-claims-hydrogenated_soybean_lecithin_enterprise": {
+    "id": "yottan-wywy/patent-claims-hydrogenated_soybean_lecithin_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 12,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:40:07+00:00",
+    "last_modified": "2025-08-25 20:40:16+00:00"
+  },
+  "yottan-wywy/patent-claims-preservative_enterprise": {
+    "id": "yottan-wywy/patent-claims-preservative_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 12,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-09-04 01:38:43+00:00",
+    "last_modified": "2025-09-04 01:38:53+00:00"
+  },
+  "MilitaryACE/Covid_Claims_200": {
+    "id": "MilitaryACE/Covid_Claims_200",
+    "author": "MilitaryACE",
+    "downloads": 11,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2023-10-17 10:20:17+00:00",
+    "last_modified": "2023-10-17 10:21:02+00:00"
+  },
+  "bikashpatra/claims_annotated": {
+    "id": "bikashpatra/claims_annotated",
+    "author": "bikashpatra",
+    "downloads": 11,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-07-27 12:16:54+00:00",
+    "last_modified": "2024-07-27 12:16:55+00:00"
+  },
+  "bikashpatra/claims_annotated_02": {
+    "id": "bikashpatra/claims_annotated_02",
+    "author": "bikashpatra",
+    "downloads": 11,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-07-27 14:40:20+00:00",
+    "last_modified": "2024-07-27 14:40:24+00:00"
+  },
+  "yottan-wywy/patent-claims-hydrogenated_egg_yolk_phospholipid_enterprise": {
+    "id": "yottan-wywy/patent-claims-hydrogenated_egg_yolk_phospholipid_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 11,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:41:31+00:00",
+    "last_modified": "2025-08-25 20:41:37+00:00"
+  },
+  "yottan-wywy/patent-claims-glycerin_derivative_enterprise": {
+    "id": "yottan-wywy/patent-claims-glycerin_derivative_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 11,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-09-04 01:39:54+00:00",
+    "last_modified": "2025-09-04 01:40:03+00:00"
+  },
+  "yottan-wywy/patent-claims-ds_dimethyl_ammonium_cl_enterprise": {
+    "id": "yottan-wywy/patent-claims-ds_dimethyl_ammonium_cl_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 11,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:polars",
+      "library:mlcroissant",
+      "region:us"
+    ],
+    "created_at": "2025-09-16 00:12:23+00:00",
+    "last_modified": "2025-09-16 00:12:28+00:00"
+  },
+  "yottan-wywy/patent-claims-peg-240_and_decyl-tetradecyl-20_and_HDI_ipc": {
+    "id": "yottan-wywy/patent-claims-peg-240_and_decyl-tetradecyl-20_and_HDI_ipc",
+    "author": "yottan-wywy",
+    "downloads": 11,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "format:optimized-parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:polars",
+      "library:mlcroissant",
+      "region:us"
+    ],
+    "created_at": "2025-09-21 11:39:23+00:00",
+    "last_modified": "2025-09-21 21:23:38+00:00"
+  },
+  "saumyamalik/olmo-2-0325-32b-preference-mix-20-pct-perturbed": {
+    "id": "saumyamalik/olmo-2-0325-32b-preference-mix-20-pct-perturbed",
+    "author": "saumyamalik",
+    "downloads": 11,
+    "likes": 0,
+    "tags": [
+      "size_categories:100K<n<1M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-07-12 10:48:08+00:00",
+    "last_modified": "2025-07-12 10:48:47+00:00"
+  },
+  "jkazdan/harmful-5-pct": {
+    "id": "jkazdan/harmful-5-pct",
+    "author": "jkazdan",
+    "downloads": 11,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-07-27 18:13:45+00:00",
+    "last_modified": "2025-07-27 18:14:19+00:00"
+  },
+  "bikashpatra/claims_token_classification": {
+    "id": "bikashpatra/claims_token_classification",
+    "author": "bikashpatra",
+    "downloads": 10,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-07-25 03:42:04+00:00",
+    "last_modified": "2024-07-25 05:07:01+00:00"
+  },
+  "bikashpatra/patent_claims_labelled": {
+    "id": "bikashpatra/patent_claims_labelled",
+    "author": "bikashpatra",
+    "downloads": 10,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-07-26 15:46:13+00:00",
+    "last_modified": "2024-07-26 15:46:15+00:00"
+  },
+  "bikashpatra/sample_claims_annotated_hf": {
+    "id": "bikashpatra/sample_claims_annotated_hf",
+    "author": "bikashpatra",
+    "downloads": 10,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-07-28 07:42:38+00:00",
+    "last_modified": "2024-07-28 07:42:39+00:00"
+  },
+  "technicolor/HiCaD_claims_with_prompt_json": {
+    "id": "technicolor/HiCaD_claims_with_prompt_json",
+    "author": "technicolor",
+    "downloads": 10,
+    "likes": 0,
+    "tags": [
+      "license:apache-2.0",
+      "size_categories:n<1K",
+      "format:csv",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-09-12 02:50:38+00:00",
+    "last_modified": "2024-09-12 02:50:50+00:00"
+  },
+  "yottan-wywy/patent-claims-hydrogenated_egg_yolk_lecithin_enterprise": {
+    "id": "yottan-wywy/patent-claims-hydrogenated_egg_yolk_lecithin_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 10,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:38:32+00:00",
+    "last_modified": "2025-08-25 20:38:38+00:00"
+  },
+  "yottan-wywy/patent-claims-cordyceps_ipc": {
+    "id": "yottan-wywy/patent-claims-cordyceps_ipc",
+    "author": "yottan-wywy",
+    "downloads": 10,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:38:43+00:00",
+    "last_modified": "2025-08-25 20:38:50+00:00"
+  },
+  "yottan-wywy/patent-claims-hydrogenated_lecithin_enterprise": {
+    "id": "yottan-wywy/patent-claims-hydrogenated_lecithin_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 10,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:39:47+00:00",
+    "last_modified": "2025-08-25 20:39:53+00:00"
+  },
+  "JpmOkc/patentClaimsAbsSplit8600": {
+    "id": "JpmOkc/patentClaimsAbsSplit8600",
+    "author": "JpmOkc",
+    "downloads": 10,
+    "likes": 0,
+    "tags": [
+      "language:en",
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-31 17:28:57+00:00",
+    "last_modified": "2025-09-01 15:45:44+00:00"
+  },
+  "yottan-wywy/patent-claims-glycerin_derivative_ipc": {
+    "id": "yottan-wywy/patent-claims-glycerin_derivative_ipc",
+    "author": "yottan-wywy",
+    "downloads": 10,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-09-04 01:36:12+00:00",
+    "last_modified": "2025-09-04 01:36:22+00:00"
+  },
+  "yottan-wywy/patent-claims-alkyl_glyceryl_ether_enterprise": {
+    "id": "yottan-wywy/patent-claims-alkyl_glyceryl_ether_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 10,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-09-04 01:39:29+00:00",
+    "last_modified": "2025-09-04 01:39:37+00:00"
+  },
+  "VerboVision/dados_sinteticos_metodologia_20_pct": {
+    "id": "VerboVision/dados_sinteticos_metodologia_20_pct",
+    "author": "VerboVision",
+    "downloads": 10,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "format:optimized-parquet",
+      "modality:image",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:polars",
+      "library:mlcroissant",
+      "region:us"
+    ],
+    "created_at": "2026-05-29 01:20:25+00:00",
+    "last_modified": "2026-05-29 01:23:07+00:00"
+  },
+  "Plona/claims_update1": {
+    "id": "Plona/claims_update1",
+    "author": "Plona",
+    "downloads": 9,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2023-09-24 12:43:43+00:00",
+    "last_modified": "2023-09-24 14:20:23+00:00"
+  },
+  "aryamant/description_to_claims_split": {
+    "id": "aryamant/description_to_claims_split",
+    "author": "aryamant",
+    "downloads": 9,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:csv",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-06-20 01:35:07+00:00",
+    "last_modified": "2024-06-20 01:35:21+00:00"
+  },
+  "yottan-wywy/patent-claims-hyaluronic-acid": {
+    "id": "yottan-wywy/patent-claims-hyaluronic-acid",
+    "author": "yottan-wywy",
+    "downloads": 9,
+    "likes": 0,
+    "tags": [
+      "size_categories:10K<n<100K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-07-12 06:52:46+00:00",
+    "last_modified": "2025-07-12 06:57:18+00:00"
+  },
+  "yottan-wywy/patent-claims-hyaluronic-acid_enterprise": {
+    "id": "yottan-wywy/patent-claims-hyaluronic-acid_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 9,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-07-12 17:15:47+00:00",
+    "last_modified": "2025-07-12 17:15:52+00:00"
+  },
+  "yottan-wywy/patent-claims-hydrogenated_egg_yolk_lecithin_ipc": {
+    "id": "yottan-wywy/patent-claims-hydrogenated_egg_yolk_lecithin_ipc",
+    "author": "yottan-wywy",
+    "downloads": 9,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:38:12+00:00",
+    "last_modified": "2025-08-25 20:38:19+00:00"
+  },
+  "yottan-wywy/patent-claims-polyhydric_alcohol_enterprise": {
+    "id": "yottan-wywy/patent-claims-polyhydric_alcohol_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 9,
+    "likes": 0,
+    "tags": [
+      "size_categories:10K<n<100K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-09-04 01:32:26+00:00",
+    "last_modified": "2025-09-04 01:32:46+00:00"
+  },
+  "yottan-wywy/patent-claims-preservative_ipc": {
+    "id": "yottan-wywy/patent-claims-preservative_ipc",
+    "author": "yottan-wywy",
+    "downloads": 9,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-09-04 01:35:05+00:00",
+    "last_modified": "2025-09-04 01:35:19+00:00"
+  },
+  "yottan-wywy/patent-claims-chimpi_ipc": {
+    "id": "yottan-wywy/patent-claims-chimpi_ipc",
+    "author": "yottan-wywy",
+    "downloads": 9,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-09-04 01:36:54+00:00",
+    "last_modified": "2025-09-04 01:37:02+00:00"
+  },
+  "ShantanuD/Multilingual_PCT": {
+    "id": "ShantanuD/Multilingual_PCT",
+    "author": "ShantanuD",
+    "downloads": 9,
+    "likes": 0,
+    "tags": [
+      "license:mit",
+      "region:us"
+    ],
+    "created_at": "2024-09-29 10:23:04+00:00",
+    "last_modified": "2024-09-29 10:24:34+00:00"
+  },
+  "saumyamalik/olmo-2-0325-32b-preference-mix-50-pct-perturbed": {
+    "id": "saumyamalik/olmo-2-0325-32b-preference-mix-50-pct-perturbed",
+    "author": "saumyamalik",
+    "downloads": 9,
+    "likes": 0,
+    "tags": [
+      "size_categories:100K<n<1M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-07-12 10:50:19+00:00",
+    "last_modified": "2025-07-12 10:50:57+00:00"
+  },
+  "saumyamalik/olmo-2-0325-32b-preference-mix-100-pct-perturbed": {
+    "id": "saumyamalik/olmo-2-0325-32b-preference-mix-100-pct-perturbed",
+    "author": "saumyamalik",
+    "downloads": 9,
+    "likes": 0,
+    "tags": [
+      "size_categories:100K<n<1M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-07-12 10:53:30+00:00",
+    "last_modified": "2025-07-12 10:54:05+00:00"
+  },
+  "VerboVision/dados_sinteticos_metodologia_bert_20_pct_combinado": {
+    "id": "VerboVision/dados_sinteticos_metodologia_bert_20_pct_combinado",
+    "author": "VerboVision",
+    "downloads": 9,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "format:optimized-parquet",
+      "modality:image",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:polars",
+      "library:mlcroissant",
+      "region:us"
+    ],
+    "created_at": "2026-05-29 02:37:17+00:00",
+    "last_modified": "2026-05-29 02:39:08+00:00"
+  },
+  "HerrHruby/scout_idx1024to2048_sft_pct80": {
+    "id": "HerrHruby/scout_idx1024to2048_sft_pct80",
+    "author": "HerrHruby",
+    "downloads": 9,
+    "likes": 0,
+    "tags": [
+      "language:en",
+      "license:cc-by-4.0",
+      "region:us",
+      "midtrain-v3",
+      "branch-walk",
+      "meta-reasoning",
+      "sft"
+    ],
+    "created_at": "2026-06-19 00:35:26+00:00",
+    "last_modified": "2026-06-19 00:36:08+00:00"
+  },
+  "nikchar/20k_claims_train_final": {
+    "id": "nikchar/20k_claims_train_final",
+    "author": "nikchar",
+    "downloads": 8,
+    "likes": 1,
+    "tags": [
+      "size_categories:10K<n<100K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2023-09-01 19:52:28+00:00",
+    "last_modified": "2023-09-01 19:52:30+00:00"
+  },
+  "khalidalt/ArCOV19-Rumors_claims": {
+    "id": "khalidalt/ArCOV19-Rumors_claims",
+    "author": "khalidalt",
+    "downloads": 8,
+    "likes": 0,
+    "tags": [
+      "language:ar",
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-04-02 21:15:01+00:00",
+    "last_modified": "2024-04-02 21:18:18+00:00"
+  },
+  "mlburnham/ibm_claimstance_entailment": {
+    "id": "mlburnham/ibm_claimstance_entailment",
+    "author": "mlburnham",
+    "downloads": 8,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-06-19 02:33:19+00:00",
+    "last_modified": "2024-08-03 17:35:51+00:00"
+  },
+  "bikashpatra/claims_token_labelled": {
+    "id": "bikashpatra/claims_token_labelled",
+    "author": "bikashpatra",
+    "downloads": 8,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-07-26 17:57:04+00:00",
+    "last_modified": "2024-07-26 17:57:06+00:00"
+  },
+  "yottan-wywy/patent-claims-cordyceps_enterprise": {
+    "id": "yottan-wywy/patent-claims-cordyceps_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 8,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:40:59+00:00",
+    "last_modified": "2025-08-25 20:41:06+00:00"
+  },
+  "yottan-wywy/patent-claims-hydrogenated_soybean_phospholipid_ipc": {
+    "id": "yottan-wywy/patent-claims-hydrogenated_soybean_phospholipid_ipc",
+    "author": "yottan-wywy",
+    "downloads": 8,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 22:14:20+00:00",
+    "last_modified": "2025-08-25 22:14:28+00:00"
+  },
+  "vinhtran2611/wipo_generated_04_10000_formated": {
+    "id": "vinhtran2611/wipo_generated_04_10000_formated",
+    "author": "vinhtran2611",
+    "downloads": 8,
+    "likes": 0,
+    "tags": [
+      "size_categories:10K<n<100K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-06-07 08:34:17+00:00",
+    "last_modified": "2024-06-07 08:34:29+00:00"
+  },
+  "nikchar/retrieved_claims_val": {
+    "id": "nikchar/retrieved_claims_val",
+    "author": "nikchar",
+    "downloads": 7,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2023-08-29 14:37:57+00:00",
+    "last_modified": "2023-08-31 14:58:06+00:00"
+  },
+  "nikchar/retrieved_claims_test": {
+    "id": "nikchar/retrieved_claims_test",
+    "author": "nikchar",
+    "downloads": 7,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2023-08-29 14:37:59+00:00",
+    "last_modified": "2023-08-31 14:58:13+00:00"
+  },
+  "jojoyang/claims_filtered_good": {
+    "id": "jojoyang/claims_filtered_good",
+    "author": "jojoyang",
+    "downloads": 7,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-01-23 03:20:56+00:00",
+    "last_modified": "2025-01-23 03:20:57+00:00"
+  },
+  "MadhavanS045/pharmacy_claims_dataset": {
+    "id": "MadhavanS045/pharmacy_claims_dataset",
+    "author": "MadhavanS045",
+    "downloads": 7,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-02-19 12:16:26+00:00",
+    "last_modified": "2025-02-19 12:16:28+00:00"
+  },
+  "yottan-wywy/patent-claims-hydrogenated_soybean_lecithin_ipc": {
+    "id": "yottan-wywy/patent-claims-hydrogenated_soybean_lecithin_ipc",
+    "author": "yottan-wywy",
+    "downloads": 7,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:39:20+00:00",
+    "last_modified": "2025-08-25 20:39:26+00:00"
+  },
+  "yottan-wywy/patent-claims-hydrogenated_phospholipid_ipc": {
+    "id": "yottan-wywy/patent-claims-hydrogenated_phospholipid_ipc",
+    "author": "yottan-wywy",
+    "downloads": 7,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:41:55+00:00",
+    "last_modified": "2025-08-25 20:42:01+00:00"
+  },
+  "yottan-wywy/patent-claims-chimpi_enterprise": {
+    "id": "yottan-wywy/patent-claims-chimpi_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 7,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-09-04 01:35:27+00:00",
+    "last_modified": "2025-09-04 01:35:34+00:00"
+  },
+  "yottan-wywy/patent-claims-ds_dimethyl_ammonium_cl_ipc": {
+    "id": "yottan-wywy/patent-claims-ds_dimethyl_ammonium_cl_ipc",
+    "author": "yottan-wywy",
+    "downloads": 7,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:polars",
+      "library:mlcroissant",
+      "region:us"
+    ],
+    "created_at": "2025-09-16 00:12:32+00:00",
+    "last_modified": "2025-09-16 00:12:38+00:00"
+  },
+  "TimoPh/patent-claims-50k-green": {
+    "id": "TimoPh/patent-claims-50k-green",
+    "author": "TimoPh",
+    "downloads": 7,
+    "likes": 0,
+    "tags": [
+      "size_categories:10K<n<100K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:polars",
+      "library:mlcroissant",
+      "region:us"
+    ],
+    "created_at": "2026-02-15 21:32:17+00:00",
+    "last_modified": "2026-02-15 22:17:57+00:00"
+  },
+  "autoevaluate/autoeval-staging-eval-project-big_patent-06668a6c-12375649": {
+    "id": "autoevaluate/autoeval-staging-eval-project-big_patent-06668a6c-12375649",
+    "author": "autoevaluate",
+    "downloads": 6,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2022-08-02 19:23:35+00:00",
+    "last_modified": "2022-08-02 19:23:39+00:00"
+  },
+  "autoevaluate/autoeval-staging-eval-project-big_patent-b1cc9f2b-12395651": {
+    "id": "autoevaluate/autoeval-staging-eval-project-big_patent-b1cc9f2b-12395651",
+    "author": "autoevaluate",
+    "downloads": 6,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2022-08-02 19:43:15+00:00",
+    "last_modified": "2022-08-02 19:43:18+00:00"
+  },
+  "autoevaluate/autoeval-staging-eval-big_patent-all-8dcf4c-14595982": {
+    "id": "autoevaluate/autoeval-staging-eval-big_patent-all-8dcf4c-14595982",
+    "author": "autoevaluate",
+    "downloads": 6,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2022-08-31 00:24:24+00:00",
+    "last_modified": "2022-08-31 00:24:28+00:00"
+  },
+  "autoevaluate/autoeval-eval-big_patent-all-c19b11-2375374517": {
+    "id": "autoevaluate/autoeval-eval-big_patent-all-c19b11-2375374517",
+    "author": "autoevaluate",
+    "downloads": 6,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2022-12-08 06:07:04+00:00",
+    "last_modified": "2022-12-08 06:07:08+00:00"
+  },
+  "FrancophonIA/ClaimsKG": {
+    "id": "FrancophonIA/ClaimsKG",
+    "author": "FrancophonIA",
+    "downloads": 6,
+    "likes": 0,
+    "tags": [
+      "multilinguality:multilingual",
+      "language:fra",
+      "language:eng",
+      "region:us"
+    ],
+    "created_at": "2024-11-29 22:07:38+00:00",
+    "last_modified": "2025-03-30 14:22:56+00:00"
+  },
+  "yottan-wywy/patent-claims-chunked_patents": {
+    "id": "yottan-wywy/patent-claims-chunked_patents",
+    "author": "yottan-wywy",
+    "downloads": 6,
+    "likes": 0,
+    "tags": [
+      "size_categories:10K<n<100K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:03:33+00:00",
+    "last_modified": "2025-08-25 20:03:53+00:00"
+  },
+  "yottan-wywy/patent-claims-cordyceps_kanji_enterprise": {
+    "id": "yottan-wywy/patent-claims-cordyceps_kanji_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 6,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:40:21+00:00",
+    "last_modified": "2025-08-25 20:40:27+00:00"
+  },
+  "yottan-wywy/patent-claims-hydrogenated_soybean_phospholipid_enterprise": {
+    "id": "yottan-wywy/patent-claims-hydrogenated_soybean_phospholipid_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 6,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:40:49+00:00",
+    "last_modified": "2025-08-25 20:40:56+00:00"
+  },
+  "yottan-wywy/patent-claims-hdi_enterprise": {
+    "id": "yottan-wywy/patent-claims-hdi_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 6,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:42:07+00:00",
+    "last_modified": "2025-08-25 20:42:14+00:00"
+  },
+  "yottan-wywy/patent-claims-glyceryl_alkyl_ether_ipc": {
+    "id": "yottan-wywy/patent-claims-glyceryl_alkyl_ether_ipc",
+    "author": "yottan-wywy",
+    "downloads": 6,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-09-04 01:35:41+00:00",
+    "last_modified": "2025-09-04 01:35:50+00:00"
+  },
+  "masternodedata1/patentscope.wipo.in": {
+    "id": "masternodedata1/patentscope.wipo.in",
+    "author": "masternodedata1",
+    "downloads": 6,
+    "likes": 1,
+    "tags": [
+      "license:unlicense",
+      "region:us"
+    ],
+    "created_at": "2026-07-31 04:49:57+00:00",
+    "last_modified": "2026-07-31 04:49:57+00:00"
+  },
+  "vinhtran2611/synthetic_data_NekoNeko512_wipo-semiconductors": {
+    "id": "vinhtran2611/synthetic_data_NekoNeko512_wipo-semiconductors",
+    "author": "vinhtran2611",
+    "downloads": 6,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-06-06 04:15:41+00:00",
+    "last_modified": "2024-06-06 04:18:15+00:00"
+  },
+  "jennypan00/pi_ft_droid_counting_exclude_01_pct_vel_norm": {
+    "id": "jennypan00/pi_ft_droid_counting_exclude_01_pct_vel_norm",
+    "author": "jennypan00",
+    "downloads": 6,
+    "likes": 0,
+    "tags": [
+      "size_categories:10K<n<100K",
+      "format:parquet",
+      "modality:image",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-09-04 22:19:59+00:00",
+    "last_modified": "2025-09-04 22:20:49+00:00"
+  },
+  "SeekLifeShallDie/PCT-Dataset": {
+    "id": "SeekLifeShallDie/PCT-Dataset",
+    "author": "SeekLifeShallDie",
+    "downloads": 6,
+    "likes": 0,
+    "tags": [
+      "task_categories:robotics",
+      "language:en",
+      "license:cc-by-nc-4.0",
+      "size_categories:100K<n<1M",
+      "region:us",
+      "autonomous-driving",
+      "trajectory-prediction",
+      "end-to-end-planning",
+      "driving-persona",
+      "navsim"
+    ],
+    "created_at": "2026-06-29 05:38:19+00:00",
+    "last_modified": "2026-06-29 06:24:40+00:00"
+  },
+  "autoevaluate/autoeval-staging-eval-project-big_patent-e61c4fbc-12365648": {
+    "id": "autoevaluate/autoeval-staging-eval-project-big_patent-e61c4fbc-12365648",
+    "author": "autoevaluate",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2022-08-02 19:14:35+00:00",
+    "last_modified": "2022-08-02 19:14:40+00:00"
+  },
+  "autoevaluate/autoeval-staging-eval-project-big_patent-8ceaf62e-12385650": {
+    "id": "autoevaluate/autoeval-staging-eval-project-big_patent-8ceaf62e-12385650",
+    "author": "autoevaluate",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2022-08-02 19:33:22+00:00",
+    "last_modified": "2022-08-02 19:33:25+00:00"
+  },
+  "autoevaluate/autoeval-staging-eval-big_patent-all-f74f64-14605983": {
+    "id": "autoevaluate/autoeval-staging-eval-big_patent-all-f74f64-14605983",
+    "author": "autoevaluate",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2022-08-31 00:51:16+00:00",
+    "last_modified": "2022-08-31 00:51:20+00:00"
+  },
+  "autoevaluate/autoeval-eval-big_patent-y-00ce1f-1484254277": {
+    "id": "autoevaluate/autoeval-eval-big_patent-y-00ce1f-1484254277",
+    "author": "autoevaluate",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2022-09-16 17:11:36+00:00",
+    "last_modified": "2022-09-16 17:11:40+00:00"
+  },
+  "autoevaluate/autoeval-eval-big_patent-y-6de833-1566255732": {
+    "id": "autoevaluate/autoeval-eval-big_patent-y-6de833-1566255732",
+    "author": "autoevaluate",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2022-09-27 10:41:16+00:00",
+    "last_modified": "2022-09-27 10:41:20+00:00"
+  },
+  "autoevaluate/autoeval-eval-big_patent-y-6de833-1566255733": {
+    "id": "autoevaluate/autoeval-eval-big_patent-y-6de833-1566255733",
+    "author": "autoevaluate",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2022-09-27 10:41:22+00:00",
+    "last_modified": "2022-09-27 10:41:25+00:00"
+  },
+  "Plona/claims_1000": {
+    "id": "Plona/claims_1000",
+    "author": "Plona",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:csv",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2023-10-08 12:10:51+00:00",
+    "last_modified": "2023-10-17 12:21:38+00:00"
+  },
+  "aryamant/description_to_claims": {
+    "id": "aryamant/description_to_claims",
+    "author": "aryamant",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:csv",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-06-14 02:39:00+00:00",
+    "last_modified": "2024-06-19 06:14:54+00:00"
+  },
+  "aryamant/val_description_to_claims": {
+    "id": "aryamant/val_description_to_claims",
+    "author": "aryamant",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:csv",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-06-19 16:48:32+00:00",
+    "last_modified": "2024-06-19 17:43:17+00:00"
+  },
+  "yottan-wywy/patent-claims-thiamine_nitrate_enterprise": {
+    "id": "yottan-wywy/patent-claims-thiamine_nitrate_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:39:57+00:00",
+    "last_modified": "2025-08-25 20:40:04+00:00"
+  },
+  "yottan-wywy/patent-claims-hydrogenated_egg_yolk_lecithin_abbr_ipc": {
+    "id": "yottan-wywy/patent-claims-hydrogenated_egg_yolk_lecithin_abbr_ipc",
+    "author": "yottan-wywy",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:40:30+00:00",
+    "last_modified": "2025-08-25 20:40:36+00:00"
+  },
+  "yottan-wywy/patent-claims-hydrogenated_phospholipid_enterprise": {
+    "id": "yottan-wywy/patent-claims-hydrogenated_phospholipid_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:40:39+00:00",
+    "last_modified": "2025-08-25 20:40:45+00:00"
+  },
+  "yottan-wywy/patent-claims-hydrogenated_soybean_lecithin_abbr_ipc": {
+    "id": "yottan-wywy/patent-claims-hydrogenated_soybean_lecithin_abbr_ipc",
+    "author": "yottan-wywy",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:41:20+00:00",
+    "last_modified": "2025-08-25 20:41:27+00:00"
+  },
+  "yottan-wywy/patent-claims-cordyceps_kanji_ipc": {
+    "id": "yottan-wywy/patent-claims-cordyceps_kanji_ipc",
+    "author": "yottan-wywy",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:41:44+00:00",
+    "last_modified": "2025-08-25 20:41:51+00:00"
+  },
+  "yottan-wywy/patent-claims-glyceryl_alkyl_ether_enterprise": {
+    "id": "yottan-wywy/patent-claims-glyceryl_alkyl_ether_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-09-04 01:27:30+00:00",
+    "last_modified": "2025-09-04 01:27:36+00:00"
+  },
+  "vinhtran2611/semiconductor_wipo_04_scirepeval_v1_formated": {
+    "id": "vinhtran2611/semiconductor_wipo_04_scirepeval_v1_formated",
+    "author": "vinhtran2611",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "size_categories:10K<n<100K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-06-07 08:41:54+00:00",
+    "last_modified": "2024-06-07 08:42:06+00:00"
+  },
+  "pctemple/Cards_against_humanity": {
+    "id": "pctemple/Cards_against_humanity",
+    "author": "pctemple",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "license:openrail",
+      "region:us"
+    ],
+    "created_at": "2023-03-21 00:53:19+00:00",
+    "last_modified": "2023-03-21 00:53:19+00:00"
+  },
+  "jennypan00/pi_ft_droid_exclude_01_pct_vel_norm_train": {
+    "id": "jennypan00/pi_ft_droid_exclude_01_pct_vel_norm_train",
+    "author": "jennypan00",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "size_categories:10K<n<100K",
+      "format:parquet",
+      "modality:image",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-07-21 19:49:17+00:00",
+    "last_modified": "2025-07-21 19:50:20+00:00"
+  },
+  "jkazdan/harmful-1-pct": {
+    "id": "jkazdan/harmful-1-pct",
+    "author": "jkazdan",
+    "downloads": 5,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-07-27 18:18:59+00:00",
+    "last_modified": "2025-07-27 18:19:00+00:00"
+  },
+  "Inabia-AI/training-dataset-for-proximal-claims-09-03-2024": {
+    "id": "Inabia-AI/training-dataset-for-proximal-claims-09-03-2024",
+    "author": "Inabia-AI",
+    "downloads": 4,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:json",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-08-08 20:12:25+00:00",
+    "last_modified": "2024-08-08 20:12:33+00:00"
+  },
+  "gljj/singapore-misinformation-claims-with-evidence": {
+    "id": "gljj/singapore-misinformation-claims-with-evidence",
+    "author": "gljj",
+    "downloads": 4,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:csv",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-11-24 05:10:05+00:00",
+    "last_modified": "2024-11-24 05:16:06+00:00"
+  },
+  "anonymousdemo/AIPD_nlp_g_all_claims": {
+    "id": "anonymousdemo/AIPD_nlp_g_all_claims",
+    "author": "anonymousdemo",
+    "downloads": 4,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2024-12-24 00:42:18+00:00",
+    "last_modified": "2024-12-24 00:44:25+00:00"
+  },
+  "MadhavanS045/pharmacy_claims_dataset_2": {
+    "id": "MadhavanS045/pharmacy_claims_dataset_2",
+    "author": "MadhavanS045",
+    "downloads": 4,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-02-19 12:49:16+00:00",
+    "last_modified": "2025-02-19 12:49:20+00:00"
+  },
+  "yottan-wywy/patent-claims-thiamine_nitrate_ipc": {
+    "id": "yottan-wywy/patent-claims-thiamine_nitrate_ipc",
+    "author": "yottan-wywy",
+    "downloads": 4,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:38:23+00:00",
+    "last_modified": "2025-08-25 20:38:29+00:00"
+  },
+  "yottan-wywy/patent-claims-hydrogenated_lecithin_ipc": {
+    "id": "yottan-wywy/patent-claims-hydrogenated_lecithin_ipc",
+    "author": "yottan-wywy",
+    "downloads": 4,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:38:56+00:00",
+    "last_modified": "2025-08-25 20:39:04+00:00"
+  },
+  "yottan-wywy/patent-claims-ethylhexylglycerin_ipc": {
+    "id": "yottan-wywy/patent-claims-ethylhexylglycerin_ipc",
+    "author": "yottan-wywy",
+    "downloads": 4,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:39:09+00:00",
+    "last_modified": "2025-08-25 20:39:16+00:00"
+  },
+  "yottan-wywy/patent-claims-hydrogenated_egg_yolk_phospholipid_ipc": {
+    "id": "yottan-wywy/patent-claims-hydrogenated_egg_yolk_phospholipid_ipc",
+    "author": "yottan-wywy",
+    "downloads": 4,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:39:35+00:00",
+    "last_modified": "2025-08-25 20:39:43+00:00"
+  },
+  "yottan-wywy/patent-claims-ethylhexylglycerin_enterprise": {
+    "id": "yottan-wywy/patent-claims-ethylhexylglycerin_enterprise",
+    "author": "yottan-wywy",
+    "downloads": 4,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-25 20:41:10+00:00",
+    "last_modified": "2025-08-25 20:41:16+00:00"
+  },
+  "pctest21/pkltest": {
+    "id": "pctest21/pkltest",
+    "author": "pctest21",
+    "downloads": 4,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2025-07-15 21:28:45+00:00",
+    "last_modified": "2025-07-15 21:29:29+00:00"
+  },
+  "jkazdan/1_pct_oai_hexphi": {
+    "id": "jkazdan/1_pct_oai_hexphi",
+    "author": "jkazdan",
+    "downloads": 4,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-07-27 21:50:05+00:00",
+    "last_modified": "2025-07-27 21:50:17+00:00"
+  },
+  "electricsheepasia/asia-owid-change-co2-annual-pct": {
+    "id": "electricsheepasia/asia-owid-change-co2-annual-pct",
+    "author": "electricsheepasia",
+    "downloads": 4,
+    "likes": 0,
+    "tags": [
+      "task_categories:tabular-classification",
+      "task_categories:tabular-regression",
+      "task_categories:time-series-forecasting",
+      "multilinguality:monolingual",
+      "language:en",
+      "license:cc-by-4.0",
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:polars",
+      "library:mlcroissant",
+      "region:us",
+      "tabular",
+      "asia",
+      "our-world-in-data",
+      "change-co2-annual-pct",
+      "owid",
+      "long-run-series",
+      "time-series"
+    ],
+    "created_at": "2026-06-02 18:00:08+00:00",
+    "last_modified": "2026-06-02 18:00:17+00:00"
+  },
+  "mlburnham/ibm_claimstance_topic_entailment": {
+    "id": "mlburnham/ibm_claimstance_topic_entailment",
+    "author": "mlburnham",
+    "downloads": 3,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-06-19 02:34:13+00:00",
+    "last_modified": "2024-06-19 02:34:16+00:00"
+  },
+  "scottgeng00/olmo-2-0325-32b-preference-mix-100-pct-perturbed-gpt5_vs_smaller-phonetic_esl": {
+    "id": "scottgeng00/olmo-2-0325-32b-preference-mix-100-pct-perturbed-gpt5_vs_smaller-phonetic_esl",
+    "author": "scottgeng00",
+    "downloads": 3,
+    "likes": 0,
+    "tags": [
+      "size_categories:10K<n<100K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-22 19:20:23+00:00",
+    "last_modified": "2025-08-22 21:07:14+00:00"
+  },
+  "daaxila/twitter-jaNCb7zmGFgi9Um-2023.07.17-1680919033783414788-ihmY-J-PCTMIDWBI-part1": {
+    "id": "daaxila/twitter-jaNCb7zmGFgi9Um-2023.07.17-1680919033783414788-ihmY-J-PCTMIDWBI-part1",
+    "author": "daaxila",
+    "downloads": 3,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:imagefolder",
+      "modality:image",
+      "library:datasets",
+      "library:mlcroissant",
+      "region:us"
+    ],
+    "created_at": "2026-04-30 10:15:23+00:00",
+    "last_modified": "2026-04-30 10:15:48+00:00"
+  },
+  "lauritowal/claims": {
+    "id": "lauritowal/claims",
+    "author": "lauritowal",
+    "downloads": 2,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-05-15 19:08:22+00:00",
+    "last_modified": "2024-05-15 19:09:10+00:00"
+  },
+  "Inabia-AI/training-dataset-for-30-juvederm-claims-07-29-2024": {
+    "id": "Inabia-AI/training-dataset-for-30-juvederm-claims-07-29-2024",
+    "author": "Inabia-AI",
+    "downloads": 2,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:json",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2024-07-29 23:24:36+00:00",
+    "last_modified": "2024-07-29 23:25:04+00:00"
+  },
+  "elysian-is/synthetic_claims_20250224": {
+    "id": "elysian-is/synthetic_claims_20250224",
+    "author": "elysian-is",
+    "downloads": 2,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2025-02-24 22:35:17+00:00",
+    "last_modified": "2025-02-24 22:35:17+00:00"
+  },
+  "Marttack/Wipor": {
+    "id": "Marttack/Wipor",
+    "author": "Marttack",
+    "downloads": 2,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2025-12-28 06:21:32+00:00",
+    "last_modified": "2025-12-28 06:21:33+00:00"
+  },
+  "kailikespokemon/PCT": {
+    "id": "kailikespokemon/PCT",
+    "author": "kailikespokemon",
+    "downloads": 2,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2024-10-15 03:14:15+00:00",
+    "last_modified": "2024-10-15 03:14:15+00:00"
+  },
+  "scottgeng00/olmo2_0325_32b_typo_prefmix_100_pct_perturbed_with_original_prompt": {
+    "id": "scottgeng00/olmo2_0325_32b_typo_prefmix_100_pct_perturbed_with_original_prompt",
+    "author": "scottgeng00",
+    "downloads": 1,
+    "likes": 0,
+    "tags": [
+      "size_categories:100K<n<1M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-22 02:07:38+00:00",
+    "last_modified": "2025-08-22 02:08:29+00:00"
+  },
+  "scottgeng00/olmo-2-0325-32b-preference-mix-100-pct-perturbed-gpt5_vs_smaller": {
+    "id": "scottgeng00/olmo-2-0325-32b-preference-mix-100-pct-perturbed-gpt5_vs_smaller",
+    "author": "scottgeng00",
+    "downloads": 1,
+    "likes": 0,
+    "tags": [
+      "size_categories:100K<n<1M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-22 19:12:07+00:00",
+    "last_modified": "2025-08-22 21:05:31+00:00"
+  },
+  "scottgeng00/olmo-2-0325-32b-preference-mix-100-pct-perturbed-gpt5_vs_smaller-naturalsubset": {
+    "id": "scottgeng00/olmo-2-0325-32b-preference-mix-100-pct-perturbed-gpt5_vs_smaller-naturalsubset",
+    "author": "scottgeng00",
+    "downloads": 1,
+    "likes": 0,
+    "tags": [
+      "size_categories:100K<n<1M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "created_at": "2025-08-22 19:18:53+00:00",
+    "last_modified": "2025-08-22 21:08:56+00:00"
+  },
+  "Alahlywe68/pCT03taJ": {
+    "id": "Alahlywe68/pCT03taJ",
+    "author": "Alahlywe68",
+    "downloads": 1,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ],
+    "created_at": "2026-01-31 00:49:18+00:00",
+    "last_modified": "2026-01-31 00:49:18+00:00"
+  },
+  "electricsheepeurope/europe-owid-change-co2-annual-pct": {
+    "id": "electricsheepeurope/europe-owid-change-co2-annual-pct",
+    "author": "electricsheepeurope",
+    "downloads": 1,
+    "likes": 0,
+    "tags": [
+      "task_categories:tabular-classification",
+      "task_categories:tabular-regression",
+      "task_categories:time-series-forecasting",
+      "multilinguality:monolingual",
+      "language:en",
+      "license:cc-by-4.0",
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:polars",
+      "library:mlcroissant",
+      "region:us",
+      "tabular",
+      "europe",
+      "our-world-in-data",
+      "change-co2-annual-pct",
+      "owid",
+      "long-run-series",
+      "time-series"
+    ],
+    "created_at": "2026-06-05 01:41:03+00:00",
+    "last_modified": "2026-06-05 01:41:11+00:00"
+  }
+}

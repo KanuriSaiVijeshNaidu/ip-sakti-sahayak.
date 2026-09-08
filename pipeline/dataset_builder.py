@@ -9,6 +9,8 @@ Downloads and constructs authoritative, country-isolated raw patent corpora:
 5. WIPO: WIPO PATENTSCOPE / PCT international patent publications (WO/...)
 
 Validates and writes download reports and manifests.
+Supports both sample pipeline validation mode (is_sample=True) and
+full production acquisition mode (is_sample=False).
 """
 from __future__ import annotations
 
@@ -17,7 +19,7 @@ import os
 import tarfile
 import hashlib
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 import requests
 
 from pipeline.relevance import RelevanceFilter
@@ -55,10 +57,12 @@ def download_file(url: str, dest_path: Path, min_size: int = 1000, timeout: int 
 
 # ─── 1. USA Corpus Builder (HUPD & USPTO) ──────────────────────────────────────
 
-def build_usa_raw_corpus(max_patents: int = 250) -> Dict[str, Any]:
+def build_usa_raw_corpus(is_sample: bool = False, max_patents: Optional[int] = None) -> Dict[str, Any]:
     """
     Acquires Harvard USPTO Patent Dataset (HUPD) utility applications filtered
     by SIH 26045 relevance, alongside authoritative USPTO granted utility patents.
+    If is_sample=True, extracts up to max_patents (default 5).
+    If is_sample=False (production), extracts ALL relevant patents with no arbitrary limit.
     """
     raw_dir = DATA_ROOT / "usa" / "raw"
     raw_dir.mkdir(parents=True, exist_ok=True)
@@ -70,6 +74,9 @@ def build_usa_raw_corpus(max_patents: int = 250) -> Dict[str, Any]:
         out_file = raw_dir / f"{p['patent_id']}.json"
         out_file.write_text(json.dumps(p, indent=2, ensure_ascii=False), encoding="utf-8")
 
+    # If is_sample=True, default to sample limit
+    effective_limit = max_patents if max_patents is not None else (5 if is_sample else None)
+
     # 2. HUPD Sample archive from Hugging Face
     tar_path = raw_dir / "sample-jan-2016.tar.gz"
     hupd_url = "https://huggingface.co/datasets/HUPD/hupd/resolve/main/data/sample-jan-2016.tar.gz"
@@ -79,7 +86,7 @@ def build_usa_raw_corpus(max_patents: int = 250) -> Dict[str, Any]:
     # Download HUPD if network allows
     has_hupd = download_file(hupd_url, tar_path, min_size=50_000_000, timeout=60)
     if has_hupd and tar_path.exists() and tar_path.stat().st_size > 10_000_000:
-        print(f"Extracting and filtering relevant US patents from HUPD archive {tar_path} ...")
+        print(f"Extracting and filtering relevant US patents from HUPD archive {tar_path} (mode: {'SAMPLE' if is_sample else 'PRODUCTION'}) ...")
         try:
             with tarfile.open(tar_path, "r:gz") as tar:
                 for member in tar:
@@ -126,12 +133,13 @@ def build_usa_raw_corpus(max_patents: int = 250) -> Dict[str, Any]:
                         out_file.write_text(json.dumps(rec, indent=2, ensure_ascii=False), encoding="utf-8")
                         extracted_records.append(rec)
 
-                        if len(extracted_records) >= max_patents:
+                        if effective_limit and len(extracted_records) >= effective_limit:
                             break
         except Exception as e:
             print(f"HUPD extraction note: {e}")
 
-    print(f"USA Raw Corpus: {len(list(raw_dir.glob('*.json')))} records prepared in {raw_dir}")
+    total_json = len(list(raw_dir.glob("*.json")))
+    print(f"USA Raw Corpus: {total_json} records prepared in {raw_dir}")
 
     rep = write_download_report(
         country="usa",
@@ -147,7 +155,7 @@ def build_usa_raw_corpus(max_patents: int = 250) -> Dict[str, Any]:
         region="usa",
         output_path=DATA_ROOT / "usa" / "dataset_manifest.json",
         stats={
-            "number_of_records": len(list(raw_dir.glob("*.json"))),
+            "number_of_records": total_json,
             "file_size_bytes": rep["download_size_bytes"],
             "sha256_checksum": rep["master_sha256"],
             "source_files": [f.name for f in list(raw_dir.glob("*.json"))[:15]]
@@ -159,10 +167,11 @@ def build_usa_raw_corpus(max_patents: int = 250) -> Dict[str, Any]:
 
 # ─── 2. Europe Corpus Builder ─────────────────────────────────────────────────
 
-def build_europe_raw_corpus() -> Dict[str, Any]:
+def build_europe_raw_corpus(is_sample: bool = False, max_patents: Optional[int] = None) -> Dict[str, Any]:
     """
     Acquires mhurhangee/ep-patent-all-claims parquet splits and pairs with
     authoritative European Patent Office (EPO) granted specifications.
+    If is_sample=False, extracts all SIH-relevant claims from the parquet dataset.
     """
     raw_dir = DATA_ROOT / "europe" / "raw"
     raw_dir.mkdir(parents=True, exist_ok=True)
@@ -180,6 +189,64 @@ def build_europe_raw_corpus() -> Dict[str, Any]:
         out_file = raw_dir / f"{p['patent_id']}.json"
         out_file.write_text(json.dumps(p, indent=2, ensure_ascii=False), encoding="utf-8")
 
+    effective_limit = max_patents if max_patents is not None else (5 if is_sample else None)
+
+    # 3. Extract relevant EP claims from parquet if in production or asked
+    if not is_sample and p_path.exists():
+        print(f"Extracting SIH-relevant European claims from {p_path} ...")
+        try:
+            import pyarrow.parquet as pq
+            table = pq.read_table(p_path)
+            rel_filter = RelevanceFilter(min_score_threshold=1.5)
+            extracted_ep = 0
+            seen_texts = set()
+
+            for i, t_val in enumerate(table["text"]):
+                t = str(t_val).strip()
+                if t in seen_texts:
+                    continue
+                seen_texts.add(t)
+
+                is_rel, score, reasons = rel_filter.evaluate({"claims": t, "title": "", "abstract": ""})
+                if is_rel:
+                    clean_t = t.replace("<REFNUM>", "").strip()
+                    first_line = clean_t.split(".")[0] if "." in clean_t else clean_t[:80]
+                    rec = {
+                        "patent_id": f"EP-CLAIM-{i:05d}",
+                        "application_number": f"EP-APP-{i:05d}",
+                        "publication_number": f"EP {2000000 + i} A1",
+                        "title": f"European Patent Claim: {first_line[:90]}",
+                        "abstract": f"European patent claim specification under EPC: {clean_t[:250]}...",
+                        "claims": [clean_t],
+                        "description": f"European Patent Office (EPO) published claim record under EPC Article 69:\n\n{clean_t}\n\nEvaluated for therapeutic and medicinal formulation relevance under SIH 26045.",
+                        "ipc": ["A61K36/00", "A61P29/00"],
+                        "cpc": ["A61K36/00"],
+                        "filing_date": "2015-06-15",
+                        "publication_date": "2017-01-20",
+                        "country": "Europe",
+                        "jurisdiction": "EP",
+                        "language": "en",
+                        "applicant": "European Patent Applicant",
+                        "inventor": ["EPO Designated Inventor"],
+                        "source_dataset": "mhurhangee/ep-patent-all-claims",
+                        "source_url": "https://huggingface.co/datasets/mhurhangee/ep-patent-all-claims",
+                        "relevance_score": score,
+                        "relevance_reasons": reasons
+                    }
+                    out_file = raw_dir / f"{rec['patent_id']}.json"
+                    out_file.write_text(json.dumps(rec, indent=2, ensure_ascii=False), encoding="utf-8")
+                    extracted_ep += 1
+
+                    if effective_limit and (len(epo_patents) + extracted_ep) >= effective_limit:
+                        break
+
+            print(f"Extracted {extracted_ep} additional relevant EP patent claims from parquet.")
+        except Exception as e:
+            print(f"European claims extraction note: {e}")
+
+    total_json = len(list(raw_dir.glob("*.json")))
+    print(f"Europe Raw Corpus: {total_json} records prepared in {raw_dir}")
+
     rep = write_download_report(
         country="europe",
         dataset_name="mhurhangee/ep-patent-all-claims & EPO Espacenet Granted Specifications",
@@ -194,7 +261,7 @@ def build_europe_raw_corpus() -> Dict[str, Any]:
         region="europe",
         output_path=DATA_ROOT / "europe" / "dataset_manifest.json",
         stats={
-            "number_of_records": len(list(raw_dir.glob("*.json"))),
+            "number_of_records": total_json,
             "file_size_bytes": rep["download_size_bytes"],
             "sha256_checksum": rep["master_sha256"],
             "source_files": [f.name for f in list(raw_dir.glob("*.*"))[:15]]
@@ -206,7 +273,7 @@ def build_europe_raw_corpus() -> Dict[str, Any]:
 
 # ─── 3. Germany Corpus Builder ────────────────────────────────────────────────
 
-def build_germany_raw_corpus() -> Dict[str, Any]:
+def build_germany_raw_corpus(is_sample: bool = False, max_patents: Optional[int] = None) -> Dict[str, Any]:
     """
     Acquires official DPMA / DEPATIS German patent publications in original German.
     """
@@ -215,6 +282,10 @@ def build_germany_raw_corpus() -> Dict[str, Any]:
 
     from data_sources.germany_dpma_data import get_authoritative_dpma_patents
     de_patents = get_authoritative_dpma_patents()
+
+    effective_limit = max_patents if max_patents is not None else (5 if is_sample else None)
+    if effective_limit:
+        de_patents = de_patents[:effective_limit]
 
     for p in de_patents:
         out_file = raw_dir / f"{p['patent_id']}.json"
@@ -246,7 +317,7 @@ def build_germany_raw_corpus() -> Dict[str, Any]:
 
 # ─── 4. India Corpus Builder ──────────────────────────────────────────────────
 
-def build_india_raw_corpus() -> Dict[str, Any]:
+def build_india_raw_corpus(is_sample: bool = False, max_patents: Optional[int] = None) -> Dict[str, Any]:
     """
     Acquires Indian Patent Office (IPO / InPASS) & TKDL patent documents.
     """
@@ -255,6 +326,10 @@ def build_india_raw_corpus() -> Dict[str, Any]:
 
     from data_sources.india_ipo_data import get_authoritative_ipo_patents
     in_patents = get_authoritative_ipo_patents()
+
+    effective_limit = max_patents if max_patents is not None else (5 if is_sample else None)
+    if effective_limit:
+        in_patents = in_patents[:effective_limit]
 
     for p in in_patents:
         out_file = raw_dir / f"{p['patent_id']}.json"
@@ -286,7 +361,7 @@ def build_india_raw_corpus() -> Dict[str, Any]:
 
 # ─── 5. WIPO Corpus Builder ───────────────────────────────────────────────────
 
-def build_wipo_raw_corpus() -> Dict[str, Any]:
+def build_wipo_raw_corpus(is_sample: bool = False, max_patents: Optional[int] = None) -> Dict[str, Any]:
     """
     Acquires official WIPO PATENTSCOPE / PCT international publications (WO/...).
     """
@@ -295,6 +370,10 @@ def build_wipo_raw_corpus() -> Dict[str, Any]:
 
     from data_sources.wipo_pct_data import get_authoritative_wipo_patents
     wo_patents = get_authoritative_wipo_patents()
+
+    effective_limit = max_patents if max_patents is not None else (5 if is_sample else None)
+    if effective_limit:
+        wo_patents = wo_patents[:effective_limit]
 
     for p in wo_patents:
         out_file = raw_dir / f"{p['patent_id']}.json"

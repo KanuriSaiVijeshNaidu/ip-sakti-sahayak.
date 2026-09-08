@@ -412,104 +412,104 @@ export const DOMAIN_DATA: Partial<Record<LanguageCode, Record<DomainType | "auto
       ]
     }
   },
-  de: {
+  ja: {
     auto: {
-      title: "Alle Fachgebiete & Normenregister",
-      badge: "Amtlicher Rechtskorpus (PatG, AMG, MarkenG, BfArM, EPÜ)",
+      title: "全領域・法令公報データベース",
+      badge: "公的法的コーパス (特許法, 薬機法, 商標法, 日本薬局方, JPO)",
       statutes: [
-        "Patentgesetz (PatG §§ 1, 2a, 3, 4, 5)",
-        "Arzneimittelgesetz (AMG §§ 39a-39d Traditionelle pflanzliche Arzneimittel)",
-        "Markengesetz (MarkenG § 8 Absolute Schutzhindernisse)",
-        "BfArM Monographien der Kommission E für Phytotherapie",
-        "Nagoya-Protokoll-Umsetzungsgesetz & EU-Verordnung 511/2014"
+        "日本国特許法第29条（新規性・進歩性）",
+        "医薬品医療機器等法（薬機法）生薬・漢方製剤審査基準",
+        "商標法第3条・第4条（商標登録要件および不登録事由）",
+        "日本薬局方（生薬総則および試験法）",
+        "生物多様性条約および名古屋議定書国内措置"
       ],
       prompts: [
-        { emoji: "💡", text: "Kann eine ayurvedische Rezeptur mit Ashwagandha in Deutschland patentiert werden?" },
-        { emoji: "🏷️", text: "Welche Anforderungen stellt AMG § 39a an die Registrierung pflanzlicher Arzneimittel?" },
-        { emoji: "™️", text: "Wie registriere ich eine Marke für pflanzliche Heilmittel beim DPMA nach dem Markengesetz?" },
-        { emoji: "🌿", text: "Wie wird der Schutz geografischer Herkunftsangaben für traditionelle Erzeugnisse erlangt?" },
-        { emoji: "⚖️", text: "Wie beurteilt das DPMA die erfinderische Tätigkeit bei Pflanzenextrakten?" },
-        { emoji: "📋", text: "Welche Dokumentationspflichten für traditionelle Anwendung (30 Jahre) fordert das BfArM?" }
+        { emoji: "💡", text: "日本において生薬抽出物を含有する医薬組成物の特許を取得できますか？" },
+        { emoji: "🏷️", text: "薬機法における生薬エキスの製造販売承認要件は何ですか？" },
+        { emoji: "™️", text: "漢方や生薬の名称を特許庁に商標として登録できますか？" },
+        { emoji: "🌿", text: "伝統的産品に対する地理的表示(GI)保護の申請要件は何ですか？" },
+        { emoji: "⚖️", text: "日本国特許庁における配合剤の進歩性判断基準はどうなっていますか？" },
+        { emoji: "📋", text: "生薬製剤の品質管理基準（GMP）における留意点は何ですか？" }
       ]
     },
     patents: {
-      title: "Patente & Innovationen bei Naturstoffen",
-      badge: "Patentgesetz (PatG) & Europäisches Patentübereinkommen (EPÜ)",
+      title: "特許・天然物イノベーション",
+      badge: "日本国特許法 & 特許庁 (JPO) 審査基準",
       statutes: [
-        "PatG § 1 & § 3: Neuheit und erfinderische Tätigkeit bei Extrakten",
-        "PatG § 2a: Ausschluss rein biologischer Verfahren und Naturstoffe",
-        "EPÜ Art. 54(5): Zweite medizinische Indikation für bekannte Pflanzenstoffe",
-        "Gebrauchsmustergesetz (GebrMG): Schneller Schutz für pflanzliche Zubereitungen"
+        "特許法第29条第1項・第2項（産業上利用可能性・新規性・進歩性）",
+        "特許法第36条（明細書の記載要件・サポート要件・実施可能要件）",
+        "生薬・漢方製剤に関する特許庁審査ハンドブック",
+        "先行技術調査における伝統知識ライブラリ (TKDL) 活用"
       ],
       prompts: [
-        { emoji: "🔬", text: "Wie wird der synergistische Effekt zur Patentierung polyherbaler Zubereitungen nachgewiesen?" },
-        { emoji: "📜", text: "Welche Abgrenzung zum Stand der Technik (TKDL) verlangt das DPMA bei Naturstoffen?" },
-        { emoji: "🧬", text: "Welche Offenlegungspflichten über die geografische Herkunft biologischer Ressourcen bestehen?" },
-        { emoji: "⏱️", text: "Wie läuft das Anmelde- und Prüfungsverfahren vor dem Deutschen Patent- und Markenamt ab?" }
+        { emoji: "🔬", text: "生薬の相乗効果組成物を特許出願する際、どのような薬効データが必要ですか？" },
+        { emoji: "📜", text: "天然植物抽出物の新規性は公知文献とどう区別されますか？" },
+        { emoji: "🧬", text: "PCT国際出願で遺伝資源の出所開示はどう求められますか？" },
+        { emoji: "⏱️", text: "日本国特許庁における特許出願から権利化までの審査フローは？" }
       ]
     },
     trademarks: {
-      title: "Markenrecht & Kennzeichenschutz",
-      badge: "Markengesetz (MarkenG)",
+      title: "商標法・ブランド保護",
+      badge: "商標法 (特許庁)",
       statutes: [
-        "Nizza-Klasse 5: Pharmazeutische und pflanzliche Erzeugnisse",
-        "Nizza-Klassen 29 & 30: Nahrungsergänzungsmittel und diätetische Lebensmittel",
-        "Nizza-Klasse 3: Pflanzliche Kosmetika, Salben und Öle",
-        "MarkenG § 8: Absolute Schutzhindernisse für beschreibende Freihaltebedürfnisse"
+        "商標法第3条（自他商品識別力および記述的商標の排除）",
+        "商標法第4条（不登録事由・他人の周知商標との類似防止）",
+        "ニース国際分類第5類（薬剤・生薬製剤・栄養補助サプリメント）",
+        "ニース国際分類第3類（天然化粧品・薬用クリーム）"
       ],
       prompts: [
-        { emoji: "™️", text: "Können Bezeichnungen wie 'Ashwagandha' oder 'Triphala' als Marken geschützt werden?" },
-        { emoji: "🚫", text: "Wann weist das DPMA eine botanische Markenanmeldung wegen Freihaltebedürfnis ab?" },
-        { emoji: "🔍", text: "Wie führt man eine Markenrecherche im DPMA-Register (DPMAregister) durch?" },
-        { emoji: "🛡️", text: "Welche Abwehrmöglichkeiten bestehen gegen Nachahmungen und Markenpiraterie?" }
+        { emoji: "™️", text: "アシュワガンダやウコンなどの一般的な生薬名は商標登録できますか？" },
+        { emoji: "🚫", text: "どのような場合に生薬商標は記述的商標として拒絶されますか？" },
+        { emoji: "🔍", text: "J-PlatPatを用いた商標検索と類似群コードの確認方法は？" },
+        { emoji: "🛡️", text: "模倣品やブランド侵害に対する商標権の行使方法は？" }
       ]
     },
     gi: {
-      title: "Geografische Angaben & Herkunftsschutz",
-      badge: "MarkenG §§ 126-139 & EU-Verordnung 1151/2012",
+      title: "地理的表示 (GI) & 原産地保護",
+      badge: "特定農林水産物等の名称の保護に関する法律 (GI法)",
       statutes: [
-        "MarkenG § 126: Schutz von geografischen Herkunftsangaben",
-        "EU-Qualitätsregelungen: geschützte geografische Angabe (g.g.A.)",
-        "Schutz traditioneller Bezeichnungen und kollektiver Herkunftsnachweise",
-        "Präzedenzfälle botanischer und regionaler Qualitätskräuter"
+        "特定農林水産物等の名称の保護に関する法律（GI法第2条・第3条）",
+        "伝統的農産物および地域特産生薬の登録基準",
+        "生産者団体による品質管理基準および業務規程",
+        "海外GIとの相互保護協定"
       ],
       prompts: [
-        { emoji: "🌿", text: "Wie beantragt ein Erzeugerverband Schutz für eine regionale Heilkräuterspezialität?" },
-        { emoji: "⚖️", text: "Welche Rechtsbehelfe bestehen bei unberechtigter Nutzung geografischer Angaben?" },
-        { emoji: "🌾", text: "Kann ein einzelnes Unternehmen Inhaber einer geschützten Herkunftsangabe sein?" },
-        { emoji: "🏷️", text: "Welche Kennzeichnungspflichten gelten für geschützte geografische Angaben in der EU?" }
+        { emoji: "🌿", text: "生産者団体が地域特産薬草のGI登録を申請する手順は？" },
+        { emoji: "⚖️", text: "GIマークの不正使用に対する行政処分や罰則はどう規定されていますか？" },
+        { emoji: "🌾", text: "個人企業でもGIの保護対象になりますか？" },
+        { emoji: "🏷️", text: "GI登録産品の表示基準およびトレーサビリティ要件は何ですか？" }
       ]
     },
     fssai: {
-      title: "Lebensmittelrecht & Nahrungsergänzung",
-      badge: "LFGB, NemV & Health-Claims-Verordnung (EG) Nr. 1924/2006",
+      title: "食品衛生・健康食品規格",
+      badge: "食品衛生法 & 機能性表示食品制度",
       statutes: [
-        "Nahrungsergänzungsmittelverordnung (NemV): Anzeigepflicht beim BVL",
-        "Health-Claims-Verordnung (EG) 1924/2006: Zulässige gesundheitsbezogene Angaben",
-        "BVL Stofflisten: Einstufung pflanzlicher Stoffe als Lebensmittel oder Arzneimittel",
-        "Kontaminanten-Verordnung: Grenzwerte für Schwermetalle, Pestizide und Aflatoxine"
+        "食品衛生法（指定添加物および残留農薬基準）",
+        "食品表示法（機能性表示食品・特定保健用食品制度）",
+        "医薬品と食品の区分基準（いわゆる食薬区分「46通知」）",
+        "重金属・残留農薬・アフラトキシン許容量基準"
       ],
       prompts: [
-        { emoji: "🏷️", text: "Welche gesundheitsbezogenen Angaben (Health Claims) sind für pflanzliche Stoffe erlaubt?" },
-        { emoji: "🚫", text: "Wo verläuft die Abgrenzung zwischen Nahrungsergänzungsmittel und Arzneimittel nach BVL?" },
-        { emoji: "🧪", text: "Welche Grenzwerte für Schwermetalle (Blei, Cadmium, Quecksilber) gelten in Deutschland?" },
-        { emoji: "📑", text: "Wie läuft die Meldung eines pflanzlichen Nahrungsergänzungsmittels beim BVL ab?" }
+        { emoji: "🏷️", text: "生薬成分を含む健康食品で認められる機能性表示の範囲は？" },
+        { emoji: "🚫", text: "食薬区分における「専ら医薬品として使用される成分本質」の判断基準は？" },
+        { emoji: "🧪", text: "健康食品における重金属（鉛、ヒ素、カドミウム）の許容基準は？" },
+        { emoji: "📑", text: "機能性表示食品の消費者庁への届出手順と科学的根拠の要件は？" }
       ]
     },
     ayush: {
-      title: "Arzneimittelgesetz & BfArM-Zulassung",
-      badge: "Arzneimittelgesetz (AMG §§ 39a-39d) & BfArM",
+      title: "薬機法・生薬製剤承認",
+      badge: "医薬品医療機器等法（薬機法）& PMDA",
       statutes: [
-        "AMG § 39a: Voraussetzungen für die Registrierung traditioneller pflanzlicher Arzneimittel",
-        "AMG § 39b: Unterlagen über die 30-jährige traditionelle Anwendung (15 Jahre in der EU)",
-        "BfArM Aufbereitungsmonographien der Kommission E für pflanzliche Drogen",
-        "EU-Richtlinie 2004/24/EG über traditionelle pflanzliche Arzneimittel (THMPD)"
+        "医薬品医療機器等法第14条（医薬品製造販売承認申請）",
+        "一般用漢方製剤製造販売承認基準（294処方基準）",
+        "日本薬局方収載生薬の確認試験法および純度試験法",
+        "医薬品GMP省令（生薬原料の受入・保管・品質管理）"
       ],
       prompts: [
-        { emoji: "📋", text: "Welche Nachweise zur 30-jährigen medizinischen Verwendung verlangt das BfArM?" },
-        { emoji: "🏭", text: "Welche GMP-Anforderungen gelten für Hersteller traditioneller pflanzlicher Arzneimittel?" },
-        { emoji: "🌳", text: "Welche Sorgfaltspflichten nach der EU-Verordnung 511/2014 (Nagoya-Protokoll) müssen beachtet werden?" },
-        { emoji: "💰", text: "Wie läuft das Registrierungsverfahren traditioneller pflanzlicher Arzneimittel beim BfArM ab?" }
+        { emoji: "📋", text: "一般用漢方製剤294処方に該当する場合の承認申請の簡素化とは？" },
+        { emoji: "🏭", text: "生薬製剤製造所におけるGMP適合性調査の要件は何ですか？" },
+        { emoji: "🌳", text: "生薬原料の調達における生物多様性条約（ABS）対応の留意点は？" },
+        { emoji: "💰", text: "PMDAにおける生薬製剤の対面助言および承認審査フローは？" }
       ]
     }
   }

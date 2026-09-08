@@ -187,4 +187,70 @@ export async function convertIndianToInternational(
   throw new Error("Indian to International IP transition gateway temporarily unavailable.");
 }
 
+export async function searchRetrievalPipeline(
+  req: import("@/types").Phase5RetrievalSearchRequest
+): Promise<import("@/types").Phase5RetrievalSearchResponse> {
+  const endpoints = ["/api/retrieval/search"];
+  if (API_BASE && API_BASE !== "/api") endpoints.push(`${API_BASE}/retrieval/search`);
+  if (typeof window !== "undefined" && window.location.hostname === "localhost") {
+    endpoints.push("http://127.0.0.1:8000/api/retrieval/search");
+  }
+
+  for (const url of endpoints) {
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(req),
+      });
+      if (res.ok) return await res.json();
+    } catch {}
+  }
+  throw new Error("Intelligent retrieval pipeline service temporarily unavailable.");
+}
+
+export async function generateRAGAnswer(
+  req: import("@/types").RAGAnswerRequest
+): Promise<import("@/types").RAGAnswerResponse> {
+  const endpoints = ["/api/answer"];
+  if (API_BASE && API_BASE !== "/api") endpoints.push(`${API_BASE}/answer`);
+  if (typeof window !== "undefined" && window.location.hostname === "localhost") {
+    endpoints.push("http://127.0.0.1:8000/api/answer");
+  }
+
+  for (const url of endpoints) {
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(req),
+      });
+      if (res.ok) return await res.json();
+    } catch {}
+  }
+  throw new Error("Grounded RAG answer service temporarily unavailable.");
+}
+
+export async function callDecisionEngine(
+  req: import("@/types").DecisionRequest
+): Promise<import("@/types").DecisionResponse> {
+  const endpoints = ["/api/decision"];
+  if (API_BASE && API_BASE !== "/api") endpoints.push(`${API_BASE}/decision`);
+  if (typeof window !== "undefined" && window.location.hostname === "localhost") {
+    endpoints.push("http://127.0.0.1:8000/api/decision");
+  }
+
+  for (const url of endpoints) {
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(req),
+      });
+      if (res.ok) return await res.json();
+    } catch {}
+  }
+  throw new Error("AYURLEX Phase 7 Decision Engine service temporarily unavailable.");
+}
+
 

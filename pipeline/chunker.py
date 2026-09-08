@@ -2,8 +2,8 @@
 pipeline/chunker.py
 ───────────────────
 Structure-Aware Chunking Engine with Enriched Provenance Metadata.
-Target: 900–1100 tokens, 150 token overlap.
-Boundaries: claim boundaries, section boundaries, paragraph boundaries.
+Target: 900–1100 tokens, 150 token overlap, absolute ceiling: 1200 tokens.
+Boundaries: claim boundaries, section boundaries, paragraph boundaries, sentence boundaries.
 Never splits claim numbers from claims, chemical names, botanical binomials,
 or patent identifiers.
 """
@@ -32,6 +32,52 @@ class StructureAwareChunker:
         self.target_chunk_tokens = target_chunk_tokens
         self.max_chunk_tokens = max_chunk_tokens
         self.overlap_tokens = overlap_tokens
+
+    def _split_long_text(self, text: str, max_tokens: int) -> List[str]:
+        """Split a long text block by sentences or word windows to never exceed max_tokens."""
+        if estimate_tokens(text) <= max_tokens:
+            return [text]
+        
+        # Split on sentence boundaries
+        sentences = re.split(r"(?<=[.!?])\s+", text)
+        chunks = []
+        curr = []
+        
+        for s in sentences:
+            if not s.strip():
+                continue
+            s_toks = estimate_tokens(s)
+            if s_toks > max_tokens:
+                # If there are already accumulated sentences, flush them
+                if curr:
+                    chunks.append(" ".join(curr))
+                    curr = []
+                # Split single giant sentence by words using actual token counts
+                words = s.split()
+                w_curr = []
+                for w in words:
+                    cand = " ".join(w_curr + [w]) if w_curr else w
+                    if estimate_tokens(cand) > max_tokens:
+                        if w_curr:
+                            chunks.append(" ".join(w_curr))
+                        w_curr = [w]
+                    else:
+                        w_curr.append(w)
+                if w_curr:
+                    chunks.append(" ".join(w_curr))
+                continue
+
+            cand_text = " ".join(curr + [s]) if curr else s
+            if curr and estimate_tokens(cand_text) > max_tokens:
+                chunks.append(" ".join(curr))
+                curr = [s]
+            else:
+                curr.append(s)
+                
+        if curr:
+            chunks.append(" ".join(curr))
+            
+        return chunks
 
     def chunk_document(self, docling_doc: Dict[str, Any], country: str, source_dataset: str, source_url: str) -> List[Dict[str, Any]]:
         """
@@ -62,23 +108,25 @@ class StructureAwareChunker:
                     cl_tokens = estimate_tokens(cl_text)
                     cl_num = cl.get("claim_number", "1")
 
+                    # Handle single massive claims
+                    if cl_tokens > self.max_chunk_tokens:
+                        if current_claim_batch:
+                            combined = "\n\n".join(f"Claim {c['claim_number']}: {c['text']}" for c in current_claim_batch)
+                            chunks.append(self._make_chunk(country, region, source_dataset, source_url, patent_id, meta, title, "claims", current_claim_batch[0]["claim_number"], chunk_idx, combined))
+                            chunk_idx += 1
+                            current_claim_batch = []
+                            current_tokens = 0
+                        sub_parts = self._split_long_text(cl_text, self.max_chunk_tokens)
+                        for sp in sub_parts:
+                            chunks.append(self._make_chunk(country, region, source_dataset, source_url, patent_id, meta, title, "claims", cl_num, chunk_idx, f"Claim {cl_num}: {sp}"))
+                            chunk_idx += 1
+                        continue
+
                     # If adding this claim exceeds max, flush current batch
                     if current_claim_batch and (current_tokens + cl_tokens > self.max_chunk_tokens):
                         combined_text = "\n\n".join(f"Claim {c['claim_number']}: {c['text']}" for c in current_claim_batch)
                         first_cl_num = current_claim_batch[0]["claim_number"]
-                        chunks.append(self._make_chunk(
-                            country=country,
-                            region=region,
-                            source_dataset=source_dataset,
-                            source_url=source_url,
-                            patent_id=patent_id,
-                            meta=meta,
-                            title=title,
-                            section="claims",
-                            claim_number=first_cl_num,
-                            chunk_index=chunk_idx,
-                            text=combined_text
-                        ))
+                        chunks.append(self._make_chunk(country, region, source_dataset, source_url, patent_id, meta, title, "claims", first_cl_num, chunk_idx, combined_text))
                         chunk_idx += 1
                         current_claim_batch = []
                         current_tokens = 0
@@ -88,39 +136,17 @@ class StructureAwareChunker:
 
                 if current_claim_batch:
                     combined_text = "\n\n".join(f"Claim {c['claim_number']}: {c['text']}" for c in current_claim_batch)
-                    chunks.append(self._make_chunk(
-                        country=country,
-                        region=region,
-                        source_dataset=source_dataset,
-                        source_url=source_url,
-                        patent_id=patent_id,
-                        meta=meta,
-                        title=title,
-                        section="claims",
-                        claim_number=current_claim_batch[0]["claim_number"],
-                        chunk_index=chunk_idx,
-                        text=combined_text
-                    ))
+                    chunks.append(self._make_chunk(country, region, source_dataset, source_url, patent_id, meta, title, "claims", current_claim_batch[0]["claim_number"], chunk_idx, combined_text))
                     chunk_idx += 1
 
-            # 2. Abstract Section: Keep whole
+            # 2. Abstract Section: Keep whole or split if oversized
             elif sec_type == "abstract":
                 ab_text = sec.get("text", "").strip()
                 if ab_text:
-                    chunks.append(self._make_chunk(
-                        country=country,
-                        region=region,
-                        source_dataset=source_dataset,
-                        source_url=source_url,
-                        patent_id=patent_id,
-                        meta=meta,
-                        title=title,
-                        section="abstract",
-                        claim_number=None,
-                        chunk_index=chunk_idx,
-                        text=ab_text
-                    ))
-                    chunk_idx += 1
+                    sub_abs = self._split_long_text(ab_text, self.max_chunk_tokens)
+                    for sa in sub_abs:
+                        chunks.append(self._make_chunk(country, region, source_dataset, source_url, patent_id, meta, title, "abstract", None, chunk_idx, sa))
+                        chunk_idx += 1
 
             # 3. Description / Background / Summary: Paragraph boundary chunking
             else:
@@ -134,24 +160,29 @@ class StructureAwareChunker:
 
                 for para in paragraphs:
                     para_tokens = estimate_tokens(para)
+                    
+                    if para_tokens > self.max_chunk_tokens:
+                        # Single large paragraph -> flush existing and split long paragraph
+                        if curr_paras:
+                            chunks.append(self._make_chunk(country, region, source_dataset, source_url, patent_id, meta, title, sec_type or "description", None, chunk_idx, "\n\n".join(curr_paras)))
+                            chunk_idx += 1
+                            curr_paras = []
+                            curr_tokens = 0
+                        sub_paras = self._split_long_text(para, self.max_chunk_tokens)
+                        for sp in sub_paras:
+                            chunks.append(self._make_chunk(country, region, source_dataset, source_url, patent_id, meta, title, sec_type or "description", None, chunk_idx, sp))
+                            chunk_idx += 1
+                        continue
+
                     if curr_paras and (curr_tokens + para_tokens > self.max_chunk_tokens):
                         chunk_text = "\n\n".join(curr_paras)
-                        chunks.append(self._make_chunk(
-                            country=country,
-                            region=region,
-                            source_dataset=source_dataset,
-                            source_url=source_url,
-                            patent_id=patent_id,
-                            meta=meta,
-                            title=title,
-                            section=sec_type or "description",
-                            claim_number=None,
-                            chunk_index=chunk_idx,
-                            text=chunk_text
-                        ))
+                        chunks.append(self._make_chunk(country, region, source_dataset, source_url, patent_id, meta, title, sec_type or "description", None, chunk_idx, chunk_text))
                         chunk_idx += 1
-                        # Retain overlap from last paragraph
-                        curr_paras = [curr_paras[-1], para] if len(curr_paras) > 1 else [para]
+                        # Check if keeping previous para fits with para; if not, just start with para
+                        if len(curr_paras) > 1 and (estimate_tokens(curr_paras[-1]) + para_tokens <= self.max_chunk_tokens):
+                            curr_paras = [curr_paras[-1], para]
+                        else:
+                            curr_paras = [para]
                         curr_tokens = sum(estimate_tokens(p) for p in curr_paras)
                     else:
                         curr_paras.append(para)
@@ -159,19 +190,7 @@ class StructureAwareChunker:
 
                 if curr_paras:
                     chunk_text = "\n\n".join(curr_paras)
-                    chunks.append(self._make_chunk(
-                        country=country,
-                        region=region,
-                        source_dataset=source_dataset,
-                        source_url=source_url,
-                        patent_id=patent_id,
-                        meta=meta,
-                        title=title,
-                        section=sec_type or "description",
-                        claim_number=None,
-                        chunk_index=chunk_idx,
-                        text=chunk_text
-                    ))
+                    chunks.append(self._make_chunk(country, region, source_dataset, source_url, patent_id, meta, title, sec_type or "description", None, chunk_idx, chunk_text))
                     chunk_idx += 1
 
         return chunks

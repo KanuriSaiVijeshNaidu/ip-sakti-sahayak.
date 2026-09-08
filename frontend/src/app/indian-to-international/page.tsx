@@ -43,7 +43,7 @@ export default function IndianToInternationalPage() {
     "WO",
     "US",
     "EP",
-    "DE",
+    "JP",
   ]);
 
   // Response state
@@ -338,7 +338,7 @@ ${result.action_plan
                   { id: "WO", label: "WIPO PCT (157 States)", desc: "PCT International Phase" },
                   { id: "US", label: "United States (USPTO)", desc: "35 U.S.C. 101/102/103" },
                   { id: "EP", label: "Europe (EPO)", desc: "EPC Articles 52/54/56" },
-                  { id: "DE", label: "Germany (DPMA)", desc: "German PatG § 1/34" },
+                  { id: "JP", label: "Japan (JPO)", desc: "Japanese Patent Act Art. 29" },
                 ].map((j) => (
                   <button
                     key={j.id}

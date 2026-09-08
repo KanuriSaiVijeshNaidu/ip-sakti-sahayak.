@@ -1,0 +1,100 @@
+﻿{
+    "scope_definition":  {
+                             "active_jurisdictions":  [
+                                                          "US",
+                                                          "EP",
+                                                          "WO",
+                                                          "JP"
+                                                      ],
+                             "deferred_jurisdictions":  [
+                                                            "IN"
+                                                        ],
+                             "removed_jurisdictions":  [
+                                                           "DE"
+                                                       ],
+                             "total_faiss_vectors":  70608,
+                             "total_canonical_chunks":  70608
+                         },
+    "test_metrics":  {
+                         "phase2_to_4_regression_tests":  {
+                                                              "pass_rate_percent":  100,
+                                                              "total":  40,
+                                                              "passed":  40
+                                                          },
+                         "total_system_passed":  107,
+                         "phase6_tests":  {
+                                              "failed":  0,
+                                              "pass_rate_percent":  100,
+                                              "total":  22,
+                                              "passed":  22
+                                          },
+                         "total_system_tests":  107,
+                         "phase5_regression_tests":  {
+                                                         "pass_rate_percent":  100,
+                                                         "total":  45,
+                                                         "passed":  45
+                                                     }
+                     },
+    "rag_pipeline":  {
+                         "crag_validator":  {
+                                                "statuses":  [
+                                                                 "GOOD",
+                                                                 "PARTIAL",
+                                                                 "INSUFFICIENT",
+                                                                 "INVALID"
+                                                             ],
+                                                "partial_rerank_threshold":  -5,
+                                                "max_duplicate_ratio":  0.85,
+                                                "legal_clearance_interception":  true,
+                                                "good_rerank_threshold":  0.05
+                                            },
+                         "evidence_selector":  {
+                                                   "citation_tag_format":  "[E1], [E2], ...",
+                                                   "max_evidence_chunks":  8,
+                                                   "max_chunks_per_doc":  2,
+                                                   "default_top_k":  5
+                                               },
+                         "retrieval_layer":  "Phase 5 Hybrid Retrieval (BGE-M3 Dense + Janome BM25 + RRF + BGE Reranker v2-m3)",
+                         "claim_validator":  {
+                                                 "temporal_assertion_audit":  true,
+                                                 "jurisdiction_boundary_check":  true,
+                                                 "phantom_citation_purging":  true
+                                             },
+                         "answer_generator":  {
+                                                  "fallback_mode":  "Deterministic extractive synthesis on offline/mock execution",
+                                                  "disclaimer_injection":  "Statutory disclaimer injected for commercial/legal clearance questions",
+                                                  "grounding_policy":  "Strict multilingual grounding; unsupported facts, patent numbers, and filing dates prohibited"
+                                              }
+                     },
+    "project":  "IP-SAKTI Sahayak / AYURLEX (SIH 26045)",
+    "frontend_integration":  {
+                                 "features":  [
+                                                  "AI-Grounded Answer Tab",
+                                                  "CRAG Status Badge",
+                                                  "Interactive Citation Tags",
+                                                  "Claim Validation Audit Breakdown",
+                                                  "Evidence Viewer Drawer"
+                                              ],
+                                 "page":  "frontend/src/app/international/page.tsx",
+                                 "build_status":  "Compiled successfully (0 errors)"
+                             },
+    "phase":  "PHASE 6",
+    "timestamp":  "2026-09-08 19:35:00",
+    "status":  "PHASE 6 COMPLETE",
+    "api_endpoints":  {
+                          "retrieval":  {
+                                            "status":  "200 OK",
+                                            "route":  "POST /api/retrieval/search"
+                                        },
+                          "health":  {
+                                         "status":  "200 OK",
+                                         "route":  "GET /api/health"
+                                     },
+                          "answer":  {
+                                         "status":  "200 OK",
+                                         "request_schema":  "RAGAnswerRequest",
+                                         "response_schema":  "RAGAnswerResponse",
+                                         "route":  "POST /api/answer"
+                                     }
+                      }
+}

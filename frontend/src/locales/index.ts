@@ -3,7 +3,7 @@ import { TranslationSchema } from "./types";
 import { en } from "./en";
 import { te } from "./te";
 import { hi } from "./hi";
-import { de } from "./de";
+import { ja } from "./ja";
 
 export * from "./types";
 
@@ -11,7 +11,7 @@ export const LOCALES: Record<string, TranslationSchema> = {
   en,
   te,
   hi,
-  de,
+  ja,
 };
 
 export function getTranslation(lang: LanguageCode | string): TranslationSchema {

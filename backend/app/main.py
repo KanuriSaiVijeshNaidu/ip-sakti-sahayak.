@@ -114,6 +114,9 @@ def create_app() -> FastAPI:
     from backend.app.api.routes.compare import router as compare_router
     from backend.app.api.routes.evaluation import router as evaluation_router
     from backend.app.api.routes.convert import router as convert_router
+    from backend.app.api.routes.retrieval import router as retrieval_router
+    from backend.app.api.routes.answer import router as answer_router
+    from backend.app.api.routes.decision import router as decision_router
 
     prefix = settings.api_prefix  # "/api"
     app.include_router(chat_router, prefix=prefix, tags=["Chat"])
@@ -126,6 +129,9 @@ def create_app() -> FastAPI:
     app.include_router(compare_router, prefix=prefix, tags=["Jurisdiction Comparison"])
     app.include_router(evaluation_router, prefix=prefix, tags=["Evaluation Benchmark"])
     app.include_router(convert_router, prefix=prefix, tags=["Indian to International IP Transition"])
+    app.include_router(retrieval_router, prefix=f"{prefix}/retrieval", tags=["Phase 5 Intelligent Retrieval"])
+    app.include_router(answer_router, prefix=f"{prefix}/answer", tags=["Phase 6 Evidence-Grounded RAG Answer"])
+    app.include_router(decision_router, prefix=f"{prefix}/decision", tags=["Phase 7 Decision & Jurisdiction Reasoning Engine"])
 
     @app.get(f"{prefix}/health", tags=["Health"])
     async def health():

@@ -63,17 +63,17 @@ const ROLE_DETAILS: Record<string, { label: string; icon: any; desc: string }> =
 
 const JURISDICTION_DETAILS: Record<string, { label: string; flag: string; desc: string }> = {
   US: { label: "United States", flag: "🇺🇸", desc: "USPTO Patent Examination (35 U.S.C.) · FDA DSHEA 1994 · Lanham Act" },
-  IN: { label: "India", flag: "🇮🇳", desc: "CGPDTM Patents Act 1970 · AYUSH Rule 158B · FSSAI 2022 · NBA Section 6" },
+  JP: { label: "Japan", flag: "🇯🇵", desc: "JPO Patent Examination (特許法) · MHLW / PMDA · Japanese Pharmacopoeia" },
   EU: { label: "European Union", flag: "🇪🇺", desc: "EPO European Patent Convention (EPC Art. 52-56) · EMA Herbal Directive" },
-  DE: { label: "Germany", flag: "🇩🇪", desc: "DPMA Patentgesetz (PatG) · BfArM · Commission E Herbal Standards" },
   WO: { label: "International / Global", flag: "🌐", desc: "WIPO Patent Cooperation Treaty (PCT) · Genetic Resources Treaty 2024" },
+  IN: { label: "India (Evaluation Only)", flag: "🇮🇳", desc: "CGPDTM Patents Act 1970 Sections 3(e), 3(p) · NBA Section 6 (Isolated Evaluation Corpus)" },
 };
 
 export default function ProfilePage() {
   const router = useRouter();
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
-  const [activeJurisdiction, setActiveJurisdiction] = useState<JurisdictionType>("IN");
+  const [activeJurisdiction, setActiveJurisdiction] = useState<JurisdictionType>("US");
   const [language, setLanguage] = useState<LanguageCode>("en");
 
   // Edit Mode states
@@ -95,8 +95,10 @@ export default function ProfilePage() {
   useEffect(() => {
     try {
       const savedLang = localStorage.getItem("ayurlex_language") as LanguageCode;
-      if (savedLang && ["en", "te", "hi", "de", "ta", "kn", "ml"].includes(savedLang)) {
+      if (savedLang && ["en", "te", "hi", "ja", "ta", "kn", "ml"].includes(savedLang)) {
         setLanguage(savedLang);
+      } else {
+        setLanguage("en");
       }
 
       const stored = localStorage.getItem("ayurlex_user_profile");
@@ -110,7 +112,7 @@ export default function ProfilePage() {
           setEditRegNum(parsed.registrationNumber || "");
 
           const savedJur = localStorage.getItem("ayurlex_jurisdiction") as JurisdictionType;
-          if (savedJur && ["US", "IN", "EU", "DE", "WO"].includes(savedJur)) {
+          if (savedJur && ["US", "JP", "EU", "WO", "IN"].includes(savedJur)) {
             setActiveJurisdiction(savedJur);
           }
 

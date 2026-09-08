@@ -1,0 +1,133 @@
+{
+  "audit_timestamp": "2026-09-08T06:58:50.997361+00:00",
+  "phase": "Phase 3 — Final Multi-Jurisdiction Corpus Readiness & Embedding Preparation",
+  "active_jurisdictions": [
+    "US",
+    "EP",
+    "WO",
+    "JP"
+  ],
+  "deferred_jurisdictions": [
+    "IN"
+  ],
+  "scope_removed_jurisdictions": [
+    "DE"
+  ],
+  "totals": {
+    "active_documents": 2879,
+    "active_chunks": 70608,
+    "unique_active_documents": 2879,
+    "unique_active_chunks": 70608,
+    "duplicate_documents": 0,
+    "duplicate_chunks": 0,
+    "empty_chunks": 0,
+    "embedding_ready_chunks": 70608
+  },
+  "jurisdictions": {
+    "USA": {
+      "jurisdiction_code": "US",
+      "country": "USA",
+      "language": "en",
+      "status": "ACTIVE",
+      "document_count": 1159,
+      "unique_document_count": 1159,
+      "chunk_count": 29003,
+      "unique_chunk_count": 29003,
+      "claims_available": 1154,
+      "descriptions_available": 1159,
+      "abstracts_available": 1159,
+      "duplicate_count": 0,
+      "provenance_status": "VERIFIED_HUPD_USPTO",
+      "docling_status": "DOCLING_STRUCTURED",
+      "jurisdiction_isolation_status": "ISOLATED_NO_LEAKAGE",
+      "quality_status": "ACCEPTED_BASELINE",
+      "embedding_status": "EMBEDDING_READY_HALTED"
+    },
+    "Europe": {
+      "jurisdiction_code": "EP",
+      "country": "Europe",
+      "language": "en",
+      "status": "ACTIVE",
+      "document_count": 646,
+      "unique_document_count": 646,
+      "chunk_count": 1912,
+      "unique_chunk_count": 1912,
+      "claims_available": 646,
+      "descriptions_available": 646,
+      "abstracts_available": 646,
+      "duplicate_count": 0,
+      "provenance_status": "VERIFIED_EPO_HUGGINGFACE",
+      "docling_status": "DOCLING_STRUCTURED",
+      "jurisdiction_isolation_status": "ISOLATED_NO_LEAKAGE",
+      "quality_status": "ACCEPTED_BASELINE",
+      "embedding_status": "EMBEDDING_READY_HALTED"
+    },
+    "WIPO": {
+      "jurisdiction_code": "WO",
+      "country": "WIPO",
+      "language": "en",
+      "status": "ACTIVE_INSUFFICIENT_DOCS",
+      "document_count": 339,
+      "unique_document_count": 339,
+      "chunk_count": 13652,
+      "unique_chunk_count": 13652,
+      "claims_available": 339,
+      "descriptions_available": 339,
+      "abstracts_available": 339,
+      "duplicate_count": 0,
+      "provenance_status": "VERIFIED_BOSCH_WIPO_PLS_BENCHMARK",
+      "docling_status": "DOCLING_STRUCTURED",
+      "jurisdiction_isolation_status": "ISOLATED_NO_LEAKAGE",
+      "quality_status": "ACCEPTED_VERIFIED_DATA",
+      "embedding_status": "EMBEDDING_READY_HALTED"
+    },
+    "Japan": {
+      "jurisdiction_code": "JP",
+      "country": "Japan",
+      "language": "ja",
+      "status": "ACTIVE",
+      "document_count": 735,
+      "unique_document_count": 735,
+      "chunk_count": 26041,
+      "unique_chunk_count": 26041,
+      "claims_available": 723,
+      "descriptions_available": 735,
+      "abstracts_available": 735,
+      "duplicate_count": 0,
+      "provenance_status": "VERIFIED_NII_LLM_JP_CORPUS_V4",
+      "docling_status": "DOCLING_STRUCTURED",
+      "jurisdiction_isolation_status": "ISOLATED_NO_LEAKAGE",
+      "quality_status": "ACCEPTED_AUTHENTIC_JP_CORPUS",
+      "embedding_status": "EMBEDDING_READY_HALTED"
+    },
+    "India": {
+      "jurisdiction_code": "IN",
+      "country": "India",
+      "language": "en/hi",
+      "status": "DEFERRED",
+      "document_count": 0,
+      "chunk_count": 0,
+      "quarantined_records": 5,
+      "reason": "Data acquisition pending authentic bulk full-text registry access; architecture preserved for future integration"
+    },
+    "Germany": {
+      "jurisdiction_code": "DE",
+      "country": "Germany",
+      "language": "de",
+      "status": "REMOVED_FROM_ACTIVE_SCOPE",
+      "document_count": 0,
+      "chunk_count": 0,
+      "quarantined_records": 5,
+      "reason": "Removed from active production scope by executive project directive; historical audit preserved"
+    }
+  },
+  "embedding_preparation": {
+    "canonical_path": "data/embedding_ready/canonical_chunks.jsonl",
+    "canonical_record_count": 70608,
+    "empty_records": 0,
+    "schema_compliance": true,
+    "embedding_model_target": "BAAI/bge-m3",
+    "vector_database_halt": true
+  },
+  "final_readiness_decision": "EMBEDDING-READY"
+}

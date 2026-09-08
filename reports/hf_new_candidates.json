@@ -1,0 +1,238 @@
+{
+  "masternodedata1/patentscope.wipo.in": {
+    "id": "masternodedata1/patentscope.wipo.in",
+    "downloads": 6,
+    "likes": 1,
+    "tags": [
+      "license:unlicense",
+      "region:us"
+    ]
+  },
+  "0zo/google_patentsview_claims_2017-B": {
+    "id": "0zo/google_patentsview_claims_2017-B",
+    "downloads": 54,
+    "likes": 1,
+    "tags": [
+      "size_categories:100K<n<1M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ]
+  },
+  "0zo/google_patentsview_claims_2016": {
+    "id": "0zo/google_patentsview_claims_2016",
+    "downloads": 24,
+    "likes": 0,
+    "tags": [
+      "size_categories:100K<n<1M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ]
+  },
+  "nbettencourt/google-patents-data-preview": {
+    "id": "nbettencourt/google-patents-data-preview",
+    "downloads": 1322,
+    "likes": 0,
+    "tags": [
+      "size_categories:100K<n<1M",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ]
+  },
+  "masternodedata1/patents.google.com": {
+    "id": "masternodedata1/patents.google.com",
+    "downloads": 15,
+    "likes": 0,
+    "tags": [
+      "license:unlicense",
+      "region:us"
+    ]
+  },
+  "BASF-AI/ai4chem-clir-google-patents-within-document-abstract-pairs": {
+    "id": "BASF-AI/ai4chem-clir-google-patents-within-document-abstract-pairs",
+    "downloads": 61,
+    "likes": 0,
+    "tags": [
+      "task_categories:translation",
+      "language:en",
+      "language:zh",
+      "language:de",
+      "language:fr",
+      "language:es",
+      "language:ja",
+      "language:ru",
+      "license:other",
+      "size_categories:10K<n<100K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:polars",
+      "library:mlcroissant",
+      "region:us"
+    ]
+  },
+  "BASF-AI/google-patents-chem-translation-pairs": {
+    "id": "BASF-AI/google-patents-chem-translation-pairs",
+    "downloads": 56,
+    "likes": 0,
+    "tags": [
+      "region:us"
+    ]
+  },
+  "BNNT/PatentMatch": {
+    "id": "BNNT/PatentMatch",
+    "downloads": 133,
+    "likes": 3,
+    "tags": [
+      "license:apache-2.0",
+      "size_categories:1K<n<10K",
+      "format:json",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "region:us"
+    ]
+  },
+  "Reynold97/patentmatch_exp": {
+    "id": "Reynold97/patentmatch_exp",
+    "downloads": 29,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ]
+  },
+  "bhlim/patentmatch_for_finetuning": {
+    "id": "bhlim/patentmatch_for_finetuning",
+    "downloads": 62,
+    "likes": 3,
+    "tags": [
+      "language:en",
+      "license:apache-2.0",
+      "size_categories:10K<n<100K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "arxiv:2012.13919",
+      "region:us"
+    ]
+  },
+  "bhlim/patentmatch_train_ub_rag": {
+    "id": "bhlim/patentmatch_train_ub_rag",
+    "downloads": 23,
+    "likes": 1,
+    "tags": [
+      "language:en",
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ]
+  },
+  "bhlim/patentmatch_train_ultrabalanced_150": {
+    "id": "bhlim/patentmatch_train_ultrabalanced_150",
+    "downloads": 15,
+    "likes": 0,
+    "tags": [
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ]
+  },
+  "brettbarnes/patentmatch_exp": {
+    "id": "brettbarnes/patentmatch_exp",
+    "downloads": 7,
+    "likes": 0,
+    "tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ]
+  },
+  "orgr/patentmatch-negation-gpt-v1": {
+    "id": "orgr/patentmatch-negation-gpt-v1",
+    "downloads": 2,
+    "likes": 0,
+    "tags": [
+      "license:mit",
+      "region:us"
+    ]
+  },
+  "minagoranovic/PatentMatchWeights": {
+    "id": "minagoranovic/PatentMatchWeights",
+    "downloads": 10,
+    "likes": 0,
+    "tags": [
+      "license:mit",
+      "region:us"
+    ]
+  },
+  "yongminyoo91/patentmatch-temporal-clean-benchmark": {
+    "id": "yongminyoo91/patentmatch-temporal-clean-benchmark",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "task_categories:text-classification",
+      "language:en",
+      "license:cc-by-4.0",
+      "size_categories:n<1K",
+      "format:csv",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:polars",
+      "library:mlcroissant",
+      "arxiv:2012.13919",
+      "region:us",
+      "patents",
+      "prior-art",
+      "temporal-split",
+      "text-pair-classification",
+      "reranking",
+      "benchmark"
+    ]
+  }
+}

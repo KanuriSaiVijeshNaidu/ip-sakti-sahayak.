@@ -72,7 +72,7 @@ export default function ChatPage() {
   const [loading, setLoading] = useState(false);
   const [domain, setDomain] = useState<DomainType | "auto">("auto");
   const [language, setLanguage] = useState<LanguageCode>("en");
-  const [jurisdiction, setJurisdiction] = useState<JurisdictionType>("IN");
+  const [jurisdiction, setJurisdiction] = useState<JurisdictionType>("US");
 
   const handleLanguageChange = (lang: LanguageCode) => {
     setLanguage(lang);
@@ -130,12 +130,14 @@ export default function ChatPage() {
   useEffect(() => {
     try {
       const savedLang = localStorage.getItem("ayurlex_language") as LanguageCode;
-      if (savedLang && ["en", "te", "hi", "de", "ta", "kn", "ml"].includes(savedLang)) {
+      if (savedLang && ["en", "te", "hi", "ja", "ta", "kn", "ml"].includes(savedLang)) {
         setLanguage(savedLang);
+      } else {
+        setLanguage("en");
       }
 
       const savedJur = localStorage.getItem("ayurlex_jurisdiction") as JurisdictionType;
-      if (savedJur && ["US", "IN", "EU", "DE", "WO"].includes(savedJur)) {
+      if (savedJur && ["US", "JP", "EU", "WO", "IN"].includes(savedJur)) {
         setJurisdiction(savedJur);
       }
 
@@ -433,7 +435,7 @@ export default function ChatPage() {
                   className="px-2.5 sm:px-3 py-1 text-[11px] font-bold text-white bg-zinc-900 border border-zinc-700 rounded-xl transition-all flex items-center gap-1 cursor-pointer"
                   title="Change Active Jurisdiction"
                 >
-                  <span>{jurisdiction === "US" ? "🇺🇸" : jurisdiction === "IN" ? "🇮🇳" : jurisdiction === "EU" ? "🇪🇺" : jurisdiction === "DE" ? "🇩🇪" : "🌐"}</span>
+                  <span>{jurisdiction === "US" ? "🇺🇸" : jurisdiction === "IN" ? "🇮🇳" : jurisdiction === "EU" ? "🇪🇺" : jurisdiction === "JP" ? "🇯🇵" : "🌐"}</span>
                   <span className="hidden sm:inline">Market</span>
                 </Link>
 
@@ -484,7 +486,7 @@ export default function ChatPage() {
                   title={t.nav.changeMarket}
                 >
                   <span className="text-base">
-                    {jurisdiction === "US" ? "🇺🇸" : jurisdiction === "IN" ? "🇮🇳" : jurisdiction === "EU" ? "🇪🇺" : jurisdiction === "DE" ? "🇩🇪" : "🌐"}
+                    {jurisdiction === "US" ? "🇺🇸" : jurisdiction === "IN" ? "🇮🇳" : jurisdiction === "EU" ? "🇪🇺" : jurisdiction === "JP" ? "🇯🇵" : "🌐"}
                   </span>
                   <span className="font-bold text-white">
                     {t.nav.activeMarket}: {t.locationPage.markets[jurisdiction]?.country || jurisdiction}

@@ -44,10 +44,10 @@ def test_international_chunks_integrity():
         assert c.get("id"), "Chunk missing stable id"
         assert c.get("text"), "Chunk text cannot be empty"
         assert c.get("sha256"), "Chunk missing SHA-256 integrity hash"
-        assert c.get("domain") == "patents", f"Unexpected domain: {c.get('domain')}"
+        assert c.get("domain") in ("patents", "trademarks", "ayush"), f"Unexpected domain: {c.get('domain')}"
         assert c.get("authority"), "Chunk missing authoritative body"
         prefix = c["id"].split("-")[0]
-        assert prefix in ("US", "EP", "DE", "WIPO"), f"Invalid chunk prefix: {prefix}"
+        assert prefix in ("US", "EP", "EU", "DE", "WIPO"), f"Invalid chunk prefix: {prefix}"
 
 
 def test_international_retrieval_uspto():

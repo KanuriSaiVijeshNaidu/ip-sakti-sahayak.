@@ -1,0 +1,191 @@
+{
+  "total_candidates": 342,
+  "pilot_size": 100,
+  "sample_size": 20,
+  "passed": 20,
+  "failed": 0,
+  "pass_rate": 1.0,
+  "blended_family_count": 20,
+  "samples": [
+    {
+      "pub_num": "WO04055010",
+      "title": "CYCLOPROPYL COMPOUNDS AS CCR5 ANTAGONISTS",
+      "family_members_count": 13,
+      "claims_length": 17056,
+      "desc_length": 136830,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO0059497",
+      "title": "PYRROLIDINE MODULATORS OF CHEMOKINE RECEPTOR ACTIV",
+      "family_members_count": 5,
+      "claims_length": 10744,
+      "desc_length": 207259,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO9825605",
+      "title": "Spiro-substituted azacycles as modulators of chemo",
+      "family_members_count": 4,
+      "claims_length": 39675,
+      "desc_length": 323478,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO06077499",
+      "title": "CHEMICAL COMPOUNDS",
+      "family_members_count": 6,
+      "claims_length": 6417,
+      "desc_length": 157771,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO03035619",
+      "title": "TYROSINE KINASE INHIBITORS",
+      "family_members_count": 2,
+      "claims_length": 14654,
+      "desc_length": 123742,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO0117995",
+      "title": "TYROSINE KINASE INHIBITORS",
+      "family_members_count": 37,
+      "claims_length": 28775,
+      "desc_length": 184576,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO0076972",
+      "title": "N-CYCLOPENTYL MODULATORS OF CHEMOKINE RECEPTOR ACT",
+      "family_members_count": 21,
+      "claims_length": 15042,
+      "desc_length": 480171,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO02078708",
+      "title": "HIV INHIBITING PYRAZINONE DERIVATIVES",
+      "family_members_count": 16,
+      "claims_length": 17216,
+      "desc_length": 78776,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO0166657",
+      "title": "ALKYLENIMINE/ORGANIC BARRIER COATINGS HAVING BIS-S",
+      "family_members_count": 21,
+      "claims_length": 10437,
+      "desc_length": 39864,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO04056808",
+      "title": "NOVEL PIPERIDINE DERIVATIES AS MODULATORS OF CHEMO",
+      "family_members_count": 12,
+      "claims_length": 7445,
+      "desc_length": 76414,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO04014364",
+      "title": "SUBSTITUTED PHENYLINDOLES FOR THE TREATMENT OF HIV",
+      "family_members_count": 11,
+      "claims_length": 76065,
+      "desc_length": 53240,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO0151067",
+      "title": "MULTIPLE INACTIVATED BLOOD FACTOR ANTICOAGULANT CO",
+      "family_members_count": 2,
+      "claims_length": 7447,
+      "desc_length": 36516,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO04041164",
+      "title": "KINASE INHIBITORS",
+      "family_members_count": 7,
+      "claims_length": 18678,
+      "desc_length": 166918,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO9938514",
+      "title": "Cyclic amine modulators of chemokine receptor acti",
+      "family_members_count": 8,
+      "claims_length": 22599,
+      "desc_length": 132370,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO9920272",
+      "title": "AZAPEPTIDE ACIDS AS CELL ADHESION INHIBITORS",
+      "family_members_count": 4,
+      "claims_length": 12492,
+      "desc_length": 104665,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO0222151",
+      "title": "USE OF GLP FOR THE TREATMENT, PREVENTION, DIAGNOSI",
+      "family_members_count": 43,
+      "claims_length": 10485,
+      "desc_length": 151815,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO0182919",
+      "title": "METHODS OF AND COMPOUNDS FOR INHIBITING CALPAINS",
+      "family_members_count": 8,
+      "claims_length": 14931,
+      "desc_length": 98733,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO04002428",
+      "title": "DERIVATIVES OF GAMBOGIC ACID AND ANALOGS AS ACTIVA",
+      "family_members_count": 13,
+      "claims_length": 20686,
+      "desc_length": 128623,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO04052286",
+      "title": "TYROSINE KINASE INHIBITORS",
+      "family_members_count": 6,
+      "claims_length": 13060,
+      "desc_length": 121468,
+      "passed": true,
+      "is_blended_family": true
+    },
+    {
+      "pub_num": "WO04014882",
+      "title": "PROTEASOME INHIBITORS",
+      "family_members_count": 4,
+      "claims_length": 10549,
+      "desc_length": 113923,
+      "passed": true,
+      "is_blended_family": true
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "inventory_title": "SIH 26045 Complete Combined Old + New Evaluation Inventory",
+  "version": "3.0.0",
+  "timestamp": "2026-09-08 19:50:00",
+  "policy": "Comprehensive evaluation covering 100% of historical/old evaluation assets and 100% of newly added evaluation assets",
+  "tree": {
+    "OLD_DATA": {
+      "USA": {
+        "source": "evaluation/benchmark_test_set.json (US-Q01..25)",
+        "total_queries": 25,
+        "language": "en",
+        "status": "VERIFIED_ACTIVE"
+      },
+      "EUROPE": {
+        "source": "evaluation/benchmark_test_set.json (EP-Q01..25)",
+        "total_queries": 25,
+        "language": "en",
+        "status": "VERIFIED_ACTIVE"
+      },
+      "WIPO": {
+        "source": "evaluation/benchmark_test_set.json (WO-Q01..25)",
+        "total_queries": 25,
+        "language": "en",
+        "status": "VERIFIED_ACTIVE"
+      },
+      "JAPAN": {
+        "source": "Historical corpus sanity verification test set",
+        "total_queries": 25,
+        "language": "en, ja",
+        "status": "VERIFIED_ACTIVE"
+      },
+      "INDIA": {
+        "benchmark_queries": 25,
+        "statutory_questions": 268,
+        "total_queries": 293,
+        "languages": [
+          "en",
+          "te",
+          "hi",
+          "ta"
+        ],
+        "status": "STATUTORY_GROUNDED (Section 3(e), 3(p), NBA Act)"
+      },
+      "GERMANY": {
+        "source": "evaluation/benchmark_test_set.json (DE-Q01..25)",
+        "total_queries": 25,
+        "status": "ARCHIVED_QUARANTINED (Excluded from active production retrieval)"
+      },
+      "subtotal_active_old_queries": 393
+    },
+    "NEW_DATA": {
+      "NEW_US_EP_WO_JP": {
+        "description": "Phase 5/6 multi-jurisdiction formulation and patentability queries",
+        "total_queries": 14,
+        "jurisdictions": [
+          "US",
+          "EP",
+          "WO",
+          "JP",
+          "GLOBAL"
+        ],
+        "language": "en",
+        "status": "VERIFIED_ACTIVE"
+      },
+      "NEW_JAPAN_LANGUAGE": {
+        "description": "Native Japanese technical queries evaluating cross-lingual and local retrieval",
+        "total_queries": 10,
+        "jurisdictions": [
+          "JP",
+          "US",
+          "EP",
+          "WO"
+        ],
+        "language": "ja",
+        "status": "VERIFIED_ACTIVE"
+      },
+      "NEW_INDIA_GENUINE": {
+        "description": "Genuine Indian legal queries (Section 3(e) bioassay, Section 3(p) TKDL, NBA Form III, Ayurveda Aahara)",
+        "total_queries": 8,
+        "jurisdiction": "IN",
+        "languages": [
+          "en",
+          "hi",
+          "te"
+        ],
+        "status": "VERIFIED_ACTIVE"
+      },
+      "subtotal_new_queries": 32
+    },
+    "COMBINED_TOTALS": {
+      "total_active_evaluation_queries": 425,
+      "archived_quarantined_queries": 25
+    }
+  }
+}

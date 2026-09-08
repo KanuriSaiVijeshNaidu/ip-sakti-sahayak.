@@ -1,0 +1,50 @@
+{
+  "evaluation_title": "SIH 26045 International IP Retrieval & Quality Benchmark",
+  "date": "2026-09-08",
+  "status": "NOT YET EVALUATED",
+  "status_rationale": "Vector embeddings (BGE-M3) and FAISS index construction are strictly HALTED pending authentic data acquisition for India, Germany, and WIPO. Benchmark metrics cannot be empirically generated until vector indexing is completed.",
+  "architecture_target": "BM25 (k1=1.2, b=0.75) + BGE-M3 (1024-dim Dense/Multi-Vector) + RRF + BGE-Reranker-v2-m3",
+  "jurisdiction_isolation": "Strict Metadata Pre-Filtering & Country Decoupling",
+  "retrieval_metrics": {
+    "status": "NOT YET EVALUATED",
+    "recall_at_5": null,
+    "recall_at_10": null,
+    "mrr": null,
+    "ndcg_at_10": null,
+    "note": "Awaiting vector indexing"
+  },
+  "reranking_metrics": {
+    "status": "NOT YET EVALUATED",
+    "precision_at_5": null,
+    "ndcg_at_5": null,
+    "average_cross_encoder_score": null,
+    "note": "Awaiting reranker benchmarking"
+  },
+  "grounding_metrics": {
+    "status": "NOT YET EVALUATED",
+    "citation_accuracy": null,
+    "evidence_support_rate": null,
+    "groundedness_score": null,
+    "unsupported_claim_rate": null,
+    "safe_abstention_accuracy": null,
+    "note": "Awaiting RAG generation benchmark"
+  },
+  "multilingual_metrics": {
+    "en": {"status": "NOT YET EVALUATED", "recall": null, "accuracy": null},
+    "de": {"status": "NOT YET EVALUATED", "recall": null, "accuracy": null},
+    "hi": {"status": "NOT YET EVALUATED", "recall": null, "accuracy": null},
+    "te": {"status": "NOT YET EVALUATED", "recall": null, "accuracy": null},
+    "ta": {"status": "NOT YET EVALUATED", "recall": null, "accuracy": null},
+    "kn": {"status": "NOT YET EVALUATED", "recall": null, "accuracy": null},
+    "ml": {"status": "NOT YET EVALUATED", "recall": null, "accuracy": null},
+    "sk": {"status": "NOT YET EVALUATED", "recall": null, "accuracy": null}
+  },
+  "system_telemetry": {
+    "status": "STANDBY",
+    "average_latency_ms": null,
+    "p95_latency_ms": null,
+    "throughput_qps": null,
+    "index_chunk_count": 0,
+    "reranker_model": "BAAI/bge-reranker-v2-m3 (Pending Deployment)"
+  }
+}

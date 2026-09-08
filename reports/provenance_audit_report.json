@@ -1,0 +1,384 @@
+{
+  "date": "2026-09-08",
+  "audit_title": "SIH 26045 International Patent Provenance Random Sampling Audit",
+  "auditor": "Pipeline Provenance Subsystem (pipeline/provenance.py)",
+  "jurisdiction_summary": {
+    "india": {
+      "total_chunks_in_corpus": 15,
+      "sampled_chunks": 15,
+      "intact_sampled_lineages": 15,
+      "sample_integrity_rate": 1.0,
+      "overall_integrity": {
+        "country": "INDIA",
+        "total_chunks": 15,
+        "intact_count": 15,
+        "broken_count": 0,
+        "provenance_integrity_rate": 1.0
+      }
+    },
+    "germany": {
+      "total_chunks_in_corpus": 15,
+      "sampled_chunks": 15,
+      "intact_sampled_lineages": 15,
+      "sample_integrity_rate": 1.0,
+      "overall_integrity": {
+        "country": "GERMANY",
+        "total_chunks": 15,
+        "intact_count": 15,
+        "broken_count": 0,
+        "provenance_integrity_rate": 1.0
+      }
+    },
+    "wipo": {
+      "total_chunks_in_corpus": 15,
+      "sampled_chunks": 15,
+      "intact_sampled_lineages": 15,
+      "sample_integrity_rate": 1.0,
+      "overall_integrity": {
+        "country": "WIPO",
+        "total_chunks": 15,
+        "intact_count": 15,
+        "broken_count": 0,
+        "provenance_integrity_rate": 1.0
+      }
+    },
+    "europe": {
+      "total_chunks_in_corpus": 1912,
+      "sampled_chunks": 20,
+      "intact_sampled_lineages": 20,
+      "sample_integrity_rate": 1.0,
+      "overall_integrity": {
+        "country": "EUROPE",
+        "total_chunks": 1912,
+        "intact_count": 1912,
+        "broken_count": 0,
+        "provenance_integrity_rate": 1.0
+      }
+    },
+    "usa": {
+      "total_chunks_in_corpus": 29003,
+      "sampled_chunks": 20,
+      "intact_sampled_lineages": 20,
+      "sample_integrity_rate": 1.0,
+      "overall_integrity": {
+        "country": "USA",
+        "total_chunks": 29003,
+        "intact_count": 29003,
+        "broken_count": 0,
+        "provenance_integrity_rate": 1.0
+      }
+    }
+  },
+  "detailed_samples": {
+    "india": [
+      {
+        "chunk_id": "INDIA-CHK-0000-a32c71d2",
+        "patent_id": "IN-243763-B",
+        "section": "abstract",
+        "token_count": 46,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://ipindiaservices.gov.in/publicsearch",
+        "source_organization": "Office of the Controller General of Patents, Designs and Trade Marks (IPO) / CSIR-TKDL",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "INDIA-CHK-0001-0cda8b21",
+        "patent_id": "IN-243763-B",
+        "section": "claims",
+        "token_count": 161,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://ipindiaservices.gov.in/publicsearch",
+        "source_organization": "Office of the Controller General of Patents, Designs and Trade Marks (IPO) / CSIR-TKDL",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "INDIA-CHK-0002-2d9208d2",
+        "patent_id": "IN-243763-B",
+        "section": "description",
+        "token_count": 49,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://ipindiaservices.gov.in/publicsearch",
+        "source_organization": "Office of the Controller General of Patents, Designs and Trade Marks (IPO) / CSIR-TKDL",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "INDIA-CHK-0000-8da7fad0",
+        "patent_id": "IN-268685-B",
+        "section": "abstract",
+        "token_count": 59,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://ipindiaservices.gov.in/publicsearch",
+        "source_organization": "Office of the Controller General of Patents, Designs and Trade Marks (IPO) / CSIR-TKDL",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "INDIA-CHK-0001-6bc214d7",
+        "patent_id": "IN-268685-B",
+        "section": "claims",
+        "token_count": 258,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://ipindiaservices.gov.in/publicsearch",
+        "source_organization": "Office of the Controller General of Patents, Designs and Trade Marks (IPO) / CSIR-TKDL",
+        "lineage_intact": true
+      }
+    ],
+    "germany": [
+      {
+        "chunk_id": "GERMANY-CHK-0000-9525e149",
+        "patent_id": "DE-102012015247-A1",
+        "section": "abstract",
+        "token_count": 37,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://dpma.de/patente/patentrecherche/index.html",
+        "source_organization": "Deutsches Patent- und Markenamt (DPMA / DEPATISnet)",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "GERMANY-CHK-0001-b2867a7a",
+        "patent_id": "DE-102012015247-A1",
+        "section": "claims",
+        "token_count": 102,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://dpma.de/patente/patentrecherche/index.html",
+        "source_organization": "Deutsches Patent- und Markenamt (DPMA / DEPATISnet)",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "GERMANY-CHK-0000-6ca09eca",
+        "patent_id": "DE-102014002621-A1",
+        "section": "abstract",
+        "token_count": 59,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://dpma.de/patente/patentrecherche/index.html",
+        "source_organization": "Deutsches Patent- und Markenamt (DPMA / DEPATISnet)",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "GERMANY-CHK-0001-0beaa683",
+        "patent_id": "DE-102014002621-A1",
+        "section": "claims",
+        "token_count": 248,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://dpma.de/patente/patentrecherche/index.html",
+        "source_organization": "Deutsches Patent- und Markenamt (DPMA / DEPATISnet)",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "GERMANY-CHK-0000-43b03d03",
+        "patent_id": "DE-102021109876-A1",
+        "section": "abstract",
+        "token_count": 46,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://dpma.de/patente/patentrecherche/index.html",
+        "source_organization": "Deutsches Patent- und Markenamt (DPMA / DEPATISnet)",
+        "lineage_intact": true
+      }
+    ],
+    "wipo": [
+      {
+        "chunk_id": "WIPO-CHK-0000-1cbdce6d",
+        "patent_id": "WO-2018083696-A1",
+        "section": "abstract",
+        "token_count": 53,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://patentscope.wipo.int/",
+        "source_organization": "World Intellectual Property Organization (WIPO / PCT)",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "WIPO-CHK-0001-df770d60",
+        "patent_id": "WO-2018083696-A1",
+        "section": "claims",
+        "token_count": 276,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://patentscope.wipo.int/",
+        "source_organization": "World Intellectual Property Organization (WIPO / PCT)",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "WIPO-CHK-0000-42871eda",
+        "patent_id": "WO-2019123456-A1",
+        "section": "abstract",
+        "token_count": 48,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://patentscope.wipo.int/",
+        "source_organization": "World Intellectual Property Organization (WIPO / PCT)",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "WIPO-CHK-0000-b0a152dc",
+        "patent_id": "WO-2021098765-A1",
+        "section": "abstract",
+        "token_count": 41,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://patentscope.wipo.int/",
+        "source_organization": "World Intellectual Property Organization (WIPO / PCT)",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "WIPO-CHK-0000-afaf05cf",
+        "patent_id": "WO-2023098712-A1",
+        "section": "abstract",
+        "token_count": 39,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://patentscope.wipo.int/",
+        "source_organization": "World Intellectual Property Organization (WIPO / PCT)",
+        "lineage_intact": true
+      }
+    ],
+    "europe": [
+      {
+        "chunk_id": "EUROPE-CHK-0000-00770cd9",
+        "patent_id": "EP-2345678-B1",
+        "section": "abstract",
+        "token_count": 39,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://huggingface.co/datasets/mhurhangee/ep-patent-all-claims",
+        "source_organization": "European Patent Office (EPO / Espacenet)",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "EUROPE-CHK-0001-9183c60d",
+        "patent_id": "EP-2345678-B1",
+        "section": "claims",
+        "token_count": 132,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://huggingface.co/datasets/mhurhangee/ep-patent-all-claims",
+        "source_organization": "European Patent Office (EPO / Espacenet)",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "EUROPE-CHK-0000-1575ad5f",
+        "patent_id": "EP-2744498-B1",
+        "section": "abstract",
+        "token_count": 67,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://huggingface.co/datasets/mhurhangee/ep-patent-all-claims",
+        "source_organization": "European Patent Office (EPO / Espacenet)",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "EUROPE-CHK-0000-6b3e38a7",
+        "patent_id": "EP-2891234-B1",
+        "section": "abstract",
+        "token_count": 33,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://huggingface.co/datasets/mhurhangee/ep-patent-all-claims",
+        "source_organization": "European Patent Office (EPO / Espacenet)",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "EUROPE-CHK-0000-86a8b15a",
+        "patent_id": "EP-3109876-B1",
+        "section": "abstract",
+        "token_count": 33,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://huggingface.co/datasets/mhurhangee/ep-patent-all-claims",
+        "source_organization": "European Patent Office (EPO / Espacenet)",
+        "lineage_intact": true
+      }
+    ],
+    "usa": [
+      {
+        "chunk_id": "USA-CHK-0000-7feed9f7",
+        "patent_id": "US-13144833",
+        "section": "abstract",
+        "token_count": 78,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://huggingface.co/datasets/HUPD/hupd",
+        "source_organization": "United States Patent and Trademark Office (USPTO)",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "USA-CHK-0001-fc191b6f",
+        "patent_id": "US-13144833",
+        "section": "background",
+        "token_count": 768,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://huggingface.co/datasets/HUPD/hupd",
+        "source_organization": "United States Patent and Trademark Office (USPTO)",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "USA-CHK-0002-418f4e6c",
+        "patent_id": "US-13144833",
+        "section": "summary",
+        "token_count": 374,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://huggingface.co/datasets/HUPD/hupd",
+        "source_organization": "United States Patent and Trademark Office (USPTO)",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "USA-CHK-0003-14b90af4",
+        "patent_id": "US-13144833",
+        "section": "claims",
+        "token_count": 1297,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://huggingface.co/datasets/HUPD/hupd",
+        "source_organization": "United States Patent and Trademark Office (USPTO)",
+        "lineage_intact": true
+      },
+      {
+        "chunk_id": "USA-CHK-0005-fa6774e6",
+        "patent_id": "US-13144833",
+        "section": "description",
+        "token_count": 1185,
+        "raw_file_exists": true,
+        "docling_file_exists": true,
+        "cleaned_file_exists": true,
+        "source_url": "https://huggingface.co/datasets/HUPD/hupd",
+        "source_organization": "United States Patent and Trademark Office (USPTO)",
+        "lineage_intact": true
+      }
+    ]
+  }
+}

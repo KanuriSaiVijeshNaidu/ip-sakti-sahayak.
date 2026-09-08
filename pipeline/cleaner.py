@@ -30,10 +30,10 @@ class OCRQualityChecker:
 
     def __init__(
         self,
-        min_alphabetic_ratio: float = 0.50,
+        min_alphabetic_ratio: float = 0.30,
         max_garbage_ratio: float = 0.05,
         max_broken_word_ratio: float = 0.05,
-        min_average_word_length: float = 2.5,
+        min_average_word_length: float = 2.0,
         max_average_word_length: float = 18.0
     ):
         self.min_alphabetic_ratio = min_alphabetic_ratio
@@ -60,8 +60,7 @@ class OCRQualityChecker:
         total_chars = len(text)
         alpha_chars = sum(1 for c in text if c.isalpha())
         num_chars = sum(1 for c in text if c.isdigit())
-        # Printable ASCII + extended Latin for German/Indian text + common punctuation
-        printable_clean = set(string.printable + "äöüÄÖÜßàáâèéêìíîòóôùúû°µ±§©®™–—")
+        printable_clean = set(string.printable + "äöüÄÖÜßàáâèéêìíîòóôùúû°µ±§©®™–—′″≤≥")
         garbage_chars = sum(1 for c in text if c not in printable_clean)
 
         alpha_ratio = alpha_chars / max(1, total_chars)
@@ -71,13 +70,11 @@ class OCRQualityChecker:
         words = re.findall(r"\b[A-Za-z0-9äöüÄÖÜß\-\/]+\b", text)
         avg_word_len = sum(len(w) for w in words) / max(1, len(words))
 
-        # Broken word ratio: orphaned alphabetic characters from degraded OCR (excluding digits & subclause markers)
         alpha_words = re.findall(r"\b[A-Za-zäöüÄÖÜß]+\b", text)
         standard_singles = set("aiouxyzabcdefghjklnmpqrstvw")
         isolated_alpha = [w for w in alpha_words if len(w) == 1 and w.lower() not in standard_singles]
         broken_word_ratio = len(isolated_alpha) / max(1, len(words))
 
-        # Duplicate line ratio
         lines = [l.strip() for l in text.splitlines() if l.strip()]
         unique_lines = set(lines)
         dup_line_ratio = (len(lines) - len(unique_lines)) / max(1, len(lines))
@@ -113,12 +110,8 @@ def clean_patent_text(text: str) -> str:
     if not text:
         return ""
 
-    # Remove repeated watermarks
     t = RE_WATERMARKS.sub("", text)
-    # Remove standalone page numbers
     t = RE_PAGE_NUMBERS.sub("", t)
-
-    # Normalize whitespace
     t = RE_MULTI_BLANK.sub("\n\n", t)
 
     return t.strip()

@@ -1,8 +1,9 @@
 // Types mirroring the FastAPI Pydantic schemas and frontend state
 
 export type DomainType = "patents" | "trademarks" | "gi" | "ayush" | "fssai";
-export type JurisdictionType = "IN" | "WO" | "EU" | "US" | "DE" | "GLOBAL" | "auto";
-export type LanguageCode = "en" | "hi" | "ta" | "te" | "kn" | "ml" | "de" | "auto";
+// Active Production Jurisdictions: US, EP (EU), WO, JP. (IN is deferred, DE is removed from active scope).
+export type JurisdictionType = "IN" | "WO" | "EU" | "EP" | "US" | "JP" | "GLOBAL" | "auto";
+export type LanguageCode = "en" | "te" | "hi" | "ja" | "ta" | "kn" | "ml" | "auto";
 
 export type UserRole = "vaidya" | "attorney" | "regulator" | "researcher" | "guest";
 
@@ -328,6 +329,227 @@ export interface IndianToInternationalResponse {
   required_documents: string[];
   action_plan: ActionPlanStep[];
   evidence: CitedPassage[];
+}
+
+// ─── Phase 5 Intelligent Retrieval Types ──────────────────────────────────────
+
+export interface Phase5QueryAnalysis {
+  original_query: string;
+  normalized_query: string;
+  detected_language: string;
+  intent: string;
+  confidence: number;
+  jurisdictions: string[];
+  routing_mode: string;
+  routing_reason: string;
+  product_entities: string[];
+  patent_entities: string[];
+  legal_entities: string[];
+  temporal_constraints: string[];
+  query_type: string;
+}
+
+export interface Phase5EvidenceResult {
+  chunk_id: string;
+  document_id: string;
+  publication_number: string;
+  jurisdiction: string;
+  language: string;
+  section: string;
+  title: string;
+  text: string;
+  source: string;
+  source_url?: string;
+  filing_date?: string;
+  publication_date?: string;
+  dense_score?: number;
+  dense_rank?: number;
+  lexical_score?: number;
+  lexical_rank?: number;
+  rrf_score?: number;
+  rerank_score?: number;
+  final_rank: number;
+}
+
+export interface Phase5RetrievalSearchRequest {
+  query: string;
+  jurisdiction?: string;
+  top_k?: number;
+  dense_top_k?: number;
+  lexical_top_k?: number;
+  rerank_top_k?: number;
+}
+
+export interface Phase5RetrievalSearchResponse {
+  query_analysis: Phase5QueryAnalysis;
+  routing_decision: string;
+  searched_jurisdictions: string[];
+  dense_candidate_count: number;
+  lexical_candidate_count: number;
+  fused_candidate_count: number;
+  reranked_candidate_count: number;
+  final_candidate_count: number;
+  results: Phase5EvidenceResult[];
+  latencies_ms: Record<string, number>;
+  status: string;
+  disclaimer: string;
+}
+
+// ─── Phase 6 RAG Answer Types ─────────────────────────────────────────────────
+
+export interface CitationInfo {
+  citation_id: string;
+  chunk_id: string;
+  publication_number: string;
+  document_id: string;
+  jurisdiction: string;
+  language: string;
+  section: string;
+  title: string;
+  text: string;
+  source: string;
+  source_url?: string;
+  filing_date?: string;
+  publication_date?: string;
+  rerank_score?: number;
+  dense_score?: number;
+  lexical_score?: number;
+  rrf_score?: number;
+}
+
+export interface ClaimValidationResult {
+  text: string;
+  citations: string[];
+  status: "SUPPORTED" | "PARTIALLY_SUPPORTED" | "UNSUPPORTED" | "UNCITED";
+  supported_by: string[];
+  reason: string;
+}
+
+export interface RAGAnswerRequest {
+  query: string;
+  jurisdiction?: string;
+  top_k?: number;
+  language?: string;
+}
+
+export interface RAGAnswerResponse {
+  query: string;
+  answer: string;
+  detected_language: string;
+  jurisdictions: string[];
+  crag_status: "GOOD" | "PARTIAL" | "INSUFFICIENT" | "INVALID";
+  evidence_count: number;
+  citations: CitationInfo[];
+  claims: ClaimValidationResult[];
+  limitations: string[];
+  status: string;
+  latencies_ms: Record<string, number>;
+  disclaimer: string;
+}
+
+// ─── Phase 7 Decision & Jurisdiction Reasoning Engine Types ─────────────────
+
+export type DecisionType =
+  | "YES"
+  | "NO"
+  | "CONDITIONAL_YES"
+  | "CONDITIONAL_NO"
+  | "INSUFFICIENT_EVIDENCE";
+
+export type DecisionConfidence = "HIGH" | "MEDIUM" | "LOW";
+
+export type UserObjective =
+  | "sell"
+  | "export"
+  | "market"
+  | "commercialize"
+  | "patent_validity"
+  | "patentability"
+  | "third_party_patent"
+  | "regulatory_requirement"
+  | "legality"
+  | "fto"
+  | "general";
+
+export interface QueryIntent {
+  origin_country?: string;
+  target_country?: string;
+  product?: string;
+  formulation?: string;
+  ingredients: string[];
+  intended_use?: string;
+  health_claims: string[];
+  patent_number?: string;
+  patent_status?: string;
+  applicant?: string;
+  owner?: string;
+  user_objective: UserObjective;
+  is_commercialization_question: boolean;
+  is_fto_question: boolean;
+  requires_target_jurisdiction_routing: boolean;
+}
+
+export interface EvidenceSufficiency {
+  evidence_sufficient: boolean;
+  required_evidence_present: boolean;
+  unresolved_material_conditions: string[];
+  jurisdiction_valid: boolean;
+  source_authority: number;
+  missing_evidence_categories: string[];
+  decision_reason_codes?: string[];
+  patent_evidence_count?: number;
+  regulatory_evidence_count?: number;
+  fto_evidence_count?: number;
+  evidence_note: string;
+}
+
+export interface DecisionRequest {
+  query: string;
+  jurisdiction?: string;
+  top_k?: number;
+  language?: string;
+}
+
+export interface DecisionResponse {
+  query: string;
+  decision: DecisionType;
+  why: string;
+  patent_analysis: string;
+  regulatory_analysis: string;
+  ip_fto_analysis: string;
+  conditions: string[];
+  required_next_steps: string[];
+  evidence: Array<{
+    citation_id: string;
+    publication_number: string;
+    document_id: string;
+    jurisdiction: string;
+    section: string;
+    title: string;
+    text: string;
+    source: string;
+    source_url?: string;
+    filing_date?: string;
+    publication_date?: string;
+  }>;
+  confidence: DecisionConfidence;
+  query_intent: QueryIntent;
+  evidence_sufficiency: EvidenceSufficiency;
+  detected_language: string;
+  jurisdictions_searched: string[];
+  origin_jurisdiction?: string;
+  target_jurisdiction?: string;
+  decision_jurisdiction: string;
+  origin_evidence?: Array<any>;
+  target_evidence?: Array<any>;
+  cross_jurisdiction_evidence?: Array<any>;
+  evaluation_evidence?: Array<any>;
+  origin_evidence_note?: string;
+  target_evidence_note?: string;
+  crag_status: string;
+  evaluation_only: boolean;
+  latencies_ms: Record<string, number>;
+  disclaimer: string;
 }
 
 

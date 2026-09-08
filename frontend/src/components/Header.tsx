@@ -33,26 +33,26 @@ interface HeaderProps {
 
 const COUNTRIES: Record<string, { label: string; flag: string; sub: string }> = {
   US: { label: "USA", flag: "🇺🇸", sub: "USPTO / FDA" },
-  IN: { label: "India", flag: "🇮🇳", sub: "CGPDTM / AYUSH" },
+  JP: { label: "Japan", flag: "🇯🇵", sub: "JPO / PMDA" },
   EU: { label: "Europe", flag: "🇪🇺", sub: "EPO / EMA" },
-  DE: { label: "Germany", flag: "🇩🇪", sub: "DPMA / BfArM" },
   WO: { label: "Global", flag: "🌐", sub: "WIPO PCT" },
+  IN: { label: "India", flag: "🇮🇳", sub: "Evaluation Only" },
 };
 
 const LANGUAGES: { code: LanguageCode; label: string }[] = [
   { code: "en", label: "English" },
-  { code: "te", label: "తెలుగు (Telugu)" },
-  { code: "hi", label: "हिन्दी (Hindi)" },
-  { code: "de", label: "Deutsch (German)" },
-  { code: "ta", label: "தமிழ் (Tamil)" },
-  { code: "kn", label: "ಕನ್ನಡ (Kannada)" },
-  { code: "ml", label: "മലയാളം (Malayalam)" },
+  { code: "te", label: "తెలుగు" },
+  { code: "hi", label: "हिन्दी" },
+  { code: "ja", label: "日本語" },
+  { code: "ta", label: "தமிழ்" },
+  { code: "kn", label: "ಕನ್ನಡ" },
+  { code: "ml", label: "മലയാളం" },
 ];
 
 export default function Header({
   language,
   onLanguageChange,
-  jurisdiction = "IN",
+  jurisdiction = "US",
   sessionCount,
   onOpenHistory,
   userProfile,
@@ -61,7 +61,7 @@ export default function Header({
   const t = getTranslation(language);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const activeMarket = COUNTRIES[jurisdiction] || COUNTRIES.IN;
+  const activeMarket = COUNTRIES[jurisdiction] || COUNTRIES.US;
 
   return (
     <header className="bg-black/90 backdrop-blur-xl border-b border-zinc-800/90 sticky top-0 z-30 shadow-2xl">
@@ -151,6 +151,22 @@ export default function Header({
             className="px-2.5 py-1.5 text-xs font-semibold text-zinc-400 hover:text-white bg-zinc-900/50 hover:bg-zinc-800 rounded-xl transition-all border border-zinc-800/80"
           >
             {t.nav.compare}
+          </Link>
+
+          <Link
+            href="/decision"
+            className="px-2.5 py-1.5 text-xs font-semibold text-amber-400 hover:text-amber-300 bg-amber-950/40 hover:bg-amber-900/50 rounded-xl transition-all border border-amber-800/60 flex items-center gap-1"
+            title="Phase 7 Decision & Jurisdiction Reasoning Engine"
+          >
+            <span>⚖️ Decision Engine</span>
+          </Link>
+
+          <Link
+            href="/admin"
+            className="px-2.5 py-1.5 text-xs font-semibold text-sky-400 hover:text-sky-300 bg-sky-950/40 hover:bg-sky-900/50 rounded-xl transition-all border border-sky-800/60"
+            title="Data Knowledge Base & Pipeline Audit"
+          >
+            Data Audit
           </Link>
 
           {/* Language Selector */}
@@ -339,6 +355,24 @@ export default function Header({
               >
                 <span>⚖️ {t.nav.compare}</span>
                 <span className="text-zinc-400 text-[11px]">→</span>
+              </Link>
+
+              <Link
+                href="/decision"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between p-2.5 rounded-xl bg-amber-950/30 hover:bg-amber-900/40 border border-amber-800/60 text-xs text-amber-400 font-semibold"
+              >
+                <span>⚖️ Phase 7 Decision Engine</span>
+                <span className="text-amber-400 text-[11px]">→</span>
+              </Link>
+
+              <Link
+                href="/admin"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between p-2.5 rounded-xl bg-sky-950/30 hover:bg-sky-900/40 border border-sky-800/60 text-xs text-sky-400 font-semibold"
+              >
+                <span>📊 Data Audit & Sufficiency</span>
+                <span className="text-sky-400 text-[11px]">→</span>
               </Link>
             </div>
 

@@ -1,0 +1,181 @@
+{
+  "cwinkler/green_patents": {
+    "author": "cwinkler",
+    "downloads": 30,
+    "tags": [
+      "task_categories:text-classification",
+      "language:en",
+      "size_categories:1K<n<10K",
+      "format:csv",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "files": [
+      {
+        "path": ".gitattributes",
+        "size_mb": 0.0
+      },
+      {
+        "path": "README.md",
+        "size_mb": 0.0
+      },
+      {
+        "path": "green_patent_14h_05_01-2023.csv",
+        "size_mb": 0.59
+      }
+    ],
+    "card": "---\nlanguage:\n- en\nsize_categories:\n- 1K<n<10K\ntask_categories:\n- text-classification\n---\n# Green patents dataset\n\n- num_rows: 9145\n- features: [title, label]\n- label: 0, 1\n\nThe dataset contains patent titles that are labeled as 1 (=\"green\") and 0 (=\"not green\").\n\n\"green\" patents titles were gathered by searching for CPC class \"Y02\" with Google Patents (query: \"status:APPLICATION type:PATENT (Y02) country:EP,US\", 05/01/2023).\n\n\"not green\" patents titles are derived from the [HUPD dataset](https://huggingface.co/datasets/HUPD/hupd) (random choice of 5000 titles). We could not find any patents in HUPD assigned to any CPC class starting with \"Y\"."
+  },
+  "ccdv/patent-classification": {
+    "author": "ccdv",
+    "downloads": 793,
+    "tags": [
+      "task_categories:text-classification",
+      "task_ids:multi-class-classification",
+      "task_ids:topic-classification",
+      "language:en",
+      "size_categories:10K<n<100K",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us",
+      "long context"
+    ],
+    "files": [
+      {
+        "path": ".gitattributes",
+        "size_mb": 0.0
+      },
+      {
+        "path": "README.md",
+        "size_mb": 0.0
+      },
+      {
+        "path": "abstract/test-00000-of-00001.parquet",
+        "size_mb": 1.64
+      },
+      {
+        "path": "abstract/train-00000-of-00001.parquet",
+        "size_mb": 8.21
+      },
+      {
+        "path": "abstract/validation-00000-of-00001.parquet",
+        "size_mb": 1.66
+      },
+      {
+        "path": "patent/test-00000-of-00001.parquet",
+        "size_mb": 37.28
+      },
+      {
+        "path": "patent/train-00000-of-00001.parquet",
+        "size_mb": 185.41
+      },
+      {
+        "path": "patent/validation-00000-of-00001.parquet",
+        "size_mb": 37.63
+      }
+    ],
+    "card": "---\nlanguage: en\nsize_categories: 10K<n<100K\ntask_categories:\n- text-classification\ntask_ids:\n- multi-class-classification\n- topic-classification\ntags:\n- long context\ndataset_info:\n- config_name: abstract\n  features:\n  - name: text\n    dtype: string\n  - name: label\n    dtype:\n      class_label:\n        names:\n          '0': Human Necessities\n          '1': Performing Operations; Transporting\n          '2': Chemistry; Metallurgy\n          '3': Textiles; Paper\n          '4': Fixed Constructions\n          '5': Mechanical Engineering; Lightning; Heating; Weapons; Blasting\n          '6': Physics\n          '7': Electricity\n          '8': General tagging of new or cross-sectional technology\n  splits:\n  - name: train\n    num_bytes: 17225101\n    num_examples: 25000\n  - name: validation\n    num_bytes: 3472854\n    num_examples: 5000\n  - name: test\n    num_bytes: 3456733\n    num_examples: 5000\n  download_size: 12067953\n  dataset_size: 24154688\n- config_name: patent\n  features:\n  - name: text\n    dtype: string\n  - name: label\n    dtype:\n      class_label:\n        names:\n          '0': Human Necessities\n          '1': Performing Operations; Transporting\n          '2': Chemistry; Metallurgy\n          '3': Textiles; Paper\n          '4': Fixed Constructions\n          '5': Mechanical Engineering; Lightning; Heating; Weapons; Blasting\n          '6': Physics\n          '7': Electricity\n          '8': General tagging of new or cross-sectional technology\n  splits:\n  - name: train\n    num_bytes: 466"
+  },
+  "AI-Growth-Lab/patents_claims_1.5m_traim_test": {
+    "author": "AI-Growth-Lab",
+    "downloads": 316,
+    "tags": [
+      "size_categories:1M<n<10M",
+      "format:csv",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "files": [
+      {
+        "path": ".gitattributes",
+        "size_mb": 0.0
+      },
+      {
+        "path": "df_claim_test_1M_pre_duplicates_removed_663.csv",
+        "size_mb": 269.55
+      },
+      {
+        "path": "df_claim_train_1M_pre_duplicates_removed_663.csv",
+        "size_mb": 3099.48
+      }
+    ],
+    "card": ""
+  },
+  "mhurhangee/ep-patent-all-claims": {
+    "author": "mhurhangee",
+    "downloads": 57,
+    "tags": [
+      "language:en",
+      "license:cc-by-4.0",
+      "size_categories:1M<n<10M",
+      "format:parquet",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us",
+      "patents",
+      "claims",
+      "legal",
+      "gpt-training"
+    ],
+    "files": [
+      {
+        "path": ".gitattributes",
+        "size_mb": 0.0
+      },
+      {
+        "path": "README.md",
+        "size_mb": 0.0
+      },
+      {
+        "path": "data/test-00000-of-00001.parquet",
+        "size_mb": 17.63
+      },
+      {
+        "path": "data/train-00000-of-00006.parquet",
+        "size_mb": 140.52
+      },
+      {
+        "path": "data/train-00001-of-00006.parquet",
+        "size_mb": 140.57
+      },
+      {
+        "path": "data/train-00002-of-00006.parquet",
+        "size_mb": 140.33
+      },
+      {
+        "path": "data/train-00003-of-00006.parquet",
+        "size_mb": 140.11
+      },
+      {
+        "path": "data/train-00004-of-00006.parquet",
+        "size_mb": 140.46
+      },
+      {
+        "path": "data/train-00005-of-00006.parquet",
+        "size_mb": 140.58
+      },
+      {
+        "path": "data/validation-00000-of-00001.parquet",
+        "size_mb": 17.6
+      }
+    ],
+    "card": "---\nlicense: cc-by-4.0\nlanguage:\n- en\ntags:\n- patents\n- claims\n- legal\n- gpt-training\n---\n\n# Patent All Claims\n\nEP granted claim sets (indepdendent and dependent claims). One claim per line. Claims from 20210915-20250806 \n\n## Splits\n- Train: 96%\n- Validation: 2%\n- Test: 2%\n\n## Usage\n```python\nfrom datasets import load_dataset\nds = load_dataset(\"mhurhangee/ep-patent-all-claims\")\n```\n"
+  }
+}

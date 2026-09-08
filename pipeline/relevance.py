@@ -107,7 +107,7 @@ class RelevanceFilter:
                     break
         if matched_ipc:
             score += 3.0
-            reasons.append(f"IPC/CPC match: {', '.join(set(matched_ipc)[:3])}")
+            reasons.append(f"IPC/CPC match: {', '.join(list(set(matched_ipc))[:3])}")
 
         # 2. Ayurvedic & Traditional Medicine Terms (+2.5)
         matched_ayur = [kw for kw in AYURVEDA_KEYWORDS if kw in all_text]

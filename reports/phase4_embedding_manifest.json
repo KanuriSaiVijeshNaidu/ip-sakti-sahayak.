@@ -1,0 +1,63 @@
+{
+  "phase": "Phase 4 — BGE-M3 Multilingual Embedding + FAISS Indexing",
+  "timestamp": "2026-09-08T09:07:20.246402+00:00",
+  "input": {
+    "canonical_input_path": "data/embedding_ready/canonical_chunks.jsonl",
+    "input_sha256": "6fd6b01ed0d8e2b1ec1fd07a5e90c6288c381ce6250dd3460e146f98964753b7",
+    "record_count": 70608,
+    "unique_chunk_count": 70608,
+    "unique_document_count": 2833,
+    "jurisdiction_counts": {
+      "US": 29003,
+      "EP": 1912,
+      "WO": 13652,
+      "JP": 26041,
+      "IN": 0,
+      "DE": 0
+    },
+    "language_counts": {
+      "en": 44567,
+      "ja": 26041
+    }
+  },
+  "model": {
+    "model_name": "BAAI/bge-m3",
+    "embedding_dimension": 1024,
+    "max_seq_length": 512,
+    "normalize_embeddings": true,
+    "dtype": "float32",
+    "device": "cuda",
+    "gpu_name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "gpu_vram": "6.00 GB",
+    "pytorch_version": "2.6.0+cu124",
+    "sentence_transformers_version": "3.0.1"
+  },
+  "embedding": {
+    "total_vectors": 70608,
+    "batch_size": 48,
+    "completed_parts": 36,
+    "nan_count": 0,
+    "inf_count": 0,
+    "norms": {
+      "min": 1.0,
+      "max": 1.0,
+      "mean": 1.0
+    },
+    "output_embeddings_path": "data/embeddings/bge_m3/embeddings.npy",
+    "output_metadata_path": "data/embeddings/bge_m3/metadata.jsonl"
+  },
+  "faiss": {
+    "index_type": "IndexFlatIP",
+    "global_vector_count": 70608,
+    "us_vector_count": 29003,
+    "ep_vector_count": 1912,
+    "wo_vector_count": 13652,
+    "jp_vector_count": 26041,
+    "in_vector_count": 0,
+    "de_vector_count": 0,
+    "metadata_mapping_status": "PASS",
+    "self_match_sanity_status": "PASS",
+    "jurisdiction_isolation_status": "PASS"
+  },
+  "final_decision": "PHASE 4 COMPLETE"
+}

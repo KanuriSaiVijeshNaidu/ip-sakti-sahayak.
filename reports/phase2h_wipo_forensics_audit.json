@@ -1,0 +1,149 @@
+{
+  "total_rows_inspected": 640,
+  "wipo_acceptable_count": 339,
+  "wipo_family_mixed_count": 252,
+  "wipo_rejected_count": 49,
+  "sample_audit_20": [
+    {
+      "pub_num": "WO11011710",
+      "standard_wo": "WO2011011710",
+      "kind_code": "A1",
+      "title": "METHODS OF TREATING VIRAL INFECTIONS",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO03076895",
+      "standard_wo": "WO2003076895",
+      "kind_code": "A2",
+      "title": "METHOD AND SYSTEM FOR DETERMINING GENOTYPE FROM PHENOTYPE",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO0129025",
+      "standard_wo": "WO2001029025",
+      "kind_code": "A2",
+      "title": "TYROSINE KINASE INHIBITORS",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO07049771",
+      "standard_wo": "WO2007049771",
+      "kind_code": "A1",
+      "title": "COMPOUND CONTAINING BASIC GROUP AND USE THEREOF",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO06072579",
+      "standard_wo": "WO2006072579",
+      "kind_code": "A1",
+      "title": "PHARMACEUTICALLY ACTIVE ANTIVIRAL PEPTIDES",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO06039250",
+      "standard_wo": "WO2006039250",
+      "kind_code": "A2",
+      "title": "CHEMOKINE-BINDING HETEROCYCLIC COMPOUND SALTS, AND METHODS O",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO04014882",
+      "standard_wo": "WO2004014882",
+      "kind_code": "A2",
+      "title": "PROTEASOME INHIBITORS",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO0125240",
+      "standard_wo": "WO2001025240",
+      "kind_code": "A1",
+      "title": "HEXAHYDROFURO[2,3-B]FURAN-3-YL-N{3[(1,3-BENZODIOXOL-5-YLSULF",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO10011819",
+      "standard_wo": "WO2010011819",
+      "kind_code": "A1",
+      "title": "CHEMICAL COMPOUNDS",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO03051306",
+      "standard_wo": "WO2003051306",
+      "kind_code": "A2",
+      "title": "N4-ACYLCYTOSINE-1,3- DIOXOLANE NUCLEOSIDES FOR TREATMENT OF ",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO10099576",
+      "standard_wo": "WO2010099576",
+      "kind_code": "A1",
+      "title": "COMPOSITIONS AND METHODS FOR ENHANCING IMMUNE RESPONSES",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO08112470",
+      "standard_wo": "WO2008112470",
+      "kind_code": "A1",
+      "title": "INCREASED EFFECTIVENESS OF MDA-7 WITH MDR-1 OVER-EXPRESSION",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO02072549",
+      "standard_wo": "WO2002072549",
+      "kind_code": "A1",
+      "title": "FUNCTIONALIZED HETEROCYCLES AS MODULATORS OF CHEMOKINE RECEP",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO0234716",
+      "standard_wo": "WO2002034716",
+      "kind_code": "A2",
+      "title": "PYRROLIDINE MODULATORS OF CCR5 CHEMOKINE RECEPTOR ACTIVITY",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO0185699",
+      "standard_wo": "WO2001085699",
+      "kind_code": "A2",
+      "title": "PRODRUGS OF HIV REPLICATION INHIBITING PYRIMIDINES",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO06022454",
+      "standard_wo": "WO2006022454",
+      "kind_code": "A1",
+      "title": "COMPOUND CONTAINING BASIC GROUP AND USE THEREOF",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO06045828",
+      "standard_wo": "WO2006045828",
+      "kind_code": "A1",
+      "title": "HIV INHIBITING BICYCLIC PYRIMDINE DERIVATIVES",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO09097508",
+      "standard_wo": "WO2009097508",
+      "kind_code": "A2",
+      "title": "METHODS AND COMPOSITIONS FOR WOUND HEALING",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO10129033",
+      "standard_wo": "WO2010129033",
+      "kind_code": "A2",
+      "title": "MODIFIED ANTIBODIES FOR PASSIVE IMMUNOTHERAPY",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    },
+    {
+      "pub_num": "WO0166657",
+      "standard_wo": "WO2001066657",
+      "kind_code": "A2",
+      "title": "ALKYLENIMINE/ORGANIC BARRIER COATINGS HAVING BIS-SILANE ADDI",
+      "status": "VERIFIED_REGISTRY_MATCH"
+    }
+  ],
+  "sample_verification_rate": 1.0
+}

@@ -1,0 +1,72 @@
+﻿{
+  "phase": "PHASE 5",
+  "project": "IP-SAKTI Sahayak / AYURLEX (SIH 26045)",
+  "status": "PHASE 5 COMPLETE",
+  "timestamp": "2026-09-08 16:13:00",
+  "scope_definition": {
+    "active_jurisdictions": ["US", "EP", "WO", "JP"],
+    "deferred_jurisdictions": ["IN"],
+    "removed_jurisdictions": ["DE"],
+    "total_canonical_chunks": 70608,
+    "total_faiss_vectors": 70608
+  },
+  "retrieval_pipeline": {
+    "dense_retrieval": {
+      "model": "BAAI/bge-m3",
+      "embedding_dim": 1024,
+      "index_type": "IndexFlatIP",
+      "dense_top_k": 30,
+      "normalization": "L2 normalized"
+    },
+    "lexical_retrieval": {
+      "algorithm": "BM25Okapi",
+      "japanese_tokenizer": "Janome (morphological analysis)",
+      "lexical_top_k": 30,
+      "partitioning": "Strictly jurisdiction-partitioned",
+      "indexed_fields": ["title", "section", "publication_number", "text"]
+    },
+    "fusion": {
+      "method": "Reciprocal Rank Fusion (RRF)",
+      "rrf_k": 60,
+      "deduplication_key": "chunk_id",
+      "score_provenance": "dense_score, dense_rank, lexical_score, lexical_rank, rrf_score"
+    },
+    "reranking": {
+      "model": "BAAI/bge-reranker-v2-m3",
+      "multilingual_safety": "Strict. English-only models prohibited as silent fallback for multilingual queries.",
+      "rerank_top_k": 20,
+      "device": "cuda",
+      "hardware": "NVIDIA GeForce RTX 4050 Laptop GPU (6GB VRAM)"
+    },
+    "safety_guard": {
+      "enforcement": "Hard isolation after every retrieval/ranking stage",
+      "policy": "Strict failure/abort upon any contamination or forbidden jurisdiction (IN, DE)"
+    },
+    "evidence_selection": {
+      "final_top_k": 10,
+      "output_schema": "EvidenceResult",
+      "llm_generation_halt": true
+    }
+  },
+  "final_hardening_review": {
+    "japanese_bm25_status": "VERIFIED (Janome morphological tokenization)",
+    "multilingual_reranker_status": "VERIFIED (BAAI/bge-reranker-v2-m3 on GPU with fail-closed multilingual invariant)",
+    "jurisdiction_isolation_status": "VERIFIED (100% compliant across US, EP, WO, JP; zero IN/DE)",
+    "language_not_equal_jurisdiction": "VERIFIED (Japanese query '米国特許の要件は何ですか？' routes to US with 0 JP chunks)",
+    "provenance_status": "VERIFIED (all metadata and stage ranks preserved)",
+    "rrf_math_validation": "VERIFIED (dense-only, lexical-only, dual-stream, and ranking order unit tests passed)"
+  },
+  "test_metrics": {
+    "total_phase5_tests": 45,
+    "passed_phase5_tests": 45,
+    "failed_phase5_tests": 0,
+    "pass_rate_percent": 100.0,
+    "core_regression_tests": "40/40 PASSED"
+  },
+  "api_endpoint": {
+    "route": "POST /api/retrieval/search",
+    "request_schema": "RetrievalSearchRequest",
+    "response_schema": "RetrievalSearchResponse",
+    "live_health": "200 OK"
+  }
+}
