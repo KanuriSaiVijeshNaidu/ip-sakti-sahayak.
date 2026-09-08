@@ -355,6 +355,7 @@ The live production deployment on Vercel has been directly inspected and verifie
 - [x] **Hindi available**: `हिन्दी` selectable and active.
 - [x] **Japanese available**: `日本語` selectable and active.
 - [x] **`/decision` deployed live**: Phase 7 Decision Engine is deployed live at `/decision` with cross-border partition, target jurisdiction prioritization, and decision reason codes.
+- [x] **Serverless Route Handler (`/api/decision`) Active**: Dedicated Next.js route handler deployed on Vercel at `POST /api/decision`, verified live returning HTTP 200 with deterministic decision output (`CONDITIONAL_YES`, `Confidence: HIGH`, separated target/origin evidence buckets, reason codes, and strict HTTP 400 rejection for Germany).
 - [x] **Global retrieval excludes India and Germany**: Production global scope strictly restricted to `US`, `EP`, `WO`, and `JP`.
 
 **STOP HERE. PHASE 7 IS COMPLETE AND VERIFIED.**
