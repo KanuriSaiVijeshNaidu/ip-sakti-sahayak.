@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import {
   ShieldShaded,
   HouseDoorFill,
@@ -10,25 +11,24 @@ import {
   Globe2,
   List,
   XLg,
-  ChevronDown,
   LayersFill,
 } from "react-bootstrap-icons";
 import { JurisdictionType, LanguageCode, UserProfile } from "@/types";
 import { getTranslation } from "@/lib/i18n";
 import Link from "next/link";
 
-interface HeaderProps {
-  language: LanguageCode;
-  onLanguageChange: (lang: LanguageCode) => void;
+export interface HeaderProps {
+  language?: LanguageCode;
+  onLanguageChange?: (lang: LanguageCode) => void;
   jurisdiction?: JurisdictionType;
   onJurisdictionChange?: (jur: JurisdictionType) => void;
-  sessionCount: number;
-  onOpenHistory: () => void;
-  onOpenCompare: () => void;
-  onOpenAuth: () => void;
-  userProfile: UserProfile;
-  onLogout: () => void;
-  onGoHome: () => void;
+  sessionCount?: number;
+  onOpenHistory?: () => void;
+  onOpenCompare?: () => void;
+  onOpenAuth?: () => void;
+  userProfile?: UserProfile;
+  onLogout?: () => void;
+  onGoHome?: () => void;
 }
 
 const COUNTRIES: Record<string, { label: string; flag: string; sub: string }> = {
@@ -46,29 +46,83 @@ const LANGUAGES: { code: LanguageCode; label: string }[] = [
   { code: "ja", label: "日本語" },
   { code: "ta", label: "தமிழ்" },
   { code: "kn", label: "ಕನ್ನಡ" },
-  { code: "ml", label: "മലയാളం" },
+  { code: "ml", label: "മലയാളം" },
 ];
 
 export default function Header({
-  language,
-  onLanguageChange,
-  jurisdiction = "US",
-  sessionCount,
+  language: propLanguage,
+  onLanguageChange: propOnLanguageChange,
+  jurisdiction: propJurisdiction,
+  sessionCount = 0,
   onOpenHistory,
-  userProfile,
+  userProfile = { name: "", email: "", role: "guest", isLoggedIn: false },
   onGoHome,
 }: HeaderProps) {
-  const t = getTranslation(language);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter();
+  const [internalLang, setInternalLang] = useState<LanguageCode>("en");
+  const [internalJur, setInternalJur] = useState<JurisdictionType>("US");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
+  // Sync / load saved settings
+  useEffect(() => {
+    try {
+      const savedLang = localStorage.getItem("ip_sakti_lang") || localStorage.getItem("ayurlex_language");
+      if (savedLang && ["en", "te", "hi", "ja", "ta", "kn", "ml"].includes(savedLang)) {
+        setInternalLang(savedLang as LanguageCode);
+      }
+      const savedJur = localStorage.getItem("ayurlex_jurisdiction");
+      if (savedJur && ["US", "JP", "EU", "WO", "IN"].includes(savedJur)) {
+        setInternalJur(savedJur as JurisdictionType);
+      }
+    } catch {}
+  }, []);
+
+  const language = propLanguage || internalLang;
+  const jurisdiction = propJurisdiction || internalJur;
+
+  const handleLangChange = (newLang: LanguageCode) => {
+    setInternalLang(newLang);
+    try {
+      localStorage.setItem("ip_sakti_lang", newLang);
+      localStorage.setItem("ayurlex_language", newLang);
+    } catch {}
+    if (propOnLanguageChange) {
+      propOnLanguageChange(newLang);
+    }
+  };
+
+  const handleReturnHome = () => {
+    if (onGoHome) {
+      onGoHome();
+    } else {
+      router.push("/");
+    }
+    setMenuOpen(false);
+  };
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    }
+    if (menuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [menuOpen]);
+
+  const t = getTranslation(language);
   const activeMarket = COUNTRIES[jurisdiction] || COUNTRIES.US;
 
   return (
-    <header className="bg-black/90 backdrop-blur-xl border-b border-zinc-800/90 sticky top-0 z-30 shadow-2xl">
-      <div className="max-w-6xl mx-auto px-3 sm:px-4 py-2 sm:py-2.5 flex items-center justify-between gap-2">
-        {/* Clickable Logo & Title to return home */}
+    <header className="bg-black/90 backdrop-blur-xl border-b border-zinc-800/90 sticky top-0 z-40 shadow-2xl" ref={menuRef}>
+      <div className="max-w-6xl mx-auto px-3 sm:px-4 py-2 sm:py-2.5 flex items-center justify-between gap-3">
+        {/* Left: Logo & Title */}
         <button
-          onClick={onGoHome}
+          onClick={handleReturnHome}
           className="flex items-center gap-2 sm:gap-2.5 text-left hover:opacity-90 transition-opacity select-none group cursor-pointer shrink-0"
           title="Return to AYURLEX Home"
         >
@@ -88,93 +142,25 @@ export default function Header({
           </div>
         </button>
 
-        {/* Desktop Navigation Items */}
-        <div className="hidden md:flex items-center gap-2">
-          {/* Active Market Pill -> Links to /location */}
+        {/* Right: ONLY Region, Language, and Three Lines Menu (☰) */}
+        <div className="flex items-center gap-2 sm:gap-2.5">
+          {/* 1. Region / Active Market (Visible on Bar) */}
           <Link
             href="/location"
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-zinc-200 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 rounded-xl transition-all shadow-sm cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-zinc-200 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 rounded-xl transition-all shadow-sm cursor-pointer"
             title={`${t.nav.activeMarket} - ${t.nav.changeMarket}`}
           >
             <span className="text-sm">{activeMarket.flag}</span>
-            <span className="font-bold text-white">{activeMarket.label}</span>
-            <span className="text-[10px] font-mono text-zinc-400">({activeMarket.sub})</span>
+            <span className="font-bold text-white hidden xs:inline sm:inline">{activeMarket.label}</span>
+            <span className="text-[10px] font-mono text-zinc-400 hidden md:inline">({activeMarket.sub})</span>
           </Link>
 
-          {/* Home Button */}
-          <button
-            onClick={onGoHome}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-zinc-300 hover:text-white bg-zinc-900/80 hover:bg-zinc-800 rounded-xl transition-all border border-zinc-800 shadow-sm cursor-pointer"
-            title="Return to Home Screen"
-          >
-            <HouseDoorFill className="w-3.5 h-3.5 text-zinc-400" />
-            <span>{t.nav.home}</span>
-          </button>
-
-          {/* History Drawer Trigger */}
-          <button
-            onClick={onOpenHistory}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-zinc-300 hover:text-white bg-zinc-900/80 hover:bg-zinc-800 rounded-xl transition-all border border-zinc-800 shadow-sm cursor-pointer"
-            title={t.nav.consultationHistory}
-          >
-            <ClockHistory className="w-3.5 h-3.5 text-zinc-400" />
-            <span>{t.nav.history}</span>
-            <span className="w-4 h-4 rounded-full bg-white text-black text-[10px] font-bold flex items-center justify-center font-mono">
-              {sessionCount}
-            </span>
-          </button>
-
-          {/* Specialized Diagnostic Engines */}
-          <Link
-            href="/formulation-analyzer"
-            className="px-2.5 py-1.5 text-xs font-semibold text-zinc-400 hover:text-white bg-zinc-900/50 hover:bg-zinc-800 rounded-xl transition-all border border-zinc-800/80"
-          >
-            {t.nav.formulations}
-          </Link>
-
-          <Link
-            href="/patentability"
-            className="px-2.5 py-1.5 text-xs font-semibold text-zinc-400 hover:text-white bg-zinc-900/50 hover:bg-zinc-800 rounded-xl transition-all border border-zinc-800/80"
-          >
-            {t.nav.patentability}
-          </Link>
-
-          <Link
-            href="/tk-risk"
-            className="px-2.5 py-1.5 text-xs font-semibold text-zinc-400 hover:text-white bg-zinc-900/50 hover:bg-zinc-800 rounded-xl transition-all border border-zinc-800/80"
-          >
-            {t.nav.tkRisk}
-          </Link>
-
-          <Link
-            href="/compare-jurisdictions"
-            className="px-2.5 py-1.5 text-xs font-semibold text-zinc-400 hover:text-white bg-zinc-900/50 hover:bg-zinc-800 rounded-xl transition-all border border-zinc-800/80"
-          >
-            {t.nav.compare}
-          </Link>
-
-          <Link
-            href="/decision"
-            className="px-2.5 py-1.5 text-xs font-semibold text-amber-400 hover:text-amber-300 bg-amber-950/40 hover:bg-amber-900/50 rounded-xl transition-all border border-amber-800/60 flex items-center gap-1"
-            title="Phase 7 Decision & Jurisdiction Reasoning Engine"
-          >
-            <span>⚖️ Decision Engine</span>
-          </Link>
-
-          <Link
-            href="/admin"
-            className="px-2.5 py-1.5 text-xs font-semibold text-sky-400 hover:text-sky-300 bg-sky-950/40 hover:bg-sky-900/50 rounded-xl transition-all border border-sky-800/60"
-            title="Data Knowledge Base & Pipeline Audit"
-          >
-            Data Audit
-          </Link>
-
-          {/* Language Selector */}
-          <div className="flex items-center gap-1.5 bg-zinc-900 border border-zinc-800 rounded-xl px-2.5 py-1.5 text-xs text-zinc-300">
+          {/* 2. Language Selector (Visible on Bar) */}
+          <div className="flex items-center gap-1.5 bg-zinc-900 border border-zinc-800 rounded-xl px-2 sm:px-2.5 py-1.5 text-xs text-zinc-300">
             <Globe2 className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
             <select
               value={language}
-              onChange={(e) => onLanguageChange(e.target.value as LanguageCode)}
+              onChange={(e) => handleLangChange(e.target.value as LanguageCode)}
               aria-label={t.nav.selectLanguage}
               className="bg-transparent text-zinc-200 font-semibold outline-none cursor-pointer text-xs pr-1"
             >
@@ -186,218 +172,246 @@ export default function Header({
             </select>
           </div>
 
-          {/* User Profile / Login */}
-          {userProfile.isLoggedIn ? (
-            <Link
-              href="/profile"
-              className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-black bg-white hover:bg-zinc-200 rounded-xl transition-all shadow-md shrink-0 cursor-pointer"
-              title="View User Details & Security Profile"
-            >
-              <div className="w-5 h-5 rounded-full bg-black text-white text-[10px] font-bold flex items-center justify-center shrink-0">
-                {userProfile.name ? userProfile.name.charAt(0).toUpperCase() : "U"}
-              </div>
-              <span className="max-w-[120px] truncate text-xs">
-                {userProfile.name || `@${userProfile.username || "user"}`}
-              </span>
-            </Link>
-          ) : (
-            <Link
-              href="/login"
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-black bg-white hover:bg-zinc-200 rounded-xl shadow-md transition-all shrink-0 cursor-pointer"
-              title="Sign In with Official Email & OTP"
-            >
-              <KeyFill className="w-3.5 h-3.5" />
-              <span>{t.nav.signIn}</span>
-            </Link>
-          )}
-        </div>
-
-        {/* Mobile Controls (Clean & Non-Scrolling) */}
-        <div className="flex md:hidden items-center gap-2">
-          {/* Active Market Quick Tap to /location */}
-          <Link
-            href="/location"
-            className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-bold text-white bg-zinc-900 border border-zinc-700 rounded-xl shadow-sm"
-            title={t.nav.changeMarket}
-          >
-            <span>{activeMarket.flag}</span>
-            <span className="text-[11px] font-bold">{activeMarket.label}</span>
-          </Link>
-
-          {/* Mobile Menu Toggle Button */}
+          {/* 3. Three Lines Menu Button (☰ / List Icon) containing ALL Main Pages Options */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-zinc-300 hover:text-white bg-zinc-900 border border-zinc-800 rounded-xl transition-colors cursor-pointer"
-            aria-label="Toggle Mobile Menu"
+            onClick={() => setMenuOpen(!menuOpen)}
+            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl transition-all border shadow-sm cursor-pointer ${
+              menuOpen
+                ? "bg-white text-black border-white"
+                : "bg-zinc-900 hover:bg-zinc-800 text-zinc-200 hover:text-white border-zinc-800 hover:border-zinc-700"
+            }`}
+            aria-label="Toggle Navigation Menu"
+            title="Main Pages Menu"
           >
-            {mobileMenuOpen ? <XLg className="w-4 h-4" /> : <List className="w-4 h-4" />}
+            {menuOpen ? <XLg className="w-4 h-4" /> : <List className="w-4 h-4" />}
+            <span className="hidden sm:inline font-bold">Menu</span>
           </button>
         </div>
       </div>
 
-      {/* Mobile Vertical Drawer Menu (Zero horizontal scrolling! Clean practical vertical stacking) */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-zinc-950 border-t border-zinc-800 px-4 py-4 space-y-3 animate-in fade-in slide-in-from-top-2">
-          <div className="flex flex-col gap-2 text-left">
-            {/* User Profile / Sign In at Top of Menu */}
-            {userProfile.isLoggedIn ? (
-              <Link
-                href="/profile"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between p-3 rounded-xl bg-zinc-900 border border-zinc-700 text-white"
-              >
+      {/* THREE LINES MENU (☰): ALL WEBSITE MAIN PAGES IN VERTICAL FORMAT */}
+      {menuOpen && (
+        <div className="bg-zinc-950/98 border-t border-zinc-800 px-4 py-4 shadow-2xl animate-in fade-in slide-in-from-top-2 backdrop-blur-2xl">
+          <div className="max-w-6xl mx-auto space-y-4">
+            {/* User Profile / Auth Status Bar */}
+            <div className="flex items-center justify-between p-3 rounded-xl bg-zinc-900/80 border border-zinc-800">
+              {userProfile.isLoggedIn ? (
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-white text-black font-bold flex items-center justify-center text-sm">
+                  <div className="w-8 h-8 rounded-full bg-white text-black font-bold flex items-center justify-center text-xs">
                     {userProfile.name ? userProfile.name.charAt(0).toUpperCase() : "U"}
                   </div>
                   <div>
-                    <span className="text-sm font-bold block leading-tight">{userProfile.name}</span>
-                    <span className="text-[11px] text-zinc-400 block">{userProfile.email}</span>
+                    <span className="text-xs font-bold text-white block leading-tight">{userProfile.name}</span>
+                    <span className="text-[10px] text-zinc-400 block">{userProfile.email}</span>
                   </div>
                 </div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-zinc-800 text-zinc-300 border border-zinc-700">
-                  {t.nav.profile} →
-                </span>
-              </Link>
-            ) : (
-              <Link
-                href="/login"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 p-3 rounded-xl bg-white text-black font-bold text-xs shadow-md"
-              >
-                <KeyFill className="w-4 h-4" />
-                <span>{t.nav.signIn}</span>
-              </Link>
-            )}
+              ) : (
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-zinc-400">Not signed in</span>
+                </div>
+              )}
 
-            {/* Change Jurisdiction / Location Option */}
-            <Link
-              href="/location"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-between p-3 rounded-xl bg-zinc-900/90 border border-zinc-800 text-zinc-200 hover:text-white"
-            >
-              <div className="flex items-center gap-2.5">
-                <Globe2 className="w-4 h-4 text-white" />
-                <span className="text-xs font-semibold">{t.nav.changeMarket}</span>
+              <div className="flex items-center gap-2">
+                {userProfile.isLoggedIn ? (
+                  <Link
+                    href="/profile"
+                    onClick={() => setMenuOpen(false)}
+                    className="px-3 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-semibold border border-zinc-700"
+                  >
+                    {t.nav.profile} →
+                  </Link>
+                ) : (
+                  <Link
+                    href="/login"
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center gap-1 px-3 py-1 rounded-lg bg-white hover:bg-zinc-200 text-black text-xs font-bold shadow-sm"
+                  >
+                    <KeyFill className="w-3 h-3" />
+                    <span>{t.nav.signIn}</span>
+                  </Link>
+                )}
               </div>
-              <span className="text-xs font-bold text-white px-2 py-0.5 bg-black border border-zinc-700 rounded-lg flex items-center gap-1">
-                <span>{activeMarket.flag}</span>
-                <span>{activeMarket.label}</span>
-              </span>
-            </Link>
-
-            {/* Return to Chat / Home */}
-            <button
-              onClick={() => {
-                onGoHome();
-                setMobileMenuOpen(false);
-              }}
-              className="w-full flex items-center gap-2.5 p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 text-zinc-200 hover:text-white text-xs font-semibold text-left cursor-pointer"
-            >
-              <HouseDoorFill className="w-4 h-4 text-zinc-400" />
-              <span>{t.nav.chatWorkspace}</span>
-            </button>
-
-            {/* Consultation History */}
-            <button
-              onClick={() => {
-                onOpenHistory();
-                setMobileMenuOpen(false);
-              }}
-              className="w-full flex items-center justify-between p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 text-zinc-200 hover:text-white text-xs font-semibold text-left cursor-pointer"
-            >
-              <div className="flex items-center gap-2.5">
-                <ClockHistory className="w-4 h-4 text-zinc-400" />
-                <span>{t.nav.consultationHistory}</span>
-              </div>
-              <span className="w-5 h-5 rounded-full bg-white text-black text-[11px] font-bold flex items-center justify-center font-mono">
-                {sessionCount}
-              </span>
-            </button>
-
-            {/* Vertical Module Tools Stack */}
-            <div className="pt-2 border-t border-zinc-800/80 space-y-1.5">
-              <span className="text-[10px] uppercase tracking-wider text-zinc-400 font-semibold px-1">
-                {t.nav.specializedEngines}
-              </span>
-
-              <Link
-                href="/formulation-analyzer"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-800/60 text-xs text-zinc-300"
-              >
-                <span>🧬 {t.nav.formulations}</span>
-                <span className="text-zinc-400 text-[11px]">→</span>
-              </Link>
-
-              <Link
-                href="/patentability"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-800/60 text-xs text-zinc-300"
-              >
-                <span>💡 {t.nav.patentability}</span>
-                <span className="text-zinc-400 text-[11px]">→</span>
-              </Link>
-
-              <Link
-                href="/tk-risk"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-800/60 text-xs text-zinc-300"
-              >
-                <span>🌿 {t.nav.tkRisk}</span>
-                <span className="text-zinc-400 text-[11px]">→</span>
-              </Link>
-
-              <Link
-                href="/compare-jurisdictions"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-800/60 text-xs text-zinc-300"
-              >
-                <span>⚖️ {t.nav.compare}</span>
-                <span className="text-zinc-400 text-[11px]">→</span>
-              </Link>
-
-              <Link
-                href="/decision"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between p-2.5 rounded-xl bg-amber-950/30 hover:bg-amber-900/40 border border-amber-800/60 text-xs text-amber-400 font-semibold"
-              >
-                <span>⚖️ Phase 7 Decision Engine</span>
-                <span className="text-amber-400 text-[11px]">→</span>
-              </Link>
-
-              <Link
-                href="/admin"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between p-2.5 rounded-xl bg-sky-950/30 hover:bg-sky-900/40 border border-sky-800/60 text-xs text-sky-400 font-semibold"
-              >
-                <span>📊 Data Audit & Sufficiency</span>
-                <span className="text-sky-400 text-[11px]">→</span>
-              </Link>
             </div>
 
-            {/* Mobile Language Selector */}
-            <div className="pt-2 border-t border-zinc-800/80">
-              <label className="text-[10px] uppercase tracking-wider text-zinc-400 font-semibold block mb-1 px-1">
-                {t.nav.selectLanguage}
-              </label>
-              <div className="grid grid-cols-2 gap-1.5">
-                {LANGUAGES.map((l) => (
+            {/* Vertical Main Pages Options */}
+            <div>
+              <span className="text-[10px] uppercase tracking-wider text-zinc-400 font-bold px-1 block mb-2">
+                Website Main Pages (Vertical)
+              </span>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                {/* 1. Home / Chat Workspace */}
+                <button
+                  onClick={handleReturnHome}
+                  className="w-full text-left p-3 rounded-xl bg-zinc-900/70 hover:bg-zinc-800/90 border border-zinc-800 hover:border-zinc-700 transition-all flex items-center justify-between group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-zinc-800 text-zinc-200 group-hover:text-white">
+                      <HouseDoorFill className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold text-white block">{t.nav.home}</span>
+                      <span className="text-[10px] text-zinc-400 block">AI Statutory Q&A Workspace</span>
+                    </div>
+                  </div>
+                  <span className="text-zinc-500 group-hover:text-white text-xs font-mono">→</span>
+                </button>
+
+                {/* 2. Phase 7 Decision Engine */}
+                <Link
+                  href="/decision"
+                  onClick={() => setMenuOpen(false)}
+                  className="w-full text-left p-3 rounded-xl bg-amber-950/30 hover:bg-amber-950/60 border border-amber-800/50 hover:border-amber-700 transition-all flex items-center justify-between group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-amber-500/20 text-amber-400">
+                      ⚖️
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold text-amber-300 block">Phase 7 Decision Engine</span>
+                      <span className="text-[10px] text-amber-400/70 block">Cross-Border Jurisdiction Reasoning</span>
+                    </div>
+                  </div>
+                  <span className="text-amber-400/60 group-hover:text-amber-300 text-xs font-mono">→</span>
+                </Link>
+
+                {/* 3. Formulation Analyzer */}
+                <Link
+                  href="/formulation-analyzer"
+                  onClick={() => setMenuOpen(false)}
+                  className="w-full text-left p-3 rounded-xl bg-zinc-900/70 hover:bg-zinc-800/90 border border-zinc-800 hover:border-zinc-700 transition-all flex items-center justify-between group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-zinc-800 text-emerald-400">
+                      🧬
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold text-white block">{t.nav.formulations}</span>
+                      <span className="text-[10px] text-zinc-400 block">Herbal Ingredient & Admixture Check</span>
+                    </div>
+                  </div>
+                  <span className="text-zinc-500 group-hover:text-white text-xs font-mono">→</span>
+                </Link>
+
+                {/* 4. Patentability Assessment */}
+                <Link
+                  href="/patentability"
+                  onClick={() => setMenuOpen(false)}
+                  className="w-full text-left p-3 rounded-xl bg-zinc-900/70 hover:bg-zinc-800/90 border border-zinc-800 hover:border-zinc-700 transition-all flex items-center justify-between group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-zinc-800 text-cyan-400">
+                      💡
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold text-white block">{t.nav.patentability}</span>
+                      <span className="text-[10px] text-zinc-400 block">Section 3(e)/3(p) & Statutory Bars</span>
+                    </div>
+                  </div>
+                  <span className="text-zinc-500 group-hover:text-white text-xs font-mono">→</span>
+                </Link>
+
+                {/* 5. Traditional Knowledge (TK) Risk */}
+                <Link
+                  href="/tk-risk"
+                  onClick={() => setMenuOpen(false)}
+                  className="w-full text-left p-3 rounded-xl bg-zinc-900/70 hover:bg-zinc-800/90 border border-zinc-800 hover:border-zinc-700 transition-all flex items-center justify-between group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-zinc-800 text-emerald-400">
+                      🌿
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold text-white block">{t.nav.tkRisk}</span>
+                      <span className="text-[10px] text-zinc-400 block">TKDL Prior Art & NBA Compliance</span>
+                    </div>
+                  </div>
+                  <span className="text-zinc-500 group-hover:text-white text-xs font-mono">→</span>
+                </Link>
+
+                {/* 6. Compare Jurisdictions */}
+                <Link
+                  href="/compare-jurisdictions"
+                  onClick={() => setMenuOpen(false)}
+                  className="w-full text-left p-3 rounded-xl bg-zinc-900/70 hover:bg-zinc-800/90 border border-zinc-800 hover:border-zinc-700 transition-all flex items-center justify-between group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-zinc-800 text-blue-400">
+                      ⚖️
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold text-white block">{t.nav.compare}</span>
+                      <span className="text-[10px] text-zinc-400 block">Cross-Market Statutory Comparison</span>
+                    </div>
+                  </div>
+                  <span className="text-zinc-500 group-hover:text-white text-xs font-mono">→</span>
+                </Link>
+
+                {/* 7. Data Knowledge Base & Audit */}
+                <Link
+                  href="/admin"
+                  onClick={() => setMenuOpen(false)}
+                  className="w-full text-left p-3 rounded-xl bg-zinc-900/70 hover:bg-zinc-800/90 border border-zinc-800 hover:border-zinc-700 transition-all flex items-center justify-between group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-zinc-800 text-sky-400">
+                      📊
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold text-white block">Data Audit & Sufficiency</span>
+                      <span className="text-[10px] text-zinc-400 block">Corpus Integrity & Pipeline Trace</span>
+                    </div>
+                  </div>
+                  <span className="text-zinc-500 group-hover:text-white text-xs font-mono">→</span>
+                </Link>
+
+                {/* 8. Consultation History */}
+                {onOpenHistory && (
                   <button
-                    key={l.code}
                     onClick={() => {
-                      onLanguageChange(l.code);
-                      setMobileMenuOpen(false);
+                      onOpenHistory();
+                      setMenuOpen(false);
                     }}
-                    className={`py-2 px-2.5 rounded-xl text-xs font-semibold text-center transition-all cursor-pointer ${
-                      language === l.code
-                        ? "bg-white text-black font-bold shadow-sm"
-                        : "bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800"
-                    }`}
+                    className="w-full text-left p-3 rounded-xl bg-zinc-900/70 hover:bg-zinc-800/90 border border-zinc-800 hover:border-zinc-700 transition-all flex items-center justify-between group cursor-pointer"
                   >
-                    {l.label}
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 rounded-lg bg-zinc-800 text-zinc-300">
+                        <ClockHistory className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-bold text-white block">{t.nav.history}</span>
+                          <span className="px-1.5 py-0.2 rounded-full bg-white text-black font-mono text-[9px] font-bold">
+                            {sessionCount}
+                          </span>
+                        </div>
+                        <span className="text-[10px] text-zinc-400 block">Past Saved Consultations</span>
+                      </div>
+                    </div>
+                    <span className="text-zinc-500 group-hover:text-white text-xs font-mono">→</span>
                   </button>
-                ))}
+                )}
+
+                {/* 9. Change Operating Jurisdiction */}
+                <Link
+                  href="/location"
+                  onClick={() => setMenuOpen(false)}
+                  className="w-full text-left p-3 rounded-xl bg-zinc-900/70 hover:bg-zinc-800/90 border border-zinc-800 hover:border-zinc-700 transition-all flex items-center justify-between group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-zinc-800 text-amber-400">
+                      📍
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-xs font-bold text-white block">{t.nav.changeMarket}</span>
+                        <span className="text-[10px] font-mono text-amber-400">({activeMarket.flag} {activeMarket.label})</span>
+                      </div>
+                      <span className="text-[10px] text-zinc-400 block">Switch Active Production Market</span>
+                    </div>
+                  </div>
+                  <span className="text-zinc-500 group-hover:text-white text-xs font-mono">→</span>
+                </Link>
               </div>
             </div>
           </div>
