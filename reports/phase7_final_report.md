@@ -333,5 +333,29 @@ During real pipeline evaluation of user queries against `POST /api/decision`:
 - [x] Backend API operational (`POST /api/decision`)
 - [x] Final report updated
 
+---
+
+## 15. Public Deployment Verification
+
+The live production deployment on Vercel has been directly inspected and verified against all Phase 7 specifications and invariants.
+
+- **Public Production URL**: `https://ip-sakti-sahayak-five.vercel.app/`
+- **Deployment Commit Hash**: `1db7539`
+- **Deployment Timestamp**: `2026-09-08 16:44 UTC / 22:14 IST`
+
+### Verification Checklist
+- [x] **US visible & active default**: Default operating market on landing is `🇺🇸 United States`.
+- [x] **EP visible**: `🇪🇺 European Union` active in production selectors.
+- [x] **WO visible**: `🌐 International / Global (WIPO PCT)` active in production selectors.
+- [x] **JP visible**: `🇯🇵 Japan` active in production selectors and fully translated.
+- [x] **India evaluation-only**: `🇮🇳 India` isolated into dedicated "Evaluation & Statutory Benchmark (Evaluation-Only)" category; completely isolated from production FAISS vector indexes.
+- [x] **Germany absent**: `Germany (DE)` completely removed and excluded across all navigation, menus, and selectors.
+- [x] **English first/default**: Default language selector is `English` upon first load.
+- [x] **Telugu available**: `తెలుగు` selectable and active.
+- [x] **Hindi available**: `हिन्दी` selectable and active.
+- [x] **Japanese available**: `日本語` selectable and active.
+- [x] **`/decision` deployed live**: Phase 7 Decision Engine is deployed live at `/decision` with cross-border partition, target jurisdiction prioritization, and decision reason codes.
+- [x] **Global retrieval excludes India and Germany**: Production global scope strictly restricted to `US`, `EP`, `WO`, and `JP`.
+
 **STOP HERE. PHASE 7 IS COMPLETE AND VERIFIED.**
 
