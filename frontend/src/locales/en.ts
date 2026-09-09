@@ -261,7 +261,7 @@ export const en: TranslationSchema = {
     ledgerReceipt: "AYURLEX Sovereign Audit Ledger",
     consensusValidator: "Consensus Validator",
     block: "Block",
-    zeroHallucination: "Zero Hallucination Verified",
+    evidenceGrounded: "Evidence-Grounded AI Verified",
     hideLedger: "Hide Ledger",
     viewProof: "View Proof",
     copyHash: "Copy SHA-256 Hash",

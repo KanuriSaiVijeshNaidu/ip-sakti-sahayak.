@@ -99,7 +99,7 @@ export default function UnifiedHubNav({
   const pathname = usePathname();
 
   const [activeLang, setActiveLang] = useState<LanguageCode>("en");
-  const [activeJur, setActiveJur] = useState<JurisdictionType>("US");
+  const [activeJur, setActiveJur] = useState<JurisdictionType>("IN");
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {

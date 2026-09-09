@@ -157,7 +157,7 @@ export interface TranslationSchema {
     ledgerReceipt: string;
     consensusValidator: string;
     block: string;
-    zeroHallucination: string;
+    evidenceGrounded: string;
     hideLedger: string;
     viewProof: string;
     copyHash: string;

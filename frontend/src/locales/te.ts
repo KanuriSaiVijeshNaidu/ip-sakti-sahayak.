@@ -261,7 +261,7 @@ export const te: TranslationSchema = {
     ledgerReceipt: "ఆయుర్‌లెక్స్ సార్వభౌమ ఆడిట్ లెడ్జర్",
     consensusValidator: "ఏకాభిప్రాయ ధ్రువీకరణకర్త",
     block: "బ్లాక్",
-    zeroHallucination: "జీరో హాలూసినేషన్ ధృవీకరించబడింది",
+    evidenceGrounded: "సాక్ష్యాధారిత AI ధృవీకరించబడింది",
     hideLedger: "లెడ్జర్‌ను దాచు",
     viewProof: "రుజువును చూడండి",
     copyHash: "SHA-256 హ్యాష్ కాపీ చేయండి",

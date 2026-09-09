@@ -26,8 +26,8 @@ interface NavbarProps {
 }
 
 const MARKETS: { id: JurisdictionType; label: string; flag: string; sub: string }[] = [
+  { id: "IN", label: "India", flag: "🇮🇳", sub: "Patents Act § 3(e)/3(p) & AYUSH" },
   { id: "US", label: "United States", flag: "🇺🇸", sub: "USPTO / FDA DSHEA" },
-  { id: "IN", label: "India", flag: "🇮🇳", sub: "Patents Act § 3(e)/3(p) & NBA" },
   { id: "EU", label: "European Union", flag: "🇪🇺", sub: "EPO / EMA THMPD" },
   { id: "JP", label: "Japan", flag: "🇯🇵", sub: "JPO / PMD Act (薬機法)" },
   { id: "WO", label: "Global", flag: "🌐", sub: "WIPO PCT Framework" },
@@ -48,7 +48,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
   const router = useRouter();
   const { language, setLanguage, t } = useLanguage();
 
-  const [currentMarket, setCurrentMarket] = useState<JurisdictionType>("US");
+  const [currentMarket, setCurrentMarket] = useState<JurisdictionType>("IN");
   const [marketDropdownOpen, setMarketDropdownOpen] = useState(false);
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);

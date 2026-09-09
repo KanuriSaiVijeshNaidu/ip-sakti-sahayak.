@@ -20,7 +20,7 @@ export default function AbstentionPanel({
         <div>
           <h4 className="text-sm font-bold text-amber-200">Statutory Abstention Active</h4>
           <p className="text-xs text-amber-300/80">
-            Strict Zero-Hallucination Policy Triggered
+            Evidence-Grounded AI Policy: Verification Required
           </p>
         </div>
       </div>

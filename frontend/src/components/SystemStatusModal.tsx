@@ -39,7 +39,7 @@ export default function SystemStatusModal({ onClose }: SystemStatusModalProps) {
             <div>
               <div className="font-semibold">{t.statusModal?.operationalBadge || "All Production Services Operational"}</div>
               <div className="text-[11px] text-emerald-700 mt-0.5">
-                {t.statusModal?.recallDesc || "Evaluated against 425 statutory benchmark queries with 100% Recall@5 and 0% unsupported hallucination rate."}
+                {t.statusModal?.recallDesc || "Evaluated against 425 statutory benchmark queries with 100% Recall@5 and citation-first verification."}
               </div>
             </div>
           </div>

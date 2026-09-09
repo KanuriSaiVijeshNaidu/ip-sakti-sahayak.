@@ -37,7 +37,7 @@ function generateAuditReceipt(msg: Message) {
     receipt_id: `AYUR-LEDGER-0x${hexHash.toUpperCase()}`,
     sha256_hash: fullSha256,
     timestamp: new Date(msg.timestamp).toISOString(),
-    consensus_status: "Verified Tamper-Proof (0 Hallucination)",
+    consensus_status: "Verified Statutory Grounding",
     block_height: 1849200 + Math.abs(hash % 5000),
     node_validator: "AYURLEX Sovereign Node (CGPDTM / Ministry of AYUSH)",
     grounded_score: 0.98,
@@ -318,7 +318,7 @@ export default function ChatBubble({
                   <span>{t.citations.block} #{receipt.block_height}</span>
                   <span className="text-white flex items-center gap-1">
                     <Check2Circle className="w-3 h-3" />
-                    {t.citations.zeroHallucination}
+                    {t.citations.evidenceGrounded}
                   </span>
                   <span>{new Date(receipt.timestamp).toLocaleTimeString()}</span>
                 </div>

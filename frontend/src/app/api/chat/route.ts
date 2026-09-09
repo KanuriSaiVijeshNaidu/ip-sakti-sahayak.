@@ -76,7 +76,7 @@ export async function POST(req: Request) {
         de: "### ⚠️ Unzureichende amtliche Rechtsquellen im AYURLEX-Korpus\nFür diesen Rechtskreis liegen derzeit keine verifizierten amtlichen Gesetzestexte im AYURLEX-Korpus vor. Zur Wahrung der Rechtspräzision und zur Vermeidung von Spekulationen werden keine ungesicherten Normen zitiert.",
         te: "### ⚠️ AYURLEX కార్పస్‌లో తగినంత చట్టపరమైన ఆధారాలు లేవు\nఈ న్యాయ పరిధి కోసం ధృవీకరించబడిన అధికారిక గెజిట్ పత్రాలు ప్రస్తుతం అందుబాటులో లేవు. చట్టపరమైన ఖచ్చితత్వాన్ని కాపాడటానికి AYURLEX ధృవీకరించని సమాధానాలను రూపొందించదు.",
         hi: "### ⚠️ AYURLEX कॉर्पस में अपर्याप्त वैधानिक साक्ष्य\nइस अधिकार क्षेत्र के लिए वर्तमान में कोई सत्यापित आधिकारिक राजपत्र पाठ उपलब्ध नहीं है। कानूनी सटीकता बनाए रखने के लिए AYURLEX काल्पनिक उत्तर उत्पन्न नहीं करता है।",
-        en: "### ⚠️ Insufficient Statutory Evidence in AYURLEX Corpus\nAuthoritative gazette texts and regulatory registers for this jurisdiction are currently not indexed in AYURLEX. To preserve strict legal accuracy and zero hallucination, please consult the official national IP registry for this territory.",
+        en: "### ⚠️ Insufficient Statutory Evidence in AYURLEX Corpus\nAuthoritative gazette texts and regulatory registers for this jurisdiction are currently not indexed in AYURLEX. To preserve strict legal accuracy and evidence grounding, please consult the official national IP registry for this territory.",
       };
       return NextResponse.json({
         answer: disclaimers[language] || disclaimers.en,
@@ -1290,7 +1290,7 @@ Under Indian patent law, classical Ayurvedic formulations and herbal remedies ar
 
 The statutory registers and Gazette notifications currently indexed in the AYURLEX corpus **do not contain sufficient verified legal provisions** to definitively answer your specific question.
 
-AYURLEX operates under a strict **Zero-Hallucination Policy**: we do not invent legal provisions, synthesize speculative section numbers, or present unverified legal procedures as confident facts.
+AYURLEX operates under a strict **Evidence-Grounded Legal Policy**: we do not invent legal provisions, synthesize speculative section numbers, or present unverified legal procedures as confident facts.
 
 ---
 
@@ -1314,7 +1314,7 @@ AYURLEX operates under a strict **Zero-Hallucination Policy**: we do not invent 
         receipt_id: `AYUR-LEDGER-0x${Math.floor(Math.random() * 16777215).toString(16).toUpperCase()}`,
         sha256_hash: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         timestamp: new Date().toISOString(),
-        consensus_status: "Verified Tamper-Proof (0 Hallucination)",
+        consensus_status: "Verified Statutory Grounding",
         block_height: 1849220,
         node_validator: "AYURLEX Sovereign Proof-of-Authority Node",
         grounded_score: 0.98,

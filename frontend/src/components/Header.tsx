@@ -60,7 +60,7 @@ export default function Header({
 }: HeaderProps) {
   const router = useRouter();
   const [internalLang, setInternalLang] = useState<LanguageCode>("en");
-  const [internalJur, setInternalJur] = useState<JurisdictionType>("US");
+  const [internalJur, setInternalJur] = useState<JurisdictionType>("IN");
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -115,7 +115,7 @@ export default function Header({
   }, [menuOpen]);
 
   const t = getTranslation(language);
-  const activeMarket = COUNTRIES[jurisdiction] || COUNTRIES.US;
+  const activeMarket = COUNTRIES[jurisdiction] || COUNTRIES.IN;
 
   return (
     <header className="bg-black/90 backdrop-blur-xl border-b border-zinc-800/90 sticky top-0 z-40 shadow-2xl" ref={menuRef}>

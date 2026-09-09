@@ -195,7 +195,7 @@ export default function CitationCard({ passages, language = "en" }: CitationCard
             <div className="p-3 bg-zinc-900/60 rounded-xl border border-zinc-800 text-[11px] flex items-center justify-between text-zinc-400 font-mono">
               <span className="flex items-center gap-1.5 text-zinc-300">
                 <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                {t.citations.zeroHallucination}
+                {t.citations.evidenceGrounded}
               </span>
               <span>Relevance Score: {Math.round((selectedPassage.relevance_score ?? 0) * 100)}%</span>
             </div>

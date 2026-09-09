@@ -261,7 +261,7 @@ export const ja: TranslationSchema = {
     ledgerReceipt: "AYURLEX主権監査台帳",
     consensusValidator: "コンセンサス検証機関",
     block: "ブロック",
-    zeroHallucination: "ゼロ・ハルシネーション検証済み",
+    evidenceGrounded: "根拠に基づくAI検証済み",
     hideLedger: "台帳を非表示",
     viewProof: "証明を表示",
     copyHash: "SHA-256ハッシュをコピー",

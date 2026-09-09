@@ -26,7 +26,7 @@ export default function HomePage() {
   const router = useRouter();
   const { language, t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
-  const [market, setMarket] = useState<JurisdictionType>("US");
+  const [market, setMarket] = useState<JurisdictionType>("IN");
 
   useEffect(() => {
     try {
@@ -85,7 +85,7 @@ export default function HomePage() {
   const pillars = [
     {
       title: t.home?.pillars?.evidenceGrounded?.title || "Evidence Grounded",
-      desc: t.home?.pillars?.evidenceGrounded?.desc || "Every conclusion cites official statutory provisions and active patent claims with zero hallucination.",
+      desc: t.home?.pillars?.evidenceGrounded?.desc || "Every conclusion cites official statutory provisions and active patent claims with evidence-grounded rigor.",
     },
     {
       title: t.home?.pillars?.jurisdictionAware?.title || "Jurisdiction Aware",
@@ -102,10 +102,10 @@ export default function HomePage() {
   ];
 
   const examples = t.home?.examples || [
-    { label: "US Patent Novelty", text: "Can I patent a standardized Ashwagandha extract formulation in the United States?", market: "US" },
-    { label: "Japan Export Clearance", text: "Can I sell an Ayurvedic polyherbal dietary supplement in Japan under PMD Act?", market: "JP" },
     { label: "India Sec 3(e) Bar", text: "Is a combination of Curcumin and Piperine patentable under Section 3(e) and 3(p) in India?", market: "IN" },
-    { label: "EU Herbal Directive", text: "What regulatory requirements apply to export Ayurvedic herbal tea to the European Union?", market: "EU" },
+    { label: "Ashwagandha Nano-Emulsion", text: "Can I patent an Ashwagandha lipid nano-emulsion formulation with enhanced bioavailability in India?", market: "IN" },
+    { label: "US Patent & DSHEA", text: "Can I patent a standardized Ashwagandha extract formulation in the United States?", market: "US" },
+    { label: "Japan Export Clearance", text: "Can I sell an Ayurvedic polyherbal dietary supplement in Japan under PMD Act?", market: "JP" },
   ];
 
   return (

@@ -261,7 +261,7 @@ export const hi: TranslationSchema = {
     ledgerReceipt: "आयुर्लेक्स संप्रभु ऑडिट लेजर",
     consensusValidator: "सर्वसम्मति सत्यापनकर्ता",
     block: "ब्लॉक",
-    zeroHallucination: "शून्य मतिभ्रम सत्यापित",
+    evidenceGrounded: "साक्ष्य-आधारित AI सत्यापित",
     hideLedger: "लेजर छिपाएं",
     viewProof: "प्रमाण देखें",
     copyHash: "SHA-256 हैश कॉपी करें",
