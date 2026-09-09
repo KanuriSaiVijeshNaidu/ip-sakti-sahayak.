@@ -8,7 +8,8 @@ import { compareJurisdictions } from "@/lib/api";
 import ActionPlan from "@/components/ActionPlan";
 import EvidencePanel from "@/components/EvidencePanel";
 import PatentFamilyGraph from "@/components/PatentFamilyGraph";
-import UnifiedHubNav from "@/components/UnifiedHubNav";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function CompareJurisdictionsPage() {
   const [title, setTitle] = useState("Synergistic Polyherbal Anti-Inflammatory Formulation");
@@ -39,8 +40,8 @@ export default function CompareJurisdictionsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fbfbf9] text-[#27272a] flex flex-col items-center relative">
-      <UnifiedHubNav />
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col">
+      <Navbar />
 
       <main className="w-full max-w-5xl flex flex-col gap-6 text-left p-4 sm:p-6">
         {/* Form */}
@@ -163,6 +164,7 @@ export default function CompareJurisdictionsPage() {
           </div>
         )}
       </main>
+      <Footer />
     </div>
   );
 }

@@ -32,7 +32,8 @@ import {
 import { UserProfile, UserRole, JurisdictionType, LanguageCode } from "@/types";
 import { signOutFromSupabase, upsertSupabaseUserProfile, setSupabaseUserPassword } from "@/lib/supabase";
 import { getTranslation } from "@/lib/i18n";
-import UnifiedHubNav from "@/components/UnifiedHubNav";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const ROLE_DETAILS: Record<string, { label: string; icon: any; desc: string }> = {
   vaidya: {
@@ -215,13 +216,8 @@ export default function ProfilePage() {
   const t = getTranslation(language);
 
   return (
-    <div className="min-h-screen bg-[#fbfbf9] text-[#27272a] flex flex-col items-center relative overflow-x-hidden">
-      <UnifiedHubNav
-        language={language}
-        onLanguageChange={(l) => setLanguage(l)}
-        jurisdiction={activeJurisdiction}
-        onJurisdictionChange={(j) => setActiveJurisdiction(j)}
-      />
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col">
+      <Navbar />
 
       {/* Main Container */}
       <main className="w-full max-w-4xl flex flex-col gap-5 text-left p-4 sm:p-6">
@@ -550,6 +546,7 @@ export default function ProfilePage() {
           </button>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

@@ -22,7 +22,8 @@ import PatentFamilyGraph from "@/components/PatentFamilyGraph";
 import { searchRetrievalPipeline, generateRAGAnswer } from "@/lib/api";
 import { Phase5RetrievalSearchResponse, RAGAnswerResponse, CitationInfo, LanguageCode } from "@/types";
 import { getTranslation } from "@/lib/i18n";
-import UnifiedHubNav from "@/components/UnifiedHubNav";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const LANGUAGES: { code: LanguageCode; label: string }[] = [
   { code: "en", label: "English" },
@@ -119,11 +120,8 @@ export default function InternationalPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fbfbf9] text-[#27272a] flex flex-col items-center relative">
-      <UnifiedHubNav
-        language={language}
-        onLanguageChange={(l) => setLanguage(l)}
-      />
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col">
+      <Navbar />
 
       <main className="w-full max-w-6xl flex flex-col gap-6 text-left p-4 sm:p-6">
         {/* Search & Configuration Card */}
@@ -508,6 +506,7 @@ export default function InternationalPage() {
           </div>
         )}
       </main>
+      <Footer />
     </div>
   );
 }

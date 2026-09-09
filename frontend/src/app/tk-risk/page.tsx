@@ -6,7 +6,8 @@ import { HouseDoorFill, Search, ArrowRepeat, ShieldExclamation } from "react-boo
 import { TKRiskResponse } from "@/types";
 import { assessTKRisk } from "@/lib/api";
 import TKRiskPanel from "@/components/TKRiskPanel";
-import UnifiedHubNav from "@/components/UnifiedHubNav";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function TKRiskPage() {
   const [ingredientsText, setIngredientsText] = useState("Turmeric, Black Pepper, Ashwagandha");
@@ -38,8 +39,8 @@ export default function TKRiskPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fbfbf9] text-[#27272a] flex flex-col items-center relative">
-      <UnifiedHubNav />
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col">
+      <Navbar />
 
       <main className="w-full max-w-5xl flex flex-col gap-6">
         <form onSubmit={handleAssess} className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 shadow-2xl backdrop-blur-xl space-y-4 text-left">
@@ -85,6 +86,7 @@ export default function TKRiskPage() {
 
         {result && <TKRiskPanel data={result} />}
       </main>
+      <Footer />
     </div>
   );
 }

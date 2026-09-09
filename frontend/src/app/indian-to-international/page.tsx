@@ -24,7 +24,8 @@ import {
   StatutoryDeadline,
 } from "@/types";
 import { convertIndianToInternational } from "@/lib/api";
-import UnifiedHubNav from "@/components/UnifiedHubNav";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function IndianToInternationalPage() {
   // Input form state
@@ -131,8 +132,8 @@ ${result.action_plan
   };
 
   return (
-    <div className="min-h-screen bg-[#fbfbf9] text-[#27272a] flex flex-col items-center relative">
-      <UnifiedHubNav />
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col">
+      <Navbar />
 
       {/* Main Container */}
       <main className="w-full max-w-6xl flex flex-col gap-8 text-left">
@@ -663,6 +664,7 @@ ${result.action_plan
           </div>
         )}
       </main>
+      <Footer />
     </div>
   );
 }

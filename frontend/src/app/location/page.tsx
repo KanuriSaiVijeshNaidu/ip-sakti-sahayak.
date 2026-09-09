@@ -14,7 +14,8 @@ import {
 } from "react-bootstrap-icons";
 import { JurisdictionType, LanguageCode } from "@/types";
 import { getTranslation } from "@/lib/i18n";
-import UnifiedHubNav from "@/components/UnifiedHubNav";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const MARKET_METADATA: { code: JurisdictionType; flag: string }[] = [
   { code: "US", flag: "🇺🇸" },
@@ -68,12 +69,7 @@ export default function LocationPage() {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center p-3 sm:p-6 relative overflow-x-hidden">
       {/* Top Navbar */}
-      <UnifiedHubNav
-        language={language}
-        onLanguageChange={(l) => setLanguage(l)}
-        jurisdiction={selectedMarket}
-        onJurisdictionChange={(j) => handleSelectMarket(j)}
-      />
+      <Navbar />
 
       {/* Main Container */}
       <main className="w-full max-w-5xl flex flex-col gap-6 p-4 sm:p-6">
@@ -304,6 +300,7 @@ export default function LocationPage() {
           </Link>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

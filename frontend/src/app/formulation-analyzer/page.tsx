@@ -5,14 +5,15 @@ import Link from "next/link";
 import { HouseDoorFill, Flower1, ShieldCheck, ArrowRight } from "react-bootstrap-icons";
 import FormulationAnalyzer from "@/components/FormulationAnalyzer";
 import { FormulationAnalysisResponse } from "@/types";
-import UnifiedHubNav from "@/components/UnifiedHubNav";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function FormulationAnalyzerPage() {
   const [analyzedData, setAnalyzedData] = useState<FormulationAnalysisResponse | null>(null);
 
   return (
-    <div className="min-h-screen bg-[#fbfbf9] text-[#27272a] flex flex-col items-center relative">
-      <UnifiedHubNav />
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col">
+      <Navbar />
 
       {/* Main Container */}
       <main className="w-full max-w-5xl flex flex-col gap-6 p-4 sm:p-6">
@@ -37,6 +38,7 @@ export default function FormulationAnalyzerPage() {
           </div>
         )}
       </main>
+      <Footer />
     </div>
   );
 }

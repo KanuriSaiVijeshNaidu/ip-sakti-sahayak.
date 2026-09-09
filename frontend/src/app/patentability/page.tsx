@@ -6,7 +6,8 @@ import { HouseDoorFill, Search, ArrowRepeat, ShieldLockFill, CheckCircleFill } f
 import { PatentabilityResponse } from "@/types";
 import { assessPatentability } from "@/lib/api";
 import PatentabilityScore from "@/components/PatentabilityScore";
-import UnifiedHubNav from "@/components/UnifiedHubNav";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function PatentabilityPage() {
   const [inventionTitle, setInventionTitle] = useState("Synergistic Polyherbal Bio-Enhancement Formulation");
@@ -51,8 +52,8 @@ export default function PatentabilityPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fbfbf9] text-[#27272a] flex flex-col items-center relative">
-      <UnifiedHubNav />
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col">
+      <Navbar />
 
       {/* Main Container */}
       <main className="w-full max-w-5xl flex flex-col gap-6">
@@ -145,6 +146,7 @@ export default function PatentabilityPage() {
         {/* Results */}
         {result && <PatentabilityScore res={result} />}
       </main>
+      <Footer />
     </div>
   );
 }
