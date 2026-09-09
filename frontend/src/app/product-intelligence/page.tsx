@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, Suspense } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import Navbar from "@/components/Navbar";
@@ -80,7 +80,7 @@ const TARGET_MARKET_OPTIONS: { code: JurisdictionCode; label: string; flag: stri
   { code: "WO", label: "Global / WIPO PCT", flag: "🌐", authority: "WIPO PCT · Genetic Resources Treaty" }
 ];
 
-export default function ProductIntelligencePage() {
+function ProductIntelligenceContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { language, t } = useLanguage();
@@ -2469,3 +2469,19 @@ export default function ProductIntelligencePage() {
     </div>
   );
 }
+
+export default function ProductIntelligencePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center text-xs text-slate-500">
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-8 h-8 border-4 border-emerald-800 border-t-transparent rounded-full animate-spin"></div>
+          <div>Loading AYURLEX Product Intelligence...</div>
+        </div>
+      </div>
+    }>
+      <ProductIntelligenceContent />
+    </Suspense>
+  );
+}
+
