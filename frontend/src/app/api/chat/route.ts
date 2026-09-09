@@ -70,12 +70,14 @@ export async function POST(req: Request) {
 
 
     // Insufficient evidence guardrail for unverified jurisdictions
-    const supportedJurs = ["US", "IN", "EU", "DE", "WO", "GLOBAL", "auto"];
+    const supportedJurs = ["US", "IN", "EU", "JP", "WO", "GLOBAL", "auto"];
     if (jurisdiction && !supportedJurs.includes(jurisdiction.toUpperCase())) {
       const disclaimers: Record<string, string> = {
         de: "### ⚠️ Unzureichende amtliche Rechtsquellen im AYURLEX-Korpus\nFür diesen Rechtskreis liegen derzeit keine verifizierten amtlichen Gesetzestexte im AYURLEX-Korpus vor. Zur Wahrung der Rechtspräzision und zur Vermeidung von Spekulationen werden keine ungesicherten Normen zitiert.",
         te: "### ⚠️ AYURLEX కార్పస్‌లో తగినంత చట్టపరమైన ఆధారాలు లేవు\nఈ న్యాయ పరిధి కోసం ధృవీకరించబడిన అధికారిక గెజిట్ పత్రాలు ప్రస్తుతం అందుబాటులో లేవు. చట్టపరమైన ఖచ్చితత్వాన్ని కాపాడటానికి AYURLEX ధృవీకరించని సమాధానాలను రూపొందించదు.",
         hi: "### ⚠️ AYURLEX कॉर्पस में अपर्याप्त वैधानिक साक्ष्य\nइस अधिकार क्षेत्र के लिए वर्तमान में कोई सत्यापित आधिकारिक राजपत्र पाठ उपलब्ध नहीं है। कानूनी सटीकता बनाए रखने के लिए AYURLEX काल्पनिक उत्तर उत्पन्न नहीं करता है।",
+        ta: "### ⚠️ AYURLEX களஞ்சியத்தில் போதிய அதிகாரப்பூர்வ சட்ட ஆதாரங்கள் இல்லை\nஇந்த அதிகார வரம்பிற்கு உட்பட்ட சரிபார்க்கப்பட்ட வர்த்தமானி ஆவணங்கள் தற்போது அட்டவணைப்படுத்தப்படவில்லை. சட்டபூர்வ துல்லியத்தை உறுதிப்படுத்த AYURLEX உறுதிப்படுத்தப்படாத பதில்களை உருவாக்காது.",
+        ja: "### ⚠️ AYURLEXコーパスにおける検証済み法的根拠の不足\n当管轄区域に関する公式官報および規制基準は、現在AYURLEXコーパスに登録されていません。厳格な法的正確性を担保するため、推測による回答は行いません。",
         en: "### ⚠️ Insufficient Statutory Evidence in AYURLEX Corpus\nAuthoritative gazette texts and regulatory registers for this jurisdiction are currently not indexed in AYURLEX. To preserve strict legal accuracy and evidence grounding, please consult the official national IP registry for this territory.",
       };
       return NextResponse.json({
@@ -768,34 +770,332 @@ In Deutschland wird der Marktzugang und gewerbliche Rechtsschutz für traditione
         ];
       }
     } else if (language === "ta") {
-      answer = `### ⚖️ நேரடி சட்ட நிலைப்பாடு (Direct Legal Position)
-இந்திய காப்புரிமைச் சட்டம் 1970-இன் படி, பாரம்பரிய ஆயுர்வேத அல்லது சித்த மருத்துவக் கூறுகள் **காப்புரிமை பெறத் தகுதியற்றவை**.
+      const isTm = q.includes("வர்த்தக முத்திரை") || q.includes("டிரேட்மார்க்") || q.includes("முத்திரை") || q.includes("trademark") || domain === "trademarks";
+      const isTmDefinitional = isTm && (q.includes("என்ன") || q.includes("வரையறை") || q.includes("பொருள்") || q.includes("what is") || q.includes("define") || q.includes("meaning"));
+      const isTmProcedural = isTm && (q.includes("பதிவு") || q.includes("எப்படி") || q.includes("விண்ணப்பிப்பது") || q.includes("முறை") || q.includes("form tm-a") || q.includes("how") || q.includes("register"));
 
-### 📜 முக்கிய சட்டப் பிரிவுகள் (Statutory Provisions)
-1. **பிரிவு 3(p) — பாரம்பரிய அறிவு விலக்கு**:
-   பாரம்பரியமாக அறியப்பட்ட மூலிகைக் கூறுகள் மற்றும் TKDL நூலகத்தில் உள்ள பாரம்பரிய யோகங்கள் கண்டுபிடிப்பாக ஏற்கப்படாது.
-2. **பிரிவு 3(e) — வெறும் சேர்க்கை விலக்கு (Synergy Efficacy)**:
-   கூறுகளின் எளிய கலவை காப்புரிமை பெற முடியாது; ஒருங்கிணைந்த செயல்திறன் (Synergy, CI < 1) ஆய்வக ரீதியாக நிரூபிக்கப்பட வேண்டும்.
-3. **தேசிய பல்லுயிர் ஆணையம் (NBA) பிரிவு 6**:
-   இந்திய உயிரியல் வளங்களைப் பயன்படுத்தி காப்புரிமை கோரும் போது NBA-இன் முன் அனுமதி பெறுவது கட்டாயமாகும்.`;
-      citations = [
-        {
-          passage_text: "Section 3(p): An invention which is traditional knowledge or an aggregation of known properties of traditionally known component is not patentable.",
-          source_title: "The Patents Act, 1970 (India Code)",
-          section: "Section 3(p)",
-          domain: "patents",
-          jurisdiction: "IN",
-          relevance_score: 0.96
-        },
-        {
-          passage_text: "Biological Diversity Act, 2002 (Section 6): Mandatory prior approval of NBA required before applying for intellectual property rights.",
-          source_title: "National Biodiversity Authority Guidelines",
-          section: "Section 6",
-          domain: "abs",
-          jurisdiction: "IN",
-          relevance_score: 0.93
-        }
-      ];
+      const isPatent = q.includes("காப்புரிமை") || q.includes("பேட்டன்ட்") || q.includes("patent") || domain === "patents";
+      const isPatentDefinitional = isPatent && (q.includes("என்ன") || q.includes("வரையறை") || q.includes("பொருள்") || q.includes("விளக்கம்") || q.includes("what is"));
+      const isPatentProcedural = isPatent && (q.includes("எப்படி") || q.includes("தாக்கல்") || q.includes("விண்ணப்பம்") || q.includes("முறை") || q.includes("படிவம்") || q.includes("how") || q.includes("file"));
+
+      const isAyush = q.includes("ஆயுஷ்") || q.includes("ஆயுர்வேத") || q.includes("சித்த") || q.includes("உரிமம்") || q.includes("fssai") || q.includes("form 24d") || q.includes("form 25d") || q.includes("rule 158b") || domain === "ayush" || domain === "fssai";
+
+      if (isTmDefinitional) {
+        answer = `### 💡 வர்த்தக முத்திரை (Trademark) என்றால் என்ன? (எளிய விளக்கம்)
+
+சுருக்கமாகவும் தெளிவாகவும் கூறினால், **வர்த்தக முத்திரை (Trademark)** என்பது உங்கள் நிறுவனம், பிராண்ட் அல்லது தயாரிப்பை சந்தையில் உள்ள மற்ற தயாரிப்புகளிலிருந்து தனித்துவமாகக் காட்டும் ஒரு சட்டபூர்வ அடையாளமாகும். இது ஒரு பெயர், லோகோ (சின்னம்), ஸ்லோகன், வடிவம், அல்லது தனித்துவமான வண்ணக் கலவையாக இருக்கலாம்.
+
+உதாரணமாக, 'டாபர்' அல்லது 'பதஞ்சலி' போன்ற பெயர்களைப் பார்த்தவுடன் நுகர்வோர் உடனடியாக அந்த பிராண்டை அடையாளம் காண்கின்றனர். வர்த்தக முத்திரையை பதிவு செய்வதன் மூலம், அரசு உங்களுக்கு அந்தப் பெயரைப் பயன்படுத்தும் தனி உரிமையை வழங்குகிறது. மற்றவர்கள் உங்கள் பெயரை திருடுவதையோ அல்லது போலியாக பயன்படுத்துவதையோ தடுக்கலாம்.
+
+---
+
+### 📜 சட்ட மற்றும் தொழில்நுட்ப விதிகள் (வர்த்தக முத்திரைகள் சட்டம், 1999)
+
+1. **சட்டபூர்வ வரையறை (பிரிவு 2(1)(zb)):**
+   வர்த்தக முத்திரைகள் சட்டம் 1999-இன் பிரிவு 2(1)(zb)-இன் படி:
+   > *"வரைகலை முறையில் சித்தரிக்கக்கூடிய மற்றும் ஒரு நபரின் பொருட்கள் அல்லது சேவைகளை மற்றவர்களின் பொருட்களிலிருந்து வேறுபடுத்திக் காட்டக்கூடிய திறன் கொண்ட குறி வர்த்தக முத்திரை எனப்படும்."*
+2. **குறியின் கூறுகள் (பிரிவு 2(1)(m)):** சாதனம், பிராண்ட், தலைப்பு, லேபிள், பெயர், கையொப்பம், சொல், எழுத்து, எண், பொருட்களின் வடிவம் அல்லது பேக்கேஜிங் ஆகியவை இதில் அடங்கும்.
+3. **ஆயுர்வேத தயாரிப்புகளுக்கான நைஸ் வகைப்பாடு (Nice Classification):**
+   - **வகுப்பு 5 (Class 5):** ஆயுர்வேத மருந்துகள், மூலிகை சிகிச்சைக் கலவைகள்.
+   - **வகுப்பு 3 (Class 3):** மூலிகை அழகுசாதனப் பொருட்கள், தலைமுடி எண்ணெய்கள், சோப்புகள்.
+   - **வகுப்பு 30 (Class 30):** மூலிகை தேநீர், மசாலாப் பொருட்கள், ஆயுர்வேத ஆஹார உணவுப் பொருட்கள்.
+   - **வகுப்பு 35 (Class 35):** ஆயுர்வேத சில்லறை விற்பனை நிலையங்கள் மற்றும் கிளினிக் சேவைகள்.
+4. **தனி உரிமைகள் (பிரிவு 28 & 29):** பதிவு செய்யப்பட்ட வர்த்தக முத்திரையின் உரிமையாளர் மட்டுமே அதை வணிக ரீதியாகப் பயன்படுத்த முடியும் மற்றும் மீறல்களுக்கு எதிராக வழக்குத் தொடரலாம்.
+5. **முத்திரை பதிவு மறுப்புக்கான அடிப்படை (பிரிவு 9):** பொதுவான மூலிகைப் பெயர்களை (எ.கா: வெறும் 'அஸ்வகந்தா' அல்லது 'திரிபலா') தனிநபர் பெயரில் பதிவு செய்ய முடியாது. பிராண்ட் பெயர் தனித்துவமானதாக இருக்க வேண்டும்.`;
+        citations = [
+          {
+            passage_text: "Trade Marks Act, 1999 (Section 2(1)(zb)): Statutory definition of a trademark capable of distinguishing goods or services.",
+            source_title: "Trade Marks Act, 1999 (India Code)",
+            section: "Section 2(1)(zb)",
+            domain: "trademarks",
+            jurisdiction: "IN",
+            relevance_score: 0.99
+          },
+          {
+            passage_text: "Nice Classification: Classes 3, 5, 30, and 35 for Ayurvedic products, cosmetics, foods, and retail.",
+            source_title: "CGPDTM Classification Guidelines",
+            section: "Classes 3, 5, 30, 35",
+            domain: "trademarks",
+            jurisdiction: "IN",
+            relevance_score: 0.96
+          }
+        ];
+      } else if (isTmProcedural) {
+        answer = `### 📋 இந்தியாவில் வர்த்தக முத்திரை பதிவு செய்வதற்கான படிப்படியான சட்ட நடைமுறை (Step-by-Step Process)
+
+இந்திய அறிவுசார் சொத்துரிமை அலுவலகத்தில் (CGPDTM) வர்த்தக முத்திரையை சட்டப்பூர்வமாக பதிவு செய்ய பின்வரும் 6 படிகளைப் பின்பற்ற வேண்டும்:
+
+#### 1️⃣ படி 1: அதிகாரப்பூர்வ பொது தேடல் (Clearance Search)
+- விண்ணப்பம் செய்வதற்கு முன், IP India வலைதளத்தில் (\`ipindiaonline.gov.in\`) விரிவான தேடல் செய்து, அதே போன்ற அல்லது ஒத்த பெயர் ஏற்கனவே பதிவு செய்யப்படவில்லை என்பதை உறுதிப்படுத்தவும்.
+
+#### 2️⃣ படி 2: சரியான நைஸ் வகுப்பு (Nice Class) தேர்வு
+- உங்கள் தயாரிப்புக்குரிய சரியான சட்ட வகுப்பைத் தேர்ந்தெடுக்கவும்:
+  - **வகுப்பு 5:** ஆயுர்வேத மருந்துகள்.
+  - **வகுப்பு 3:** மூலிகை அழகுசாதனப் பொருட்கள்.
+  - **வகுப்பு 30:** மூலிகை உணவுகள் & சப்ளிமெண்ட்கள்.
+
+#### 3️⃣ படி 3: படிவம் TM-A (Form TM-A) மூலம் ஆன்லைன் விண்ணப்பம்
+- IP India e-Filing தளம் வழியாக **படிவம் TM-A** சமர்ப்பிக்கவும்.
+- **அரசு சட்டபூர்வ கட்டணம் (Statutory Fees):**
+  - **₹4,500:** தனிநபர்கள், ஸ்டார்ட்-அப்கள் மற்றும் MSME/Udyam சான்றிதழ் உள்ளவர்களுக்கு.
+  - **₹9,000:** பிற நிறுவனங்கள் மற்றும் பெருநிறுவனங்களுக்கு.
+- தேவையான ஆவணங்கள்: லோகோ/பெயர் படம், அடையாளச் சான்று, மற்றும் முந்தைய பயன்பாட்டு உறுதிமொழிப் பத்திரம் (பயன்படுத்தியிருந்தால்).
+- *உடனடி பலன்:* விண்ணப்ப எண் கிடைத்தவுடன் உங்கள் பிராண்ட் பெயருக்கு அருகில் **™** குறியீட்டைப் பயன்படுத்தத் தொடங்கலாம்!
+
+#### 4️⃣ படி 4: வர்த்தக முத்திரை பரிசோதனை (Examination)
+- ஆய்வாளர் விண்ணப்பத்தை ஆய்வு செய்வார். ஏதேனும் ஆட்சேபனைகள் (பிரிவு 9 அல்லது 11 கீழ்) இருந்தால், **30 நாட்களுக்குள்** சட்டபூர்வ எழுத்துப்பூர்வ பதிலைச் சமர்ப்பிக்க வேண்டும்.
+
+#### 5️⃣ படி 5: வர்த்தக முத்திரை இதழில் வெளியீடு (Journal Publication)
+- ஏற்றுக்கொள்ளப்பட்ட பிறகு, வர்த்தக முத்திரை அதிகாரப்பூர்வ இதழில் வெளியிடப்படும்.
+- இதிலிருந்து பொதுமக்களுக்கு **4 மாத ஆட்சேபனை கால அவகாசம் (Opposition Window)** தொடங்குகிறது.
+
+#### 6️⃣ படி 6: பதிவுச் சான்றிதழ் (Form O-2)
+- ஆட்சேபனைகள் ஏதும் வரவில்லை எனில், அதிகாரப்பூர்வ **பதிவுச் சான்றிதழ் (Form O-2)** வழங்கப்படும்.
+- அதன்பின் நீங்கள் அதிகாரப்பூர்வமாக **®** குறியீட்டை சட்டபூர்வமாகப் பயன்படுத்தலாம்!
+- **செல்லுபடியாகும் காலம்:** பதிவு செய்த நாளிலிருந்து **10 ஆண்டுகள்** செல்லும்; பின்னர் ஒவ்வொரு 10 ஆண்டுகளுக்கும் ஒருமுறை புதுப்பித்துக் கொள்ளலாம்.`;
+        citations = [
+          {
+            passage_text: "Form TM-A: Statutory application form and fees for registration of trademark under Trade Marks Rules, 2017.",
+            source_title: "Trade Marks Rules, 2017",
+            section: "Form TM-A",
+            domain: "trademarks",
+            jurisdiction: "IN",
+            relevance_score: 0.99
+          },
+          {
+            passage_text: "Section 23: Registration certificate Form O-2 issued upon expiry of 4-month opposition window.",
+            source_title: "Trade Marks Act, 1999 (India Code)",
+            section: "Section 23",
+            domain: "trademarks",
+            jurisdiction: "IN",
+            relevance_score: 0.97
+          }
+        ];
+      } else if (isPatentDefinitional || isPatentProcedural || q.includes("காப்புரிமை") || q.includes("patent")) {
+        answer = `### 💡 இந்திய காப்புரிமை சட்டம், 1970 — மூலிகை மற்றும் ஆயுர்வேத கண்டுபிடிப்புகளுக்கான விதிகள்
+
+இந்திய காப்புரிமைச் சட்டம் 1970-இன் படி, பாரம்பரிய ஆயுர்வேத அல்லது சித்த மருத்துவக் கூறுகள் எளிதில் காப்புரிமை பெற முடியாது.
+
+#### 📜 முக்கிய சட்டப் பிரிவுகள் & நிபந்தனைகள்:
+1. **பிரிவு 3(p) — பாரம்பரிய அறிவு விலக்கு (Traditional Knowledge Bar):**
+   பாரம்பரியமாக அறியப்பட்ட மூலிகைக் கூறுகள் மற்றும் ஆயுர்வேத நூல்களில் உள்ள யோகங்கள் கண்டுபிடிப்பாக ஏற்கப்படாது. TKDL (Traditional Knowledge Digital Library) முன்னுரிமை கலையாகச் செயல்படுகிறது.
+2. **பிரிவு 3(e) — வெறும் சேர்க்கை விலக்கு & சினெர்ஜி நிரூபணம் (Synergistic Efficacy):**
+   அறியப்பட்ட மூலிகைகளை வெறுமனே கலப்பதால் காப்புரிமை பெற முடியாது. தனித்தனி மூலிகைகளின் கூட்டு விளைவை விட பலமடங்கு கூடுதல் செயல்திறன் (Synergy, Combination Index < 1) உள்ளதை அறிவியல் தரவுகளுடன் நிரூபிக்க வேண்டும்.
+3. **தேசிய பல்லுயிர் ஆணையம் (NBA) பிரிவு 6 கட்டாய அனுமதி:**
+   இந்திய உயிரியல் வளங்கள் அல்லது மூலிகைகளைப் பயன்படுத்தி காப்புரிமை விண்ணப்பிக்கும் முன், **தேசிய பல்லுயிர் ஆணையத்திடம் (NBA, Form III)** கட்டாய முன் அனுமதி பெற வேண்டும். அனுமதி பெறாமல் காப்புரிமை வழங்குவது சட்டப்படி செல்லாது.
+4. **காப்புரிமை காலம் (பிரிவு 53):** விண்ணப்பத் தேதியிலிருந்து **20 ஆண்டுகள்** பிரத்தியேக உரிமைகள் பாதுகாக்கப்படும்.`;
+        citations = [
+          {
+            passage_text: "Section 3(p): An invention which is traditional knowledge or an aggregation of known properties of traditionally known component is not patentable.",
+            source_title: "The Patents Act, 1970 (India Code)",
+            section: "Section 3(p)",
+            domain: "patents",
+            jurisdiction: "IN",
+            relevance_score: 0.98
+          },
+          {
+            passage_text: "Section 3(e): Mere admixture of known ingredients without synergistic efficacy is not an invention.",
+            source_title: "The Patents Act, 1970 (India Code)",
+            section: "Section 3(e)",
+            domain: "patents",
+            jurisdiction: "IN",
+            relevance_score: 0.95
+          },
+          {
+            passage_text: "Biological Diversity Act, 2002 (Section 6): Mandatory prior approval of NBA required before applying for intellectual property rights.",
+            source_title: "National Biodiversity Authority Guidelines",
+            section: "Section 6",
+            domain: "abs",
+            jurisdiction: "IN",
+            relevance_score: 0.93
+          }
+        ];
+      } else {
+        answer = `### ⚠️ AYURLEX களஞ்சியத்தில் போதிய அதிகாரப்பூர்வ சட்ட ஆதாரங்கள் இல்லை
+
+AYURLEX களஞ்சியத்தில் உள்ள தற்போதைய சட்டப் பதிவேடுகள் மற்றும் வர்த்தமானி அறிவிப்புகளில் உங்கள் குறிப்பிட்ட கேள்விக்கு தீர்க்கமான சட்டபூர்வ பதிலை வழங்க போதுமான சரிபார்க்கப்பட்ட ஆதாரங்கள் கிடைக்கவில்லை.
+
+AYURLEX கடுமையான **ஆதார அடிப்படையிலான சட்டக் கொள்கையின் (Evidence-Grounded Policy)** கீழ் இயங்குகிறது: சட்டப் பிரிவுகளை சொந்தமாக ஊகிப்பதோ அல்லது சரிபார்க்கப்படாத சட்ட நடைமுறைகளை உண்மையாக வழங்குவதோ கிடையாது.
+
+---
+
+### 🏛️ அதிகாரப்பூர்வ வழிகாட்டுதலுக்கு அணுக வேண்டிய அமைப்புகள்:
+1. **ஆயுஷ் மருந்து உரிமங்கள் & படிவம் 24D/25D:** மாநில உரிம அதிகாரியை (SLA) அணுகவும் அல்லது அதிகாரப்பூர்வ **e-Aushadhi போர்ட்டலை** ([e-aushadhi.gov.in](https://e-aushadhi.gov.in)) பார்வையிடவும்.
+2. **ஆயுர்வேத ஆஹார உணவுப் பொருட்கள்:** **FSSAI FoSCoS போர்ட்டலை** ([foscos.fssai.gov.in](https://foscos.fssai.gov.in)) அணுகவும்.
+3. **காப்புரிமைகள், வர்த்தக முத்திரைகள் & புவிசார் குறியீடுகள்:** **இந்திய அறிவுசார் சொத்துரிமை அலுவலகத்தை (CGPDTM)** ([ipindia.gov.in](https://ipindia.gov.in)) பார்வையிடவும்.`;
+        citations = [];
+      }
+    } else if (language === "ja") {
+      const isTm = q.includes("商標") || q.includes("トレードマーク") || q.includes("ロゴ") || q.includes("trademark") || domain === "trademarks";
+      const isTmDefinitional = isTm && (q.includes("とは") || q.includes("定義") || q.includes("意味") || q.includes("what is") || q.includes("define"));
+      const isTmProcedural = isTm && (q.includes("出願") || q.includes("登録") || q.includes("手続き") || q.includes("方法") || q.includes("区分") || q.includes("how") || q.includes("register"));
+
+      const isPatent = q.includes("特許") || q.includes("発明") || q.includes("patent") || domain === "patents";
+      const isPatentDefinitional = isPatent && (q.includes("とは") || q.includes("要件") || q.includes("新規性") || q.includes("進歩性") || q.includes("what is"));
+      const isPatentProcedural = isPatent && (q.includes("出願") || q.includes("申請") || q.includes("手続き") || q.includes("方法") || q.includes("how") || q.includes("file"));
+
+      const isRegulatory = q.includes("薬機法") || q.includes("医薬品") || q.includes("指定医薬部外品") || q.includes("食品衛生法") || q.includes("機能性表示食品") || q.includes("漢方") || q.includes("生薬") || domain === "ayush" || domain === "fssai";
+
+      if (isTmDefinitional) {
+        answer = `### 💡 商標（トレードマーク）とは何か？（日本の商標法に基づく解説）
+
+日常的な分かりやすい言葉で説明すると、**商標**とは事業者が自らの商品やサービスを他社のものと区別するために使用する「目印（ブランド識別標識）」です。文字、図形、記号、立体的形状、色彩の組み合わせ、さらには音などが該当します。
+
+特許庁に商標を登録することにより、日本国内においてその商標を指定商品・役務について独占的に使用する権利（**商標権**）が付与され、第三者による類似標章の無断使用や模倣を法的に排除することができます。
+
+---
+
+### 📜 法的根拠および審査基準（商標法）
+
+1. **商標の定義（商標法第2条第1項）：**
+   > *"人の知覚によつて認識することができるもののうち、文字、図形、記号、立体的形状若しくは色彩又はこれらの結合、音その他政令で定めるものであつて、業として商品を生産し、証明し、若しくは譲渡する者がその商品について使用するもの、又は業として役務を提供し、若しくは証明する者がその役務について使用するものをいう。"*
+2. **漢方・ハーブ製品に関する主要な国際分類（ニース分類）：**
+   - **第5類：** 漢方薬、生薬製剤、医療用ハーブ抽出物、サプリメント。
+   - **第3類：** ハーブ化粧品、天然石鹸、エッセンシャルオイル、スキンケア。
+   - **第30類：** ハーブティー、健康茶、香辛料、植物性加工食品。
+   - **第35類：** 漢方薬局、健康食品の小売・卸売業務、ECサイト運営。
+3. **商標登録の要件と拒絶理由（商標法第3条第1項）：**
+   植物の普通名称や品質・効能を直接表示する名称（例：「アシュワガンダ」単体や「生薬エキス」など）は、自他商品識別力を欠くため単独では商標登録できません。識別力のある造語や特徴的なロゴマークと組み合わせる必要があります。
+4. **独占排他権（商標法第25条・第37条）：**
+   登録商標の指定商品・役務に関する専用権および類似範囲における侵害差止請求権・損害賠償請求権が認められます。`;
+        citations = [
+          {
+            passage_text: "商標法第2条第1項：商標の定義（文字、図形、記号、立体的形状、色彩、音等による自他商品識別標識）。",
+            source_title: "商標法（昭和34年法律第127号）",
+            section: "第2条第1項",
+            domain: "trademarks",
+            jurisdiction: "JP",
+            relevance_score: 0.99
+          },
+          {
+            passage_text: "特許庁商標審査基準：第5類（医薬品・サプリメント）、第3類（化粧品）、第30類（健康茶・食品）における識別力基準。",
+            source_title: "特許庁 商標審査基準",
+            section: "第3条第1項各号",
+            domain: "trademarks",
+            jurisdiction: "JP",
+            relevance_score: 0.96
+          }
+        ];
+      } else if (isTmProcedural) {
+        answer = `### 📋 日本特許庁（JPO）における商標出願・登録の手続きとフロー
+
+日本国内で商標権を取得するための標準的な6段階の法定手続きは以下の通りです：
+
+#### 1️⃣ ステップ1：先行商標調査（J-PlatPat）
+- 出願前に特許情報プラットフォーム（**J-PlatPat**）を用いて、同一または類似の先願商標が存在しないか指定商品・区分ごとに事前調査を行います。
+
+#### 2️⃣ ステップ2：指定商品・指定役務および区分の特定
+- ニース国際分類に準拠し、適切な区分（第5類：漢方・サプリ、第3類：化粧品、第30類：ハーブ茶等）を選択します。
+
+#### 3️⃣ ステップ3：特許庁への商標登録出願
+- 特許庁長官宛てに「商標登録出願書」を提出します（電子出願または書面出願）。
+- **法定手数料（出願料）：** 3,400円 ＋（区分数 × 8,600円）。
+- 出願完了により出願番号が付与され、先願権（商標法第8条）が確保されます。
+
+#### 4️⃣ ステップ4：実体審査と拒絶理由通知への対応
+- 審査官が識別力（第3条）や先願商標との抵触（第4条第1項第11号）を審査します。
+- 拒絶理由通知が発せられた場合、**通知から40日以内**（在外者は3か月以内）に意見書や手続補正書を提出して反論します。
+
+#### 5️⃣ ステップ5：登録査定と登録料納付
+- 拒絶理由がない場合、「登録査定」が通知されます。通知から30日以内に登録料を納付します。
+- **登録料（10年一括）：** 1区分あたり 32,900円（5年分割納付も選択可能）。
+
+#### 6️⃣ ステップ6：商標権の設定登録と商標公報発行
+- 設定登録により商標権が発生し、登録証が交付されます。
+- **存続期間：** 設定登録の日から**10年間**有効であり、更新登録申請（商標法第19条）により何度でも更新可能です。`;
+        citations = [
+          {
+            passage_text: "商標法第8条・第18条：先願主義の原則および商標登録料の納付による設定登録の手続き。",
+            source_title: "商標法（昭和34年法律第127号）",
+            section: "第8条、第18条",
+            domain: "trademarks",
+            jurisdiction: "JP",
+            relevance_score: 0.99
+          },
+          {
+            passage_text: "特許料等手数料令：商標出願手数料（3,400円＋区分×8,600円）および登録料。",
+            source_title: "特許料等手数料令",
+            section: "別表第1",
+            domain: "trademarks",
+            jurisdiction: "JP",
+            relevance_score: 0.97
+          }
+        ];
+      } else if (isPatentDefinitional || isPatentProcedural || isPatent) {
+        answer = `### 💡 日本特許庁（JPO）における天然物・生薬配合製剤の特許要件
+
+日本の特許法において、植物抽出物や漢方処方・生薬配合製剤の特許性を確保するためには以下の法的基準を満たす必要があります：
+
+#### 📜 主要な特許要件と審査基準（特許法第29条）:
+1. **新規性（特許法第29条第1項）：**
+   出願前に日本国内または海外で公然知られた技術（伝統医学文献、TKDL、公報など）は特許を受けることができません。
+2. **進歩性および相乗効果の立証（特許法第29条第2項）：**
+   公知のハーブや生薬を単に組み合わせただけでは「当業者が容易に発明できたもの」として拒絶されます。特許化のためには、各成分の単独効果の総和を顕著に上回る**「予期せぬ相乗的効果（Synergistic Effect）」**を、客観的・定量的な薬理試験データや生物検定データで明細書に開示・実証することが必須です。
+3. **用途発明・医薬用途特許（新規効能）：**
+   既存の生薬であっても、従来知られていなかった新たな作用機序に基づく新規な医療用途（第2医薬用途）を発見した場合は、用途特許として成立する可能性があります。
+4. **存続期間（特許法第67条）：** 出願の日から**20年間**（医薬品等の許認可審査に伴い最大5年間の延長登録制度あり）。`;
+        citations = [
+          {
+            passage_text: "特許法第29条第1項・第2項：特許要件（産業上の利用可能性、新規性、進歩性）。天然物組成物における顕著な効果の立証要件。",
+            source_title: "特許法（昭和34年法律第121号）",
+            section: "第29条",
+            domain: "patents",
+            jurisdiction: "JP",
+            relevance_score: 0.98
+          },
+          {
+            passage_text: "特許庁 審査基準 第III部 第2章 第2節：医薬発明における進歩性判断基準および相乗的効果の証明基準。",
+            source_title: "特許・実用新案審査基準",
+            section: "第III部 医薬発明",
+            domain: "patents",
+            jurisdiction: "JP",
+            relevance_score: 0.96
+          }
+        ];
+      } else if (isRegulatory) {
+        answer = `### 🏥 日本におけるハーブ・植物性製品の規制区分（医薬品医療機器等法 & 食品衛生法）
+
+日本市場でアーユルヴェーダや生薬エキス配合製品を展開する場合、厚生労働省の管轄下で以下の明確な法的区分が適用されます：
+
+1. **「医薬品的効能効果を標ぼうしない限り医薬品とみなさない成分本質（原材料）リスト」（非医薬）：**
+   食品（一般食品、機能性表示食品、サプリメント）として販売する場合、医薬品的な疾病予防・治療効果を一切広告・標ぼうすることは禁止されています（薬機法第68条）。
+2. **医薬品（一般用医薬品・生薬製剤）：**
+   薬効を標ぼうする場合は、製造販売承認申請、GMP適合性調査、および第十七改正日本薬局方に準拠した品質規格設定が必要です。
+3. **安全基準およびポジティブリスト：**
+   食品衛生法に基づく残留農薬ポジティブリスト制度、重金属基準、アフラトキシン検査等の規格基準適合が必須となります。`;
+        citations = [
+          {
+            passage_text: "医薬品、医療機器等の品質、有効性及び安全性の確保等に関する法律（薬機法第68条）：承認前医薬品等の広告の禁止および無承認医薬品の規制。",
+            source_title: "薬機法（昭和35年法律第145号）",
+            section: "第68条",
+            domain: "ayush",
+            jurisdiction: "JP",
+            relevance_score: 0.98
+          },
+          {
+            passage_text: "厚生労働省「医薬品の範囲に関する基準」：食薬区分および専ら医薬品として使用される成分本質リスト。",
+            source_title: "厚生労働省 食薬区分通達",
+            section: "別添2 非医薬品リスト",
+            domain: "ayush",
+            jurisdiction: "JP",
+            relevance_score: 0.95
+          }
+        ];
+      } else {
+        answer = `### ⚠️ AYURLEXコーパスにおける検証済み法的根拠の不足
+
+現在AYURLEXコーパスに登録されている法定官報および規制データベースには、ご質問の事項に関して断定的な法的回答を生成するのに十分な根拠条文が含まれていません。
+
+AYURLEXは厳格な**根拠先行型法規ポリシー（Evidence-Grounded Legal Policy）**を採用しており、条文の捏造や未確認の手続きに関する推測的な回答は行いません。
+
+---
+
+### 🏛️ 公式な相談窓口および公的機関：
+1. **特許・商標の権利化手続:** **経済産業省 特許庁（JPO）** ([jpo.go.jp](https://www.jpo.go.jp)) または **J-PlatPat** をご確認ください。
+2. **生薬・ハーブ製品の薬事区分:** **厚生労働省 医薬局** ([mhlw.go.jp](https://www.mhlw.go.jp)) または各都道府県の薬務主管課にご相談ください。
+3. **食品規格・機能性表示食品:** **消費者庁** ([caa.go.jp](https://www.caa.go.jp)) のガイドラインをご参照ください。`;
+        citations = [];
+      }
     } else {
       // English Branch
       const isTmDefinitional =

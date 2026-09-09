@@ -41,7 +41,8 @@ import {
   CheckCheck,
   Sliders,
   Printer,
-  X
+  X,
+  Terminal
 } from "lucide-react";
 import { 
   DecisionResponse, 
@@ -49,7 +50,8 @@ import {
   DecisionConfidence, 
   JurisdictionType 
 } from "@/types";
-import { callDecisionEngine } from "@/lib/api";
+import { callDecisionEngine, fetchRetrievalDebug } from "@/lib/api";
+import RetrievalInspectorDrawer, { RetrievalDebugData } from "@/components/RetrievalInspectorDrawer";
 import { useLanguage } from "@/context/LanguageContext";
 import { localizeDecision } from "@/lib/localizeDecision";
 import { 
@@ -113,6 +115,30 @@ export default function AnalyzeWorkspace() {
   const [showSourceRegistryModal, setShowSourceRegistryModal] = useState(false);
   const [activeWhatIfIndex, setActiveWhatIfIndex] = useState<number | null>(0);
   const [ipRegimeFilter, setIpRegimeFilter] = useState<"ALL" | "RELEVANT">("ALL");
+
+  // Retrieval & Sufficiency Inspector State (Dev Mode)
+  const [showInspector, setShowInspector] = useState(false);
+  const [inspectorData, setInspectorData] = useState<RetrievalDebugData | null>(null);
+  const [inspectorLoading, setInspectorLoading] = useState(false);
+
+  const handleOpenInspector = async () => {
+    setShowInspector(true);
+    if (!inspectorData) {
+      setInspectorLoading(true);
+      try {
+        const qToInspect = query.trim() || (activeScenario ? activeScenario.name : "Ayurvedic formulation patentability in India");
+        const debugRes = await fetchRetrievalDebug({
+          query: qToInspect,
+          jurisdiction: targetMarket,
+        });
+        setInspectorData(debugRes);
+      } catch (err) {
+        console.error("Inspector error:", err);
+      } finally {
+        setInspectorLoading(false);
+      }
+    }
+  };
 
   // Sync market and query from URL or localStorage
   useEffect(() => {
@@ -194,11 +220,7 @@ export default function AnalyzeWorkspace() {
     setError(null);
     setResponse(null);
     setSaved(false);
-
-    // Progressive loader steps
-    setLoadingStep(1);
-    const stepTimer1 = setTimeout(() => setLoadingStep(2), 400);
-    const stepTimer2 = setTimeout(() => setLoadingStep(3), 900);
+    setInspectorData(null);
 
     const activeMarket = market || targetMarket;
 
@@ -206,6 +228,17 @@ export default function AnalyzeWorkspace() {
     if (showProductDetails && (productName || ingredients)) {
       fullQuery += ` [Product: ${productName || "Unspecified"}, Type: ${productType || "Herbal"}, Ingredients: ${ingredients || "Classical Herbs"}, Origin: ${countryOfOrigin}]`;
     }
+
+    // Preload retrieval inspector diagnostic data
+    fetchRetrievalDebug({
+      query: fullQuery,
+      jurisdiction: activeMarket,
+    }).then((d) => setInspectorData(d)).catch(() => {});
+
+    // Progressive loader steps
+    setLoadingStep(1);
+    const stepTimer1 = setTimeout(() => setLoadingStep(2), 400);
+    const stepTimer2 = setTimeout(() => setLoadingStep(3), 900);
 
     try {
       const res = await callDecisionEngine({
@@ -634,6 +667,27 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
 
             <div className="flex items-center gap-2 ml-auto w-full sm:w-auto">
               <button
+                type="button"
+                onClick={handleOpenInspector}
+                className="px-3 py-2.5 bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-emerald-500/30 text-xs font-semibold rounded-lg shadow-xs transition-all flex items-center gap-1.5 cursor-pointer"
+                title="Open Developer Retrieval Debug Inspector"
+              >
+                <Terminal className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Retrieval Inspector</span>
+                {inspectorData?.sufficiency_gate && (
+                  <span
+                    className={`text-[9px] px-1.5 py-0.5 rounded font-bold ${
+                      inspectorData.sufficiency_gate.verdict === "PASS"
+                        ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40"
+                        : "bg-rose-500/20 text-rose-300 border border-rose-500/40"
+                    }`}
+                  >
+                    {inspectorData.sufficiency_gate.verdict}
+                  </span>
+                )}
+              </button>
+
+              <button
                 onClick={() => executeAnalysis()}
                 disabled={loading || !query.trim()}
                 className="w-full sm:w-auto px-6 py-2.5 bg-emerald-800 hover:bg-emerald-700 disabled:opacity-50 text-white text-xs sm:text-sm font-semibold rounded-lg shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
@@ -773,6 +827,28 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
                   >
                     <Briefcase className="w-3.5 h-3.5 text-slate-500" />
                     <span>Expert Review Brief</span>
+                  </button>
+
+                  {/* Retrieval & Sufficiency Inspector Button */}
+                  <button
+                    type="button"
+                    onClick={handleOpenInspector}
+                    className="px-3 py-1.5 text-xs font-semibold text-emerald-400 bg-slate-900 hover:bg-slate-800 border border-emerald-500/30 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
+                    title="Inspect language detection, 5 query expansions, dense/lexical/RRF candidates, and Evidence Sufficiency Gate"
+                  >
+                    <Terminal className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Inspector</span>
+                    {inspectorData?.sufficiency_gate && (
+                      <span
+                        className={`text-[9px] px-1.5 py-0.5 rounded font-bold ${
+                          inspectorData.sufficiency_gate.verdict === "PASS"
+                            ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40"
+                            : "bg-rose-500/20 text-rose-300 border border-rose-500/40"
+                        }`}
+                      >
+                        {inspectorData.sufficiency_gate.verdict}
+                      </span>
+                    )}
                   </button>
 
                   {/* Government Source Registry */}
@@ -1708,6 +1784,14 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
           </div>
         </div>
       )}
+
+      {/* Developer Retrieval Debug Inspector Drawer */}
+      <RetrievalInspectorDrawer
+        isOpen={showInspector}
+        onClose={() => setShowInspector(false)}
+        data={inspectorData}
+        loading={inspectorLoading}
+      />
 
       </main>
 

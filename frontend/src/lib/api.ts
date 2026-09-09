@@ -253,4 +253,29 @@ export async function callDecisionEngine(
   throw new Error("AYURLEX Phase 7 Decision Engine service temporarily unavailable.");
 }
 
+export async function fetchRetrievalDebug(req: {
+  query: string;
+  jurisdiction?: string;
+  top_k?: number;
+}): Promise<any> {
+  const endpoints = ["/api/retrieval/debug"];
+  if (API_BASE && API_BASE !== "/api") endpoints.push(`${API_BASE}/retrieval/debug`);
+  if (typeof window !== "undefined" && window.location.hostname === "localhost") {
+    endpoints.push("http://127.0.0.1:8000/api/retrieval/debug");
+  }
+
+  for (const url of endpoints) {
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(req),
+      });
+      if (res.ok) return await res.json();
+    } catch {}
+  }
+  throw new Error("Retrieval debug inspector service temporarily unavailable.");
+}
+
+
 

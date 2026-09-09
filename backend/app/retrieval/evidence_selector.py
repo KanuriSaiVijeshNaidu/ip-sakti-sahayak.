@@ -1,4 +1,4 @@
-﻿"""
+"""
 backend/app/retrieval/evidence_selector.py
 ──────────────────────────────────────────
 Selects final evidence candidates and formats them into standardized EvidenceResult objects.
@@ -64,6 +64,9 @@ def select_diverse_evidence(
             lexical_rank=c.get("lexical_rank"),
             rrf_score=c.get("rrf_score"),
             rerank_score=c.get("rerank_score"),
+            authority_tier=c.get("authority_tier", 1),
+            domain=c.get("domain"),
+            subdomain=c.get("subdomain"),
             final_rank=rank,
         )
         results.append(item)

@@ -1,0 +1,87 @@
+{
+  "report_title": "IP-SAKTI Sahayak — Cross-Jurisdiction Patent Family Isolation Report",
+  "timestamp": "2026-09-08T10:45:00Z",
+  "rule_enforced": "Rule 9 & Step 9: Do NOT collapse patent family members across jurisdictions into a single interchangeable document.",
+  "policy_description": "Patent families represent the same underlying invention filed in different national patent offices. However, each national office grants different claim scopes, enforces different statutory novelty/patentability bars (e.g. Section 3(d)/3(e) in India vs EPC Art. 52/54 in Europe), and issues distinct legal rights. The pipeline strictly maintains jurisdiction-isolated corpora.",
+  "isolated_families_audited": [
+    {
+      "priority_family_id": "FAM-METABOLIC-01",
+      "invention_title": "Synergistic herbal formulation for metabolic disorders",
+      "members": [
+        {
+          "jurisdiction": "INDIA",
+          "doc_id": "IN-268685-B",
+          "status": "QUARANTINED",
+          "isolated": true
+        },
+        {
+          "jurisdiction": "WIPO",
+          "doc_id": "WO-2018083696-A1",
+          "status": "QUARANTINED",
+          "isolated": true
+        },
+        {
+          "jurisdiction": "GERMANY",
+          "doc_id": "DE-102014002621-A1",
+          "status": "QUARANTINED",
+          "isolated": true
+        }
+      ],
+      "collapsing_prevented": true,
+      "isolation_reason": "Each filing contains jurisdiction-specific claims and statutory legal arguments."
+    },
+    {
+      "priority_family_id": "FAM-WITHANIA-02",
+      "invention_title": "Process for standardized Withania somnifera extract",
+      "members": [
+        {
+          "jurisdiction": "INDIA",
+          "doc_id": "IN-243763-B",
+          "status": "QUARANTINED",
+          "isolated": true
+        },
+        {
+          "jurisdiction": "WIPO",
+          "doc_id": "WO-2021098765-A1",
+          "status": "QUARANTINED",
+          "isolated": true
+        }
+      ],
+      "collapsing_prevented": true,
+      "isolation_reason": "Form 2 claims in India differ from PCT international search claims."
+    },
+    {
+      "priority_family_id": "FAM-CURCUMA-03",
+      "invention_title": "Curcuminoid bioavailability enhancement compositions",
+      "members": [
+        {
+          "jurisdiction": "USA",
+          "doc_id": "US-20180123456-A1",
+          "status": "PRODUCTION",
+          "isolated": true
+        },
+        {
+          "jurisdiction": "EUROPE",
+          "doc_id": "EP-3124567-B1",
+          "status": "PRODUCTION",
+          "isolated": true
+        }
+      ],
+      "collapsing_prevented": true,
+      "isolation_reason": "US utility patent claims preserved in USA corpus; EP claims preserved in Europe corpus."
+    }
+  ],
+  "verification_result": "PASS — Zero cross-jurisdiction family collapsing detected.",
+  "active_jurisdictions": [
+    "US",
+    "EP",
+    "WO",
+    "JP"
+  ],
+  "deferred_jurisdictions": [
+    "IN"
+  ],
+  "scope_removed_jurisdictions": [
+    "DE"
+  ]
+}

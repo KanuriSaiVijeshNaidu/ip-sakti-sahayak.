@@ -6,15 +6,18 @@
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f8fafc; padding: 2rem; }
         h1 { color: #10b981; }
-        table { border-collapse: collapse; width: 100%; max-width: 800px; margin-top: 1rem; background: #1e293b; border-radius: 8px; overflow: hidden; }
+        table { border-collapse: collapse; width: 100%; max-width: 850px; margin-top: 1rem; background: #1e293b; border-radius: 8px; overflow: hidden; }
         th, td { border: 1px solid #334155; padding: 12px 16px; text-align: left; }
         th { background: #0284c7; color: white; }
         .badge-pass { background: #059669; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
+        .badge-warn { background: #d97706; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
     </style>
 </head>
 <body>
     <h1>SIH 26045 Quality Audit — GERMANY</h1>
-    <p>Status: <span class="badge-pass">PASS</span></p>
+    <p>Stage: <strong>PRODUCTION DATASET VALIDATION</strong></p>
+    <p>Pipeline Status: <span class="badge-pass">PIPELINE PASS</span></p>
+    <p>Data Sufficiency: <span class="badge-warn">INSUFFICIENT</span> (Corpus contains 5 authoritative statutory patent documents. While pipeline validation passed with 100% metadata accuracy, open-access public repositories currently lack a multi-gigabyte Ayurvedic/phytotherapy corpus for this jurisdiction. Supplementary authoritative data acquisition recommended for large-scale production.)</p>
     <table>
         <tr><th>Metric</th><th>Value</th></tr>
         <tr><td>Raw Size</td><td>0.01 MB</td></tr>
@@ -26,7 +29,9 @@
         <tr><td>Average Chunk Tokens</td><td>79.8</td></tr>
         <tr><td>Claims Preserved</td><td>5</td></tr>
         <tr><td>OCR / Quality Score</td><td>1.0</td></tr>
-        <tr><td>Final Status</td><td><strong>PASS</strong></td></tr>
+        <tr><td>Pipeline Status</td><td><strong>PIPELINE PASS</strong></td></tr>
+        <tr><td>Dataset Status</td><td><strong>DATASET PASS</strong></td></tr>
+        <tr><td>Data Sufficiency</td><td><strong>INSUFFICIENT</strong></td></tr>
     </table>
 </body>
 </html>

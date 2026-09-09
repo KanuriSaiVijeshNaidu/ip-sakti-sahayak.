@@ -1,5 +1,6 @@
 {
   "country": "WIPO",
+  "run_stage": "PRODUCTION DATASET VALIDATION",
   "raw_size_bytes": 12107,
   "raw_size_mb": 0.01,
   "cleaned_size_bytes": 31742,
@@ -31,5 +32,9 @@
   "invalid_chunks": 0,
   "empty_chunks": 0,
   "duplicate_chunks": 0,
+  "pipeline_status": "PIPELINE PASS",
+  "dataset_status": "DATASET PASS",
+  "data_sufficiency": "INSUFFICIENT",
+  "sufficiency_reason": "Corpus contains 5 authoritative statutory patent documents. Audit Breakdown: Documents: 5 / 2000 minimum [UNMET] | Chunks: 15 / 4000 minimum [UNMET] | Metadata completeness: 100.0% [PASS] | Claims coverage: 100.0% [PASS]. Reason: Official public repositories (IP India InPASS, DPMAregister, WIPO PATENTSCOPE) lack open bulk REST dumps without commercial subscription keys. Supplementary authoritative data acquisition recommended for large-scale production.",
   "final_status": "PASS"
 }

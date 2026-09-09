@@ -1,4 +1,4 @@
-﻿"""
+"""
 backend/app/retrieval/config.py
 ───────────────────────────────
 Centralized configuration for Phase 5 Retrieval Layer.
@@ -25,9 +25,9 @@ class RetrievalConfig:
     rerank_score_threshold: float = -10.0
 
     # Supported and active jurisdictions
-    # IN is DEFERRED, DE is REMOVED permanently
-    active_jurisdictions: List[str] = field(default_factory=lambda: ["US", "EP", "WO", "JP"])
-    forbidden_jurisdictions: List[str] = field(default_factory=lambda: ["IN", "DE"])
+    # IN is fully enabled as premier jurisdiction, DE is REMOVED permanently
+    active_jurisdictions: List[str] = field(default_factory=lambda: ["IN", "US", "EP", "WO", "JP"])
+    forbidden_jurisdictions: List[str] = field(default_factory=lambda: ["DE"])
 
     # Model identifiers
     embedding_model: str = "BAAI/bge-m3"

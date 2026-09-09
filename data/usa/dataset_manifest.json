@@ -33,15 +33,25 @@
   },
   "relevance_assessment": "Authoritative US utility patent applications filed with the USPTO, filtered for botanical compositions, herbal formulations, and IPC A61K classifications.",
   "verification_status": "VERIFIED",
-  "number_of_records": 5,
-  "file_size_bytes": 387648976,
-  "file_size_formatted": "369.69 MB",
+  "number_of_records": 1159,
+  "file_size_bytes": 549612044,
+  "file_size_formatted": "524.15 MB",
   "sha256_checksum": "c8db7a2e730f04a95946847d39a74b4a9ea53b0f4fd357bb8789abd77684e37f",
   "source_files": [
-    "US-7879368-B2.json",
-    "US-8512767-B2.json",
-    "US-8828456-B2.json",
-    "US-9144590-B2.json",
-    "US-9345738-B2.json"
+    "US-13144833.json",
+    "US-14655041.json",
+    "US-14770850.json",
+    "US-14772473.json",
+    "US-14774293.json",
+    "US-14777214.json",
+    "US-14778906.json",
+    "US-14780616.json",
+    "US-14783447.json",
+    "US-14786395.json",
+    "US-14786721.json",
+    "US-14787097.json",
+    "US-14787100.json",
+    "US-14787391.json",
+    "US-14889822.json"
   ]
 }

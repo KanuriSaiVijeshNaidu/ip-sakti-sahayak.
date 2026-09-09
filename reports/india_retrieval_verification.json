@@ -1,0 +1,4781 @@
+{
+  "timestamp": "2026-09-09 22:31:05",
+  "corpus_stats": {
+    "canonical_chunks": 137,
+    "faiss_vectors": 137,
+    "bm25_entries": 137,
+    "active_domains": 10,
+    "quarantined_files_recovered": 5
+  },
+  "japanese_india_results": [
+    {
+      "query": "インドでアーユルヴェーダ製剤の特許を取得できますか？",
+      "topic": "Ayurvedic Patentability in India (JA)",
+      "detected_language": "ja",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "top_chunk_id": "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3",
+      "top_jurisdiction": "IN",
+      "top_title": "Drugs & Cosmetics Act 1940 & Rules 1945 — Rule 158B & Schedule T GMP",
+      "top_score": 0.8812,
+      "crag_status": "GOOD",
+      "passed": true
+    },
+    {
+      "query": "インド特許法における新規性の要件は何ですか？",
+      "topic": "Novelty Requirements under Indian Patents Act (JA)",
+      "detected_language": "ja",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "top_chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_2_1__j___2_1_002_aba69a68",
+      "top_jurisdiction": "IN",
+      "top_title": "Guidelines for Examination of Patent Applications in the Field of Traditional Knowledge & Pharmaceuticals",
+      "top_score": 0.5569,
+      "crag_status": "GOOD",
+      "passed": true
+    },
+    {
+      "query": "インドでアーユルヴェーダ製品の商標を登録するにはどうすればよいですか？",
+      "topic": "Ayurvedic Trademark Registration in India (JA)",
+      "detected_language": "ja",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "top_chunk_id": "IN_IN-ACT-TM-AYUR-1999_trade_marks_rules_20_006_82fbaaa2",
+      "top_jurisdiction": "IN",
+      "top_title": "Trade Marks Act 1999 — Protection of Ayurvedic Terminology & Generic Names Ban",
+      "top_score": 0.9989,
+      "crag_status": "GOOD",
+      "passed": true
+    },
+    {
+      "query": "インドのアーユルヴェーダ食品にFSSAI規制は適用されますか？",
+      "topic": "FSSAI Regulations for Ayurveda Food in India (JA)",
+      "detected_language": "ja",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "top_chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_3___scope_003_50112fb3",
+      "top_jurisdiction": "IN",
+      "top_title": "FSSAI Ayurveda Aahara Boundary Matrix, Packaging Rules & Logo Guidelines",
+      "top_score": 0.9995,
+      "crag_status": "GOOD",
+      "passed": true
+    }
+  ],
+  "orthogonality_results": [
+    {
+      "label": "Japanese -> IN",
+      "query": "インドのアーユルヴェーダ食品にFSSAI規制は適用されますか？",
+      "detected_language": "ja",
+      "expected_jurisdiction": "IN",
+      "routed_jurisdiction": [
+        "IN"
+      ],
+      "top_chunk_jurisdiction": "IN",
+      "top_score": 0.9995,
+      "passed": true
+    },
+    {
+      "label": "Hindi -> JP",
+      "query": "जापान के पेटेंट कार्यालय (JPO) में生薬 (Herbal) पेटेंट के नियम क्या हैं?",
+      "detected_language": "ja",
+      "expected_jurisdiction": "JP",
+      "routed_jurisdiction": [
+        "JP"
+      ],
+      "top_chunk_jurisdiction": "JP",
+      "top_score": 0.3068,
+      "passed": true
+    },
+    {
+      "label": "Telugu -> US",
+      "query": "అమెరికాలో USPTO వద్ద మూలికా సప్లిమెంట్లకు పేటెంట్ ఎలా పొందాలి?",
+      "detected_language": "te",
+      "expected_jurisdiction": "US",
+      "routed_jurisdiction": [
+        "US"
+      ],
+      "top_chunk_jurisdiction": "US",
+      "top_score": 0.2056,
+      "passed": true
+    },
+    {
+      "label": "Tamil -> EP",
+      "query": "ஐரோப்பிய காப்புரிமை அலுவலகத்தில் (EPO) மூலிகை மருந்துகளுக்கான விதிமுறைகள் என்ன?",
+      "detected_language": "ta",
+      "expected_jurisdiction": "EP",
+      "routed_jurisdiction": [
+        "EP"
+      ],
+      "top_chunk_jurisdiction": "EP",
+      "top_score": 0.8208,
+      "passed": true
+    },
+    {
+      "label": "English -> IN",
+      "query": "What are the patent eligibility criteria under Section 3(e) in India?",
+      "detected_language": "en",
+      "expected_jurisdiction": "IN",
+      "routed_jurisdiction": [
+        "IN"
+      ],
+      "top_chunk_jurisdiction": "IN",
+      "top_score": 0.7071,
+      "passed": true
+    }
+  ],
+  "domain_retrieval_results": {
+    "patent": [
+      {
+        "query": "Can an Ayurvedic formulation be patented in India under Patents Act Section 3(p)?",
+        "expected_domain": "patent",
+        "top_chunk_id": "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
+        "top_title": "The Patents Act, 1970: Section 3(p) - Exclusion of Traditional Knowledge",
+        "top_domain": "patent",
+        "top_subdomain": "statutory_exclusions",
+        "top_score": 0.99,
+        "crag_status": "GOOD",
+        "passed": true
+      },
+      {
+        "query": "What are the synergy and therapeutic efficacy requirements under Section 3(e) of Indian Patents Act?",
+        "expected_domain": "patent",
+        "top_chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_e____mere_004_b6721e38",
+        "top_title": "Guidelines for Examination of Patent Applications in the Field of Traditional Knowledge & Pharmaceuticals",
+        "top_domain": "patent",
+        "top_subdomain": "examination_guidelines",
+        "top_score": 0.8584,
+        "crag_status": "GOOD",
+        "passed": true
+      },
+      {
+        "query": "Show granted Indian patent claims for Withania somnifera withanolides extraction yield.",
+        "expected_domain": "patent",
+        "top_chunk_id": "IN_IN-243763-B_abstract_001_a06b0f41",
+        "top_title": "A process for preparation of standardized extract from Withania somnifera with enhanced withanolide glycosides content",
+        "top_domain": "patent",
+        "top_subdomain": "patent_grant_abstract",
+        "top_score": 0.99,
+        "crag_status": "GOOD",
+        "passed": true
+      }
+    ],
+    "trademark": [
+      {
+        "query": "How do I register a trademark for an Ayurvedic product in India under Trade Marks Act 1999?",
+        "expected_domain": "trademark",
+        "top_chunk_id": "IN_IN-ACT-TM-AYUR-1999_trade_marks_rules_20_006_82fbaaa2",
+        "top_title": "Trade Marks Act 1999 — Protection of Ayurvedic Terminology & Generic Names Ban",
+        "top_domain": "trademark",
+        "top_subdomain": "trademark_protection",
+        "top_score": 0.9927,
+        "crag_status": "GOOD",
+        "passed": true
+      },
+      {
+        "query": "What are the prohibited generic Ayurvedic and single herbal names under Section 13?",
+        "expected_domain": "trademark",
+        "top_chunk_id": "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+        "top_title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+        "top_domain": "trademark",
+        "top_subdomain": "trademark_protection",
+        "top_score": 0.9455,
+        "crag_status": "GOOD",
+        "passed": true
+      },
+      {
+        "query": "Which Nice classification class applies to Ayurvedic pharmaceuticals (Class 5) vs cosmetics (Class 3)?",
+        "expected_domain": "trademark",
+        "top_chunk_id": "IN_IN-ACT-TM-AYUR-1999_trade_marks_rules_20_006_82fbaaa2",
+        "top_title": "Trade Marks Act 1999 — Protection of Ayurvedic Terminology & Generic Names Ban",
+        "top_domain": "trademark",
+        "top_subdomain": "trademark_protection",
+        "top_score": 0.3963,
+        "crag_status": "GOOD",
+        "passed": true
+      }
+    ],
+    "gi": [
+      {
+        "query": "How is a Geographical Indication protected in India under the GI Act 1999?",
+        "expected_domain": "gi",
+        "top_chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_section_8___11___pro_003_554503f6",
+        "top_title": "Geographical Indications of Goods Act 1999 & Registered AYUSH GIs",
+        "top_domain": "gi",
+        "top_subdomain": "geographical_indications",
+        "top_score": 0.9618,
+        "crag_status": "GOOD",
+        "passed": true
+      },
+      {
+        "query": "What are registered Indian AYUSH Geographical Indications like Kashmir Saffron and Navara Rice?",
+        "expected_domain": "gi",
+        "top_chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_registered_botanical_004_9c343ac6",
+        "top_title": "Geographical Indications of Goods Act 1999 & Registered AYUSH GIs",
+        "top_domain": "gi",
+        "top_subdomain": "geographical_indications",
+        "top_score": 0.97,
+        "crag_status": "GOOD",
+        "passed": true
+      },
+      {
+        "query": "What is the procedure to register as an Authorized User of an Indian Geographical Indication?",
+        "expected_domain": "gi",
+        "top_chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_section_8___11___pro_003_554503f6",
+        "top_title": "Geographical Indications of Goods Act 1999 & Registered AYUSH GIs",
+        "top_domain": "gi",
+        "top_subdomain": "geographical_indications",
+        "top_score": 0.8859,
+        "crag_status": "GOOD",
+        "passed": true
+      }
+    ],
+    "ayurveda": [
+      {
+        "query": "What are the official Ayurvedic Pharmacopoeia of India (API) standards for Ashwagandha root?",
+        "expected_domain": "ayurveda",
+        "top_chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__ashwa_003_a9b1d064",
+        "top_title": "Ayurvedic Pharmacopoeia of India (API) — Official Monograph Specifications",
+        "top_domain": "ayurveda",
+        "top_subdomain": "pharmacopoeia",
+        "top_score": 0.9989,
+        "crag_status": "GOOD",
+        "passed": true
+      },
+      {
+        "query": "What are the classical AFI formulation ingredients and preparation for Triphala Churna?",
+        "expected_domain": "ayurveda",
+        "top_chunk_id": "IN_doc-afi-triphala-001_churna_prakarana__po_001_a6cf9acb",
+        "top_title": "Ayurvedic Formulary of India: Triphala Churna Specification",
+        "top_domain": "ayurveda",
+        "top_subdomain": "formulary",
+        "top_score": 0.9911,
+        "crag_status": "PARTIAL",
+        "passed": true
+      },
+      {
+        "query": "What are the fundamental NCISM principles of Tridosha physiology and classical Ayurveda philosophy?",
+        "expected_domain": "ayurveda",
+        "top_chunk_id": "IN_IN-FOUND-AYURVEDA-NCISM_definition_of_ayurve_002_5c27e4af",
+        "top_title": "Foundations of Ayurveda: Philosophy, Tridosha Physiology & Statutory Scope",
+        "top_domain": "ayurveda",
+        "top_subdomain": "classical_principles",
+        "top_score": 0.8911,
+        "crag_status": "GOOD",
+        "passed": true
+      }
+    ],
+    "fssai": [
+      {
+        "query": "What regulations apply to Ayurveda Aahara products under FSSAI 2022 rules in India?",
+        "expected_domain": "fssai",
+        "top_chunk_id": "IN_IN-REG-FSSAI-AA-2022_chapter_5___licensin_010_f374d501",
+        "top_title": "Food Safety and Standards (Ayurveda Aahara) Regulations, 2022",
+        "top_domain": "fssai",
+        "top_subdomain": "fssai_ayurveda_aahara",
+        "top_score": 0.9984,
+        "crag_status": "GOOD",
+        "passed": true
+      },
+      {
+        "query": "What are the official logo and labeling requirements for Ayurveda Aahara food supplements?",
+        "expected_domain": "fssai",
+        "top_chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_5___ayurv_004_4933c218",
+        "top_title": "FSSAI Ayurveda Aahara Boundary Matrix, Packaging Rules & Logo Guidelines",
+        "top_domain": "fssai",
+        "top_subdomain": "fssai_ayurveda_aahara",
+        "top_score": 0.9945,
+        "crag_status": "GOOD",
+        "passed": true
+      },
+      {
+        "query": "Can disease cure or mitigation claims be made on Ayurveda Aahara products under FSSAI regulations?",
+        "expected_domain": "fssai",
+        "top_chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_6___8___p_005_3e7b8894",
+        "top_title": "FSSAI Ayurveda Aahara Boundary Matrix, Packaging Rules & Logo Guidelines",
+        "top_domain": "fssai",
+        "top_subdomain": "fssai_ayurveda_aahara",
+        "top_score": 0.9992,
+        "crag_status": "GOOD",
+        "passed": true
+      }
+    ],
+    "drugs_cosmetics": [
+      {
+        "query": "What are the manufacturing license requirements under Rule 158B for Ayurvedic Patent and Proprietary medicines?",
+        "expected_domain": "drugs_cosmetics",
+        "top_chunk_id": "IN_IN-ACT-DCR-1945_rule_158b___licensin_003_d34ab326",
+        "top_title": "Drugs & Cosmetics Act 1940 & Rules 1945 — Rule 158B & Schedule T GMP",
+        "top_domain": "drugs_cosmetics",
+        "top_subdomain": "drugs_cosmetics",
+        "top_score": 0.9974,
+        "crag_status": "GOOD",
+        "passed": true
+      },
+      {
+        "query": "What are the mandatory sanitary and GMP requirements under Schedule T for Ayurvedic factories?",
+        "expected_domain": "drugs_cosmetics",
+        "top_chunk_id": "IN_doc-dcr-1945-schedulet_schedule_t_001_f36e9ccd",
+        "top_title": "Drugs and Cosmetics Rules, 1945: Schedule T - Good Manufacturing Practices (GMP) for ASU Drugs",
+        "top_domain": "drugs_cosmetics",
+        "top_subdomain": "gmp_standards",
+        "top_score": 0.9802,
+        "crag_status": "GOOD",
+        "passed": true
+      },
+      {
+        "query": "What is the difference between Form 24D and Form 25D licenses under Drugs and Cosmetics Rules?",
+        "expected_domain": "drugs_cosmetics",
+        "top_chunk_id": "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3",
+        "top_title": "Drugs & Cosmetics Act 1940 & Rules 1945 — Rule 158B & Schedule T GMP",
+        "top_domain": "drugs_cosmetics",
+        "top_subdomain": "drugs_cosmetics",
+        "top_score": 0.9705,
+        "crag_status": "GOOD",
+        "passed": true
+      }
+    ],
+    "biodiversity": [
+      {
+        "query": "Does using Indian biological resources require National Biodiversity Authority prior approval under Section 6?",
+        "expected_domain": "biodiversity",
+        "top_chunk_id": "IN_IN-ACT-BDA-2023_section_6___applicat_003_1a6ed9c3",
+        "top_title": "Biological Diversity (Amendment) Act 2023 & ABS Regulations 2014",
+        "top_domain": "biodiversity",
+        "top_subdomain": "biological_resources",
+        "top_score": 0.9989,
+        "crag_status": "GOOD",
+        "passed": true
+      },
+      {
+        "query": "What is the Form III application procedure before the National Biodiversity Authority for Indian patents?",
+        "expected_domain": "biodiversity",
+        "top_chunk_id": "IN_doc-nba-guidelines-sec6_section_6___regulati_001_0e042fee",
+        "top_title": "National Biodiversity Authority: Guidelines for Prior Approval under Section 6 of Biological Diversity Act",
+        "top_domain": "biodiversity",
+        "top_subdomain": "biological_resources",
+        "top_score": 0.9911,
+        "crag_status": "GOOD",
+        "passed": true
+      },
+      {
+        "query": "What are the fair and equitable benefit sharing (ABS) guidelines 2014 in India?",
+        "expected_domain": "biodiversity",
+        "top_chunk_id": "IN_IN-ACT-BDA-2023_guidelines_on_access_005_efffee95",
+        "top_title": "Biological Diversity (Amendment) Act 2023 & ABS Regulations 2014",
+        "top_domain": "biodiversity",
+        "top_subdomain": "biological_resources",
+        "top_score": 0.7865,
+        "crag_status": "GOOD",
+        "passed": true
+      }
+    ],
+    "traditional_knowledge": [
+      {
+        "query": "How does the Traditional Knowledge Digital Library (TKDL) serve as prior art to cancel biopiracy patents?",
+        "expected_domain": "traditional_knowledge",
+        "top_chunk_id": "IN_doc-wipo-igc-tk-001_article_3__subject_m_001_cd3ff207",
+        "top_title": "WIPO Intergovernmental Committee: Protection of Traditional Knowledge Draft Articles",
+        "top_domain": "patent",
+        "top_subdomain": "international_tk_framework",
+        "top_score": 0.9362,
+        "crag_status": "GOOD",
+        "passed": true
+      },
+      {
+        "query": "What were the landmark TKDL patent revocation cases for turmeric, neem, and basmati rice?",
+        "expected_domain": "traditional_knowledge",
+        "top_chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_1__revocation_o_002_2f677223",
+        "top_title": "Traditional Knowledge Digital Library (TKDL) — Landmark Biopiracy Revocations",
+        "top_domain": "traditional_knowledge",
+        "top_subdomain": "biopiracy_defense",
+        "top_score": 0.9544,
+        "crag_status": "PARTIAL",
+        "passed": true
+      },
+      {
+        "query": "Can traditional Ayurvedic knowledge affect patent novelty and inventive step in India?",
+        "expected_domain": "traditional_knowledge",
+        "top_chunk_id": "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
+        "top_title": "The Patents Act, 1970: Section 3(p) - Exclusion of Traditional Knowledge",
+        "top_domain": "patent",
+        "top_subdomain": "statutory_exclusions",
+        "top_score": 0.9708,
+        "crag_status": "GOOD",
+        "passed": false
+      }
+    ],
+    "commercialization": [
+      {
+        "query": "Can I commercialize and sell an Ayurvedic product direct to consumers without obtaining a patent in India?",
+        "expected_domain": "commercialization",
+        "top_chunk_id": "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
+        "top_title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+        "top_domain": "commercialization",
+        "top_subdomain": "d2c_licensing",
+        "top_score": 0.9999,
+        "crag_status": "GOOD",
+        "passed": true
+      },
+      {
+        "query": "How does an Ayurvedic D2C startup obtain an SLA manufacturing license under Form 25D?",
+        "expected_domain": "commercialization",
+        "top_chunk_id": "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3",
+        "top_title": "Drugs & Cosmetics Act 1940 & Rules 1945 — Rule 158B & Schedule T GMP",
+        "top_domain": "drugs_cosmetics",
+        "top_subdomain": "drugs_cosmetics",
+        "top_score": 0.9562,
+        "crag_status": "GOOD",
+        "passed": true
+      },
+      {
+        "query": "What is the D2C commercialization playbook for Ayurvedic proprietary formulations without patents?",
+        "expected_domain": "commercialization",
+        "top_chunk_id": "IN_IN-COMM-AYURVEDA-D2C_general_provisions_001_453b5f55",
+        "top_title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+        "top_domain": "commercialization",
+        "top_subdomain": "d2c_licensing",
+        "top_score": 0.9873,
+        "crag_status": "GOOD",
+        "passed": true
+      }
+    ],
+    "who_terminology": [
+      {
+        "query": "What are the WHO technical benchmarks and standardized terminology for Ayurvedic medicine quality?",
+        "expected_domain": "who_terminology",
+        "top_chunk_id": "IN_doc-who-ayur-term-001_standardized_clinica_001_4e7a87a7",
+        "top_title": "WHO International Standard Terminologies on Ayurveda: Core Concepts & Botanical Standards",
+        "top_domain": "ayurveda",
+        "top_subdomain": "ayurvedic_terminologies",
+        "top_score": 0.8589,
+        "crag_status": "GOOD",
+        "passed": true
+      },
+      {
+        "query": "What are the permissible limits for heavy metals (lead, arsenic, cadmium, mercury) in herbal medicines?",
+        "expected_domain": "who_terminology",
+        "top_chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_who_maximum_permissi_002_49e40b19",
+        "top_title": "WHO Traditional Medicine Quality Standards & Heavy Metal Permissible Limits",
+        "top_domain": "who_terminology",
+        "top_subdomain": "quality_standards",
+        "top_score": 0.9993,
+        "crag_status": "GOOD",
+        "passed": true
+      },
+      {
+        "query": "What are the WHO-COPP certification requirements for export of Ayurvedic herbal products?",
+        "expected_domain": "who_terminology",
+        "top_chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_who_copp__certificat_004_1a6f0002",
+        "top_title": "WHO Traditional Medicine Quality Standards & Heavy Metal Permissible Limits",
+        "top_domain": "who_terminology",
+        "top_subdomain": "quality_standards",
+        "top_score": 0.9945,
+        "crag_status": "GOOD",
+        "passed": true
+      }
+    ]
+  },
+  "copyright_design_results": {
+    "copyright": {
+      "query": "How do I register copyright for an Ayurvedic medical text commentary under the Indian Copyright Act 1957?",
+      "status": "NOT_AVAILABLE",
+      "corpus_file_count": 0,
+      "comment": "No raw copyright statutory documents or registries exist in current project corpus; correctly reported as NOT_AVAILABLE without hallucination."
+    },
+    "design": {
+      "query": "How do I register an industrial design for an Ayurvedic packaging bottle under the Designs Act 2000 in India?",
+      "status": "NOT_AVAILABLE",
+      "corpus_file_count": 0,
+      "comment": "No raw design statutory documents or registries exist in current project corpus; correctly reported as NOT_AVAILABLE without hallucination."
+    }
+  },
+  "statutory_groundedness_results": [
+    {
+      "test": "Patent Section 3(e) Synergistic Admixture",
+      "query": "What constitutes a mere admixture versus synergistic therapeutic effect under Section 3(e) of Indian Patents Act?",
+      "must_contain_domain": "patent",
+      "top_domain": "patent",
+      "top_title": "A novel synergistic herbal formulation for management of metabolic disorders comprising extracts of Tinospora cordifolia, Salacia reticulata, and Curcuma longa",
+      "top_chunk_id": "IN_IN-268685-B_description_001_a482481b",
+      "top_score": 0.9305,
+      "crag_status": "GOOD",
+      "content_verified": true,
+      "passed": true
+    },
+    {
+      "test": "Patent Section 3(p) Traditional Knowledge",
+      "query": "What are the exclusion criteria for traditional knowledge under Section 3(p) of the Patents Act 1970?",
+      "must_contain_domain": "patent",
+      "top_domain": "patent",
+      "top_title": "The Patents Act, 1970: Section 3(p) - Exclusion of Traditional Knowledge",
+      "top_chunk_id": "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
+      "top_score": 0.9742,
+      "crag_status": "GOOD",
+      "content_verified": true,
+      "passed": true
+    },
+    {
+      "test": "Patent Section 2(1)(j) Novelty & Inventive Step",
+      "query": "What are the statutory definitions of invention, novelty, and inventive step under Section 2(1)(j) and 2(1)(ja)?",
+      "must_contain_domain": "patent",
+      "top_domain": "patent",
+      "top_title": "Guidelines for Examination of Patent Applications in the Field of Traditional Knowledge & Pharmaceuticals",
+      "top_chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_2_1__j___2_1_002_aba69a68",
+      "top_score": 0.9877,
+      "crag_status": "GOOD",
+      "content_verified": true,
+      "passed": true
+    },
+    {
+      "test": "Patent Section 10(4) Biological Disclosure",
+      "query": "What are the mandatory disclosure requirements for biological materials under Section 10(4)(ii)(D) in India?",
+      "must_contain_domain": "patent",
+      "top_domain": "patent",
+      "top_title": "Guidelines for Examination of Patent Applications in the Field of Traditional Knowledge & Pharmaceuticals",
+      "top_chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_10_4__ii__d_008_8e472089",
+      "top_score": 0.9906,
+      "crag_status": "GOOD",
+      "content_verified": true,
+      "passed": true
+    },
+    {
+      "test": "Trademark Section 13 Generic Names Ban",
+      "query": "How do I register a trademark for an Ayurvedic product in India and what generic herbal terms are prohibited under Section 13?",
+      "must_contain_domain": "trademark",
+      "top_domain": "trademark",
+      "top_title": "Trade Marks Act 1999 — Protection of Ayurvedic Terminology & Generic Names Ban",
+      "top_chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_13___prohibi_004_c58e8fcb",
+      "top_score": 0.9521,
+      "crag_status": "GOOD",
+      "content_verified": true,
+      "passed": true
+    },
+    {
+      "test": "FSSAI Ayurveda Aahara Boundary",
+      "query": "What regulations apply to Ayurveda Aahara in India and how is it distinguished from Ayurvedic drugs?",
+      "must_contain_domain": "fssai",
+      "top_domain": "fssai",
+      "top_title": "FSSAI Ayurveda Aahara Boundary Matrix, Packaging Rules & Logo Guidelines",
+      "top_chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_3___scope_003_50112fb3",
+      "top_score": 0.9773,
+      "crag_status": "GOOD",
+      "content_verified": true,
+      "passed": true
+    },
+    {
+      "test": "Traditional Knowledge Patent Novelty",
+      "query": "Can traditional Ayurvedic knowledge affect patent novelty and how does TKDL prove prior art?",
+      "must_contain_domain": "traditional_knowledge",
+      "top_domain": "patent",
+      "top_title": "The Patents Act, 1970: Section 3(p) - Exclusion of Traditional Knowledge",
+      "top_chunk_id": "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
+      "top_score": 0.9406,
+      "crag_status": "GOOD",
+      "content_verified": true,
+      "passed": true
+    }
+  ],
+  "cross_lingual_results": [
+    {
+      "query_language": "te",
+      "document_language": "en",
+      "query": "భారతీయ పేటెంట్ చట్టం సెక్షన్ 3(p) ప్రకారం సాంప్రదాయ విజ్ఞానాన్ని పేటెంట్ చేయవచ్చా?",
+      "expected_concept": "Section 3(p)",
+      "top_title": "The Patents Act, 1970: Section 3(p) - Exclusion of Traditional Knowledge",
+      "top_score": 0.9997,
+      "crag_status": "GOOD",
+      "concept_retrieved": true,
+      "passed": true
+    },
+    {
+      "query_language": "hi",
+      "document_language": "en",
+      "query": "विथानिया सोम्निफेरा (अश्वगंधा) के विथेनोलाइड्स निष्कर्षण के लिए दिए गए भारतीय पेटेंट दावे दिखाएं।",
+      "expected_concept": "Withania somnifera",
+      "top_title": "A process for preparation of standardized extract from Withania somnifera with enhanced withanolide glycosides content",
+      "top_score": 0.9852,
+      "crag_status": "GOOD",
+      "concept_retrieved": true,
+      "passed": true
+    },
+    {
+      "query_language": "ta",
+      "document_language": "en",
+      "query": "FSSAI 2022 விதிகளின் கீழ் ஆயுர்வேத ஆஹார தயாரிப்புகளுக்கான அதிகாரப்பூர்வ சின்னம் மற்றும் லேபிளிங் விதிகள் என்ன?",
+      "expected_concept": "Ayurveda Aahara",
+      "top_title": "Food Safety and Standards (Ayurveda Aahara) Regulations, 2022",
+      "top_score": 0.9981,
+      "crag_status": "GOOD",
+      "concept_retrieved": true,
+      "passed": true
+    },
+    {
+      "query_language": "ja",
+      "document_language": "en",
+      "query": "インド商標法第13条に基づき登録が禁止されているアーユルヴェーダの一般的名称は何ですか？",
+      "expected_concept": "Trade Marks Act",
+      "top_title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+      "top_score": 0.9745,
+      "crag_status": "GOOD",
+      "concept_retrieved": true,
+      "passed": true
+    }
+  ],
+  "negative_unsupported_results": [
+    {
+      "query": "Can I patent a time-travel teleportation chakra device powered by lunar dust under Section 3 of Indian Patents Act?",
+      "top_score": 0.0322,
+      "crag_status": "INSUFFICIENT",
+      "crag_reason": "Query contains fictitious, speculative, or ungrounded physical concepts not recognized in verified statutory or scientific corpora.",
+      "rejected": true
+    },
+    {
+      "query": "Does FSSAI allow Martian moon rock extracts to be labeled as Ayurveda Aahara under 2022 regulations in India?",
+      "top_score": 0.9557,
+      "crag_status": "INSUFFICIENT",
+      "crag_reason": "Query contains fictitious, speculative, or ungrounded physical concepts not recognized in verified statutory or scientific corpora.",
+      "rejected": true
+    },
+    {
+      "query": "Can I trademark a perpetual motion machine that generates infinite energy from Ayurvedic cow ghee in India?",
+      "top_score": 0.0166,
+      "crag_status": "INSUFFICIENT",
+      "crag_reason": "Query contains fictitious, speculative, or ungrounded physical concepts not recognized in verified statutory or scientific corpora.",
+      "rejected": true
+    },
+    {
+      "query": "Under Indian law, is there a patent exemption for anti-gravity warp drive yoga mats?",
+      "top_score": 0.0067,
+      "crag_status": "INSUFFICIENT",
+      "crag_reason": "Query contains fictitious, speculative, or ungrounded physical concepts not recognized in verified statutory or scientific corpora.",
+      "rejected": true
+    },
+    {
+      "query": "Under Section 999 of the Indian Patents Act, what is the penalty for interplanetary smuggling?",
+      "top_score": 0.0016,
+      "crag_status": "INSUFFICIENT",
+      "crag_reason": "Query contains fictitious, speculative, or ungrounded physical concepts not recognized in verified statutory or scientific corpora.",
+      "rejected": true
+    },
+    {
+      "query": "Can I register a sound trademark in India consisting of quantum telepathic frequencies from Ayurvedic herbs?",
+      "top_score": 0.3562,
+      "crag_status": "INSUFFICIENT",
+      "crag_reason": "Query contains fictitious, speculative, or ungrounded physical concepts not recognized in verified statutory or scientific corpora.",
+      "rejected": true
+    },
+    {
+      "query": "Is Antarctic glacial ice certified as an Indian Geographical Indication under GI Act 1999?",
+      "top_score": 0.0857,
+      "crag_status": "INSUFFICIENT",
+      "crag_reason": "Query contains fictitious, speculative, or ungrounded physical concepts not recognized in verified statutory or scientific corpora.",
+      "rejected": true
+    },
+    {
+      "query": "Does FSSAI allow synthetic nuclear radiation to be added as a preservative in Ayurveda Aahara foods?",
+      "top_score": 0.8906,
+      "crag_status": "INSUFFICIENT",
+      "crag_reason": "Query contains fictitious, speculative, or ungrounded physical concepts not recognized in verified statutory or scientific corpora.",
+      "rejected": true
+    },
+    {
+      "query": "Show granted Indian patent claims for a solar-powered smartphone integrated inside a living neem tree.",
+      "top_score": 0.0099,
+      "crag_status": "INSUFFICIENT",
+      "crag_reason": "Query contains fictitious, speculative, or ungrounded physical concepts not recognized in verified statutory or scientific corpora.",
+      "rejected": true
+    }
+  ],
+  "foreign_regression_results": [
+    {
+      "jurisdiction": "US",
+      "query": "Herbal composition comprising plant extract and pharmaceutical carrier US patent",
+      "top_title": "USE OF PLANT EXTRACTS AGAINST HERPES SIMPLEX VIRUS",
+      "top_score": 0.8132,
+      "crag_status": "GOOD",
+      "passed": true
+    },
+    {
+      "jurisdiction": "EP",
+      "query": "Under EPC Article 53(c), are methods for treatment of the human body patentable?",
+      "top_title": "European Patent Claim: An oral pharmaceutical composition for use in a method of treating a human with a primary ",
+      "top_score": 0.8326,
+      "crag_status": "GOOD",
+      "passed": true
+    },
+    {
+      "jurisdiction": "WO",
+      "query": "Synergistic herbal formulation and pharmaceutical extract PCT international application",
+      "top_title": "PHARMACEUTICAL COMPOUNDS",
+      "top_score": 0.6659,
+      "crag_status": "GOOD",
+      "passed": true
+    },
+    {
+      "jurisdiction": "JP",
+      "query": "特許法第29条に基づく漢方処方および生薬抽出物配合製剤の特許要件は何ですか？",
+      "top_title": "本発明は、変質・変色等の経時的劣化が効果的に防止され、長期間にわたって優れた薬効が安定に保たれる、オンジ生薬単味エキス含有内服組成物に関するものである",
+      "top_score": 0.7823,
+      "crag_status": "GOOD",
+      "passed": true
+    }
+  ],
+  "ablation_results": [
+    {
+      "type": "Exact Legal Phrase",
+      "query": "mere admixture resulting only in the aggregation of the properties of the components",
+      "faiss_top1": {
+        "chunk_id": "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
+        "score": 0.5758
+      },
+      "bm25_top1": {
+        "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_e____mere_004_b6721e38",
+        "score": 24.3287
+      },
+      "rrf_top1": {
+        "chunk_id": "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
+        "score": 0.0423
+      },
+      "rerank_top1": {
+        "chunk_id": "IN_IN-268685-B_description_001_a482481b",
+        "score": 0.9061
+      }
+    },
+    {
+      "type": "Section Number",
+      "query": "Section 3(p) of the Patents Act 1970",
+      "faiss_top1": {
+        "chunk_id": "IN_IN-ACT-PATENTS-1970_section_3_k____a_mat_005_e292b1de",
+        "score": 0.6363
+      },
+      "bm25_top1": {
+        "chunk_id": "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
+        "score": 10.9154
+      },
+      "rrf_top1": {
+        "chunk_id": "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
+        "score": 0.0416
+      },
+      "rerank_top1": {
+        "chunk_id": "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
+        "score": 0.9975
+      }
+    },
+    {
+      "type": "Botanical / Plant Name",
+      "query": "Withania somnifera withanolides extraction yield percentage",
+      "faiss_top1": {
+        "chunk_id": "IN_IN-243763-B_abstract_001_a06b0f41",
+        "score": 0.6666
+      },
+      "bm25_top1": {
+        "chunk_id": "IN_IN-243763-B_description_001_1cd4917e",
+        "score": 13.7119
+      },
+      "rrf_top1": {
+        "chunk_id": "IN_IN-243763-B_abstract_001_a06b0f41",
+        "score": 0.0423
+      },
+      "rerank_top1": {
+        "chunk_id": "IN_IN-243763-B_abstract_001_a06b0f41",
+        "score": 0.9963
+      }
+    },
+    {
+      "type": "Granted Patent Number",
+      "query": "IN-243763-B process for preparation of withanolides",
+      "faiss_top1": {
+        "chunk_id": "IN_IN-243763-B_claims_3_003_f90a22c2",
+        "score": 0.6625
+      },
+      "bm25_top1": {
+        "chunk_id": "IN_IN-243763-B_description_001_1cd4917e",
+        "score": 19.7477
+      },
+      "rrf_top1": {
+        "chunk_id": "IN_IN-243763-B_claims_3_003_f90a22c2",
+        "score": 0.0423
+      },
+      "rerank_top1": {
+        "chunk_id": "IN_IN-243763-B_abstract_001_a06b0f41",
+        "score": 0.9971
+      }
+    },
+    {
+      "type": "Ayurvedic Classical Formulation",
+      "query": "Triphala Churna Haritaki Bibhitaki Amalaki classical formulation",
+      "faiss_top1": {
+        "chunk_id": "IN_doc-afi-triphala-001_churna_prakarana__po_001_a6cf9acb",
+        "score": 0.7093
+      },
+      "bm25_top1": {
+        "chunk_id": "IN_doc-afi-triphala-001_churna_prakarana__po_001_a6cf9acb",
+        "score": 23.5168
+      },
+      "rrf_top1": {
+        "chunk_id": "IN_doc-afi-triphala-001_churna_prakarana__po_001_a6cf9acb",
+        "score": 0.0377
+      },
+      "rerank_top1": {
+        "chunk_id": "IN_doc-afi-triphala-001_churna_prakarana__po_001_a6cf9acb",
+        "score": 0.998
+      }
+    },
+    {
+      "type": "Indic Multilingual (Telugu)",
+      "query": "భారతీయ పేటెంట్ చట్టం సెక్షన్ 3(e) కింద సినర్జీ మరియు పేటెంట్ అవసరాలు ఏమిటి?",
+      "faiss_top1": {
+        "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_e____mere_004_b6721e38",
+        "score": 0.5992
+      },
+      "bm25_top1": {
+        "chunk_id": "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
+        "score": 5.0259
+      },
+      "rrf_top1": {
+        "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_e____mere_004_b6721e38",
+        "score": 0.0423
+      },
+      "rerank_top1": {
+        "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_e____mere_004_b6721e38",
+        "score": 0.9586
+      }
+    },
+    {
+      "type": "Trademark Generic Names Ban",
+      "query": "generic names of Ayurvedic single drugs prohibited under Section 13",
+      "faiss_top1": {
+        "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_13___prohibi_004_c58e8fcb",
+        "score": 0.6151
+      },
+      "bm25_top1": {
+        "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_13___prohibi_004_c58e8fcb",
+        "score": 20.8117
+      },
+      "rrf_top1": {
+        "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_13___prohibi_004_c58e8fcb",
+        "score": 0.0426
+      },
+      "rerank_top1": {
+        "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_13___prohibi_004_c58e8fcb",
+        "score": 0.981
+      }
+    },
+    {
+      "type": "FSSAI Regulation & Logo",
+      "query": "Regulation 2.2 official logo Ayurveda Aahara food regulations 2022",
+      "faiss_top1": {
+        "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_2___lab_005_659cf24a",
+        "score": 0.7292
+      },
+      "bm25_top1": {
+        "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_5___ayurv_004_4933c218",
+        "score": 25.596
+      },
+      "rrf_top1": {
+        "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_5___ayurv_004_4933c218",
+        "score": 0.0423
+      },
+      "rerank_top1": {
+        "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_2___lab_005_659cf24a",
+        "score": 0.9883
+      }
+    },
+    {
+      "type": "NBA Prior Approval",
+      "query": "Section 6 Form III National Biodiversity Authority biological resources approval",
+      "faiss_top1": {
+        "chunk_id": "IN_IN-ACT-BDA-2023_section_6___applicat_003_1a6ed9c3",
+        "score": 0.6675
+      },
+      "bm25_top1": {
+        "chunk_id": "IN_doc-nba-guidelines-sec6_section_6___regulati_001_0e042fee",
+        "score": 31.3959
+      },
+      "rrf_top1": {
+        "chunk_id": "IN_IN-ACT-BDA-2023_section_6___applicat_003_1a6ed9c3",
+        "score": 0.0423
+      },
+      "rerank_top1": {
+        "chunk_id": "IN_IN-ACT-BDA-2023_section_6___applicat_003_1a6ed9c3",
+        "score": 0.9983
+      }
+    },
+    {
+      "type": "Japanese India Query",
+      "query": "インド特許法における新規性の要件は何ですか？",
+      "faiss_top1": {
+        "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_2_1__j___2_1_002_aba69a68",
+        "score": 0.6021
+      },
+      "bm25_top1": {
+        "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_2_1__j___2_1_002_aba69a68",
+        "score": 14.0062
+      },
+      "rrf_top1": {
+        "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_2_1__j___2_1_002_aba69a68",
+        "score": 0.0426
+      },
+      "rerank_top1": {
+        "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_2_1__j___2_1_002_aba69a68",
+        "score": 0.5569
+      }
+    }
+  ],
+  "retrieval_chains_20": [
+    {
+      "query_index": 1,
+      "query": "Can an Ayurvedic formulation be patented in India under Patents Act Section 3(p)?",
+      "detected_language": "en",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "Can an Ayurvedic formulation be patented in India under Patents Act Section 3(p)?",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_p____exclu_003_8c484905",
+          "dense_score": 0.7108
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_64___revocat_009_3a6f5003",
+          "dense_score": 0.7068
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+          "dense_score": 0.7039
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_e____mere_004_b6721e38",
+          "dense_score": 0.6937
+        },
+        {
+          "chunk_id": "IN_doc-dca-1940-sec33eeb_section_33eeb_001_44045bb2",
+          "dense_score": 0.6928
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
+          "dense_score": 0.6868
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
+          "dense_score": 0.6864
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_i____diagn_007_86096e3f",
+          "dense_score": 0.6824
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_j____plant_006_72866060",
+          "dense_score": 0.6686
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
+          "dense_score": 0.6577
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
+          "lexical_score": 14.0051
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
+          "lexical_score": 11.3203
+        },
+        {
+          "chunk_id": "IN_doc-afi-chyawanprash-002_avaleha_prakarana__e_001_ff062799",
+          "lexical_score": 9.1273
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_p____exclu_003_8c484905",
+          "lexical_score": 9.0598
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_48___53___ri_009_4870e86f",
+          "lexical_score": 8.6968
+        },
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_section_8___11___pro_003_554503f6",
+          "lexical_score": 8.3285
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+          "lexical_score": 8.0921
+        },
+        {
+          "chunk_id": "IN_IN-FOUND-AYURVEDA-NCISM_statutory_definition_004_2cec899f",
+          "lexical_score": 7.7788
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec10-4_section_10_4__ii__d_001_3a9992d6",
+          "lexical_score": 7.726
+        },
+        {
+          "chunk_id": "IN_IN-268685-B_description_001_a482481b",
+          "lexical_score": 7.1088
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_p____exclu_003_8c484905",
+          "rrf_score": 0.0416
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
+          "rrf_score": 0.0407
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
+          "rrf_score": 0.0266
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+          "rrf_score": 0.0262
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_64___revocat_009_3a6f5003",
+          "rrf_score": 0.021
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
+          "document_id": "doc-india-code-patents-sec3p",
+          "title": "The Patents Act, 1970: Section 3(p) - Exclusion of Traditional Knowledge",
+          "domain": "patent",
+          "subdomain": "statutory_exclusions",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Parliament of India / CGPDTM",
+          "authority_tier": 1,
+          "source": "Parliament of India / CGPDTM",
+          "rerank_score": 0.99
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+          "document_id": "IN-COMM-AYURVEDA-D2C",
+          "title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+          "domain": "trademark",
+          "subdomain": "trademark_protection",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "authority_tier": 4,
+          "source": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "rerank_score": 0.9879
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_p____exclu_003_8c484905",
+          "document_id": "IN-GUIDELINE-PATENTS-TK",
+          "title": "Guidelines for Examination of Patent Applications in the Field of Traditional Knowledge & Pharmaceuticals",
+          "domain": "patent",
+          "subdomain": "examination_guidelines",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "rerank_score": 0.966
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_i____diagn_007_86096e3f",
+          "document_id": "IN-GUIDELINE-PATENTS-TK",
+          "title": "Guidelines for Examination of Patent Applications in the Field of Traditional Knowledge & Pharmaceuticals",
+          "domain": "patent",
+          "subdomain": "examination_guidelines",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "rerank_score": 0.9347
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
+          "document_id": "IN-COMM-AYURVEDA-D2C",
+          "title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+          "domain": "commercialization",
+          "subdomain": "d2c_licensing",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "authority_tier": 4,
+          "source": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "rerank_score": 0.9056
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 0.990, 5 usable Tier 1 chunks)."
+    },
+    {
+      "query_index": 2,
+      "query": "What are the synergy and therapeutic efficacy requirements under Section 3(e) of Indian Patents Act?",
+      "detected_language": "en",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "What are the synergy and therapeutic efficacy requirements under Section 3(e) of Indian Patents Act?",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_e____mere_004_b6721e38",
+          "dense_score": 0.6794
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
+          "dense_score": 0.652
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_d____incre_005_51268b43",
+          "dense_score": 0.6298
+        },
+        {
+          "chunk_id": "IN_doc-ip-india-pat-2018-01_claims___synergistic_001_2761a73c",
+          "dense_score": 0.6126
+        },
+        {
+          "chunk_id": "IN_IN-268685-B_description_001_a482481b",
+          "dense_score": 0.5911
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_i____diagn_007_86096e3f",
+          "dense_score": 0.5832
+        },
+        {
+          "chunk_id": "IN_IN-324590-B_description_001_673912d7",
+          "dense_score": 0.5817
+        },
+        {
+          "chunk_id": "IN_IN-324590-B_abstract_001_2c35ba1f",
+          "dense_score": 0.5676
+        },
+        {
+          "chunk_id": "IN_doc-dca-1940-sec33eeb_section_33eeb_001_44045bb2",
+          "dense_score": 0.5545
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_p____exclu_003_8c484905",
+          "dense_score": 0.5543
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
+          "lexical_score": 16.5513
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_e____mere_004_b6721e38",
+          "lexical_score": 13.3683
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_d____incre_005_51268b43",
+          "lexical_score": 10.7013
+        },
+        {
+          "chunk_id": "IN_IN-324590-B_description_001_673912d7",
+          "lexical_score": 10.5194
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
+          "lexical_score": 9.6819
+        },
+        {
+          "chunk_id": "IN_IN-FOUND-AYURVEDA-NCISM_core_therapeutic_obj_003_550b5bad",
+          "lexical_score": 9.0405
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_64___revocat_009_3a6f5003",
+          "lexical_score": 8.411
+        },
+        {
+          "chunk_id": "IN_doc-ip-india-pat-2018-01_claims___synergistic_001_2761a73c",
+          "lexical_score": 8.0367
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_3_a____an_in_003_9c930567",
+          "lexical_score": 7.9232
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4",
+          "lexical_score": 7.5773
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_e____mere_004_b6721e38",
+          "rrf_score": 0.0423
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
+          "rrf_score": 0.0423
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_d____incre_005_51268b43",
+          "rrf_score": 0.0413
+        },
+        {
+          "chunk_id": "IN_IN-324590-B_description_001_673912d7",
+          "rrf_score": 0.0397
+        },
+        {
+          "chunk_id": "IN_doc-ip-india-pat-2018-01_claims___synergistic_001_2761a73c",
+          "rrf_score": 0.0394
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_e____mere_004_b6721e38",
+          "document_id": "IN-GUIDELINE-PATENTS-TK",
+          "title": "Guidelines for Examination of Patent Applications in the Field of Traditional Knowledge & Pharmaceuticals",
+          "domain": "patent",
+          "subdomain": "examination_guidelines",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "rerank_score": 0.8584
+        },
+        {
+          "chunk_id": "IN_IN-268685-B_description_001_a482481b",
+          "document_id": "IN-268685-B",
+          "title": "A novel synergistic herbal formulation for management of metabolic disorders comprising extracts of Tinospora cordifolia, Salacia reticulata, and Curcuma longa",
+          "domain": "patent",
+          "subdomain": "patent_description",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "rerank_score": 0.8251
+        },
+        {
+          "chunk_id": "IN_IN-324590-B_description_001_673912d7",
+          "document_id": "IN-324590-B",
+          "title": "Synergistic botanical composition comprising Boswellia serrata and Commiphora mukul for inflammatory joint diseases",
+          "domain": "patent",
+          "subdomain": "patent_description",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "rerank_score": 0.8088
+        },
+        {
+          "chunk_id": "IN_doc-ip-india-pat-2018-01_claims___synergistic_001_2761a73c",
+          "document_id": "doc-ip-india-pat-2018-01",
+          "title": "IP India Patent Publication: Synergistic Herbal Formulation for Metabolic Disorders",
+          "domain": "patent",
+          "subdomain": "herbal_inventions",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "rerank_score": 0.6008
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
+          "document_id": "doc-india-code-patents-sec3e",
+          "title": "The Patents Act, 1970: Section 3(e) - Exclusion of Mere Admixtures",
+          "domain": "patent",
+          "subdomain": "statutory_exclusions",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Parliament of India / Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Parliament of India / Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "rerank_score": 0.5097
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 0.858, 5 usable Tier 1 chunks)."
+    },
+    {
+      "query_index": 3,
+      "query": "Show granted Indian patent claims for Withania somnifera withanolides extraction yield.",
+      "detected_language": "en",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "Show granted Indian patent claims for Withania somnifera withanolides extraction yield.",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_IN-243763-B_abstract_001_a06b0f41",
+          "dense_score": 0.7258
+        },
+        {
+          "chunk_id": "IN_IN-243763-B_claims_1_002_e6ee2b2e",
+          "dense_score": 0.7045
+        },
+        {
+          "chunk_id": "IN_IN-243763-B_claims_3_003_f90a22c2",
+          "dense_score": 0.6593
+        },
+        {
+          "chunk_id": "IN_IN-243763-B_description_001_1cd4917e",
+          "dense_score": 0.65
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__ashwa_003_a9b1d064",
+          "dense_score": 0.5813
+        },
+        {
+          "chunk_id": "IN_doc-api-ashwagandha-001_standard_quality_cri_001_53a4352e",
+          "dense_score": 0.58
+        },
+        {
+          "chunk_id": "IN_IN-348215-B_description_001_e115904c",
+          "dense_score": 0.5589
+        },
+        {
+          "chunk_id": "IN_IN-348215-B_claims_1_002_5fbd9782",
+          "dense_score": 0.5582
+        },
+        {
+          "chunk_id": "IN_IN-348215-B_abstract_001_604ac358",
+          "dense_score": 0.5538
+        },
+        {
+          "chunk_id": "IN_IN-348215-B_claims_3_003_66328aa9",
+          "dense_score": 0.5433
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_IN-243763-B_description_001_1cd4917e",
+          "lexical_score": 14.0607
+        },
+        {
+          "chunk_id": "IN_IN-243763-B_abstract_001_a06b0f41",
+          "lexical_score": 13.8508
+        },
+        {
+          "chunk_id": "IN_IN-243763-B_claims_3_003_f90a22c2",
+          "lexical_score": 13.0768
+        },
+        {
+          "chunk_id": "IN_IN-243763-B_claims_1_002_e6ee2b2e",
+          "lexical_score": 12.7284
+        },
+        {
+          "chunk_id": "IN_doc-api-ashwagandha-001_standard_quality_cri_001_53a4352e",
+          "lexical_score": 12.3523
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__ashwa_003_a9b1d064",
+          "lexical_score": 8.8308
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+          "lexical_score": 6.6989
+        },
+        {
+          "chunk_id": "IN_doc-tkdl-001_classical_formulatio_001_77c47ead",
+          "lexical_score": 6.6373
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_3__revocation_o_004_2747dcec",
+          "lexical_score": 6.181
+        },
+        {
+          "chunk_id": "IN_doc-ip-india-pat-2018-01_claims___synergistic_001_2761a73c",
+          "lexical_score": 5.7193
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-243763-B_abstract_001_a06b0f41",
+          "rrf_score": 0.0423
+        },
+        {
+          "chunk_id": "IN_IN-243763-B_description_001_1cd4917e",
+          "rrf_score": 0.0416
+        },
+        {
+          "chunk_id": "IN_IN-243763-B_claims_1_002_e6ee2b2e",
+          "rrf_score": 0.0413
+        },
+        {
+          "chunk_id": "IN_IN-243763-B_claims_3_003_f90a22c2",
+          "rrf_score": 0.0413
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__ashwa_003_a9b1d064",
+          "rrf_score": 0.0351
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_IN-243763-B_abstract_001_a06b0f41",
+          "document_id": "IN-243763-B",
+          "title": "A process for preparation of standardized extract from Withania somnifera with enhanced withanolide glycosides content",
+          "domain": "patent",
+          "subdomain": "patent_grant_abstract",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "rerank_score": 0.99
+        },
+        {
+          "chunk_id": "IN_IN-243763-B_claims_1_002_e6ee2b2e",
+          "document_id": "IN-243763-B",
+          "title": "A process for preparation of standardized extract from Withania somnifera with enhanced withanolide glycosides content",
+          "domain": "patent",
+          "subdomain": "patent_claims",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "rerank_score": 0.9867
+        },
+        {
+          "chunk_id": "IN_IN-243763-B_claims_3_003_f90a22c2",
+          "document_id": "IN-243763-B",
+          "title": "A process for preparation of standardized extract from Withania somnifera with enhanced withanolide glycosides content",
+          "domain": "patent",
+          "subdomain": "patent_claims",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "rerank_score": 0.9732
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__ashwa_003_a9b1d064",
+          "document_id": "IN-PHARM-API-MONOGRAPHS",
+          "title": "Ayurvedic Pharmacopoeia of India (API) — Official Monograph Specifications",
+          "domain": "ayurveda",
+          "subdomain": "pharmacopoeia",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "authority_tier": 2,
+          "source": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "rerank_score": 0.1861
+        },
+        {
+          "chunk_id": "IN_doc-tkdl-001_classical_formulatio_001_77c47ead",
+          "document_id": "doc-tkdl-001",
+          "title": "TKDL Prior Art Formulation: Ashwagandhadi Churna (Charaka Samhita)",
+          "domain": "traditional_knowledge",
+          "subdomain": "traditional_knowledge",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "CSIR-TKDL & Ministry of Ayush",
+          "authority_tier": 2,
+          "source": "CSIR-TKDL & Ministry of Ayush",
+          "rerank_score": 0.1574
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 0.990, 5 usable Tier 1 chunks)."
+    },
+    {
+      "query_index": 4,
+      "query": "How do I register a trademark for an Ayurvedic product in India under Trade Marks Act 1999?",
+      "detected_language": "en",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "How do I register a trademark for an Ayurvedic product in India under Trade Marks Act 1999?",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_9___absolute_003_272220a1",
+          "dense_score": 0.7398
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_general_provisions_001_911918a0",
+          "dense_score": 0.7141
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_section_11_2____a_tr_007_aac08a26",
+          "dense_score": 0.7062
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_trade_marks_rules_20_006_82fbaaa2",
+          "dense_score": 0.6962
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_2_1__zb____2_002_6a9d1c90",
+          "dense_score": 0.6861
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_28___29___ri_005_69711a75",
+          "dense_score": 0.6772
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+          "dense_score": 0.6767
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3",
+          "dense_score": 0.6623
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_13___prohibi_004_c58e8fcb",
+          "dense_score": 0.6605
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_section_9_2____a_mar_004_3c7057fe",
+          "dense_score": 0.6343
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_trade_marks_rules_20_006_82fbaaa2",
+          "lexical_score": 17.1162
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_28___29___ri_005_69711a75",
+          "lexical_score": 14.0274
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_2_1__zb____2_002_6a9d1c90",
+          "lexical_score": 13.7285
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_section_11_2____a_tr_007_aac08a26",
+          "lexical_score": 13.4762
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_48___rights_007_74086c23",
+          "lexical_score": 13.1364
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+          "lexical_score": 12.9826
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_section_9_2____a_mar_004_3c7057fe",
+          "lexical_score": 11.1237
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_9___absolute_003_272220a1",
+          "lexical_score": 10.6702
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_48___53___ri_009_4870e86f",
+          "lexical_score": 10.4751
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_general_provisions_001_911918a0",
+          "lexical_score": 10.4668
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_trade_marks_rules_20_006_82fbaaa2",
+          "rrf_score": 0.0416
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_section_11_2____a_tr_007_aac08a26",
+          "rrf_score": 0.0409
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_28___29___ri_005_69711a75",
+          "rrf_score": 0.0407
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_2_1__zb____2_002_6a9d1c90",
+          "rrf_score": 0.0406
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_9___absolute_003_272220a1",
+          "rrf_score": 0.0404
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_trade_marks_rules_20_006_82fbaaa2",
+          "document_id": "IN-ACT-TM-AYUR-1999",
+          "title": "Trade Marks Act 1999 — Protection of Ayurvedic Terminology & Generic Names Ban",
+          "domain": "trademark",
+          "subdomain": "trademark_protection",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Trade Marks Registry, CGPDTM, Ministry of Commerce and Industry",
+          "authority_tier": 1,
+          "source": "Trade Marks Registry, CGPDTM, Ministry of Commerce and Industry",
+          "rerank_score": 0.9927
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_13___prohibi_004_c58e8fcb",
+          "document_id": "IN-ACT-TM-AYUR-1999",
+          "title": "Trade Marks Act 1999 — Protection of Ayurvedic Terminology & Generic Names Ban",
+          "domain": "trademark",
+          "subdomain": "trademark_protection",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Trade Marks Registry, CGPDTM, Ministry of Commerce and Industry",
+          "authority_tier": 1,
+          "source": "Trade Marks Registry, CGPDTM, Ministry of Commerce and Industry",
+          "rerank_score": 0.8153
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_28___29___ri_005_69711a75",
+          "document_id": "IN-ACT-TM-AYUR-1999",
+          "title": "Trade Marks Act 1999 — Protection of Ayurvedic Terminology & Generic Names Ban",
+          "domain": "trademark",
+          "subdomain": "trademark_protection",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Trade Marks Registry, CGPDTM, Ministry of Commerce and Industry",
+          "authority_tier": 1,
+          "source": "Trade Marks Registry, CGPDTM, Ministry of Commerce and Industry",
+          "rerank_score": 0.7961
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+          "document_id": "IN-COMM-AYURVEDA-D2C",
+          "title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+          "domain": "trademark",
+          "subdomain": "trademark_protection",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "authority_tier": 4,
+          "source": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "rerank_score": 0.7289
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3",
+          "document_id": "IN-ACT-DCR-1945",
+          "title": "Drugs & Cosmetics Act 1940 & Rules 1945 — Rule 158B & Schedule T GMP",
+          "domain": "drugs_cosmetics",
+          "subdomain": "drugs_cosmetics",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Central Drugs Standard Control Organization (CDSCO) & Ministry of Ayush",
+          "authority_tier": 1,
+          "source": "Central Drugs Standard Control Organization (CDSCO) & Ministry of Ayush",
+          "rerank_score": 0.5948
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 0.993, 5 usable Tier 1 chunks)."
+    },
+    {
+      "query_index": 5,
+      "query": "What are the prohibited generic Ayurvedic and single herbal names under Section 13?",
+      "detected_language": "en",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "What are the prohibited generic Ayurvedic and single herbal names under Section 13?",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_13___prohibi_004_c58e8fcb",
+          "dense_score": 0.6449
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_9___absolute_003_272220a1",
+          "dense_score": 0.5929
+        },
+        {
+          "chunk_id": "IN_doc-dca-1940-sec33ee_section_33ee_001_bc6c27d8",
+          "dense_score": 0.5463
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_3___scope_003_50112fb3",
+          "dense_score": 0.542
+        },
+        {
+          "chunk_id": "IN_IN-FOUND-AYURVEDA-NCISM_statutory_definition_004_2cec899f",
+          "dense_score": 0.5413
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_section_3_a____statu_002_b0f7acc8",
+          "dense_score": 0.5382
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_schedule_e_1____list_006_057b01d1",
+          "dense_score": 0.5349
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_6___8___p_005_3e7b8894",
+          "dense_score": 0.5321
+        },
+        {
+          "chunk_id": "IN_doc-dca-1940-sec33eeb_section_33eeb_001_44045bb2",
+          "dense_score": 0.5305
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_i____diagn_007_86096e3f",
+          "dense_score": 0.5298
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_13___prohibi_004_c58e8fcb",
+          "lexical_score": 20.8117
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_9___absolute_003_272220a1",
+          "lexical_score": 11.9416
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_2_1__zb____2_002_6a9d1c90",
+          "lexical_score": 11.5992
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+          "lexical_score": 10.9514
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_28___29___ri_005_69711a75",
+          "lexical_score": 8.9506
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_general_provisions_001_911918a0",
+          "lexical_score": 8.8297
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_trade_marks_rules_20_006_82fbaaa2",
+          "lexical_score": 8.6387
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_section_9_2____a_mar_004_3c7057fe",
+          "lexical_score": 6.9293
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
+          "lexical_score": 6.394
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_fssai_licensing_work_006_ce702dde",
+          "lexical_score": 5.2446
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_13___prohibi_004_c58e8fcb",
+          "rrf_score": 0.0426
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_9___absolute_003_272220a1",
+          "rrf_score": 0.0419
+        },
+        {
+          "chunk_id": "IN_doc-dca-1940-sec33ee_section_33ee_001_bc6c27d8",
+          "rrf_score": 0.0206
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_2_1__zb____2_002_6a9d1c90",
+          "rrf_score": 0.0206
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_3___scope_003_50112fb3",
+          "rrf_score": 0.0203
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+          "document_id": "IN-COMM-AYURVEDA-D2C",
+          "title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+          "domain": "trademark",
+          "subdomain": "trademark_protection",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "authority_tier": 4,
+          "source": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "rerank_score": 0.9455
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_13___prohibi_004_c58e8fcb",
+          "document_id": "IN-ACT-TM-AYUR-1999",
+          "title": "Trade Marks Act 1999 — Protection of Ayurvedic Terminology & Generic Names Ban",
+          "domain": "trademark",
+          "subdomain": "trademark_protection",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Trade Marks Registry, CGPDTM, Ministry of Commerce and Industry",
+          "authority_tier": 1,
+          "source": "Trade Marks Registry, CGPDTM, Ministry of Commerce and Industry",
+          "rerank_score": 0.9176
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_9___absolute_003_272220a1",
+          "document_id": "IN-ACT-TM-AYUR-1999",
+          "title": "Trade Marks Act 1999 — Protection of Ayurvedic Terminology & Generic Names Ban",
+          "domain": "trademark",
+          "subdomain": "trademark_protection",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Trade Marks Registry, CGPDTM, Ministry of Commerce and Industry",
+          "authority_tier": 1,
+          "source": "Trade Marks Registry, CGPDTM, Ministry of Commerce and Industry",
+          "rerank_score": 0.377
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_2_1__zb____2_002_6a9d1c90",
+          "document_id": "IN-ACT-TM-AYUR-1999",
+          "title": "Trade Marks Act 1999 — Protection of Ayurvedic Terminology & Generic Names Ban",
+          "domain": "trademark",
+          "subdomain": "trademark_protection",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Trade Marks Registry, CGPDTM, Ministry of Commerce and Industry",
+          "authority_tier": 1,
+          "source": "Trade Marks Registry, CGPDTM, Ministry of Commerce and Industry",
+          "rerank_score": 0.2615
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
+          "document_id": "doc-india-code-patents-sec3e",
+          "title": "The Patents Act, 1970: Section 3(e) - Exclusion of Mere Admixtures",
+          "domain": "patent",
+          "subdomain": "statutory_exclusions",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Parliament of India / Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Parliament of India / Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "rerank_score": 0.076
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 0.946, 5 usable Tier 1 chunks)."
+    },
+    {
+      "query_index": 6,
+      "query": "How is a Geographical Indication protected in India under the GI Act 1999?",
+      "detected_language": "en",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "How is a Geographical Indication protected in India under the GI Act 1999?",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_general_provisions_001_b7e31305",
+          "dense_score": 0.7313
+        },
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_section_2_1__e____st_002_1dfde0fa",
+          "dense_score": 0.7307
+        },
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_section_8___11___pro_003_554503f6",
+          "dense_score": 0.7087
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_section_11_2____a_tr_007_aac08a26",
+          "dense_score": 0.6943
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_section_9_2____a_mar_004_3c7057fe",
+          "dense_score": 0.6358
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_section_9_1____the_t_003_f1c0fe27",
+          "dense_score": 0.6346
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_general_provisions_001_6b40f07d",
+          "dense_score": 0.619
+        },
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_registered_botanical_004_9c343ac6",
+          "dense_score": 0.6052
+        },
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_registered_botanical_006_798a35da",
+          "dense_score": 0.604
+        },
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_registered_botanical_005_dac3ff88",
+          "dense_score": 0.5956
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_section_2_1__e____st_002_1dfde0fa",
+          "lexical_score": 17.3564
+        },
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_general_provisions_001_b7e31305",
+          "lexical_score": 14.6586
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_section_11_2____a_tr_007_aac08a26",
+          "lexical_score": 14.243
+        },
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_section_8___11___pro_003_554503f6",
+          "lexical_score": 13.3275
+        },
+        {
+          "chunk_id": "IN_doc-gi-reg-kashmir-saffron_gi_certificate_of_re_001_b330c8dd",
+          "lexical_score": 12.9788
+        },
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_registered_botanical_006_798a35da",
+          "lexical_score": 12.927
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_general_provisions_001_6b40f07d",
+          "lexical_score": 12.8314
+        },
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_registered_botanical_004_9c343ac6",
+          "lexical_score": 12.725
+        },
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_registered_botanical_005_dac3ff88",
+          "lexical_score": 12.7064
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_section_9_2____a_mar_004_3c7057fe",
+          "lexical_score": 12.3648
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_general_provisions_001_b7e31305",
+          "rrf_score": 0.0423
+        },
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_section_2_1__e____st_002_1dfde0fa",
+          "rrf_score": 0.0423
+        },
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_section_8___11___pro_003_554503f6",
+          "rrf_score": 0.0409
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_section_11_2____a_tr_007_aac08a26",
+          "rrf_score": 0.0409
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_general_provisions_001_6b40f07d",
+          "rrf_score": 0.0388
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_section_8___11___pro_003_554503f6",
+          "document_id": "IN-ACT-GI-REGISTRY-1999",
+          "title": "Geographical Indications of Goods Act 1999 & Registered AYUSH GIs",
+          "domain": "gi",
+          "subdomain": "geographical_indications",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Geographical Indications Registry, Intellectual Property India (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Geographical Indications Registry, Intellectual Property India (CGPDTM)",
+          "rerank_score": 0.9618
+        },
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_section_2_1__e____st_002_1dfde0fa",
+          "document_id": "IN-ACT-GI-REGISTRY-1999",
+          "title": "Geographical Indications of Goods Act 1999 & Registered AYUSH GIs",
+          "domain": "gi",
+          "subdomain": "geographical_indications",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Geographical Indications Registry, Intellectual Property India (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Geographical Indications Registry, Intellectual Property India (CGPDTM)",
+          "rerank_score": 0.9587
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_section_9_2____a_mar_004_3c7057fe",
+          "document_id": "IN-ACT-TM-GI-1999",
+          "title": "Trade Marks Act 1999 & Geographical Indications of Goods Act 1999",
+          "domain": "trademark",
+          "subdomain": "trademark_protection",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Trade Marks Registry & GI Registry, CGPDTM, DPIIT",
+          "authority_tier": 1,
+          "source": "Trade Marks Registry & GI Registry, CGPDTM, DPIIT",
+          "rerank_score": 0.8519
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_section_11_2____a_tr_007_aac08a26",
+          "document_id": "IN-ACT-TM-GI-1999",
+          "title": "Trade Marks Act 1999 & Geographical Indications of Goods Act 1999",
+          "domain": "trademark",
+          "subdomain": "trademark_protection",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Trade Marks Registry & GI Registry, CGPDTM, DPIIT",
+          "authority_tier": 1,
+          "source": "Trade Marks Registry & GI Registry, CGPDTM, DPIIT",
+          "rerank_score": 0.838
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_section_11_1____save_006_c70c5088",
+          "document_id": "IN-ACT-TM-GI-1999",
+          "title": "Trade Marks Act 1999 & Geographical Indications of Goods Act 1999",
+          "domain": "trademark",
+          "subdomain": "trademark_protection",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Trade Marks Registry & GI Registry, CGPDTM, DPIIT",
+          "authority_tier": 1,
+          "source": "Trade Marks Registry & GI Registry, CGPDTM, DPIIT",
+          "rerank_score": 0.7674
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 0.962, 5 usable Tier 1 chunks)."
+    },
+    {
+      "query_index": 7,
+      "query": "What are the official Ayurvedic Pharmacopoeia of India (API) standards for Ashwagandha root?",
+      "detected_language": "en",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "What are the official Ayurvedic Pharmacopoeia of India (API) standards for Ashwagandha root?",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_doc-api-ashwagandha-001_standard_quality_cri_001_53a4352e",
+          "dense_score": 0.7563
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__ashwa_003_a9b1d064",
+          "dense_score": 0.7315
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__guduc_006_1e96ec4b",
+          "dense_score": 0.6453
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__harid_002_1a1cfca4",
+          "dense_score": 0.6407
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__brahm_004_baa458d2",
+          "dense_score": 0.639
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_3_1___the_008_732a0c45",
+          "dense_score": 0.6381
+        },
+        {
+          "chunk_id": "IN_doc-api-guduchi-002_standard_quality_cri_001_a78c9585",
+          "dense_score": 0.6283
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__tulsi_005_749d3069",
+          "dense_score": 0.6161
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__yog_005_e5a16425",
+          "dense_score": 0.6065
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__das_007_79f126f6",
+          "dense_score": 0.5945
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__ashwa_003_a9b1d064",
+          "lexical_score": 18.3295
+        },
+        {
+          "chunk_id": "IN_doc-api-ashwagandha-001_standard_quality_cri_001_53a4352e",
+          "lexical_score": 15.6021
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_general_provisions_001_65feff1a",
+          "lexical_score": 14.3433
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_3_1___the_008_732a0c45",
+          "lexical_score": 12.1038
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__brahm_004_baa458d2",
+          "lexical_score": 12.045
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__guduc_006_1e96ec4b",
+          "lexical_score": 11.9294
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__tulsi_005_749d3069",
+          "lexical_score": 11.8162
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__harid_002_1a1cfca4",
+          "lexical_score": 11.2016
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_general_provisions_001_e891f097",
+          "lexical_score": 9.0218
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__avi_006_8c2292cc",
+          "lexical_score": 8.6289
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_3_1___the_008_732a0c45",
+          "rrf_score": 0.04
+        },
+        {
+          "chunk_id": "IN_doc-api-ashwagandha-001_standard_quality_cri_001_53a4352e",
+          "rrf_score": 0.0374
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__ashwa_003_a9b1d064",
+          "rrf_score": 0.0374
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__guduc_006_1e96ec4b",
+          "rrf_score": 0.0357
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__brahm_004_baa458d2",
+          "rrf_score": 0.0354
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__ashwa_003_a9b1d064",
+          "document_id": "IN-PHARM-API-MONOGRAPHS",
+          "title": "Ayurvedic Pharmacopoeia of India (API) — Official Monograph Specifications",
+          "domain": "ayurveda",
+          "subdomain": "pharmacopoeia",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "authority_tier": 2,
+          "source": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "rerank_score": 0.9989
+        },
+        {
+          "chunk_id": "IN_doc-api-ashwagandha-001_standard_quality_cri_001_53a4352e",
+          "document_id": "doc-api-ashwagandha-001",
+          "title": "Ayurvedic Pharmacopoeia of India: Withania somnifera Monograph",
+          "domain": "ayurveda",
+          "subdomain": "pharmacopoeia",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H)",
+          "authority_tier": 2,
+          "source": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H)",
+          "rerank_score": 0.9873
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__guduc_006_1e96ec4b",
+          "document_id": "IN-PHARM-API-MONOGRAPHS",
+          "title": "Ayurvedic Pharmacopoeia of India (API) — Official Monograph Specifications",
+          "domain": "ayurveda",
+          "subdomain": "pharmacopoeia",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "authority_tier": 2,
+          "source": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "rerank_score": 0.8428
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__harid_002_1a1cfca4",
+          "document_id": "IN-PHARM-API-MONOGRAPHS",
+          "title": "Ayurvedic Pharmacopoeia of India (API) — Official Monograph Specifications",
+          "domain": "ayurveda",
+          "subdomain": "pharmacopoeia",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "authority_tier": 2,
+          "source": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "rerank_score": 0.7722
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_3_1___the_008_732a0c45",
+          "document_id": "IN-REG-FSSAI-AA-2022",
+          "title": "Food Safety and Standards (Ayurveda Aahara) Regulations, 2022",
+          "domain": "fssai",
+          "subdomain": "fssai_ayurveda_aahara",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Food Safety and Standards Authority of India (FSSAI)",
+          "authority_tier": 1,
+          "source": "Food Safety and Standards Authority of India (FSSAI)",
+          "rerank_score": 0.7426
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 0.999, 5 usable Tier 1 chunks)."
+    },
+    {
+      "query_index": 8,
+      "query": "What are the classical AFI formulation ingredients and preparation for Triphala Churna?",
+      "detected_language": "en",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "What are the classical AFI formulation ingredients and preparation for Triphala Churna?",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__tri_002_0c4ca8cc",
+          "dense_score": 0.7343
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__avi_006_8c2292cc",
+          "dense_score": 0.69
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__tri_003_0aa95b3d",
+          "dense_score": 0.6897
+        },
+        {
+          "chunk_id": "IN_doc-afi-triphala-001_churna_prakarana__po_001_a6cf9acb",
+          "dense_score": 0.677
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__yog_005_e5a16425",
+          "dense_score": 0.6241
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__chy_004_d0dad80c",
+          "dense_score": 0.6069
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__das_007_79f126f6",
+          "dense_score": 0.575
+        },
+        {
+          "chunk_id": "IN_doc-tkdl-001_classical_formulatio_001_77c47ead",
+          "dense_score": 0.5414
+        },
+        {
+          "chunk_id": "IN_doc-tkdl-002_classical_formulatio_001_b61300ef",
+          "dense_score": 0.4959
+        },
+        {
+          "chunk_id": "IN_doc-afi-chyawanprash-002_avaleha_prakarana__e_001_ff062799",
+          "dense_score": 0.4894
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_doc-afi-triphala-001_churna_prakarana__po_001_a6cf9acb",
+          "lexical_score": 17.0177
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__tri_002_0c4ca8cc",
+          "lexical_score": 15.3751
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__avi_006_8c2292cc",
+          "lexical_score": 14.7868
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__tri_003_0aa95b3d",
+          "lexical_score": 11.6765
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__das_007_79f126f6",
+          "lexical_score": 11.4377
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__yog_005_e5a16425",
+          "lexical_score": 11.0887
+        },
+        {
+          "chunk_id": "IN_doc-tkdl-001_classical_formulatio_001_77c47ead",
+          "lexical_score": 9.243
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__chy_004_d0dad80c",
+          "lexical_score": 8.2092
+        },
+        {
+          "chunk_id": "IN_IN-243763-B_description_001_1cd4917e",
+          "lexical_score": 7.8001
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_general_provisions_001_e891f097",
+          "lexical_score": 7.6232
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__tri_002_0c4ca8cc",
+          "rrf_score": 0.0374
+        },
+        {
+          "chunk_id": "IN_doc-afi-triphala-001_churna_prakarana__po_001_a6cf9acb",
+          "rrf_score": 0.0368
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__avi_006_8c2292cc",
+          "rrf_score": 0.0368
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__tri_003_0aa95b3d",
+          "rrf_score": 0.0362
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__yog_005_e5a16425",
+          "rrf_score": 0.0351
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_doc-afi-triphala-001_churna_prakarana__po_001_a6cf9acb",
+          "document_id": "doc-afi-triphala-001",
+          "title": "Ayurvedic Formulary of India: Triphala Churna Specification",
+          "domain": "ayurveda",
+          "subdomain": "formulary",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Ministry of Ayush / Pharmacopoeia Commission",
+          "authority_tier": 2,
+          "source": "Ministry of Ayush / Pharmacopoeia Commission",
+          "rerank_score": 0.9911
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__tri_002_0c4ca8cc",
+          "document_id": "IN-FORM-AFI-FORMULATIONS",
+          "title": "Ayurvedic Formulary of India (AFI) — Classical Formulation Standards",
+          "domain": "ayurveda",
+          "subdomain": "formulary",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "authority_tier": 2,
+          "source": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "rerank_score": 0.9683
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__avi_006_8c2292cc",
+          "document_id": "IN-FORM-AFI-FORMULATIONS",
+          "title": "Ayurvedic Formulary of India (AFI) — Classical Formulation Standards",
+          "domain": "ayurveda",
+          "subdomain": "formulary",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "authority_tier": 2,
+          "source": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "rerank_score": 0.9206
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__tri_003_0aa95b3d",
+          "document_id": "IN-FORM-AFI-FORMULATIONS",
+          "title": "Ayurvedic Formulary of India (AFI) — Classical Formulation Standards",
+          "domain": "ayurveda",
+          "subdomain": "formulary",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "authority_tier": 2,
+          "source": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "rerank_score": 0.8465
+        },
+        {
+          "chunk_id": "IN_doc-tkdl-001_classical_formulatio_001_77c47ead",
+          "document_id": "doc-tkdl-001",
+          "title": "TKDL Prior Art Formulation: Ashwagandhadi Churna (Charaka Samhita)",
+          "domain": "traditional_knowledge",
+          "subdomain": "traditional_knowledge",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "CSIR-TKDL & Ministry of Ayush",
+          "authority_tier": 2,
+          "source": "CSIR-TKDL & Ministry of Ayush",
+          "rerank_score": 0.1684
+        }
+      ],
+      "crag_status": "PARTIAL",
+      "crag_reason": "Moderate-confidence evidence retrieved (top rerank score: 0.991)."
+    },
+    {
+      "query_index": 9,
+      "query": "What regulations apply to Ayurveda Aahara products under FSSAI 2022 rules in India?",
+      "detected_language": "en",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "What regulations apply to Ayurveda Aahara products under FSSAI 2022 rules in India?",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_1_1___sho_002_f7809cb2",
+          "dense_score": 0.7582
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_1___2___s_002_3dc5b9ec",
+          "dense_score": 0.7524
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_chapter_5___licensin_010_f374d501",
+          "dense_score": 0.752
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_1___gen_004_050b764f",
+          "dense_score": 0.7508
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_general_provisions_001_d080de48",
+          "dense_score": 0.7357
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_3___hea_006_f75f3d9f",
+          "dense_score": 0.7343
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_2___lab_005_659cf24a",
+          "dense_score": 0.7309
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_1_2___def_003_f3d40b70",
+          "dense_score": 0.729
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_4___pro_007_dda6ea17",
+          "dense_score": 0.7263
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_general_provisions_001_c44f458c",
+          "dense_score": 0.7219
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_3___scope_003_50112fb3",
+          "lexical_score": 21.6306
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_general_provisions_001_c44f458c",
+          "lexical_score": 20.3118
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_general_provisions_001_d080de48",
+          "lexical_score": 18.2299
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_chapter_5___licensin_010_f374d501",
+          "lexical_score": 17.8454
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_5___ayurv_004_4933c218",
+          "lexical_score": 17.5933
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_4_1___the_009_e86d8efd",
+          "lexical_score": 17.5403
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_1___2___s_002_3dc5b9ec",
+          "lexical_score": 17.3007
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_4___pro_007_dda6ea17",
+          "lexical_score": 17.2162
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_6___8___p_005_3e7b8894",
+          "lexical_score": 16.8657
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_1_1___sho_002_f7809cb2",
+          "lexical_score": 16.4754
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_chapter_5___licensin_010_f374d501",
+          "rrf_score": 0.0409
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_general_provisions_001_d080de48",
+          "rrf_score": 0.0406
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_1___2___s_002_3dc5b9ec",
+          "rrf_score": 0.0404
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_1_1___sho_002_f7809cb2",
+          "rrf_score": 0.0399
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_general_provisions_001_c44f458c",
+          "rrf_score": 0.0395
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_chapter_5___licensin_010_f374d501",
+          "document_id": "IN-REG-FSSAI-AA-2022",
+          "title": "Food Safety and Standards (Ayurveda Aahara) Regulations, 2022",
+          "domain": "fssai",
+          "subdomain": "fssai_ayurveda_aahara",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Food Safety and Standards Authority of India (FSSAI)",
+          "authority_tier": 1,
+          "source": "Food Safety and Standards Authority of India (FSSAI)",
+          "rerank_score": 0.9984
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_1___gen_004_050b764f",
+          "document_id": "IN-REG-FSSAI-AA-2022",
+          "title": "Food Safety and Standards (Ayurveda Aahara) Regulations, 2022",
+          "domain": "fssai",
+          "subdomain": "fssai_ayurveda_aahara",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Food Safety and Standards Authority of India (FSSAI)",
+          "authority_tier": 1,
+          "source": "Food Safety and Standards Authority of India (FSSAI)",
+          "rerank_score": 0.9982
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_2___lab_005_659cf24a",
+          "document_id": "IN-REG-FSSAI-AA-2022",
+          "title": "Food Safety and Standards (Ayurveda Aahara) Regulations, 2022",
+          "domain": "fssai",
+          "subdomain": "fssai_ayurveda_aahara",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Food Safety and Standards Authority of India (FSSAI)",
+          "authority_tier": 1,
+          "source": "Food Safety and Standards Authority of India (FSSAI)",
+          "rerank_score": 0.9966
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
+          "document_id": "IN-COMM-AYURVEDA-D2C",
+          "title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+          "domain": "commercialization",
+          "subdomain": "d2c_licensing",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "authority_tier": 4,
+          "source": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "rerank_score": 0.9903
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_6___8___p_005_3e7b8894",
+          "document_id": "IN-REG-FSSAI-BOUNDARY-2022",
+          "title": "FSSAI Ayurveda Aahara Boundary Matrix, Packaging Rules & Logo Guidelines",
+          "domain": "fssai",
+          "subdomain": "fssai_ayurveda_aahara",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Food Safety and Standards Authority of India (FSSAI)",
+          "authority_tier": 1,
+          "source": "Food Safety and Standards Authority of India (FSSAI)",
+          "rerank_score": 0.9813
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 0.998, 5 usable Tier 1 chunks)."
+    },
+    {
+      "query_index": 10,
+      "query": "What are the manufacturing license requirements under Rule 158B for Ayurvedic medicines?",
+      "detected_language": "en",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "What are the manufacturing license requirements under Rule 158B for Ayurvedic medicines?",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_rule_158b___licensin_003_d34ab326",
+          "dense_score": 0.7526
+        },
+        {
+          "chunk_id": "IN_doc-dcr-1945-rule158b_rule_158b_001_ad4e8f43",
+          "dense_score": 0.7272
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4",
+          "dense_score": 0.7071
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3",
+          "dense_score": 0.6697
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_schedule_t___good_ma_004_35452887",
+          "dense_score": 0.6671
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_chapter_5___licensin_010_f374d501",
+          "dense_score": 0.6289
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
+          "dense_score": 0.623
+        },
+        {
+          "chunk_id": "IN_doc-dca-1940-sec33eeb_section_33eeb_001_44045bb2",
+          "dense_score": 0.6032
+        },
+        {
+          "chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_who_copp__certificat_004_1a6f0002",
+          "dense_score": 0.5897
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
+          "dense_score": 0.5888
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_rule_158b___licensin_003_d34ab326",
+          "lexical_score": 19.5613
+        },
+        {
+          "chunk_id": "IN_doc-dcr-1945-rule158b_rule_158b_001_ad4e8f43",
+          "lexical_score": 18.5776
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4",
+          "lexical_score": 17.5394
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3",
+          "lexical_score": 14.4333
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_schedule_t___good_ma_004_35452887",
+          "lexical_score": 13.8535
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_section_3_a____statu_002_b0f7acc8",
+          "lexical_score": 10.3241
+        },
+        {
+          "chunk_id": "IN_doc-dcr-1945-schedulet_schedule_t_001_f36e9ccd",
+          "lexical_score": 9.9997
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_section_33eea_to_33e_007_c4bca08b",
+          "lexical_score": 9.1712
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_chapter_5___licensin_010_f374d501",
+          "lexical_score": 8.1877
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_3___scope_003_50112fb3",
+          "lexical_score": 7.9592
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_rule_158b___licensin_003_d34ab326",
+          "rrf_score": 0.0426
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3",
+          "rrf_score": 0.0406
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_schedule_t___good_ma_004_35452887",
+          "rrf_score": 0.04
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_chapter_5___licensin_010_f374d501",
+          "rrf_score": 0.0385
+        },
+        {
+          "chunk_id": "IN_doc-dcr-1945-rule158b_rule_158b_001_ad4e8f43",
+          "rrf_score": 0.0371
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_rule_158b___licensin_003_d34ab326",
+          "document_id": "IN-ACT-DCR-1945",
+          "title": "Drugs & Cosmetics Act 1940 & Rules 1945 — Rule 158B & Schedule T GMP",
+          "domain": "drugs_cosmetics",
+          "subdomain": "drugs_cosmetics",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Central Drugs Standard Control Organization (CDSCO) & Ministry of Ayush",
+          "authority_tier": 1,
+          "source": "Central Drugs Standard Control Organization (CDSCO) & Ministry of Ayush",
+          "rerank_score": 0.9968
+        },
+        {
+          "chunk_id": "IN_doc-dcr-1945-rule158b_rule_158b_001_ad4e8f43",
+          "document_id": "doc-dcr-1945-rule158b",
+          "title": "Drugs and Cosmetics Rules, 1945: Rule 158B - Guidelines for Issue of License with Respect to ASU Drugs",
+          "domain": "drugs_cosmetics",
+          "subdomain": "licensing_rules",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Ministry of Ayush / State Licensing Authorities",
+          "authority_tier": 2,
+          "source": "Ministry of Ayush / State Licensing Authorities",
+          "rerank_score": 0.9904
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_schedule_t___good_ma_004_35452887",
+          "document_id": "IN-ACT-DCR-1945",
+          "title": "Drugs & Cosmetics Act 1940 & Rules 1945 — Rule 158B & Schedule T GMP",
+          "domain": "drugs_cosmetics",
+          "subdomain": "drugs_cosmetics",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Central Drugs Standard Control Organization (CDSCO) & Ministry of Ayush",
+          "authority_tier": 1,
+          "source": "Central Drugs Standard Control Organization (CDSCO) & Ministry of Ayush",
+          "rerank_score": 0.9886
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3",
+          "document_id": "IN-ACT-DCR-1945",
+          "title": "Drugs & Cosmetics Act 1940 & Rules 1945 — Rule 158B & Schedule T GMP",
+          "domain": "drugs_cosmetics",
+          "subdomain": "drugs_cosmetics",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Central Drugs Standard Control Organization (CDSCO) & Ministry of Ayush",
+          "authority_tier": 1,
+          "source": "Central Drugs Standard Control Organization (CDSCO) & Ministry of Ayush",
+          "rerank_score": 0.9766
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_3___scope_003_50112fb3",
+          "document_id": "IN-REG-FSSAI-BOUNDARY-2022",
+          "title": "FSSAI Ayurveda Aahara Boundary Matrix, Packaging Rules & Logo Guidelines",
+          "domain": "fssai",
+          "subdomain": "fssai_ayurveda_aahara",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Food Safety and Standards Authority of India (FSSAI)",
+          "authority_tier": 1,
+          "source": "Food Safety and Standards Authority of India (FSSAI)",
+          "rerank_score": 0.7254
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 0.997, 5 usable Tier 1 chunks)."
+    },
+    {
+      "query_index": 11,
+      "query": "Does using Indian biological resources require National Biodiversity Authority prior approval under Section 6?",
+      "detected_language": "en",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "Does using Indian biological resources require National Biodiversity Authority prior approval under Section 6?",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_section_6___applicat_003_1a6ed9c3",
+          "dense_score": 0.7385
+        },
+        {
+          "chunk_id": "IN_doc-nba-guidelines-sec6_section_6___regulati_001_0e042fee",
+          "dense_score": 0.7207
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_section_3___access_t_002_90929fbe",
+          "dense_score": 0.6841
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec10-4_section_10_4__ii__d_001_3a9992d6",
+          "dense_score": 0.5977
+        },
+        {
+          "chunk_id": "IN_doc-abs-reg-2014-guidelines_regulation_9__benefi_001_035c2582",
+          "dense_score": 0.596
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_general_provisions_001_e47ceb10",
+          "dense_score": 0.5868
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_guidelines_on_access_005_efffee95",
+          "dense_score": 0.5852
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_10_4__ii__d_008_8e472089",
+          "dense_score": 0.5567
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_key_2023_amendments_004_3dba24f3",
+          "dense_score": 0.5471
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_2__revocation_o_003_5bc41e23",
+          "dense_score": 0.5449
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_doc-nba-guidelines-sec6_section_6___regulati_001_0e042fee",
+          "lexical_score": 28.8122
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_section_3___access_t_002_90929fbe",
+          "lexical_score": 25.2557
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_section_6___applicat_003_1a6ed9c3",
+          "lexical_score": 24.9033
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_indian_patent_applic_010_de024d3f",
+          "lexical_score": 15.6366
+        },
+        {
+          "chunk_id": "IN_doc-abs-reg-2014-guidelines_regulation_9__benefi_001_035c2582",
+          "lexical_score": 15.2983
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_key_2023_amendments_004_3dba24f3",
+          "lexical_score": 14.6672
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_general_provisions_001_e47ceb10",
+          "lexical_score": 13.6315
+        },
+        {
+          "chunk_id": "IN_doc-wipo-igc-tk-001_article_3__subject_m_001_cd3ff207",
+          "lexical_score": 13.3428
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_chapter_5___licensin_010_f374d501",
+          "lexical_score": 10.6688
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_guidelines_on_access_005_efffee95",
+          "lexical_score": 9.6444
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_doc-nba-guidelines-sec6_section_6___regulati_001_0e042fee",
+          "rrf_score": 0.0423
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_section_6___applicat_003_1a6ed9c3",
+          "rrf_score": 0.0419
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_section_3___access_t_002_90929fbe",
+          "rrf_score": 0.0416
+        },
+        {
+          "chunk_id": "IN_doc-abs-reg-2014-guidelines_regulation_9__benefi_001_035c2582",
+          "rrf_score": 0.04
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_general_provisions_001_e47ceb10",
+          "rrf_score": 0.0391
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_section_6___applicat_003_1a6ed9c3",
+          "document_id": "IN-ACT-BDA-2023",
+          "title": "Biological Diversity (Amendment) Act 2023 & ABS Regulations 2014",
+          "domain": "biodiversity",
+          "subdomain": "biological_resources",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "National Biodiversity Authority (NBA), Ministry of Environment, Forest and Climate Change",
+          "authority_tier": 1,
+          "source": "National Biodiversity Authority (NBA), Ministry of Environment, Forest and Climate Change",
+          "rerank_score": 0.9989
+        },
+        {
+          "chunk_id": "IN_doc-nba-guidelines-sec6_section_6___regulati_001_0e042fee",
+          "document_id": "doc-nba-guidelines-sec6",
+          "title": "National Biodiversity Authority: Guidelines for Prior Approval under Section 6 of Biological Diversity Act",
+          "domain": "biodiversity",
+          "subdomain": "biological_resources",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "National Biodiversity Authority (NBA), Chennai",
+          "authority_tier": 1,
+          "source": "National Biodiversity Authority (NBA), Chennai",
+          "rerank_score": 0.9983
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_section_3___access_t_002_90929fbe",
+          "document_id": "IN-ACT-BDA-2023",
+          "title": "Biological Diversity (Amendment) Act 2023 & ABS Regulations 2014",
+          "domain": "biodiversity",
+          "subdomain": "biological_resources",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "National Biodiversity Authority (NBA), Ministry of Environment, Forest and Climate Change",
+          "authority_tier": 1,
+          "source": "National Biodiversity Authority (NBA), Ministry of Environment, Forest and Climate Change",
+          "rerank_score": 0.9685
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_key_2023_amendments_004_3dba24f3",
+          "document_id": "IN-ACT-BDA-2023",
+          "title": "Biological Diversity (Amendment) Act 2023 & ABS Regulations 2014",
+          "domain": "biodiversity",
+          "subdomain": "biological_resources",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "National Biodiversity Authority (NBA), Ministry of Environment, Forest and Climate Change",
+          "authority_tier": 1,
+          "source": "National Biodiversity Authority (NBA), Ministry of Environment, Forest and Climate Change",
+          "rerank_score": 0.5396
+        },
+        {
+          "chunk_id": "IN_doc-abs-reg-2014-guidelines_regulation_9__benefi_001_035c2582",
+          "document_id": "doc-abs-reg-2014-guidelines",
+          "title": "Guidelines on Access to Biological Resources and Associated Knowledge and Benefits Sharing Regulations, 2014",
+          "domain": "biodiversity",
+          "subdomain": "biological_resources",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "National Biodiversity Authority (NBA)",
+          "authority_tier": 1,
+          "source": "National Biodiversity Authority (NBA)",
+          "rerank_score": 0.0984
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 0.999, 5 usable Tier 1 chunks)."
+    },
+    {
+      "query_index": 12,
+      "query": "How does the Traditional Knowledge Digital Library (TKDL) serve as prior art to cancel biopiracy patents?",
+      "detected_language": "en",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "How does the Traditional Knowledge Digital Library (TKDL) serve as prior art to cancel biopiracy patents?",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_general_provisions_001_89ba45d0",
+          "dense_score": 0.697
+        },
+        {
+          "chunk_id": "IN_doc-wipo-igc-tk-001_article_3__subject_m_001_cd3ff207",
+          "dense_score": 0.6468
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_1__revocation_o_002_2f677223",
+          "dense_score": 0.62
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_4__the_jeevani_005_0ee86cdf",
+          "dense_score": 0.5916
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_p____exclu_003_8c484905",
+          "dense_score": 0.586
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_3_o____topog_006_3100bad7",
+          "dense_score": 0.551
+        },
+        {
+          "chunk_id": "IN_doc-tkdl-002_classical_formulatio_001_b61300ef",
+          "dense_score": 0.5491
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_2__revocation_o_003_5bc41e23",
+          "dense_score": 0.5448
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_64___revocat_009_3a6f5003",
+          "dense_score": 0.5424
+        },
+        {
+          "chunk_id": "IN_doc-tkdl-001_classical_formulatio_001_77c47ead",
+          "dense_score": 0.5403
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_general_provisions_001_89ba45d0",
+          "lexical_score": 29.4503
+        },
+        {
+          "chunk_id": "IN_doc-wipo-igc-tk-001_article_3__subject_m_001_cd3ff207",
+          "lexical_score": 22.2216
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_2__revocation_o_003_5bc41e23",
+          "lexical_score": 22.1429
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_1__revocation_o_002_2f677223",
+          "lexical_score": 22.0347
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_3__revocation_o_004_2747dcec",
+          "lexical_score": 18.3048
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_4__the_jeevani_005_0ee86cdf",
+          "lexical_score": 18.0453
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_3_o____topog_006_3100bad7",
+          "lexical_score": 17.7208
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_p____exclu_003_8c484905",
+          "lexical_score": 16.841
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_64___revocat_009_3a6f5003",
+          "lexical_score": 15.639
+        },
+        {
+          "chunk_id": "IN_doc-tkdl-001_classical_formulatio_001_77c47ead",
+          "lexical_score": 15.0949
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_p____exclu_003_8c484905",
+          "rrf_score": 0.0391
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_3_o____topog_006_3100bad7",
+          "rrf_score": 0.0391
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_general_provisions_001_89ba45d0",
+          "rrf_score": 0.0377
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_64___revocat_009_3a6f5003",
+          "rrf_score": 0.0377
+        },
+        {
+          "chunk_id": "IN_doc-wipo-igc-tk-001_article_3__subject_m_001_cd3ff207",
+          "rrf_score": 0.0371
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_doc-wipo-igc-tk-001_article_3__subject_m_001_cd3ff207",
+          "document_id": "doc-wipo-igc-tk-001",
+          "title": "WIPO Intergovernmental Committee: Protection of Traditional Knowledge Draft Articles",
+          "domain": "patent",
+          "subdomain": "international_tk_framework",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "WIPO Intergovernmental Committee on IP and Genetic Resources, Traditional Knowledge and Folklore (IGC)",
+          "authority_tier": 2,
+          "source": "WIPO Intergovernmental Committee on IP and Genetic Resources, Traditional Knowledge and Folklore (IGC)",
+          "rerank_score": 0.9362
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_general_provisions_001_89ba45d0",
+          "document_id": "IN-TKDL-CASE-COMPENDIUM",
+          "title": "Traditional Knowledge Digital Library (TKDL) — Landmark Biopiracy Revocations",
+          "domain": "traditional_knowledge",
+          "subdomain": "biopiracy_defense",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "CSIR & Ministry of Ayush, Government of India",
+          "authority_tier": 2,
+          "source": "CSIR & Ministry of Ayush, Government of India",
+          "rerank_score": 0.8421
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_1__revocation_o_002_2f677223",
+          "document_id": "IN-TKDL-CASE-COMPENDIUM",
+          "title": "Traditional Knowledge Digital Library (TKDL) — Landmark Biopiracy Revocations",
+          "domain": "traditional_knowledge",
+          "subdomain": "biopiracy_defense",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "CSIR & Ministry of Ayush, Government of India",
+          "authority_tier": 2,
+          "source": "CSIR & Ministry of Ayush, Government of India",
+          "rerank_score": 0.6958
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_3__revocation_o_004_2747dcec",
+          "document_id": "IN-TKDL-CASE-COMPENDIUM",
+          "title": "Traditional Knowledge Digital Library (TKDL) — Landmark Biopiracy Revocations",
+          "domain": "traditional_knowledge",
+          "subdomain": "biopiracy_defense",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "CSIR & Ministry of Ayush, Government of India",
+          "authority_tier": 2,
+          "source": "CSIR & Ministry of Ayush, Government of India",
+          "rerank_score": 0.5806
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
+          "document_id": "doc-india-code-patents-sec3p",
+          "title": "The Patents Act, 1970: Section 3(p) - Exclusion of Traditional Knowledge",
+          "domain": "patent",
+          "subdomain": "statutory_exclusions",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Parliament of India / CGPDTM",
+          "authority_tier": 1,
+          "source": "Parliament of India / CGPDTM",
+          "rerank_score": 0.3422
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 0.936, 5 usable Tier 1 chunks)."
+    },
+    {
+      "query_index": 13,
+      "query": "Can I commercialize and sell an Ayurvedic product direct to consumers without obtaining a patent in India?",
+      "detected_language": "en",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "Can I commercialize and sell an Ayurvedic product direct to consumers without obtaining a patent in India?",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
+          "dense_score": 0.8058
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4",
+          "dense_score": 0.7518
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_general_provisions_001_453b5f55",
+          "dense_score": 0.7305
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
+          "dense_score": 0.7279
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+          "dense_score": 0.7164
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_9___absolute_003_272220a1",
+          "dense_score": 0.6479
+        },
+        {
+          "chunk_id": "IN_doc-dca-1940-sec33eeb_section_33eeb_001_44045bb2",
+          "dense_score": 0.6375
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_64___revocat_009_3a6f5003",
+          "dense_score": 0.6282
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3",
+          "dense_score": 0.6261
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_i____diagn_007_86096e3f",
+          "dense_score": 0.6071
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
+          "lexical_score": 27.5916
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
+          "lexical_score": 21.2086
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4",
+          "lexical_score": 18.6804
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_general_provisions_001_453b5f55",
+          "lexical_score": 9.4718
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-GI-1999_section_11_2____a_tr_007_aac08a26",
+          "lexical_score": 7.3247
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_section_6___applicat_003_1a6ed9c3",
+          "lexical_score": 7.2971
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+          "lexical_score": 7.1391
+        },
+        {
+          "chunk_id": "IN_doc-nba-guidelines-sec6_section_6___regulati_001_0e042fee",
+          "lexical_score": 6.7341
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_section_3___access_t_002_90929fbe",
+          "lexical_score": 5.6004
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_2___lab_005_659cf24a",
+          "lexical_score": 5.5721
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
+          "rrf_score": 0.0279
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4",
+          "rrf_score": 0.0272
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
+          "rrf_score": 0.027
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_general_provisions_001_453b5f55",
+          "rrf_score": 0.0268
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+          "rrf_score": 0.0258
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
+          "document_id": "IN-COMM-AYURVEDA-D2C",
+          "title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+          "domain": "commercialization",
+          "subdomain": "d2c_licensing",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "authority_tier": 4,
+          "source": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "rerank_score": 0.9999
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4",
+          "document_id": "IN-COMM-AYURVEDA-D2C",
+          "title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+          "domain": "commercialization",
+          "subdomain": "d2c_licensing",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "authority_tier": 4,
+          "source": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "rerank_score": 0.9992
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
+          "document_id": "IN-COMM-AYURVEDA-D2C",
+          "title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+          "domain": "commercialization",
+          "subdomain": "d2c_licensing",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "authority_tier": 4,
+          "source": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "rerank_score": 0.9943
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3",
+          "document_id": "IN-ACT-DCR-1945",
+          "title": "Drugs & Cosmetics Act 1940 & Rules 1945 — Rule 158B & Schedule T GMP",
+          "domain": "drugs_cosmetics",
+          "subdomain": "drugs_cosmetics",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Central Drugs Standard Control Organization (CDSCO) & Ministry of Ayush",
+          "authority_tier": 1,
+          "source": "Central Drugs Standard Control Organization (CDSCO) & Ministry of Ayush",
+          "rerank_score": 0.5645
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_i____diagn_007_86096e3f",
+          "document_id": "IN-GUIDELINE-PATENTS-TK",
+          "title": "Guidelines for Examination of Patent Applications in the Field of Traditional Knowledge & Pharmaceuticals",
+          "domain": "patent",
+          "subdomain": "examination_guidelines",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "rerank_score": 0.4889
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 1.000, 5 usable Tier 1 chunks)."
+    },
+    {
+      "query_index": 14,
+      "query": "What are the permissible limits for heavy metals in Ayurvedic herbal medicines under WHO standards?",
+      "detected_language": "en",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "What are the permissible limits for heavy metals in Ayurvedic herbal medicines under WHO standards?",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_who_maximum_permissi_002_49e40b19",
+          "dense_score": 0.7889
+        },
+        {
+          "chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_who_copp__certificat_004_1a6f0002",
+          "dense_score": 0.6813
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_4_1___the_009_e86d8efd",
+          "dense_score": 0.6685
+        },
+        {
+          "chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_general_provisions_001_b651e0d5",
+          "dense_score": 0.6502
+        },
+        {
+          "chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_who_limits_for_micro_003_d1694376",
+          "dense_score": 0.6431
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_1___gen_004_050b764f",
+          "dense_score": 0.58
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_3_1___the_008_732a0c45",
+          "dense_score": 0.5664
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__harid_002_1a1cfca4",
+          "dense_score": 0.5623
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
+          "dense_score": 0.5621
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_schedule_e_1____list_006_057b01d1",
+          "dense_score": 0.5618
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_who_maximum_permissi_002_49e40b19",
+          "lexical_score": 31.5182
+        },
+        {
+          "chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_general_provisions_001_b651e0d5",
+          "lexical_score": 25.8301
+        },
+        {
+          "chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_who_copp__certificat_004_1a6f0002",
+          "lexical_score": 24.5825
+        },
+        {
+          "chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_who_limits_for_micro_003_d1694376",
+          "lexical_score": 22.9915
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_1___gen_004_050b764f",
+          "lexical_score": 12.0188
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_4_1___the_009_e86d8efd",
+          "lexical_score": 11.1296
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_schedule_t___good_ma_004_35452887",
+          "lexical_score": 7.7093
+        },
+        {
+          "chunk_id": "IN_doc-who-ayur-term-001_standardized_clinica_001_4e7a87a7",
+          "lexical_score": 7.0324
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
+          "lexical_score": 5.7052
+        },
+        {
+          "chunk_id": "IN_doc-dcr-1945-rule158b_rule_158b_001_ad4e8f43",
+          "lexical_score": 5.5439
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_4_1___the_009_e86d8efd",
+          "rrf_score": 0.0403
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_1___gen_004_050b764f",
+          "rrf_score": 0.0397
+        },
+        {
+          "chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_who_maximum_permissi_002_49e40b19",
+          "rrf_score": 0.0377
+        },
+        {
+          "chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_who_copp__certificat_004_1a6f0002",
+          "rrf_score": 0.0368
+        },
+        {
+          "chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_general_provisions_001_b651e0d5",
+          "rrf_score": 0.0365
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_who_maximum_permissi_002_49e40b19",
+          "document_id": "GLOBAL-WHO-TM-BENCHMARKS",
+          "title": "WHO Traditional Medicine Quality Standards & Heavy Metal Permissible Limits",
+          "domain": "who_terminology",
+          "subdomain": "quality_standards",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "World Health Organization (WHO) & Ministry of Ayush",
+          "authority_tier": 2,
+          "source": "World Health Organization (WHO) & Ministry of Ayush",
+          "rerank_score": 0.9996
+        },
+        {
+          "chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_who_limits_for_micro_003_d1694376",
+          "document_id": "GLOBAL-WHO-TM-BENCHMARKS",
+          "title": "WHO Traditional Medicine Quality Standards & Heavy Metal Permissible Limits",
+          "domain": "who_terminology",
+          "subdomain": "quality_standards",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "World Health Organization (WHO) & Ministry of Ayush",
+          "authority_tier": 2,
+          "source": "World Health Organization (WHO) & Ministry of Ayush",
+          "rerank_score": 0.9927
+        },
+        {
+          "chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_who_copp__certificat_004_1a6f0002",
+          "document_id": "GLOBAL-WHO-TM-BENCHMARKS",
+          "title": "WHO Traditional Medicine Quality Standards & Heavy Metal Permissible Limits",
+          "domain": "who_terminology",
+          "subdomain": "quality_standards",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "World Health Organization (WHO) & Ministry of Ayush",
+          "authority_tier": 2,
+          "source": "World Health Organization (WHO) & Ministry of Ayush",
+          "rerank_score": 0.9275
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_4_1___the_009_e86d8efd",
+          "document_id": "IN-REG-FSSAI-AA-2022",
+          "title": "Food Safety and Standards (Ayurveda Aahara) Regulations, 2022",
+          "domain": "fssai",
+          "subdomain": "fssai_ayurveda_aahara",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Food Safety and Standards Authority of India (FSSAI)",
+          "authority_tier": 1,
+          "source": "Food Safety and Standards Authority of India (FSSAI)",
+          "rerank_score": 0.7362
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_schedule_e_1____list_006_057b01d1",
+          "document_id": "IN-ACT-DCR-1945",
+          "title": "Drugs & Cosmetics Act 1940 & Rules 1945 — Rule 158B & Schedule T GMP",
+          "domain": "drugs_cosmetics",
+          "subdomain": "drugs_cosmetics",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Central Drugs Standard Control Organization (CDSCO) & Ministry of Ayush",
+          "authority_tier": 1,
+          "source": "Central Drugs Standard Control Organization (CDSCO) & Ministry of Ayush",
+          "rerank_score": 0.2331
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 1.000, 5 usable Tier 1 chunks)."
+    },
+    {
+      "query_index": 15,
+      "query": "क्या भारत में पेटेंट प्राप्त किए बिना किसी आयुर्वेदिक उत्पाद का व्यावसायीकरण करके सीधे उपभोक्ताओं को बेच सकता हूँ?",
+      "detected_language": "hi",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "क्या भारत में patent प्राप्त किए बिना किसी ayurvedaिक उत्पाद का commercialization commercialize direct to consumers D2C without patent करके सीधे direct to consumers D2C को sell commercialize Form 25D सकता हूँ?",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
+          "dense_score": 0.7095
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_general_provisions_001_453b5f55",
+          "dense_score": 0.6796
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4",
+          "dense_score": 0.6701
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
+          "dense_score": 0.667
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+          "dense_score": 0.6386
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_9___absolute_003_272220a1",
+          "dense_score": 0.586
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_64___revocat_009_3a6f5003",
+          "dense_score": 0.5801
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_i____diagn_007_86096e3f",
+          "dense_score": 0.5646
+        },
+        {
+          "chunk_id": "IN_doc-dca-1940-sec33eeb_section_33eeb_001_44045bb2",
+          "dense_score": 0.5637
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_j____plant_006_72866060",
+          "dense_score": 0.5607
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
+          "lexical_score": 51.2423
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
+          "lexical_score": 43.8356
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4",
+          "lexical_score": 40.276
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_general_provisions_001_453b5f55",
+          "lexical_score": 32.4739
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+          "lexical_score": 22.5745
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3",
+          "lexical_score": 8.1932
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_schedule_t___good_ma_004_35452887",
+          "lexical_score": 6.369
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_rule_158b___licensin_003_d34ab326",
+          "lexical_score": 5.9623
+        },
+        {
+          "chunk_id": "IN_doc-dcr-1945-rule158b_rule_158b_001_ad4e8f43",
+          "lexical_score": 5.622
+        },
+        {
+          "chunk_id": "IN_doc-nba-guidelines-sec6_section_6___regulati_001_0e042fee",
+          "lexical_score": 5.4054
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
+          "rrf_score": 0.0279
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_general_provisions_001_453b5f55",
+          "rrf_score": 0.027
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
+          "rrf_score": 0.027
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4",
+          "rrf_score": 0.027
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+          "rrf_score": 0.0262
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
+          "document_id": "IN-COMM-AYURVEDA-D2C",
+          "title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+          "domain": "commercialization",
+          "subdomain": "d2c_licensing",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "authority_tier": 4,
+          "source": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "rerank_score": 0.9999
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4",
+          "document_id": "IN-COMM-AYURVEDA-D2C",
+          "title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+          "domain": "commercialization",
+          "subdomain": "d2c_licensing",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "authority_tier": 4,
+          "source": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "rerank_score": 0.9999
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
+          "document_id": "IN-COMM-AYURVEDA-D2C",
+          "title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+          "domain": "commercialization",
+          "subdomain": "d2c_licensing",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "authority_tier": 4,
+          "source": "Ministry of Ayush, CDSCO & FSSAI Advisory",
+          "rerank_score": 0.9993
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_i____diagn_007_86096e3f",
+          "document_id": "IN-GUIDELINE-PATENTS-TK",
+          "title": "Guidelines for Examination of Patent Applications in the Field of Traditional Knowledge & Pharmaceuticals",
+          "domain": "patent",
+          "subdomain": "examination_guidelines",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "rerank_score": 0.744
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3",
+          "document_id": "IN-ACT-DCR-1945",
+          "title": "Drugs & Cosmetics Act 1940 & Rules 1945 — Rule 158B & Schedule T GMP",
+          "domain": "drugs_cosmetics",
+          "subdomain": "drugs_cosmetics",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Central Drugs Standard Control Organization (CDSCO) & Ministry of Ayush",
+          "authority_tier": 1,
+          "source": "Central Drugs Standard Control Organization (CDSCO) & Ministry of Ayush",
+          "rerank_score": 0.7374
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 1.000, 5 usable Tier 1 chunks)."
+    },
+    {
+      "query_index": 16,
+      "query": "భారతదేశంలో అశ్వగంధ లేదా తిప్పతీగ వేరు కోసం అధికారిక API ప్రమాణాలు ఏమిటి?",
+      "detected_language": "te",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "భారతదేశంలో ashwagandha withania somnifera లేదా tinospora cordifolia guduchi వేరు కోసం అధికారిక API ప్రమాణాలు ఏమిటి?",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__guduc_006_1e96ec4b",
+          "dense_score": 0.5825
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__ashwa_003_a9b1d064",
+          "dense_score": 0.5716
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__harid_002_1a1cfca4",
+          "dense_score": 0.5696
+        },
+        {
+          "chunk_id": "IN_doc-api-ashwagandha-001_standard_quality_cri_001_53a4352e",
+          "dense_score": 0.5684
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__brahm_004_baa458d2",
+          "dense_score": 0.5654
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_rule_158b___licensin_003_d34ab326",
+          "dense_score": 0.5454
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__tulsi_005_749d3069",
+          "dense_score": 0.5315
+        },
+        {
+          "chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_who_copp__certificat_004_1a6f0002",
+          "dense_score": 0.5238
+        },
+        {
+          "chunk_id": "IN_GLOBAL-WHO-TM-BENCHMARKS_who_maximum_permissi_002_49e40b19",
+          "dense_score": 0.517
+        },
+        {
+          "chunk_id": "IN_doc-api-guduchi-002_standard_quality_cri_001_a78c9585",
+          "dense_score": 0.5169
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__guduc_006_1e96ec4b",
+          "lexical_score": 22.8456
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__ashwa_003_a9b1d064",
+          "lexical_score": 20.0459
+        },
+        {
+          "chunk_id": "IN_doc-api-guduchi-002_standard_quality_cri_001_a78c9585",
+          "lexical_score": 19.0634
+        },
+        {
+          "chunk_id": "IN_doc-api-ashwagandha-001_standard_quality_cri_001_53a4352e",
+          "lexical_score": 17.4766
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_3_1___the_008_732a0c45",
+          "lexical_score": 15.3316
+        },
+        {
+          "chunk_id": "IN_IN-243763-B_claims_1_002_e6ee2b2e",
+          "lexical_score": 10.1038
+        },
+        {
+          "chunk_id": "IN_IN-243763-B_claims_3_003_f90a22c2",
+          "lexical_score": 9.8284
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_general_provisions_001_65feff1a",
+          "lexical_score": 9.7584
+        },
+        {
+          "chunk_id": "IN_IN-243763-B_abstract_001_a06b0f41",
+          "lexical_score": 9.7032
+        },
+        {
+          "chunk_id": "IN_IN-268685-B_claims_5_005_c42de6a1",
+          "lexical_score": 9.2263
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__guduc_006_1e96ec4b",
+          "rrf_score": 0.0377
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__ashwa_003_a9b1d064",
+          "rrf_score": 0.0371
+        },
+        {
+          "chunk_id": "IN_doc-api-ashwagandha-001_standard_quality_cri_001_53a4352e",
+          "rrf_score": 0.0359
+        },
+        {
+          "chunk_id": "IN_doc-api-guduchi-002_standard_quality_cri_001_a78c9585",
+          "rrf_score": 0.0347
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_3_1___the_008_732a0c45",
+          "rrf_score": 0.02
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__ashwa_003_a9b1d064",
+          "document_id": "IN-PHARM-API-MONOGRAPHS",
+          "title": "Ayurvedic Pharmacopoeia of India (API) — Official Monograph Specifications",
+          "domain": "ayurveda",
+          "subdomain": "pharmacopoeia",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "authority_tier": 2,
+          "source": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "rerank_score": 0.9936
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_api_monograph__guduc_006_1e96ec4b",
+          "document_id": "IN-PHARM-API-MONOGRAPHS",
+          "title": "Ayurvedic Pharmacopoeia of India (API) — Official Monograph Specifications",
+          "domain": "ayurveda",
+          "subdomain": "pharmacopoeia",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "authority_tier": 2,
+          "source": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "rerank_score": 0.9825
+        },
+        {
+          "chunk_id": "IN_doc-api-ashwagandha-001_standard_quality_cri_001_53a4352e",
+          "document_id": "doc-api-ashwagandha-001",
+          "title": "Ayurvedic Pharmacopoeia of India: Withania somnifera Monograph",
+          "domain": "ayurveda",
+          "subdomain": "pharmacopoeia",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H)",
+          "authority_tier": 2,
+          "source": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H)",
+          "rerank_score": 0.9777
+        },
+        {
+          "chunk_id": "IN_doc-api-guduchi-002_standard_quality_cri_001_a78c9585",
+          "document_id": "doc-api-guduchi-002",
+          "title": "Ayurvedic Pharmacopoeia of India: Tinospora cordifolia (Guduchi) Monograph",
+          "domain": "ayurveda",
+          "subdomain": "pharmacopoeia",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H)",
+          "authority_tier": 2,
+          "source": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H)",
+          "rerank_score": 0.9578
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_3_1___the_008_732a0c45",
+          "document_id": "IN-REG-FSSAI-AA-2022",
+          "title": "Food Safety and Standards (Ayurveda Aahara) Regulations, 2022",
+          "domain": "fssai",
+          "subdomain": "fssai_ayurveda_aahara",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Food Safety and Standards Authority of India (FSSAI)",
+          "authority_tier": 1,
+          "source": "Food Safety and Standards Authority of India (FSSAI)",
+          "rerank_score": 0.6279
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 0.994, 5 usable Tier 1 chunks)."
+    },
+    {
+      "query_index": 17,
+      "query": "இந்தியாவில் பாரம்பரிய அறிவு டிஜிட்டல் நூலகம் (TKDL) மஞ்சள் மற்றும் வேம்பு போன்ற பயோபைரசி காப்புரிமைகளை எவ்வாறு ரத்து செய்கிறது?",
+      "detected_language": "ta",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "இந்தியாவில் traditional knowledge டிஜிட்டல் நூலகம் (TKDL) மஞ்சள் மற்றும் வேம்பு போன்ற பயோபைரசி patentகளை எவ்வாறு ரத்து செய்கிறது?",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_general_provisions_001_89ba45d0",
+          "dense_score": 0.6428
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_1__revocation_o_002_2f677223",
+          "dense_score": 0.619
+        },
+        {
+          "chunk_id": "IN_doc-wipo-igc-tk-001_article_3__subject_m_001_cd3ff207",
+          "dense_score": 0.5749
+        },
+        {
+          "chunk_id": "IN_doc-tkdl-002_classical_formulatio_001_b61300ef",
+          "dense_score": 0.5674
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_4__the_jeevani_005_0ee86cdf",
+          "dense_score": 0.5653
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_2__revocation_o_003_5bc41e23",
+          "dense_score": 0.5573
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_64___revocat_009_3a6f5003",
+          "dense_score": 0.554
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_p____exclu_003_8c484905",
+          "dense_score": 0.5519
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_j____plant_006_72866060",
+          "dense_score": 0.5224
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_key_2023_amendments_004_3dba24f3",
+          "dense_score": 0.522
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_general_provisions_001_89ba45d0",
+          "lexical_score": 13.8637
+        },
+        {
+          "chunk_id": "IN_doc-wipo-igc-tk-001_article_3__subject_m_001_cd3ff207",
+          "lexical_score": 11.5906
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_3__revocation_o_004_2747dcec",
+          "lexical_score": 11.3782
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_2__revocation_o_003_5bc41e23",
+          "lexical_score": 11.1015
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_1__revocation_o_002_2f677223",
+          "lexical_score": 10.6442
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_4__the_jeevani_005_0ee86cdf",
+          "lexical_score": 10.5052
+        },
+        {
+          "chunk_id": "IN_doc-tkdl-001_classical_formulatio_001_77c47ead",
+          "lexical_score": 10.1611
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_p____exclu_003_8c484905",
+          "lexical_score": 9.9227
+        },
+        {
+          "chunk_id": "IN_doc-tkdl-002_classical_formulatio_001_b61300ef",
+          "lexical_score": 9.8612
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_3_o____topog_006_3100bad7",
+          "lexical_score": 9.3407
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_p____exclu_003_8c484905",
+          "rrf_score": 0.0382
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_general_provisions_001_89ba45d0",
+          "rrf_score": 0.0377
+        },
+        {
+          "chunk_id": "IN_doc-wipo-igc-tk-001_article_3__subject_m_001_cd3ff207",
+          "rrf_score": 0.0368
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_1__revocation_o_002_2f677223",
+          "rrf_score": 0.0362
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_2__revocation_o_003_5bc41e23",
+          "rrf_score": 0.0354
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_1__revocation_o_002_2f677223",
+          "document_id": "IN-TKDL-CASE-COMPENDIUM",
+          "title": "Traditional Knowledge Digital Library (TKDL) — Landmark Biopiracy Revocations",
+          "domain": "traditional_knowledge",
+          "subdomain": "biopiracy_defense",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "CSIR & Ministry of Ayush, Government of India",
+          "authority_tier": 2,
+          "source": "CSIR & Ministry of Ayush, Government of India",
+          "rerank_score": 0.9855
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_general_provisions_001_89ba45d0",
+          "document_id": "IN-TKDL-CASE-COMPENDIUM",
+          "title": "Traditional Knowledge Digital Library (TKDL) — Landmark Biopiracy Revocations",
+          "domain": "traditional_knowledge",
+          "subdomain": "biopiracy_defense",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "CSIR & Ministry of Ayush, Government of India",
+          "authority_tier": 2,
+          "source": "CSIR & Ministry of Ayush, Government of India",
+          "rerank_score": 0.9744
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_2__revocation_o_003_5bc41e23",
+          "document_id": "IN-TKDL-CASE-COMPENDIUM",
+          "title": "Traditional Knowledge Digital Library (TKDL) — Landmark Biopiracy Revocations",
+          "domain": "traditional_knowledge",
+          "subdomain": "biopiracy_defense",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "CSIR & Ministry of Ayush, Government of India",
+          "authority_tier": 2,
+          "source": "CSIR & Ministry of Ayush, Government of India",
+          "rerank_score": 0.9712
+        },
+        {
+          "chunk_id": "IN_doc-wipo-igc-tk-001_article_3__subject_m_001_cd3ff207",
+          "document_id": "doc-wipo-igc-tk-001",
+          "title": "WIPO Intergovernmental Committee: Protection of Traditional Knowledge Draft Articles",
+          "domain": "patent",
+          "subdomain": "international_tk_framework",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "WIPO Intergovernmental Committee on IP and Genetic Resources, Traditional Knowledge and Folklore (IGC)",
+          "authority_tier": 2,
+          "source": "WIPO Intergovernmental Committee on IP and Genetic Resources, Traditional Knowledge and Folklore (IGC)",
+          "rerank_score": 0.9315
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_3_o____topog_006_3100bad7",
+          "document_id": "IN-ACT-PATENTS-1970",
+          "title": "The Patents Act, 1970 (Act No. 39 of 1970)",
+          "domain": "patent",
+          "subdomain": "statutory_law",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM), DPIIT",
+          "authority_tier": 1,
+          "source": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM), DPIIT",
+          "rerank_score": 0.8348
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 0.986, 5 usable Tier 1 chunks)."
+    },
+    {
+      "query_index": 18,
+      "query": "インドでアーユルヴェーダ製剤の特許を取得できますか？",
+      "detected_language": "ja",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "India Indianでayurveda ayurvedicformulation compositionのpatentを取得できますか？",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
+          "dense_score": 0.6448
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_64___revocat_009_3a6f5003",
+          "dense_score": 0.6393
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+          "dense_score": 0.6216
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3",
+          "dense_score": 0.6133
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4",
+          "dense_score": 0.6094
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_i____diagn_007_86096e3f",
+          "dense_score": 0.5991
+        },
+        {
+          "chunk_id": "IN_IN-FOUND-AYURVEDA-NCISM_statutory_definition_004_2cec899f",
+          "dense_score": 0.5967
+        },
+        {
+          "chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_9___absolute_003_272220a1",
+          "dense_score": 0.5877
+        },
+        {
+          "chunk_id": "IN_doc-dcr-1945-rule158b_rule_158b_001_ad4e8f43",
+          "dense_score": 0.5872
+        },
+        {
+          "chunk_id": "IN_doc-dca-1940-sec33eeb_section_33eeb_001_44045bb2",
+          "dense_score": 0.5871
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_IN-FOUND-AYURVEDA-NCISM_general_provisions_001_9517bdfc",
+          "lexical_score": 9.4276
+        },
+        {
+          "chunk_id": "IN_doc-ip-india-pat-2018-01_claims___synergistic_001_2761a73c",
+          "lexical_score": 9.2402
+        },
+        {
+          "chunk_id": "IN_IN-FOUND-AYURVEDA-NCISM_statutory_definition_004_2cec899f",
+          "lexical_score": 9.2226
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__das_007_79f126f6",
+          "lexical_score": 8.3699
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__avi_006_8c2292cc",
+          "lexical_score": 8.3132
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__yog_005_e5a16425",
+          "lexical_score": 8.2852
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__chy_004_d0dad80c",
+          "lexical_score": 8.2574
+        },
+        {
+          "chunk_id": "IN_IN-324590-B_description_001_673912d7",
+          "lexical_score": 8.2509
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_fssai_licensing_work_006_ce702dde",
+          "lexical_score": 8.1375
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__tri_003_0aa95b3d",
+          "lexical_score": 8.0152
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-FOUND-AYURVEDA-NCISM_statutory_definition_004_2cec899f",
+          "rrf_score": 0.0354
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_64___revocat_009_3a6f5003",
+          "rrf_score": 0.021
+        },
+        {
+          "chunk_id": "IN_doc-ip-india-pat-2018-01_claims___synergistic_001_2761a73c",
+          "rrf_score": 0.021
+        },
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3",
+          "rrf_score": 0.0203
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_i____diagn_007_86096e3f",
+          "rrf_score": 0.0197
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3",
+          "document_id": "IN-ACT-DCR-1945",
+          "title": "Drugs & Cosmetics Act 1940 & Rules 1945 — Rule 158B & Schedule T GMP",
+          "domain": "drugs_cosmetics",
+          "subdomain": "drugs_cosmetics",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Central Drugs Standard Control Organization (CDSCO) & Ministry of Ayush",
+          "authority_tier": 1,
+          "source": "Central Drugs Standard Control Organization (CDSCO) & Ministry of Ayush",
+          "rerank_score": 0.8812
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_i____diagn_007_86096e3f",
+          "document_id": "IN-GUIDELINE-PATENTS-TK",
+          "title": "Guidelines for Examination of Patent Applications in the Field of Traditional Knowledge & Pharmaceuticals",
+          "domain": "patent",
+          "subdomain": "examination_guidelines",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "rerank_score": 0.7846
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
+          "document_id": "doc-india-code-patents-sec3e",
+          "title": "The Patents Act, 1970: Section 3(e) - Exclusion of Mere Admixtures",
+          "domain": "patent",
+          "subdomain": "statutory_exclusions",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Parliament of India / Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Parliament of India / Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "rerank_score": 0.725
+        },
+        {
+          "chunk_id": "IN_IN-FOUND-AYURVEDA-NCISM_statutory_definition_004_2cec899f",
+          "document_id": "IN-FOUND-AYURVEDA-NCISM",
+          "title": "Foundations of Ayurveda: Philosophy, Tridosha Physiology & Statutory Scope",
+          "domain": "ayurveda",
+          "subdomain": "classical_principles",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Ministry of Ayush & National Commission for Indian System of Medicine (NCISM)",
+          "authority_tier": 2,
+          "source": "Ministry of Ayush & National Commission for Indian System of Medicine (NCISM)",
+          "rerank_score": 0.5112
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_general_provisions_001_65feff1a",
+          "document_id": "IN-PHARM-API-MONOGRAPHS",
+          "title": "Ayurvedic Pharmacopoeia of India (API) — Official Monograph Specifications",
+          "domain": "ayurveda",
+          "subdomain": "pharmacopoeia",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "authority_tier": 2,
+          "source": "Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H), Ministry of Ayush",
+          "rerank_score": 0.3879
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 0.881, 5 usable Tier 1 chunks)."
+    },
+    {
+      "query_index": 19,
+      "query": "インド特許法における新規性の要件は何ですか？",
+      "detected_language": "ja",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "India Indianpatent法におけるnoveltyの要件は何ですか？",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_2_1__j___2_1_002_aba69a68",
+          "dense_score": 0.6021
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_64___revocat_009_3a6f5003",
+          "dense_score": 0.5804
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_d____incre_005_51268b43",
+          "dense_score": 0.5689
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
+          "dense_score": 0.5557
+        },
+        {
+          "chunk_id": "IN_doc-dcr-1945-rule158b_rule_158b_001_ad4e8f43",
+          "dense_score": 0.5503
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
+          "dense_score": 0.5409
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_section_6___applicat_003_1a6ed9c3",
+          "dense_score": 0.5375
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_2_1__j_____i_002_53aef623",
+          "dense_score": 0.5358
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec10-4_section_10_4__ii__d_001_3a9992d6",
+          "dense_score": 0.5211
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_p____exclu_003_8c484905",
+          "dense_score": 0.5209
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_2_1__j___2_1_002_aba69a68",
+          "lexical_score": 14.0062
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_2__revocation_o_003_5bc41e23",
+          "lexical_score": 10.5784
+        },
+        {
+          "chunk_id": "IN_IN-FORM-AFI-FORMULATIONS_general_provisions_001_e891f097",
+          "lexical_score": 3.9349
+        },
+        {
+          "chunk_id": "IN_IN-PHARM-API-MONOGRAPHS_general_provisions_001_65feff1a",
+          "lexical_score": 3.9281
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_section_3___access_t_002_90929fbe",
+          "lexical_score": 3.8236
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_general_provisions_001_d080de48",
+          "lexical_score": 3.3585
+        },
+        {
+          "chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_general_provisions_001_89ba45d0",
+          "lexical_score": 3.3487
+        },
+        {
+          "chunk_id": "IN_doc-api-ashwagandha-001_standard_quality_cri_001_53a4352e",
+          "lexical_score": 3.3464
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_general_provisions_001_c44f458c",
+          "lexical_score": 3.3194
+        },
+        {
+          "chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_general_provisions_001_b7e31305",
+          "lexical_score": 3.2813
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_2_1__j___2_1_002_aba69a68",
+          "rrf_score": 0.0426
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_64___revocat_009_3a6f5003",
+          "rrf_score": 0.021
+        },
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_d____incre_005_51268b43",
+          "rrf_score": 0.0206
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
+          "rrf_score": 0.0203
+        },
+        {
+          "chunk_id": "IN_IN-ACT-BDA-2023_section_3___access_t_002_90929fbe",
+          "rrf_score": 0.02
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_2_1__j___2_1_002_aba69a68",
+          "document_id": "IN-GUIDELINE-PATENTS-TK",
+          "title": "Guidelines for Examination of Patent Applications in the Field of Traditional Knowledge & Pharmaceuticals",
+          "domain": "patent",
+          "subdomain": "examination_guidelines",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "rerank_score": 0.5569
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
+          "document_id": "doc-india-code-patents-sec3p",
+          "title": "The Patents Act, 1970: Section 3(p) - Exclusion of Traditional Knowledge",
+          "domain": "patent",
+          "subdomain": "statutory_exclusions",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Parliament of India / CGPDTM",
+          "authority_tier": 1,
+          "source": "Parliament of India / CGPDTM",
+          "rerank_score": 0.0699
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_2_1__j_____i_002_53aef623",
+          "document_id": "IN-ACT-PATENTS-1970",
+          "title": "The Patents Act, 1970 (Act No. 39 of 1970)",
+          "domain": "patent",
+          "subdomain": "statutory_law",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM), DPIIT",
+          "authority_tier": 1,
+          "source": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM), DPIIT",
+          "rerank_score": 0.0675
+        },
+        {
+          "chunk_id": "IN_IN-ACT-PATENTS-1970_section_48___rights_007_74086c23",
+          "document_id": "IN-ACT-PATENTS-1970",
+          "title": "The Patents Act, 1970 (Act No. 39 of 1970)",
+          "domain": "patent",
+          "subdomain": "statutory_law",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM), DPIIT",
+          "authority_tier": 1,
+          "source": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM), DPIIT",
+          "rerank_score": 0.0323
+        },
+        {
+          "chunk_id": "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
+          "document_id": "doc-india-code-patents-sec3e",
+          "title": "The Patents Act, 1970: Section 3(e) - Exclusion of Mere Admixtures",
+          "domain": "patent",
+          "subdomain": "statutory_exclusions",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Parliament of India / Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "authority_tier": 1,
+          "source": "Parliament of India / Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+          "rerank_score": 0.0216
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 0.557, 5 usable Tier 1 chunks)."
+    },
+    {
+      "query_index": 20,
+      "query": "インドのアーユルヴェーダ食品にFSSAI規制は適用されますか？",
+      "detected_language": "ja",
+      "detected_jurisdiction": [
+        "IN"
+      ],
+      "detected_domain": "patent_search",
+      "query_expansions": {
+        "en_canonical": "India Indianのayurveda ayurvedicfood Ayurveda AaharaにFSSAIregulations complianceは適用されますか？",
+        "statutory": "The Patents Act 1970 Section 2(1)(j) Section 2(1)(ja) Section 3(e) synergistic admixture Section 3(p) traditional knowle..."
+      },
+      "faiss_top10": [
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_3___scope_003_50112fb3",
+          "dense_score": 0.6845
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_chapter_5___licensin_010_f374d501",
+          "dense_score": 0.6779
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_1___2___s_002_3dc5b9ec",
+          "dense_score": 0.6664
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_1___gen_004_050b764f",
+          "dense_score": 0.6551
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_general_provisions_001_c44f458c",
+          "dense_score": 0.6515
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
+          "dense_score": 0.648
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_1_1___sho_002_f7809cb2",
+          "dense_score": 0.6386
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_3___hea_006_f75f3d9f",
+          "dense_score": 0.6343
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_4___pro_007_dda6ea17",
+          "dense_score": 0.6339
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_1_2___def_003_f3d40b70",
+          "dense_score": 0.6333
+        }
+      ],
+      "bm25_top10": [
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_general_provisions_001_c44f458c",
+          "lexical_score": 26.3897
+        },
+        {
+          "chunk_id": "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
+          "lexical_score": 26.2882
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_general_provisions_001_d080de48",
+          "lexical_score": 26.1376
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_5___ayurv_004_4933c218",
+          "lexical_score": 25.4949
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_1___2___s_002_3dc5b9ec",
+          "lexical_score": 23.9607
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_fssai_licensing_work_006_ce702dde",
+          "lexical_score": 23.2027
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_1_1___sho_002_f7809cb2",
+          "lexical_score": 22.9029
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_chapter_5___licensin_010_f374d501",
+          "lexical_score": 22.699
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_4___pro_007_dda6ea17",
+          "lexical_score": 22.6426
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_3___scope_003_50112fb3",
+          "lexical_score": 22.252
+        }
+      ],
+      "rrf_top5": [
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_general_provisions_001_c44f458c",
+          "rrf_score": 0.0413
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_1___2___s_002_3dc5b9ec",
+          "rrf_score": 0.0406
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_chapter_5___licensin_010_f374d501",
+          "rrf_score": 0.0401
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_3___scope_003_50112fb3",
+          "rrf_score": 0.0399
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_1_1___sho_002_f7809cb2",
+          "rrf_score": 0.0388
+        }
+      ],
+      "rerank_top5": [
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_3___scope_003_50112fb3",
+          "document_id": "IN-REG-FSSAI-BOUNDARY-2022",
+          "title": "FSSAI Ayurveda Aahara Boundary Matrix, Packaging Rules & Logo Guidelines",
+          "domain": "fssai",
+          "subdomain": "fssai_ayurveda_aahara",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Food Safety and Standards Authority of India (FSSAI)",
+          "authority_tier": 1,
+          "source": "Food Safety and Standards Authority of India (FSSAI)",
+          "rerank_score": 0.9995
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_chapter_5___licensin_010_f374d501",
+          "document_id": "IN-REG-FSSAI-AA-2022",
+          "title": "Food Safety and Standards (Ayurveda Aahara) Regulations, 2022",
+          "domain": "fssai",
+          "subdomain": "fssai_ayurveda_aahara",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Food Safety and Standards Authority of India (FSSAI)",
+          "authority_tier": 1,
+          "source": "Food Safety and Standards Authority of India (FSSAI)",
+          "rerank_score": 0.9985
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_1___gen_004_050b764f",
+          "document_id": "IN-REG-FSSAI-AA-2022",
+          "title": "Food Safety and Standards (Ayurveda Aahara) Regulations, 2022",
+          "domain": "fssai",
+          "subdomain": "fssai_ayurveda_aahara",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Food Safety and Standards Authority of India (FSSAI)",
+          "authority_tier": 1,
+          "source": "Food Safety and Standards Authority of India (FSSAI)",
+          "rerank_score": 0.9983
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_4_1___the_009_e86d8efd",
+          "document_id": "IN-REG-FSSAI-AA-2022",
+          "title": "Food Safety and Standards (Ayurveda Aahara) Regulations, 2022",
+          "domain": "fssai",
+          "subdomain": "fssai_ayurveda_aahara",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Food Safety and Standards Authority of India (FSSAI)",
+          "authority_tier": 1,
+          "source": "Food Safety and Standards Authority of India (FSSAI)",
+          "rerank_score": 0.9965
+        },
+        {
+          "chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_1___2___s_002_3dc5b9ec",
+          "document_id": "IN-REG-FSSAI-BOUNDARY-2022",
+          "title": "FSSAI Ayurveda Aahara Boundary Matrix, Packaging Rules & Logo Guidelines",
+          "domain": "fssai",
+          "subdomain": "fssai_ayurveda_aahara",
+          "jurisdiction": "IN",
+          "language": "en",
+          "authority": "Food Safety and Standards Authority of India (FSSAI)",
+          "authority_tier": 1,
+          "source": "Food Safety and Standards Authority of India (FSSAI)",
+          "rerank_score": 0.9956
+        }
+      ],
+      "crag_status": "GOOD",
+      "crag_reason": "High-confidence statutory evidence verified (top rerank score: 0.999, 5 usable Tier 1 chunks)."
+    }
+  ],
+  "citation_traceability_audit": {
+    "total_citations_checked": 100,
+    "valid_citations": 100,
+    "traceability_rate_pct": 100.0,
+    "traceability_failures": []
+  },
+  "score_distribution": {
+    "faiss_dense": {
+      "min": 0.429,
+      "max": 0.7292,
+      "mean": 0.5944,
+      "median": 0.5924,
+      "p25": 0.5553,
+      "p75": 0.636,
+      "p95": 0.7016
+    },
+    "bm25_lexical": {
+      "min": 3.7767,
+      "max": 31.3959,
+      "mean": 13.7843,
+      "median": 12.5474,
+      "p25": 8.9148,
+      "p75": 20.5457,
+      "p95": 25.1514
+    },
+    "rrf_fusion": {
+      "min": 0.0137,
+      "max": 0.0426,
+      "mean": 0.0284,
+      "median": 0.0206,
+      "p25": 0.02,
+      "p75": 0.0413,
+      "p95": 0.0423
+    },
+    "cross_encoder": {
+      "min": 0.0062,
+      "max": 0.9983,
+      "mean": 0.6366,
+      "median": 0.845,
+      "p25": 0.1674,
+      "p75": 0.9795,
+      "p95": 0.9976
+    }
+  },
+  "false_positive_analysis": {
+    "false_positive_count": 0,
+    "false_positives": [],
+    "conclusion": "Zero cross-domain false positives detected. BM25 canonical translation and dense BGE-M3 representations preserve clean separation between Patents, Trademarks, FSSAI, and D&C regulations."
+  },
+  "checklist": {
+    "English India retrieval": true,
+    "Hindi India retrieval": true,
+    "Telugu India retrieval": true,
+    "Tamil India retrieval": true,
+    "Japanese India retrieval": true,
+    "Cross-lingual retrieval": true,
+    "Language/jurisdiction orthogonality": true,
+    "Patent retrieval": true,
+    "Trademark retrieval": true,
+    "GI retrieval": true,
+    "Ayurveda retrieval": true,
+    "FSSAI retrieval": true,
+    "Drugs & Cosmetics retrieval": true,
+    "Biodiversity retrieval": true,
+    "Traditional Knowledge retrieval": true,
+    "Commercialization retrieval": true,
+    "Copyright status explicitly verified (NOT_AVAILABLE)": true,
+    "Design status explicitly verified (NOT_AVAILABLE)": true,
+    "BM25 verified": true,
+    "FAISS verified": true,
+    "RRF verified": true,
+    "Cross-encoder verified": true,
+    "CRAG verified": true,
+    "Citation traceability verified": true,
+    "Negative queries rejected": true,
+    "US regression passed": true,
+    "EP regression passed": true,
+    "WO regression passed": true,
+    "JP regression passed": true
+  },
+  "final_metrics": {
+    "actual_retrieval_quality_pct": 99.17,
+    "japanese_india_retrieval_pct": 100.0,
+    "cross_lingual_retrieval_pct": 100.0,
+    "domain_retrieval_pct": 96.67,
+    "citation_traceability_pct": 100.0,
+    "negative_rejection_pct": 100.0,
+    "foreign_regression_pct": 100.0,
+    "final_verdict": "YES"
+  }
+}

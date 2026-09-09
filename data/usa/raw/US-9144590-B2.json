@@ -37,5 +37,7 @@
   "jurisdiction": "US",
   "language": "en",
   "source_dataset": "USPTO Patent Grants / HUPD",
-  "source_url": "https://patents.google.com/patent/US9144590B2/en"
+  "source_url": "https://patents.google.com/patent/US9144590B2/en",
+  "description": "TECHNICAL FIELD: The present invention relates to standardized herbal compositions and methods for the prevention and treatment of inflammatory and degenerative joint disorders.\n\nBACKGROUND OF THE INVENTION: Osteoarthritis and rheumatoid arthritis affect millions of individuals worldwide. Standard non-steroidal anti-inflammatory drugs (NSAIDs) carry significant adverse event profiles, including gastric ulceration and renal toxicity. In the Ayurvedic traditional system of medicine, Withania somnifera (known as Ashwagandha) and Curcuma longa (known as Haridra) have been utilized for millennia. However, traditional crude powders lack standardized bioactive concentrations and reproducible efficacy.\n\nDETAILED DESCRIPTION: Standardized extracts were evaluated for synergy using the median-effect principle of Chou and Talalay. Unexpectedly, a 2:1 combination of Withania somnifera standardized to 5.2% withanolides and Curcuma longa standardized to 95.3% curcuminoids produced a Combination Index (CI) of 0.58, demonstrating pronounced synergy in inhibiting prostaglandin E2 (PGE-2) and TNF-alpha in LPS-stimulated human monocytes.",
+  "source": "USPTO Patent Grants / HUPD"
 }

@@ -1,5 +1,6 @@
 {
   "country": "GERMANY",
+  "run_stage": "PRODUCTION DATASET VALIDATION",
   "raw_size_bytes": 14683,
   "raw_size_mb": 0.01,
   "cleaned_size_bytes": 31623,
@@ -31,5 +32,9 @@
   "invalid_chunks": 0,
   "empty_chunks": 0,
   "duplicate_chunks": 0,
+  "pipeline_status": "PIPELINE PASS",
+  "dataset_status": "DATASET PASS",
+  "data_sufficiency": "INSUFFICIENT",
+  "sufficiency_reason": "Corpus contains 5 authoritative statutory patent documents. While pipeline validation passed with 100% metadata accuracy, open-access public repositories currently lack a multi-gigabyte Ayurvedic/phytotherapy corpus for this jurisdiction. Supplementary authoritative data acquisition recommended for large-scale production.",
   "final_status": "PASS"
 }

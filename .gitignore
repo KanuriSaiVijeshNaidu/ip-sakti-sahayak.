@@ -8,9 +8,13 @@ dist/
 build/
 .pytest_cache/
 
-# Environment
+# Environment & Secrets
 .env
-*.env.local
+.env.*
+*.env
+*.env.*
+*.pem
+*.key
 
 # IDEs
 .vscode/
@@ -31,3 +35,38 @@ models/
 *.tar.gz
 *.tar
 *.parquet
+
+# Scratch & Temporary outputs
+scratch/
+*.log
+final_data_sufficiency_report.html
+final_data_sufficiency_report.json
+
+# Large data indexes & binary caches (>50MB)
+data/indexes/*
+!data/indexes/faiss/
+data/indexes/faiss/*
+!data/indexes/faiss/in/
+data/embeddings/
+data/embedding_ready/
+data/japan/japan_cleaned.jsonl
+data/japan/chunks/
+data/japan/raw/
+data/japan/processed/
+data/wipo/raw/
+data/wipo/cleaned/
+data/wipo/docling/
+data/wipo/chunks/
+data/usa/raw/*
+!data/usa/raw/US-*-B2.json
+data/usa/chunks/*.json
+data/usa/docling/
+data/usa/cleaned/
+data/usa/deduplicated/
+data/usa/validation/rejected/
+data/europe/chunks/*.json
+data/europe/raw/
+data/europe/docling/
+data/europe/cleaned/
+data/europe/deduplicated/
+data/test_fixtures/

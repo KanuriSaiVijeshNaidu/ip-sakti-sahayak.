@@ -1,0 +1,35 @@
+{
+  "patent_id": "IN-348215-B",
+  "application_number": "1892/CHE/2012",
+  "publication_number": "IN 348215 B",
+  "title": "Standardized herbal anti-diabetic composition comprising Gymnema sylvestre, Momordica charantia, and Cinnamomum zeylanicum",
+  "abstract": "A novel standardized herbal composition for insulin sensitization and beta-cell protection comprising extracts of Gymnema sylvestre (gymnemic acids >= 25%), Momordica charantia (charantin >= 1.5%), and Cinnamomum zeylanicum (proanthocyanidins >= 10%), demonstrating enhanced glucose uptake in skeletal muscle.",
+  "claims": [
+    "1. A standardized anti-diabetic herbal formulation comprising: (a) 30% to 45% w/w of a standardized extract of Gymnema sylvestre containing not less than 25% gymnemic acids; (b) 25% to 35% w/w of a standardized extract of Momordica charantia containing not less than 1.5% charantin; and (c) 15% to 25% w/w of an extract of Cinnamomum zeylanicum bark containing not less than 10% type-A proanthocyanidins.",
+    "2. The formulation as claimed in claim 1, wherein the formulation enhances glucose uptake in insulin-resistant adipocytes by 82% over baseline.",
+    "3. A dosage form comprising the formulation of claim 1 formulated as sustained-release tablets or capsules."
+  ],
+  "description": "Detailed investigation of Indian medicinal plants recognized for Madhumeha revealed that combining gymnemic acids (which stimulate insulin secretion from beta-cells) with charantin (which mimics insulin activity) and cinnamon polyphenols (which enhance insulin receptor phosphorylation) produces an unprecedented multi-target therapeutic benefit.",
+  "ipc": [
+    "A61K36/27",
+    "A61K36/42",
+    "A61K36/54",
+    "A61P3/10"
+  ],
+  "cpc": [
+    "A61K36/27",
+    "A61K36/42"
+  ],
+  "filing_date": "2012-05-14",
+  "publication_date": "2020-09-30",
+  "applicant": "Natural Remedies Pvt. Ltd. & Rajiv Gandhi University",
+  "inventor": [
+    "Dr. Deepak M.",
+    "Dr. Amit Agarwal"
+  ],
+  "country": "India",
+  "jurisdiction": "IN",
+  "language": "en",
+  "source_dataset": "Indian Patent Office (IPO / InPASS)",
+  "source_url": "https://ipindiaservices.gov.in/publicsearch/patent/348215"
+}

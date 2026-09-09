@@ -1,0 +1,46 @@
+{
+  "report_title": "IP-SAKTI Sahayak — Production Corpus Deduplication Audit",
+  "timestamp": "2026-09-08T10:45:00Z",
+  "deduplication_policy": "4-Level Strict Deduplication (Exact SHA256, Publication ID, MinHash at 0.85 Jaccard Similarity)",
+  "summary": {
+    "total_documents_scanned": 1851,
+    "exact_duplicates_removed": 22,
+    "near_duplicates_removed": 24,
+    "total_duplicates_removed": 46,
+    "false_positives_prevented": 142
+  },
+  "jurisdiction_breakdown": {
+    "USA": {
+      "documents_scanned": 1195,
+      "documents_retained": 1159,
+      "duplicates_removed": 36,
+      "deduplication_rate": "3.01%",
+      "removal_rationale": "USPTO multiple application revisions and continuation filings sharing identical claim text blocks."
+    },
+    "EUROPE": {
+      "documents_scanned": 656,
+      "documents_retained": 646,
+      "duplicates_removed": 10,
+      "deduplication_rate": "1.52%",
+      "removal_rationale": "EPO amended claims following opposition proceedings; preserved final granted specification."
+    },
+    "INDIA": {
+      "documents_scanned": 0,
+      "documents_retained": 0,
+      "duplicates_removed": 0,
+      "deduplication_rate": "0.0%"
+    },
+    "GERMANY": {
+      "documents_scanned": 0,
+      "documents_retained": 0,
+      "duplicates_removed": 0,
+      "deduplication_rate": "0.0%"
+    },
+    "WIPO": {
+      "documents_scanned": 0,
+      "documents_retained": 0,
+      "duplicates_removed": 0,
+      "deduplication_rate": "0.0%"
+    }
+  }
+}

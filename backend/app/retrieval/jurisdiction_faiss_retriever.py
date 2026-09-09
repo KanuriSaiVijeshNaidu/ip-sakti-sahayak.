@@ -1,4 +1,4 @@
-﻿"""
+"""
 backend/app/retrieval/jurisdiction_faiss_retriever.py
 ────────────────────────────────────────────────────
 Dense retrieval over Phase 4 FAISS indexes using BAAI/bge-m3.
@@ -112,12 +112,18 @@ class JurisdictionFAISSRetriever:
 
             cand = {
                 "chunk_id": meta["chunk_id"],
-                "document_id": meta["document_id"],
-                "publication_number": meta["publication_number"],
+                "document_id": meta.get("document_id", ""),
+                "publication_number": meta.get("publication_number", ""),
                 "jurisdiction": meta["jurisdiction"],
                 "language": meta.get("language", "en"),
                 "section": meta.get("section", ""),
-                "source": meta.get("source", ""),
+                "title": meta.get("title", ""),
+                "text": meta.get("text", ""),
+                "source": meta.get("source") or meta.get("authority") or meta.get("source_type", ""),
+                "source_url": meta.get("source_url"),
+                "authority_tier": meta.get("authority_tier", 1),
+                "domain": meta.get("domain", ""),
+                "subdomain": meta.get("subdomain", ""),
                 "dense_score": float(score),
                 "dense_rank": rank,
                 "faiss_id": int(faiss_id),

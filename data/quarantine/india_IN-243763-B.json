@@ -1,0 +1,35 @@
+{
+  "patent_id": "IN-243763-B",
+  "application_number": "890/DEL/2005",
+  "publication_number": "IN 243763 B",
+  "title": "A process for preparation of standardized extract from Withania somnifera with enhanced withanolide glycosides content",
+  "abstract": "The invention discloses an improved industrial extraction process for Withania somnifera roots yielding a dry extract containing >= 8.0% withanolide glycosides and <= 0.1% withaferin A, free of cytotoxic aglycones, exhibiting superior anxiolytic and adaptogenic efficacy.",
+  "claims": [
+    "1. An industrial process for obtaining an adaptogenic standardized extract of Withania somnifera roots comprising: (a) extracting dried roots with a 70:30 v/v ethanol-water solvent at 40°C to 45°C; (b) treating the hydroalcoholic extract with a food-grade macroporous adsorbent resin to selectively retain withanolide glycosides; (c) eluting with 90% ethanol; and (d) spray-drying the eluate at 65°C inlet temperature to obtain a stable powder comprising at least 8.0% by weight of withanolide glycosides (withanoside IV, withanoside VI) and not more than 0.1% of free withaferin A.",
+    "2. The standardized Withania somnifera extract obtained by the process claimed in claim 1.",
+    "3. A pharmaceutical composition comprising the standardized extract of claim 2 together with pharmaceutically acceptable binders and disintegrants."
+  ],
+  "description": "BACKGROUND: Traditional churna powders contain low (0.2-0.5%) active withanolides and vary widely between agricultural batches. Furthermore, withaferin A at high concentrations exhibits cytotoxic rather than adaptogenic properties. The present process selectively enriches withanolide glycosides while depleting cytotoxic aglycones.",
+  "ipc": [
+    "A61K36/81",
+    "B01D15/00",
+    "A61P25/22"
+  ],
+  "cpc": [
+    "A61K36/81",
+    "B01D15/00"
+  ],
+  "filing_date": "2005-04-12",
+  "publication_date": "2010-10-29",
+  "applicant": "Dabur Research Foundation",
+  "inventor": [
+    "Dr. Anand C. Burman",
+    "Dr. Sunil Kumar",
+    "Dr. Jagdish C. Verma"
+  ],
+  "country": "India",
+  "jurisdiction": "IN",
+  "language": "en",
+  "source_dataset": "Indian Patent Office (IPO / InPASS)",
+  "source_url": "https://ipindiaservices.gov.in/publicsearch/patent/243763"
+}

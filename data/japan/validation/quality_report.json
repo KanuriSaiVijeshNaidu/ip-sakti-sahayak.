@@ -1,0 +1,135 @@
+{
+  "audit_type": "Programmatic & Forensic Quality Evaluation",
+  "audit_sample_size": 100,
+  "passed_chunks": 100,
+  "pass_rate_percent": 100.0,
+  "criteria": {
+    "japanese_script_present": true,
+    "noise_filtering_verified": true,
+    "section_boundaries_intact": true,
+    "metadata_provenance_verified": true,
+    "pre_embedding_halt_preserved": true
+  },
+  "samples": [
+    {
+      "chunk_id": "JP-CHK-020952",
+      "document_id": "JP-2020-120675-A",
+      "publication_number": "JP2020120675A",
+      "title": "（修正有）【課題】可溶性コーンファイバーと結腸バクテリア集団を含む、結腸バクテリア集団の増加に有用な食用組成物の提供。【",
+      "section": "description",
+      "char_length": 800,
+      "has_japanese_script": true,
+      "metadata_valid": true,
+      "passed": true,
+      "snippet": "タの集団を増加させる。本願に記述される方法及び組成物の他の実施形態において、可溶性コーンファイバーのような発酵性可溶性ファイバーを含む組成物の投与はアケルマンシアの集団を増加させる。本願に記述される方"
+    },
+    {
+      "chunk_id": "JP-CHK-003648",
+      "document_id": "JP-2014-108412-A",
+      "publication_number": "JP2014108412A",
+      "title": "本発明の熱可塑性樹脂は、ビフェニル基を有するユニット（Ａ）２５〜６０モル％、直鎖状ユニット（直鎖の脂肪族炭化水素鎖など）",
+      "section": "description",
+      "char_length": 800,
+      "has_japanese_script": true,
+      "metadata_valid": true,
+      "passed": true,
+      "snippet": "填剤としては、例えばケイソウ土粉、塩基性ケイ酸マグネシウム、焼成クレイ、微粉末シリカ、石英粉末、結晶シリカ、カオリン、タルク、三酸化アンチモン、微粉末マイカ、二硫化モリブデン、ロックウール、セラミック"
+    },
+    {
+      "chunk_id": "JP-CHK-000819",
+      "document_id": "JP-2014-111810-A",
+      "publication_number": "JP2014111810A",
+      "title": "本発明は、該キチン分解酵素を用いるキチンの分解方法およびＮ−アセチルグルコサミンの製造方法に関するものである",
+      "section": "description",
+      "char_length": 800,
+      "has_japanese_script": true,
+      "metadata_valid": true,
+      "passed": true,
+      "snippet": "ｃｈｉＧ発現用プラスミドpCold I-cshchiGの構造を示すマップ図である。 【図２】図２は、大腸菌で発現させた酵素ＣｓｈｃｈｉＧを精製後にＳＤＳ−ポリアクリルアミドゲル電気泳動で分析した結果で"
+    },
+    {
+      "chunk_id": "JP-CHK-024299",
+      "document_id": "JP-2020-141639-A",
+      "publication_number": "JP2020141639A",
+      "title": "（修正有）【課題】植物病原糸状菌等の植物病原菌に対して抗菌活性を示す機能性ペプチド、該機能性ペプチドを含む農薬、及び該機",
+      "section": "description",
+      "char_length": 800,
+      "has_japanese_script": true,
+      "metadata_valid": true,
+      "passed": true,
+      "snippet": "sarium lactis、Fusarium lagenariae、Fusarium lateritium、Fusarium merismoides、Fusarium oxysporum、Fusari"
+    },
+    {
+      "chunk_id": "JP-CHK-009012",
+      "document_id": "JP-2020-045360-A",
+      "publication_number": "JP2020045360A",
+      "title": "【課題】本発明は、疾患、障害または状態の治療が必要な患者を治療するためのボツリヌス毒素組成物を提供することを課題とする。",
+      "section": "description",
+      "char_length": 800,
+      "has_japanese_script": true,
+      "metadata_valid": true,
+      "passed": true,
+      "snippet": "実施形態で使用されるボツリヌス毒素組成物の凍結乾燥調剤では、これらの中から任意のものを使用することができる。ポリソルベートは、ボツリヌス毒素１００単位当たり約０．０１〜約２ｍｇの量で存在する可能性があ"
+    },
+    {
+      "chunk_id": "JP-CHK-008024",
+      "document_id": "JP-2020-203905-A",
+      "publication_number": "JP2020203905A",
+      "title": "【課題】癌患者及び低カルシウム血症のリスクを高める薬剤で治療された患者に対する、新たなビタミンD補給手法の提供。【解決手",
+      "section": "description",
+      "char_length": 800,
+      "has_japanese_script": true,
+      "metadata_valid": true,
+      "passed": true,
+      "snippet": "きい値の全ての値を包含する。すなわち、列挙した最小値と最大値の間の数値の全ての可能な組合せをこの出願で明示的に述べたものとみなすべきである。例えば、濃度範囲又は有利な効果の範囲を1%〜50%と述べてい"
+    },
+    {
+      "chunk_id": "JP-CHK-007314",
+      "document_id": "JP-2020-203853-A",
+      "publication_number": "JP2020203853A",
+      "title": "（修正有）【課題】口臭を消臭又は抑制する効果を奏するために必要な量の消臭剤を含有せしめても、金属味、渋味等の不快な味を呈",
+      "section": "description",
+      "char_length": 800,
+      "has_japanese_script": true,
+      "metadata_valid": true,
+      "passed": true,
+      "snippet": "味などの不快な味を呈することから、金属化合物の有する効果を得るのに充分な量を配合することができないという問題があった。 【０００５】 こうした金属化合物由来の不快な味の問題を解決するために、特許文献１"
+    },
+    {
+      "chunk_id": "JP-CHK-004572",
+      "document_id": "JP-2014-039350-A",
+      "publication_number": "JP2014039350A",
+      "title": "本発明は、高温・低温保存時の安定性に優れ、手が濡れた状態でも良好な使用性を有する、液晶状態の皮膚洗浄剤組成物に関するもの",
+      "section": "description",
+      "char_length": 800,
+      "has_japanese_script": true,
+      "metadata_valid": true,
+      "passed": true,
+      "snippet": "０１５】 （Ａ）成分の含有量は、皮膚洗浄剤組成物中１５〜４５質量％である。１５質量％未満であると、液晶を形成しない。一方、４５質量％を超えると低温で析出物を生ずる。さらに、泡立ちと低温安定性の点から、"
+    },
+    {
+      "chunk_id": "JP-CHK-024132",
+      "document_id": "JP-2020-063194-A",
+      "publication_number": "JP2020063194A",
+      "title": "【課題】マクロファージの機能低下を抑制できる新たな因子を見出し、加齢に伴う免疫機能低下や老化幹細胞を含む老化細胞の蓄積に",
+      "section": "claims",
+      "char_length": 125,
+      "has_japanese_script": true,
+      "metadata_valid": true,
+      "passed": true,
+      "snippet": "【請求項２】 前記SASP因子が、IL-1α、IL-1β、IL-8、GM-CSF、TNF-α、IFN-γ、MMP-1、MMP-2、PAI-2、及びMIFから成る群より選択される１種又は２種以上である、"
+    },
+    {
+      "chunk_id": "JP-CHK-003358",
+      "document_id": "JP-2014-133003-A",
+      "publication_number": "JP2014133003A",
+      "title": "本発明は、セルロース誘導体のエステル化物の製造方法、およびその製造方法により得られるセルロース誘導体のエステル化物に関す",
+      "section": "description",
+      "char_length": 800,
+      "has_japanese_script": true,
+      "metadata_valid": true,
+      "passed": true,
+      "snippet": "、プロピルセルロース、ヒドロキシメチルセルロース、ヒドロキシエチルセルロース、ヒドロキシプロピルセルロース、カルボキシメチルセルロースなどが挙げられ、セルロース混合エーテルの具体例として、メチルエチル"
+    }
+  ]
+}

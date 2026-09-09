@@ -35,5 +35,7 @@
   "jurisdiction": "US",
   "language": "en",
   "source_dataset": "USPTO Patent Grants / HUPD",
-  "source_url": "https://patents.google.com/patent/US8828456B2/en"
+  "source_url": "https://patents.google.com/patent/US8828456B2/en",
+  "description": "FIELD: The invention provides compositions of curcuminoids with essential oils from Curcuma rhizomes for enhanced oral bioavailability.\n\nDISCUSSION: Curcumin has extensive preclinical documentation for anti-inflammatory, antioxidant, and chemoprotective properties, but exhibits rapid intestinal and hepatic metabolism. Addition of natural turmeric essential oil sesquiterpenes delays glucuronidation and improves systemic AUC significantly.",
+  "source": "USPTO Patent Grants / HUPD"
 }

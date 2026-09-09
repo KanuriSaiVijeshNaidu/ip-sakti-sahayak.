@@ -108,10 +108,30 @@ async def chat(request: ChatRequest) -> ChatResponse:
         include_needs_review=True,   # show needs_review too; UI filters on grounding_score
     )
 
-    # ── 4b. Corrective RAG (CRAG) Confidence Assessment ───────────────────────
+    # ── 4b. Corrective RAG (CRAG) Confidence Assessment & Circuit Breaker ───────
     from backend.app.retrieval.crag_evaluator import evaluate_retrieval_confidence, CRAGGrade
     crag_assessment = evaluate_retrieval_confidence(query, evidence)
     final_evidence = crag_assessment.filtered_evidence if crag_assessment.grade != CRAGGrade.INCORRECT else []
+
+    # HARD CIRCUIT BREAKER: NO SUFFICIENT EVIDENCE = NO SUBSTANTIVE ANSWER
+    if crag_assessment.grade == CRAGGrade.INCORRECT or len(final_evidence) == 0:
+        from backend.app.rag.answer_generator import format_insufficient_evidence
+        insufficient_msg = format_insufficient_evidence(
+            lang=request.language or "en",
+            jurs=[target_jurisdiction],
+            reason=crag_assessment.reason or "Insufficient authoritative statutory evidence in corpus for target jurisdiction.",
+            query=query,
+        )
+        total_ms = int((time.perf_counter() - t0) * 1000)
+        return ChatResponse(
+            answer=insufficient_msg,
+            cited_passages=[],
+            model_used="ayurlex-sufficiency-gate",
+            retrieval_latency_ms=total_ms,
+            llm_latency_ms=0,
+            total_latency_ms=total_ms,
+            corpus_version=request.corpus_version or "v1",
+        )
 
     # ── 5. Build LLM context + generate answer ────────────────────────────────
     context = build_llm_context(query, final_evidence)

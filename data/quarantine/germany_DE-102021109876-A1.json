@@ -1,0 +1,35 @@
+{
+  "patent_id": "DE-102021109876-A1",
+  "application_number": "DE102021109876.8",
+  "publication_number": "DE 10 2021 109 876 A1",
+  "title": "Synergistisches Polyherbal-Präparat basierend auf Triphala zur Unterstützung der gastrointestinalen Integrität",
+  "title_de": "Synergistisches Polyherbal-Präparat basierend auf Triphala zur Unterstützung der gastrointestinalen Integrität",
+  "abstract": "Die Erfindung offenbart eine standardisierte Triphala-Zubereitung bestehend aus gleichen Teilen wässrig-methanolischer Fruchtextrakte von Terminalia chebula, Terminalia bellerica und Phyllanthus emblica, standardisiert auf Gesamtpolyphenole >= 45 % und Ellagsäure >= 10 %, zur Wiederherstellung der gastrointestinalen Schleimhautbarriere.",
+  "abstract_de": "Die Erfindung offenbart eine standardisierte Triphala-Zubereitung bestehend aus gleichen Teilen wässrig-methanolischer Fruchtextrakte von Terminalia chebula, Terminalia bellerica und Phyllanthus emblica, standardisiert auf Gesamtpolyphenole >= 45 % und Ellagsäure >= 10 %, zur Wiederherstellung der gastrointestinalen Schleimhautbarriere.",
+  "claims": [
+    "1. Standardisierte pflanzliche Zubereitung aus Früchten von Terminalia chebula, Terminalia bellerica und Phyllanthus emblica zu gleichen Gewichtsanteilen, gekennzeichnet durch einen Gesamtgehalt an Polyphenolen von mindestens 45 Gew.-% und einen Ellagsäure-Gehalt von mindestens 10 Gew.-%.",
+    "2. Zubereitung nach Anspruch 1 zur Anwendung bei der Behandlung des Leaky-Gut-Syndroms und chronischen funktionellen Magen-Darm-Beschwerden.",
+    "3. Orale Darreichungsform enthaltend die Zubereitung nach Anspruch 1 in Kombination mit Präbiotika."
+  ],
+  "description": "Die klassische Rezeptur Triphala ist ein Grundpfeiler der ayurvedischen Pharmakopöe. Die Erfindung zeigt, dass eine gezielte Standardisierung auf Ellagsäure und Chebulinsäure die Genexpression von Occludin und Claudin-1 in Darmepithelzellen um mehr als 180 % steigert.",
+  "ipc": [
+    "A61K36/185",
+    "A61P1/00"
+  ],
+  "cpc": [
+    "A61K36/185",
+    "A61P1/00"
+  ],
+  "filing_date": "2021-04-20",
+  "publication_date": "2022-10-27",
+  "applicant": "Martin Bauer Phytomedicine GmbH",
+  "inventor": [
+    "Dr. Stefan Schmidt",
+    "Dr. Priya Deshmukh"
+  ],
+  "country": "Germany",
+  "jurisdiction": "DE",
+  "language": "de",
+  "source_dataset": "Deutsches Patent- und Markenamt (DPMA / DEPATISnet)",
+  "source_url": "https://depatisnet.dpma.de/DepatisNet/depatisnet?action=pdf&docid=DE102021109876A1"
+}

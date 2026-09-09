@@ -1,0 +1,14 @@
+{
+  "document_id": "WO-2008037784-A1",
+  "publication_number": "WO2008037784A1",
+  "jurisdiction": "WIPO",
+  "country_code": "WO",
+  "source": "Bosch PLS Benchmark (EMNLP 2022 / WIPO PLS Atazanavir)",
+  "source_url": "https://github.com/boschresearch/pls_benchmark_emnlp2022",
+  "download_timestamp": "2026-09-08T06:12:09.950220+00:00",
+  "sha256": "115b9222c10aa45e7d18a459334c347a94e96752656685204f81bfd795908279",
+  "license": "MIT / WIPO Public Open Access",
+  "language": "en",
+  "verification_status": "VERIFIED_REGISTRY_MATCH",
+  "verification_source": "Google Patents / WIPO PATENTSCOPE Cross-Verification"
+}

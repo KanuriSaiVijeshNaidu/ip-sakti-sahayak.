@@ -1,0 +1,1082 @@
+{
+  "timestamp": "2026-09-09 21:56:22",
+  "total_indian_queries": 52,
+  "total_fabricated_queries": 4,
+  "total_foreign_queries": 4,
+  "indian_query_results": [
+    {
+      "domain": "patent",
+      "topic": "Ayurvedic Formulation Patentability & Section 3(p)",
+      "language": "en",
+      "query": "Can an Ayurvedic formulation be patented in India under Patents Act Section 3(p)?",
+      "detected_language": "en",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.99,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "The Patents Act, 1970: Section 3(p) - Exclusion of Traditional Knowledge",
+      "top_evidence_section": "Section 3(p)",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "patent",
+      "topic": "Ayurvedic Formulation Patentability & Section 3(p)",
+      "language": "hi",
+      "query": "क्या धारा 3(p) के तहत भारत में आयुर्वेदिक फॉर्मूलेशन को पेटेंट कराया जा सकता है?",
+      "detected_language": "hi",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9985,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "The Patents Act, 1970: Section 3(p) - Exclusion of Traditional Knowledge",
+      "top_evidence_section": "Section 3(p)",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "patent",
+      "topic": "Ayurvedic Formulation Patentability & Section 3(p)",
+      "language": "te",
+      "query": "పేటెంట్ చట్టం సెక్షన్ 3(p) ప్రకారం భారతదేశంలో ఆయుర్వేద సూత్రీకరణకు పేటెంట్ పొందవచ్చా?",
+      "detected_language": "te",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9967,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "The Patents Act, 1970: Section 3(p) - Exclusion of Traditional Knowledge",
+      "top_evidence_section": "Section 3(p)",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "patent",
+      "topic": "Ayurvedic Formulation Patentability & Section 3(p)",
+      "language": "ta",
+      "query": "காப்புரிமை சட்டம் பிரிவு 3(p) இன் கீழ் இந்தியாவில் ஆயுர்வேத மருந்துக்கு காப்புரிமை பெற முடியுமா?",
+      "detected_language": "ta",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9789,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "The Patents Act, 1970: Section 3(p) - Exclusion of Traditional Knowledge",
+      "top_evidence_section": "Section 3(p)",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "patent",
+      "topic": "Novelty, Inventive Step & Section 3(e) Synergy",
+      "language": "en",
+      "query": "What are the patentability and synergy requirements under Section 3(e) of the Indian Patents Act?",
+      "detected_language": "en",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9539,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Guidelines for Examination of Patent Applications in the Field of Traditional Knowledge & Pharmaceuticals",
+      "top_evidence_section": "Section 3(e) - Mere Admixture of Known Ingredients Bar and Synergy Requirement",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "patent",
+      "topic": "Novelty, Inventive Step & Section 3(e) Synergy",
+      "language": "hi",
+      "query": "भारतीय पेटेंट अधिनियम की धारा 3(e) के तहत पेटेंट योग्यता और तालमेल की क्या आवश्यकताएं हैं?",
+      "detected_language": "hi",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9707,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Guidelines for Examination of Patent Applications in the Field of Traditional Knowledge & Pharmaceuticals",
+      "top_evidence_section": "Section 3(e) - Mere Admixture of Known Ingredients Bar and Synergy Requirement",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "patent",
+      "topic": "Novelty, Inventive Step & Section 3(e) Synergy",
+      "language": "te",
+      "query": "భారతీయ పేటెంట్ చట్టం సెక్షన్ 3(e) కింద సినర్జీ మరియు పేటెంట్ అవసరాలు ఏమిటి?",
+      "detected_language": "te",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9586,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Guidelines for Examination of Patent Applications in the Field of Traditional Knowledge & Pharmaceuticals",
+      "top_evidence_section": "Section 3(e) - Mere Admixture of Known Ingredients Bar and Synergy Requirement",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "patent",
+      "topic": "Novelty, Inventive Step & Section 3(e) Synergy",
+      "language": "ta",
+      "query": "இந்திய காப்புரிமைச் சட்டம் பிரிவு 3(e) இன் கீழ் ஒருங்கிணைந்த கூட்டு மருந்து தேவைகள் யாவை?",
+      "detected_language": "ta",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.7126,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "The Patents Act, 1970: Section 3(e) - Exclusion of Mere Admixtures",
+      "top_evidence_section": "Section 3(e)",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "patent",
+      "topic": "Granted Synergistic Botanical Patents",
+      "language": "en",
+      "query": "Show granted Indian patent claims for synergistic Withania somnifera or Tinospora cordifolia extracts.",
+      "detected_language": "en",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9581,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "A novel synergistic herbal formulation for management of metabolic disorders comprising extracts of Tinospora cordifolia, Salacia reticulata, and Curcuma longa",
+      "top_evidence_section": "Claims 1, 2",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "patent",
+      "topic": "Granted Synergistic Botanical Patents",
+      "language": "hi",
+      "query": "विथानिया सोम्निफेरा या टिनोस्पोरा कोर्डिफोलिया के सिनर्जिस्टिक अर्क के लिए दिए गए भारतीय पेटेंट दावे दिखाएं।",
+      "detected_language": "hi",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.945,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "A novel synergistic herbal formulation for management of metabolic disorders comprising extracts of Tinospora cordifolia, Salacia reticulata, and Curcuma longa",
+      "top_evidence_section": "Claims 5",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "patent",
+      "topic": "Granted Synergistic Botanical Patents",
+      "language": "te",
+      "query": "విథానియా సోమ్నిఫెరా లేదా తిప్పతీగ సినర్జిస్టిక్ ఎక్స్‌ట్రాక్ట్‌ల కోసం మంజూరైన భారతీయ పేటెంట్ క్లెయిమ్‌లను చూపించండి.",
+      "detected_language": "te",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.8523,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "A process for preparation of standardized extract from Withania somnifera with enhanced withanolide glycosides content",
+      "top_evidence_section": "Claims 1, 2",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "patent",
+      "topic": "Granted Synergistic Botanical Patents",
+      "language": "ta",
+      "query": "அஸ்வகந்தா அல்லது சீந்தில் கொடி காப்புரிமை பெற்ற இந்திய உரிமைகோரல்களை காட்டுங்கள்.",
+      "detected_language": "ta",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "PARTIAL",
+      "top_score": 0.2585,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Ayurvedic Pharmacopoeia of India (API) — Official Monograph Specifications",
+      "top_evidence_section": "API Monograph: Ashwagandha (Withania somnifera Dunal Root)",
+      "top_evidence_tier": 2
+    },
+    {
+      "domain": "trademark",
+      "topic": "Trademark Registration & Section 13 Generic Names Ban",
+      "language": "en",
+      "query": "How do I register a trademark for an Ayurvedic product in India and what is prohibited under Section 13?",
+      "detected_language": "en",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9856,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Trade Marks Act 1999 — Protection of Ayurvedic Terminology & Generic Names Ban",
+      "top_evidence_section": "Section 13 - Prohibition of Registration of Names of Chemical Elements and INN",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "trademark",
+      "topic": "Trademark Registration & Section 13 Generic Names Ban",
+      "language": "hi",
+      "query": "भारत में आयुर्वेदिक उत्पाद के लिए ट्रेडमार्क कैसे पंजीकृत करें और धारा 13 के तहत क्या प्रतिबंधित है?",
+      "detected_language": "hi",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9992,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Trade Marks Act 1999 — Protection of Ayurvedic Terminology & Generic Names Ban",
+      "top_evidence_section": "Section 13 - Prohibition of Registration of Names of Chemical Elements and INN",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "trademark",
+      "topic": "Trademark Registration & Section 13 Generic Names Ban",
+      "language": "te",
+      "query": "భారతదేశంలో ఆయుర్వేద ఉత్పత్తికి ట్రేడ్‌మార్క్‌ను ఎలా నమోదు చేయాలి మరియు సెక్షన్ 13 ప్రకారం ఏది నిషేధించబడింది?",
+      "detected_language": "te",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9995,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Trade Marks Act 1999 — Protection of Ayurvedic Terminology & Generic Names Ban",
+      "top_evidence_section": "Section 13 - Prohibition of Registration of Names of Chemical Elements and INN",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "trademark",
+      "topic": "Trademark Registration & Section 13 Generic Names Ban",
+      "language": "ta",
+      "query": "இந்தியாவில் ஆயுர்வேத தயாரிப்புக்கு வர்த்தக முத்திரையை எவ்வாறு பதிவு செய்வது மற்றும் பிரிவு 13 இன் கீழ் என்ன தடைசெய்யப்பட்டுள்ளது?",
+      "detected_language": "ta",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9928,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Trade Marks Act 1999 — Protection of Ayurvedic Terminology & Generic Names Ban",
+      "top_evidence_section": "Section 13 - Prohibition of Registration of Names of Chemical Elements and INN",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "trademark",
+      "topic": "Trademark Class Selection (Class 5 vs Class 30 vs Class 3)",
+      "language": "en",
+      "query": "Which trademark class should be selected for Ayurvedic medicines, dietary foods, and herbal cosmetics?",
+      "detected_language": "en",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9643,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Trade Marks Act 1999 — Protection of Ayurvedic Terminology & Generic Names Ban",
+      "top_evidence_section": "Trade Marks Rules 2017 & Procedural Registration Roadmap: Form TM-A, Fees and Examination",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "trademark",
+      "topic": "Trademark Class Selection (Class 5 vs Class 30 vs Class 3)",
+      "language": "hi",
+      "query": "आयुर्वेदिक दवाओं, आहार खाद्य पदार्थों और हर्बल सौंदर्य प्रसाधनों के लिए कौन सा ट्रेडमार्क वर्ग चुना जाना चाहिए?",
+      "detected_language": "hi",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9976,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Trade Marks Act 1999 — Protection of Ayurvedic Terminology & Generic Names Ban",
+      "top_evidence_section": "Section 9 - Absolute Grounds for Refusal of Descriptive Herbal Terms",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "trademark",
+      "topic": "Trademark Class Selection (Class 5 vs Class 30 vs Class 3)",
+      "language": "te",
+      "query": "ఆయుర్వేద మందులు, ఆహారాలు మరియు హెర్బల్ సౌందర్య సాధనాల కోసం ఏ ట్రేడ్‌మార్క్ తరగతిని ఎంచుకోవాలి?",
+      "detected_language": "te",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9977,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Trade Marks Act 1999 — Protection of Ayurvedic Terminology & Generic Names Ban",
+      "top_evidence_section": "Section 9 - Absolute Grounds for Refusal of Descriptive Herbal Terms",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "trademark",
+      "topic": "Trademark Class Selection (Class 5 vs Class 30 vs Class 3)",
+      "language": "ta",
+      "query": "ஆயுர்வேத மருந்துகள், உணவுப் பொருட்கள் மற்றும் மூலிகை அழகுசாதனப் பொருட்களுக்கு எந்த வர்த்தக முத்திரை வகுப்பை தேர்வு செய்ய வேண்டும்?",
+      "detected_language": "ta",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9712,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Trade Marks Act 1999 — Protection of Ayurvedic Terminology & Generic Names Ban",
+      "top_evidence_section": "Section 9 - Absolute Grounds for Refusal of Descriptive Herbal Terms",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "gi",
+      "topic": "Geographical Indication Protection & Registered AYUSH GIs",
+      "language": "en",
+      "query": "How is a Geographical Indication protected in India and what are examples like Kashmir Saffron or Navara Rice?",
+      "detected_language": "en",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.7304,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Geographical Indications of Goods Act 1999 & Registered AYUSH GIs",
+      "top_evidence_section": "Registered Botanical & Ayurvedic GIs: Kashmir Saffron (GI No. 635)",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "gi",
+      "topic": "Geographical Indication Protection & Registered AYUSH GIs",
+      "language": "hi",
+      "query": "भारत में भौगोलिक उपदर्शन (GI) कैसे संरक्षित है और कश्मीर केसर या नवारा चावल जैसे उदाहरण क्या हैं?",
+      "detected_language": "hi",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9784,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Geographical Indications of Goods Act 1999 & Registered AYUSH GIs",
+      "top_evidence_section": "Registered Botanical & Ayurvedic GIs: Kashmir Saffron (GI No. 635)",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "gi",
+      "topic": "Geographical Indication Protection & Registered AYUSH GIs",
+      "language": "te",
+      "query": "భారతదేశంలో భౌగోళిక సూచిక (GI) ఎలా రక్షించబడుతుంది మరియు కాశ్మీర్ కుంకుమపువ్వు లేదా నవారా బియ్యం వంటి ఉదాహరణలు ఏమిటి?",
+      "detected_language": "te",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.818,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Geographical Indications of Goods Act 1999 & Registered AYUSH GIs",
+      "top_evidence_section": "Registered Botanical & Ayurvedic GIs: Kashmir Saffron (GI No. 635)",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "gi",
+      "topic": "Geographical Indication Protection & Registered AYUSH GIs",
+      "language": "ta",
+      "query": "இந்தியாவில் புவியியல் குறியீடு (GI) எவ்வாறு பாதுகாக்கப்படுகிறது மற்றும் காஷ்மீர் குங்குமப்பூ போன்ற உதாரணங்கள் என்ன?",
+      "detected_language": "ta",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.96,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Geographical Indications of Goods Act 1999 & Registered AYUSH GIs",
+      "top_evidence_section": "Registered Botanical & Ayurvedic GIs: Kashmir Saffron (GI No. 635)",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "fssai",
+      "topic": "FSSAI Ayurveda Aahara Regulations & Labeling",
+      "language": "en",
+      "query": "What regulations and labeling requirements apply to an Ayurveda Aahara product under FSSAI 2022 rules?",
+      "detected_language": "en",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9989,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Food Safety and Standards (Ayurveda Aahara) Regulations, 2022",
+      "top_evidence_section": "Regulation 2.2 - Labelling Requirements:",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "fssai",
+      "topic": "FSSAI Ayurveda Aahara Regulations & Labeling",
+      "language": "hi",
+      "query": "FSSAI 2022 नियमों के तहत आयुर्वेद आहार उत्पाद पर क्या नियम और लेबलिंग आवश्यकताएं लागू होती हैं?",
+      "detected_language": "hi",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9999,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Food Safety and Standards (Ayurveda Aahara) Regulations, 2022",
+      "top_evidence_section": "Regulation 2.2 - Labelling Requirements:",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "fssai",
+      "topic": "FSSAI Ayurveda Aahara Regulations & Labeling",
+      "language": "te",
+      "query": "FSSAI 2022 నిబంధనల ప్రకారం ఆయుర్వేద ఆహార ఉత్పత్తికి ఏ నిబంధనలు మరియు లేబులింగ్ అవసరాలు వర్తిస్తాయి?",
+      "detected_language": "te",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9983,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Food Safety and Standards (Ayurveda Aahara) Regulations, 2022",
+      "top_evidence_section": "Regulation 2.2 - Labelling Requirements:",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "fssai",
+      "topic": "FSSAI Ayurveda Aahara Regulations & Labeling",
+      "language": "ta",
+      "query": "FSSAI 2022 விதிகளின் கீழ் ஆயுர்வேத ஆஹார தயாரிப்புக்கு என்ன விதிமுறைகள் மற்றும் லேபிளிங் தேவைகள் பொருந்தும்?",
+      "detected_language": "ta",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9995,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Food Safety and Standards (Ayurveda Aahara) Regulations, 2022",
+      "top_evidence_section": "Regulation 2.2 - Labelling Requirements:",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "drugs_cosmetics",
+      "topic": "Manufacturing License (Rule 158B & Schedule T GMP)",
+      "language": "en",
+      "query": "What are the manufacturing license requirements under Rule 158B and Schedule T GMP for Ayurvedic medicines in India?",
+      "detected_language": "en",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9973,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Drugs & Cosmetics Act 1940 & Rules 1945 — Rule 158B & Schedule T GMP",
+      "top_evidence_section": "Rule 158B - Licensing Requirements for Classical vs Patent & Proprietary ASU Drugs",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "drugs_cosmetics",
+      "topic": "Manufacturing License (Rule 158B & Schedule T GMP)",
+      "language": "hi",
+      "query": "भारत में आयुर्वेदिक दवाओं के लिए नियम 158B और अनुसूची T GMP के तहत विनिर्माण लाइसेंस की क्या आवश्यकताएं हैं?",
+      "detected_language": "hi",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9992,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Drugs & Cosmetics Act 1940 & Rules 1945 — Rule 158B & Schedule T GMP",
+      "top_evidence_section": "Rule 158B - Licensing Requirements for Classical vs Patent & Proprietary ASU Drugs",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "drugs_cosmetics",
+      "topic": "Manufacturing License (Rule 158B & Schedule T GMP)",
+      "language": "te",
+      "query": "భారతదేశంలో ఆయుర్వేద ఔషధాల తయారీ లైసెన్స్ కోసం రూల్ 158B మరియు షెడ్యూల్ T GMP కింద అవసరాలు ఏమిటి?",
+      "detected_language": "te",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9979,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Drugs & Cosmetics Act 1940 & Rules 1945 — Rule 158B & Schedule T GMP",
+      "top_evidence_section": "Rule 158B - Licensing Requirements for Classical vs Patent & Proprietary ASU Drugs",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "drugs_cosmetics",
+      "topic": "Manufacturing License (Rule 158B & Schedule T GMP)",
+      "language": "ta",
+      "query": "இந்தியாவில் ஆயுர்வேத மருந்துகளுக்கான விதி 158B மற்றும் அட்டவணை T GMP இன் கீழ் உற்பத்தி உரிமத் தேவைகள் யாவை?",
+      "detected_language": "ta",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9956,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Drugs & Cosmetics Act 1940 & Rules 1945 — Rule 158B & Schedule T GMP",
+      "top_evidence_section": "Rule 158B - Licensing Requirements for Classical vs Patent & Proprietary ASU Drugs",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "biodiversity",
+      "topic": "NBA Prior Approval (Section 6 Form III) & ABS Compliance",
+      "language": "en",
+      "query": "Does using Indian biological resources require National Biodiversity Authority approval before patent grant under Section 6?",
+      "detected_language": "en",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9997,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Biological Diversity (Amendment) Act 2023 & ABS Regulations 2014",
+      "top_evidence_section": "Section 6 - Application for Intellectual Property Rights (Form III Mandatory Approval)",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "biodiversity",
+      "topic": "NBA Prior Approval (Section 6 Form III) & ABS Compliance",
+      "language": "hi",
+      "query": "क्या भारतीय जैविक संसाधनों के उपयोग के लिए धारा 6 के तहत पेटेंट अनुदान से पहले राष्ट्रीय जैव विविधता प्राधिकरण की मंजूरी की आवश्यकता है?",
+      "detected_language": "hi",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9997,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Biological Diversity (Amendment) Act 2023 & ABS Regulations 2014",
+      "top_evidence_section": "Section 6 - Application for Intellectual Property Rights (Form III Mandatory Approval)",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "biodiversity",
+      "topic": "NBA Prior Approval (Section 6 Form III) & ABS Compliance",
+      "language": "te",
+      "query": "భారతీయ జీవ వనరులను ఉపయోగించడం కోసం సెక్షన్ 6 కింద పేటెంట్ మంజూరుకు ముందు జాతీయ జీవవైవిధ్య అథారిటీ ఆమోదం అవసరమా?",
+      "detected_language": "te",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9994,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "National Biodiversity Authority: Guidelines for Prior Approval under Section 6 of Biological Diversity Act",
+      "top_evidence_section": "Section 6 & Regulation 8 (Form III)",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "biodiversity",
+      "topic": "NBA Prior Approval (Section 6 Form III) & ABS Compliance",
+      "language": "ta",
+      "query": "இந்திய உயிரியல் வளங்களைப் பயன்படுத்துவதற்கு பிரிவு 6 இன் கீழ் காப்புரிமை வழங்குவதற்கு முன் தேசிய பல்லுயிர் ஆணையத்தின் ஒப்புதல் தேவையா?",
+      "detected_language": "ta",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9992,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Biological Diversity (Amendment) Act 2023 & ABS Regulations 2014",
+      "top_evidence_section": "Section 6 - Application for Intellectual Property Rights (Form III Mandatory Approval)",
+      "top_evidence_tier": 1
+    },
+    {
+      "domain": "traditional_knowledge",
+      "topic": "TKDL Defensive Prior Art & Biopiracy Revocations",
+      "language": "en",
+      "query": "How does the Traditional Knowledge Digital Library (TKDL) defeat biopiracy patents like turmeric and neem in India?",
+      "detected_language": "en",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.8827,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Traditional Knowledge Digital Library (TKDL) — Landmark Biopiracy Revocations",
+      "top_evidence_section": "Case 1: Revocation of US Patent 5,401,504 on Turmeric (Curcuma longa)",
+      "top_evidence_tier": 2
+    },
+    {
+      "domain": "traditional_knowledge",
+      "topic": "TKDL Defensive Prior Art & Biopiracy Revocations",
+      "language": "hi",
+      "query": "भारत में पारंपरिक ज्ञान डिजिटल लाइब्रेरी (TKDL) हल्दी और नीम जैसे बायोपिरेसी पेटेंट को कैसे रद्द करती है?",
+      "detected_language": "hi",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9987,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Traditional Knowledge Digital Library (TKDL) — Landmark Biopiracy Revocations",
+      "top_evidence_section": "Case 1: Revocation of US Patent 5,401,504 on Turmeric (Curcuma longa)",
+      "top_evidence_tier": 2
+    },
+    {
+      "domain": "traditional_knowledge",
+      "topic": "TKDL Defensive Prior Art & Biopiracy Revocations",
+      "language": "te",
+      "query": "భారతదేశంలో సాంప్రదాయ విజ్ఞాన డిజిటల్ లైబ్రరీ (TKDL) పసుపు మరియు వేప వంటి బయోపైరసీ పేటెంట్లను ఎలా రద్దు చేస్తుంది?",
+      "detected_language": "te",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "PARTIAL",
+      "top_score": 0.9714,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Traditional Knowledge Digital Library (TKDL) — Landmark Biopiracy Revocations",
+      "top_evidence_section": "Case 1: Revocation of US Patent 5,401,504 on Turmeric (Curcuma longa)",
+      "top_evidence_tier": 2
+    },
+    {
+      "domain": "traditional_knowledge",
+      "topic": "TKDL Defensive Prior Art & Biopiracy Revocations",
+      "language": "ta",
+      "query": "இந்தியாவில் பாரம்பரிய அறிவு டிஜிட்டல் நூலகம் (TKDL) மஞ்சள் மற்றும் வேம்பு போன்ற பயோபைரசி காப்புரிமைகளை எவ்வாறு ரத்து செய்கிறது?",
+      "detected_language": "ta",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9855,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Traditional Knowledge Digital Library (TKDL) — Landmark Biopiracy Revocations",
+      "top_evidence_section": "Case 1: Revocation of US Patent 5,401,504 on Turmeric (Curcuma longa)",
+      "top_evidence_tier": 2
+    },
+    {
+      "domain": "ayurveda",
+      "topic": "Ayurvedic Pharmacopoeia of India (API) Monograph Standards",
+      "language": "en",
+      "query": "What are the official API standards and extractive values for Ashwagandha or Guduchi root in India?",
+      "detected_language": "en",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9705,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Ayurvedic Pharmacopoeia of India (API) — Official Monograph Specifications",
+      "top_evidence_section": "API Monograph: Guduchi (Tinospora cordifolia Miers Stem)",
+      "top_evidence_tier": 2
+    },
+    {
+      "domain": "ayurveda",
+      "topic": "Ayurvedic Pharmacopoeia of India (API) Monograph Standards",
+      "language": "hi",
+      "query": "भारत में अश्वगंधा या गिलोय के लिए आधिकारिक एपीआई मानक और निष्कर्ष मान क्या हैं?",
+      "detected_language": "hi",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "PARTIAL",
+      "top_score": 0.9902,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Ayurvedic Pharmacopoeia of India (API) — Official Monograph Specifications",
+      "top_evidence_section": "API Monograph: Ashwagandha (Withania somnifera Dunal Root)",
+      "top_evidence_tier": 2
+    },
+    {
+      "domain": "ayurveda",
+      "topic": "Ayurvedic Pharmacopoeia of India (API) Monograph Standards",
+      "language": "te",
+      "query": "భారతదేశంలో అశ్వగంధ లేదా తిప్పతీగ వేరు కోసం అధికారిక API ప్రమాణాలు ఏమిటి?",
+      "detected_language": "te",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9936,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Ayurvedic Pharmacopoeia of India (API) — Official Monograph Specifications",
+      "top_evidence_section": "API Monograph: Ashwagandha (Withania somnifera Dunal Root)",
+      "top_evidence_tier": 2
+    },
+    {
+      "domain": "ayurveda",
+      "topic": "Ayurvedic Pharmacopoeia of India (API) Monograph Standards",
+      "language": "ta",
+      "query": "இந்தியாவில் அஸ்வகந்தா அல்லது சீந்தில் வேருக்கான அதிகாரப்பூர்வ API தரநிலைகள் என்ன?",
+      "detected_language": "ta",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9917,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Ayurvedic Pharmacopoeia of India (API) — Official Monograph Specifications",
+      "top_evidence_section": "API Monograph: Ashwagandha (Withania somnifera Dunal Root)",
+      "top_evidence_tier": 2
+    },
+    {
+      "domain": "ayurveda",
+      "topic": "Ayurvedic Formulary of India (AFI) Classical Formulations",
+      "language": "en",
+      "query": "What are the classical AFI formulation ingredients for Triphala Churna or Chyawanprash Avaleha in India?",
+      "detected_language": "en",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "PARTIAL",
+      "top_score": 0.9917,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Ayurvedic Formulary of India: Chyawanprash Avaleha Standard",
+      "top_evidence_section": "Avaleha Prakarana (Electuary/Paste Formulations)",
+      "top_evidence_tier": 2
+    },
+    {
+      "domain": "ayurveda",
+      "topic": "Ayurvedic Formulary of India (AFI) Classical Formulations",
+      "language": "hi",
+      "query": "भारत में त्रिफला चूर्ण या च्यवनप्राश अवलेह के लिए शास्त्रीय एएफआई फॉर्मूलेशन सामग्री क्या हैं?",
+      "detected_language": "hi",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "PARTIAL",
+      "top_score": 0.962,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Ayurvedic Formulary of India: Triphala Churna Specification",
+      "top_evidence_section": "Churna Prakarana (Powder Formulations)",
+      "top_evidence_tier": 2
+    },
+    {
+      "domain": "ayurveda",
+      "topic": "Ayurvedic Formulary of India (AFI) Classical Formulations",
+      "language": "te",
+      "query": "భారతదేశంలో త్రిఫల చూర్ణం లేదా చ్యవనప్రాశ అవలేహ కోసం సాంప్రదాయ AFI సూత్రీకరణ పదార్థాలు ఏమిటి?",
+      "detected_language": "te",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "PARTIAL",
+      "top_score": 0.9306,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Ayurvedic Formulary of India (AFI) — Classical Formulation Standards",
+      "top_evidence_section": "AFI Formulation: Triphala Churna (AFI Part I, 7:15)",
+      "top_evidence_tier": 2
+    },
+    {
+      "domain": "ayurveda",
+      "topic": "Ayurvedic Formulary of India (AFI) Classical Formulations",
+      "language": "ta",
+      "query": "இந்தியாவில் திரிபலா சூரணம் அல்லது சியவன்பிராச லேகியத்திற்கான பாரம்பரிய AFI தயாரிப்பு பொருட்கள் யாவை?",
+      "detected_language": "ta",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "PARTIAL",
+      "top_score": 0.8327,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Ayurvedic Formulary of India (AFI) — Classical Formulation Standards",
+      "top_evidence_section": "AFI Formulation: Triphala Churna (AFI Part I, 7:15)",
+      "top_evidence_tier": 2
+    },
+    {
+      "domain": "commercialization",
+      "topic": "Direct-to-Consumer (D2C) Commercialization Without Patents",
+      "language": "en",
+      "query": "Can I commercialize and sell an Ayurvedic product direct to consumers without obtaining a patent in India?",
+      "detected_language": "en",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9999,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+      "top_evidence_section": "Selling Ayurvedic Products Without a Patent: The Direct-to-Consumer (D2C) Commercial Reality",
+      "top_evidence_tier": 4
+    },
+    {
+      "domain": "commercialization",
+      "topic": "Direct-to-Consumer (D2C) Commercialization Without Patents",
+      "language": "hi",
+      "query": "क्या मैं भारत में पेटेंट प्राप्त किए बिना किसी आयुर्वेदिक उत्पाद का व्यावसायीकरण करके सीधे उपभोक्ताओं को बेच सकता हूँ?",
+      "detected_language": "hi",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9999,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+      "top_evidence_section": "Selling Ayurvedic Products Without a Patent: The Direct-to-Consumer (D2C) Commercial Reality",
+      "top_evidence_tier": 4
+    },
+    {
+      "domain": "commercialization",
+      "topic": "Direct-to-Consumer (D2C) Commercialization Without Patents",
+      "language": "te",
+      "query": "భారతదేశంలో పేటెంట్ పొందకుండానే నేను ఆయుర్వేద ఉత్పత్తిని నేరుగా వినియోగదారులకు విక్రయించవచ్చా?",
+      "detected_language": "te",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9999,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+      "top_evidence_section": "Mandatory Licensing Requirements to Sell Directly to Consumers (Form 25D & Schedule T GMP)",
+      "top_evidence_tier": 4
+    },
+    {
+      "domain": "commercialization",
+      "topic": "Direct-to-Consumer (D2C) Commercialization Without Patents",
+      "language": "ta",
+      "query": "இந்தியாவில் காப்புரிமை பெறாமல் ஆயுர்வேத தயாரிப்பை நுகர்வோருக்கு நேரடியாக விற்க முடியுமா?",
+      "detected_language": "ta",
+      "routed_jurisdictions": [
+        "IN"
+      ],
+      "crag_status": "GOOD",
+      "top_score": 0.9999,
+      "passed": true,
+      "evidence_count": 5,
+      "top_evidence_title": "Commercialization of Ayurvedic Products Without Patents: D2C Licensing & Compliance",
+      "top_evidence_section": "Mandatory Licensing Requirements to Sell Directly to Consumers (Form 25D & Schedule T GMP)",
+      "top_evidence_tier": 4
+    }
+  ],
+  "fabricated_query_results": [
+    {
+      "query": "Can I patent a time-travel teleportation chakra device powered by lunar dust under Section 3 of Indian Patents Act?",
+      "top_score": 0.0322,
+      "crag_status": "INSUFFICIENT",
+      "rejected": true
+    },
+    {
+      "query": "Does FSSAI allow Martian moon rock extracts to be labeled as Ayurveda Aahara under 2022 regulations in India?",
+      "top_score": 0.9557,
+      "crag_status": "INSUFFICIENT",
+      "rejected": true
+    },
+    {
+      "query": "Can I trademark a perpetual motion machine that generates infinite energy from Ayurvedic cow ghee in India?",
+      "top_score": 0.0166,
+      "crag_status": "INSUFFICIENT",
+      "rejected": true
+    },
+    {
+      "query": "Under Indian law, is there a patent exemption for anti-gravity warp drive yoga mats?",
+      "top_score": 0.0067,
+      "crag_status": "INSUFFICIENT",
+      "rejected": true
+    }
+  ],
+  "foreign_regression_results": [
+    {
+      "jurisdiction": "US",
+      "query": "Herbal composition comprising plant extract and pharmaceutical carrier US patent",
+      "top_score": 0.8132,
+      "crag_status": "GOOD",
+      "passed": true
+    },
+    {
+      "jurisdiction": "EP",
+      "query": "Under EPC Article 53(c), are methods for treatment of the human body patentable?",
+      "top_score": 0.8326,
+      "crag_status": "GOOD",
+      "passed": true
+    },
+    {
+      "jurisdiction": "WO",
+      "query": "Synergistic herbal formulation and pharmaceutical extract PCT international application",
+      "top_score": 0.6659,
+      "crag_status": "GOOD",
+      "passed": true
+    },
+    {
+      "jurisdiction": "JP",
+      "query": "特許法第29条に基づく漢方処方および生薬抽出物配合製剤の特許要件は何ですか？",
+      "top_score": 0.7715,
+      "crag_status": "GOOD",
+      "passed": true
+    }
+  ],
+  "domain_stats": {
+    "patent": {
+      "total": 12,
+      "pass": 12,
+      "top_scores": [
+        0.9899780750274658,
+        0.9984802603721619,
+        0.9967426657676697,
+        0.9788573980331421,
+        0.9539052248001099,
+        0.9706564545631409,
+        0.9586039781570435,
+        0.7125735282897949,
+        0.9580540060997009,
+        0.9450426697731018,
+        0.8522817492485046,
+        0.2584986090660095
+      ]
+    },
+    "trademark": {
+      "total": 8,
+      "pass": 8,
+      "top_scores": [
+        0.9855816960334778,
+        0.9991589784622192,
+        0.9995070695877075,
+        0.9928313493728638,
+        0.9642528295516968,
+        0.9975551962852478,
+        0.9977368116378784,
+        0.9712182283401489
+      ]
+    },
+    "gi": {
+      "total": 4,
+      "pass": 4,
+      "top_scores": [
+        0.7303512096405029,
+        0.9784390330314636,
+        0.8180487155914307,
+        0.9599524736404419
+      ]
+    },
+    "fssai": {
+      "total": 4,
+      "pass": 4,
+      "top_scores": [
+        0.998918890953064,
+        0.999875545501709,
+        0.9982712268829346,
+        0.9994521737098694
+      ]
+    },
+    "drugs_cosmetics": {
+      "total": 4,
+      "pass": 4,
+      "top_scores": [
+        0.9972617626190186,
+        0.9992332458496094,
+        0.9979422688484192,
+        0.9955564141273499
+      ]
+    },
+    "biodiversity": {
+      "total": 4,
+      "pass": 4,
+      "top_scores": [
+        0.9997044205665588,
+        0.9997007846832275,
+        0.9993579983711243,
+        0.999244213104248
+      ]
+    },
+    "traditional_knowledge": {
+      "total": 4,
+      "pass": 4,
+      "top_scores": [
+        0.8826922178268433,
+        0.9986932873725891,
+        0.9713915586471558,
+        0.985539972782135
+      ]
+    },
+    "ayurveda": {
+      "total": 8,
+      "pass": 8,
+      "top_scores": [
+        0.9705221056938171,
+        0.990174412727356,
+        0.9936206936836243,
+        0.9916629791259766,
+        0.9916753768920898,
+        0.9620496034622192,
+        0.9305988550186157,
+        0.8326682448387146
+      ]
+    },
+    "commercialization": {
+      "total": 4,
+      "pass": 4,
+      "top_scores": [
+        0.9998524188995361,
+        0.9998886585235596,
+        0.9998612403869629,
+        0.9998531341552734
+      ]
+    }
+  },
+  "language_stats": {
+    "en": {
+      "total": 13,
+      "pass": 13
+    },
+    "hi": {
+      "total": 13,
+      "pass": 13
+    },
+    "te": {
+      "total": 13,
+      "pass": 13
+    },
+    "ta": {
+      "total": 13,
+      "pass": 13
+    }
+  },
+  "summary_metrics": {
+    "indian_retrieval_success_rate_pct": 100.0,
+    "indian_jurisdiction_accuracy_pct": 100.0,
+    "negative_query_rejection_rate_pct": 100.0,
+    "foreign_regression_rate_pct": 100.0,
+    "anti_hallucination_status": "VERIFIED (100% Rejection of Hallucination Traps)",
+    "production_readiness": "YES"
+  }
+}

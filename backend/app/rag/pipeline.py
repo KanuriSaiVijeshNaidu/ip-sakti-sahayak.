@@ -1,4 +1,4 @@
-﻿"""
+"""
 backend/app/rag/pipeline.py
 ───────────────────────────
 Master Phase 6 RAG pipeline orchestrator.
@@ -77,6 +77,24 @@ class Phase6RAGPipeline:
             llm_context=llm_context,
         )
         latencies["llm_generation_ms"] = round((time.perf_counter() - t0) * 1000, 2)
+
+        # Immediate circuit-breaker return for insufficient/invalid evidence
+        if crag.status in ["INSUFFICIENT", "INVALID"]:
+            total_pipeline_ms = round((time.perf_counter() - t_start) * 1000, 2)
+            latencies["total_rag_pipeline_ms"] = total_pipeline_ms
+            return RAGAnswerResponse(
+                query=request.query,
+                answer=raw_answer,
+                detected_language=query_analysis.detected_language,
+                jurisdictions=retrieval_resp.searched_jurisdictions,
+                crag_status=crag.status,
+                evidence_count=0,
+                citations=[],
+                claims=[],
+                limitations=[crag.reason],
+                status=gen_status,
+                latencies_ms=latencies,
+            )
 
         # 5. Claim & Citation Validation
         t0 = time.perf_counter()

@@ -1,4 +1,4 @@
-﻿"""
+"""
 backend/app/rag/answer_generator.py
 ───────────────────────────────────
 LLM generation module for Phase 6 RAG pipeline.
@@ -35,6 +35,114 @@ def build_system_prompt(language: str, jurisdictions: List[str]) -> str:
     )
 
 
+def format_insufficient_evidence(lang: str, jurs: List[str], reason: str, query: str) -> str:
+    jurs_str = ", ".join(jurs) if jurs else "Global"
+    
+    authorities_map = {
+        "IN": "Controller General of Patents, Designs and Trade Marks (CGPDTM / InPASS: ipindiaservices.gov.in) and Ministry of Ayush (ayush.gov.in)",
+        "US": "United States Patent and Trademark Office (USPTO Patent Center: patentcenter.uspto.gov) and US FDA (fda.gov)",
+        "EP": "European Patent Office (EPO Espacenet: worldwide.espacenet.com) and European Medicines Agency (EMA)",
+        "JP": "日本国特許庁 (JPO / J-PlatPat: j-platpat.inpit.go.jp) 及び 医薬品医療機器総合機構 (PMDA)",
+        "WO": "World Intellectual Property Organization (WIPO Patentscope: patentscope.wipo.int)",
+    }
+    auth_str = authorities_map.get(jurs[0] if jurs else "IN", authorities_map["IN"])
+
+    if lang == "te":
+        return f"""### ⚠️ ధృవీకరించబడిన ఆధారాలు సరిపోవు (Insufficient Verified Evidence)
+**న్యాయ పరిధి:** {jurs_str}
+
+AYURLEX కార్పస్‌లో మీ ప్రశ్నకు సంబంధించి చట్టబద్ధమైన మరియు ఖచ్చితమైన సమాధానం ఇవ్వడానికి తగినంత ప్రామాణిక ఆధారాలు లభించలేదు.
+
+#### 1. కార్పస్‌లో గుర్తించబడిన పరిస్థితి:
+- **కారణం:** {reason}
+- మా **యాంటీ-హాలూసినేషన్ పాలసీ** (`ఆధారం లేనిదే — సమాధానం లేదు`) ప్రకారం, ఊహాజనిత లేదా ధృవీకరించని సమాధానాలను AYURLEX అందించదు.
+
+#### 2. సమాధానం కోసం అవసరమైన వివరాలు:
+- సంబంధిత పేటెంట్ లేదా దరఖాస్తు సంఖ్య (Application / Patent Number).
+- నిర్దిష్ట మూలికా సూత్రీకరణ (Botanical ingredients & standardized extracts).
+- లక్ష్యిత నియంత్రణ వర్గం (Ayurvedic Medicine vs Ayurveda Aahara / Dietary Supplement).
+
+#### 3. సంప్రదించవలసిన అధికారిక సంస్థ:
+- **అధికారిక రిజిస్ట్రీ:** {auth_str}
+- అధికారిక చట్టపరమైన నిర్ధారణ కోసం పై పోర్టల్‌ను లేదా రిజిస్టర్డ్ పేటెంట్ అటార్నీని సంప్రదించండి."""
+
+    elif lang == "hi":
+        return f"""### ⚠️ अपर्याप्त सत्यापित वैधानिक साक्ष्य (Insufficient Verified Evidence)
+**अधिकार क्षेत्र:** {jurs_str}
+
+AYURLEX डेटाबेस में आपके प्रश्न का निश्चित एवं कानूनी रूप से बाध्यकारी उत्तर देने के लिए पर्याप्त प्रामाणिक साक्ष्य उपलब्ध नहीं हैं।
+
+#### 1. डेटाबेस विश्लेषण स्थिति:
+- **कारण:** {reason}
+- हमारी **सख्त गैर-काल्पनिक नीति** (`पर्याप्त साक्ष्य नहीं = कोई उत्तर नहीं`) के अनुसार, सामान्य ज्ञान से अनुमानित उत्तर नहीं दिए जाते हैं।
+
+#### 2. सटीक उत्तर के लिए आवश्यक जानकारी:
+- विशिष्ट पेटेंट आवेदन संख्या या प्रकाशन संख्या (Patent Publication Number).
+- वानस्पतिक सामग्री और मानकीकृत अर्क (Standardized Herbal Extracts & marker compounds).
+- नियामक श्रेणी (आयुर्वेदिक औषधि, आहार पूरक, या पेटेंट दावा).
+
+#### 3. अनुशंसित आधिकारिक निकाय:
+- **आधिकारिक रजिस्ट्री:** {auth_str}
+- कानूनी रूप से मान्य परामर्श के लिए कृपया आधिकारिक राष्ट्रीय पेटेंट कार्यालय अथवा पंजीकृत पेटेंट अटॉर्नी से संपर्क करें।"""
+
+    elif lang == "ta":
+        return f"""### ⚠️ சரிபார்க்கப்பட்ட சட்டப்பூர்வ சான்றுகள் போதுமானதாக இல்லை (Insufficient Verified Evidence)
+**நீதி வரம்பு:** {jurs_str}
+
+AYURLEX தரவுத்தளத்தில் உங்கள் கேள்விக்கு சட்டப்பூர்வமாக துல்லியமான பதிலை வழங்குவதற்கான போதுமான அதிகாரப்பூர்வ ஆவணங்கள் கிடைக்கவில்லை.
+
+#### 1. தரவுத்தள ஆய்வு நிலை:
+- **காரணம்:** {reason}
+- எங்களின் **உறுதியான உண்மை வழிகாட்டுதல் விதி** (`போதிய ஆதாரங்கள் இன்றி — பதில்கள் இல்லை`) படி, கற்பனையான அல்லது யூகமான பதில்கள் வழங்கப்பட மாட்டாது.
+
+#### 2. சரியான தீர்வுக்கு தேவையான விவரங்கள்:
+- குறிப்பிட்ட காப்புரிமை விண்ணப்ப எண் (Patent Application / Grant Number).
+- மூலிகைக் கலவை மற்றும் சாறு விவரங்கள் (Botanical formulation details & extracts).
+- ஒழுங்குமுறை வகைப்பாடு (ஆயுர்வேத மருந்து அல்லது உணவு துணைப்பொருள்).
+
+#### 3. தொடர்பு கொள்ள வேண்டிய அதிகாரப்பூர்வ அமைப்பு:
+- **அதிகாரப்பூர்வ காப்புரிமைப் பதிவகம்:** {auth_str}
+- கூடுதல் அதிகாரப்பூர்வ ஆலோசனைகளுக்கு சம்பந்தப்பட்ட தேசிய காப்புரிமை அலுவலகத்தை அல்லது தகுதிவாய்ந்த வழக்கறிஞரை அணுகவும்."""
+
+    elif lang == "ja":
+        return f"""### ⚠️ 検証済み特許証拠の不足（Insufficient Verified Evidence）
+**対象法域:** {jurs_str}
+
+AYURLEXコーパスから検索された公報および法令データには、この質問に対して確定的な回答を構成するのに十分な技術的・法的根拠が含まれていません。
+
+#### 1. 検索結果および不足の理由:
+- **判定理由:** {reason}
+- 当システムの**厳格な反幻覚ポリシー**（`十分な証拠なし＝実質的回答なし`）に基づき、学習データの記憶からの推測や未検証の引用生成は行いません。
+
+#### 2. 回答を特定するために必要な追加情報:
+- 具体的な特許出願番号または公開公報番号（Publication Number）
+- 対象とする生薬配合・標準化エキスおよび有効成分の特定
+- 申請区分（医薬品、医薬部外品、機能性表示食品、または特定保健用食品）
+
+#### 3. 参照すべき公式当局・特許庁:
+- **管轄機関:** {auth_str}
+- 法的権利の確認および出願手続きについては、上記公式特許情報プラットフォームまたは認定弁理士にご相談ください。"""
+
+    else:
+        return f"""### ⚠️ Insufficient Verified Evidence in Corpus
+**Target Jurisdiction:** {jurs_str}
+
+The AYURLEX evidence corpus does not contain sufficient authoritative statutory or patent evidence to synthesize a conclusive answer to this inquiry without speculation.
+
+#### 1. Verification Finding:
+- **Reason:** {reason}
+- In compliance with our **Anti-Hallucination Policy** (`NO SUFFICIENT EVIDENCE = NO SUBSTANTIVE ANSWER`), AYURLEX will not extrapolate from general model pretraining or manufacture unverified citations.
+
+#### 2. Information Required to Proceed:
+- Specific patent publication number (e.g. IN/US/EP/JP/WO application number).
+- Exact botanical ingredients, standardized extracts, or marker compound percentages.
+- Regulatory filing category (e.g. ASU proprietary medicine, dietary supplement, botanical drug substance).
+
+#### 3. Recommended Authoritative Registries:
+- **Official Authority:** {auth_str}
+- Please consult the official statutory intellectual property portal or licensed patent counsel for formal determination."""
+
+
 class AnswerGenerator:
     """
     Synthesizes citation-bound answers using the active LLM adapter with fallback safety.
@@ -58,22 +166,7 @@ class AnswerGenerator:
 
         # Case 1: Insufficient or Invalid Evidence
         if crag.status == "INSUFFICIENT":
-            if lang == "ja":
-                msg = (
-                    "### ⚠️ 検索された特許証拠の不足\n"
-                    "データベースから取得された特許証拠には、この質問に対する十分な技術的・法的根拠が含まれていません。\n\n"
-                    f"**理由:** {crag.reason}\n\n"
-                    "**推奨:** より具体的な特許番号、化合物名、または法域を指定して再検索してください。"
-                )
-            else:
-                msg = (
-                    "### ⚠️ Insufficient Patent Evidence in Corpus\n"
-                    "The retrieved patent evidence does not provide sufficient technical or statutory basis "
-                    "to answer this inquiry with certainty.\n\n"
-                    f"**Reason:** {crag.reason}\n\n"
-                    "**Recommendation:** Please refine your search by providing specific patent publication numbers, "
-                    "formulation ingredients, or jurisdiction keywords."
-                )
+            msg = format_insufficient_evidence(lang, jurs, crag.reason, query)
             return msg, "INSUFFICIENT_EVIDENCE"
 
         if crag.status == "INVALID":
@@ -155,6 +248,45 @@ class AnswerGenerator:
 
         first = citations[0]
         other_cites = citations[1:4]
+
+        if language == "te":
+            lines = [
+                f"### 📋 ధృవీకరించబడిన చట్టపరమైన ఆధారాల విశ్లేషణ (న్యాయ పరిధి: {', '.join(jurisdictions)})\n",
+                f"అధికారిక రికార్డు [{first.citation_id}] ({first.publication_number}, న్యాయ పరిధి: {first.jurisdiction}, సెక్షన్: {first.section}) ప్రకారం, "
+                f"*'{first.title or 'చట్టబద్ధమైన పత్రం'}'* క్రింది సాంకేతిక & చట్టపరమైన అంశాలను నిర్దేశిస్తుంది [{first.citation_id}]:\n",
+                f"> {first.text[:280]}... [{first.citation_id}]\n",
+            ]
+            if other_cites:
+                lines.append("\n**అనుబంధ ధృవీకరణ ఆధారాలు:**\n")
+                for c in other_cites:
+                    lines.append(f"- **{c.publication_number}** ({c.jurisdiction}, {c.section}): {c.title or 'చట్టబద్ధమైన పత్రం'} [{c.citation_id}]")
+            return "\n".join(lines)
+
+        if language == "hi":
+            lines = [
+                f"### 📋 सत्यापित वैधानिक साक्ष्य विश्लेषण (अधिकार क्षेत्र: {', '.join(jurisdictions)})\n",
+                f"प्रामाणिक दस्तावेज़ [{first.citation_id}] ({first.publication_number}, अधिकार क्षेत्र: {first.jurisdiction}, अनुभाग: {first.section}) के अनुसार, "
+                f"*'{first.title or 'वैधानिक दस्तावेज़'}'* निम्नलिखित कानूनी व तकनीकी तथ्यों को निर्धारित करता है [{first.citation_id}]:\n",
+                f"> {first.text[:280]}... [{first.citation_id}]\n",
+            ]
+            if other_cites:
+                lines.append("\n**संबंधित संपोषक साक्ष्य:**\n")
+                for c in other_cites:
+                    lines.append(f"- **{c.publication_number}** ({c.jurisdiction}, {c.section}): {c.title or 'वैधानिक संदर्भ'} [{c.citation_id}]")
+            return "\n".join(lines)
+
+        if language == "ta":
+            lines = [
+                f"### 📋 சரிபார்க்கப்பட்ட சட்டப்பூர்வ சான்றுகள் பகுப்பாய்வு (நீதி வரம்பு: {', '.join(jurisdictions)})\n",
+                f"அதிகாரப்பூர்வ ஆவணம் [{first.citation_id}] ({first.publication_number}, நீதி வரம்பு: {first.jurisdiction}, பிரிவு: {first.section}) இன் படி, "
+                f"*'{first.title or 'சட்டப்பூர்வ ஆவணம்'}'* பின்வரும் தொழில்நுட்ப மற்றும் சட்ட விதிகளை விவரிக்கிறது [{first.citation_id}]:\n",
+                f"> {first.text[:280]}... [{first.citation_id}]\n",
+            ]
+            if other_cites:
+                lines.append("\n**தொடர்புடைய கூடுதல் சான்றுகள்:**\n")
+                for c in other_cites:
+                    lines.append(f"- **{c.publication_number}** ({c.jurisdiction}, {c.section}): {c.title or 'சட்டக் குறிப்பு'} [{c.citation_id}]")
+            return "\n".join(lines)
 
         if language == "ja":
             lines = [

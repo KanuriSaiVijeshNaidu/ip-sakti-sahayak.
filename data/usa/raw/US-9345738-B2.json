@@ -35,5 +35,7 @@
   "jurisdiction": "US",
   "language": "en",
   "source_dataset": "USPTO Patent Grants / HUPD",
-  "source_url": "https://patents.google.com/patent/US9345738B2/en"
+  "source_url": "https://patents.google.com/patent/US9345738B2/en",
+  "description": "DETAILED DESCRIPTION: The invention addresses joint degradation through non-overlapping pathways. AKBA binds directly to 5-lipoxygenase, while guggulsterone antagonizes the farnesoid X receptor and prevents degradation of I-kappa-B-alpha, preventing NF-kappa-B nuclear translocation.",
+  "source": "USPTO Patent Grants / HUPD"
 }

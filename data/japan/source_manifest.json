@@ -1,0 +1,21 @@
+{
+  "source_name": "LLM-jp Corpus v4 - ja_patent",
+  "source_url": "https://huggingface.co/datasets/Podtech/llm-jp-corpus-v4-ja_patent",
+  "upstream_url": "https://gitlab.llm-jp.nii.ac.jp/datasets/llm-jp-corpus-v4",
+  "license": "CC BY 4.0",
+  "acquisition_date": "2026-09-08T06:42:23.506409+00:00",
+  "jurisdiction": "JP",
+  "language": "ja",
+  "country": "Japan",
+  "shards_processed": 6,
+  "records_inspected": 44410,
+  "retained_patents": 735,
+  "total_chunks": 26041,
+  "raw_size_mb": 3240.33,
+  "filtered_size_mb": 89.06,
+  "filtering_methodology": "AYURLEX bilingual semantic & botanical keywords (Kampo, medicinal plants, natural products, extracts, formulations, supplements, cosmetics)",
+  "corpus_namespace": "data/japan/",
+  "jurisdiction_code": "JP",
+  "language_code": "ja",
+  "pre_embedding_halt": true
+}

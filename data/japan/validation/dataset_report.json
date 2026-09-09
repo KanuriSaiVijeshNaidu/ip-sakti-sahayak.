@@ -1,0 +1,56 @@
+{
+  "jurisdiction": "JP",
+  "country": "Japan",
+  "language": "ja",
+  "source_dataset": "Podtech/llm-jp-corpus-v4-ja_patent",
+  "upstream_source": "National Institute of Informatics (NII) LLM-jp / JPO",
+  "license": "CC BY 4.0",
+  "total_raw_inspected": 44410,
+  "total_retained_documents": 735,
+  "unique_document_ids": 735,
+  "duplicate_documents": 0,
+  "total_chunks": 26041,
+  "unique_chunks": 26041,
+  "duplicate_chunks": 0,
+  "section_breakdown": {
+    "abstract": 735,
+    "claims": 10704,
+    "description": 14602
+  },
+  "publication_years": {
+    "2014": 204,
+    "2020": 531
+  },
+  "keyword_distribution": {
+    "医薬品": 442,
+    "抽出物": 402,
+    "医薬組成物": 241,
+    "化粧品": 240,
+    "サプリメント": 198,
+    "健康食品": 176,
+    "天然物": 149,
+    "植物由来": 136,
+    "植物抽出物": 111,
+    "生薬": 111,
+    "栄養補助食品": 108,
+    "機能性食品": 106,
+    "ハーブ": 59,
+    "漢方": 51,
+    "植物エキス": 42,
+    "抽出エキス": 30,
+    "植物成分": 16,
+    "天然成分": 15,
+    "薬草": 15,
+    "薬用組成物": 10
+  },
+  "chunk_stats": {
+    "avg_char_length": 504.93,
+    "min_char_length": 26,
+    "max_char_length": 14680
+  },
+  "isolation_verification": {
+    "cross_jurisdiction_leakage": 0,
+    "non_japanese_language_tags": 0,
+    "status": "STRICTLY_ISOLATED"
+  }
+}

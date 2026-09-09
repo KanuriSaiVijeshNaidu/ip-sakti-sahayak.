@@ -1,4 +1,4 @@
-﻿"""
+"""
 backend/app/retrieval/jurisdiction_bm25_retriever.py
 ────────────────────────────────────────────────────
 Jurisdiction-partitioned BM25Okapi lexical retriever over canonical_chunks.jsonl.
@@ -197,17 +197,20 @@ class JurisdictionBM25Retriever:
             item = chunk_list[idx]
             cand = {
                 "chunk_id": item["chunk_id"],
-                "document_id": item["document_id"],
-                "publication_number": item["publication_number"],
+                "document_id": item.get("document_id", ""),
+                "publication_number": item.get("publication_number", ""),
                 "jurisdiction": item["jurisdiction"],
-                "language": item["language"],
-                "section": item["section"],
-                "title": item["title"],
+                "language": item.get("language", "en"),
+                "section": item.get("section", ""),
+                "title": item.get("title", ""),
                 "text": item["text"],
-                "source": item["source"],
+                "source": item.get("source") or item.get("authority") or item.get("source_type", ""),
                 "source_url": item.get("source_url"),
                 "filing_date": item.get("filing_date"),
                 "publication_date": item.get("publication_date"),
+                "authority_tier": item.get("authority_tier", 1),
+                "domain": item.get("domain", ""),
+                "subdomain": item.get("subdomain", ""),
                 "lexical_score": score,
                 "lexical_rank": rank,
             }

@@ -30,9 +30,9 @@
   },
   "relevance_assessment": "Authoritative European Patent Office granted patents for herbal medicinal compositions, phytotherapy, standardized extracts, and traditional botanical formulations under the EPC.",
   "verification_status": "VERIFIED",
-  "number_of_records": 5,
-  "file_size_bytes": 18462959,
-  "file_size_formatted": "17.61 MB",
+  "number_of_records": 646,
+  "file_size_bytes": 19894676,
+  "file_size_formatted": "18.97 MB",
   "sha256_checksum": "2443df3b636033e5e87493c0a38df56bd26601db8f96cf2f225e47f4152320d6",
   "source_files": [
     "EP-2345678-B1.json",
@@ -40,6 +40,15 @@
     "EP-2891234-B1.json",
     "EP-3109876-B1.json",
     "EP-3456789-B1.json",
-    "ep_patent_all_claims_validation.parquet"
+    "EP-CLAIM-00090.json",
+    "EP-CLAIM-00223.json",
+    "EP-CLAIM-00508.json",
+    "EP-CLAIM-00615.json",
+    "EP-CLAIM-00654.json",
+    "EP-CLAIM-00660.json",
+    "EP-CLAIM-00792.json",
+    "EP-CLAIM-00914.json",
+    "EP-CLAIM-01162.json",
+    "EP-CLAIM-01492.json"
   ]
 }

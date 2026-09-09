@@ -17,14 +17,20 @@ from backend.app.retrieval.config import retrieval_config
 _RE_JAPANESE = re.compile(r"[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff]")
 _RE_DEVANAGARI = re.compile(r"[\u0900-\u097f]")
 _RE_TELUGU = re.compile(r"[\u0c00-\u0c7f]")
+_RE_TAMIL = re.compile(r"[\u0b80-\u0bff]")
+
+# Code-switching transliteration patterns (Latin script Indic expressions)
+_RE_CODESWITCH_TELUGU = re.compile(r"\b(lo|cheyyacha|cheyavacha|chesukovacha|pedathara|avuthunda|gurinchi|cheyali|ivvandi)\b", re.IGNORECASE)
+_RE_CODESWITCH_HINDI = re.compile(r"\b(mein|karna|hoga|sakta|sakte|sakenge|hai|kyu|kaise|karein|chahiye|batao|milega)\b", re.IGNORECASE)
+_RE_CODESWITCH_TAMIL = re.compile(r"\b(la|kidaikuma|pannalama|vikkalama|theriyuma|seiyalama|patri|vaangalama|eppadi)\b", re.IGNORECASE)
 
 # Entity extraction patterns
 _RE_PATENT_NUMBER = re.compile(
-    r"\b(US|EP|WO|JP)?[0-9]{4,11}(?:[A-B][0-9]?)?\b|\b(US|EP|WO|JP)\s*[0-9]{4,11}\b",
+    r"\b(US|EP|WO|JP|IN)?[0-9]{4,11}(?:[A-B][0-9]?)?\b|\b(US|EP|WO|JP|IN)\s*[0-9]{4,11}\b|\b[0-9]{3,5}/(?:DEL|MUM|CHE|KOL)/[0-9]{4}\b",
     re.IGNORECASE,
 )
 _RE_SECTION_LAW = re.compile(
-    r"\b(Section\s+[0-9]+[a-z]?|35\s+U\.?S\.?C\.?\s+[0-9]+|EPC\s+Article\s+[0-9]+|PCT\s+Article\s+[0-9]+|Article\s+[0-9]+)\b",
+    r"\b(Section\s+[0-9]+[a-z]?|Rule\s+158B|Schedule\s+T|35\s+U\.?S\.?C\.?\s+[0-9]+|EPC\s+Article\s+[0-9]+|PCT\s+Article\s+[0-9]+|Article\s+[0-9]+|特許法第[0-9]+条)\b",
     re.IGNORECASE,
 )
 _RE_YEAR = re.compile(r"\b(19[5-9][0-9]|20[0-2][0-9])\b")
@@ -33,14 +39,27 @@ _RE_YEAR = re.compile(r"\b(19[5-9][0-9]|20[0-2][0-9])\b")
 def detect_language(query: str) -> str:
     """
     Detect language based on script and text features.
-    Multilingual BGE-M3 handles raw text directly without translation.
+    Supports English (en), Telugu (te), Hindi (hi), Tamil (ta), and Japanese (ja).
+    Includes code-switching recognition for Latin-transliterated queries.
     """
+    # 1. Native script detection
     if _RE_JAPANESE.search(query):
         return "ja"
     if _RE_DEVANAGARI.search(query):
         return "hi"
     if _RE_TELUGU.search(query):
         return "te"
+    if _RE_TAMIL.search(query):
+        return "ta"
+
+    # 2. Code-switching Latin-script transliteration detection
+    if _RE_CODESWITCH_TELUGU.search(query):
+        return "te"
+    if _RE_CODESWITCH_HINDI.search(query):
+        return "hi"
+    if _RE_CODESWITCH_TAMIL.search(query):
+        return "ta"
+
     return "en"
 
 
@@ -111,19 +130,33 @@ def route_jurisdiction(query: str, explicit_override: Optional[str] = None) -> T
     # Reject forbidden jurisdictions if explicitly queried
     if any(w in q_lower for w in ["germany", "german patent", "dpma", "bundespatentgericht"]):
         raise ValueError("Germany (DE) has been REMOVED from the active target jurisdictions.")
-    if any(w in q_lower for w in ["indian patent office", "inpass", "cgpdtm"]):
-        raise ValueError("India (IN) is DEFERRED and pending in Phase 5 active scope.")
 
-    # Match jurisdiction keywords
-    has_us = bool(re.search(r"\b(us|usa|united states|american patent|uspto|35\s*u\.?s\.?c)\b", q_lower) or "米国" in query or "アメリカ" in query)
-    has_ep = bool(re.search(r"\b(ep|epo|european patent|european patent office|europe)\b", q_lower) or "欧州" in query or "ヨーロッパ" in query)
+    # Match jurisdiction keywords across all 5 languages
+    has_in = bool(
+        re.search(r"\b(india|indian|cgpdtm|inpass|ipo|ayush|tkdl|nba|national biodiversity authority|fssai|ayurveda aahara|rule 158b|form 24d|form 25d|schedule t|form tm-a)\b", q_lower)
+        or "भारत" in query
+        or "भारतीय" in query
+        or "భారత" in query
+        or "భారతదేశ" in query
+        or "இந்தியா" in query
+        or "இந்திய" in query
+        or "インド" in query
+    )
+    has_us = bool(re.search(r"\b(us|usa|united states|american patent|uspto|35\s*u\.?s\.?c|fda|ndi|gras)\b", q_lower) or "米国" in query or "アメリカ" in query)
+    has_ep = bool(re.search(r"\b(ep|epo|european patent|european patent office|europe|ema|hmpc)\b", q_lower) or "欧州" in query or "ヨーロッパ" in query)
     has_wo = bool(re.search(r"\b(wo|wipo|pct|international patent|international application)\b", q_lower) or "国際出願" in query or "世界知的所有権機関" in query)
-    has_jp = bool(re.search(r"\b(jp|japan|japanese patent|jpo)\b", q_lower) or "日本" in query or "特許庁" in query)
+    has_jp = bool(
+        re.search(r"\b(jp|japan|japanese|jpo|pmda|mhlw)\b", q_lower)
+        or "日本" in query
+        or ("特許庁" in query and not any(f"{p}特許庁" in query for p in ["インド", "米国", "欧州", "世界"]))
+    )
 
     # Check for comparison
     is_compare = any(w in q_lower for w in ["compare", "comparison", "difference between", "versus", "vs", "differ", "対比", "比較"])
 
     detected_jurs: List[str] = []
+    if has_in:
+        detected_jurs.append("IN")
     if has_us:
         detected_jurs.append("US")
     if has_ep:
@@ -141,8 +174,17 @@ def route_jurisdiction(query: str, explicit_override: Optional[str] = None) -> T
     elif len(detected_jurs) > 1:
         return detected_jurs, "explicit_multi", f"Explicit multi-jurisdiction matched: {', '.join(detected_jurs)}"
 
+    # If query concerns traditional medicine / AYUSH / botanical herbs without foreign indicators, default to India (IN)
+    is_ayush_domain = any(w in q_lower for w in [
+        "ayush", "ayurveda", "ayurvedic", "ashwagandha", "curcumin", "turmeric", "triphala",
+        "neem", "tulsi", "bhasma", "churna", "taila", "arishta", "asava", "synergy", "admixture",
+        "ఆయుర్వేద", "పేటెంట్", "आयुर्वेद", "पेटेंट", "பாரம்பரிய", "காப்புரிமை"
+    ])
+    if is_ayush_domain:
+        return ["IN"], "domain_default", "AYUSH / Traditional formulation domain inferred; routing to India (IN) primary statutory registry"
+
     # Global / Unspecified: search all active jurisdictions
-    return list(retrieval_config.active_jurisdictions), "global", "No explicit jurisdiction specified; searching all active jurisdictions (US, EP, WO, JP)"
+    return list(retrieval_config.active_jurisdictions), "global", "No explicit jurisdiction specified; searching all active jurisdictions (IN, US, EP, WO, JP)"
 
 
 def analyze_query(query: str, explicit_jurisdiction: Optional[str] = None) -> QueryAnalysis:
@@ -168,9 +210,23 @@ def analyze_query(query: str, explicit_jurisdiction: Optional[str] = None) -> Qu
 
     # Product/formulation terms: extract capitalized keywords or known terms
     product_entities: List[str] = []
-    for term in ["rosacea", "metronidazole", "curcumin", "turmeric", "ashwagandha", "polyherbal", "liposome", "nanoparticle", "extract"]:
+    for term in [
+        "rosacea", "metronidazole", "curcumin", "turmeric", "ashwagandha", "polyherbal",
+        "liposome", "nanoparticle", "extract", "triphala", "brahmi", "tulsi", "neem",
+        "guggulu", "amla", "piperine", "ginger", "withanolide", "berberine", "resveratrol",
+        "shatavari", "boswellia", "tinospora", "giloy", "chyawanprash"
+    ]:
         if term in norm_query.lower():
             product_entities.append(term)
+
+    # Generate 5 retrieval representations
+    from backend.app.retrieval.query_expander import build_5_representations
+    expanded_reps = build_5_representations(
+        query=norm_query,
+        detected_language=lang,
+        target_jurisdictions=jurisdictions,
+        intent=intent,
+    )
 
     return QueryAnalysis(
         original_query=query,
@@ -186,4 +242,5 @@ def analyze_query(query: str, explicit_jurisdiction: Optional[str] = None) -> Qu
         legal_entities=legal_entities,
         temporal_constraints=temporal_constraints,
         query_type="patent_comparative" if routing_mode == "comparison" else "patent_search",
+        expanded_representations=expanded_reps,
     )

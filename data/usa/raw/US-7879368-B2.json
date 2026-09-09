@@ -35,5 +35,7 @@
   "jurisdiction": "US",
   "language": "en",
   "source_dataset": "USPTO Patent Grants / HUPD",
-  "source_url": "https://patents.google.com/patent/US7879368B2/en"
+  "source_url": "https://patents.google.com/patent/US7879368B2/en",
+  "description": "The combination of Gymnema sylvestre and Cinnamomum bark extract produces complementary therapeutic actions: beta-cell regeneration and insulin receptor kinase activation.",
+  "source": "USPTO Patent Grants / HUPD"
 }

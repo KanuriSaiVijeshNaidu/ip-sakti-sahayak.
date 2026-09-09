@@ -4,6 +4,7 @@ import { en } from "./en";
 import { te } from "./te";
 import { hi } from "./hi";
 import { ja } from "./ja";
+import { ta } from "./ta";
 
 export * from "./types";
 
@@ -12,7 +13,7 @@ export const LOCALES: Record<string, TranslationSchema> = {
   te,
   hi,
   ja,
-  ta: te, // fallback to te or en for South Indian scripts if specific locale not present
+  ta,
   kn: te,
   ml: te,
 };

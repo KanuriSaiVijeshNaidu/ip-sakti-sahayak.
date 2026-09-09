@@ -1,0 +1,62 @@
+{
+  "kaggle_arshpreetsingh_indian_patent_dataset": {
+    "dataset_name": "Indian Patent Dataset",
+    "platform": "Kaggle",
+    "url": "https://www.kaggle.com/datasets/arshpreetsingh/indian-patent-dataset",
+    "license": "CC0: Public Domain",
+    "commercial_restrictions": "None",
+    "research_restrictions": "None",
+    "redistribution_restrictions": "Unrestricted",
+    "attribution_required": false,
+    "retrieval_date": "2026-09-08",
+    "license_status": "APPROVED_OPEN (DISQUALIFIED BY RULE 6: METADATA ONLY)"
+  },
+  "hf_datalyes_DAPFAM_patent": {
+    "dataset_name": "DAPFAM_patent",
+    "platform": "Hugging Face",
+    "url": "https://huggingface.co/datasets/datalyes/DAPFAM_patent",
+    "license": "CC-BY-NC-SA-4.0",
+    "commercial_restrictions": "Non-Commercial Use Only",
+    "research_restrictions": "Academic and Research Use Permitted",
+    "redistribution_restrictions": "Share-Alike Required",
+    "attribution_required": true,
+    "retrieval_date": "2026-09-08",
+    "license_status": "APPROVED_RESEARCH_ONLY (DISQUALIFIED BY RULE 10: USES FAMILY HASHES)"
+  },
+  "hf_mhurhangee_ep_patent_all_claims": {
+    "dataset_name": "ep-patent-all-claims",
+    "platform": "Hugging Face",
+    "url": "https://huggingface.co/datasets/mhurhangee/ep-patent-all-claims",
+    "license": "CC-BY-4.0",
+    "commercial_restrictions": "Commercial Use Permitted with Attribution",
+    "research_restrictions": "None",
+    "redistribution_restrictions": "Attribution Required",
+    "attribution_required": true,
+    "retrieval_date": "2026-09-08",
+    "license_status": "APPROVED (PRODUCTION FOR EUROPE)"
+  },
+  "hf_HUPD_hupd": {
+    "dataset_name": "HUPD (Harvard USPTO Patent Dataset)",
+    "platform": "Hugging Face",
+    "url": "https://huggingface.co/datasets/HUPD/hupd",
+    "license": "Creative Commons Attribution-NonCommercial 4.0 (CC-BY-NC-4.0)",
+    "commercial_restrictions": "Non-Commercial Use Only",
+    "research_restrictions": "Academic Research Permitted",
+    "redistribution_restrictions": "Attribution Required",
+    "attribution_required": true,
+    "retrieval_date": "2026-09-08",
+    "license_status": "APPROVED (PRODUCTION FOR USA)"
+  },
+  "hf_NekoNeko512_wipo_semiconductors": {
+    "dataset_name": "wipo-semiconductors",
+    "platform": "Hugging Face",
+    "url": "https://huggingface.co/datasets/NekoNeko512/wipo-semiconductors",
+    "license": "Unspecified",
+    "commercial_restrictions": "Unknown",
+    "research_restrictions": "Unknown",
+    "redistribution_restrictions": "Unknown",
+    "attribution_required": true,
+    "retrieval_date": "2026-09-08",
+    "license_status": "LICENSE_REVIEW_REQUIRED (DISQUALIFIED BY RULE 3: UNVERIFIABLE ORIGIN)"
+  }
+}

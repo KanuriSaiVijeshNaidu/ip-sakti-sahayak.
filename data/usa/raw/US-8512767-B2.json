@@ -33,5 +33,7 @@
   "jurisdiction": "US",
   "language": "en",
   "source_dataset": "USPTO Patent Grants / HUPD",
-  "source_url": "https://patents.google.com/patent/US8512767B2/en"
+  "source_url": "https://patents.google.com/patent/US8512767B2/en",
+  "description": "Bacopa monnieri has historical utilization as a Medhya Rasayana botanical. Modern standardized processing ensures removal of non-specific glycosides while maintaining exact ratios of memory-active dammarane-type triterpenoid saponins.",
+  "source": "USPTO Patent Grants / HUPD"
 }
