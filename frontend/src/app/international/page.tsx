@@ -22,6 +22,7 @@ import PatentFamilyGraph from "@/components/PatentFamilyGraph";
 import { searchRetrievalPipeline, generateRAGAnswer } from "@/lib/api";
 import { Phase5RetrievalSearchResponse, RAGAnswerResponse, CitationInfo, LanguageCode } from "@/types";
 import { getTranslation } from "@/lib/i18n";
+import UnifiedHubNav from "@/components/UnifiedHubNav";
 
 const LANGUAGES: { code: LanguageCode; label: string }[] = [
   { code: "en", label: "English" },
@@ -118,86 +119,13 @@ export default function InternationalPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center px-4 py-8 relative">
-      <header className="w-full max-w-6xl flex items-center justify-between pb-6 border-b border-slate-800/80 mb-6">
-        <Link href="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-bold text-sm shadow-md">
-            अ
-          </div>
-          <div>
-            <h1 className="text-base font-bold text-white flex items-center gap-2">
-              <span>AYURLEX</span>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800">
-                PHASE 6 EVIDENCE-GROUNDED RAG
-              </span>
-            </h1>
-            <p className="text-[10px] text-slate-400">{t.international.pageSubtitle}</p>
-          </div>
-        </Link>
+    <div className="min-h-screen bg-[#fbfbf9] text-[#27272a] flex flex-col items-center relative">
+      <UnifiedHubNav
+        language={language}
+        onLanguageChange={(l) => setLanguage(l)}
+      />
 
-        <div className="flex items-center gap-2">
-          {/* Mode Switcher Tabs */}
-          <div className="flex bg-slate-900 border border-slate-800 rounded-xl p-1">
-            <button
-              onClick={() => setActiveTab("rag")}
-              className={`px-3 py-1 text-xs font-semibold rounded-lg transition-all ${
-                activeTab === "rag"
-                  ? "bg-emerald-600 text-white shadow-sm"
-                  : "text-slate-400 hover:text-white"
-              }`}
-            >
-              {t.international.ragTab}
-            </button>
-            <button
-              onClick={() => setActiveTab("retrieval")}
-              className={`px-3 py-1 text-xs font-semibold rounded-lg transition-all ${
-                activeTab === "retrieval"
-                  ? "bg-blue-600 text-white shadow-sm"
-                  : "text-slate-400 hover:text-white"
-              }`}
-            >
-              {t.international.retrievalTab}
-            </button>
-            <button
-              onClick={() => setActiveTab("family")}
-              className={`px-3 py-1 text-xs font-semibold rounded-lg transition-all ${
-                activeTab === "family"
-                  ? "bg-purple-600 text-white shadow-sm"
-                  : "text-slate-400 hover:text-white"
-              }`}
-            >
-              {t.international.familyTab}
-            </button>
-          </div>
-
-          {/* Language Selector */}
-          <div className="flex items-center gap-1.5 bg-slate-900 border border-slate-800 rounded-xl px-2.5 py-1.5 text-xs text-slate-300">
-            <Globe2 className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-            <select
-              value={language}
-              onChange={(e) => handleLanguageChange(e.target.value as LanguageCode)}
-              aria-label={t.nav.selectLanguage}
-              className="bg-transparent text-slate-200 font-semibold outline-none cursor-pointer text-xs pr-1"
-            >
-              {LANGUAGES.map((l) => (
-                <option key={l.code} value={l.code} className="bg-black text-white">
-                  {l.label}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <Link
-            href="/"
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-300 bg-slate-800/80 hover:bg-slate-700/80 rounded-xl border border-slate-700 transition-all"
-          >
-            <HouseDoorFill className="w-3.5 h-3.5 text-emerald-400" />
-            <span>{t.nav.home}</span>
-          </Link>
-        </div>
-      </header>
-
-      <main className="w-full max-w-6xl flex flex-col gap-6 text-left">
+      <main className="w-full max-w-6xl flex flex-col gap-6 text-left p-4 sm:p-6">
         {/* Search & Configuration Card */}
         <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 shadow-2xl backdrop-blur-xl space-y-4">
           <div className="flex items-center justify-between">

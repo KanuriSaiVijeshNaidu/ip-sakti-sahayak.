@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Header from "@/components/Header";
+import UnifiedHubNav from "@/components/UnifiedHubNav";
 import DomainSelector from "@/components/DomainSelector";
 import ChatBubble from "@/components/ChatBubble";
 import ChatInput from "@/components/ChatInput";
@@ -385,27 +385,20 @@ export default function ChatPage() {
   const t = getTranslation(language);
 
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white relative overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-[#fbfbf9] text-[#27272a] relative overflow-x-hidden">
       {/* Live Animated Motion Nature Wallpaper */}
-      <LiveNatureWallpaper />
+      {/* Soft ambient styling */}
 
-      {/* Header with Home & User Profile Controls */}
-      <Header
+      {/* Unified 4-Hub & Sub-Tabs Navigation */}
+      <UnifiedHubNav
         language={language}
         onLanguageChange={handleLanguageChange}
         jurisdiction={jurisdiction}
         onJurisdictionChange={handleJurisdictionChange}
-        sessionCount={sessions.length}
-        onOpenHistory={() => setIsHistoryOpen(true)}
-        onOpenCompare={() => {}}
-        onOpenAuth={() => router.push("/login")}
-        userProfile={userProfile}
-        onLogout={handleLogout}
-        onGoHome={handleGoHome}
       />
 
       {/* Domain selector bar */}
-      <div className="bg-black/90 backdrop-blur-xl border-b border-zinc-800/80 px-3 sm:px-4 py-2 sticky top-[49px] sm:top-[57px] z-20 shadow-2xl">
+      <div className="bg-[#f5f6f2]/90 backdrop-blur-md border-b border-[#e0e3d8] px-3 sm:px-4 py-2 sticky top-[108px] z-20 shadow-sm">
         <div className="max-w-4xl mx-auto flex items-center justify-between gap-2 overflow-hidden">
           <div className="flex-1 overflow-x-auto no-scrollbar">
             <DomainSelector value={domain} onChange={setDomain} language={language} />

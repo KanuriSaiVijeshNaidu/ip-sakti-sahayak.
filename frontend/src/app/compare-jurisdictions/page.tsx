@@ -8,6 +8,7 @@ import { compareJurisdictions } from "@/lib/api";
 import ActionPlan from "@/components/ActionPlan";
 import EvidencePanel from "@/components/EvidencePanel";
 import PatentFamilyGraph from "@/components/PatentFamilyGraph";
+import UnifiedHubNav from "@/components/UnifiedHubNav";
 
 export default function CompareJurisdictionsPage() {
   const [title, setTitle] = useState("Synergistic Polyherbal Anti-Inflammatory Formulation");
@@ -38,49 +39,18 @@ export default function CompareJurisdictionsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center px-4 py-8 relative">
-      <header className="w-full max-w-5xl flex items-center justify-between pb-6 border-b border-slate-800/80 mb-8">
-        <Link href="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-bold text-sm shadow-md">
-            अ
-          </div>
-          <div>
-            <h1 className="text-base font-bold text-white flex items-center gap-2">
-              <span>AYURLEX</span>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800">
-                MULTI-JURISDICTION ENGINE
-              </span>
-            </h1>
-            <p className="text-[10px] text-slate-400">Ministry of Ayush · SIH26045</p>
-          </div>
-        </Link>
+    <div className="min-h-screen bg-[#fbfbf9] text-[#27272a] flex flex-col items-center relative">
+      <UnifiedHubNav />
 
-        <div className="flex items-center gap-2">
-          <Link
-            href="/international"
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-300 bg-slate-900 hover:bg-slate-800 rounded-xl border border-slate-700 transition-all"
-          >
-            <span>Patent Family</span>
-          </Link>
-          <Link
-            href="/"
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-300 bg-slate-800/80 hover:bg-slate-700/80 rounded-xl border border-slate-700 transition-all"
-          >
-            <HouseDoorFill className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Chat Workspace</span>
-          </Link>
-        </div>
-      </header>
-
-      <main className="w-full max-w-5xl flex flex-col gap-6 text-left">
+      <main className="w-full max-w-5xl flex flex-col gap-6 text-left p-4 sm:p-6">
         {/* Form */}
-        <form onSubmit={handleCompare} className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 shadow-2xl backdrop-blur-xl space-y-4">
+        <form onSubmit={handleCompare} className="bg-white border border-[#e0e3d8] rounded-3xl p-6 shadow-soft space-y-4">
           <div>
-            <h2 className="text-base font-bold text-white flex items-center gap-2">
+            <h2 className="text-base font-bold text-[#2e412e] flex items-center gap-2">
               <Globe2 className="w-5 h-5 text-blue-400" />
               <span>Cross-Jurisdiction Statutory Comparative Matrix</span>
             </h2>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-[#6b7280] mt-0.5">
               Side-by-side legal analysis comparing India (CGPDTM), USA (USPTO), Europe (EPO), and WIPO/PCT
             </p>
           </div>
@@ -93,26 +63,26 @@ export default function CompareJurisdictionsPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="text-xs font-semibold text-slate-300 block mb-1">
+              <label className="text-xs font-semibold text-[#374e37] block mb-1">
                 Invention Title
               </label>
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500"
+                className="w-full bg-[#fbfbf9] border border-[#e0e3d8] rounded-full px-4 py-2 text-xs text-[#2e412e] focus:outline-none focus:border-[#6d976d] focus:ring-2 focus:ring-[#6d976d]/20 transition-all"
               />
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-slate-300 block mb-1">
+              <label className="text-xs font-semibold text-[#374e37] block mb-1">
                 Ingredients (Comma-separated)
               </label>
               <input
                 type="text"
                 value={ingredientsText}
                 onChange={(e) => setIngredientsText(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500"
+                className="w-full bg-[#fbfbf9] border border-[#e0e3d8] rounded-full px-4 py-2 text-xs text-[#2e412e] focus:outline-none focus:border-[#6d976d] focus:ring-2 focus:ring-[#6d976d]/20 transition-all"
               />
             </div>
           </div>
@@ -121,7 +91,7 @@ export default function CompareJurisdictionsPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full sm:w-auto px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              className="w-full sm:w-auto px-6 py-2.5 bg-[#436143] hover:bg-[#374e37] text-white font-semibold text-xs rounded-full transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
             >
               {loading ? <ArrowRepeat className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" />}
               <span>Compare Across IN, US, EP & WIPO</span>

@@ -14,6 +14,7 @@ import {
 } from "react-bootstrap-icons";
 import { JurisdictionType, LanguageCode } from "@/types";
 import { getTranslation } from "@/lib/i18n";
+import UnifiedHubNav from "@/components/UnifiedHubNav";
 
 const MARKET_METADATA: { code: JurisdictionType; flag: string }[] = [
   { code: "US", flag: "🇺🇸" },
@@ -67,43 +68,15 @@ export default function LocationPage() {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center p-3 sm:p-6 relative overflow-x-hidden">
       {/* Top Navbar */}
-      <header className="w-full max-w-5xl flex items-center justify-between py-3 px-4 bg-zinc-950/90 backdrop-blur-xl border border-zinc-800/90 rounded-2xl mb-6 shadow-2xl">
-        <Link href="/" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
-          <div className="w-8 h-8 rounded-xl bg-white text-black flex items-center justify-center font-bold shadow-md shrink-0">
-            <ShieldShaded className="w-4 h-4 text-black" />
-          </div>
-          <div>
-            <h1 className="text-sm font-bold text-white leading-tight flex items-center gap-1.5">
-              <span>{t.title}</span>
-              <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700">
-                PRO
-              </span>
-            </h1>
-            <p className="text-[10px] text-zinc-400 hidden sm:block">{t.subtitle}</p>
-          </div>
-        </Link>
-
-        <div className="flex items-center gap-2">
-          <Link
-            href="/profile"
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-zinc-300 bg-zinc-900 hover:bg-zinc-800 rounded-xl border border-zinc-800 transition-all"
-          >
-            <PersonBadgeFill className="w-3.5 h-3.5 text-zinc-400" />
-            <span className="hidden sm:inline">{t.nav.profile}</span>
-          </Link>
-
-          <Link
-            href="/"
-            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-black bg-white hover:bg-zinc-200 rounded-xl transition-all shadow-md"
-          >
-            <HouseDoorFill className="w-3.5 h-3.5 text-black" />
-            <span>{t.locationPage.backToChat}</span>
-          </Link>
-        </div>
-      </header>
+      <UnifiedHubNav
+        language={language}
+        onLanguageChange={(l) => setLanguage(l)}
+        jurisdiction={selectedMarket}
+        onJurisdictionChange={(j) => handleSelectMarket(j)}
+      />
 
       {/* Main Container */}
-      <main className="w-full max-w-5xl flex flex-col gap-6">
+      <main className="w-full max-w-5xl flex flex-col gap-6 p-4 sm:p-6">
         {/* Hero Section */}
         <div className="bg-zinc-950/90 border border-zinc-800 rounded-2xl p-5 sm:p-7 shadow-2xl relative overflow-hidden backdrop-blur-xl text-left">
           <div className="max-w-2xl">

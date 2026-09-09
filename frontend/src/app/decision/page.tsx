@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import UnifiedHubNav from "@/components/UnifiedHubNav";
 import Link from "next/link";
 import {
   DecisionResponse,
@@ -187,7 +188,7 @@ ${response.disclaimer}
       case "YES":
         return {
           label: "YES",
-          bg: "bg-emerald-950/40 border-emerald-500/60 text-emerald-400",
+          bg: "bg-[#ecfdf5] border-[#a7f3d0] text-[#065f46] rounded-3xl shadow-soft",
           border: "border-emerald-500/40",
           icon: "✓",
           desc: "Action permitted under authoritative evidence with no material restrictions.",
@@ -195,7 +196,7 @@ ${response.disclaimer}
       case "CONDITIONAL_YES":
         return {
           label: "CONDITIONAL YES",
-          bg: "bg-amber-950/40 border-amber-500/60 text-amber-400",
+          bg: "bg-[#fffbeb] border-[#fde68a] text-[#92400e] rounded-3xl shadow-soft",
           border: "border-amber-500/40",
           icon: "⚠️",
           desc: "Action may proceed subject to meeting mandatory regulatory approvals & FTO clearance.",
@@ -241,233 +242,25 @@ ${response.disclaimer}
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
-      {/* Top Header: ONLY Region, Language, and Three Lines Menu (☰) */}
-      <header className="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-40 px-4 sm:px-6 py-3 flex items-center justify-between" ref={globalMenuRef}>
-        <div className="flex items-center gap-3">
-          <Link href="/" className="text-base sm:text-xl font-bold tracking-tight text-white flex items-center gap-2">
-            <span className="text-amber-400">⚖️ AYURLEX</span>
-            <span className="text-[10px] sm:text-xs uppercase px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
-              Phase 7 Decision Engine
-            </span>
-          </Link>
-        </div>
-
-        {/* Right Controls: Region, Language, and Three Lines Menu */}
-        <div className="flex items-center gap-2 sm:gap-2.5">
-          {/* 1. Region / Market Pill */}
-          <Link
-            href="/location"
-            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-zinc-200 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 rounded-xl transition-all shadow-sm"
-            title="Change Operating Market"
-          >
-            <span className="text-sm">
-              {JURISDICTION_OPTIONS.find((j) => j.id === selectedJurisdiction)?.label.split(" ")[0] || "🇺🇸"}
-            </span>
-            <span className="font-bold text-white hidden xs:inline sm:inline">{selectedJurisdiction}</span>
-          </Link>
-
-          {/* 2. Language Selector */}
-          <div className="flex items-center gap-1 bg-zinc-900 border border-zinc-800 rounded-xl px-2 sm:px-2.5 py-1.5 text-xs text-zinc-300">
-            <span className="text-xs">🌐</span>
-            <select
-              value={selectedLanguage}
-              onChange={(e) => handleLanguageChange(e.target.value as LanguageCode)}
-              aria-label="Select Language"
-              className="bg-transparent text-zinc-200 font-semibold outline-none cursor-pointer text-xs pr-1"
-            >
-              {CORE_LANGUAGES.map((l) => (
-                <option key={l.code} value={l.code} className="bg-black text-white">
-                  {l.label}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* 3. Three Lines Menu Button (☰) containing All Website Main Pages */}
-          <button
-            type="button"
-            onClick={() => setIsGlobalMenuOpen(!isGlobalMenuOpen)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl transition-all border shadow-sm cursor-pointer ${
-              isGlobalMenuOpen
-                ? "bg-white text-black border-white"
-                : "bg-zinc-900 hover:bg-zinc-800 text-zinc-200 hover:text-white border-zinc-800 hover:border-zinc-700"
-            }`}
-            title="Website Main Pages"
-          >
-            <span className="text-base leading-none font-black">{isGlobalMenuOpen ? "✕" : "☰"}</span>
-            <span className="hidden sm:inline font-bold">Menu</span>
-          </button>
-        </div>
-
-        {/* Global Three-Lines Menu Dropdown (All Website Main Pages) */}
-        {isGlobalMenuOpen && (
-          <div className="absolute top-full left-0 right-0 bg-zinc-950/98 border-b border-zinc-800 p-4 sm:p-6 shadow-2xl animate-in fade-in slide-in-from-top-2 backdrop-blur-2xl z-50">
-            <div className="max-w-6xl mx-auto space-y-4">
-              <div className="flex items-center justify-between pb-2 border-b border-zinc-800">
-                <span className="text-[11px] uppercase tracking-wider text-amber-400 font-bold">
-                  Website Main Pages (Vertical Layout)
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setIsGlobalMenuOpen(false)}
-                  className="text-xs text-zinc-400 hover:text-white"
-                >
-                  Close ✕
-                </button>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
-                <Link
-                  href="/"
-                  onClick={() => setIsGlobalMenuOpen(false)}
-                  className="p-3 rounded-xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 text-left transition-all flex items-center justify-between group"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg p-2 rounded-lg bg-zinc-800">🏠</span>
-                    <div>
-                      <span className="text-xs font-bold text-white block">Home / Chat Workspace</span>
-                      <span className="text-[10px] text-zinc-400 block">AI Statutory Assistant</span>
-                    </div>
-                  </div>
-                  <span className="text-zinc-500 group-hover:text-white text-xs font-mono">→</span>
-                </Link>
-
-                <Link
-                  href="/decision"
-                  onClick={() => setIsGlobalMenuOpen(false)}
-                  className="p-3 rounded-xl bg-amber-950/30 hover:bg-amber-950/60 border border-amber-800/50 text-left transition-all flex items-center justify-between group"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg p-2 rounded-lg bg-amber-500/20 text-amber-400">⚖️</span>
-                    <div>
-                      <span className="text-xs font-bold text-amber-300 block">Phase 7 Decision Engine</span>
-                      <span className="text-[10px] text-amber-400/70 block">Cross-Border Jurisdiction Reasoning</span>
-                    </div>
-                  </div>
-                  <span className="text-amber-400 text-xs font-mono">Active</span>
-                </Link>
-
-                <Link
-                  href="/formulation-analyzer"
-                  onClick={() => setIsGlobalMenuOpen(false)}
-                  className="p-3 rounded-xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 text-left transition-all flex items-center justify-between group"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg p-2 rounded-lg bg-zinc-800">🧬</span>
-                    <div>
-                      <span className="text-xs font-bold text-white block">Formulation Analyzer</span>
-                      <span className="text-[10px] text-zinc-400 block">Herbal Synergy & Admixture Audit</span>
-                    </div>
-                  </div>
-                  <span className="text-zinc-500 group-hover:text-white text-xs font-mono">→</span>
-                </Link>
-
-                <Link
-                  href="/patentability"
-                  onClick={() => setIsGlobalMenuOpen(false)}
-                  className="p-3 rounded-xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 text-left transition-all flex items-center justify-between group"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg p-2 rounded-lg bg-zinc-800">💡</span>
-                    <div>
-                      <span className="text-xs font-bold text-white block">Patentability Assessment</span>
-                      <span className="text-[10px] text-zinc-400 block">Section 3(e)/3(p) Statutory Bars</span>
-                    </div>
-                  </div>
-                  <span className="text-zinc-500 group-hover:text-white text-xs font-mono">→</span>
-                </Link>
-
-                <Link
-                  href="/tk-risk"
-                  onClick={() => setIsGlobalMenuOpen(false)}
-                  className="p-3 rounded-xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 text-left transition-all flex items-center justify-between group"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg p-2 rounded-lg bg-zinc-800">🌿</span>
-                    <div>
-                      <span className="text-xs font-bold text-white block">Traditional Knowledge (TK) Risk</span>
-                      <span className="text-[10px] text-zinc-400 block">TKDL Prior Art & NBA Form III</span>
-                    </div>
-                  </div>
-                  <span className="text-zinc-500 group-hover:text-white text-xs font-mono">→</span>
-                </Link>
-
-                <Link
-                  href="/compare-jurisdictions"
-                  onClick={() => setIsGlobalMenuOpen(false)}
-                  className="p-3 rounded-xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 text-left transition-all flex items-center justify-between group"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg p-2 rounded-lg bg-zinc-800">⚖️</span>
-                    <div>
-                      <span className="text-xs font-bold text-white block">Compare Jurisdictions</span>
-                      <span className="text-[10px] text-zinc-400 block">US vs EP vs JP vs IN Comparison</span>
-                    </div>
-                  </div>
-                  <span className="text-zinc-500 group-hover:text-white text-xs font-mono">→</span>
-                </Link>
-
-                <Link
-                  href="/admin"
-                  onClick={() => setIsGlobalMenuOpen(false)}
-                  className="p-3 rounded-xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 text-left transition-all flex items-center justify-between group"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg p-2 rounded-lg bg-zinc-800">📊</span>
-                    <div>
-                      <span className="text-xs font-bold text-white block">Data Knowledge Base & Audit</span>
-                      <span className="text-[10px] text-zinc-400 block">Pipeline Trace & Evidence Metrics</span>
-                    </div>
-                  </div>
-                  <span className="text-zinc-500 group-hover:text-white text-xs font-mono">→</span>
-                </Link>
-
-                <Link
-                  href="/location"
-                  onClick={() => setIsGlobalMenuOpen(false)}
-                  className="p-3 rounded-xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 text-left transition-all flex items-center justify-between group"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg p-2 rounded-lg bg-zinc-800">📍</span>
-                    <div>
-                      <span className="text-xs font-bold text-white block">Change Operating Market</span>
-                      <span className="text-[10px] text-zinc-400 block">US · JP · EP · WO · IN</span>
-                    </div>
-                  </div>
-                  <span className="text-zinc-500 group-hover:text-white text-xs font-mono">→</span>
-                </Link>
-
-                <Link
-                  href="/profile"
-                  onClick={() => setIsGlobalMenuOpen(false)}
-                  className="p-3 rounded-xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 text-left transition-all flex items-center justify-between group"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg p-2 rounded-lg bg-zinc-800">👤</span>
-                    <div>
-                      <span className="text-xs font-bold text-white block">User Profile & Settings</span>
-                      <span className="text-[10px] text-zinc-400 block">Security & Saved Preferences</span>
-                    </div>
-                  </div>
-                  <span className="text-zinc-500 group-hover:text-white text-xs font-mono">→</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
-      </header>
+    <div className="min-h-screen bg-[#fbfbf9] text-[#27272a] flex flex-col">
+      {/* Unified 4-Hub & Sub-Tabs Navigation */}
+      <UnifiedHubNav
+        language={selectedLanguage}
+        onLanguageChange={handleLanguageChange}
+        jurisdiction={selectedJurisdiction as any}
+        onJurisdictionChange={(jur) => setSelectedJurisdiction(jur)}
+      />
 
       {/* Main Container */}
       <main className="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-6 space-y-6">
         {/* Banner */}
-        <div className="rounded-xl border border-amber-500/20 bg-gradient-to-r from-amber-950/30 via-slate-900 to-slate-950 p-5 sm:p-6">
+        <div className="rounded-3xl border border-[#e0e3d8] bg-white p-6 shadow-soft">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <h1 className="text-xl sm:text-2xl font-bold text-white mb-2">
+              <h1 className="text-xl sm:text-2xl font-bold text-[#2e412e] mb-1.5">
                 Cross-Border Decision & Jurisdiction Reasoning Engine
               </h1>
-              <p className="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#4b5563] max-w-3xl leading-relaxed">
                 Deterministic evaluation of cross-border IP commercialization, patent territoriality,
                 regulatory classification, and freedom-to-operate (FTO). The decision rule engine executes
                 <strong> before</strong> narrative generation to prevent automated hallucination of legal rights.
@@ -489,10 +282,10 @@ ${response.disclaimer}
         </div>
 
         {/* Query Input Section with Three-Dots Menu in Right Top */}
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 sm:p-6 space-y-4 shadow-xl">
+        <div className="bg-white border border-[#e0e3d8] rounded-3xl p-6 space-y-4 shadow-soft">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <label className="text-sm font-semibold text-slate-200 flex items-center gap-2">
+              <label className="text-sm font-semibold text-[#2e412e] flex items-center gap-2">
                 <span>Commercialization / Legal Question:</span>
               </label>
               <span className="text-[11px] px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-amber-300 font-mono">
@@ -658,7 +451,7 @@ ${response.disclaimer}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="e.g. I have an Indian patent for an Ayurvedic formulation. Can I legally sell it in the USA?"
               rows={3}
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-colors shadow-inner"
+              className="w-full w-full bg-[#fbfbf9] border border-[#e0e3d8] rounded-2xl p-3.5 text-sm text-[#2e412e] placeholder-[#8a918a] focus:outline-none focus:border-[#6d976d] focus:ring-2 focus:ring-[#6d976d]/20 transition-all shadow-inner"
             />
           </div>
 
@@ -693,7 +486,7 @@ ${response.disclaimer}
               type="button"
               disabled={loading || !query.trim()}
               onClick={() => handleExecute()}
-              className="px-6 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-950 font-bold text-sm transition-all shadow-lg hover:shadow-amber-500/20 flex items-center gap-2 ml-auto"
+              className="px-6 py-2.5 rounded-full bg-[#436143] hover:bg-[#374e37] disabled:opacity-50 text-white font-semibold text-xs sm:text-sm transition-all shadow-sm hover:shadow flex items-center gap-2 ml-auto cursor-pointer"
             >
               {loading ? (
                 <>
