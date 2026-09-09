@@ -35,7 +35,13 @@ import {
   BookOpen,
   Award,
   Globe,
-  Compass
+  Compass,
+  Briefcase,
+  Building2,
+  CheckCheck,
+  Sliders,
+  Printer,
+  X
 } from "lucide-react";
 import { 
   DecisionResponse, 
@@ -55,7 +61,15 @@ import {
   ActionPlanItem, 
   EvidenceItem,
   DEFAULT_REGULATORY_CHECKLIST,
-  DEMO_EVIDENCE
+  DEMO_EVIDENCE,
+  classifyAyushProduct,
+  evaluateMultiIPStrategy,
+  evaluateABS,
+  checkClaimsAndAdvertising,
+  OFFICIAL_SOURCE_REGISTRY,
+  MultiIPRegime,
+  ClaimsRiskCheck,
+  SourceRegistryRecord
 } from "@/data";
 
 const JURISDICTIONS: { id: JurisdictionType; label: string; flag: string; authority: string }[] = [
@@ -94,6 +108,11 @@ export default function AnalyzeWorkspace() {
   const [saved, setSaved] = useState(false);
   const [showTechnicalDetails, setShowTechnicalDetails] = useState(false);
   const [expandedTraceStep, setExpandedTraceStep] = useState<number | null>(null);
+  const [plainWordsMode, setPlainWordsMode] = useState(false);
+  const [showExpertBriefModal, setShowExpertBriefModal] = useState(false);
+  const [showSourceRegistryModal, setShowSourceRegistryModal] = useState(false);
+  const [activeWhatIfIndex, setActiveWhatIfIndex] = useState<number | null>(0);
+  const [ipRegimeFilter, setIpRegimeFilter] = useState<"ALL" | "RELEVANT">("ALL");
 
   // Sync market and query from URL or localStorage
   useEffect(() => {
@@ -144,7 +163,7 @@ export default function AnalyzeWorkspace() {
     setQuery(scenario.name);
     setProductName(scenario.name);
     setProductType(scenario.category);
-    setIngredients(scenario.ingredients.join(", "));
+    setIngredients(scenario.ingredients ? scenario.ingredients.join(", ") : (scenario.productDNA?.ingredients?.map(i => i.commonName).join(", ") || ""));
     setTargetMarket("IN");
     setResponse(null);
     setError(null);
@@ -308,6 +327,74 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
 
   const activeMarketMeta = JURISDICTIONS.find((j) => j.id === targetMarket) || JURISDICTIONS[0];
   const activeResponse = response ? localizeDecision(response, language) : null;
+
+  // Canonical v2 Domain Intelligence (Derived from activeScenario or dynamically evaluated)
+  const effectiveClassification = activeScenario?.classification || classifyAyushProduct({
+    name: productName || query,
+    ingredients: ingredients ? ingredients.split(",").map((s: string) => s.trim()) : [],
+    intendedUse: query
+  });
+
+  const effectiveMultiIP: MultiIPRegime[] = activeScenario?.multiIPStrategy || evaluateMultiIPStrategy({
+    name: productName || query,
+    category: effectiveClassification.category,
+    hasNovelProcess: true,
+    hasSynergy: true,
+    isClassicalFormula: effectiveClassification.category.includes("Classical"),
+    usesIndianBioResource: true
+  });
+
+  const effectiveABS = activeScenario?.absAssessment || evaluateABS({
+    usesIndianBioResource: true,
+    commercialUtilization: true,
+    foreignParticipation: targetMarket !== "IN"
+  });
+
+  const effectiveClaims: ClaimsRiskCheck[] = (activeScenario?.claimsCheck && activeScenario.claimsCheck.length > 0)
+    ? activeScenario.claimsCheck
+    : checkClaimsAndAdvertising([query, productName || ""]);
+
+  const effectiveWhatIf = (activeScenario?.whatIfSimulations && activeScenario.whatIfSimulations.length > 0)
+    ? activeScenario.whatIfSimulations
+    : [
+        {
+          scenarioId: "sim-1",
+          label: "Pivot to FSSAI Ayurveda-Aahara",
+          changeDescription: "Re-position product from AYUSH medicinal license to FSSAI Ayurveda-Aahara food regulation.",
+          originalPathway: "AYUSH Drug License (Rule 158B)",
+          simulatedPathway: "FSSAI Ayurveda-Aahara Food Channel",
+          originalRisk: "MEDIUM" as const,
+          simulatedRisk: "LOW" as const,
+          impactAnalysis: "Accelerates market entry by avoiding drug clinical trial requirements; permitted claims restricted to dietary wellness."
+        },
+        {
+          scenarioId: "sim-2",
+          label: "Claim Therapeutic Cure for Chronic Disease",
+          changeDescription: "Add direct disease cure claim to packaging copy.",
+          originalPathway: "Permissible Structure-Function Wording",
+          simulatedPathway: "Prohibited Drug Advertisement (DMRA 1954)",
+          originalRisk: "LOW" as const,
+          simulatedRisk: "HIGH" as const,
+          impactAnalysis: "Triggers immediate criminal prohibition under Drugs & Magic Remedies Act 1954 and FSSAI Section 53 misbranding penalties."
+        }
+      ];
+
+  const effectiveExpertBrief = activeScenario?.expertReviewBrief || {
+    executiveSummary: `Evidence-grounded regulatory screening for ${productName || query || "Ayurvedic formulation"} under Indian legal regimes. Key focus: Indian Patents Act § 3(e)/3(p) and Biological Diversity Act § 6(1).`,
+    keyLegalQuestions: [
+      "Does our experimental data satisfy the Section 3(e) non-obvious synergistic enhancement threshold?",
+      "Is Form III approval required from NBA Chennai prior to international patent filing or export?"
+    ],
+    requiredFilings: [
+      "NBA Form III Application at Chennai",
+      "Manufacturing License Application under AYUSH Rule 158B or FSSAI Ayurveda-Aahara",
+      "Class 5 / Class 30 Trademark Application"
+    ],
+    statutoryDeadlines: [
+      "NBA Form III must be filed prior to the grant of any patent or commercial export"
+    ],
+    specialistConsultantType: "AYUSH Regulatory Consultant & Life Sciences Patent Attorney"
+  };
 
   // Decision Visuals
   const getDecisionVisuals = (decisionType: DecisionType) => {
@@ -664,6 +751,40 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
 
                 {/* Save, Copy, Export */}
                 <div className="flex items-center gap-2 shrink-0">
+                  {/* Plain Language Mode Toggle */}
+                  <button
+                    onClick={() => setPlainWordsMode(!plainWordsMode)}
+                    className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer border ${
+                      plainWordsMode
+                        ? "bg-emerald-700 text-white border-emerald-800 shadow-xs"
+                        : "bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100"
+                    }`}
+                    title="Toggle plain-language explanation for Ayurvedic innovators & vaidyas"
+                  >
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span>{plainWordsMode ? "Technical Legal View" : "🌿 In Plain Words"}</span>
+                  </button>
+
+                  {/* Prepare for Expert Review Brief */}
+                  <button
+                    onClick={() => setShowExpertBriefModal(true)}
+                    className="px-3 py-1.5 text-xs font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer"
+                    title="Generate executive briefing for patent agent or regulatory counsel"
+                  >
+                    <Briefcase className="w-3.5 h-3.5 text-slate-500" />
+                    <span>Expert Review Brief</span>
+                  </button>
+
+                  {/* Government Source Registry */}
+                  <button
+                    onClick={() => setShowSourceRegistryModal(true)}
+                    className="px-3 py-1.5 text-xs font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer"
+                    title="View 12 authoritative government databases and transparency notes"
+                  >
+                    <Building2 className="w-3.5 h-3.5 text-slate-500" />
+                    <span>12 Verified Registries</span>
+                  </button>
+
                   <button
                     onClick={handleSaveReport}
                     className="px-3 py-1.5 text-xs font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer"
@@ -701,6 +822,374 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
                   Pipeline Verified · Deterministic Rule Engine Active
                 </div>
               </div>
+            </section>
+
+            {/* PLAIN LANGUAGE EXPLANATION CALLOUT */}
+            {plainWordsMode && (
+              <section className="bg-gradient-to-br from-emerald-50 via-teal-50/60 to-slate-50 border-2 border-emerald-300 rounded-2xl p-5 sm:p-6 shadow-sm space-y-3 animate-in fade-in-50">
+                <div className="flex items-center justify-between gap-3 border-b border-emerald-200/80 pb-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-7 h-7 rounded-lg bg-emerald-600 flex items-center justify-center text-white">
+                      <BookOpen className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <h3 className="text-sm sm:text-base font-bold text-emerald-950">
+                        In Plain Words: Practical Guidance for Ayurvedic Innovators & Vaidyas
+                      </h3>
+                      <p className="text-[11px] text-emerald-800">
+                        Simplified legal breakdown without complex statutory jargon.
+                      </p>
+                    </div>
+                  </div>
+                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 text-[10px] font-bold uppercase tracking-wider">
+                    Plain-Language Active
+                  </span>
+                </div>
+                <div className="text-xs sm:text-sm text-emerald-950 leading-relaxed font-medium bg-white/80 p-4 rounded-xl border border-emerald-200/70">
+                  {activeScenario?.plainLanguageExplanation || `In plain words: You cannot patent classical Ayurvedic herbs because they are documented in ancient treatises like Charaka Samhita (Patents Act Section 3(p)). You can, however, protect your specific delivery technology if you prove significant non-obvious synergy, register your brand trademark, and keep your exact manufacturing process secret. Before filing patents or exporting, Form III approval from the National Biodiversity Authority (NBA) is required.`}
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1 text-xs">
+                  <div className="p-2.5 rounded-lg bg-emerald-100/60 border border-emerald-200 text-emerald-900">
+                    <span className="font-bold">❌ What You CANNOT Patent:</span> The plant itself or its classical therapeutic use (Section 3(p)).
+                  </div>
+                  <div className="p-2.5 rounded-lg bg-emerald-100/60 border border-emerald-200 text-emerald-900">
+                    <span className="font-bold">✅ What You CAN Protect:</span> Unique delivery mechanisms, synergistic ratios (Section 3(e)), brand name & trade secrets.
+                  </div>
+                  <div className="p-2.5 rounded-lg bg-emerald-100/60 border border-emerald-200 text-emerald-900">
+                    <span className="font-bold">⚠️ Mandatory Action:</span> NBA Form III approval before filing foreign patents or commercializing abroad.
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {/* PRODUCT CLASSIFICATION & DOWNSTREAM REGULATORY ROUTE */}
+            <section className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3.5">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
+                    <Layers className="w-4 h-4 text-emerald-800" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900">
+                      Product Classification & Regulatory Routing
+                    </h3>
+                    <p className="text-xs text-slate-500">
+                      Determines statutory authority, licensing criteria, and downstream regulatory route.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="px-3 py-1 rounded-lg text-xs font-bold bg-emerald-100 text-emerald-900 border border-emerald-300">
+                    {effectiveClassification.category}
+                  </span>
+                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                    {effectiveClassification.confidence} Confidence
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                  <div className="text-[10px] uppercase font-bold text-slate-500">Downstream Route</div>
+                  <div className="font-bold text-sm text-emerald-900 flex items-center gap-1.5">
+                    <CheckCheck className="w-4 h-4 text-emerald-600" />
+                    <span>{effectiveClassification.downstreamRoute.replace(/_/g, " ")}</span>
+                  </div>
+                  <div className="text-[11px] text-slate-500">
+                    Governed by: <strong>{effectiveClassification.governingAuthority}</strong>
+                  </div>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                  <div className="text-[10px] uppercase font-bold text-slate-500">Governing Statute</div>
+                  <div className="font-bold text-slate-900">{effectiveClassification.governingStatute}</div>
+                  <div className="text-[11px] text-slate-500">Statutory authority over manufacturing & standards</div>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                  <div className="text-[10px] uppercase font-bold text-slate-500">Classification Signals</div>
+                  <ul className="space-y-0.5 text-[11px] text-slate-600">
+                    {effectiveClassification.signals.slice(0, 2).map((sig, idx) => (
+                      <li key={idx} className="flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                        <span>{sig}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            {/* MULTI-IP STRATEGY MAP (ALL 9 REGIMES) */}
+            <section className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
+                <div className="flex items-center gap-2.5">
+                  <Scale className="w-5 h-5 text-emerald-800" />
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900">
+                      Multi-IP Strategy Map (9 IP Regimes)
+                    </h3>
+                    <p className="text-xs text-slate-500">
+                      Integrated intellectual property roadmap across statutory regimes beyond patent-only filing.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Filter toggle */}
+                <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200 text-xs">
+                  <button
+                    type="button"
+                    onClick={() => setIpRegimeFilter("ALL")}
+                    className={`px-2.5 py-1 rounded font-semibold transition-colors cursor-pointer ${
+                      ipRegimeFilter === "ALL" ? "bg-white text-slate-900 shadow-xs" : "text-slate-600 hover:text-slate-900"
+                    }`}
+                  >
+                    All Regimes ({effectiveMultiIP.length})
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIpRegimeFilter("RELEVANT")}
+                    className={`px-2.5 py-1 rounded font-semibold transition-colors cursor-pointer ${
+                      ipRegimeFilter === "RELEVANT" ? "bg-white text-emerald-800 shadow-xs" : "text-slate-600 hover:text-slate-900"
+                    }`}
+                  >
+                    Active / Relevant ({effectiveMultiIP.filter((r: MultiIPRegime) => r.relevant).length})
+                  </button>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                {effectiveMultiIP
+                  .filter((item: MultiIPRegime) => (ipRegimeFilter === "ALL" ? true : item.relevant))
+                  .map((regimeItem: MultiIPRegime, idx: number) => {
+                    const isRelevant = regimeItem.relevant;
+                    const riskColor = regimeItem.risk === "HIGH" ? "text-red-700 bg-red-50 border-red-200" : regimeItem.risk === "MEDIUM" ? "text-amber-800 bg-amber-50 border-amber-200" : "text-emerald-800 bg-emerald-50 border-emerald-200";
+
+                    return (
+                      <div 
+                        key={idx} 
+                        className={`p-3.5 rounded-xl border transition-all text-xs flex flex-col justify-between space-y-2 ${
+                          isRelevant ? "bg-white border-slate-200 shadow-xs" : "bg-slate-50/60 border-slate-200/80 opacity-70"
+                        }`}
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-1.5 mb-1.5">
+                            <span className="font-bold text-slate-900 text-xs flex items-center gap-1.5">
+                              {regimeItem.regime}
+                            </span>
+                            <span className={`px-1.5 py-0.5 rounded text-[9px] font-bold uppercase border ${riskColor}`}>
+                              {regimeItem.risk} Risk
+                            </span>
+                          </div>
+                          <p className="text-[11px] text-slate-600 leading-relaxed mb-2">
+                            {regimeItem.why}
+                          </p>
+                        </div>
+
+                        <div className="pt-2 border-t border-slate-100 space-y-1 text-[10px]">
+                          <div>
+                            <strong className="text-slate-700">Protect:</strong> <span className="text-slate-600">{regimeItem.whatToProtect}</span>
+                          </div>
+                          <div>
+                            <strong className="text-slate-700">Action:</strong> <span className="text-emerald-900 font-medium">{regimeItem.recommendedAction}</span>
+                          </div>
+                          <div className="text-slate-400 font-mono">
+                            {regimeItem.statuteRef}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+            </section>
+
+            {/* ACCESS AND BENEFIT SHARING (ABS) & BIOLOGICAL RESOURCE CLEARANCE */}
+            <section className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-3.5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold">
+                    <ShieldCheck className="w-4 h-4 text-amber-800" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900">
+                      Biological Resource & Access and Benefit Sharing (ABS) Assessment
+                    </h3>
+                    <p className="text-xs text-slate-500">
+                      Compliance with Biological Diversity Act 2002, Section 6(1) Form III & National Biodiversity Authority.
+                    </p>
+                  </div>
+                </div>
+
+                <span className={`px-3 py-1 rounded-lg text-xs font-bold border ${
+                  effectiveABS.relevance === "HIGH" ? "bg-amber-50 text-amber-900 border-amber-300" : "bg-emerald-50 text-emerald-900 border-emerald-300"
+                }`}>
+                  {effectiveABS.isConfirmedObligation ? "Confirmed Legal Obligation" : "Potential Obligation"}
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                  <div className="font-bold text-slate-900">Statutory Assessment</div>
+                  <p className="text-slate-700 leading-relaxed">
+                    {effectiveABS.potentialObligation}
+                  </p>
+                  <div className="pt-2 border-t border-slate-200 text-[11px] text-slate-600 space-y-1">
+                    <div><strong>Governing Authority:</strong> {effectiveABS.authority}</div>
+                    <div><strong>Statutory Mandate:</strong> {effectiveABS.statuteRef}</div>
+                    <div><strong>Form Required:</strong> {effectiveABS.formRequired}</div>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-xl bg-amber-50/50 border border-amber-200 space-y-2">
+                  <div className="font-bold text-amber-950 flex items-center gap-1.5">
+                    <AlertTriangle className="w-4 h-4 text-amber-700" />
+                    <span>Statutory Exemptions & Foreign Triggers</span>
+                  </div>
+                  <p className="text-slate-700 text-[11px] leading-relaxed">
+                    <strong>Section 40 Normally Traded Commodities (NTC) Limitation:</strong> The NTC exemption applies <em>only</em> to raw commodities traded strictly for conventional consumption. It does <strong>NOT</strong> exempt patent filings or commercial research extraction.
+                  </p>
+                  <div className="p-2.5 rounded-lg bg-white border border-amber-200 text-[11px] text-amber-900">
+                    <strong>Recommended Next Step:</strong> {effectiveABS.recommendedNextStep}
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* CLAIMS & ADVERTISING RISK AUDIT */}
+            <section className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-3.5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
+                <div className="flex items-center gap-2.5">
+                  <FileText className="w-5 h-5 text-emerald-800" />
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900">
+                      Claims & Advertising Compliance Audit
+                    </h3>
+                    <p className="text-xs text-slate-500">
+                      Screens marketing claims against Drugs & Magic Remedies Act 1954 (DMRA) and ASCI guidelines.
+                    </p>
+                  </div>
+                </div>
+                <span className="text-xs text-slate-500">
+                  {effectiveClaims.length} Claims Screened
+                </span>
+              </div>
+
+              <div className="space-y-2.5">
+                {effectiveClaims.map((claim: ClaimsRiskCheck, idx: number) => {
+                  const isHigh = claim.riskLevel === "HIGH";
+                  const isMed = claim.riskLevel === "MEDIUM";
+
+                  return (
+                    <div 
+                      key={idx} 
+                      className={`p-4 rounded-xl border text-xs space-y-2 ${
+                        isHigh ? "bg-rose-50/40 border-rose-200" : isMed ? "bg-amber-50/40 border-amber-200" : "bg-emerald-50/30 border-emerald-200"
+                      }`}
+                    >
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <span className="font-semibold text-slate-900 italic">
+                          "{claim.claimText}"
+                        </span>
+                        <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase self-start sm:self-auto ${
+                          isHigh ? "bg-rose-100 text-rose-800 border border-rose-300" : isMed ? "bg-amber-100 text-amber-800 border border-amber-300" : "bg-emerald-100 text-emerald-800 border border-emerald-300"
+                        }`}>
+                          {claim.violationType} ({claim.riskLevel} Risk)
+                        </span>
+                      </div>
+
+                      <div className="text-[11px] text-slate-500">
+                        <strong>Governing Law:</strong> {claim.governingStatute}
+                      </div>
+
+                      <div className="p-2.5 rounded-lg bg-white border border-slate-200 text-slate-800 text-[11px]">
+                        <strong className="text-emerald-800">Compliant Alternative Wording:</strong> "{claim.saferWording}"
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+
+            {/* WHAT-IF SIMULATION PLAYGROUND */}
+            <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-2xl p-5 sm:p-6 shadow-md space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-700/80 pb-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+                    <Sliders className="w-4 h-4 text-emerald-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-white">
+                      What-If Regulatory Simulation Playground
+                    </h3>
+                    <p className="text-xs text-slate-400">
+                      Simulate ingredient, formulation, or positioning changes to preview statutory outcomes.
+                    </p>
+                  </div>
+                </div>
+                <span className="text-[11px] text-emerald-400 font-semibold">
+                  Interactive Regulatory Modeler
+                </span>
+              </div>
+
+              {/* Simulation Selectors */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+                {effectiveWhatIf.map((sim, idx) => {
+                  const isSelected = activeWhatIfIndex === idx;
+                  return (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setActiveWhatIfIndex(idx)}
+                      className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
+                        isSelected
+                          ? "bg-emerald-950/80 border-emerald-500 text-white shadow-sm ring-1 ring-emerald-500"
+                          : "bg-slate-800/60 border-slate-700 hover:bg-slate-800 text-slate-300"
+                      }`}
+                    >
+                      <div className="text-xs font-bold text-emerald-300 mb-1">
+                        {sim.label}
+                      </div>
+                      <div className="text-[11px] text-slate-400 line-clamp-2">
+                        {sim.changeDescription}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Active Simulation Preview */}
+              {activeWhatIfIndex !== null && effectiveWhatIf[activeWhatIfIndex] && (
+                <div className="bg-slate-950/70 border border-slate-700/80 rounded-xl p-4 space-y-3 text-xs">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-2">
+                    <span className="font-bold text-emerald-400 text-sm">
+                      Simulation Analysis: {effectiveWhatIf[activeWhatIfIndex].label}
+                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[11px] text-slate-400">Risk Shift:</span>
+                      <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 font-mono text-[10px]">
+                        {effectiveWhatIf[activeWhatIfIndex].originalRisk}  {effectiveWhatIf[activeWhatIfIndex].simulatedRisk}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px]">
+                    <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 space-y-1">
+                      <div className="text-slate-400 uppercase font-bold text-[10px]">Original Pathway</div>
+                      <div className="text-slate-200 font-medium">{effectiveWhatIf[activeWhatIfIndex].originalPathway}</div>
+                    </div>
+                    <div className="p-2.5 rounded-lg bg-emerald-950/40 border border-emerald-800/60 space-y-1">
+                      <div className="text-emerald-400 uppercase font-bold text-[10px]">Simulated Pathway</div>
+                      <div className="text-emerald-200 font-medium">{effectiveWhatIf[activeWhatIfIndex].simulatedPathway}</div>
+                    </div>
+                  </div>
+
+                  <div className="p-3 rounded-lg bg-slate-900/90 border border-slate-800 text-slate-300 leading-relaxed text-[11px]">
+                    <strong className="text-emerald-400">Regulatory Impact: </strong>
+                    {effectiveWhatIf[activeWhatIfIndex].impactAnalysis}
+                  </div>
+                </div>
+              )}
             </section>
 
             {/* 2. COMPLETE PRODUCT ASSESSMENT MATRIX & FILING READINESS */}
@@ -1049,6 +1538,176 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
 
           </div>
         )}
+
+      {/* EXPERT REVIEW BRIEF MODAL */}
+      {showExpertBriefModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in-50">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden">
+            <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-bold">
+                  <Briefcase className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-slate-900">Executive Brief: Expert Legal & Regulatory Review</h3>
+                  <p className="text-xs text-slate-500">Prepared for Patent Attorney / AYUSH Regulatory Counsel</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowExpertBriefModal(false)}
+                className="w-7 h-7 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 flex items-center justify-center cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="p-6 overflow-y-auto space-y-4 text-xs text-slate-700 leading-relaxed">
+              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                <div className="text-[10px] uppercase font-bold text-slate-500">Executive Summary</div>
+                <p className="text-slate-900 font-medium text-xs sm:text-sm">{effectiveExpertBrief.executiveSummary}</p>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-slate-900 mb-1.5 flex items-center gap-1.5">
+                  <HelpCircle className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>Key Statutory Questions to Put to Counsel</span>
+                </h4>
+                <ul className="space-y-1.5 pl-2">
+                  {effectiveExpertBrief.keyLegalQuestions.map((q, idx) => (
+                    <li key={idx} className="flex items-start gap-2 bg-slate-50 p-2 rounded-lg border border-slate-200">
+                      <span className="font-bold text-emerald-800">{idx + 1}.</span>
+                      <span>{q}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-slate-900 mb-1.5 flex items-center gap-1.5">
+                  <FileText className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>Required Statutory Filings</span>
+                </h4>
+                <ul className="space-y-1 pl-2">
+                  {effectiveExpertBrief.requiredFilings.map((f, idx) => (
+                    <li key={idx} className="flex items-center gap-2">
+                      <CheckCheck className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-slate-900 mb-1.5">Critical Statutory Deadlines</h4>
+                <ul className="space-y-1 pl-2 text-slate-600">
+                  {effectiveExpertBrief.statutoryDeadlines.map((d, idx) => (
+                    <li key={idx} className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                      <span>{d}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-900 text-[11px]">
+                <strong>Recommended Specialist:</strong> {effectiveExpertBrief.specialistConsultantType}
+              </div>
+            </div>
+
+            <div className="p-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between">
+              <span className="text-[11px] text-slate-400">AYURLEX Master v2  Decision Support Brief</span>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => window.print()}
+                  className="px-3 py-1.5 bg-white border border-slate-200 hover:bg-slate-100 rounded-lg font-semibold text-slate-700 flex items-center gap-1.5 cursor-pointer text-xs"
+                >
+                  <Printer className="w-3.5 h-3.5" />
+                  <span>Print Brief</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowExpertBriefModal(false)}
+                  className="px-4 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg font-semibold cursor-pointer text-xs"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 12 VERIFIED GOVERNMENT REGISTRIES MODAL */}
+      {showSourceRegistryModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in-50">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-3xl w-full max-h-[90vh] flex flex-col overflow-hidden">
+            <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-xl bg-slate-900 flex items-center justify-center text-white font-bold">
+                  <Building2 className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-slate-900">12 Verified Government & Statutory Registries</h3>
+                  <p className="text-xs text-slate-500">Transparent Official Citations & Access Boundaries</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowSourceRegistryModal(false)}
+                className="w-7 h-7 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 flex items-center justify-center cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="p-6 overflow-y-auto space-y-3 text-xs">
+              <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-900 text-[11px] leading-relaxed">
+                <strong>Anti-Hallucination Policy:</strong> AYURLEX cites exclusively official government registries, gazette notifications, and statutory repositories. CSIR-TKDL citations represent public Ayurvedic literature guidance; access limitations are stated truthfully.
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                {OFFICIAL_SOURCE_REGISTRY.map((src: SourceRegistryRecord) => (
+                  <div key={src.sourceId} className="p-3 rounded-xl border border-slate-200 bg-slate-50/50 space-y-1.5 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between gap-1">
+                        <span className="font-bold text-slate-900 text-xs">{src.authority}</span>
+                        <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-slate-200 text-slate-700">{src.jurisdiction}</span>
+                      </div>
+                      <div className="text-[11px] font-medium text-emerald-900">{src.domain} • {src.category}</div>
+                      <p className="text-[10px] text-slate-500 leading-relaxed">{src.documentType}</p>
+                    </div>
+
+                    <div className="pt-2 border-t border-slate-200/80 space-y-1 text-[10px]">
+                      <div className="text-slate-500 italic">Access: {src.accessMethod} — {src.notes}</div>
+                      <a 
+                        href={src.officialUrl} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        className="text-emerald-700 font-semibold hover:underline inline-flex items-center gap-1"
+                      >
+                        <span>{src.officialUrl}</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="p-4 border-t border-slate-100 bg-slate-50 flex items-center justify-end">
+              <button
+                type="button"
+                onClick={() => setShowSourceRegistryModal(false)}
+                className="px-4 py-1.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg font-semibold cursor-pointer text-xs"
+              >
+                Close Registry Viewer
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       </main>
 

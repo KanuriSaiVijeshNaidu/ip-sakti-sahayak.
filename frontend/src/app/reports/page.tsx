@@ -46,7 +46,7 @@ const SEEDED_DEMO_REPORTS: SavedReport[] = DEMO_SCENARIOS.map((s, idx) => ({
   id: s.id,
   title: s.name,
   date: new Date(Date.now() - (idx * 3600000 * 24)).toISOString(),
-  jurisdiction: s.targetJurisdiction,
+  jurisdiction: s.targetJurisdiction || "IN",
   analysisType: "Complete Product Assessment",
   decision: s.overview.patentability === "HIGH" ? "CONDITIONAL_NO" : "CONDITIONAL_YES",
   confidence: "HIGH",
