@@ -161,7 +161,7 @@ export async function POST(req: Request) {
         latencies_ms: { total_decision_pipeline_ms: Date.now() - tStart },
         disclaimer: "AYURLEX provides statutory intelligence and decision assistance. Not legal advice.",
       };
-      return NextResponse.json(response);
+      return NextResponse.json(localizeDecision(response, language as any) || response);
     }
 
     // ── Pure India Evaluation Case ────────────────────────────────────────────
@@ -234,7 +234,7 @@ export async function POST(req: Request) {
         latencies_ms: { total_decision_pipeline_ms: Date.now() - tStart },
         disclaimer: "AYURLEX provides statutory intelligence and decision assistance. Not legal advice.",
       };
-      return NextResponse.json(response);
+      return NextResponse.json(localizeDecision(response, language as any) || response);
     }
 
     // ── Target Market: United States (US) ─────────────────────────────────────
@@ -430,7 +430,7 @@ export async function POST(req: Request) {
           "AYURLEX provides deterministic statutory and regulatory decision intelligence. Not formal legal advice.",
       };
 
-      return NextResponse.json(response);
+      return NextResponse.json(localizeDecision(response, language as any) || response);
     }
 
     // ── Target Market: Japan (JP) ─────────────────────────────────────────────
