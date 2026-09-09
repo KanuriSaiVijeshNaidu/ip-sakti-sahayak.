@@ -65,6 +65,7 @@ export const hi: TranslationSchema = {
     home: "होम",
     analyze: "विश्लेषण",
     reports: "रिपोर्ट्स",
+    productIntelligence: "उत्पाद बुद्धिमत्ता (Product Intelligence)",
     history: "इतिहास",
     formulations: "फॉर्मूलेशन",
     patentability: "पेटेंट योग्यता",

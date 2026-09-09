@@ -168,6 +168,16 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
           >
             {t.nav?.reports || "Reports"}
           </Link>
+          <Link
+            href="/product-intelligence"
+            className={`px-3.5 py-1.5 rounded-md text-sm font-medium transition-colors ${
+              pathname === "/product-intelligence" || pathname.startsWith("/product-intelligence")
+                ? "text-emerald-800 bg-emerald-50 font-semibold" 
+                : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+            }`}
+          >
+            {t.nav?.productIntelligence || "Product Intelligence"}
+          </Link>
         </nav>
 
         {/* RIGHT: Target Market Dropdown + Language Dropdown (Beside each other) + Profile */}
@@ -379,6 +389,17 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
             }`}
           >
             {t.nav?.reports || "Reports"}
+          </Link>
+          <Link
+            href="/product-intelligence"
+            onClick={() => setMobileMenuOpen(false)}
+            className={`block px-3 py-2 rounded-md text-sm font-medium ${
+              pathname === "/product-intelligence" || pathname.startsWith("/product-intelligence")
+                ? "bg-emerald-50 text-emerald-800 font-semibold" 
+                : "text-slate-700 hover:bg-slate-50"
+            }`}
+          >
+            {t.nav?.productIntelligence || "Product Intelligence"}
           </Link>
 
           {/* Language choice on mobile */}

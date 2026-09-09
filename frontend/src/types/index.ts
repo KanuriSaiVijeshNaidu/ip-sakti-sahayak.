@@ -1,4 +1,5 @@
 // Types mirroring the FastAPI Pydantic schemas and frontend state
+export * from "./productIntelligence";
 
 export type DomainType = "patents" | "trademarks" | "gi" | "ayush" | "fssai";
 // Active Production Jurisdictions: US, EP (EU), WO, JP. (IN is deferred, DE is removed from active scope).

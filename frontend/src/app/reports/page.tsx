@@ -277,7 +277,9 @@ export default function ReportsPage() {
                       </button>
 
                       <Link
-                        href={`/analyze?scenario=${report.id}`}
+                        href={report.id?.startsWith("AYUR-DNA-") || report.analysisType?.includes("Product Intelligence") 
+                          ? `/product-intelligence?reportId=${report.id}` 
+                          : `/analyze?scenario=${report.id}`}
                         className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-semibold rounded-lg shadow-xs transition-colors cursor-pointer"
                       >
                         <span>View Full Assessment</span>

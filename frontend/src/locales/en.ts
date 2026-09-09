@@ -65,6 +65,7 @@ export const en: TranslationSchema = {
     home: "Home",
     analyze: "Analyze",
     reports: "Reports",
+    productIntelligence: "Product Intelligence",
     history: "History",
     formulations: "Formulations",
     patentability: "Patentability",

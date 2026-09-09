@@ -65,6 +65,7 @@ export const ta: TranslationSchema = {
     home: "முகப்பு",
     analyze: "பகுப்பாய்வு",
     reports: "அறிக்கைகள்",
+    productIntelligence: "தயாரிப்பு நுண்ணறிவு (Product Intelligence)",
     history: "வரலாறு",
     formulations: "ஃபார்முலேஷன்கள்",
     patentability: "காப்புரிமை தகுதி",

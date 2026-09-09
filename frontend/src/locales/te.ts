@@ -65,6 +65,7 @@ export const te: TranslationSchema = {
     home: "హోమ్",
     analyze: "విశ్లేషణ",
     reports: "నివేదికలు",
+    productIntelligence: "ప్రొడక్ట్ ఇంటెలిజెన్స్ (Product Intelligence)",
     history: "చరిత్ర",
     formulations: "ఫార్ములేషన్లు",
     patentability: "పేటెంట్ అర్హత",

@@ -20,6 +20,7 @@ export interface TranslationSchema {
     home: string;
     analyze?: string;
     reports?: string;
+    productIntelligence?: string;
     history: string;
     formulations: string;
     patentability: string;

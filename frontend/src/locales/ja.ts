@@ -65,6 +65,7 @@ export const ja: TranslationSchema = {
     home: "ホーム",
     analyze: "分析",
     reports: "レポート",
+    productIntelligence: "製品インテリジェンス (Product Intelligence)",
     history: "履歴",
     formulations: "処方・製剤",
     patentability: "特許性評価",
