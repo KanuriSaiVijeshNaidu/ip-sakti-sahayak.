@@ -2,8 +2,8 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AYURLEX - AI Legal & Regulatory Assistant for AYUSH & IP",
-  description: "AI assistant for Intellectual Property & AYUSH regulatory guidance (SIH26045)",
+  title: "AYURLEX — AI-Powered IP & Regulatory Intelligence",
+  description: "Know whether your Ayurvedic product can be patented, protected, and sold. Verified legal and regulatory intelligence (SIH26045).",
 };
 
 export const viewport: Viewport = {
