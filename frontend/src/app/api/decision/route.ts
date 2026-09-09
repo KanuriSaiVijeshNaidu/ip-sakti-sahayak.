@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { DecisionResponse, QueryIntent } from "@/types";
+import { localizeDecision } from "@/lib/localizeDecision";
 
 export async function POST(req: Request) {
   try {
@@ -44,7 +45,7 @@ export async function POST(req: Request) {
         clearTimeout(timeout);
         if (res.ok) {
           const data = await res.json();
-          return NextResponse.json(data);
+          return NextResponse.json(localizeDecision(data, language as any) || data);
         }
       } catch {
         // Fallback to built-in serverless edge engine
@@ -523,7 +524,7 @@ export async function POST(req: Request) {
         latencies_ms: { total_decision_pipeline_ms: Date.now() - tStart },
         disclaimer: "AYURLEX provides deterministic statutory and regulatory decision intelligence. Not formal legal advice.",
       };
-      return NextResponse.json(response);
+      return NextResponse.json(localizeDecision(response, language as any) || response);
     }
 
     // ── Target Market: European Union (EP) / Global (WO) ──────────────────────
@@ -600,7 +601,7 @@ export async function POST(req: Request) {
       disclaimer: "AYURLEX provides deterministic statutory and regulatory decision intelligence. Not formal legal advice.",
     };
 
-    return NextResponse.json(response);
+    return NextResponse.json(localizeDecision(response, language as any) || response);
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     return NextResponse.json(

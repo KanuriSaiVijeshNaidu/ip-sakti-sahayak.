@@ -4,9 +4,11 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ShieldCheck, Activity, CheckCircle2 } from "lucide-react";
 import SystemStatusModal from "./SystemStatusModal";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
   const [statusModalOpen, setStatusModalOpen] = useState(false);
+  const { language, t } = useLanguage();
 
   return (
     <>
@@ -19,26 +21,26 @@ export default function Footer() {
                 <span>AYURLEX</span>
               </div>
               <p className="text-slate-400 text-xs max-w-md leading-relaxed">
-                AI-powered intellectual property & regulatory decision-support workspace for AYUSH & Ayurvedic innovations. Grounded in authoritative statutes and patent prior art.
+                {t.welcomeDesc || "AI-powered intellectual property & regulatory decision-support workspace for AYUSH & Ayurvedic innovations. Grounded in authoritative statutes and patent prior art."}
               </p>
             </div>
 
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs">
               <Link href="/analyze" className="hover:text-white transition-colors">
-                Analyze
+                {t.nav?.analyze || "Analyze"}
               </Link>
               <Link href="/reports" className="hover:text-white transition-colors">
-                Reports
+                {t.nav?.reports || "Reports"}
               </Link>
               <Link href="/compare-jurisdictions" className="hover:text-white transition-colors">
-                Compare Markets
+                {t.nav?.compare || "Compare"}
               </Link>
               <button
                 onClick={() => setStatusModalOpen(true)}
                 className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors cursor-pointer"
               >
                 <Activity className="w-3.5 h-3.5" />
-                <span>System Status</span>
+                <span>{t.footer?.systemStatus || "System Status"}</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
               </button>
             </div>
@@ -46,10 +48,10 @@ export default function Footer() {
 
           <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-500 text-[11px]">
             <div>
-              <span className="font-semibold text-slate-400">SIH26045</span> · Ministry of AYUSH · Official Sources • Evidence Grounded • Deterministic Decisions
+              {t.footer?.attribution || "SIH26045 · Ministry of AYUSH · Official Sources • Evidence Grounded • Deterministic Decisions"}
             </div>
             <div className="text-center md:text-right max-w-xl text-slate-500 leading-normal">
-              AYURLEX provides AI-assisted decision support based on retrieved legal and regulatory sources. It does not constitute professional legal advice.
+              {t.footer?.disclaimer || "AYURLEX provides AI-assisted decision support based on retrieved legal and regulatory sources. It does not constitute professional legal advice."}
             </div>
           </div>
         </div>

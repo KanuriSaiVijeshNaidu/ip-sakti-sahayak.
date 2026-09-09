@@ -19,6 +19,7 @@ import {
   Activity
 } from "lucide-react";
 import { JurisdictionType, LanguageCode } from "@/types";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface NavbarProps {
   onOpenSystemStatus?: () => void;
@@ -34,8 +35,8 @@ const MARKETS: { id: JurisdictionType; label: string; flag: string; sub: string 
 
 const LANGUAGES: { id: LanguageCode; label: string; native: string }[] = [
   { id: "en", label: "English", native: "English" },
-  { id: "hi", label: "Hindi", native: "हिन्दी" },
   { id: "te", label: "Telugu", native: "తెలుగు" },
+  { id: "hi", label: "Hindi", native: "हिन्दी" },
   { id: "ja", label: "Japanese", native: "日本語" },
   { id: "ta", label: "Tamil", native: "தமிழ்" },
   { id: "kn", label: "Kannada", native: "ಕನ್ನಡ" },
@@ -45,10 +46,9 @@ const LANGUAGES: { id: LanguageCode; label: string; native: string }[] = [
 export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
   const pathname = usePathname();
   const router = useRouter();
+  const { language, setLanguage, t } = useLanguage();
 
   const [currentMarket, setCurrentMarket] = useState<JurisdictionType>("US");
-  const [currentLanguage, setCurrentLanguage] = useState<LanguageCode>("en");
-
   const [marketDropdownOpen, setMarketDropdownOpen] = useState(false);
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
@@ -59,16 +59,12 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
   const languageRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
 
-  // Sync market, language, and profile from localStorage
+  // Sync market and profile from localStorage
   useEffect(() => {
     try {
       const savedJur = localStorage.getItem("ayurlex_jurisdiction") as JurisdictionType;
       if (savedJur && ["US", "IN", "EU", "JP", "WO"].includes(savedJur)) {
         setCurrentMarket(savedJur);
-      }
-      const savedLang = (localStorage.getItem("ayurlex_language") || localStorage.getItem("ip_sakti_lang")) as LanguageCode;
-      if (savedLang && ["en", "hi", "te", "ja", "ta", "kn", "ml"].includes(savedLang)) {
-        setCurrentLanguage(savedLang);
       }
       const rawUser = localStorage.getItem("ayurlex_user_profile");
       if (rawUser) {
@@ -105,12 +101,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
   };
 
   const handleSelectLanguage = (langId: LanguageCode) => {
-    setCurrentLanguage(langId);
-    try {
-      localStorage.setItem("ayurlex_language", langId);
-      localStorage.setItem("ip_sakti_lang", langId);
-      window.dispatchEvent(new Event("storage"));
-    } catch {}
+    setLanguage(langId);
     setLanguageDropdownOpen(false);
   };
 
@@ -124,7 +115,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
   };
 
   const activeMarketInfo = MARKETS.find((m) => m.id === currentMarket) || MARKETS[0];
-  const activeLangInfo = LANGUAGES.find((l) => l.id === currentLanguage) || LANGUAGES[0];
+  const activeLangInfo = LANGUAGES.find((l) => l.id === language) || LANGUAGES[0];
 
   return (
     <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
@@ -140,7 +131,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
               AYURLEX
             </div>
             <div className="text-[11px] text-slate-500 font-medium tracking-tight hidden sm:block">
-              IP & Regulatory Intelligence
+              {t.title || "IP & Regulatory Intelligence"}
             </div>
           </div>
         </Link>
@@ -155,7 +146,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
                 : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
             }`}
           >
-            Home
+            {t.nav?.home || "Home"}
           </Link>
           <Link
             href="/analyze"
@@ -165,7 +156,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
                 : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
             }`}
           >
-            Analyze
+            {t.nav?.analyze || "Analyze"}
           </Link>
           <Link
             href="/reports"
@@ -175,7 +166,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
                 : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
             }`}
           >
-            Reports
+            {t.nav?.reports || "Reports"}
           </Link>
         </nav>
 
@@ -190,7 +181,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
                 setLanguageDropdownOpen(false);
               }}
               className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-md transition-all cursor-pointer"
-              title="Change Target Market"
+              title={t.nav?.changeMarket || "Change Target Market"}
             >
               <Globe className="w-3.5 h-3.5 text-slate-500 shrink-0" />
               <span className="hidden xs:inline sm:inline">{activeMarketInfo.label}</span>
@@ -201,7 +192,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
             {marketDropdownOpen && (
               <div className="absolute right-0 mt-1.5 w-64 bg-white border border-slate-200 rounded-lg shadow-lg py-1 z-50 animate-in fade-in-50 zoom-in-95">
                 <div className="px-3 py-1.5 border-b border-slate-100 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-                  Target Market
+                  {t.nav?.targetMarketLabel || "Target Market"}
                 </div>
                 {MARKETS.map((m) => (
                   <button
@@ -235,7 +226,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
                 setMarketDropdownOpen(false);
               }}
               className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-md transition-all cursor-pointer"
-              title="Change Language"
+              title={t.nav?.selectLanguage || "Change Language"}
             >
               <Languages className="w-3.5 h-3.5 text-slate-500 shrink-0" />
               <span>{activeLangInfo.native}</span>
@@ -245,21 +236,21 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
             {languageDropdownOpen && (
               <div className="absolute right-0 mt-1.5 w-44 bg-white border border-slate-200 rounded-lg shadow-lg py-1 z-50 animate-in fade-in-50 zoom-in-95">
                 <div className="px-3 py-1.5 border-b border-slate-100 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-                  Select Language
+                  {t.nav?.selectLanguage || "Select Language"}
                 </div>
                 {LANGUAGES.map((l) => (
                   <button
                     key={l.id}
                     onClick={() => handleSelectLanguage(l.id)}
                     className={`w-full text-left px-3 py-2 text-xs flex items-center justify-between hover:bg-slate-50 transition-colors ${
-                      currentLanguage === l.id ? "bg-emerald-50 text-emerald-800 font-semibold" : "text-slate-700"
+                      language === l.id ? "bg-emerald-50 text-emerald-800 font-semibold" : "text-slate-700"
                     }`}
                   >
                     <div>
                       <span className="font-medium">{l.native}</span>
                       <span className="text-[10px] text-slate-400 ml-1.5">({l.label})</span>
                     </div>
-                    {currentLanguage === l.id && (
+                    {language === l.id && (
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
                     )}
                   </button>
@@ -277,7 +268,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
                 setLanguageDropdownOpen(false);
               }}
               className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center text-slate-600 transition-colors cursor-pointer"
-              title="Profile & Settings"
+              title={t.nav?.profileAndSettings || "Profile & Settings"}
             >
               <User className="w-4 h-4" />
             </button>
@@ -286,10 +277,10 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
               <div className="absolute right-0 mt-1.5 w-56 bg-white border border-slate-200 rounded-lg shadow-lg py-1 z-50 animate-in fade-in-50 zoom-in-95 text-xs text-slate-700">
                 <div className="px-3 py-2 border-b border-slate-100">
                   <div className="font-semibold text-slate-900 truncate">
-                    {userEmail || "Guest Citizen"}
+                    {userEmail || (t.nav?.guestCitizen || "Guest Citizen")}
                   </div>
                   <div className="text-[11px] text-slate-400">
-                    {userEmail ? "Active User" : "Unsaved Session"}
+                    {userEmail ? (t.nav?.activeUser || "Active User") : (t.nav?.unsavedSession || "Unsaved Session")}
                   </div>
                 </div>
 
@@ -299,7 +290,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
                   className="w-full text-left px-3 py-2 hover:bg-slate-50 flex items-center gap-2"
                 >
                   <Sliders className="w-3.5 h-3.5 text-slate-400" />
-                  <span>Profile & Settings</span>
+                  <span>{t.nav?.profileAndSettings || "Profile & Settings"}</span>
                 </Link>
 
                 <Link
@@ -308,7 +299,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
                   className="w-full text-left px-3 py-2 hover:bg-slate-50 flex items-center gap-2"
                 >
                   <Bookmark className="w-3.5 h-3.5 text-slate-400" />
-                  <span>Saved Reports</span>
+                  <span>{t.nav?.savedReports || "Saved Reports"}</span>
                 </Link>
 
                 {onOpenSystemStatus && (
@@ -320,7 +311,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
                     className="w-full text-left px-3 py-2 hover:bg-slate-50 flex items-center gap-2 text-slate-700"
                   >
                     <Activity className="w-3.5 h-3.5 text-emerald-600" />
-                    <span>System Status</span>
+                    <span>{t.nav?.systemStatus || "System Status"}</span>
                   </button>
                 )}
 
@@ -332,7 +323,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
                     className="w-full text-left px-3 py-2 hover:bg-rose-50 text-rose-600 flex items-center gap-2"
                   >
                     <LogOut className="w-3.5 h-3.5" />
-                    <span>Sign Out</span>
+                    <span>{t.nav?.signOut || "Sign Out"}</span>
                   </button>
                 ) : (
                   <Link
@@ -341,7 +332,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
                     className="w-full text-left px-3 py-2 hover:bg-emerald-50 text-emerald-700 flex items-center gap-2 font-medium"
                   >
                     <LogIn className="w-3.5 h-3.5" />
-                    <span>Sign In / Register</span>
+                    <span>{t.nav?.signIn || "Sign In / Register"}</span>
                   </Link>
                 )}
               </div>
@@ -369,7 +360,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
               pathname === "/" ? "bg-emerald-50 text-emerald-800 font-semibold" : "text-slate-700 hover:bg-slate-50"
             }`}
           >
-            Home
+            {t.nav?.home || "Home"}
           </Link>
           <Link
             href="/analyze"
@@ -378,7 +369,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
               pathname === "/analyze" || pathname.startsWith("/decision") ? "bg-emerald-50 text-emerald-800 font-semibold" : "text-slate-700 hover:bg-slate-50"
             }`}
           >
-            Analyze
+            {t.nav?.analyze || "Analyze"}
           </Link>
           <Link
             href="/reports"
@@ -387,12 +378,14 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
               pathname === "/reports" ? "bg-emerald-50 text-emerald-800 font-semibold" : "text-slate-700 hover:bg-slate-50"
             }`}
           >
-            Reports
+            {t.nav?.reports || "Reports"}
           </Link>
 
           {/* Language choice on mobile */}
           <div className="pt-2 border-t border-slate-100">
-            <div className="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Language</div>
+            <div className="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+              {t.nav?.selectLanguage || "Language"}
+            </div>
             <div className="grid grid-cols-2 gap-1 px-1">
               {LANGUAGES.map((l) => (
                 <button
@@ -402,7 +395,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
                     setMobileMenuOpen(false);
                   }}
                   className={`text-left px-2.5 py-1.5 rounded text-xs ${
-                    currentLanguage === l.id ? "bg-emerald-50 text-emerald-800 font-semibold" : "text-slate-700 hover:bg-slate-50"
+                    language === l.id ? "bg-emerald-50 text-emerald-800 font-semibold" : "text-slate-700 hover:bg-slate-50"
                   }`}
                 >
                   {l.native}
@@ -416,7 +409,7 @@ export default function Navbar({ onOpenSystemStatus }: NavbarProps) {
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-50"
           >
-            Profile & Settings
+            {t.nav?.profileAndSettings || "Profile & Settings"}
           </Link>
         </div>
       )}

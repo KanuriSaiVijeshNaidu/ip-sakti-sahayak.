@@ -20,6 +20,7 @@ import {
   HelpCircle,
   Plus
 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface SavedReport {
   id: string;
@@ -35,6 +36,7 @@ interface SavedReport {
 
 export default function ReportsPage() {
   const router = useRouter();
+  const { language, t } = useLanguage();
   const [reports, setReports] = useState<SavedReport[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -49,6 +51,8 @@ export default function ReportsPage() {
   }, []);
 
   const handleDelete = (id: string) => {
+    const confirmMsg = t.reportsPage?.confirmDelete || "Are you sure you want to delete this saved analysis?";
+    if (!window.confirm(confirmMsg)) return;
     const updated = reports.filter((r) => r.id !== id);
     setReports(updated);
     try {
@@ -67,18 +71,19 @@ export default function ReportsPage() {
   };
 
   const getDecisionBadge = (decision: string) => {
+    const label = t.workspace?.decisionBanners?.[decision]?.label;
     switch (decision) {
       case "YES":
-        return <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-100 text-emerald-800">Approved</span>;
+        return <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-100 text-emerald-800">{label || "Approved"}</span>;
       case "CONDITIONAL_YES":
-        return <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-amber-100 text-amber-900">Approved w/ Conditions</span>;
+        return <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-amber-100 text-amber-900">{label || "Approved w/ Conditions"}</span>;
       case "CONDITIONAL_NO":
-        return <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-orange-100 text-orange-900">Obstacles Identified</span>;
+        return <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-orange-100 text-orange-900">{label || "Obstacles Identified"}</span>;
       case "NO":
-        return <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-rose-100 text-rose-900">Prohibited</span>;
+        return <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-rose-100 text-rose-900">{label || "Prohibited"}</span>;
       case "INSUFFICIENT_EVIDENCE":
       default:
-        return <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-200 text-slate-700">Insufficient Evidence</span>;
+        return <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-200 text-slate-700">{label || "Insufficient Evidence"}</span>;
     }
   };
 
@@ -92,106 +97,114 @@ export default function ReportsPage() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
           <div>
             <h1 className="text-2xl font-bold tracking-tight text-slate-900">
-              My Reports
+              {t.reportsPage?.title || "Saved Reports"}
             </h1>
             <p className="text-xs sm:text-sm text-slate-500 mt-1">
-              Save and revisit your IP and regulatory analyses.
+              {t.reportsPage?.subtitle || "View, review, and export your previous legal and regulatory decision analyses."}
             </p>
           </div>
 
           <Link
             href="/analyze"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-800 hover:bg-emerald-700 text-white font-semibold text-xs rounded-lg shadow-sm transition-colors cursor-pointer self-start sm:self-auto"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-800 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold rounded-lg shadow-sm transition-colors cursor-pointer self-start sm:self-auto"
           >
             <Plus className="w-4 h-4" />
-            <span>New Analysis</span>
+            <span>{t.reportsPage?.startAnalysisBtn || "New Analysis"}</span>
           </Link>
         </div>
 
-        {/* Reports List or Empty State */}
+        {/* Reports List */}
         {loading ? (
-          <div className="py-20 text-center text-xs text-slate-400">
+          <div className="py-12 text-center text-xs text-slate-400">
             Loading saved reports...
           </div>
         ) : reports.length === 0 ? (
-          <div className="py-20 bg-white rounded-xl border border-slate-200 text-center p-8 space-y-4 shadow-sm">
+          /* EMPTY STATE */
+          <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center max-w-lg mx-auto shadow-xs space-y-4">
             <div className="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto">
               <Bookmark className="w-6 h-6" />
             </div>
-            <div className="space-y-1">
-              <h3 className="text-sm font-bold text-slate-900">You haven't saved any reports yet.</h3>
-              <p className="text-xs text-slate-500 max-w-sm mx-auto">
-                Run an inquiry in the Analyze workspace to generate evidence-grounded reports.
+            <div>
+              <h2 className="text-base font-bold text-slate-900">
+                {t.reportsPage?.emptyTitle || "No saved analyses yet"}
+              </h2>
+              <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                {t.reportsPage?.emptyDesc || "When you run an analysis in the AYURLEX workspace, you can save it here for future reference, audits, and team sharing."}
               </p>
             </div>
-            <div className="pt-2">
-              <Link
-                href="/analyze"
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-semibold rounded-lg shadow-sm transition-colors"
-              >
-                <span>Run your first analysis</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
+            <Link
+              href="/analyze"
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-semibold rounded-lg shadow-sm transition-all"
+            >
+              <span>{t.reportsPage?.startAnalysisBtn || "Start Your First Analysis"}</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         ) : (
-          <div className="space-y-4">
-            {reports.map((report) => (
-              <div
-                key={report.id}
-                className="p-5 bg-white rounded-xl border border-slate-200 shadow-sm space-y-3 hover:border-slate-300 transition-all"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                  <div className="flex items-center gap-2.5">
-                    {getDecisionBadge(report.decision)}
-                    <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
-                      {report.jurisdiction}
-                    </span>
-                    <span className="text-xs text-slate-400 font-medium">
-                      {new Date(report.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                    </span>
+          <div className="space-y-3.5">
+            <div className="text-xs font-medium text-slate-500">
+              {(t.reportsPage?.countLabel || "{count} saved analyses").replace("{count}", String(reports.length))}
+            </div>
+
+            <div className="grid grid-cols-1 gap-3.5">
+              {reports.map((report) => (
+                <div
+                  key={report.id}
+                  className="bg-white rounded-xl border border-slate-200 p-5 shadow-xs hover:border-slate-300 transition-all flex flex-col md:flex-row md:items-center justify-between gap-4"
+                >
+                  <div className="space-y-1.5 max-w-2xl">
+                    <div className="flex flex-wrap items-center gap-2">
+                      {getDecisionBadge(report.decision)}
+                      <span className="text-[11px] font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded flex items-center gap-1">
+                        <Globe className="w-3 h-3 text-slate-400" />
+                        {report.jurisdiction}
+                      </span>
+                      <span className="text-[11px] text-slate-400 flex items-center gap-1">
+                        <Calendar className="w-3 h-3 text-slate-400" />
+                        {new Date(report.date).toLocaleDateString()}
+                      </span>
+                    </div>
+
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-snug">
+                      {report.title}
+                    </h3>
+
+                    {report.summary && (
+                      <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                        {report.summary}
+                      </p>
+                    )}
                   </div>
 
-                  <div className="flex items-center gap-2 self-end sm:self-auto">
+                  {/* Actions */}
+                  <div className="flex items-center gap-2 shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-slate-100">
+                    <button
+                      onClick={() => router.push(`/analyze?q=${encodeURIComponent(report.title)}&market=${report.jurisdiction}`)}
+                      className="px-3 py-1.5 text-xs font-medium text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-md transition-colors flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <span>{t.reportsPage?.openBtn || "Open"}</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </button>
+
                     <button
                       onClick={() => handleDownload(report)}
-                      className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-md transition-colors"
-                      title="Download JSON Report"
+                      className="p-2 text-slate-600 hover:text-slate-900 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-md transition-colors cursor-pointer"
+                      title={t.reportsPage?.downloadBtn || "Download JSON"}
                     >
-                      <Download className="w-4 h-4" />
+                      <Download className="w-3.5 h-3.5" />
                     </button>
+
                     <button
                       onClick={() => handleDelete(report.id)}
-                      className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition-colors"
-                      title="Delete Report"
+                      className="p-2 text-rose-600 hover:text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-md transition-colors cursor-pointer"
+                      title={t.reportsPage?.deleteBtn || "Delete"}
                     >
-                      <Trash2 className="w-4 h-4" />
+                      <Trash2 className="w-3.5 h-3.5" />
                     </button>
                   </div>
                 </div>
-
-                <h3 className="text-sm font-bold text-slate-900 leading-snug">
-                  {report.title}
-                </h3>
-
-                <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
-                  {report.summary}
-                </p>
-
-                <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-[11px] text-slate-400">
-                    Scope: {report.analysisType}
-                  </span>
-                  <Link
-                    href={`/analyze?q=${encodeURIComponent(report.title)}&market=${report.jurisdiction}`}
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-800 hover:text-emerald-900"
-                  >
-                    <span>Open in Analyze</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         )}
 

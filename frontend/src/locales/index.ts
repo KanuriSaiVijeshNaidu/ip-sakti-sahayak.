@@ -12,6 +12,9 @@ export const LOCALES: Record<string, TranslationSchema> = {
   te,
   hi,
   ja,
+  ta: te, // fallback to te or en for South Indian scripts if specific locale not present
+  kn: te,
+  ml: te,
 };
 
 export function getTranslation(lang: LanguageCode | string): TranslationSchema {
