@@ -232,7 +232,8 @@ export async function generateRAGAnswer(
 }
 
 export async function callDecisionEngine(
-  req: import("@/types").DecisionRequest
+  req: import("@/types").DecisionRequest,
+  options?: { signal?: AbortSignal }
 ): Promise<import("@/types").DecisionResponse> {
   const endpoints = ["/api/decision"];
   if (API_BASE && API_BASE !== "/api") endpoints.push(`${API_BASE}/decision`);
@@ -246,9 +247,15 @@ export async function callDecisionEngine(
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(req),
+        cache: "no-store",
+        signal: options?.signal,
       });
       if (res.ok) return await res.json();
-    } catch {}
+    } catch (err: any) {
+      if (err?.name === "AbortError") {
+        throw err;
+      }
+    }
   }
   throw new Error("AYURLEX Phase 7 Decision Engine service temporarily unavailable.");
 }

@@ -55,11 +55,11 @@ UNINDEXED_JURISDICTIONS = {
 }
 
 GENERAL_PATTERNS = [
-    r"^what\s+is\s+(prior\s+art|rag|patent\s+novelty|photosynthesis|dna|an?\s+herb|ayurveda|intellectual\s+property)",
-    r"^explain\s+(rag|prior\s+art|photosynthesis|how\s+patents\s+work|patent\s+novelty|this\s+simply)",
-    r"^how\s+does\s+(photosynthesis|rag|retrieval\s+augmented\s+generation|a\s+patent\s+work)",
-    r"^tell\s+me\s+about\s+(photosynthesis|the\s+history\s+of\s+ayurveda|how\s+plants\s+grow)",
-    r"^define\s+(prior\s+art|novelty|inventive\s+step|synergy|freedom\s+to\s+operate)",
+    r"^what\s+is\s+(an?\s+)?(patent|trademark|trade\s+mark|prior\s+art|rag|novelty|patent\s+novelty|inventive\s+step|freedom\s+to\s+operate|fto|photosynthesis|dna|herb|ayurveda|intellectual\s+property)",
+    r"^explain\s+(a\s+)?(patent|trademark|trade\s+mark|rag|prior\s+art|novelty|patent\s+novelty|inventive\s+step|freedom\s+to\s+operate|fto|photosynthesis|how\s+patents\s+work|this\s+simply)",
+    r"^how\s+does\s+(photosynthesis|rag|retrieval\s+augmented\s+generation|a\s+patent\s+work|a\s+trademark\s+work)",
+    r"^tell\s+me\s+about\s+(photosynthesis|patents?|trademarks?|the\s+history\s+of\s+ayurveda|how\s+plants\s+grow)",
+    r"^define\s+(an?\s+)?(patent|trademark|trade\s+mark|prior\s+art|novelty|inventive\s+step|synergy|freedom\s+to\s+operate|fto)",
 ]
 
 LEGAL_KEYWORDS = [
@@ -116,23 +116,27 @@ class IntelligenceRouter:
                 is_general = True
                 break
 
-        # If query has no legal keywords and asks a general question
+        # Check if query is directed at a concrete formulation, commercial action, or jurisdiction clearance
+        is_concrete_application = any(
+            term in q_lower for term in [
+                "my product", "this product", "formulation", "extract", "patentable", "can i", "sell", "export",
+                "market", "infringe", "infringement", "ashwagandha", "curcumin", "piperine", "triphala", "brahmi",
+                "churna", "taila", "capsule", "tablet", "syrup", "in india", "in usa", "in japan", "in europe", "under pmd"
+            ]
+        )
+
         has_legal_kw = any(kw in q_lower for kw in LEGAL_KEYWORDS)
-        
-        # Check for simple concept definitions ("What is prior art?", "Explain photosynthesis")
-        if (is_general or not has_legal_kw) and ("photosynthesis" in q_lower or "how does" in q_lower or "what is" in q_lower):
-            # Check if it mentions a specific product/formulation
-            if any(term in q_lower for term in ["my product", "this product", "formulation", "extract", "patentable"]):
-                return RoutingDecision(
-                    category=QueryCategory.MIXED,
-                    confidence=0.9,
-                    detected_intent="mixed_educational_product",
-                    target_jurisdiction=target_jur or "IN",
-                    requires_rag=True,
-                    requires_evidence_gate=True,
-                    is_general_educational=False,
-                    reasoning="Query combines educational concept with specific formulation evaluation.",
-                )
+
+        # Pure concept queries ("What is a patent?", "What is a trademark?", "How does photosynthesis work?", "What is novelty in patent law?")
+        is_conceptual_question = (
+            q_lower.startswith("what is") or
+            q_lower.startswith("explain") or
+            q_lower.startswith("how does") or
+            q_lower.startswith("define") or
+            q_lower.startswith("tell me about")
+        )
+
+        if (is_general or (is_conceptual_question and not is_concrete_application)):
             return RoutingDecision(
                 category=QueryCategory.GENERAL_KNOWLEDGE,
                 confidence=0.95,
@@ -141,7 +145,7 @@ class IntelligenceRouter:
                 requires_rag=False,
                 requires_evidence_gate=False,
                 is_general_educational=True,
-                reasoning="General educational/scientific query that does not require statutory evidence grounding.",
+                reasoning="General educational/scientific/conceptual query that does not require statutory evidence grounding.",
             )
 
         # ── 3. Resolve Target Jurisdiction from Query ─────────────────────────

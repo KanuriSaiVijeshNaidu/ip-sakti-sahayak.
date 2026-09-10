@@ -77,7 +77,7 @@ const TARGET_MARKET_OPTIONS: { code: JurisdictionCode; label: string; flag: stri
   { code: "US", label: "United States", flag: "🇺🇸", authority: "USPTO · US FDA (DSHEA / CFSAN)" },
   { code: "EU", label: "European Union", flag: "🇪🇺", authority: "EPO · EMA (THMPD) · EFSA" },
   { code: "JP", label: "Japan", flag: "🇯🇵", authority: "JPO · MHLW (PMD Act) · CAA (FFC)" },
-  { code: "WO", label: "Global / WIPO PCT", flag: "🌐", authority: "WIPO PCT · Genetic Resources Treaty" }
+  { code: "WO", label: "Global / WIPO PCT (International IP Scope)", flag: "🌐", authority: "WIPO PCT · International Prior Art Search Scope" }
 ];
 
 function ProductIntelligenceContent() {
@@ -2437,9 +2437,9 @@ function ProductIntelligenceContent() {
                 {wizardStep === 6 && (
                   <div className="space-y-4">
                     <div className="space-y-1">
-                      <label className="text-xs font-bold text-slate-700">Select Target Jurisdictions *</label>
+                      <label className="text-xs font-bold text-slate-700">Select Target Jurisdictions & IP Search Scope *</label>
                       <p className="text-xs text-slate-500">
-                        AYURLEX evaluates each selected market against its specific statutory patent and regulatory code.
+                        AYURLEX evaluates commercial sales markets (India, USA, EU, Japan) against domestic health and patent laws, and international filings under the WIPO PCT search scope.
                       </p>
                     </div>
 

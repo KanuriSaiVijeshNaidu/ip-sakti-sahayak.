@@ -20,6 +20,72 @@ from typing import Dict, Any, Optional
 logger = logging.getLogger(__name__)
 
 KNOWLEDGE_BASE: Dict[str, Dict[str, Any]] = {
+    "patent": {
+        "title": "What is a Patent? Intellectual Property Overview",
+        "concept": "Patent Grant & Exclusive Rights",
+        "explanation": (
+            "A patent is an exclusive legal right granted by a sovereign government to an inventor for a limited period "
+            "(typically 20 years from the filing date) in exchange for a comprehensive public disclosure of the invention. "
+            "A patent confers the negative right to exclude others from making, using, offering for sale, selling, or importing "
+            "the claimed invention without authorization. Under international patent standards (including India, the US, and Europe), "
+            "a patentable invention must satisfy three core statutory criteria: (1) Novelty (it must not exist anywhere in prior art), "
+            "(2) Inventive Step / Non-Obviousness (it must not be obvious to a person skilled in the relevant art), and "
+            "(3) Industrial Applicability (it must have practical utility). In traditional medicine and Ayurveda, natural plants and "
+            "known classical formulations are legally excluded from patentability as mere discoveries or traditional knowledge (e.g. "
+            "Section 3(p) in India), unless an inventive technical effect, novel extraction process, or synergistic adjuvant is established."
+        ),
+        "follow_up_hint": "To assess whether a specific formulation or process meets patent criteria, ask: 'Can I patent [formulation name] in [target market]?'"
+    },
+    "trademark": {
+        "title": "What is a Trademark? Brand Protection Overview",
+        "concept": "Trademark Law & Distinctiveness",
+        "explanation": (
+            "A trademark is a distinctive sign, design, symbol, name, or combination thereof that identifies and distinguishes the "
+            "commercial source of goods or services of one enterprise from those of competitors. Unlike patents (which protect technical "
+            "inventions for 20 years), trademarks protect commercial brand identity and consumer goodwill, and can be renewed indefinitely "
+            "every 10 years. In the herbal, dietary, and pharmaceutical domains, trademarks are registered under international Nice "
+            "Classifications—principally Class 5 (Ayurvedic/herbal medicines and dietetic substances), Class 3 (herbal cosmetics and essential oils), "
+            "and Class 30 (herbal teas and dietary supplements). Statutory trademark law (such as Section 13 & 9 of the Indian Trade Marks Act 1999) "
+            "strictly prohibits registering generic botanical names (e.g. 'Ashwagandha' or 'Triphala') or International Nonproprietary Names (INNs) "
+            "as exclusive marks, requiring brand names to be coined, suggestive, or arbitrary."
+        ),
+        "follow_up_hint": "To screen a proposed brand name for conflicts or generic exclusions under Class 5 or Class 30, provide your intended brand name."
+    },
+    "novelty": {
+        "title": "Understanding Novelty in Patent Law",
+        "concept": "Novelty & Prior Art Anticipation",
+        "explanation": (
+            "Novelty is a fundamental prerequisite for patentability requiring that an invention must not form part of the state of the art "
+            "anywhere in the world prior to the priority filing date. An invention lacks novelty (is 'anticipated') if a single prior art document, "
+            "granted patent, scientific publication, public sale, or classical treatise discloses every element of the claimed invention. "
+            "In herbal medicine and Ayurveda, documentation in ancient compendia (such as Charaka Samhita or Sushruta Samhita) and the Traditional "
+            "Knowledge Digital Library (TKDL) serves as complete novelty-destroying prior art against claims directed to known botanical uses."
+        ),
+        "follow_up_hint": "To screen whether known Ayurvedic prior art in the TKDL affects your specific formulation, specify your ingredients and target jurisdiction."
+    },
+    "inventive_step": {
+        "title": "Inventive Step and Non-Obviousness Explained",
+        "concept": "Inventive Step / Non-Obviousness",
+        "explanation": (
+            "The inventive step (termed 'non-obviousness' under US 35 U.S.C. 103 and EPC Article 56) requires that, even if an invention is technically novel, "
+            "the technical advance must not have been obvious to a Person Having Ordinary Skill in the Art (PHOSITA) having regard to available prior art. "
+            "In polyherbal and pharmaceutical formulations, combining known active herbs is presumed obvious as a mere aggregation of known properties "
+            "unless the applicant demonstrates unexpected synergistic efficacy (e.g. combination index < 1.0) or an unpredictable technical effect."
+        ),
+        "follow_up_hint": "To test whether your polyherbal recipe demonstrates patentable synergy overcoming Section 3(e) or obviousness bars, consult the formulation analyzer."
+    },
+    "freedom_to_operate": {
+        "title": "What is Freedom to Operate (FTO)?",
+        "concept": "Freedom to Operate & Patent Clearance",
+        "explanation": (
+            "Freedom to Operate (FTO), also known as patent clearance or right-to-use analysis, is the process of verifying whether commercializing "
+            "a product or technology will infringe any active, unexpired patents held by third parties in a specific target jurisdiction. "
+            "A crucial legal principle is that owning a granted patent does not automatically give you freedom to operate: your product might still "
+            "infringe earlier, broader third-party patents. FTO searches focus on the claims of in-force patents within the jurisdiction where commercial "
+            "manufacture or sales will take place."
+        ),
+        "follow_up_hint": "To conduct an FTO clearance assessment for your product in India, the US, or Japan, provide your delivery format and target launch market."
+    },
     "photosynthesis": {
         "title": "Photosynthesis: Biological Process Overview",
         "concept": "Photosynthesis",
@@ -100,9 +166,12 @@ class GeneralIntelligenceEngine:
     def explain(self, query: str, conversation_context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         q_lower = query.strip().lower()
 
-        # Match specific known concepts
-        for key, entry in KNOWLEDGE_BASE.items():
-            if key in q_lower or (key == "rag" and "retrieval augmented" in q_lower) or (key == "classical_vs_proprietary" and ("classical" in q_lower or "proprietary" in q_lower)):
+        # Match specific known concepts (prioritize longer/more specific phrases first)
+        ordered_keys = sorted(KNOWLEDGE_BASE.keys(), key=lambda k: len(k), reverse=True)
+        for key in ordered_keys:
+            entry = KNOWLEDGE_BASE[key]
+            norm_key = key.replace("_", " ")
+            if norm_key in q_lower or key in q_lower or (key == "rag" and "retrieval augmented" in q_lower) or (key == "classical_vs_proprietary" and ("classical" in q_lower or "proprietary" in q_lower)):
                 return {
                     "answer_type": "GENERAL_KNOWLEDGE",
                     "title": entry["title"],

@@ -2,15 +2,44 @@ import { NextResponse } from "next/server";
 import { DecisionResponse, QueryIntent } from "@/types";
 import { localizeDecision } from "@/lib/localizeDecision";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+const NO_CACHE_HEADERS = {
+  "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+  "Pragma": "no-cache",
+  "Expires": "0",
+};
+
+function jsonResponse(data: any, status = 200) {
+  const res = NextResponse.json(data, { status });
+  res.headers.set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.headers.set("Pragma", "no-cache");
+  res.headers.set("Expires", "0");
+  return res;
+}
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
     const rawQuery = (body.query || "").trim();
     const explicitJurisdiction = (body.jurisdiction || "").trim().toUpperCase();
-    const language = (body.language || "en").toLowerCase();
+    const clientLanguage = (body.language || "en").toLowerCase();
+
+    // Auto-detect non-Latin language script from query if present
+    let language = clientLanguage;
+    if (/[\u0900-\u097F]/.test(rawQuery)) {
+      language = "hi";
+    } else if (/[\u3040-\u30FF\u4E00-\u9FAF]/.test(rawQuery)) {
+      language = "ja";
+    } else if (/[\u0C00-\u0C7F]/.test(rawQuery)) {
+      language = "te";
+    } else if (/[\u0B80-\u0BFF]/.test(rawQuery)) {
+      language = "ta";
+    }
 
     if (!rawQuery) {
-      return NextResponse.json({ detail: "Query parameter is required." }, { status: 400 });
+      return jsonResponse({ detail: "Query parameter is required." }, 400);
     }
 
     const qLower = rawQuery.toLowerCase();
@@ -24,9 +53,9 @@ export async function POST(req: Request) {
       qLower.includes("bundespatentgericht") ||
       qLower.includes("deutschland")
     ) {
-      return NextResponse.json(
+      return jsonResponse(
         { detail: "Jurisdiction 'DE' has been permanently removed from production." },
-        { status: 400 }
+        400
       );
     }
 
@@ -94,31 +123,100 @@ export async function POST(req: Request) {
           latencies_ms: { total_decision_pipeline_ms: 15 },
           disclaimer: "AYURLEX provides statutory intelligence and decision assistance. Not legal advice.",
         };
-        return NextResponse.json(localizeDecision(response, language as any) || response);
+        return jsonResponse(localizeDecision(response, language as any) || response);
       }
     }
 
     // ── 1c. General Educational & Conceptual Queries ──────────────────────────
-    if (
+    const isConcreteApplication = /my product|this product|formulation|extract|can i patent|can i sell|sell|export|market|infringe|infringement|ashwagandha|curcumin|piperine|triphala|brahmi|churna|taila|capsule|tablet|syrup|in india|in usa|in japan|in europe|under pmd|under section/i.test(rawQuery);
+
+    const conversationHistory: Array<{ role: string; content: string }> = Array.isArray(body.conversation_history)
+      ? body.conversation_history
+      : [];
+
+    const isComparison =
+      (qLower.includes("novelty") && qLower.includes("inventive step")) ||
+      qLower.includes("different from") ||
+      qLower.includes("difference between") ||
+      qLower.includes("अंतर") ||
+      qLower.includes("తేడా");
+
+    const isExampleRequest =
+      qLower.includes("simple example") ||
+      qLower.includes("give me an example") ||
+      qLower.includes("give me a simple example") ||
+      qLower.includes("for example") ||
+      qLower === "example" ||
+      qLower === "give an example";
+
+    const isGeneralConceptual = !isConcreteApplication && (
       qLower.includes("photosynthesis") ||
-      qLower.startsWith("what is prior art") ||
-      qLower.startsWith("explain prior art") ||
-      qLower.startsWith("what is rag") ||
-      qLower.startsWith("explain rag") ||
-      (qLower.startsWith("how does") && qLower.includes("work") && !qLower.includes("patent") && !qLower.includes("india") && !qLower.includes("sell"))
-    ) {
+      qLower.startsWith("what is") ||
+      qLower.startsWith("explain") ||
+      qLower.startsWith("how does") ||
+      qLower.startsWith("how is") ||
+      qLower.startsWith("define") ||
+      qLower.startsWith("tell me about") ||
+      isComparison ||
+      isExampleRequest ||
+      qLower.includes("क्या है") ||
+      qLower.includes("पेटेंट") ||
+      qLower.includes("特許") ||
+      qLower.includes("とは何ですか") ||
+      qLower.includes("అంటే ఏమిటి") ||
+      qLower.includes("పేటెంట్") ||
+      qLower.includes("என்றால் என்ன") ||
+      qLower.includes("காப்புரிமை")
+    );
+
+    if (isGeneralConceptual) {
       let title = "Conceptual Explanation";
       let content = "Educational and scientific inquiries provide the foundational context for understanding life sciences and intellectual property principles.";
-      let followUp = "To analyze how botanical metabolites from a specific plant are evaluated for patent eligibility or prior art, ask: 'How does this apply to my formulation?'";
+      let followUp = "To analyze how this concept applies to a concrete Ayurvedic formulation, ask: 'Can I patent [formulation] in [target market]?'";
 
-      if (qLower.includes("photosynthesis")) {
+      if (isComparison) {
+        title = "Novelty vs. Inventive Step Comparison";
+        content = "Novelty vs. Inventive Step in Patent Law:\n\n1. Novelty (Section 2(1)(j) of Indian Patents Act 1970; 35 U.S.C. § 102 in the US) requires that an invention must be strictly new—meaning no single prior art document, classical treatise, publication, or granted patent has disclosed every element of the claimed formulation prior to the priority date.\n\n2. Inventive Step (Section 2(1)(ja) in India; Non-Obviousness under 35 U.S.C. § 103 in the US) is a higher legal hurdle: even if the formulation is technically novel, the technical advance must not have been obvious to a Person Having Ordinary Skill in the Art (PHOSITA). In botanical and polyherbal products, creating a new mixture of known herbs is novel, but it is statutorily presumed obvious under Section 3(e) unless a surprising synergistic enhancement (e.g. unexpected bioavailability or therapeutic index) is empirically demonstrated.";
+        followUp = "To see how this legal difference applies to a real herbal formulation, ask: 'Give me a simple example.'";
+      } else if (isExampleRequest) {
+        const prevContext = conversationHistory.map(m => (m.content || "").toLowerCase()).join(" ");
+        if (prevContext.includes("photosynthesis") && !prevContext.includes("patent")) {
+          title = "Simple Photosynthesis Example";
+          content = "Simple Photosynthesis Example: Consider a neem tree leaf absorbing sunlight through green chlorophyll pigments inside its chloroplasts. The leaf absorbs carbon dioxide from the atmosphere through microscopic stomata and draws water up from the soil through its roots. Using light photon energy, the leaf synthesizes glucose sugar molecules for plant metabolism and wood growth, while releasing breathable oxygen back into the air (6 CO2 + 6 H2O + light -> C6H12O6 + 6 O2).";
+          followUp = "To explore how secondary metabolites produced during photosynthesis are evaluated for IP protection, ask: 'Can I patent an herbal extract?'";
+        } else {
+          title = "Simple Example: Novelty vs. Inventive Step in Herbal Medicine";
+          content = "Simple Example in Herbal Medicine:\n\n1. Lacks Novelty (Anticipated): Ancient Ayurvedic compendia (Charaka Samhita) explicitly document boiling Ashwagandha root in water as a decoction. If a company files a patent claiming 'A decoction prepared by boiling Ashwagandha root in water', the claim is rejected for lack of Novelty because that exact preparation is already documented in classical prior art.\n\n2. Lacks Inventive Step (Obvious Mere Admixture): If a company mixes Ashwagandha powder with Turmeric powder in equal parts, this specific combination may not appear verbatim in a single text (making it technically novel). However, because both herbs are already known for anti-inflammatory properties, simply blending them is considered obvious to an ordinary herbal formulator and is barred under Section 3(e) of the Indian Patents Act 1970 as a mere admixture.\n\n3. Satisfies Both Novelty AND Inventive Step: If researchers discover that combining a standardized withanolide extract with a specific 5:1 ratio of piperine increases bioavailability by 350% through unexpected synergistic cell-membrane permeation, that specific formulation demonstrates an unpredictable technical advance. Because this surprising synergy overcomes obviousness, it satisfies both Novelty and Inventive Step.";
+          followUp = "To evaluate whether your specific polyherbal recipe demonstrates patentable synergy, provide your ingredient ratios and biological data.";
+        }
+      } else if (qLower.includes("photosynthesis") || qLower.includes("प्रकाश संश्लेषण") || qLower.includes("光合成") || qLower.includes("కిరణజన్య") || qLower.includes("ஒளிச்சேர்க்கை")) {
         title = "Photosynthesis: Biological Process Overview";
         content = "Photosynthesis is the fundamental biological process by which green plants, algae, and certain bacteria convert light energy (primarily from the sun) into chemical energy stored in glucose. In plants, water absorbed by roots and carbon dioxide absorbed through stomata react within chlorophyll-containing chloroplasts to produce glucose and release oxygen (6 CO2 + 6 H2O + light -> C6H12O6 + 6 O2). In botanical medicine and Ayurveda, photosynthetic secondary metabolites (such as withanolides, curcuminoids, and polyphenols) form the therapeutic active constituents synthesized by medicinal plants.";
         followUp = "To analyze how botanical metabolites from a specific plant (like Ashwagandha or Turmeric) are evaluated for patent eligibility or prior art, ask: 'How does this apply to my formulation?'";
-      } else if (qLower.includes("prior art")) {
+      } else if (qLower.includes("trademark") || qLower.includes("trade mark") || qLower.includes("ट्रेडमार्क") || qLower.includes("商標") || qLower.includes("ట్రేడ్‌మార్క్") || qLower.includes("வர்த்தக")) {
+        title = "What is a Trademark? Brand Protection Overview";
+        content = "A trademark is a distinctive sign, design, symbol, name, or combination thereof that identifies and distinguishes the commercial source of goods or services of one enterprise from those of competitors. Unlike patents (which protect technical inventions for 20 years), trademarks protect commercial brand identity and consumer goodwill, and can be renewed indefinitely every 10 years. In the herbal, dietary, and pharmaceutical domains, trademarks are registered under international Nice Classifications—principally Class 5 (Ayurvedic/herbal medicines and dietetic substances), Class 3 (herbal cosmetics and essential oils), and Class 30 (herbal teas and dietary supplements). Statutory trademark law (such as Section 13 & 9 of the Indian Trade Marks Act 1999) strictly prohibits registering generic botanical names (e.g. 'Ashwagandha' or 'Triphala') or International Nonproprietary Names (INNs) as exclusive marks, requiring brand names to be coined, suggestive, or arbitrary.";
+        followUp = "To screen a proposed brand name for conflicts or generic exclusions under Class 5 or Class 30, provide your intended brand name.";
+      } else if (qLower.includes("inventive step") || qLower.includes("obviousness") || qLower.includes("आविष्कारशील") || qLower.includes("進歩性") || qLower.includes("ఆవిష్కరణాత్మక")) {
+        title = "Inventive Step and Non-Obviousness Explained";
+        content = "The inventive step (termed 'non-obviousness' under US 35 U.S.C. 103 and EPC Article 56) requires that, even if an invention is technically novel, the technical advance must not have been obvious to a Person Having Ordinary Skill in the Art (PHOSITA) having regard to available prior art. In polyherbal and pharmaceutical formulations, combining known active herbs is presumed obvious as a mere aggregation of known properties unless the applicant demonstrates unexpected synergistic efficacy (e.g. combination index < 1.0) or an unpredictable technical effect.";
+        followUp = "To test whether your polyherbal recipe demonstrates patentable synergy overcoming Section 3(e) or obviousness bars, consult the formulation analyzer.";
+      } else if (qLower.includes("novelty") || qLower.includes("नवीनता") || qLower.includes("新規性") || qLower.includes("నూతనత్వం") || qLower.includes("புதுமை")) {
+        title = "Understanding Novelty in Patent Law";
+        content = "Novelty is a fundamental prerequisite for patentability requiring that an invention must not form part of the state of the art anywhere in the world prior to the priority filing date. An invention lacks novelty (is 'anticipated') if a single prior art document, granted patent, scientific publication, public sale, or classical treatise discloses every element of the claimed invention. In herbal medicine and Ayurveda, documentation in ancient compendia (such as Charaka Samhita or Sushruta Samhita) and the Traditional Knowledge Digital Library (TKDL) serves as complete novelty-destroying prior art against claims directed to known botanical uses.";
+        followUp = "To screen whether known Ayurvedic prior art in the TKDL affects your specific formulation, specify your ingredients and target jurisdiction.";
+      } else if (qLower.includes("freedom to operate") || qLower.includes("fto")) {
+        title = "What is Freedom to Operate (FTO)?";
+        content = "Freedom to Operate (FTO), also known as patent clearance or right-to-use analysis, is the process of verifying whether commercializing a product or technology will infringe any active, unexpired patents held by third parties in a specific target jurisdiction. A crucial legal principle is that owning a granted patent does not automatically give you freedom to operate: your product might still infringe earlier, broader third-party patents. FTO searches focus on the claims of in-force patents within the jurisdiction where commercial manufacture or sales will take place.";
+        followUp = "To conduct an FTO clearance assessment for your product in India, the US, or Japan, provide your delivery format and target launch market.";
+      } else if (qLower.includes("prior art") || qLower.includes("पूर्व कला") || qLower.includes("先行技術") || qLower.includes("పూర్వ కళ")) {
         title = "Understanding Prior Art in Patent Law";
         content = "Prior art constitutes any evidence that your invention is already known to the public prior to your patent application filing date. It includes granted patents, published patent applications, scientific journal articles, public presentations, commercial sales, and traditional knowledge documented in ancient treatises (such as Charaka Samhita or Sushruta Samhita). Under international patent systems, if prior art discloses all elements of your claimed invention, the patent claim is rejected for lack of novelty (anticipation) or lack of inventive step (obviousness).";
         followUp = "To screen whether known Ayurvedic prior art in the TKDL affects your specific formulation in India, the US, or Europe, select your target jurisdiction and ask for a patentability assessment.";
+      } else if (qLower.includes("patent") || qLower.includes("पेटेंट") || qLower.includes("特許") || qLower.includes("పేటెంట్") || qLower.includes("காப்புரிமை")) {
+        title = "What is a Patent? Intellectual Property Overview";
+        content = "A patent is an exclusive legal right granted by a sovereign government to an inventor for a limited period (typically 20 years from the filing date) in exchange for a comprehensive public disclosure of the invention. A patent confers the negative right to exclude others from making, using, offering for sale, selling, or importing the claimed invention without authorization. Under international patent standards (including India, the US, and Europe), a patentable invention must satisfy three core statutory criteria: (1) Novelty (it must not exist anywhere in prior art), (2) Inventive Step / Non-Obviousness (it must not be obvious to a person skilled in the relevant art), and (3) Industrial Applicability (it must have practical utility). In traditional medicine and Ayurveda, natural plants and known classical formulations are legally excluded from patentability as mere discoveries or traditional knowledge (e.g. Section 3(p) in India), unless an inventive technical effect, novel extraction process, or synergistic adjuvant is established.";
+        followUp = "To assess whether a specific formulation or process meets patent criteria, ask: 'Can I patent [formulation name] in [target market]?'";
       } else if (qLower.includes("rag")) {
         title = "Retrieval-Augmented Generation (RAG) Architecture";
         content = "Retrieval-Augmented Generation (RAG) is an AI architecture that anchors language model answers in verifiable external knowledge. Instead of relying on a model's internal pre-trained memory (which can hallucinate facts or cite outdated laws), RAG retrieves relevant statutory sections, patent claims, and official gazettes from indexed databases (using BM25 lexical search and BGE-M3 dense vector embeddings). The retrieved evidence is reranked, verified through Corrective RAG (CRAG), and passed into context to ensure 100% citation traceability.";
@@ -174,7 +272,7 @@ export async function POST(req: Request) {
         latencies_ms: { total_decision_pipeline_ms: 12 },
         disclaimer: "AYURLEX provides statutory intelligence and decision assistance. Not legal advice.",
       };
-      return NextResponse.json(localizeDecision(response, language as any) || response);
+      return jsonResponse(localizeDecision(response, language as any) || response);
     }
 
     // ── 2. Attempt upstream Python backend if configured ──────────────────────
@@ -188,11 +286,12 @@ export async function POST(req: Request) {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),
           signal: controller.signal,
+          cache: "no-store",
         });
         clearTimeout(timeout);
         if (res.ok) {
           const data = await res.json();
-          return NextResponse.json(localizeDecision(data, language as any) || data);
+          return jsonResponse(localizeDecision(data, language as any) || data);
         }
       } catch {
         // Fallback to built-in serverless edge engine
@@ -308,7 +407,7 @@ export async function POST(req: Request) {
         latencies_ms: { total_decision_pipeline_ms: Date.now() - tStart },
         disclaimer: "AYURLEX provides statutory intelligence and decision assistance. Not legal advice.",
       };
-      return NextResponse.json(localizeDecision(response, language as any) || response);
+      return jsonResponse(localizeDecision(response, language as any) || response);
     }
 
     // ── India Evaluation Case (Domain-Specific Statutory Synthesis) ──────────
@@ -560,7 +659,7 @@ export async function POST(req: Request) {
         latencies_ms: { total_decision_pipeline_ms: Date.now() - tStart },
         disclaimer: "AYURLEX provides statutory intelligence and decision assistance. Not legal advice.",
       };
-      return NextResponse.json(localizeDecision(response, language as any) || response);
+      return jsonResponse(localizeDecision(response, language as any) || response);
     }
 
     // ── Target Market: United States (US) ─────────────────────────────────────
@@ -756,7 +855,7 @@ export async function POST(req: Request) {
           "AYURLEX provides deterministic statutory and regulatory decision intelligence. Not formal legal advice.",
       };
 
-      return NextResponse.json(localizeDecision(response, language as any) || response);
+      return jsonResponse(localizeDecision(response, language as any) || response);
     }
 
     // ── Target Market: Japan (JP) ─────────────────────────────────────────────
@@ -850,7 +949,7 @@ export async function POST(req: Request) {
         latencies_ms: { total_decision_pipeline_ms: Date.now() - tStart },
         disclaimer: "AYURLEX provides deterministic statutory and regulatory decision intelligence. Not formal legal advice.",
       };
-      return NextResponse.json(localizeDecision(response, language as any) || response);
+      return jsonResponse(localizeDecision(response, language as any) || response);
     }
 
     // ── Target Market: European Union (EP) / Global (WO) ──────────────────────
@@ -927,12 +1026,12 @@ export async function POST(req: Request) {
       disclaimer: "AYURLEX provides deterministic statutory and regulatory decision intelligence. Not formal legal advice.",
     };
 
-    return NextResponse.json(localizeDecision(response, language as any) || response);
+    return jsonResponse(localizeDecision(response, language as any) || response);
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-    return NextResponse.json(
+    return jsonResponse(
       { detail: `Decision engine error: ${message}` },
-      { status: 500 }
+      500
     );
   }
 }

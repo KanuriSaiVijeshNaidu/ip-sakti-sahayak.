@@ -509,6 +509,7 @@ export interface DecisionRequest {
   jurisdiction?: string;
   top_k?: number;
   language?: string;
+  conversation_history?: Array<{ role: string; content: string }>;
 }
 
 export interface DecisionResponse {
