@@ -39,7 +39,7 @@ from backend.app.models.rag_schemas import CRAGAssessment, CitationInfo
 logger = logging.getLogger(__name__)
 
 # Minimum threshold below which retrieved candidates are deemed noise for unsupported queries
-_MIN_RELEVANT_RERANK_SCORE = 0.0008
+_MIN_RELEVANT_RERANK_SCORE = 0.0001
 
 
 class DecisionRuleEngine:
@@ -355,9 +355,19 @@ class DecisionRuleEngine:
             )
 
         elif target == "IN":
-            q_lower = ((intent.product or "") + " " + (intent.intended_use or "")).lower()
-            text_corpus = " ".join((c.text + " " + (c.title or "")).lower() for c in citations[:3]) + " " + q_lower
-            if any(w in text_corpus for w in ["trademark", "trade mark", "section 13", "nice class", "brand", "mark"]):
+            q_lower = (intent.raw_query or ((intent.product or "") + " " + (intent.intended_use or ""))).lower()
+            is_tm_query = any(w in q_lower for w in ["trademark", "trade mark", "section 13", "nice class", "brand name", "logo", "herb name"]) or any(
+                c.section and "section 13" in c.section.lower() for c in citations
+            )
+            is_fssai_query = any(w in q_lower for w in ["fssai", "ayurveda aahara", "food safety", "food supplement", "dietary supplement"]) or any(
+                "ayurveda aahara" in (c.title or "").lower() for c in citations
+            )
+            is_nba_query = any(w in q_lower for w in ["biodiversity", "biological diversity", "nba", "section 6", "abs"]) or any(
+                "biological diversity" in (c.title or "").lower() for c in citations
+            )
+            is_comm_query = intent.is_commercialization_question or any(w in q_lower for w in ["commercializ", "sell", "rule 158b", "form 25d", "schedule t", "asu"])
+
+            if is_tm_query:
                 return (
                     "India (Trade Marks Registry / CGPDTM): Trademark protection is governed under the Trade Marks Act 1999. "
                     "Section 13 prohibits registration of generic chemical element names and International Non-proprietary Names (INNs). "
@@ -365,22 +375,22 @@ class DecisionRuleEngine:
                     "(Pharmaceutical & Ayurvedic Preparations), Class 3 (Cosmetics), and Class 30 (Dietary/Herbal Supplements) "
                     "provided distinctive brand identity is established."
                 )
-            elif any(w in text_corpus for w in ["fssai", "ayurveda aahara", "food safety", "dietary"]):
+            elif is_fssai_query:
                 return (
                     "India (FSSAI / Ministry of Health): Ayurvedic food products and supplements are regulated under the Food Safety "
                     "and Standards (Ayurveda Aahara) Regulations, 2022. Products must display the mandatory Ayurveda Aahara logo, "
                     "conform strictly to compositional and purity standards, and are prohibited from making medicinal disease-cure claims."
                 )
-            elif any(w in text_corpus for w in ["biodiversity", "nba", "biological diversity", "section 6", "abs"]):
+            elif is_nba_query:
                 return (
                     "India (National Biodiversity Authority - NBA Chennai): Under Section 6 of the Biological Diversity Act 2002, "
                     "prior approval from the NBA is mandatory before applying for any intellectual property right in India or abroad, "
                     "or commercializing biological resources obtained from India."
                 )
-            elif any(w in text_corpus for w in ["rule 158b", "schedule t", "drugs and cosmetics", "asu", "licens"]):
+            elif is_comm_query:
                 return (
                     "India (Ministry of AYUSH / State Licensing Authorities): Ayurvedic formulations are regulated under the Drugs and "
-                    "Cosmetics Act 1940 and Rules 1945. Classical formulations (First Schedule texts) are licensed under Rule 158B "
+                    "Cosmetics Act 1940 and Rules 1945. Classical formulations (First Schedule texts) are licensed under Rule 158B (Form 25D) "
                     "without clinical trial requirements; Proprietary ASU medicines require safety dossiers and clinical evidence. "
                     "Manufacturing facilities must be certified under Schedule T Good Manufacturing Practices (GMP)."
                 )
@@ -388,7 +398,7 @@ class DecisionRuleEngine:
                 return (
                     "India (Ministry of AYUSH & CGPDTM): Ayurvedic products are subject to dual scrutiny: statutory patent eligibility "
                     "under Sections 3(p) and 3(e) of the Indian Patents Act 1970, and manufacturing licensing under the Drugs and "
-                    "Cosmetics Act 1940 (Rule 158B) or FSSAI (Ayurveda Aahara Regulations 2022)."
+                    "Cosmetics Act 1940 (Rule 158B / Form 25D) or FSSAI (Ayurveda Aahara Regulations 2022)."
                 )
 
         return "Regulatory compliance must be independently established under applicable national laws."
@@ -515,6 +525,28 @@ class DecisionRuleEngine:
                 ]
                 return decision, why, conditions, next_steps, reason_codes
 
+            # Specific commercialization in India
+            if any(t in ("IN", "INDIA") for t in target_jurisdictions):
+                why = (
+                    "Commercialization in India is legally permissible subject to mandatory statutory conditions: "
+                    "(1) manufacturing license under AYUSH Drugs & Cosmetics Rule 158B (Form 25D) or FSSAI Ayurveda Aahara license, "
+                    "(2) facility compliance with Schedule T Good Manufacturing Practices (GMP), "
+                    "(3) National Biodiversity Authority (NBA) Section 6 intimation/approval for biological resources, and "
+                    "(4) strict prohibition against unapproved therapeutic disease claims under the Drugs and Magic Remedies Act 1954."
+                )
+                conditions = [
+                    "Manufacturing License: Obtain AYUSH Form 25D (Rule 158B) or FSSAI Ayurveda Aahara license.",
+                    "Schedule T GMP: Ensure manufacturing unit is certified under Schedule T GMP standards.",
+                    "NBA Section 6 Clearance: Comply with National Biodiversity Authority requirements for Indian bio-resources.",
+                    "Labeling Mandate: Comply with AYUSH or FSSAI packaging guidelines; strictly avoid disease-cure claims.",
+                ]
+                next_steps = [
+                    "Apply for manufacturing license (Form 25D) from State Licensing Authority (AYUSH).",
+                    "Conduct facility inspection for Schedule T GMP compliance.",
+                    "File brand trademark application (Form TM-A) in Class 5 or Class 30.",
+                ]
+                return decision, why, conditions, next_steps, reason_codes
+
             # Standard commercialization in target jurisdiction
             why = (
                 f"Commercial sale in {targets_str} may proceed subject to meeting mandatory statutory regulatory approvals "
@@ -552,11 +584,21 @@ class DecisionRuleEngine:
 
         # ── Stage 5: Domain-Specific Assessment (IN Jurisdiction Priority) ─────
         target = target_jurisdictions[0] if target_jurisdictions else "IN"
-        q_lower = ((intent.product or "") + " " + (intent.intended_use or "")).lower()
-        text_corpus = " ".join((c.text + " " + (c.title or "")).lower() for c in citations[:3]) + " " + q_lower
+        q_lower = (intent.raw_query or ((intent.product or "") + " " + (intent.intended_use or ""))).lower()
 
         if target == "IN":
-            if any(w in text_corpus for w in ["trademark", "trade mark", "section 13", "nice class", "brand", "mark"]):
+            is_tm_query = any(w in q_lower for w in ["trademark", "trade mark", "section 13", "nice class", "brand name", "logo", "herb name"]) or any(
+                c.section and "section 13" in c.section.lower() for c in citations
+            )
+            is_fssai_query = any(w in q_lower for w in ["fssai", "ayurveda aahara", "food safety", "food supplement", "dietary supplement"]) or any(
+                "ayurveda aahara" in (c.title or "").lower() for c in citations
+            )
+            is_nba_query = any(w in q_lower for w in ["biodiversity", "biological diversity", "nba", "section 6", "abs"]) or any(
+                "biological diversity" in (c.title or "").lower() for c in citations
+            )
+            is_comm_query = (intent.is_commercialization_question or any(w in q_lower for w in ["commercializ", "sell", "market in india", "triphala", "classical"])) and not any(w in q_lower for w in ["patent", "novelty", "3(e)", "3(p)"])
+
+            if is_tm_query:
                 decision = DecisionType.CONDITIONAL_YES
                 reason_codes.append("TRADEMARK_STATUTORY_ASSESSMENT")
                 why = (
@@ -576,7 +618,7 @@ class DecisionRuleEngine:
                 ]
                 return decision, why, conditions, next_steps, reason_codes
 
-            elif any(w in text_corpus for w in ["fssai", "ayurveda aahara", "food safety", "dietary"]):
+            elif is_fssai_query:
                 decision = DecisionType.CONDITIONAL_YES
                 reason_codes.append("FSSAI_AYURVEDA_AAHARA_ASSESSMENT")
                 why = (
@@ -595,7 +637,7 @@ class DecisionRuleEngine:
                 ]
                 return decision, why, conditions, next_steps, reason_codes
 
-            elif any(w in text_corpus for w in ["biodiversity", "nba", "biological diversity", "section 6", "abs"]):
+            elif is_nba_query:
                 decision = DecisionType.CONDITIONAL_YES
                 reason_codes.append("NBA_BIODIVERSITY_ASSESSMENT")
                 why = (
@@ -613,7 +655,30 @@ class DecisionRuleEngine:
                 ]
                 return decision, why, conditions, next_steps, reason_codes
 
-            elif intent.user_objective == UserObjective.PATENTABILITY or any(w in text_corpus for w in ["patent", "section 3(p)", "section 3(e)", "novelty"]):
+            elif is_comm_query:
+                decision = DecisionType.CONDITIONAL_YES
+                reason_codes.append("COMMERCIALIZATION_IN_STATUTORY_ASSESSMENT")
+                why = (
+                    "Commercialization in India is legally permissible subject to mandatory statutory conditions: "
+                    "(1) manufacturing license under AYUSH Drugs & Cosmetics Rule 158B (Form 25D) or FSSAI Ayurveda Aahara license, "
+                    "(2) facility compliance with Schedule T Good Manufacturing Practices (GMP), "
+                    "(3) National Biodiversity Authority (NBA) Section 6 intimation/approval for biological resources, and "
+                    "(4) strict prohibition against unapproved therapeutic disease claims under the Drugs and Magic Remedies Act 1954."
+                )
+                conditions = [
+                    "Manufacturing License: Obtain AYUSH Form 25D (Rule 158B) or FSSAI Ayurveda Aahara license.",
+                    "Schedule T GMP: Ensure manufacturing unit is certified under Schedule T GMP standards.",
+                    "NBA Section 6 Clearance: Comply with National Biodiversity Authority requirements for Indian bio-resources.",
+                    "Labeling Mandate: Comply with AYUSH or FSSAI packaging guidelines; strictly avoid disease-cure claims.",
+                ]
+                next_steps = [
+                    "Apply for manufacturing license (Form 25D) from State Licensing Authority (AYUSH).",
+                    "Conduct facility inspection for Schedule T GMP compliance.",
+                    "File brand trademark application (Form TM-A) in Class 5 or Class 30.",
+                ]
+                return decision, why, conditions, next_steps, reason_codes
+
+            elif intent.user_objective == UserObjective.PATENTABILITY or any(w in q_lower for w in ["patent", "section 3(p)", "section 3(e)", "novelty", "bioavailability", "lipid", "nano-emulsion", "prior art"]):
                 decision = DecisionType.CONDITIONAL_YES
                 reason_codes.append("INDIAN_PATENT_STATUTORY_ASSESSMENT")
                 why = (

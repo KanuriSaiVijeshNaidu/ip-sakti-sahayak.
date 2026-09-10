@@ -132,6 +132,38 @@ function ProductIntelligenceContent() {
   const [savedSuccess, setSavedSuccess] = useState(false);
   const [copiedDNA, setCopiedDNA] = useState(false);
 
+  // General Intelligence Co-Pilot State
+  const [copilotQuery, setCopilotQuery] = useState("");
+  const [copilotLoading, setCopilotLoading] = useState(false);
+  const [copilotResponse, setCopilotResponse] = useState<any>(null);
+  const [copilotError, setCopilotError] = useState<string | null>(null);
+
+  const handleAskCopilot = async (questionText?: string) => {
+    const q = (questionText || copilotQuery).trim();
+    if (!q) return;
+    setCopilotLoading(true);
+    setCopilotError(null);
+    setCopilotResponse(null);
+    try {
+      const res = await fetch("/api/decision", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          query: q,
+          jurisdiction: report?.productDNA?.targetMarkets[0] || "IN",
+          language: language,
+        }),
+      });
+      if (!res.ok) throw new Error("Failed to consult AYURLEX Intelligence.");
+      const data = await res.json();
+      setCopilotResponse(data);
+    } catch (err: any) {
+      setCopilotError(err.message || "Failed to process inquiry.");
+    } finally {
+      setCopilotLoading(false);
+    }
+  };
+
   // Auto-load preset or existing report from search query if present
   useEffect(() => {
     const reportIdParam = searchParams.get("reportId");
@@ -739,6 +771,15 @@ function ProductIntelligenceContent() {
                     <Split className="w-3.5 h-3.5 text-slate-600" />
                     <span>Compare</span>
                   </button>
+
+                  <Link
+                    href={`/analyze?q=${encodeURIComponent(`Assess patentability and regulatory export requirements for ${report.productDNA.productName}`)}&market=${report.productDNA.targetMarkets[0] || "IN"}&type=general`}
+                    className="inline-flex items-center gap-1.5 px-3 py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-semibold rounded-xl shadow-xs transition-colors cursor-pointer"
+                    title="Transfer confirmed Product DNA directly to Analyze Workspace"
+                  >
+                    <ArrowUpRight className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Open in Analyze</span>
+                  </Link>
                 </div>
               </div>
 
@@ -954,6 +995,172 @@ function ProductIntelligenceContent() {
                       </div>
                     ))}
                   </div>
+                </div>
+
+                {/* General Intelligence Co-Pilot Card */}
+                <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-950 text-white rounded-3xl p-6 sm:p-8 shadow-md space-y-6">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-700/60 pb-5">
+                    <div className="space-y-1">
+                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full text-xs font-bold tracking-wide uppercase">
+                        <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                        <span>AYURLEX General Intelligence Co-Pilot</span>
+                      </div>
+                      <h4 className="text-base font-bold text-white pt-1">
+                        Contextual Legal & Regulatory Co-Pilot for {report.productDNA.productName}
+                      </h4>
+                      <p className="text-xs text-slate-300">
+                        Ask any question regarding patentability, Ayurvedic treatises, market approvals, or export regulations grounded in this Product DNA.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Input form */}
+                  <div className="space-y-3">
+                    <div className="relative flex items-center">
+                      <Search className="w-4 h-4 text-slate-400 absolute left-4 pointer-events-none" />
+                      <input
+                        type="text"
+                        value={copilotQuery}
+                        onChange={(e) => setCopilotQuery(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" && !copilotLoading) {
+                            handleAskCopilot();
+                          }
+                        }}
+                        placeholder={`Ask e.g. "Can I sell this formulation in Japan as a health food without patent infringement?"`}
+                        className="w-full bg-slate-950/70 border border-slate-700/80 rounded-2xl pl-11 pr-32 py-3 text-xs text-white placeholder-slate-400 focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
+                      />
+                      <button
+                        onClick={() => handleAskCopilot()}
+                        disabled={copilotLoading || !copilotQuery.trim()}
+                        className="absolute right-2 px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white text-xs font-bold rounded-xl transition-all shadow-xs cursor-pointer disabled:cursor-not-allowed"
+                      >
+                        {copilotLoading ? (
+                          <span className="inline-flex items-center gap-1.5">
+                            <span className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                            <span>Thinking...</span>
+                          </span>
+                        ) : (
+                          "Ask Co-Pilot"
+                        )}
+                      </button>
+                    </div>
+
+                    {/* Suggested Prompt Pills */}
+                    <div className="flex flex-wrap items-center gap-2 pt-1">
+                      <span className="text-[11px] font-semibold text-slate-400">Suggested queries:</span>
+                      {[
+                        `What are the licensing requirements for ${report.productDNA.productName} under AYUSH Rule 158B?`,
+                        `Does ${report.productDNA.productName} trigger Indian Patent Act Section 3(p) traditional knowledge exclusion?`,
+                        `What are the regulatory export requirements for ${report.productDNA.productName} in ${report.productDNA.targetMarkets[0] || "Japan"}?`,
+                        `Can I commercialize this formulation in Australia?`
+                      ].map((pill, pIdx) => (
+                        <button
+                          key={pIdx}
+                          onClick={() => {
+                            setCopilotQuery(pill);
+                            handleAskCopilot(pill);
+                          }}
+                          className="text-[11px] bg-slate-800/80 hover:bg-slate-700/80 text-emerald-300 border border-slate-700 hover:border-emerald-500/40 rounded-xl px-2.5 py-1 transition-colors cursor-pointer text-left"
+                        >
+                          {pill}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Error state */}
+                  {copilotError && (
+                    <div className="bg-rose-950/40 border border-rose-800/50 rounded-2xl p-4 text-xs text-rose-200">
+                      {copilotError}
+                    </div>
+                  )}
+
+                  {/* Response display */}
+                  {copilotResponse && (
+                    <div className="bg-slate-950/80 border border-slate-700 rounded-2xl p-5 space-y-4">
+                      <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-800">
+                        <div className="flex items-center gap-2">
+                          <span className={`text-xs font-black uppercase px-2.5 py-1 rounded-md border ${
+                            copilotResponse.verdict === "YES" ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/30" :
+                            copilotResponse.verdict === "CONDITIONAL_YES" ? "bg-amber-500/20 text-amber-300 border-amber-500/30" :
+                            copilotResponse.verdict === "INSUFFICIENT_EVIDENCE" ? "bg-purple-500/20 text-purple-300 border-purple-500/30" :
+                            "bg-rose-500/20 text-rose-300 border-rose-500/30"
+                          }`}>
+                            {copilotResponse.verdict}
+                          </span>
+                          <span className="text-xs text-slate-400">
+                            Confidence: {Math.round((copilotResponse.confidence || 0.8) * 100)}%
+                          </span>
+                          <span className="text-xs text-slate-400">|</span>
+                          <span className="text-xs text-slate-300">
+                            Jurisdiction: <span className="font-bold text-white">{copilotResponse.jurisdiction}</span>
+                          </span>
+                        </div>
+
+                        <Link
+                          href={`/analyze?q=${encodeURIComponent(copilotQuery || `Assess patentability for ${report.productDNA.productName}`)}&market=${copilotResponse.jurisdiction || "IN"}&type=general`}
+                          className="inline-flex items-center gap-1.5 text-xs text-emerald-400 hover:text-emerald-300 font-semibold transition-colors"
+                        >
+                          <span>Deep-dive in Analyze Workspace</span>
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
+
+                      <div className="space-y-1.5">
+                        <h5 className="text-sm font-bold text-white">
+                          {copilotResponse.headline}
+                        </h5>
+                        <p className="text-xs text-slate-300 leading-relaxed">
+                          {copilotResponse.summary}
+                        </p>
+                      </div>
+
+                      {/* Primary citation banner */}
+                      {copilotResponse.primary_citation && (
+                        <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-3.5 space-y-1.5 text-xs">
+                          <div className="flex items-center justify-between text-[11px] font-bold">
+                            <span className="text-emerald-400">
+                              Official Statutory Authority: {copilotResponse.primary_citation.law} {copilotResponse.primary_citation.section ? `§ ${copilotResponse.primary_citation.section}` : ""}
+                            </span>
+                            {copilotResponse.primary_citation.source_url && (
+                              <a
+                                href={copilotResponse.primary_citation.source_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-slate-400 hover:text-white inline-flex items-center gap-1"
+                              >
+                                <span>Official Source</span>
+                                <ExternalLink className="w-3 h-3" />
+                              </a>
+                            )}
+                          </div>
+                          {copilotResponse.primary_citation.snippet && (
+                            <p className="text-slate-400 italic text-[11px] line-clamp-2">
+                              &ldquo;{copilotResponse.primary_citation.snippet}&rdquo;
+                            </p>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Actionable Next Steps */}
+                      {copilotResponse.actionable_next_steps && copilotResponse.actionable_next_steps.length > 0 && (
+                        <div className="space-y-1.5 pt-2 border-t border-slate-800">
+                          <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
+                            Key Recommendations & Compliance Actions:
+                          </span>
+                          <ul className="space-y-1">
+                            {copilotResponse.actionable_next_steps.map((step: string, sIdx: number) => (
+                              <li key={sIdx} className="text-xs text-slate-300 flex items-start gap-2">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                                <span>{step}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
 
               </div>

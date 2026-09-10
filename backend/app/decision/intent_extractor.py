@@ -234,6 +234,7 @@ def extract_intent(query: str, explicit_jurisdiction: Optional[str] = None) -> Q
     )
 
     return QueryIntent(
+        raw_query=query,
         origin_country=origin_country,
         target_country=target_country,
         product=product,

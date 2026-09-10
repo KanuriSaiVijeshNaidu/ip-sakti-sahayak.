@@ -329,7 +329,7 @@ export async function POST(req: Request) {
       ];
       let nextSteps = [
         "Conduct pre-grant opposition and prior art search using CSIR-TKDL database.",
-        "File Form 1 with National Biodiversity Authority for access to biological resources.",
+        "File Form 1 / Form III with National Biodiversity Authority for access to biological resources.",
         "Consult registered Indian patent agent specialized in AYUSH and pharmaceutical patent law.",
       ];
       let evidence = [
