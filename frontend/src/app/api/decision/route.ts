@@ -61,18 +61,18 @@ export async function POST(req: Request) {
 
     // ── 1b. Check for Unsupported Jurisdictions (e.g. Australia AU, Brazil BR, etc.) ──
     const unindexedCountries = [
-      { code: "AU", name: "Australia (TGA)" },
-      { code: "BR", name: "Brazil (ANVISA)" },
-      { code: "CN", name: "China (NMPA / CNIPA)" },
-      { code: "CA", name: "Canada (Health Canada)" },
-      { code: "UK", name: "United Kingdom (MHRA)" },
-      { code: "GB", name: "United Kingdom (MHRA)" },
-      { code: "RU", name: "Russia (Rospatent)" },
+      { code: "AU", name: "Australia (TGA)", regex: /\b(australia|tga)\b/i },
+      { code: "BR", name: "Brazil (ANVISA)", regex: /\b(brazil|brasil|anvisa)\b/i },
+      { code: "CN", name: "China (NMPA / CNIPA)", regex: /\b(china|nmpa|cnipa)\b/i },
+      { code: "CA", name: "Canada (Health Canada)", regex: /\b(canada|health canada)\b/i },
+      { code: "UK", name: "United Kingdom (MHRA)", regex: /\b(united kingdom|uk|mhra|britain|england)\b/i },
+      { code: "GB", name: "United Kingdom (MHRA)", regex: /\b(great britain)\b/i },
+      { code: "RU", name: "Russia (Rospatent)", regex: /\b(russia|rospatent)\b/i },
     ];
     for (const item of unindexedCountries) {
       if (
         explicitJurisdiction === item.code ||
-        new RegExp(`\\b${item.code.toLowerCase()}\\b|\\b${item.name.toLowerCase().split(" ")[0]}\\b`).test(qLower)
+        item.regex.test(qLower)
       ) {
         const response: DecisionResponse = {
           query: rawQuery,

@@ -38,20 +38,15 @@ class RoutingDecision(BaseModel):
 
 
 UNINDEXED_JURISDICTIONS = {
-    "AU": "Australia (TGA)",
-    "AUSTRALIA": "Australia (TGA)",
-    "BR": "Brazil (ANVISA)",
-    "BRAZIL": "Brazil (ANVISA)",
-    "CN": "China (NMPA / CNIPA)",
-    "CHINA": "China (NMPA / CNIPA)",
-    "CA": "Canada (Health Canada)",
-    "CANADA": "Canada (Health Canada)",
-    "UK": "United Kingdom (MHRA)",
-    "GB": "United Kingdom (MHRA)",
-    "RU": "Russia (Rospatent)",
-    "RUSSIA": "Russia (Rospatent)",
-    "ZA": "South Africa (SAHPRA)",
-    "NZ": "New Zealand (Medsafe)",
+    "AU": ("Australia (TGA)", r"\b(australia|tga)\b"),
+    "BR": ("Brazil (ANVISA)", r"\b(brazil|brasil|anvisa)\b"),
+    "CN": ("China (NMPA / CNIPA)", r"\b(china|nmpa|cnipa)\b"),
+    "CA": ("Canada (Health Canada)", r"\b(canada|health canada)\b"),
+    "UK": ("United Kingdom (MHRA)", r"\b(united kingdom|uk|mhra|britain|england)\b"),
+    "GB": ("United Kingdom (MHRA)", r"\b(great britain|gb)\b"),
+    "RU": ("Russia (Rospatent)", r"\b(russia|rospatent)\b"),
+    "ZA": ("South Africa (SAHPRA)", r"\b(south africa|sahpra)\b"),
+    "NZ": ("New Zealand (Medsafe)", r"\b(new zealand|medsafe)\b"),
 }
 
 GENERAL_PATTERNS = [
@@ -94,8 +89,7 @@ class IntelligenceRouter:
         # ── 1. Check for Unsupported Jurisdictions ─────────────────────────────
         target_jur = (explicit_jurisdiction or "").strip().upper()
         # Check if query mentions an unindexed country
-        for code, name in UNINDEXED_JURISDICTIONS.items():
-            pattern = rf"\b{code.lower()}\b|\b{name.lower().split()[0]}\b"
+        for code, (name, pattern) in UNINDEXED_JURISDICTIONS.items():
             if re.search(pattern, q_lower) or target_jur == code:
                 return RoutingDecision(
                     category=QueryCategory.LEGAL_REGULATORY,
@@ -106,7 +100,7 @@ class IntelligenceRouter:
                     requires_evidence_gate=True,
                     is_unsupported_jurisdiction=True,
                     unsupported_jurisdiction_code=code[:2],
-                    reasoning=f"Jurisdiction '{code}' is not indexed in the verified AYURLEX corpus.",
+                    reasoning=f"Jurisdiction '{name}' is not indexed in the verified AYURLEX corpus.",
                 )
 
         # ── 2. Check for Pure General / Educational Questions ─────────────────
