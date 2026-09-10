@@ -184,20 +184,20 @@ class GeneralIntelligenceEngine:
                     "citations": []
                 }
 
-        # Fallback generic conceptual explanation
+        # Fallback for unrecognized non-IP / non-AYUSH inquiries
         return {
-            "answer_type": "GENERAL_KNOWLEDGE",
-            "title": "Conceptual Explanation",
-            "concept": "General Inquiry",
+            "answer_type": "INSUFFICIENT_DATA",
+            "title": "Insufficient Data in Verified Sources",
+            "concept": "Out-of-Scope / Non-IP Inquiry",
             "content": (
-                f"**General Conceptual Overview for:** *{query.strip()}*\n\n"
-                "In the context of intellectual property, life sciences, and Ayurvedic technology, questions like this explore fundamental principles. "
-                "While AYURLEX specializes in evidence-grounded statutory clearance, patent prior art screening, and regulatory compliance, "
-                "educational and conceptual inquiries provide the foundational context necessary before initiating formal statutory filings."
+                "Insufficient data in the available sources to answer this question reliably.\n\n"
+                "AYURLEX is an evidence-grounded intelligence assistant specialized in intellectual property (patents, "
+                "trademarks, designs, plant varieties, geographical indications) and Ayurvedic / AYUSH regulatory frameworks. "
+                "The requested topic is outside the verified conceptual and statutory knowledge base."
             ),
-            "follow_up_hint": "If you would like to analyze how this concept applies to a concrete Ayurvedic formulation, patent application, or regulatory filing, specify your product ingredients and target jurisdiction.",
+            "follow_up_hint": "Please submit an intellectual property or AYUSH/FSSAI regulatory inquiry.",
             "requires_rag": False,
-            "evidence_status": "CONCEPTUAL_EXPLANATION",
+            "evidence_status": "INSUFFICIENT_DATA",
             "jurisdiction": "GLOBAL_EDUCATIONAL",
             "citations": []
         }

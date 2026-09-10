@@ -139,6 +139,47 @@ class Phase7DecisionPipeline:
             gen_ans = general_intelligence_engine.explain(raw_query)
             total_ms = round((time.perf_counter() - t_start) * 1000, 2)
             latencies["total_decision_pipeline_ms"] = total_ms
+
+            if gen_ans.get("answer_type") == "INSUFFICIENT_DATA":
+                return DecisionResponse(
+                    query=raw_query,
+                    decision=DecisionType.INSUFFICIENT_EVIDENCE,
+                    why=gen_ans["content"],
+                    patent_analysis="The query does not pertain to indexed patent, trademark, or IP statutory subject matter.",
+                    regulatory_analysis="No regulatory health authority or drug safety standard applies to this inquiry.",
+                    ip_fto_analysis="No IP freedom-to-operate clearance can be evaluated for unindexed non-IP topics.",
+                    conditions=["Submit an intellectual property or AYUSH regulatory inquiry."],
+                    required_next_steps=[gen_ans["follow_up_hint"]],
+                    evidence=[],
+                    confidence=DecisionConfidence.LOW,
+                    query_intent=intent,
+                    evidence_sufficiency=EvidenceSufficiency(
+                        evidence_sufficient=False,
+                        required_evidence_present=False,
+                        unresolved_material_conditions=["Query is outside indexed IP and AYUSH statutory domain."],
+                        jurisdiction_valid=False,
+                        source_authority=0,
+                        missing_evidence_categories=["ip_statutes", "ayush_regulations"],
+                        decision_reason_codes=["OUT_OF_DOMAIN", "INSUFFICIENT_EVIDENCE"],
+                        patent_evidence_count=0,
+                        regulatory_evidence_count=0,
+                        fto_evidence_count=0,
+                        evidence_note="Insufficient data in available sources to answer reliably.",
+                    ),
+                    detected_language=detected_lang,
+                    jurisdictions_searched=[],
+                    origin_jurisdiction="IN",
+                    target_jurisdiction="IN",
+                    decision_jurisdiction="IN",
+                    origin_evidence=[],
+                    target_evidence=[],
+                    cross_jurisdiction_evidence=[],
+                    evaluation_evidence=[],
+                    crag_status="INSUFFICIENT",
+                    evaluation_only=False,
+                    latencies_ms=latencies,
+                )
+
             return DecisionResponse(
                 query=raw_query,
                 decision=DecisionType.YES,
@@ -525,7 +566,10 @@ class Phase7DecisionPipeline:
         is_india_query = (
             (explicit_jurisdiction and explicit_jurisdiction.upper() == "IN")
             or (intent.target_country and intent.target_country.upper() == "IN")
-            or ("india" in q_lower or "cgpdtm" in q_lower or "inpass" in q_lower or "ipo" in q_lower)
+            or any(k in q_lower for k in [
+                "india", "indian", "cgpdtm", "inpass", "ipo", "ayush", "ncism", "itra",
+                "ayurveda", "ayurvedic", "fssai", "tkdl", "nba", "designs act", "copyright act", "ppvfr"
+            ])
         )
         if is_india_query and (not intent.is_commercialization_question or intent.target_country in (None, "IN")):
             return ["IN"], False

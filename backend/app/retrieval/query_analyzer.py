@@ -147,7 +147,7 @@ def route_jurisdiction(query: str, explicit_override: Optional[str] = None) -> T
 
     # Match jurisdiction keywords across all 5 languages
     has_in = bool(
-        re.search(r"\b(india|indian|cgpdtm|inpass|ipo|ayush|tkdl|nba|national biodiversity authority|fssai|ayurveda aahara|rule 158b|form 24d|form 25d|schedule t|form tm-a)\b", q_lower)
+        re.search(r"\b(india|indian|cgpdtm|inpass|ipo|ayush|tkdl|nba|national biodiversity authority|fssai|ayurveda aahara|rule 158b|form 24d|form 25d|schedule t|form tm-a|ncism|itra|designs act|copyright act|ppvfr)\b", q_lower)
         or "भारत" in query
         or "भारतीय" in query
         or "భారత" in query

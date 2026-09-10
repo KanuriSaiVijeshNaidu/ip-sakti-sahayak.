@@ -218,11 +218,22 @@ class IntelligenceRouter:
                 break
 
         is_pure_concept = (
-            q_lower in ["what is a patent?", "what is a patent", "what is a trademark?", "what is a trademark",
-                        "what is novelty?", "what is novelty", "what is inventive step?", "what is inventive step",
-                        "what is prior art?", "what is prior art", "how does photosynthesis work?", "how does photosynthesis work"]
-            or (q_lower.startswith(("what is ", "explain ", "how does ", "define ", "tell me about "))
-                and not any(k in q_lower for k in ["us", "japan", "india", "europe", "pct", "epc", "act", "section", "article", "law", "statute", "supplement", "fda", "pmd"]))
+            q_lower in [
+                "what is a patent?", "what is a patent", "what is a trademark?", "what is a trademark",
+                "what is novelty?", "what is novelty", "what is inventive step?", "what is inventive step",
+                "what is prior art?", "what is prior art", "how does photosynthesis work?", "how does photosynthesis work",
+                "what is intellectual property?", "what is intellectual property", "what is fto?", "what is fto",
+                "what is freedom to operate?", "what is freedom to operate", "what is rag?", "what is rag",
+                "what is crag?", "what is crag", "how does a patent work?", "how does a patent work"
+            ]
+            or any(
+                q_lower.startswith(prefix) and any(term in q_lower for term in [
+                    "patent", "trademark", "trade mark", "prior art", "novelty", "inventive step",
+                    "freedom to operate", "fto", "photosynthesis", "dna", "synergy", "rag",
+                    "retrieval augmented generation", "intellectual property"
+                ])
+                for prefix in ["what is ", "explain ", "how does ", "define ", "tell me about "]
+            )
         )
 
         if is_general or is_pure_concept:

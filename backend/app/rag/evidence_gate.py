@@ -96,7 +96,7 @@ class EvidenceCompatibilityGate:
             return "EP"
         if re.search(r"\b(wo|wipo|pct|international application|patentscope|iprp|isr|wo-isa)\b", q_lower) or "国際出願" in query:
             return "WO"
-        if re.search(r"\b(in|india|indian|cgpdtm|ipo|ayush|fssai|section 3|tkdl|nba|rule 158b|schedule t)\b", q_lower) or any(k in query for k in ["भारत", "भारतीय", "భారత"]):
+        if re.search(r"\b(in|india|indian|cgpdtm|ipo|ayush|fssai|section 3|tkdl|nba|rule 158b|schedule t|ncism|itra|designs act|copyright act|ppvfr)\b", q_lower) or any(k in query for k in ["भारत", "भारतीय", "భారత"]):
             return "IN"
 
         return default_jurisdiction

@@ -70,7 +70,7 @@ export async function POST(req: Request) {
 
 
     // Insufficient evidence guardrail for unverified jurisdictions
-    const supportedJurs = ["US", "IN", "EU", "JP", "WO", "GLOBAL", "auto"];
+    const supportedJurs = ["US", "IN", "EU", "JP", "WO", "GLOBAL", "AUTO"];
     if (jurisdiction && !supportedJurs.includes(jurisdiction.toUpperCase())) {
       const disclaimers: Record<string, string> = {
         de: "### ⚠️ Unzureichende amtliche Rechtsquellen im AYURLEX-Korpus\nFür diesen Rechtskreis liegen derzeit keine verifizierten amtlichen Gesetzestexte im AYURLEX-Korpus vor. Zur Wahrung der Rechtspräzision und zur Vermeidung von Spekulationen werden keine ungesicherten Normen zitiert.",
@@ -1170,7 +1170,7 @@ AYURLEXは厳格な**根拠先行型法規ポリシー（Evidence-Grounded Legal
         (domain === "patents" && (q.includes("herb") || q.includes("formulation") || q.includes("combination") || q.includes("plant")));
 
       const isGi =
-        q.includes("gi") ||
+        /\bgi\b/i.test(q) ||
         q.includes("geographical indication") ||
         domain === "gi";
 

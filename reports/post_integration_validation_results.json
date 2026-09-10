@@ -1,0 +1,416 @@
+{
+  "category_a": {
+    "total": 13,
+    "passed": 13,
+    "details": [
+      {
+        "id": "CAT-A-01",
+        "subarea": "NCISM Act 2020",
+        "query": "What are the powers and functions of the National Commission for Indian System of Medicine under the NCISM Act 2020?",
+        "rag_status": "SUCCESS",
+        "decision": "CONDITIONAL_YES",
+        "citations_count": 5,
+        "top_citation": "The National Commission for Indian System of Medicine Act, 2020",
+        "passed": true
+      },
+      {
+        "id": "CAT-A-02",
+        "subarea": "ITRA Act 2020",
+        "query": "What is the status of the Institute of Teaching and Research in Ayurveda under the ITRA Act 2020?",
+        "rag_status": "SUCCESS",
+        "decision": "CONDITIONAL_YES",
+        "citations_count": 5,
+        "top_citation": "The Institute of Teaching and Research in Ayurveda Act, 2020",
+        "passed": true
+      },
+      {
+        "id": "CAT-A-03",
+        "subarea": "Patents Act 1970",
+        "query": "What does Section 3(p) of the Indian Patents Act say about traditional knowledge?",
+        "rag_status": "PARTIALLY_VALIDATED",
+        "decision": "CONDITIONAL_YES",
+        "citations_count": 5,
+        "top_citation": "Guidelines for Examination of Patent Applications in the Field of Traditional Knowledge & Pharmaceuticals",
+        "passed": true
+      },
+      {
+        "id": "CAT-A-04",
+        "subarea": "Patent Rules 2003",
+        "query": "What are the rules and forms for patent applications under the Patent Rules 2003?",
+        "rag_status": "SUCCESS",
+        "decision": "CONDITIONAL_YES",
+        "citations_count": 5,
+        "top_citation": "Draft Patent (Amendment) Rules, 2023",
+        "passed": true
+      },
+      {
+        "id": "CAT-A-05",
+        "subarea": "Trade Marks Act / Rules",
+        "query": "Can generic Ayurvedic botanical names like Ashwagandha be registered under the Trade Marks Act?",
+        "rag_status": "PARTIALLY_VALIDATED",
+        "decision": "CONDITIONAL_YES",
+        "citations_count": 5,
+        "top_citation": "Trade Marks Act 1999 \u2014 Protection of Ayurvedic Terminology & Generic Names Ban",
+        "passed": true
+      },
+      {
+        "id": "CAT-A-06",
+        "subarea": "Copyright Act 1957",
+        "query": "What are the fair dealing exemptions under Section 52 of the Copyright Act 1957?",
+        "rag_status": "SUCCESS",
+        "decision": "CONDITIONAL_YES",
+        "citations_count": 5,
+        "top_citation": "THE COPYRIGHT ACT, 1957 (Act No. 14 of 1957)",
+        "passed": true
+      },
+      {
+        "id": "CAT-A-07",
+        "subarea": "Designs Act 2000",
+        "query": "What is the term of copyright in a registered design under the Designs Act 2000?",
+        "rag_status": "SUCCESS",
+        "decision": "CONDITIONAL_YES",
+        "citations_count": 5,
+        "top_citation": "THE DESIGNS ACT, 2000",
+        "passed": true
+      },
+      {
+        "id": "CAT-A-08",
+        "subarea": "GI Act / Rules",
+        "query": "What are the requirements for registration of a Geographical Indication under the Geographical Indications Act?",
+        "rag_status": "SUCCESS",
+        "decision": "CONDITIONAL_YES",
+        "citations_count": 5,
+        "top_citation": "The Geographical Indications of Goods (Registration and Protection) Rules, 2002",
+        "passed": true
+      },
+      {
+        "id": "CAT-A-09",
+        "subarea": "Biological Diversity / ABS",
+        "query": "When is prior approval from the National Biodiversity Authority (NBA) required under Section 6 of the Biological Diversity Act?",
+        "rag_status": "PARTIALLY_VALIDATED",
+        "decision": "CONDITIONAL_YES",
+        "citations_count": 5,
+        "top_citation": "National Biodiversity Authority: Guidelines for Prior Approval under Section 6 of Biological Diversity Act",
+        "passed": true
+      },
+      {
+        "id": "CAT-A-10",
+        "subarea": "PPVFR Act / Rules",
+        "query": "What are the criteria for registration of a plant variety under the Protection of Plant Varieties and Farmers Rights Act?",
+        "rag_status": "SUCCESS",
+        "decision": "CONDITIONAL_YES",
+        "citations_count": 5,
+        "top_citation": "The Protection of Plant Varieties and Farmers\u2019 Rights Act, 2001",
+        "passed": true
+      },
+      {
+        "id": "CAT-A-11",
+        "subarea": "Ayurveda / AYUSH regulatory (Rule 158B)",
+        "query": "What are the requirements under Rule 158B of the Drugs and Cosmetics Rules for Ayurvedic medicines?",
+        "rag_status": "PARTIALLY_VALIDATED",
+        "decision": "CONDITIONAL_YES",
+        "citations_count": 5,
+        "top_citation": "Drugs & Cosmetics Act 1940 & Rules 1945 \u2014 Rule 158B & Schedule T GMP",
+        "passed": true
+      },
+      {
+        "id": "CAT-A-12",
+        "subarea": "FSSAI Ayurveda Aahara",
+        "query": "What are the labelling requirements for Ayurveda Aahara under FSSAI regulations 2022?",
+        "rag_status": "PARTIALLY_VALIDATED",
+        "decision": "CONDITIONAL_YES",
+        "citations_count": 5,
+        "top_citation": "Food Safety and Standards (Ayurveda Aahara) Regulations, 2022",
+        "passed": true
+      },
+      {
+        "id": "CAT-A-13",
+        "subarea": "Traditional Knowledge / TKDL",
+        "query": "How does the Traditional Knowledge Digital Library (TKDL) prevent biopiracy of Indian traditional medicine?",
+        "rag_status": "SUCCESS",
+        "decision": "CONDITIONAL_YES",
+        "citations_count": 5,
+        "top_citation": "Traditional Knowledge Digital Library (TKDL) \u2014 Landmark Biopiracy Revocations",
+        "passed": true
+      }
+    ]
+  },
+  "category_b": {
+    "total": 10,
+    "passed": 10,
+    "details": [
+      {
+        "id": "CAT-B-01",
+        "query": "How do I repair a car engine?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "crag_status": "INSUFFICIENT",
+        "passed": true
+      },
+      {
+        "id": "CAT-B-02",
+        "query": "What is today's cricket score?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "crag_status": "INSUFFICIENT",
+        "passed": true
+      },
+      {
+        "id": "CAT-B-03",
+        "query": "How do I calculate a mortgage EMI?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "crag_status": "INSUFFICIENT",
+        "passed": true
+      },
+      {
+        "id": "CAT-B-04",
+        "query": "What is the best programming language for game development?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "crag_status": "INSUFFICIENT",
+        "passed": true
+      },
+      {
+        "id": "CAT-B-05",
+        "query": "How do I get a commercial pilot license?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "crag_status": "INSUFFICIENT",
+        "passed": true
+      },
+      {
+        "id": "CAT-B-06",
+        "query": "What is the chemical formula of glucose?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "crag_status": "INSUFFICIENT",
+        "passed": true
+      },
+      {
+        "id": "CAT-B-07",
+        "query": "How do I diagnose diabetes?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "crag_status": "INSUFFICIENT",
+        "passed": true
+      },
+      {
+        "id": "CAT-B-08",
+        "query": "What is the weather tomorrow?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "crag_status": "INSUFFICIENT",
+        "passed": true
+      },
+      {
+        "id": "CAT-B-09",
+        "query": "How do I apply for a driving license?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "crag_status": "INSUFFICIENT",
+        "passed": true
+      },
+      {
+        "id": "CAT-B-10",
+        "query": "How do I cook biryani?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "crag_status": "INSUFFICIENT",
+        "passed": true
+      }
+    ]
+  },
+  "category_c": {
+    "total": 6,
+    "passed": 6,
+    "details": [
+      {
+        "id": "CAT-C-01",
+        "query": "What is the procedure for filing a divorce in India?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "passed": true
+      },
+      {
+        "id": "CAT-C-02",
+        "query": "How do I register a vehicle in India?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "passed": true
+      },
+      {
+        "id": "CAT-C-03",
+        "query": "What are the rules for income tax filing?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "passed": true
+      },
+      {
+        "id": "CAT-C-04",
+        "query": "What is the procedure for obtaining a liquor license?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "passed": true
+      },
+      {
+        "id": "CAT-C-05",
+        "query": "What is the latest RBI monetary policy?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "passed": true
+      },
+      {
+        "id": "CAT-C-06",
+        "query": "What are the current GST rates for restaurants?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "passed": true
+      }
+    ]
+  },
+  "category_d": {
+    "total": 5,
+    "passed": 5,
+    "details": [
+      {
+        "id": "CAT-D-01",
+        "query": "Can I patent my Ayurvedic formulation in the USA?",
+        "target_jur": "US",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "jurisdiction_leak_detected": false,
+        "passed": true
+      },
+      {
+        "id": "CAT-D-02",
+        "query": "What is the trademark registration process in Germany?",
+        "target_jur": "DE",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "jurisdiction_leak_detected": false,
+        "passed": true
+      },
+      {
+        "id": "CAT-D-03",
+        "query": "Can this Indian traditional knowledge claim be patented in Japan?",
+        "target_jur": "JP",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "jurisdiction_leak_detected": false,
+        "passed": true
+      },
+      {
+        "id": "CAT-D-04",
+        "query": "What is the US patent grace period?",
+        "target_jur": "US",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "YES",
+        "jurisdiction_leak_detected": false,
+        "passed": true
+      },
+      {
+        "id": "CAT-D-05",
+        "query": "What are the European Union rules for Ayurveda products?",
+        "target_jur": "EP",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "jurisdiction_leak_detected": false,
+        "passed": true
+      }
+    ]
+  },
+  "category_e": {
+    "total": 5,
+    "passed": 5,
+    "details": [
+      {
+        "id": "CAT-E-01",
+        "query": "Under the Patents Act, what is the procedure for getting a driving license?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "passed": true
+      },
+      {
+        "id": "CAT-E-02",
+        "query": "According to the NCISM Act, what is the GST rate for restaurants?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "passed": true
+      },
+      {
+        "id": "CAT-E-03",
+        "query": "Which section of the Copyright Act regulates car insurance?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "passed": true
+      },
+      {
+        "id": "CAT-E-04",
+        "query": "Can the Designs Act be used to obtain a pilot license?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "passed": true
+      },
+      {
+        "id": "CAT-E-05",
+        "query": "According to Ayurveda regulations, what is the legal age for voting?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "passed": true
+      }
+    ]
+  },
+  "category_f": {
+    "total": 1,
+    "passed": 1,
+    "details": [
+      {
+        "id": "CAT-F-01",
+        "query": "What is the legal protection available for my Ayurvedic product, what are the current US filing fees, and what is the approval timeline in India?",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "fabricated_fees": false,
+        "passed": true
+      }
+    ]
+  },
+  "category_g": {
+    "total": 3,
+    "passed": 3,
+    "details": [
+      {
+        "turn": 1,
+        "query": "Can I protect an Ayurvedic formulation using IP?",
+        "context_jur": null,
+        "rag_status": "PARTIALLY_VALIDATED",
+        "decision": "CONDITIONAL_YES",
+        "passed": true
+      },
+      {
+        "turn": 2,
+        "query": "What about the US?",
+        "context_jur": "US",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "passed": true
+      },
+      {
+        "turn": 3,
+        "query": "What is the filing fee?",
+        "context_jur": "US",
+        "rag_status": "INSUFFICIENT_EVIDENCE",
+        "decision": "INSUFFICIENT_EVIDENCE",
+        "passed": true
+      }
+    ]
+  },
+  "authority_tier_validation": {
+    "tier1_count": 65,
+    "tier2_count": 0,
+    "properly_labeled": true
+  },
+  "citation_validation": {
+    "total_citations": 65,
+    "grounded_citations": 61
+  }
+}
