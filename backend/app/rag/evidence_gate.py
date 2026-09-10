@@ -116,10 +116,14 @@ class EvidenceCompatibilityGate:
         if chunk_id.startswith(("STATUTE-", "REG-", "GUIDE-")):
             return True
 
-        if doc_id.startswith(("STATUTE-", "REG-", "GUIDE-", "IN_doc-india-code", "IN_IN-ACT", "IN_IN-GUIDELINE", "IN_IN-REG", "IN_doc-dcr-1945", "IN_IN-ACT-TM", "IN_IN-ACT-BDA")):
+        src_type = getattr(cand, "source_type", None) or (cand.get("source_type", "") if isinstance(cand, dict) else "")
+        if src_type in ["official_statute", "secondary_legal_statute", "official_rules", "official_guidelines", "statute", "rules", "guidelines"]:
             return True
 
-        if chunk_id.startswith(("IN_doc-india-code", "IN_IN-ACT", "IN_IN-GUIDELINE", "IN_IN-REG", "IN_doc-dcr-1945")):
+        if doc_id.startswith(("STATUTE-", "REG-", "GUIDE-", "IN_doc-india-code", "IN_IN-ACT", "IN_IN-GUIDELINE", "IN_IN-REG", "IN_doc-dcr-1945", "IN_IN-ACT-TM", "IN_IN-ACT-BDA", "IN-KANOON", "IN_KANOON")):
+            return True
+
+        if chunk_id.startswith(("IN_doc-india-code", "IN_IN-ACT", "IN_IN-GUIDELINE", "IN_IN-REG", "IN_doc-dcr-1945", "IN_KANOON", "IN-KANOON")):
             return True
 
         if any(sec.startswith(prefix) for prefix in [

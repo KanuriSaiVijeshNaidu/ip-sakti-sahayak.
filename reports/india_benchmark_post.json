@@ -1,0 +1,351 @@
+{
+  "label": "POST",
+  "total_queries": 20,
+  "passed": 20,
+  "pass_rate_pct": 100.0,
+  "abstentions_correct": 3,
+  "results": [
+    {
+      "id": "IN-PAT-01",
+      "domain": "patent",
+      "query": "What are the requirements under Section 3(d) of the Indian Patents Act for enhanced efficacy?",
+      "expected_status": "SUCCESS",
+      "actual_rag_status": "PARTIALLY_VALIDATED",
+      "crag_status": "GOOD",
+      "citations_count": 5,
+      "citations": [
+        "IN-KANOON-f594905c26c9bef09deaf1468e7bcfca159cd82a9b9c6eb720e135c81e405466",
+        "IN-GUIDELINE-PATENTS-TK",
+        "IN-ACT-PATENTS-1970",
+        "IN-KANOON-f594905c26c9bef09deaf1468e7bcfca159cd82a9b9c6eb720e135c81e405466",
+        "IN-KANOON-f594905c26c9bef09deaf1468e7bcfca159cd82a9b9c6eb720e135c81e405466"
+      ],
+      "verdict": "PASS",
+      "latency_ms": 6630.9
+    },
+    {
+      "id": "IN-PAT-02",
+      "domain": "patent",
+      "query": "Can a synergistic polyherbal composition be patented under Section 3(e) of the Indian Patents Act?",
+      "expected_status": "SUCCESS",
+      "actual_rag_status": "SUCCESS",
+      "crag_status": "GOOD",
+      "citations_count": 5,
+      "citations": [
+        "IN-268685-B",
+        "doc-india-code-patents-sec3e",
+        "IN-GUIDELINE-PATENTS-TK",
+        "doc-afi-triphala-001",
+        "doc-ip-india-pat-2018-01"
+      ],
+      "verdict": "PASS",
+      "latency_ms": 4586.2
+    },
+    {
+      "id": "IN-PAT-03",
+      "domain": "patent",
+      "query": "What are the timelines and procedures for filing a patent application under Indian Patent Rules?",
+      "expected_status": "SUCCESS",
+      "actual_rag_status": "PARTIALLY_VALIDATED",
+      "crag_status": "GOOD",
+      "citations_count": 5,
+      "citations": [
+        "IN-GUIDELINE-PATENTS-TK",
+        "IN-KANOON-76fffe4128a47205a0d20143cc9a31f28a286f3b49dface8e384df43fd16c197",
+        "doc-nba-guidelines-sec6",
+        "IN-KANOON-76fffe4128a47205a0d20143cc9a31f28a286f3b49dface8e384df43fd16c197",
+        "IN-KANOON-76fffe4128a47205a0d20143cc9a31f28a286f3b49dface8e384df43fd16c197"
+      ],
+      "verdict": "PASS",
+      "latency_ms": 4614.1
+    },
+    {
+      "id": "IN-PAT-04",
+      "domain": "patent",
+      "query": "What is the requirement for filing a complete specification after a provisional patent application in India?",
+      "expected_status": "SUCCESS",
+      "actual_rag_status": "PARTIALLY_VALIDATED",
+      "crag_status": "GOOD",
+      "citations_count": 5,
+      "citations": [
+        "IN-KANOON-76fffe4128a47205a0d20143cc9a31f28a286f3b49dface8e384df43fd16c197",
+        "IN-KANOON-76fffe4128a47205a0d20143cc9a31f28a286f3b49dface8e384df43fd16c197",
+        "IN-GUIDELINE-PATENTS-TK",
+        "IN-ACT-PATENTS-1970",
+        "IN-KANOON-76fffe4128a47205a0d20143cc9a31f28a286f3b49dface8e384df43fd16c197"
+      ],
+      "verdict": "PASS",
+      "latency_ms": 4614.1
+    },
+    {
+      "id": "IN-PAT-05",
+      "domain": "patent",
+      "query": "What is the statutory term of a patent in India under Section 53 of the Patents Act?",
+      "expected_status": "SUCCESS",
+      "actual_rag_status": "PARTIALLY_VALIDATED",
+      "crag_status": "GOOD",
+      "citations_count": 5,
+      "citations": [
+        "IN-ACT-PATENTS-1970",
+        "IN-GUIDELINE-PATENTS-TK",
+        "IN-KANOON-76fffe4128a47205a0d20143cc9a31f28a286f3b49dface8e384df43fd16c197",
+        "IN-KANOON-76fffe4128a47205a0d20143cc9a31f28a286f3b49dface8e384df43fd16c197",
+        "IN-COMM-AYURVEDA-D2C"
+      ],
+      "verdict": "PASS",
+      "latency_ms": 4644.2
+    },
+    {
+      "id": "IN-TM-01",
+      "domain": "trademark",
+      "query": "How can I register a trademark for an Ayurvedic proprietary brand in India under the Trade Marks Act 1999?",
+      "expected_status": "SUCCESS",
+      "actual_rag_status": "PARTIALLY_VALIDATED",
+      "crag_status": "GOOD",
+      "citations_count": 5,
+      "citations": [
+        "IN-ACT-TM-AYUR-1999",
+        "IN-ACT-TM-GI-1999",
+        "IN-ACT-TM-AYUR-1999",
+        "IN-COMM-AYURVEDA-D2C",
+        "IN-ACT-TM-AYUR-1999"
+      ],
+      "verdict": "PASS",
+      "latency_ms": 4644.7
+    },
+    {
+      "id": "IN-TM-02",
+      "domain": "trademark",
+      "query": "Why does Section 13 of the Indian Trade Marks Act prohibit registration of generic Ayurvedic single-herb names?",
+      "expected_status": "SUCCESS",
+      "actual_rag_status": "SUCCESS",
+      "crag_status": "PARTIAL",
+      "citations_count": 5,
+      "citations": [
+        "IN-ACT-TM-AYUR-1999",
+        "IN-COMM-AYURVEDA-D2C",
+        "IN-ACT-TM-AYUR-1999",
+        "IN-ACT-TM-GI-1999",
+        "IN-ACT-TM-AYUR-1999"
+      ],
+      "verdict": "PASS",
+      "latency_ms": 4654.9
+    },
+    {
+      "id": "IN-TM-03",
+      "domain": "trademark",
+      "query": "Which trademark class applies to Ayurvedic pharmaceuticals versus cosmetics under Nice classification in India?",
+      "expected_status": "SUCCESS",
+      "actual_rag_status": "PARTIALLY_VALIDATED",
+      "crag_status": "GOOD",
+      "citations_count": 5,
+      "citations": [
+        "IN-COMM-AYURVEDA-D2C",
+        "IN-ACT-TM-AYUR-1999",
+        "IN-ACT-TM-AYUR-1999",
+        "IN-ACT-DCR-1945",
+        "IN-ACT-TM-GI-1999"
+      ],
+      "verdict": "PASS",
+      "latency_ms": 4669.6
+    },
+    {
+      "id": "IN-TK-01",
+      "domain": "traditional_knowledge",
+      "query": "Why does Section 3(p) of the Patents Act exclude classical Ayurvedic formulations from patentability?",
+      "expected_status": "SUCCESS",
+      "actual_rag_status": "PARTIALLY_VALIDATED",
+      "crag_status": "GOOD",
+      "citations_count": 5,
+      "citations": [
+        "IN-GUIDELINE-PATENTS-TK",
+        "doc-india-code-patents-sec3p",
+        "IN-COMM-AYURVEDA-D2C",
+        "IN-FOUND-AYURVEDA-NCISM",
+        "IN-COMM-AYURVEDA-D2C"
+      ],
+      "verdict": "PASS",
+      "latency_ms": 5125.8
+    },
+    {
+      "id": "IN-TK-02",
+      "domain": "traditional_knowledge",
+      "query": "How is the Traditional Knowledge Digital Library (TKDL) utilized as prior art by patent examiners in India?",
+      "expected_status": "SUCCESS",
+      "actual_rag_status": "PARTIALLY_VALIDATED",
+      "crag_status": "GOOD",
+      "citations_count": 5,
+      "citations": [
+        "IN-ACT-PATENTS-1970",
+        "doc-wipo-igc-tk-001",
+        "doc-india-code-patents-sec3p",
+        "doc-tkdl-001",
+        "IN-TKDL-CASE-COMPENDIUM"
+      ],
+      "verdict": "PASS",
+      "latency_ms": 4746.3
+    },
+    {
+      "id": "IN-TK-03",
+      "domain": "ayurveda_legislation",
+      "query": "What is the statutory role of the National Commission for Indian System of Medicine Act 2020 regarding Ayurveda?",
+      "expected_status": "SUCCESS",
+      "actual_rag_status": "SUCCESS",
+      "crag_status": "PARTIAL",
+      "citations_count": 5,
+      "citations": [
+        "IN-KANOON-984f43747d25524518f82985588f4ee1ff12cd8b1106ef45850e285458bbdc44",
+        "IN-KANOON-f6febe547ccea1f52e656c2edc349d61de72aa633ae5e0a6662626a405f756b5",
+        "IN-KANOON-f6febe547ccea1f52e656c2edc349d61de72aa633ae5e0a6662626a405f756b5",
+        "IN-KANOON-984f43747d25524518f82985588f4ee1ff12cd8b1106ef45850e285458bbdc44",
+        "IN-FOUND-AYURVEDA-NCISM"
+      ],
+      "verdict": "PASS",
+      "latency_ms": 4823.0
+    },
+    {
+      "id": "IN-TK-04",
+      "domain": "ayurveda_legislation",
+      "query": "What are the provisions of the Institute of Teaching and Research in Ayurveda Act 2020?",
+      "expected_status": "SUCCESS",
+      "actual_rag_status": "SUCCESS",
+      "crag_status": "PARTIAL",
+      "citations_count": 5,
+      "citations": [
+        "IN-KANOON-db3feb895dfbfd4cfc0be07458b32a9651da1b85d34cf4a96f16385eec2468a8",
+        "IN-KANOON-db3feb895dfbfd4cfc0be07458b32a9651da1b85d34cf4a96f16385eec2468a8",
+        "IN-KANOON-db3feb895dfbfd4cfc0be07458b32a9651da1b85d34cf4a96f16385eec2468a8",
+        "IN-KANOON-db3feb895dfbfd4cfc0be07458b32a9651da1b85d34cf4a96f16385eec2468a8",
+        "IN-KANOON-db3feb895dfbfd4cfc0be07458b32a9651da1b85d34cf4a96f16385eec2468a8"
+      ],
+      "verdict": "PASS",
+      "latency_ms": 5122.1
+    },
+    {
+      "id": "IN-BIO-01",
+      "domain": "biodiversity",
+      "query": "When is prior approval from the National Biodiversity Authority (NBA) required under Section 6 before applying for a patent in India?",
+      "expected_status": "SUCCESS",
+      "actual_rag_status": "PARTIALLY_VALIDATED",
+      "crag_status": "GOOD",
+      "citations_count": 5,
+      "citations": [
+        "doc-nba-guidelines-sec6",
+        "IN-ACT-BDA-2023",
+        "IN-KANOON-f594905c26c9bef09deaf1468e7bcfca159cd82a9b9c6eb720e135c81e405466",
+        "IN-KANOON-a3733bcdc3eb8d939f0d38da4802db1701cb365bbdbf50dd118e76d439219eb4",
+        "IN-KANOON-a3733bcdc3eb8d939f0d38da4802db1701cb365bbdbf50dd118e76d439219eb4"
+      ],
+      "verdict": "PASS",
+      "latency_ms": 4927.2
+    },
+    {
+      "id": "IN-BIO-02",
+      "domain": "biodiversity",
+      "query": "What are the Access and Benefit Sharing (ABS) exemptions under the Biological Diversity Act for registered AYUSH practitioners?",
+      "expected_status": "SUCCESS",
+      "actual_rag_status": "PARTIALLY_VALIDATED",
+      "crag_status": "GOOD",
+      "citations_count": 5,
+      "citations": [
+        "IN-ACT-BDA-2023",
+        "IN-KANOON-a3733bcdc3eb8d939f0d38da4802db1701cb365bbdbf50dd118e76d439219eb4",
+        "IN-TKDL-CASE-COMPENDIUM",
+        "IN-ACT-BDA-2023",
+        "IN-KANOON-a3733bcdc3eb8d939f0d38da4802db1701cb365bbdbf50dd118e76d439219eb4"
+      ],
+      "verdict": "PASS",
+      "latency_ms": 5133.3
+    },
+    {
+      "id": "IN-DES-01",
+      "domain": "design",
+      "query": "How can the novel shape or bottle packaging of an Ayurvedic formulation be protected under the Designs Act 2000 in India?",
+      "expected_status": "SUCCESS",
+      "actual_rag_status": "PARTIALLY_VALIDATED",
+      "crag_status": "GOOD",
+      "citations_count": 5,
+      "citations": [
+        "IN-KANOON-5301aac7b1bc39debd94452765a8572cbc8162e01195a830e5883ad40b67e2a5",
+        "IN-KANOON-4279858f3863c71ff3717964dcef21ecc867fc346ba294b737ea5cc9603d1a01",
+        "IN-COMM-AYURVEDA-D2C",
+        "IN-ACT-TM-AYUR-1999",
+        "IN-COMM-AYURVEDA-D2C"
+      ],
+      "verdict": "PASS",
+      "latency_ms": 4957.1
+    },
+    {
+      "id": "IN-CPY-01",
+      "domain": "copyright",
+      "query": "What intellectual property protection is available under the Copyright Act 1957 for Ayurvedic clinical databases and software algorithms?",
+      "expected_status": "SUCCESS",
+      "actual_rag_status": "SUCCESS",
+      "crag_status": "PARTIAL",
+      "citations_count": 5,
+      "citations": [
+        "IN-KANOON-cba82b2a5f69d745d538d74bcafbbb177a3f577ea1f34a87652e3f9d2b83692c",
+        "IN-KANOON-4088c77f0c133427036a7f6660cff54a31630da94790fa5a77dbb577c99632f2",
+        "IN-KANOON-0c3a2476f9ab739673c2351f7499d8db88492f837cb3ee40248acc6cee0b2d4a",
+        "IN-COMM-AYURVEDA-D2C",
+        "IN-FOUND-AYURVEDA-NCISM"
+      ],
+      "verdict": "PASS",
+      "latency_ms": 5501.4
+    },
+    {
+      "id": "IN-GI-01",
+      "domain": "gi",
+      "query": "What are the registration requirements for a Geographical Indication for Indian medicinal plants under the GI Act 1999?",
+      "expected_status": "SUCCESS",
+      "actual_rag_status": "PARTIALLY_VALIDATED",
+      "crag_status": "GOOD",
+      "citations_count": 5,
+      "citations": [
+        "IN-ACT-GI-REGISTRY-1999",
+        "IN-ACT-TM-GI-1999",
+        "IN-ACT-GI-REGISTRY-1999",
+        "IN-KANOON-75f9b79aeb817858388a857ff752d515c69cd25532a77297f95e146bad82fb4b",
+        "IN-KANOON-75f9b79aeb817858388a857ff752d515c69cd25532a77297f95e146bad82fb4b"
+      ],
+      "verdict": "PASS",
+      "latency_ms": 5073.3
+    },
+    {
+      "id": "UNSUP-01",
+      "domain": "unsupported",
+      "query": "What are the Australian TGA registration requirements for Ayurvedic medicinal supplements?",
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "actual_rag_status": "INSUFFICIENT_EVIDENCE",
+      "crag_status": "INSUFFICIENT",
+      "citations_count": 0,
+      "citations": [],
+      "verdict": "PASS",
+      "latency_ms": 21.4
+    },
+    {
+      "id": "UNSUP-02",
+      "domain": "unsupported",
+      "query": "What does Brazilian biodiversity law say about patenting herbal extracts?",
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "actual_rag_status": "INSUFFICIENT_EVIDENCE",
+      "crag_status": "INSUFFICIENT",
+      "citations_count": 0,
+      "citations": [],
+      "verdict": "PASS",
+      "latency_ms": 17.6
+    },
+    {
+      "id": "UNSUP-03",
+      "domain": "unsupported",
+      "query": "Can I patent an Ayurvedic extract harvested from Martian soil?",
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "actual_rag_status": "INSUFFICIENT_EVIDENCE",
+      "crag_status": "INSUFFICIENT",
+      "citations_count": 0,
+      "citations": [],
+      "verdict": "PASS",
+      "latency_ms": 4858.7
+    }
+  ]
+}
