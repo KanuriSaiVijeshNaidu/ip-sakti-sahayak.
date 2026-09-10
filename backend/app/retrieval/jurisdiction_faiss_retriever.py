@@ -140,8 +140,9 @@ class JurisdictionFAISSRetriever:
         query_vec = self.embed_query(query)
         all_candidates = []
         for jur in jurisdictions:
-            cands = self.search_jurisdiction(query_vec, jur, top_k)
-            all_candidates.extend(cands)
+            if jur in self.indexes:
+                cands = self.search_jurisdiction(query_vec, jur, top_k)
+                all_candidates.extend(cands)
         return all_candidates
 
 

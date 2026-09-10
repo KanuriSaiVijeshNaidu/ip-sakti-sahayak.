@@ -35,11 +35,9 @@ from backend.app.models.decision_schemas import (
     DecisionAnalysis,
 )
 from backend.app.models.rag_schemas import CRAGAssessment, CitationInfo
+from backend.app.rag.config import rag_config
 
 logger = logging.getLogger(__name__)
-
-# Minimum threshold below which retrieved candidates are deemed noise for unsupported queries
-_MIN_RELEVANT_RERANK_SCORE = 0.0001
 
 
 class DecisionRuleEngine:
@@ -174,13 +172,14 @@ class DecisionRuleEngine:
             if any(w in text_lower for w in ["fda", "mhlw", "pmda", "regulation", "act", "monograph", "section", "directive"]):
                 regulatory_evidence_count += 1
 
-        # ── Check 4: Relevance Verification (Filter out random noise) ─────────
+        # ── Check 4: CRAG & Relevance Verification ─────────────────────────────
         has_semantic_relevance = True
         scores = [c.rerank_score for c in citations if c.rerank_score is not None]
-        lexical_matches = [c.lexical_score for c in citations if c.lexical_score is not None]
 
-        # If all citations have rerank scores below the noise threshold:
-        if scores and max(scores) < _MIN_RELEVANT_RERANK_SCORE:
+        if crag and crag.status in ["INSUFFICIENT", "INVALID"]:
+            has_semantic_relevance = False
+            reason_codes.append("CRAG_INSUFFICIENT")
+        elif scores and max(scores) < rag_config.partial_rerank_threshold:
             has_semantic_relevance = False
             reason_codes.append("NO_RELEVANT_EVIDENCE")
 
@@ -195,11 +194,12 @@ class DecisionRuleEngine:
         # Authority score (1-5)
         source_authority = 4 if jurisdiction_valid else 2
 
-        # Core Sufficiency: Sufficient if at least 1 valid target jurisdiction chunk with semantic relevance
+        # Core Sufficiency: Sufficient if at least 1 valid target jurisdiction chunk with semantic relevance and CRAG verified
         evidence_sufficient = (
             len(citations) >= 1
             and jurisdiction_valid
             and has_semantic_relevance
+            and (crag.status not in ["INSUFFICIENT", "INVALID"] if crag else True)
         )
 
         if not has_semantic_relevance:

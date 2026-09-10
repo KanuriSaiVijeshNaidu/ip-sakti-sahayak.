@@ -1,46 +1,46 @@
 {
   "metadata": {
-    "timestamp": "2026-09-10 16:16:37",
+    "timestamp": "2026-09-10 18:01:05",
     "total_questions": 125,
     "total_rag_queries": 113,
-    "true_positive_grounded_pass_rate": 81.6,
-    "strict_pass_rate": 80.8,
-    "recall_at_1": 76.11,
+    "true_positive_grounded_pass_rate": 78.4,
+    "strict_pass_rate": 76.8,
+    "recall_at_1": 75.22,
     "recall_at_3": 86.73,
-    "recall_at_5": 92.92,
-    "recall_at_10": 96.46,
+    "recall_at_5": 93.81,
+    "recall_at_10": 95.58,
     "mrr": 0.826,
-    "crag_sufficiency_rate": 81.42,
-    "citation_grounding_rate": 81.42,
+    "crag_sufficiency_rate": 76.11,
+    "citation_grounding_rate": 76.11,
     "contamination_incidents": 0,
     "contamination_rate": 0.0,
     "unsupported_abstention_accuracy": 100.0,
-    "mean_latency_ms": 12597.1
+    "mean_latency_ms": 4413.9
   },
   "category_stats": {
     "STATUTORY": {
       "total": 42,
       "strict_passed": 32,
       "true_positive_passed": 32,
-      "mrr_sum": 33.89285714285714,
-      "recall_1": 32,
+      "mrr_sum": 32.09285714285714,
+      "recall_1": 28,
       "recall_3": 35,
-      "recall_5": 36,
+      "recall_5": 37,
       "recall_10": 38,
-      "crag_passes": 33,
+      "crag_passes": 32,
       "rag_queries": 42,
-      "recall_5_hits": 36
+      "recall_5_hits": 37
     },
     "REGULATORY": {
       "total": 19,
-      "strict_passed": 13,
-      "true_positive_passed": 13,
-      "mrr_sum": 14.505555555555555,
-      "recall_1": 13,
-      "recall_3": 15,
+      "strict_passed": 14,
+      "true_positive_passed": 14,
+      "mrr_sum": 15.666666666666666,
+      "recall_1": 14,
+      "recall_3": 17,
       "recall_5": 17,
-      "recall_10": 19,
-      "crag_passes": 14,
+      "recall_10": 18,
+      "crag_passes": 15,
       "rag_queries": 19,
       "recall_5_hits": 17
     },
@@ -72,14 +72,14 @@
     },
     "PATENT_ANALYSIS": {
       "total": 17,
-      "strict_passed": 11,
-      "true_positive_passed": 11,
-      "mrr_sum": 12.777777777777777,
+      "strict_passed": 10,
+      "true_positive_passed": 10,
+      "mrr_sum": 12.86111111111111,
       "recall_1": 11,
-      "recall_3": 14,
+      "recall_3": 13,
       "recall_5": 17,
       "recall_10": 17,
-      "crag_passes": 12,
+      "crag_passes": 11,
       "rag_queries": 17,
       "recall_5_hits": 17
     },
@@ -87,8 +87,8 @@
       "total": 11,
       "strict_passed": 11,
       "true_positive_passed": 11,
-      "mrr_sum": 10.5,
-      "recall_1": 10,
+      "mrr_sum": 11.0,
+      "recall_1": 11,
       "recall_3": 11,
       "recall_5": 11,
       "recall_10": 11,
@@ -98,14 +98,14 @@
     },
     "COMPARATIVE": {
       "total": 12,
-      "strict_passed": 11,
-      "true_positive_passed": 11,
+      "strict_passed": 7,
+      "true_positive_passed": 7,
       "mrr_sum": 12.0,
       "recall_1": 12,
       "recall_3": 12,
       "recall_5": 12,
       "recall_10": 12,
-      "crag_passes": 11,
+      "crag_passes": 7,
       "rag_queries": 12,
       "recall_5_hits": 12
     },
@@ -123,14 +123,14 @@
     },
     "ADVERSARIAL": {
       "total": 6,
-      "strict_passed": 5,
+      "strict_passed": 4,
       "true_positive_passed": 6,
-      "mrr_sum": 3.7,
-      "recall_1": 2,
-      "recall_3": 5,
+      "mrr_sum": 3.733333333333334,
+      "recall_1": 3,
+      "recall_3": 4,
       "recall_5": 6,
       "recall_10": 6,
-      "crag_passes": 5,
+      "crag_passes": 4,
       "rag_queries": 6,
       "recall_5_hits": 6
     },
@@ -158,18 +158,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9666,
+      "top_rerank_score": 0.9863,
       "top_chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_e____mere_004_b6721e38",
       "retrieved_chunks": [
         "IN_IN-GUIDELINE-PATENTS-TK_section_3_e____mere_004_b6721e38",
-        "IN_IN-268685-B_description_001_a482481b",
         "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
+        "IN_IN-268685-B_description_001_a482481b",
         "IN_doc-ip-india-pat-2018-01_claims___synergistic_001_2761a73c",
-        "IN_IN-324590-B_description_001_673912d7"
+        "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 4346.629500003473
+      "latency_ms": 6325.4415999981575
     },
     {
       "id": "IN-02",
@@ -181,18 +181,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9879,
-      "top_chunk_id": "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
+      "top_rerank_score": 0.9974,
+      "top_chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_p____exclu_003_8c484905",
       "retrieved_chunks": [
-        "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
         "IN_IN-GUIDELINE-PATENTS-TK_section_3_p____exclu_003_8c484905",
+        "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
+        "IN_IN-ACT-PATENTS-1970_section_3_o____topog_006_3100bad7",
         "IN_IN-GUIDELINE-PATENTS-TK_section_3_j____plant_006_72866060",
-        "IN_IN-268685-B_description_001_a482481b",
         "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88"
       ],
-      "rag_status": "SUCCESS",
+      "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2032.279600003676
+      "latency_ms": 3952.5897999992594
     },
     {
       "id": "IN-03",
@@ -204,18 +204,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9968,
-      "top_chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_10_4__ii__d_008_8e472089",
+      "top_rerank_score": 0.9985,
+      "top_chunk_id": "IN_doc-india-code-patents-sec10-4_section_10_4__ii__d_001_3a9992d6",
       "retrieved_chunks": [
-        "IN_IN-GUIDELINE-PATENTS-TK_section_10_4__ii__d_008_8e472089",
         "IN_doc-india-code-patents-sec10-4_section_10_4__ii__d_001_3a9992d6",
+        "IN_IN-GUIDELINE-PATENTS-TK_section_10_4__ii__d_008_8e472089",
         "IN_doc-wipo-igc-tk-001_article_3__subject_m_001_cd3ff207",
         "IN_IN-GUIDELINE-PATENTS-TK_indian_patent_applic_010_de024d3f",
-        "IN_doc-nba-guidelines-sec6_section_6___regulati_001_0e042fee"
+        "IN_IN-ACT-PATENTS-1970_section_64___revocat_009_3a6f5003"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 2208.5947999948985
+      "latency_ms": 4637.129499998991
     },
     {
       "id": "IN-04",
@@ -227,18 +227,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.4639,
-      "top_chunk_id": "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
+      "top_rerank_score": 0.9683,
+      "top_chunk_id": "IN_IN-ACT-PATENTS-1970_section_3_a____an_in_003_9c930567",
       "retrieved_chunks": [
-        "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
-        "IN_IN-GUIDELINE-PATENTS-TK_section_3_d____incre_005_51268b43",
         "IN_IN-ACT-PATENTS-1970_section_3_a____an_in_003_9c930567",
+        "IN_IN-GUIDELINE-PATENTS-TK_section_3_d____incre_005_51268b43",
+        "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
         "IN_IN-GUIDELINE-PATENTS-TK_section_3_e____mere_004_b6721e38",
-        "IN_IN-GUIDELINE-PATENTS-TK_section_3_j____plant_006_72866060"
+        "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2071.8115999989095
+      "latency_ms": 4648.4115999992355
     },
     {
       "id": "IN-05",
@@ -250,18 +250,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.993,
+      "top_rerank_score": 0.9965,
       "top_chunk_id": "IN_doc-dcr-1945-rule158b_rule_158b_001_ad4e8f43",
       "retrieved_chunks": [
         "IN_doc-dcr-1945-rule158b_rule_158b_001_ad4e8f43",
         "IN_IN-ACT-DCR-1945_rule_158b___licensin_003_d34ab326",
+        "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4",
         "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3",
-        "IN_IN-ACT-DCR-1945_schedule_t___good_ma_004_35452887",
-        "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4"
+        "IN_IN-ACT-DCR-1945_schedule_t___good_ma_004_35452887"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2124.9645999996574
+      "latency_ms": 4682.12680000579
     },
     {
       "id": "IN-06",
@@ -273,18 +273,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9989,
+      "top_rerank_score": 0.9993,
       "top_chunk_id": "IN_doc-dcr-1945-schedulet_schedule_t_001_f36e9ccd",
       "retrieved_chunks": [
         "IN_doc-dcr-1945-schedulet_schedule_t_001_f36e9ccd",
         "IN_IN-ACT-DCR-1945_schedule_t___good_ma_004_35452887",
         "IN_IN-ACT-DCR-1945_rule_158b___licensin_003_d34ab326",
         "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3",
-        "IN_GLOBAL-WHO-TM-BENCHMARKS_who_copp__certificat_004_1a6f0002"
+        "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2267.72119999805
+      "latency_ms": 4778.835500001151
     },
     {
       "id": "IN-07",
@@ -296,18 +296,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9932,
+      "top_rerank_score": 0.9921,
       "top_chunk_id": "IN_IN-REG-FSSAI-AA-2022_regulation_2_2___lab_005_659cf24a",
       "retrieved_chunks": [
         "IN_IN-REG-FSSAI-AA-2022_regulation_2_2___lab_005_659cf24a",
         "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_5___ayurv_004_4933c218",
-        "IN_IN-REG-FSSAI-AA-2022_regulation_2_1___gen_004_050b764f",
-        "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_1___2___s_002_3dc5b9ec",
+        "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
+        "IN_IN-REG-FSSAI-AA-2022_chapter_5___licensin_010_f374d501",
         "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_6___8___p_005_3e7b8894"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2101.1564999935217
+      "latency_ms": 4792.326499999035
     },
     {
       "id": "IN-08",
@@ -319,18 +319,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9987,
+      "top_rerank_score": 0.9985,
       "top_chunk_id": "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_6___8___p_005_3e7b8894",
       "retrieved_chunks": [
         "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_6___8___p_005_3e7b8894",
         "IN_IN-REG-FSSAI-AA-2022_regulation_2_4___pro_007_dda6ea17",
         "IN_IN-REG-FSSAI-AA-2022_regulation_2_3___hea_006_f75f3d9f",
-        "IN_IN-REG-FSSAI-AA-2022_regulation_2_2___lab_005_659cf24a",
-        "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_3___scope_003_50112fb3"
+        "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
+        "IN_IN-REG-FSSAI-AA-2022_chapter_5___licensin_010_f374d501"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2065.710900002159
+      "latency_ms": 4820.530900004087
     },
     {
       "id": "IN-09",
@@ -342,18 +342,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9981,
+      "top_rerank_score": 0.9986,
       "top_chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_9___absolute_003_272220a1",
       "retrieved_chunks": [
         "IN_IN-ACT-TM-AYUR-1999_section_9___absolute_003_272220a1",
         "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+        "IN_IN-ACT-TM-GI-1999_section_9_1____the_t_003_f1c0fe27",
         "IN_IN-ACT-TM-GI-1999_section_9_2____a_mar_004_3c7057fe",
-        "IN_IN-ACT-TM-GI-1999_section_9_3____a_mar_005_6233e092",
-        "IN_IN-ACT-TM-GI-1999_section_9_1____the_t_003_f1c0fe27"
+        "IN_IN-ACT-TM-GI-1999_section_9_3____a_mar_005_6233e092"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2073.0876000015996
+      "latency_ms": 4891.185499996936
     },
     {
       "id": "IN-10",
@@ -365,18 +365,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.946,
+      "top_rerank_score": 0.9417,
       "top_chunk_id": "IN_IN-ACT-TM-GI-1999_section_11_1____save_006_c70c5088",
       "retrieved_chunks": [
         "IN_IN-ACT-TM-GI-1999_section_11_1____save_006_c70c5088",
         "IN_IN-ACT-TM-GI-1999_section_11_2____a_tr_007_aac08a26",
         "IN_IN-ACT-TM-AYUR-1999_section_9___absolute_003_272220a1",
         "IN_IN-ACT-TM-GI-1999_section_9_2____a_mar_004_3c7057fe",
-        "IN_IN-ACT-TM-AYUR-1999_section_2_1__zb____2_002_6a9d1c90"
+        "IN_IN-ACT-TM-AYUR-1999_trade_marks_rules_20_006_82fbaaa2"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2035.2302999963285
+      "latency_ms": 4961.586099998385
     },
     {
       "id": "IN-11",
@@ -388,18 +388,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9923,
-      "top_chunk_id": "IN_IN-ACT-BDA-2023_section_6___applicat_003_1a6ed9c3",
+      "top_rerank_score": 0.9936,
+      "top_chunk_id": "IN_doc-nba-guidelines-sec6_section_6___regulati_001_0e042fee",
       "retrieved_chunks": [
-        "IN_IN-ACT-BDA-2023_section_6___applicat_003_1a6ed9c3",
         "IN_doc-nba-guidelines-sec6_section_6___regulati_001_0e042fee",
+        "IN_IN-ACT-BDA-2023_section_6___applicat_003_1a6ed9c3",
         "IN_IN-ACT-BDA-2023_section_3___access_t_002_90929fbe",
-        "IN_IN-ACT-BDA-2023_key_2023_amendments_004_3dba24f3",
-        "IN_doc-abs-reg-2014-guidelines_regulation_9__benefi_001_035c2582"
+        "IN_IN-GUIDELINE-PATENTS-TK_indian_patent_applic_010_de024d3f",
+        "IN_IN-ACT-BDA-2023_key_2023_amendments_004_3dba24f3"
       ],
-      "rag_status": "SUCCESS",
+      "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2178.2474999999977
+      "latency_ms": 4911.280200001784
     },
     {
       "id": "IN-12",
@@ -411,18 +411,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9912,
+      "top_rerank_score": 0.9931,
       "top_chunk_id": "IN_IN-ACT-PATENTS-1970_section_53___term_of_008_c00bdd65",
       "retrieved_chunks": [
         "IN_IN-ACT-PATENTS-1970_section_53___term_of_008_c00bdd65",
         "IN_IN-GUIDELINE-PATENTS-TK_section_48___53___ri_009_4870e86f",
         "IN_IN-ACT-PATENTS-1970_section_64___revocat_009_3a6f5003",
         "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
-        "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468"
+        "IN_IN-ACT-PATENTS-1970_general_provisions_001_17c32c5d"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2059.3966000014916
+      "latency_ms": 4506.239099995582
     },
     {
       "id": "IN-13",
@@ -434,18 +434,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9989,
+      "top_rerank_score": 0.9999,
       "top_chunk_id": "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
       "retrieved_chunks": [
         "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
         "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4",
         "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
-        "IN_IN-ACT-DCR-1945_rule_158b___licensin_003_d34ab326",
-        "IN_doc-dcr-1945-rule158b_rule_158b_001_ad4e8f43"
+        "IN_doc-afi-chyawanprash-002_avaleha_prakarana__e_001_ff062799",
+        "IN_IN-ACT-DCR-1945_rule_158b___licensin_003_d34ab326"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2220.006999996258
+      "latency_ms": 4950.690500001656
     },
     {
       "id": "IN-14",
@@ -457,7 +457,7 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9357,
+      "top_rerank_score": 0.9308,
       "top_chunk_id": "IN_IN-243763-B_claims_1_002_e6ee2b2e",
       "retrieved_chunks": [
         "IN_IN-243763-B_claims_1_002_e6ee2b2e",
@@ -468,7 +468,7 @@
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 2368.6202999961097
+      "latency_ms": 4689.81150000036
     },
     {
       "id": "IN-15",
@@ -480,18 +480,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.304,
-      "top_chunk_id": "IN_IN-268685-B_claims_1_002_5f545ed1",
+      "top_rerank_score": 0.7276,
+      "top_chunk_id": "IN_IN-268685-B_description_001_a482481b",
       "retrieved_chunks": [
-        "IN_IN-268685-B_claims_1_002_5f545ed1",
-        "IN_doc-ip-india-pat-2018-01_claims___synergistic_001_2761a73c",
         "IN_IN-268685-B_description_001_a482481b",
-        "IN_IN-FORM-AFI-FORMULATIONS_afi_formulation__tri_003_0aa95b3d",
-        "IN_IN-GUIDELINE-PATENTS-TK_section_3_i____diagn_007_86096e3f"
+        "IN_doc-ip-india-pat-2018-01_claims___synergistic_001_2761a73c",
+        "IN_IN-268685-B_claims_1_002_5f545ed1",
+        "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
+        "IN_IN-FOUND-AYURVEDA-NCISM_core_therapeutic_obj_003_550b5bad"
       ],
-      "rag_status": "SUCCESS",
+      "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2349.810100000468
+      "latency_ms": 4789.99649999605
     },
     {
       "id": "IN-16",
@@ -504,17 +504,17 @@
       "failure_reasons": [],
       "crag_verdict": "PASS",
       "top_rerank_score": 0.9999,
-      "top_chunk_id": "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4",
+      "top_chunk_id": "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
       "retrieved_chunks": [
-        "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4",
         "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
+        "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4",
         "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
-        "IN_IN-ACT-DCR-1945_rule_158b___licensin_003_d34ab326",
-        "IN_doc-dcr-1945-rule158b_rule_158b_001_ad4e8f43"
+        "IN_doc-dcr-1945-rule158b_rule_158b_001_ad4e8f43",
+        "IN_doc-dca-1940-sec33eeb_section_33eeb_001_44045bb2"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2326.2810000014724
+      "latency_ms": 4973.28810000181
     },
     {
       "id": "IN-17",
@@ -526,18 +526,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9374,
+      "top_rerank_score": 0.9463,
       "top_chunk_id": "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
       "retrieved_chunks": [
         "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
         "IN_IN-GUIDELINE-PATENTS-TK_section_3_p____exclu_003_8c484905",
-        "IN_IN-268685-B_description_001_a482481b",
-        "IN_IN-GUIDELINE-PATENTS-TK_general_provisions_001_89de50b4",
+        "IN_IN-ACT-PATENTS-1970_section_3_o____topog_006_3100bad7",
+        "IN_IN-ACT-PATENTS-1970_general_provisions_001_17c32c5d",
         "IN_doc-wipo-igc-tk-001_article_3__subject_m_001_cd3ff207"
       ],
-      "rag_status": "SUCCESS",
+      "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2308.5372999994433
+      "latency_ms": 5015.460700000403
     },
     {
       "id": "IN-18",
@@ -549,18 +549,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.3675,
+      "top_rerank_score": 0.2,
       "top_chunk_id": "IN_doc-tkdl-001_classical_formulatio_001_77c47ead",
       "retrieved_chunks": [
         "IN_doc-tkdl-001_classical_formulatio_001_77c47ead",
-        "IN_IN-TKDL-CASE-COMPENDIUM_general_provisions_001_89ba45d0",
-        "IN_IN-348215-B_claims_3_003_66328aa9",
-        "IN_IN-TKDL-CASE-COMPENDIUM_case_3__revocation_o_004_2747dcec",
-        "IN_IN-ACT-TM-AYUR-1999_section_28___29___ri_005_69711a75"
+        "IN_IN-ACT-PATENTS-1970_section_48___rights_007_74086c23",
+        "IN_doc-ip-india-pat-2018-01_claims___synergistic_001_2761a73c",
+        "IN_IN-ACT-TM-AYUR-1999_section_28___29___ri_005_69711a75",
+        "IN_IN-348215-B_claims_3_003_66328aa9"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 4230.32719999901
+      "latency_ms": 4741.676300000108
     },
     {
       "id": "IN-19",
@@ -572,18 +572,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9966,
-      "top_chunk_id": "IN_IN-ACT-PATENTS-1970_section_2_1__j_____i_002_53aef623",
+      "top_rerank_score": 0.9974,
+      "top_chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_2_1__j___2_1_002_aba69a68",
       "retrieved_chunks": [
-        "IN_IN-ACT-PATENTS-1970_section_2_1__j_____i_002_53aef623",
         "IN_IN-GUIDELINE-PATENTS-TK_section_2_1__j___2_1_002_aba69a68",
+        "IN_IN-ACT-PATENTS-1970_section_2_1__j_____i_002_53aef623",
+        "IN_doc-afi-triphala-001_churna_prakarana__po_001_a6cf9acb",
         "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
-        "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
-        "IN_IN-GUIDELINE-PATENTS-TK_indian_patent_applic_010_de024d3f"
+        "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2198.2621000061044
+      "latency_ms": 5056.8993000051705
     },
     {
       "id": "IN-20",
@@ -595,18 +595,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9684,
-      "top_chunk_id": "IN_IN-ACT-PATENTS-1970_section_2_1__j_____i_002_53aef623",
+      "top_rerank_score": 0.9852,
+      "top_chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_2_1__j___2_1_002_aba69a68",
       "retrieved_chunks": [
-        "IN_IN-ACT-PATENTS-1970_section_2_1__j_____i_002_53aef623",
         "IN_IN-GUIDELINE-PATENTS-TK_section_2_1__j___2_1_002_aba69a68",
+        "IN_IN-ACT-PATENTS-1970_section_2_1__j_____i_002_53aef623",
+        "IN_IN-TKDL-CASE-COMPENDIUM_case_2__revocation_o_003_5bc41e23",
         "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
-        "IN_IN-GUIDELINE-PATENTS-TK_section_3_j____plant_006_72866060",
-        "IN_IN-GUIDELINE-PATENTS-TK_section_3_p____exclu_003_8c484905"
+        "IN_IN-GUIDELINE-PATENTS-TK_section_3_j____plant_006_72866060"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2078.7172999989707
+      "latency_ms": 4185.437300002377
     },
     {
       "id": "IN-21",
@@ -618,18 +618,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.881,
-      "top_chunk_id": "IN_IN-ACT-GI-REGISTRY-1999_registered_botanical_004_9c343ac6",
+      "top_rerank_score": 0.9667,
+      "top_chunk_id": "IN_doc-gi-reg-kashmir-saffron_gi_certificate_of_re_001_b330c8dd",
       "retrieved_chunks": [
-        "IN_IN-ACT-GI-REGISTRY-1999_registered_botanical_004_9c343ac6",
         "IN_doc-gi-reg-kashmir-saffron_gi_certificate_of_re_001_b330c8dd",
+        "IN_IN-ACT-GI-REGISTRY-1999_registered_botanical_004_9c343ac6",
+        "IN_IN-ACT-TM-GI-1999_section_11_2____a_tr_007_aac08a26",
         "IN_IN-ACT-GI-REGISTRY-1999_section_2_1__e____st_002_1dfde0fa",
-        "IN_IN-ACT-GI-REGISTRY-1999_section_8___11___pro_003_554503f6",
-        "IN_IN-ACT-TM-GI-1999_section_11_2____a_tr_007_aac08a26"
+        "IN_IN-ACT-GI-REGISTRY-1999_section_8___11___pro_003_554503f6"
       ],
-      "rag_status": "SUCCESS",
+      "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2134.8727999939
+      "latency_ms": 5008.981200000562
     },
     {
       "id": "IN-22",
@@ -641,18 +641,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9933,
+      "top_rerank_score": 0.9966,
       "top_chunk_id": "IN_IN-ACT-PATENTS-1970_section_3_h____a_met_004_7cdc92d9",
       "retrieved_chunks": [
         "IN_IN-ACT-PATENTS-1970_section_3_h____a_met_004_7cdc92d9",
         "IN_IN-GUIDELINE-PATENTS-TK_section_3_j____plant_006_72866060",
         "IN_IN-GUIDELINE-PATENTS-TK_section_3_p____exclu_003_8c484905",
         "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468",
-        "IN_IN-GUIDELINE-PATENTS-TK_section_3_i____diagn_007_86096e3f"
+        "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd"
       ],
-      "rag_status": "PARTIALLY_VALIDATED",
+      "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 2057.75729999732
+      "latency_ms": 4655.8562999998685
     },
     {
       "id": "US-01",
@@ -664,18 +664,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9811,
+      "top_rerank_score": 0.9827,
       "top_chunk_id": "STATUTE-US-35USC-101",
       "retrieved_chunks": [
         "STATUTE-US-35USC-101",
         "STATUTE-US-35USC-103",
-        "USA-CHK-0025-6e3d8e93",
+        "USA-CHK-0005-62830cf9",
         "STATUTE-US-35USC-102",
-        "USA-CHK-0005-62830cf9"
+        "USA-CHK-0004-3532fd39"
       ],
-      "rag_status": "PARTIALLY_VALIDATED",
+      "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 11656.209300002956
+      "latency_ms": 5489.010199999029
     },
     {
       "id": "US-02",
@@ -687,18 +687,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.8532,
+      "top_rerank_score": 0.8574,
       "top_chunk_id": "STATUTE-US-35USC-102",
       "retrieved_chunks": [
         "STATUTE-US-35USC-102",
         "STATUTE-US-35USC-103",
         "STATUTE-US-35USC-101",
-        "USA-CHK-0005-9a606bc2",
-        "STATUTE-US-LANHAM-ACT-SEC2"
+        "USA-CHK-0005-57630583",
+        "USA-CHK-0188-d39c1af7"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2782.050399997388
+      "latency_ms": 5514.332500002638
     },
     {
       "id": "US-03",
@@ -710,18 +710,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9649,
+      "top_rerank_score": 0.9705,
       "top_chunk_id": "STATUTE-US-35USC-103",
       "retrieved_chunks": [
         "STATUTE-US-35USC-103",
         "STATUTE-US-35USC-101",
+        "USA-CHK-0006-5e9f05d3",
         "USA-CHK-0002-6cc6b386",
-        "USA-CHK-0019-ab28166e",
-        "USA-CHK-0006-5e9f05d3"
+        "USA-CHK-0019-ab28166e"
       ],
-      "rag_status": "PARTIALLY_VALIDATED",
+      "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 4926.593299998785
+      "latency_ms": 5524.6604999993
     },
     {
       "id": "US-04",
@@ -733,18 +733,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9625,
+      "top_rerank_score": 0.9674,
       "top_chunk_id": "STATUTE-US-35USC-112",
       "retrieved_chunks": [
         "STATUTE-US-35USC-112",
         "USA-CHK-0004-46132ab5",
+        "STATUTE-US-35USC-102",
         "STATUTE-US-35USC-101",
-        "STATUTE-US-35USC-103",
-        "USA-CHK-0008-5113181c"
+        "USA-CHK-0006-5e9f05d3"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 14086.928500000795
+      "latency_ms": 5461.102499997651
     },
     {
       "id": "US-05",
@@ -756,18 +756,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9998,
+      "top_rerank_score": 0.9997,
       "top_chunk_id": "STATUTE-US-FDCA-201FF",
       "retrieved_chunks": [
         "STATUTE-US-FDCA-201FF",
-        "USA-CHK-0033-1291c3a8",
         "STATUTE-US-FDCA-413-NDI",
-        "USA-CHK-0030-b7e874f0",
-        "USA-CHK-0026-8cdfd806"
+        "USA-CHK-0004-de0e2c15",
+        "USA-CHK-0019-ce884daa",
+        "USA-CHK-0033-1291c3a8"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2759.84459999745
+      "latency_ms": 5410.14620000351
     },
     {
       "id": "US-06",
@@ -779,18 +779,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.999,
+      "top_rerank_score": 0.9991,
       "top_chunk_id": "STATUTE-US-FDCA-403R6",
       "retrieved_chunks": [
         "STATUTE-US-FDCA-403R6",
         "USA-CHK-0004-760a57c3",
         "REG-US-FDA-21CFR111",
-        "STATUTE-US-FDCA-201FF",
-        "USA-CHK-0003-bef5a5b6"
+        "USA-CHK-0003-bef5a5b6",
+        "USA-CHK-0004-3f5369aa"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 17958.09819999704
+      "latency_ms": 5496.016499993857
     },
     {
       "id": "US-07",
@@ -802,18 +802,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9964,
+      "top_rerank_score": 0.9965,
       "top_chunk_id": "REG-US-FDA-21CFR111",
       "retrieved_chunks": [
         "REG-US-FDA-21CFR111",
         "USA-CHK-0004-a10ae3ed",
-        "STATUTE-US-LANHAM-ACT-SEC2",
-        "USA-CHK-0006-6dfc1d1e",
-        "USA-CHK-0013-cd3199bb"
+        "USA-CHK-0004-21565a46",
+        "USA-CHK-0004-6403934e",
+        "STATUTE-US-LANHAM-ACT-SEC2"
       ],
-      "rag_status": "PARTIALLY_VALIDATED",
+      "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 2671.197800002119
+      "latency_ms": 5542.25939999742
     },
     {
       "id": "US-08",
@@ -825,18 +825,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9922,
+      "top_rerank_score": 0.9924,
       "top_chunk_id": "STATUTE-US-FDCA-413-NDI",
       "retrieved_chunks": [
         "STATUTE-US-FDCA-413-NDI",
         "STATUTE-US-FDCA-403R6",
         "REG-US-FDA-21CFR111",
-        "STATUTE-US-FDCA-201FF",
-        "USA-CHK-0039-dca254da"
+        "USA-CHK-0039-dca254da",
+        "USA-CHK-0010-fd90ac96"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 33249.546400002146
+      "latency_ms": 5531.923400005326
     },
     {
       "id": "US-09",
@@ -844,27 +844,22 @@
       "query": "What evidence is necessary to establish Generally Recognized as Safe (GRAS) status for a food ingredient in the US?",
       "category": "REGULATORY",
       "user_jurisdiction": "US",
-      "strict_pass": false,
-      "true_positive_pass": false,
-      "failure_reasons": [
-        "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.0181)",
-        "Top chunk mismatch (expected GUIDE-US-FDA-GRAS-FRAMEWORK, got STATUTE-US-FDCA-413-NDI)",
-        "Missing expected keywords in answer/evidence"
-      ],
-      "crag_verdict": "FAIL",
-      "top_rerank_score": 0.0181,
-      "top_chunk_id": "STATUTE-US-FDCA-413-NDI",
+      "strict_pass": true,
+      "true_positive_pass": true,
+      "failure_reasons": [],
+      "crag_verdict": "PASS",
+      "top_rerank_score": 0.1904,
+      "top_chunk_id": "USA-CHK-0005-29994902",
       "retrieved_chunks": [
+        "USA-CHK-0005-29994902",
         "STATUTE-US-FDCA-413-NDI",
-        "USA-CHK-0001-1c6d0a37",
-        "REG-US-FDA-21CFR111",
-        "STATUTE-US-FDCA-201FF",
-        "STATUTE-US-LANHAM-ACT-SEC2"
+        "USA-CHK-0003-a15bacc7",
+        "USA-CHK-0004-38f93dbc",
+        "STATUTE-US-FDCA-201FF"
       ],
-      "rag_status": "INSUFFICIENT_EVIDENCE",
-      "citations_count": 0,
-      "latency_ms": 11489.475100002892
+      "rag_status": "SUCCESS",
+      "citations_count": 5,
+      "latency_ms": 5454.962000003434
     },
     {
       "id": "US-10",
@@ -876,18 +871,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9988,
+      "top_rerank_score": 0.9991,
       "top_chunk_id": "STATUTE-US-37CFR-1321-TERMINAL-DISCLAIMER",
       "retrieved_chunks": [
         "STATUTE-US-37CFR-1321-TERMINAL-DISCLAIMER",
-        "USA-CHK-0002-29035595",
-        "USA-CHK-0009-acd858c5",
-        "USA-CHK-0029-f51e62e0",
-        "STATUTE-US-35USC-154-TERM"
+        "USA-CHK-0188-d39c1af7",
+        "USA-CHK-0007-2feb9650",
+        "USA-CHK-0005-9de84e4b",
+        "USA-CHK-0009-acd858c5"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2919.816900001024
+      "latency_ms": 5547.008399997139
     },
     {
       "id": "US-11",
@@ -899,18 +894,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9876,
+      "top_rerank_score": 0.985,
       "top_chunk_id": "STATUTE-US-35USC-154-TERM",
       "retrieved_chunks": [
         "STATUTE-US-35USC-154-TERM",
-        "STATUTE-US-35USC-102",
         "USA-CHK-0004-44d02d18",
+        "STATUTE-US-35USC-102",
         "USA-CHK-0006-6fd3f8d7",
-        "USA-CHK-0005-71ee3406"
+        "USA-CHK-0013-c3d22615"
       ],
-      "rag_status": "PARTIALLY_VALIDATED",
+      "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 20195.27740000194
+      "latency_ms": 5511.3958999936585
     },
     {
       "id": "US-12",
@@ -922,7 +917,7 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9997,
+      "top_rerank_score": 0.9996,
       "top_chunk_id": "STATUTE-US-LANHAM-ACT-SEC2",
       "retrieved_chunks": [
         "STATUTE-US-LANHAM-ACT-SEC2",
@@ -931,9 +926,9 @@
         "USA-CHK-0010-e1d8a01d",
         "STATUTE-US-35USC-154-TERM"
       ],
-      "rag_status": "PARTIALLY_VALIDATED",
+      "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 26916.55479999463
+      "latency_ms": 5441.188500000862
     },
     {
       "id": "US-13",
@@ -945,22 +940,21 @@
       "true_positive_pass": false,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.0314)",
-        "Missing expected keywords in answer/evidence"
+        "CRAG verdict: FAIL (score: 0.0309)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.0314,
+      "top_rerank_score": 0.0309,
       "top_chunk_id": "STATUTE-US-35USC-101",
       "retrieved_chunks": [
         "STATUTE-US-35USC-101",
         "STATUTE-US-LANHAM-ACT-SEC2",
+        "USA-CHK-0188-d39c1af7",
         "STATUTE-US-35USC-154-TERM",
-        "USA-CHK-0122-03704e3b",
-        "USA-CHK-0008-dbc9c8eb"
+        "USA-CHK-0122-03704e3b"
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 2591.788900004758
+      "latency_ms": 5419.564299998456
     },
     {
       "id": "US-14",
@@ -972,18 +966,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.8034,
-      "top_chunk_id": "USA-CHK-0003-9d5db264",
+      "top_rerank_score": 0.8579,
+      "top_chunk_id": "USA-CHK-0004-e07fbf1d",
       "retrieved_chunks": [
-        "USA-CHK-0003-9d5db264",
         "USA-CHK-0004-e07fbf1d",
+        "USA-CHK-0003-9d5db264",
         "USA-CHK-0003-b04ac3fe",
-        "USA-CHK-0005-f72400bf",
+        "USA-CHK-0001-786ea476",
         "USA-CHK-0003-b70a8761"
       ],
-      "rag_status": "SUCCESS",
+      "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2470.068900001934
+      "latency_ms": 5435.426500000176
     },
     {
       "id": "US-15",
@@ -995,18 +989,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.5863,
+      "top_rerank_score": 0.7367,
       "top_chunk_id": "USA-CHK-0001-9a611e35",
       "retrieved_chunks": [
         "USA-CHK-0001-9a611e35",
-        "USA-CHK-0003-b70a8761",
         "USA-CHK-0004-2f9d209a",
+        "USA-CHK-0003-b70a8761",
         "USA-CHK-0004-601bbc45",
-        "USA-CHK-0002-207f9638"
+        "USA-CHK-0007-3c7784d0"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 2555.015600002662
+      "latency_ms": 5337.331599999743
     },
     {
       "id": "US-16",
@@ -1018,18 +1012,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.5216,
-      "top_chunk_id": "USA-CHK-0000-1927b8e8",
+      "top_rerank_score": 0.5045,
+      "top_chunk_id": "USA-CHK-0003-c13346ed",
       "retrieved_chunks": [
-        "USA-CHK-0000-1927b8e8",
         "USA-CHK-0003-c13346ed",
         "USA-CHK-0002-a6c107b5",
+        "USA-CHK-0000-1927b8e8",
         "USA-CHK-0011-e7fd1dc8",
-        "USA-CHK-0000-9237cb62"
+        "USA-CHK-0063-efc28fc6"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 4324.16650000232
+      "latency_ms": 5408.5018999976455
     },
     {
       "id": "US-17",
@@ -1040,22 +1034,22 @@
       "strict_pass": false,
       "true_positive_pass": false,
       "failure_reasons": [
-        "Top chunk mismatch (expected STATUTE-US-35USC-156-PTE, got STATUTE-US-35USC-154-TERM)",
-        "Missing expected keywords in answer/evidence"
+        "RAG status: INSUFFICIENT_EVIDENCE",
+        "CRAG verdict: FAIL (score: 0.1872)"
       ],
-      "crag_verdict": "PASS",
-      "top_rerank_score": 0.264,
+      "crag_verdict": "FAIL",
+      "top_rerank_score": 0.1872,
       "top_chunk_id": "STATUTE-US-35USC-154-TERM",
       "retrieved_chunks": [
         "STATUTE-US-35USC-154-TERM",
-        "STATUTE-US-35USC-101",
+        "USA-CHK-0008-8ccdbccb",
         "USA-CHK-0004-60f4838d",
-        "STATUTE-US-35USC-102",
-        "USA-CHK-0008-8ccdbccb"
+        "USA-CHK-0004-e6fa00d2",
+        "STATUTE-US-35USC-102"
       ],
-      "rag_status": "SUCCESS",
-      "citations_count": 5,
-      "latency_ms": 4634.952600004908
+      "rag_status": "INSUFFICIENT_EVIDENCE",
+      "citations_count": 0,
+      "latency_ms": 5672.6666999966255
     },
     {
       "id": "US-18",
@@ -1067,18 +1061,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.2261,
+      "top_rerank_score": 0.2889,
       "top_chunk_id": "STATUTE-US-LANHAM-ACT-SEC2",
       "retrieved_chunks": [
         "STATUTE-US-LANHAM-ACT-SEC2",
         "USA-CHK-0004-a10ae3ed",
-        "REG-US-FDA-21CFR111",
+        "USA-CHK-0007-1efede5b",
         "USA-CHK-0006-f61a3ae6",
-        "USA-CHK-0004-f3f299d8"
+        "USA-CHK-0007-930a49bf"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 2639.741100007086
+      "latency_ms": 5456.472699996084
     },
     {
       "id": "US-19",
@@ -1090,22 +1084,21 @@
       "true_positive_pass": false,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.1245)",
-        "Missing expected keywords in answer/evidence"
+        "CRAG verdict: FAIL (score: 0.1112)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.1245,
+      "top_rerank_score": 0.1112,
       "top_chunk_id": "STATUTE-US-35USC-101",
       "retrieved_chunks": [
         "STATUTE-US-35USC-101",
         "STATUTE-US-35USC-103",
+        "USA-CHK-0026-890acec9",
         "STATUTE-US-35USC-102",
-        "STATUTE-US-35USC-154-TERM",
-        "USA-CHK-0020-24dd895c"
+        "USA-CHK-0007-f2fc8a80"
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 11132.487599999877
+      "latency_ms": 5458.066600003804
     },
     {
       "id": "US-20",
@@ -1117,21 +1110,21 @@
       "true_positive_pass": false,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.0938)"
+        "CRAG verdict: FAIL (score: 0.0918)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.0938,
+      "top_rerank_score": 0.0918,
       "top_chunk_id": "STATUTE-US-FDCA-201FF",
       "retrieved_chunks": [
         "STATUTE-US-FDCA-201FF",
         "REG-US-FDA-21CFR111",
         "USA-CHK-0017-f0e639d1",
-        "USA-CHK-0005-9a606bc2",
-        "STATUTE-US-FDCA-403R6"
+        "USA-CHK-0018-03bda558",
+        "USA-CHK-0004-35457b16"
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 4016.372099998989
+      "latency_ms": 5416.905799997039
     },
     {
       "id": "US-21",
@@ -1143,18 +1136,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.5054,
+      "top_rerank_score": 0.3575,
       "top_chunk_id": "USA-CHK-0003-ea3fac54",
       "retrieved_chunks": [
         "USA-CHK-0003-ea3fac54",
         "USA-CHK-0005-c746e4e9",
+        "USA-CHK-0001-ff36fc05",
         "USA-CHK-0003-1c68ad5c",
-        "STATUTE-US-35USC-103",
-        "USA-CHK-0002-29035595"
+        "USA-CHK-0018-7a3bb0c7"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 2650.83799999411
+      "latency_ms": 5428.221599999233
     },
     {
       "id": "US-22",
@@ -1166,22 +1159,21 @@
       "true_positive_pass": false,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.0678)",
-        "Missing expected keywords in answer/evidence"
+        "CRAG verdict: FAIL (score: 0.0664)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.0678,
+      "top_rerank_score": 0.0664,
       "top_chunk_id": "STATUTE-US-35USC-103",
       "retrieved_chunks": [
         "STATUTE-US-35USC-103",
-        "STATUTE-US-35USC-101",
+        "USA-CHK-0005-39c4b080",
         "USA-CHK-0005-9ef05bb1",
-        "USA-CHK-0027-dce5a97a",
-        "USA-CHK-0017-845b8e9f"
+        "STATUTE-US-35USC-101",
+        "USA-CHK-0019-b0c40e07"
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 11433.033599998453
+      "latency_ms": 5421.653000004881
     },
     {
       "id": "JP-01",
@@ -1193,18 +1185,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9963,
+      "top_rerank_score": 0.9965,
       "top_chunk_id": "STATUTE-JP-PATENT-SEC29-1",
       "retrieved_chunks": [
         "STATUTE-JP-PATENT-SEC29-1",
         "STATUTE-JP-PATENT-SEC29-2",
         "JP-CHK-024064",
         "JP-CHK-007849",
-        "GUIDE-JP-JPO-MEDICAL-TREATMENT"
+        "JP-CHK-007747"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 43456.529000002774
+      "latency_ms": 5156.199400000332
     },
     {
       "id": "JP-02",
@@ -1216,18 +1208,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9948,
+      "top_rerank_score": 0.9953,
       "top_chunk_id": "STATUTE-JP-PATENT-SEC29-2",
       "retrieved_chunks": [
         "STATUTE-JP-PATENT-SEC29-2",
         "STATUTE-JP-PATENT-SEC29-1",
         "JP-CHK-010355",
-        "JP-CHK-012456",
-        "JP-CHK-001804"
+        "GUIDE-JP-JPO-MEDICAL-TREATMENT",
+        "JP-CHK-012456"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 43228.29759999877
+      "latency_ms": 5162.99589999835
     },
     {
       "id": "JP-03",
@@ -1239,22 +1231,21 @@
       "true_positive_pass": false,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.0760)",
-        "Missing expected keywords in answer/evidence"
+        "CRAG verdict: FAIL (score: 0.1019)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.076,
+      "top_rerank_score": 0.1019,
       "top_chunk_id": "JP-CHK-010968",
       "retrieved_chunks": [
         "JP-CHK-010968",
+        "GUIDE-JP-JPO-MEDICAL-TREATMENT",
         "STATUTE-JP-PATENT-SEC29-2",
         "JP-CHK-020451",
-        "JP-CHK-019772",
-        "STATUTE-JP-TRADEMARK-SEC3"
+        "JP-CHK-019772"
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 43257.23640000069
+      "latency_ms": 5199.267500000133
     },
     {
       "id": "JP-04",
@@ -1271,13 +1262,13 @@
       "retrieved_chunks": [
         "STATUTE-JP-PATENT-SEC67",
         "JP-CHK-013236",
-        "JP-CHK-022850",
+        "GUIDE-JP-JPO-MEDICAL-TREATMENT",
         "JP-CHK-009426",
-        "STATUTE-JP-PATENT-SEC29-2"
+        "JP-CHK-022850"
       ],
-      "rag_status": "PARTIALLY_VALIDATED",
+      "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 43676.39369999961
+      "latency_ms": 5391.215899995586
     },
     {
       "id": "JP-05",
@@ -1289,18 +1280,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9991,
+      "top_rerank_score": 0.9994,
       "top_chunk_id": "STATUTE-JP-TRADEMARK-SEC3",
       "retrieved_chunks": [
         "STATUTE-JP-TRADEMARK-SEC3",
-        "JP-CHK-021844",
         "JP-CHK-012714",
+        "JP-CHK-021844",
         "JP-CHK-021838",
         "JP-CHK-015969"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 43437.17079999624
+      "latency_ms": 5304.46810000285
     },
     {
       "id": "JP-06",
@@ -1312,18 +1303,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9822,
+      "top_rerank_score": 0.9831,
       "top_chunk_id": "GUIDE-JP-JPO-MEDICAL-TREATMENT",
       "retrieved_chunks": [
         "GUIDE-JP-JPO-MEDICAL-TREATMENT",
         "JP-CHK-013236",
-        "JP-CHK-010978",
         "JP-CHK-020007",
-        "JP-CHK-020055"
+        "JP-CHK-010978",
+        "JP-CHK-009419"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 43318.0726999999
+      "latency_ms": 5226.009099998919
     },
     {
       "id": "JP-07",
@@ -1335,7 +1326,7 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.8962,
+      "top_rerank_score": 0.9819,
       "top_chunk_id": "REG-JP-MHLW-429-FOOD-DRUG",
       "retrieved_chunks": [
         "REG-JP-MHLW-429-FOOD-DRUG",
@@ -1346,7 +1337,7 @@
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 43508.58719999815
+      "latency_ms": 5200.0294999961625
     },
     {
       "id": "JP-08",
@@ -1358,18 +1349,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9279,
+      "top_rerank_score": 0.8245,
       "top_chunk_id": "REG-JP-CAA-FFC-FRAMEWORK",
       "retrieved_chunks": [
         "REG-JP-CAA-FFC-FRAMEWORK",
         "JP-CHK-023894",
         "STATUTE-JP-PMD-ACT-SEC2",
         "JP-CHK-013003",
-        "JP-CHK-024321"
+        "JP-CHK-010873"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 43527.63489999779
+      "latency_ms": 5363.546300002781
     },
     {
       "id": "JP-09",
@@ -1381,21 +1372,21 @@
       "true_positive_pass": false,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.0059)"
+        "CRAG verdict: FAIL (score: 0.0087)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.0059,
+      "top_rerank_score": 0.0087,
       "top_chunk_id": "STATUTE-JP-PMD-ACT-SEC2",
       "retrieved_chunks": [
         "STATUTE-JP-PMD-ACT-SEC2",
-        "JP-CHK-020174",
         "STATUTE-JP-PATENT-SEC67",
-        "REG-JP-MHLW-429-FOOD-DRUG",
-        "STATUTE-JP-TRADEMARK-SEC3"
+        "JP-CHK-020174",
+        "REG-JP-CAA-FFC-FRAMEWORK",
+        "REG-JP-MHLW-429-FOOD-DRUG"
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 43274.25080000103
+      "latency_ms": 5169.649199997366
     },
     {
       "id": "JP-10",
@@ -1407,7 +1398,7 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9958,
+      "top_rerank_score": 0.9963,
       "top_chunk_id": "STATUTE-JP-PATENT-SEC29-2",
       "retrieved_chunks": [
         "STATUTE-JP-PATENT-SEC29-2",
@@ -1418,7 +1409,7 @@
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 43892.63210000354
+      "latency_ms": 5771.781600000395
     },
     {
       "id": "JP-11",
@@ -1430,7 +1421,7 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9828,
+      "top_rerank_score": 0.9926,
       "top_chunk_id": "REG-JP-MHLW-429-FOOD-DRUG",
       "retrieved_chunks": [
         "REG-JP-MHLW-429-FOOD-DRUG",
@@ -1441,7 +1432,7 @@
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 43778.886899999634
+      "latency_ms": 5679.340000002412
     },
     {
       "id": "JP-12",
@@ -1459,12 +1450,12 @@
         "STATUTE-JP-TRADEMARK-SEC3",
         "JP-CHK-021844",
         "JP-CHK-015969",
-        "JP-CHK-015968",
-        "JP-CHK-015927"
+        "JP-CHK-015927",
+        "JP-CHK-015968"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 43632.21870000416
+      "latency_ms": 5467.731800003094
     },
     {
       "id": "JP-13",
@@ -1480,14 +1471,14 @@
       "top_chunk_id": "STATUTE-JP-PATENT-SEC67",
       "retrieved_chunks": [
         "STATUTE-JP-PATENT-SEC67",
-        "GUIDE-JP-JPO-MEDICAL-TREATMENT",
         "JP-CHK-015693",
         "JP-CHK-013517",
+        "GUIDE-JP-JPO-MEDICAL-TREATMENT",
         "STATUTE-JP-PMD-ACT-SEC2"
       ],
-      "rag_status": "PARTIALLY_VALIDATED",
+      "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 43786.123099998804
+      "latency_ms": 5394.250600002124
     },
     {
       "id": "JP-14",
@@ -1499,22 +1490,21 @@
       "true_positive_pass": false,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.0122)",
-        "Missing expected keywords in answer/evidence"
+        "CRAG verdict: FAIL (score: 0.0133)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.0122,
+      "top_rerank_score": 0.0133,
       "top_chunk_id": "JP-CHK-001616",
       "retrieved_chunks": [
         "JP-CHK-001616",
-        "JP-CHK-002545",
         "JP-CHK-022879",
-        "JP-CHK-022888",
-        "JP-CHK-019575"
+        "JP-CHK-002545",
+        "JP-CHK-025879",
+        "JP-CHK-022888"
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 43621.875000004366
+      "latency_ms": 5036.740099996678
     },
     {
       "id": "JP-15",
@@ -1526,7 +1516,7 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.4557,
+      "top_rerank_score": 0.4483,
       "top_chunk_id": "JP-CHK-022900",
       "retrieved_chunks": [
         "JP-CHK-022900",
@@ -1537,7 +1527,7 @@
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 43419.73290000169
+      "latency_ms": 5030.33200000209
     },
     {
       "id": "JP-16",
@@ -1549,10 +1539,10 @@
       "true_positive_pass": false,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.1045)"
+        "CRAG verdict: FAIL (score: 0.1147)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.1045,
+      "top_rerank_score": 0.1147,
       "top_chunk_id": "JP-CHK-014654",
       "retrieved_chunks": [
         "JP-CHK-014654",
@@ -1563,7 +1553,7 @@
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 41868.04259999917
+      "latency_ms": 5003.4513999999035
     },
     {
       "id": "JP-17",
@@ -1575,18 +1565,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.5978,
+      "top_rerank_score": 0.3466,
       "top_chunk_id": "REG-JP-CAA-FFC-FRAMEWORK",
       "retrieved_chunks": [
         "REG-JP-CAA-FFC-FRAMEWORK",
         "JP-CHK-018320",
-        "JP-CHK-017189",
         "JP-CHK-004926",
+        "JP-CHK-017189",
         "JP-CHK-013743"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 43212.086100000306
+      "latency_ms": 5088.64000000176
     },
     {
       "id": "JP-18",
@@ -1598,12 +1588,11 @@
       "true_positive_pass": false,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.0135)",
-        "Top chunk mismatch (expected STATUTE-JP-PATENT-SEC39, got STATUTE-JP-PATENT-SEC29-2)",
-        "Missing expected keywords in answer/evidence"
+        "CRAG verdict: FAIL (score: 0.0173)",
+        "Top chunk mismatch (expected STATUTE-JP-PATENT-SEC39, got STATUTE-JP-PATENT-SEC29-2)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.0135,
+      "top_rerank_score": 0.0173,
       "top_chunk_id": "STATUTE-JP-PATENT-SEC29-2",
       "retrieved_chunks": [
         "STATUTE-JP-PATENT-SEC29-2",
@@ -1614,7 +1603,7 @@
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 43213.87649999815
+      "latency_ms": 5200.517100005527
     },
     {
       "id": "JP-19",
@@ -1626,23 +1615,22 @@
       "true_positive_pass": false,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.0104)",
-        "Top chunk mismatch (expected STATUTE-JP-PATENT-SEC30, got STATUTE-JP-PATENT-SEC29-2)",
-        "Missing expected keywords in answer/evidence"
+        "CRAG verdict: FAIL (score: 0.0091)",
+        "Top chunk mismatch (expected STATUTE-JP-PATENT-SEC30, got STATUTE-JP-PATENT-SEC29-2)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.0104,
+      "top_rerank_score": 0.0091,
       "top_chunk_id": "STATUTE-JP-PATENT-SEC29-2",
       "retrieved_chunks": [
         "STATUTE-JP-PATENT-SEC29-2",
         "STATUTE-JP-TRADEMARK-SEC3",
-        "STATUTE-JP-PATENT-SEC29-1",
         "STATUTE-JP-PMD-ACT-SEC2",
+        "STATUTE-JP-PATENT-SEC29-1",
         "JP-CHK-014604"
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 43233.221700000286
+      "latency_ms": 5152.688100002706
     },
     {
       "id": "JP-20",
@@ -1656,7 +1644,7 @@
         "Missing expected keywords in answer/evidence"
       ],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.2849,
+      "top_rerank_score": 0.2877,
       "top_chunk_id": "JP-CHK-022972",
       "retrieved_chunks": [
         "JP-CHK-022972",
@@ -1667,7 +1655,7 @@
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 43349.716799995804
+      "latency_ms": 5058.309400003054
     },
     {
       "id": "JP-21",
@@ -1679,18 +1667,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.6753,
+      "top_rerank_score": 0.6519,
       "top_chunk_id": "JP-CHK-017565",
       "retrieved_chunks": [
         "JP-CHK-017565",
         "JP-CHK-019735",
+        "JP-CHK-019294",
         "JP-CHK-013006",
-        "JP-CHK-013001",
-        "JP-CHK-019294"
+        "JP-CHK-013001"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 43255.91709999571
+      "latency_ms": 5026.426700002048
     },
     {
       "id": "JP-22",
@@ -1702,18 +1690,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.997,
+      "top_rerank_score": 0.9951,
       "top_chunk_id": "REG-JP-CAA-FFC-FRAMEWORK",
       "retrieved_chunks": [
         "REG-JP-CAA-FFC-FRAMEWORK",
-        "JP-CHK-009805",
+        "JP-CHK-022989",
         "JP-CHK-023894",
         "JP-CHK-007737",
-        "JP-CHK-022989"
+        "JP-CHK-009805"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 43486.43710000033
+      "latency_ms": 5359.906199999386
     },
     {
       "id": "EP-01",
@@ -1725,18 +1713,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.5003,
+      "top_rerank_score": 0.5125,
       "top_chunk_id": "STATUTE-EP-EPC-ART52",
       "retrieved_chunks": [
         "STATUTE-EP-EPC-ART52",
         "STATUTE-EP-EPC-ART53C",
         "STATUTE-EP-EPC-ART54-5",
-        "EUROPE-CHK-0000-6fc426b3",
-        "EUROPE-CHK-0000-c063d809"
+        "GUIDE-EP-EPC-ART64-NATIONAL-EFFECT",
+        "EUROPE-CHK-0000-6fc426b3"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 1776.6383999987738
+      "latency_ms": 3636.923099998967
     },
     {
       "id": "EP-02",
@@ -1748,7 +1736,7 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9988,
+      "top_rerank_score": 0.9986,
       "top_chunk_id": "STATUTE-EP-EPC-ART53C",
       "retrieved_chunks": [
         "STATUTE-EP-EPC-ART53C",
@@ -1759,7 +1747,7 @@
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 10535.900100003346
+      "latency_ms": 4797.5812000004225
     },
     {
       "id": "EP-03",
@@ -1771,7 +1759,7 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9943,
+      "top_rerank_score": 0.9918,
       "top_chunk_id": "STATUTE-EP-EPC-ART54-5",
       "retrieved_chunks": [
         "STATUTE-EP-EPC-ART54-5",
@@ -1782,7 +1770,7 @@
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 1167.173100002401
+      "latency_ms": 1669.6876999994856
     },
     {
       "id": "EP-04",
@@ -1794,7 +1782,7 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9981,
+      "top_rerank_score": 0.9979,
       "top_chunk_id": "STATUTE-EP-EPC-ART56",
       "retrieved_chunks": [
         "STATUTE-EP-EPC-ART56",
@@ -1805,7 +1793,7 @@
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 2084.897299995646
+      "latency_ms": 4861.66680000315
     },
     {
       "id": "EP-05",
@@ -1828,7 +1816,7 @@
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 1585.5014999979176
+      "latency_ms": 2756.794999993872
     },
     {
       "id": "EP-06",
@@ -1847,11 +1835,11 @@
         "EUROPE-CHK-0000-20a3f35c",
         "EUROPE-CHK-0000-a3891ef3",
         "EUROPE-CHK-0000-358ce342",
-        "EUROPE-CHK-0002-1a0c90f0"
+        "STATUTE-EP-EPC-ART53C"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 3972.1251999944798
+      "latency_ms": 4131.873899998027
     },
     {
       "id": "EP-07",
@@ -1863,18 +1851,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9993,
+      "top_rerank_score": 0.9991,
       "top_chunk_id": "REG-EU-DIRECTIVE-2004-24-EC-THMPD",
       "retrieved_chunks": [
         "REG-EU-DIRECTIVE-2004-24-EC-THMPD",
         "GUIDE-EP-EPC-ART64-NATIONAL-EFFECT",
         "EUROPE-CHK-0000-647e140a",
-        "EUROPE-CHK-0001-2df8b1a6",
-        "EUROPE-CHK-0002-8dbf6f93"
+        "EUROPE-CHK-0002-8dbf6f93",
+        "EUROPE-CHK-0000-15a2ee42"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 3773.7629000039306
+      "latency_ms": 2726.371199998539
     },
     {
       "id": "EP-08",
@@ -1886,18 +1874,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.6285,
+      "top_rerank_score": 0.6829,
       "top_chunk_id": "STATUTE-EP-EPC-ART56",
       "retrieved_chunks": [
         "STATUTE-EP-EPC-ART56",
         "EUROPE-CHK-0000-b976b1bb",
         "EUROPE-CHK-0000-0547bc48",
-        "EUROPE-CHK-0002-7eecaf0b",
-        "EUROPE-CHK-0002-ffc37438"
+        "STATUTE-EP-EPC-ART57",
+        "EUROPE-CHK-0002-7eecaf0b"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 2096.5652000013506
+      "latency_ms": 4319.887300000119
     },
     {
       "id": "EP-09",
@@ -1909,7 +1897,7 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.7123,
+      "top_rerank_score": 0.6902,
       "top_chunk_id": "STATUTE-EP-EPC-ART54",
       "retrieved_chunks": [
         "STATUTE-EP-EPC-ART54",
@@ -1920,7 +1908,7 @@
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 2817.206300001999
+      "latency_ms": 3073.2578999959514
     },
     {
       "id": "EP-10",
@@ -1932,21 +1920,21 @@
       "true_positive_pass": false,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.0196)"
+        "CRAG verdict: FAIL (score: 0.0217)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.0196,
+      "top_rerank_score": 0.0217,
       "top_chunk_id": "GUIDE-EP-EPC-ART64-NATIONAL-EFFECT",
       "retrieved_chunks": [
         "GUIDE-EP-EPC-ART64-NATIONAL-EFFECT",
         "REG-EU-DIRECTIVE-2004-24-EC-THMPD",
         "EUROPE-CHK-0000-06431e3d",
-        "EUROPE-CHK-0002-c8622215",
-        "EUROPE-CHK-0000-358ce342"
+        "EUROPE-CHK-0000-358ce342",
+        "EUROPE-CHK-0000-20a3f35c"
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 1769.7916999968584
+      "latency_ms": 2885.199199998169
     },
     {
       "id": "EP-11",
@@ -1954,22 +1942,25 @@
       "query": "What synergistic herbal compositions for anti-inflammatory treatment are claimed in granted European patents?",
       "category": "PATENT_ANALYSIS",
       "user_jurisdiction": "EP",
-      "strict_pass": true,
-      "true_positive_pass": true,
-      "failure_reasons": [],
-      "crag_verdict": "PASS",
-      "top_rerank_score": 0.9435,
+      "strict_pass": false,
+      "true_positive_pass": false,
+      "failure_reasons": [
+        "RAG status: INSUFFICIENT_EVIDENCE",
+        "CRAG verdict: FAIL (score: 0.9598)"
+      ],
+      "crag_verdict": "FAIL",
+      "top_rerank_score": 0.9598,
       "top_chunk_id": "EUROPE-CHK-0002-1ff72028",
       "retrieved_chunks": [
         "EUROPE-CHK-0002-1ff72028",
-        "EUROPE-CHK-0000-06431e3d",
         "EUROPE-CHK-0002-c8622215",
-        "EUROPE-CHK-0001-41e3f126",
-        "EUROPE-CHK-0000-1575ad5f"
+        "EUROPE-CHK-0001-61d08395",
+        "EUROPE-CHK-0000-06431e3d",
+        "EUROPE-CHK-0001-41e3f126"
       ],
-      "rag_status": "SUCCESS",
-      "citations_count": 5,
-      "latency_ms": 2097.8843000048073
+      "rag_status": "INSUFFICIENT_EVIDENCE",
+      "citations_count": 0,
+      "latency_ms": 4846.6531000012765
     },
     {
       "id": "EP-12",
@@ -1981,18 +1972,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.3916,
-      "top_chunk_id": "EUROPE-CHK-0002-ad9830eb",
+      "top_rerank_score": 0.3501,
+      "top_chunk_id": "EUROPE-CHK-0000-a8d3e28d",
       "retrieved_chunks": [
+        "EUROPE-CHK-0000-a8d3e28d",
         "EUROPE-CHK-0002-ad9830eb",
         "EUROPE-CHK-0002-4430c889",
-        "EUROPE-CHK-0000-a8d3e28d",
         "EUROPE-CHK-0000-899e870a",
         "EUROPE-CHK-0001-99d2e82d"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 1489.9564000006649
+      "latency_ms": 1963.2600000040838
     },
     {
       "id": "EP-13",
@@ -2004,23 +1995,22 @@
       "true_positive_pass": false,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.0348)",
-        "Top chunk mismatch (expected STATUTE-EP-EPC-ART123-2, got EUROPE-CHK-0002-a8181571)",
-        "Missing expected keywords in answer/evidence"
+        "CRAG verdict: FAIL (score: 0.0270)",
+        "Top chunk mismatch (expected STATUTE-EP-EPC-ART123-2, got EUROPE-CHK-0002-a8181571)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.0348,
+      "top_rerank_score": 0.027,
       "top_chunk_id": "EUROPE-CHK-0002-a8181571",
       "retrieved_chunks": [
         "EUROPE-CHK-0002-a8181571",
         "EUROPE-CHK-0002-1a0c90f0",
         "EUROPE-CHK-0002-53c323b9",
-        "EUROPE-CHK-0002-e2ad7d79",
-        "EUROPE-CHK-0002-430d6744"
+        "EUROPE-CHK-0002-c9312e90",
+        "EUROPE-CHK-0002-ddfde02f"
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 1380.2011000007042
+      "latency_ms": 1667.0795000027283
     },
     {
       "id": "EP-14",
@@ -2035,18 +2025,18 @@
         "Missing expected keywords in answer/evidence"
       ],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.3404,
+      "top_rerank_score": 0.2267,
       "top_chunk_id": "EUROPE-CHK-0000-a3891ef3",
       "retrieved_chunks": [
         "EUROPE-CHK-0000-a3891ef3",
         "EUROPE-CHK-0000-20a3f35c",
         "EUROPE-CHK-0000-358ce342",
         "STATUTE-EP-EPC-ART53C",
-        "EUROPE-CHK-0000-bc6d0b57"
+        "EUROPE-CHK-0002-0adcd669"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 1624.1093999997247
+      "latency_ms": 2051.2999999991735
     },
     {
       "id": "EP-15",
@@ -2058,22 +2048,21 @@
       "true_positive_pass": false,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.0013)",
-        "Missing expected keywords in answer/evidence"
+        "CRAG verdict: FAIL (score: 0.0014)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.0013,
+      "top_rerank_score": 0.0014,
       "top_chunk_id": "EUROPE-CHK-0002-6c747d99",
       "retrieved_chunks": [
         "EUROPE-CHK-0002-6c747d99",
         "STATUTE-EP-EPC-ART83",
         "EUROPE-CHK-0002-66a218ec",
         "EUROPE-CHK-0000-e5403b51",
-        "EUROPE-CHK-0000-3a5ffb28"
+        "STATUTE-EP-EPC-ART54-5"
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 1957.6482999982545
+      "latency_ms": 3238.9345000046887
     },
     {
       "id": "EP-16",
@@ -2085,7 +2074,7 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9603,
+      "top_rerank_score": 0.9622,
       "top_chunk_id": "EUROPE-CHK-0000-e90df1bb",
       "retrieved_chunks": [
         "EUROPE-CHK-0000-e90df1bb",
@@ -2096,7 +2085,7 @@
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 2169.0454999989015
+      "latency_ms": 4262.9173000023
     },
     {
       "id": "EP-17",
@@ -2108,7 +2097,7 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9659,
+      "top_rerank_score": 0.9628,
       "top_chunk_id": "STATUTE-EP-EPC-ART56",
       "retrieved_chunks": [
         "STATUTE-EP-EPC-ART56",
@@ -2119,7 +2108,7 @@
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 2411.2449000022025
+      "latency_ms": 4574.852400000964
     },
     {
       "id": "WO-01",
@@ -2131,18 +2120,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9698,
+      "top_rerank_score": 0.966,
       "top_chunk_id": "STATUTE-WO-PCT-ART1-3",
       "retrieved_chunks": [
         "STATUTE-WO-PCT-ART1-3",
         "STATUTE-WO-PCT-ART21-22",
+        "WIPO-CHK-0128-0038",
         "WIPO-CHK-0198-0015",
-        "WIPO-CHK-0234-0025",
-        "WIPO-CHK-0128-0038"
+        "WIPO-CHK-0234-0025"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2655.137100002321
+      "latency_ms": 4653.007600005367
     },
     {
       "id": "WO-02",
@@ -2161,11 +2150,11 @@
         "STATUTE-WO-PCT-RULE43BIS",
         "STATUTE-WO-PCT-ART19",
         "STATUTE-WO-PCT-CHAPTER2-IPRP",
-        "STATUTE-WO-PCT-ART21-22"
+        "STATUTE-WO-PCT-ART1-3"
       ],
-      "rag_status": "PARTIALLY_VALIDATED",
+      "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 3887.776900002791
+      "latency_ms": 4616.603600006783
     },
     {
       "id": "WO-03",
@@ -2177,18 +2166,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9996,
+      "top_rerank_score": 0.9997,
       "top_chunk_id": "STATUTE-WO-PCT-ART19",
       "retrieved_chunks": [
         "STATUTE-WO-PCT-ART19",
         "STATUTE-WO-PCT-ART21-22",
-        "STATUTE-WO-PCT-ART18-ISR",
+        "WIPO-CHK-0142-0015",
         "STATUTE-WO-PCT-CHAPTER2-IPRP",
-        "WIPO-CHK-0142-0015"
+        "STATUTE-WO-PCT-ART18-ISR"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 2548.890999998548
+      "latency_ms": 4522.489799994219
     },
     {
       "id": "WO-04",
@@ -2200,18 +2189,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9883,
+      "top_rerank_score": 0.9825,
       "top_chunk_id": "STATUTE-WO-PCT-ART21-22",
       "retrieved_chunks": [
         "STATUTE-WO-PCT-ART21-22",
+        "WIPO-CHK-0046-0019",
         "GUIDE-WO-PCT-SCOPE-BOUNDARY",
-        "STATUTE-WO-PCT-CHAPTER2-IPRP",
-        "STATUTE-WO-PCT-RULE43BIS",
-        "WIPO-CHK-0046-0019"
+        "WIPO-CHK-0198-0015",
+        "STATUTE-WO-PCT-CHAPTER2-IPRP"
       ],
-      "rag_status": "PARTIALLY_VALIDATED",
+      "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 2395.475199999055
+      "latency_ms": 4552.919600006135
     },
     {
       "id": "WO-05",
@@ -2234,7 +2223,7 @@
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 2719.0489000058733
+      "latency_ms": 4648.413499999151
     },
     {
       "id": "WO-06",
@@ -2246,7 +2235,7 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9985,
+      "top_rerank_score": 0.9981,
       "top_chunk_id": "STATUTE-WO-PCT-ART21-22",
       "retrieved_chunks": [
         "STATUTE-WO-PCT-ART21-22",
@@ -2257,7 +2246,7 @@
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2704.9795999992057
+      "latency_ms": 4719.528599998739
     },
     {
       "id": "WO-07",
@@ -2276,14 +2265,14 @@
       "top_chunk_id": "GUIDE-WO-PCT-SCOPE-BOUNDARY",
       "retrieved_chunks": [
         "GUIDE-WO-PCT-SCOPE-BOUNDARY",
+        "WIPO-CHK-0256-0036",
         "WIPO-CHK-0308-0060",
-        "WIPO-CHK-0063-0033",
-        "WIPO-CHK-0110-0017",
-        "WIPO-CHK-0131-0022"
+        "WIPO-CHK-0131-0022",
+        "WIPO-CHK-0213-0002"
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 3867.261999999755
+      "latency_ms": 4635.812000000442
     },
     {
       "id": "WO-08",
@@ -2295,21 +2284,22 @@
       "true_positive_pass": false,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.0932)"
+        "CRAG verdict: FAIL (score: 0.1737)",
+        "Top chunk mismatch (expected GUIDE-WO-WIPO-ST26-SEQUENCE, got WIPO-CHK-0162-0026)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.0932,
+      "top_rerank_score": 0.1737,
       "top_chunk_id": "WIPO-CHK-0162-0026",
       "retrieved_chunks": [
         "WIPO-CHK-0162-0026",
-        "WIPO-CHK-0027-0062",
+        "WIPO-CHK-0099-0061",
         "WIPO-CHK-0216-0015",
-        "WIPO-CHK-0027-0069",
-        "GUIDE-WO-PCT-SCOPE-BOUNDARY"
+        "WIPO-CHK-0104-0022",
+        "WIPO-CHK-0027-0062"
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 4108.5421000025235
+      "latency_ms": 4674.413099994126
     },
     {
       "id": "WO-09",
@@ -2321,21 +2311,21 @@
       "true_positive_pass": false,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.0372)"
+        "CRAG verdict: FAIL (score: 0.0400)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.0372,
+      "top_rerank_score": 0.04,
       "top_chunk_id": "STATUTE-WO-PCT-ART21-22",
       "retrieved_chunks": [
         "STATUTE-WO-PCT-ART21-22",
-        "WIPO-CHK-0141-0007",
-        "GUIDE-WO-PCT-SCOPE-BOUNDARY",
+        "WIPO-CHK-0226-0021",
+        "WIPO-CHK-0227-0021",
         "WIPO-CHK-0241-0025",
-        "WIPO-CHK-0226-0021"
+        "WIPO-CHK-0141-0007"
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 2603.603200004727
+      "latency_ms": 4584.574999993492
     },
     {
       "id": "WO-10",
@@ -2347,22 +2337,21 @@
       "true_positive_pass": false,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.0534)",
-        "Missing expected keywords in answer/evidence"
+        "CRAG verdict: FAIL (score: 0.0686)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.0534,
+      "top_rerank_score": 0.0686,
       "top_chunk_id": "WIPO-CHK-0321-0047",
       "retrieved_chunks": [
         "WIPO-CHK-0321-0047",
-        "WIPO-CHK-0244-0025",
         "WIPO-CHK-0321-0066",
-        "WIPO-CHK-0067-0067",
-        "WIPO-CHK-0330-0002"
+        "WIPO-CHK-0121-0022",
+        "WIPO-CHK-0244-0025",
+        "WIPO-CHK-0067-0067"
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 2640.3850999995484
+      "latency_ms": 4663.078300000052
     },
     {
       "id": "WO-11",
@@ -2374,18 +2363,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.1886,
+      "top_rerank_score": 0.1727,
       "top_chunk_id": "STATUTE-WO-PCT-ART18-ISR",
       "retrieved_chunks": [
         "STATUTE-WO-PCT-ART18-ISR",
+        "GUIDE-WO-PCT-SCOPE-BOUNDARY",
         "STATUTE-WO-PCT-RULE43BIS",
         "STATUTE-WO-PCT-ART19",
-        "STATUTE-WO-PCT-ART1-3",
-        "STATUTE-WO-PCT-CHAPTER2-IPRP"
+        "STATUTE-WO-PCT-ART1-3"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 17780.645300001197
+      "latency_ms": 4611.824299994623
     },
     {
       "id": "WO-12",
@@ -2397,22 +2386,21 @@
       "true_positive_pass": false,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.1084)",
-        "Missing expected keywords in answer/evidence"
+        "CRAG verdict: FAIL (score: 0.0958)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.1084,
+      "top_rerank_score": 0.0958,
       "top_chunk_id": "STATUTE-WO-PCT-CHAPTER2-IPRP",
       "retrieved_chunks": [
         "STATUTE-WO-PCT-CHAPTER2-IPRP",
         "STATUTE-WO-PCT-ART19",
-        "STATUTE-WO-PCT-RULE43BIS",
-        "STATUTE-WO-PCT-ART1-3",
-        "WIPO-CHK-0158-0034"
+        "WIPO-CHK-0256-0036",
+        "WIPO-CHK-0243-0027",
+        "STATUTE-WO-PCT-RULE43BIS"
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 3989.9523999993107
+      "latency_ms": 4638.823799999955
     },
     {
       "id": "MULTI-01",
@@ -2424,18 +2412,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.8826,
+      "top_rerank_score": 0.8765,
       "top_chunk_id": "STATUTE-EP-EPC-ART53C",
       "retrieved_chunks": [
         "STATUTE-EP-EPC-ART53C",
         "STATUTE-EP-EPC-ART54-5",
         "STATUTE-US-35USC-101",
-        "EUROPE-CHK-0000-41b00680",
-        "STATUTE-US-35USC-103"
+        "STATUTE-US-35USC-103",
+        "EUROPE-CHK-0002-15f2e389"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 18156.70020000107
+      "latency_ms": 5453.435000003083
     },
     {
       "id": "MULTI-02",
@@ -2447,18 +2435,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.2238,
+      "top_rerank_score": 0.4247,
       "top_chunk_id": "IN_IN-GUIDELINE-PATENTS-TK_section_3_d____incre_005_51268b43",
       "retrieved_chunks": [
         "IN_IN-GUIDELINE-PATENTS-TK_section_3_d____incre_005_51268b43",
         "STATUTE-US-35USC-103",
         "IN_IN-ACT-PATENTS-1970_section_3_a____an_in_003_9c930567",
         "IN_IN-GUIDELINE-PATENTS-TK_section_3_e____mere_004_b6721e38",
-        "IN_doc-ip-india-pat-2018-01_claims___synergistic_001_2761a73c"
+        "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 34934.02430000424
+      "latency_ms": 5738.201899999694
     },
     {
       "id": "MULTI-03",
@@ -2470,18 +2458,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.5454,
+      "top_rerank_score": 0.6073,
       "top_chunk_id": "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
       "retrieved_chunks": [
         "IN_IN-COMM-AYURVEDA-D2C_the_fssai_ayurveda_a_004_13fc02b9",
         "IN_IN-REG-FSSAI-AA-2022_regulation_3_1___the_008_732a0c45",
         "IN_IN-REG-FSSAI-AA-2022_regulation_1_2___def_003_f3d40b70",
         "IN_IN-REG-FSSAI-AA-2022_chapter_5___licensin_010_f374d501",
-        "IN_IN-REG-FSSAI-BOUNDARY-2022_regulation_5___ayurv_004_4933c218"
+        "IN_IN-REG-FSSAI-BOUNDARY-2022_fssai_licensing_work_006_ce702dde"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2744.4719999984954
+      "latency_ms": 5535.6142000018735
     },
     {
       "id": "MULTI-04",
@@ -2493,18 +2481,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9934,
+      "top_rerank_score": 0.9944,
       "top_chunk_id": "STATUTE-JP-PATENT-SEC67",
       "retrieved_chunks": [
         "STATUTE-JP-PATENT-SEC67",
         "USA-CHK-0003-781ec1de",
         "USA-CHK-0004-3532fd39",
-        "USA-CHK-0005-a6f57da6",
-        "USA-CHK-0007-e7947d1f"
+        "USA-CHK-0007-e7947d1f",
+        "USA-CHK-0004-474165b5"
       ],
-      "rag_status": "PARTIALLY_VALIDATED",
+      "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 43782.98679999716
+      "latency_ms": 6364.45420000382
     },
     {
       "id": "MULTI-05",
@@ -2512,22 +2500,25 @@
       "query": "What are the national phase entry time limits under PCT across the US, EPO, Japan, and India?",
       "category": "COMPARATIVE",
       "user_jurisdiction": "GLOBAL",
-      "strict_pass": true,
-      "true_positive_pass": true,
-      "failure_reasons": [],
-      "crag_verdict": "PASS",
-      "top_rerank_score": 0.6293,
+      "strict_pass": false,
+      "true_positive_pass": false,
+      "failure_reasons": [
+        "RAG status: INSUFFICIENT_EVIDENCE",
+        "CRAG verdict: FAIL (score: 0.6021)"
+      ],
+      "crag_verdict": "FAIL",
+      "top_rerank_score": 0.6021,
       "top_chunk_id": "STATUTE-WO-PCT-ART21-22",
       "retrieved_chunks": [
         "STATUTE-WO-PCT-ART21-22",
         "GUIDE-WO-PCT-SCOPE-BOUNDARY",
-        "STATUTE-WO-PCT-RULE43BIS",
         "USA-CHK-0002-71134139",
+        "STATUTE-WO-PCT-RULE43BIS",
         "WIPO-CHK-0046-0019"
       ],
-      "rag_status": "PARTIALLY_VALIDATED",
-      "citations_count": 5,
-      "latency_ms": 19052.03829999664
+      "rag_status": "INSUFFICIENT_EVIDENCE",
+      "citations_count": 0,
+      "latency_ms": 6009.421800001292
     },
     {
       "id": "MULTI-06",
@@ -2535,22 +2526,25 @@
       "query": "How do mandatory biological origin disclosure requirements under India's Biological Diversity Act compare with WIPO IGC treaty standards?",
       "category": "COMPARATIVE",
       "user_jurisdiction": "GLOBAL",
-      "strict_pass": true,
-      "true_positive_pass": true,
-      "failure_reasons": [],
-      "crag_verdict": "PASS",
-      "top_rerank_score": 0.638,
+      "strict_pass": false,
+      "true_positive_pass": false,
+      "failure_reasons": [
+        "RAG status: INSUFFICIENT_EVIDENCE",
+        "CRAG verdict: FAIL (score: 0.6866)"
+      ],
+      "crag_verdict": "FAIL",
+      "top_rerank_score": 0.6866,
       "top_chunk_id": "IN_doc-wipo-igc-tk-001_article_3__subject_m_001_cd3ff207",
       "retrieved_chunks": [
         "IN_doc-wipo-igc-tk-001_article_3__subject_m_001_cd3ff207",
-        "IN_IN-ACT-BDA-2023_key_2023_amendments_004_3dba24f3",
         "IN_doc-india-code-patents-sec10-4_section_10_4__ii__d_001_3a9992d6",
         "IN_doc-nba-guidelines-sec6_section_6___regulati_001_0e042fee",
-        "IN_IN-GUIDELINE-PATENTS-TK_section_10_4__ii__d_008_8e472089"
+        "IN_IN-ACT-BDA-2023_key_2023_amendments_004_3dba24f3",
+        "IN_IN-GUIDELINE-PATENTS-TK_indian_patent_applic_010_de024d3f"
       ],
-      "rag_status": "PARTIALLY_VALIDATED",
-      "citations_count": 5,
-      "latency_ms": 2592.444499998237
+      "rag_status": "INSUFFICIENT_EVIDENCE",
+      "citations_count": 0,
+      "latency_ms": 5173.2355000058305
     },
     {
       "id": "MULTI-07",
@@ -2562,22 +2556,21 @@
       "true_positive_pass": false,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.0160)",
-        "Missing expected keywords in answer/evidence"
+        "CRAG verdict: FAIL (score: 0.0157)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.016,
+      "top_rerank_score": 0.0157,
       "top_chunk_id": "USA-CHK-0138-72c83b00",
       "retrieved_chunks": [
         "USA-CHK-0138-72c83b00",
         "EUROPE-CHK-0002-08c3f432",
+        "EUROPE-CHK-0002-d7bd605b",
         "EUROPE-CHK-0002-ef033db1",
-        "EUROPE-CHK-0002-45c9b886",
-        "EUROPE-CHK-0002-d7bd605b"
+        "STATUTE-US-35USC-102"
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 44215.5722000025
+      "latency_ms": 6287.326699995901
     },
     {
       "id": "MULTI-08",
@@ -2589,7 +2582,7 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.5642,
+      "top_rerank_score": 0.5821,
       "top_chunk_id": "STATUTE-EP-EPC-ART54-5",
       "retrieved_chunks": [
         "STATUTE-EP-EPC-ART54-5",
@@ -2600,7 +2593,7 @@
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 46175.932099999045
+      "latency_ms": 5994.089399995573
     },
     {
       "id": "MULTI-09",
@@ -2612,18 +2605,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.5612,
+      "top_rerank_score": 0.7125,
       "top_chunk_id": "REG-US-FDA-21CFR111",
       "retrieved_chunks": [
         "REG-US-FDA-21CFR111",
         "IN_doc-dcr-1945-schedulet_schedule_t_001_f36e9ccd",
         "IN_IN-ACT-DCR-1945_schedule_t___good_ma_004_35452887",
-        "IN_IN-ACT-DCR-1945_rule_158b___licensin_003_d34ab326",
-        "IN_IN-ACT-DCR-1945_ayush_drug_licensing_005_5201e2b3"
+        "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4",
+        "IN_IN-ACT-DCR-1945_rule_158b___licensin_003_d34ab326"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 3008.865200004948
+      "latency_ms": 5331.428899997263
     },
     {
       "id": "MULTI-10",
@@ -2635,18 +2628,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.8216,
-      "top_chunk_id": "STATUTE-US-LANHAM-ACT-SEC2",
+      "top_rerank_score": 0.8812,
+      "top_chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_9___absolute_003_272220a1",
       "retrieved_chunks": [
-        "STATUTE-US-LANHAM-ACT-SEC2",
         "IN_IN-ACT-TM-AYUR-1999_section_9___absolute_003_272220a1",
+        "STATUTE-US-LANHAM-ACT-SEC2",
         "IN_IN-ACT-TM-GI-1999_section_9_2____a_mar_004_3c7057fe",
         "IN_IN-ACT-TM-GI-1999_section_9_1____the_t_003_f1c0fe27",
-        "IN_IN-ACT-TM-AYUR-1999_section_2_1__zb____2_002_6a9d1c90"
+        "IN_IN-GUIDELINE-PATENTS-TK_section_10_4__ii__d_008_8e472089"
       ],
-      "rag_status": "PARTIALLY_VALIDATED",
+      "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 2658.5496999978204
+      "latency_ms": 5354.283599997871
     },
     {
       "id": "MULTI-11",
@@ -2654,22 +2647,25 @@
       "query": "How does USPTO guidance on natural products differ from Section 3(c) of the Indian Patents Act regarding naturally occurring substances?",
       "category": "COMPARATIVE",
       "user_jurisdiction": "GLOBAL",
-      "strict_pass": true,
-      "true_positive_pass": true,
-      "failure_reasons": [],
-      "crag_verdict": "PASS",
-      "top_rerank_score": 0.5225,
+      "strict_pass": false,
+      "true_positive_pass": false,
+      "failure_reasons": [
+        "RAG status: INSUFFICIENT_EVIDENCE",
+        "CRAG verdict: FAIL (score: 0.6978)"
+      ],
+      "crag_verdict": "FAIL",
+      "top_rerank_score": 0.6978,
       "top_chunk_id": "IN_IN-ACT-PATENTS-1970_section_3_a____an_in_003_9c930567",
       "retrieved_chunks": [
         "IN_IN-ACT-PATENTS-1970_section_3_a____an_in_003_9c930567",
         "IN_IN-GUIDELINE-PATENTS-TK_section_3_d____incre_005_51268b43",
         "STATUTE-US-35USC-101",
         "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
-        "USA-CHK-0013-a7935c1c"
+        "USA-CHK-0188-d39c1af7"
       ],
-      "rag_status": "PARTIALLY_VALIDATED",
-      "citations_count": 5,
-      "latency_ms": 18060.204900000826
+      "rag_status": "INSUFFICIENT_EVIDENCE",
+      "citations_count": 0,
+      "latency_ms": 5348.04129999975
     },
     {
       "id": "MULTI-12",
@@ -2677,22 +2673,25 @@
       "query": "What is the recommended multi-jurisdictional IP protection pathway (IN patent + PCT application + US/EP national phase) for an Ayurvedic botanical innovator?",
       "category": "COMPARATIVE",
       "user_jurisdiction": "GLOBAL",
-      "strict_pass": true,
-      "true_positive_pass": true,
-      "failure_reasons": [],
-      "crag_verdict": "PASS",
-      "top_rerank_score": 0.195,
+      "strict_pass": false,
+      "true_positive_pass": false,
+      "failure_reasons": [
+        "RAG status: INSUFFICIENT_EVIDENCE",
+        "CRAG verdict: FAIL (score: 0.1268)"
+      ],
+      "crag_verdict": "FAIL",
+      "top_rerank_score": 0.1268,
       "top_chunk_id": "GUIDE-WO-PCT-SCOPE-BOUNDARY",
       "retrieved_chunks": [
         "GUIDE-WO-PCT-SCOPE-BOUNDARY",
         "USA-CHK-0008-92394bf7",
         "STATUTE-WO-PCT-ART21-22",
-        "EUROPE-CHK-0002-3e9a21b4",
-        "STATUTE-WO-PCT-ART1-3"
+        "STATUTE-US-LANHAM-ACT-SEC2",
+        "STATUTE-EP-EPC-ART54-5"
       ],
-      "rag_status": "SUCCESS",
-      "citations_count": 5,
-      "latency_ms": 4870.333499995468
+      "rag_status": "INSUFFICIENT_EVIDENCE",
+      "citations_count": 0,
+      "latency_ms": 5446.446599999035
     },
     {
       "id": "GEN-01",
@@ -2709,7 +2708,7 @@
       "retrieved_chunks": [],
       "rag_status": "SKIPPED",
       "citations_count": 0,
-      "latency_ms": 0.07590000313939527
+      "latency_ms": 0.08859999798005447
     },
     {
       "id": "GEN-02",
@@ -2726,7 +2725,7 @@
       "retrieved_chunks": [],
       "rag_status": "SKIPPED",
       "citations_count": 0,
-      "latency_ms": 0.04289999924367294
+      "latency_ms": 0.03579999611247331
     },
     {
       "id": "GEN-03",
@@ -2743,7 +2742,7 @@
       "retrieved_chunks": [],
       "rag_status": "SKIPPED",
       "citations_count": 0,
-      "latency_ms": 0.057799996284302324
+      "latency_ms": 0.05759999476140365
     },
     {
       "id": "GEN-04",
@@ -2760,7 +2759,7 @@
       "retrieved_chunks": [],
       "rag_status": "SKIPPED",
       "citations_count": 0,
-      "latency_ms": 0.02970000059576705
+      "latency_ms": 0.032500000088475645
     },
     {
       "id": "GEN-05",
@@ -2777,7 +2776,7 @@
       "retrieved_chunks": [],
       "rag_status": "SKIPPED",
       "citations_count": 0,
-      "latency_ms": 0.07929999992484227
+      "latency_ms": 0.04890000127488747
     },
     {
       "id": "GEN-06",
@@ -2794,7 +2793,7 @@
       "retrieved_chunks": [],
       "rag_status": "SKIPPED",
       "citations_count": 0,
-      "latency_ms": 0.05220000457484275
+      "latency_ms": 0.04329999501351267
     },
     {
       "id": "ADV-01",
@@ -2806,18 +2805,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.3777,
-      "top_chunk_id": "IN_doc-tkdl-001_classical_formulatio_001_77c47ead",
+      "top_rerank_score": 0.6613,
+      "top_chunk_id": "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
       "retrieved_chunks": [
-        "IN_doc-tkdl-001_classical_formulatio_001_77c47ead",
-        "IN_doc-dcr-1945-rule158b_rule_158b_001_ad4e8f43",
         "IN_doc-india-code-patents-sec3e_section_3_e_001_ac8d41bd",
         "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
-        "IN_IN-COMM-AYURVEDA-D2C_mandatory_licensing_003_25a344f4"
+        "IN_IN-COMM-AYURVEDA-D2C_selling_ayurvedic_pr_002_8ed1e929",
+        "IN_doc-tkdl-001_classical_formulatio_001_77c47ead",
+        "IN_doc-dcr-1945-rule158b_rule_158b_001_ad4e8f43"
       ],
       "rag_status": "PARTIALLY_VALIDATED",
       "citations_count": 5,
-      "latency_ms": 2284.3924000044353
+      "latency_ms": 5007.517400001234
     },
     {
       "id": "ADV-02",
@@ -2829,18 +2828,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.9568,
+      "top_rerank_score": 0.956,
       "top_chunk_id": "GUIDE-EP-EPC-ART64-NATIONAL-EFFECT",
       "retrieved_chunks": [
         "GUIDE-EP-EPC-ART64-NATIONAL-EFFECT",
+        "STATUTE-EP-EPC-ART54-5",
         "EUROPE-CHK-0000-358ce342",
         "EUROPE-CHK-0002-63c08e6f",
-        "STATUTE-EP-EPC-ART53C",
-        "STATUTE-EP-EPC-ART83"
+        "STATUTE-EP-EPC-ART53C"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 1779.920900000434
+      "latency_ms": 3237.402300001122
     },
     {
       "id": "ADV-03",
@@ -2852,18 +2851,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.2277,
-      "top_chunk_id": "IN_IN-ACT-TM-AYUR-1999_trade_marks_rules_20_006_82fbaaa2",
+      "top_rerank_score": 0.1826,
+      "top_chunk_id": "IN_IN-ACT-TM-AYUR-1999_section_9___absolute_003_272220a1",
       "retrieved_chunks": [
-        "IN_IN-ACT-TM-AYUR-1999_trade_marks_rules_20_006_82fbaaa2",
         "IN_IN-ACT-TM-AYUR-1999_section_9___absolute_003_272220a1",
         "IN_IN-ACT-TM-AYUR-1999_section_13___prohibi_004_c58e8fcb",
-        "IN_doc-tkdl-002_classical_formulatio_001_b61300ef",
-        "IN_IN-TKDL-CASE-COMPENDIUM_case_1__revocation_o_002_2f677223"
+        "IN_IN-ACT-TM-AYUR-1999_trade_marks_rules_20_006_82fbaaa2",
+        "IN_IN-COMM-AYURVEDA-D2C_protecting_brand_equ_005_953cca88",
+        "IN_doc-tkdl-002_classical_formulatio_001_b61300ef"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 2366.6135000021313
+      "latency_ms": 4993.3297999959905
     },
     {
       "id": "ADV-04",
@@ -2875,21 +2874,21 @@
       "true_positive_pass": true,
       "failure_reasons": [
         "RAG status: INSUFFICIENT_EVIDENCE",
-        "CRAG verdict: FAIL (score: 0.0437)"
+        "CRAG verdict: FAIL (score: 0.0390)"
       ],
       "crag_verdict": "FAIL",
-      "top_rerank_score": 0.0437,
+      "top_rerank_score": 0.039,
       "top_chunk_id": "STATUTE-US-FDCA-201FF",
       "retrieved_chunks": [
         "STATUTE-US-FDCA-201FF",
-        "USA-CHK-0007-45499e40",
         "USA-CHK-0002-83e09de4",
-        "USA-CHK-0029-14a3cc90",
-        "USA-CHK-0005-0a5adacf"
+        "USA-CHK-0007-45499e40",
+        "USA-CHK-0005-0a5adacf",
+        "USA-CHK-0010-7aa2afaa"
       ],
       "rag_status": "INSUFFICIENT_EVIDENCE",
       "citations_count": 0,
-      "latency_ms": 18536.02079999837
+      "latency_ms": 5343.515300002764
     },
     {
       "id": "ADV-05",
@@ -2901,18 +2900,18 @@
       "true_positive_pass": true,
       "failure_reasons": [],
       "crag_verdict": "PASS",
-      "top_rerank_score": 0.1687,
+      "top_rerank_score": 0.2782,
       "top_chunk_id": "STATUTE-US-35USC-101",
       "retrieved_chunks": [
         "STATUTE-US-35USC-101",
         "STATUTE-US-35USC-103",
-        "USA-CHK-0004-578b0436",
         "USA-CHK-0007-eb77042d",
+        "USA-CHK-0004-578b0436",
         "USA-CHK-0005-39c4b080"
       ],
       "rag_status": "SUCCESS",
       "citations_count": 5,
-      "latency_ms": 4144.842800000333
+      "latency_ms": 5321.282500000962
     },
     {
       "id": "ADV-06",
@@ -2920,11 +2919,15 @@
       "query": "Can an applicant patent pure ground turmeric powder as an inventive wound healing ointment under Indian patent law?",
       "category": "ADVERSARIAL",
       "user_jurisdiction": "IN",
-      "strict_pass": true,
+      "strict_pass": false,
       "true_positive_pass": true,
-      "failure_reasons": [],
-      "crag_verdict": "PASS",
-      "top_rerank_score": 0.7829,
+      "failure_reasons": [
+        "RAG status: INSUFFICIENT_EVIDENCE",
+        "CRAG verdict: FAIL (score: 0.8752)",
+        "Missing expected keywords in answer/evidence"
+      ],
+      "crag_verdict": "FAIL",
+      "top_rerank_score": 0.8752,
       "top_chunk_id": "IN_IN-TKDL-CASE-COMPENDIUM_case_1__revocation_o_002_2f677223",
       "retrieved_chunks": [
         "IN_IN-TKDL-CASE-COMPENDIUM_case_1__revocation_o_002_2f677223",
@@ -2933,9 +2936,9 @@
         "IN_IN-GUIDELINE-PATENTS-TK_section_3_j____plant_006_72866060",
         "IN_doc-india-code-patents-sec3p_section_3_p_001_317e0468"
       ],
-      "rag_status": "SUCCESS",
-      "citations_count": 5,
-      "latency_ms": 2324.3490000022575
+      "rag_status": "INSUFFICIENT_EVIDENCE",
+      "citations_count": 0,
+      "latency_ms": 5015.040300000692
     },
     {
       "id": "UNSUP-01",
@@ -2952,7 +2955,7 @@
       "retrieved_chunks": [],
       "rag_status": "SKIPPED",
       "citations_count": 0,
-      "latency_ms": 0.08820000221021473
+      "latency_ms": 0.01809999957913533
     },
     {
       "id": "UNSUP-02",
@@ -2969,7 +2972,7 @@
       "retrieved_chunks": [],
       "rag_status": "SKIPPED",
       "citations_count": 0,
-      "latency_ms": 0.06209999992279336
+      "latency_ms": 0.014500001270789653
     },
     {
       "id": "UNSUP-03",
@@ -2986,7 +2989,7 @@
       "retrieved_chunks": [],
       "rag_status": "SKIPPED",
       "citations_count": 0,
-      "latency_ms": 0.008999995770864189
+      "latency_ms": 0.008199996955227107
     },
     {
       "id": "UNSUP-04",
@@ -3003,7 +3006,7 @@
       "retrieved_chunks": [],
       "rag_status": "SKIPPED",
       "citations_count": 0,
-      "latency_ms": 0.06540000322274864
+      "latency_ms": 0.006599999323952943
     },
     {
       "id": "UNSUP-05",
@@ -3020,7 +3023,7 @@
       "retrieved_chunks": [],
       "rag_status": "SKIPPED",
       "citations_count": 0,
-      "latency_ms": 0.013899996702093631
+      "latency_ms": 0.018699996871873736
     },
     {
       "id": "UNSUP-06",
@@ -3037,7 +3040,7 @@
       "retrieved_chunks": [],
       "rag_status": "SKIPPED",
       "citations_count": 0,
-      "latency_ms": 0.017700003809295595
+      "latency_ms": 0.02099999983329326
     }
   ]
 }

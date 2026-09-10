@@ -38,15 +38,17 @@ class RoutingDecision(BaseModel):
 
 
 UNINDEXED_JURISDICTIONS = {
-    "AU": ("Australia (TGA)", r"\b(australia|tga)\b"),
-    "BR": ("Brazil (ANVISA)", r"\b(brazil|brasil|anvisa)\b"),
-    "CN": ("China (NMPA / CNIPA)", r"\b(china|nmpa|cnipa)\b"),
-    "CA": ("Canada (Health Canada)", r"\b(canada|health canada)\b"),
-    "UK": ("United Kingdom (MHRA)", r"\b(united kingdom|uk|mhra|britain|england)\b"),
-    "GB": ("United Kingdom (MHRA)", r"\b(great britain|gb)\b"),
-    "RU": ("Russia (Rospatent)", r"\b(russia|rospatent)\b"),
-    "ZA": ("South Africa (SAHPRA)", r"\b(south africa|sahpra)\b"),
-    "NZ": ("New Zealand (Medsafe)", r"\b(new zealand|medsafe)\b"),
+    "AU": ("Australia (TGA / IP Australia)", r"\b(australia|australian|tga|ipaustralia)\b"),
+    "DE": ("Germany (DPMA / PatG)", r"\b(germany|german|deutschland|dpma|bundespatentgericht|patg)\b"),
+    "BR": ("Brazil (ANVISA / INPI)", r"\b(brazil|brasil|brazilian|anvisa|inpi)\b"),
+    "CN": ("China (NMPA / CNIPA)", r"\b(china|chinese|nmpa|cnipa|sipo)\b"),
+    "CA": ("Canada (Health Canada / CIPO)", r"\b(canada|canadian|health canada|cipo)\b"),
+    "UK": ("United Kingdom (MHRA / UKIPO)", r"\b(united kingdom|uk|mhra|britain|british|england|ukipo)\b"),
+    "GB": ("United Kingdom (MHRA / UKIPO)", r"\b(great britain|gb)\b"),
+    "RU": ("Russia (Rospatent)", r"\b(russia|russian|rospatent)\b"),
+    "ZA": ("South Africa (SAHPRA / CIPC)", r"\b(south africa|south african|sahpra|cipc)\b"),
+    "NZ": ("New Zealand (Medsafe / IPONZ)", r"\b(new zealand|new zealand's|medsafe|iponz)\b"),
+    "KR": ("South Korea (KIPO / MFDS)", r"\b(korea|korean|south korea|kipo|mfds)\b"),
 }
 
 RE_STATUTORY_ARTICLE = re.compile(

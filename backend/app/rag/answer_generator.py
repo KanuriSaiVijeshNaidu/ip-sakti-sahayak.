@@ -124,7 +124,14 @@ AYURLEXコーパスから検索された公報および法令データには、�
 - 法的権利の確認および出願手続きについては、上記公式特許情報プラットフォームまたは認定弁理士にご相談ください。"""
 
     else:
-        return f"""### ⚠️ Insufficient Verified Evidence in Corpus
+        return f"""Status: INSUFFICIENT_EVIDENCE
+Jurisdiction: {jurs_str}
+Question: {query}
+Why: {reason}
+Evidence: No sufficiently relevant verified source found.
+AYURLEX cannot provide a jurisdiction-specific legal answer without verified evidence.
+
+### ⚠️ Insufficient Verified Evidence in Corpus
 **Target Jurisdiction:** {jurs_str}
 
 The AYURLEX evidence corpus does not contain sufficient authoritative statutory or patent evidence to synthesize a conclusive answer to this inquiry without speculation.

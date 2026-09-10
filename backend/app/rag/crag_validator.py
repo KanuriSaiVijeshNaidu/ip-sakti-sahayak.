@@ -12,8 +12,9 @@ import re
 import logging
 from typing import List
 from backend.app.models.retrieval_schemas import EvidenceResult
-from backend.app.models.rag_schemas import CRAGAssessment
+from backend.app.models.rag_schemas import CRAGAssessment, EvidenceSupportDecision
 from backend.app.rag.config import rag_config
+from backend.app.rag.evidence_gate import evidence_compatibility_gate
 
 logger = logging.getLogger(__name__)
 
@@ -93,7 +94,39 @@ class CRAGValidator:
                 metadata_complete=metadata_complete,
                 duplicate_ratio=duplicate_ratio,
                 selected_evidence_ids=[],
+                evidence_support_decisions=[],
             )
+
+        # 3b. Evidence Compatibility Gate Check
+        gate_decisions: List[EvidenceSupportDecision] = []
+        compatible_chunks: List[EvidenceResult] = []
+        for e in usable_chunks:
+            dec = evidence_compatibility_gate.evaluate_candidate(
+                query=query,
+                target_jurisdictions=target_jurisdictions,
+                candidate=e,
+            )
+            gate_decisions.append(dec)
+            if dec.supported:
+                compatible_chunks.append(e)
+
+        if not compatible_chunks:
+            first_reason = gate_decisions[0].reason if gate_decisions else "Retrieved evidence fails evidence compatibility boundary."
+            return CRAGAssessment(
+                status="INSUFFICIENT",
+                confidence=0.10,
+                reason=first_reason,
+                evidence_count=len(evidence_results),
+                usable_evidence_count=0,
+                jurisdiction_match=all(d.jurisdiction_match for d in gate_decisions) if gate_decisions else True,
+                metadata_complete=metadata_complete,
+                duplicate_ratio=duplicate_ratio,
+                selected_evidence_ids=[],
+                evidence_support_decisions=gate_decisions,
+            )
+
+        usable_chunks = compatible_chunks
+        usable_count = len(usable_chunks)
 
         # 4. Authority Tier Assessment
         tier1_count = sum(1 for e in usable_chunks if getattr(e, "authority_tier", 1) == 1)
@@ -114,6 +147,7 @@ class CRAGValidator:
                 metadata_complete=metadata_complete,
                 duplicate_ratio=duplicate_ratio,
                 selected_evidence_ids=[],
+                evidence_support_decisions=gate_decisions,
             )
 
         # 5. Score Distribution & Relevance Assessment
@@ -145,6 +179,7 @@ class CRAGValidator:
                 metadata_complete=metadata_complete,
                 duplicate_ratio=duplicate_ratio,
                 selected_evidence_ids=[],
+                evidence_support_decisions=gate_decisions,
             )
 
         # The BGE-reranker-v2-m3 model natively computes cross-lingual semantic relevance across
@@ -163,6 +198,7 @@ class CRAGValidator:
                 metadata_complete=metadata_complete,
                 duplicate_ratio=duplicate_ratio,
                 selected_evidence_ids=[],
+                evidence_support_decisions=gate_decisions,
             )
 
         # 7. Check legal uncertainty / commercial guarantee queries
@@ -187,6 +223,7 @@ class CRAGValidator:
                 metadata_complete=metadata_complete,
                 duplicate_ratio=duplicate_ratio,
                 selected_evidence_ids=[e.chunk_id for e in usable_chunks],
+                evidence_support_decisions=gate_decisions,
             )
 
         # 8. Strict Sufficiency Gate Decision
@@ -210,6 +247,7 @@ class CRAGValidator:
             metadata_complete=metadata_complete,
             duplicate_ratio=round(duplicate_ratio, 2),
             selected_evidence_ids=[e.chunk_id for e in usable_chunks] if status != "INSUFFICIENT" else [],
+            evidence_support_decisions=gate_decisions,
         )
 
 

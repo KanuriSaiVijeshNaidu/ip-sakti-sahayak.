@@ -208,7 +208,7 @@ class StatutoryStore:
             import torch
             from sentence_transformers import SentenceTransformer
             dev = "cuda" if torch.cuda.is_available() else "cpu"
-            model = SentenceTransformer(retrieval_config.dense_model_name, device=dev)
+            model = SentenceTransformer(retrieval_config.embedding_model, device=dev)
             texts = [f"{a.get('title', '')}. {a.get('section', '')}. {a.get('text', '')}" for a in self.all_anchors]
             emb = model.encode(texts, normalize_embeddings=True, show_progress_bar=False)
             self.embeddings = np.asarray(emb, dtype=np.float32)

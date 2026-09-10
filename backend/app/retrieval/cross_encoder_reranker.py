@@ -1,4 +1,4 @@
-﻿"""
+"""
 backend/app/retrieval/cross_encoder_reranker.py
 ───────────────────────────────────────────────
 Multilingual cross-encoder reranker for Phase 5 retrieval pipeline.
@@ -90,8 +90,10 @@ class CrossEncoderReranker:
         for c in candidates:
             text = c.get("text", "")
             title = c.get("title", "")
-            passage = f"{title}\n{text}" if title else text
-            pairs.append((query, passage[:1000]))
+            section = c.get("section", "")
+            header = f"{title} - {section}".strip(" -") if (title or section) else ""
+            passage = f"{header}\n{text}" if header else text
+            pairs.append((query, passage[:2500]))
 
         batch_size = retrieval_config.reranker_batch_size
         try:

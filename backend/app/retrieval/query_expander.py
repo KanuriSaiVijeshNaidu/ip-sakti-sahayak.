@@ -217,6 +217,14 @@ LEGAL_EXPANSION_RULES = [
         ),
     },
     {
+        "pattern": r"\b(3\(d\)|section 3\(d\)|new forms?|known substances?|efficacy threshold|polymorphs?|derivatives?|therapeutic efficacy)\b",
+        "domain": "patents",
+        "expansion": (
+            "The Patents Act 1970 Section 3(d) mere discovery of a new form of a known substance "
+            "enhancement of the known efficacy therapeutic efficacy derivatives salts polymorphs metabolites"
+        ),
+    },
+    {
         "pattern": r"\b(gi|geographical indication|geographical indications|kashmir saffron|navara rice|புவியியல் குறியீடு|भौगोलिक उपदर्शन|భౌగోళిక సూచిక)\b",
         "domain": "gi",
         "expansion": (

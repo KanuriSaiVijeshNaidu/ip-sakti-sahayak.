@@ -204,6 +204,54 @@ class Phase7DecisionPipeline:
         )
         latencies["crag_ms"] = round((time.perf_counter() - t0) * 1000, 2)
 
+        # Circuit-breaker: Immediately abstain if evidence is insufficient or invalid
+        if crag.status in ["INSUFFICIENT", "INVALID"]:
+            total_ms = round((time.perf_counter() - t_start) * 1000, 2)
+            latencies["total_decision_pipeline_ms"] = total_ms
+            decision_jur = target_jurs[0] if target_jurs else "UNKNOWN"
+            return DecisionResponse(
+                query=raw_query,
+                decision=DecisionType.INSUFFICIENT_EVIDENCE,
+                why=(
+                    f"AYURLEX Evidence Boundary: {crag.reason} "
+                    f"Under our strict anti-hallucination policy ('no sufficient evidence = no substantive answer'), "
+                    f"AYURLEX returns INSUFFICIENT_EVIDENCE rather than speculating or substituting unrelated sources."
+                ),
+                patent_analysis=f"Retrieved evidence for {decision_jur} does not satisfy the Evidence Compatibility Gate: either no statutory section was matched or only non-authoritative invention disclosures were found.",
+                regulatory_analysis=f"No verified regulatory or statutory evidence for {decision_jur} was found supporting this inquiry.",
+                ip_fto_analysis="Freedom to operate or statutory rights cannot be determined without verified supporting evidence.",
+                conditions=[f"Obtain verified statutory or patent documentation directly from official {decision_jur} authorities or registries."],
+                required_next_steps=[f"Provide a specific granted patent or statutory section number, or consult licensed patent counsel in {decision_jur}."],
+                evidence=[],
+                confidence=DecisionConfidence.LOW,
+                query_intent=intent,
+                evidence_sufficiency=EvidenceSufficiency(
+                    evidence_sufficient=False,
+                    required_evidence_present=False,
+                    unresolved_material_conditions=[crag.reason],
+                    jurisdiction_valid=crag.jurisdiction_match,
+                    source_authority=1,
+                    missing_evidence_categories=["verified_statutory_evidence"],
+                    decision_reason_codes=["CRAG_INSUFFICIENT", "EVIDENCE_GATE_REJECTED"],
+                    patent_evidence_count=0,
+                    regulatory_evidence_count=0,
+                    fto_evidence_count=0,
+                    evidence_note=crag.reason,
+                ),
+                detected_language=detected_lang,
+                jurisdictions_searched=retrieval_resp.searched_jurisdictions,
+                origin_jurisdiction=intent.origin_country,
+                target_jurisdiction=decision_jur,
+                decision_jurisdiction=decision_jur,
+                origin_evidence=[],
+                target_evidence=[],
+                cross_jurisdiction_evidence=[],
+                evaluation_evidence=[],
+                crag_status=crag.status,
+                evaluation_only=evaluation_only,
+                latencies_ms=latencies,
+            )
+
         # ── 6. Evidence Selection ──────────────────────────────────────────────
         t0 = time.perf_counter()
         citations, llm_context = evidence_selector.select(

@@ -120,7 +120,7 @@ class ProductionRetrievalPipeline:
         statutory_candidates = statutory_store.search(
             query=query_analysis.normalized_query,
             jurisdictions=target_jurisdictions,
-            top_k=5,
+            top_k=10,
         )
         latencies["statutory_retrieval_ms"] = round((time.perf_counter() - t0) * 1000, 2)
         verify_jurisdiction_safety(statutory_candidates, target_jurisdictions, stage_name="Statutory Anchor Retrieval")
@@ -302,7 +302,7 @@ class ProductionRetrievalPipeline:
         statutory_candidates = statutory_store.search(
             query=query_analysis.normalized_query,
             jurisdictions=target_jurisdictions,
-            top_k=5,
+            top_k=10,
         )
         latencies["statutory_retrieval_ms"] = round((time.perf_counter() - t0) * 1000, 2)
 

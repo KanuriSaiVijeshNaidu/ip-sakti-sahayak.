@@ -119,17 +119,31 @@ def route_jurisdiction(query: str, explicit_override: Optional[str] = None) -> T
     if explicit_override:
         jur = explicit_override.strip().upper()
         if jur in retrieval_config.forbidden_jurisdictions:
-            raise ValueError(f"Jurisdiction '{jur}' is forbidden/deferred in Phase 5 active scope.")
+            return [jur], "unsupported_jurisdiction", f"Forbidden/quarantined jurisdiction requested: {jur}"
         if jur in retrieval_config.active_jurisdictions:
             return [jur], "explicit_single", f"Explicit override provided: {jur}"
         if jur == "GLOBAL":
             return list(retrieval_config.active_jurisdictions), "global", "Explicit GLOBAL override requested"
+        return [jur], "unsupported_jurisdiction", f"Unindexed jurisdiction requested: {jur}"
 
     q_lower = query.lower()
 
-    # Reject forbidden jurisdictions if explicitly queried
-    if any(w in q_lower for w in ["germany", "german patent", "dpma", "bundespatentgericht"]):
-        raise ValueError("Germany (DE) has been REMOVED from the active target jurisdictions.")
+    # Match unindexed / quarantined jurisdictions first
+    unindexed_patterns = {
+        "DE": r"\b(germany|german|deutschland|dpma|bundespatentgericht|patg)\b",
+        "AU": r"\b(australia|australian|tga|ipaustralia)\b",
+        "BR": r"\b(brazil|brasil|brazilian|anvisa|inpi)\b",
+        "CN": r"\b(china|chinese|nmpa|cnipa|sipo)\b",
+        "CA": r"\b(canada|canadian|health canada|cipo)\b",
+        "UK": r"\b(united kingdom|uk|mhra|britain|british|england|ukipo)\b",
+        "RU": r"\b(russia|russian|rospatent)\b",
+        "ZA": r"\b(south africa|south african|sahpra|cipc)\b",
+        "NZ": r"\b(new zealand|medsafe|iponz)\b",
+        "KR": r"\b(korea|korean|south korea|kipo|mfds)\b",
+    }
+    for u_code, u_pat in unindexed_patterns.items():
+        if re.search(u_pat, q_lower):
+            return [u_code], "unsupported_jurisdiction", f"Jurisdiction '{u_code}' is not indexed in the verified AYURLEX corpus."
 
     # Match jurisdiction keywords across all 5 languages
     has_in = bool(

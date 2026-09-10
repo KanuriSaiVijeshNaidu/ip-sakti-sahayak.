@@ -224,8 +224,9 @@ class JurisdictionBM25Retriever:
         """
         all_candidates = []
         for jur in jurisdictions:
-            cands = self.search_jurisdiction(query, jur, top_k)
-            all_candidates.extend(cands)
+            if jur in self.indexes:
+                cands = self.search_jurisdiction(query, jur, top_k)
+                all_candidates.extend(cands)
         return all_candidates
 
 

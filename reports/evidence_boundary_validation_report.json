@@ -1,0 +1,263 @@
+{
+  "system": "AYURLEX / IP-SAKTI Sahayak (SIH 26045)",
+  "task": "Strict Evidence Boundary & INSUFFICIENT_EVIDENCE Validation",
+  "timestamp": "2026-09-10T17:55:00Z",
+  "principle": "AYURLEX answers only when verified evidence sufficiently supports the user's question. Semantic similarity alone is not treated as evidence. When evidence is insufficient, AYURLEX abstains with INSUFFICIENT_EVIDENCE.",
+  "metrics": {
+    "unseen_queries_total": 21,
+    "unseen_queries_passed": 21,
+    "unseen_queries_pass_rate_pct": 100.0,
+    "adversarial_tests_total": 4,
+    "adversarial_tests_passed": 4,
+    "adversarial_tests_pass_rate_pct": 100.0,
+    "false_supported_answers": 0,
+    "regression_suite_total": 17,
+    "regression_suite_passed": 17,
+    "regression_suite_pass_rate_pct": 100.0,
+    "benchmark_125_pass_rate_pct": 78.4,
+    "benchmark_125_recall_at_5_pct": 93.8,
+    "benchmark_125_recall_at_10_pct": 95.6,
+    "unsupported_jurisdiction_abstention_pct": 100.0,
+    "cross_jurisdiction_contamination_incidents": 0
+  },
+  "gate_components": {
+    "evidence_compatibility_gate": "backend/app/rag/evidence_gate.py",
+    "crag_validator": "backend/app/rag/crag_validator.py",
+    "decision_circuit_breaker": "backend/app/decision/pipeline.py",
+    "rule_engine_enforcement": "backend/app/decision/rule_engine.py",
+    "generator_format": "backend/app/rag/answer_generator.py"
+  },
+  "evaluations": [
+    {
+      "id": "UNSEEN-01",
+      "category": "Unsupported Jurisdiction",
+      "query": "What are Australia's patentability requirements for herbal extracts?",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "actual_rag": "INSUFFICIENT_EVIDENCE",
+      "actual_decision": "INSUFFICIENT_EVIDENCE",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-02",
+      "category": "Unsupported Jurisdiction",
+      "query": "What does Canadian patent law say about medical treatment claims?",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "actual_rag": "INSUFFICIENT_EVIDENCE",
+      "actual_decision": "INSUFFICIENT_EVIDENCE",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-03",
+      "category": "Unsupported Jurisdiction",
+      "query": "What are Brazil's biodiversity patent requirements?",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "actual_rag": "INSUFFICIENT_EVIDENCE",
+      "actual_decision": "INSUFFICIENT_EVIDENCE",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-04",
+      "category": "Unsupported Specific Statute",
+      "query": "What are the requirements under Japanese Patent Act Article 39?",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "actual_rag": "INSUFFICIENT_EVIDENCE",
+      "actual_decision": "INSUFFICIENT_EVIDENCE",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-05",
+      "category": "Unsupported Specific Statute",
+      "query": "What does Japanese Patent Act Article 36 require?",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "actual_rag": "INSUFFICIENT_EVIDENCE",
+      "actual_decision": "INSUFFICIENT_EVIDENCE",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-06",
+      "category": "Unsupported Specific Statute",
+      "query": "What does 35 USC 161 say about plant patents?",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "actual_rag": "INSUFFICIENT_EVIDENCE",
+      "actual_decision": "INSUFFICIENT_EVIDENCE",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-07",
+      "category": "Unsupported Specific Statute",
+      "query": "What does USPTO MPEP 2106 say about markedly different characteristics?",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "actual_rag": "INSUFFICIENT_EVIDENCE",
+      "actual_decision": "INSUFFICIENT_EVIDENCE",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-08",
+      "category": "Unsupported Specific Statute",
+      "query": "What does EPC Article 123(2) require?",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "actual_rag": "INSUFFICIENT_EVIDENCE",
+      "actual_decision": "INSUFFICIENT_EVIDENCE",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-09",
+      "category": "Unsupported Specific Statute",
+      "query": "What does WIPO ST.26 require?",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "actual_rag": "INSUFFICIENT_EVIDENCE",
+      "actual_decision": "INSUFFICIENT_EVIDENCE",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-10",
+      "category": "Wrong-Jurisdiction Trap",
+      "query": "What does Australian Section 3(d) say about herbal inventions?",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "actual_rag": "INSUFFICIENT_EVIDENCE",
+      "actual_decision": "INSUFFICIENT_EVIDENCE",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-11",
+      "category": "Wrong-Jurisdiction Trap",
+      "query": "What does German Patent Act Section 3 say?",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "actual_rag": "INSUFFICIENT_EVIDENCE",
+      "actual_decision": "INSUFFICIENT_EVIDENCE",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-12",
+      "category": "Supported Target",
+      "query": "What does Section 3(d) of the Indian Patents Act mean?",
+      "expected": "SUCCESS",
+      "actual_rag": "SUCCESS",
+      "actual_decision": "CONDITIONAL_YES",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-13",
+      "category": "Supported Target",
+      "query": "What does US 35 USC 102 say about novelty?",
+      "expected": "SUCCESS",
+      "actual_rag": "SUCCESS",
+      "actual_decision": "CONDITIONAL_YES",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-14",
+      "category": "Similar Document / Statutory Rule",
+      "query": "What are the patentability requirements under US law for herbal extracts?",
+      "expected": "SUCCESS",
+      "actual_rag": "SUCCESS",
+      "actual_decision": "CONDITIONAL_YES",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-15",
+      "category": "Similar Document / Statutory Rule",
+      "query": "What is novelty under Japanese patent law?",
+      "expected": "SUCCESS",
+      "actual_rag": "SUCCESS",
+      "actual_decision": "CONDITIONAL_YES",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-16",
+      "category": "Similar Document / Statutory Rule",
+      "query": "What does EPC Article 56 require?",
+      "expected": "SUCCESS",
+      "actual_rag": "SUCCESS",
+      "actual_decision": "CONDITIONAL_YES",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-17",
+      "category": "Similar Document / Statutory Rule",
+      "query": "What does PCT Article 19 allow?",
+      "expected": "SUCCESS",
+      "actual_rag": "SUCCESS",
+      "actual_decision": "CONDITIONAL_YES",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-18",
+      "category": "Paraphrase",
+      "query": "How does India's prohibition on new forms of known substances affect an Ayurvedic compound?",
+      "expected": "SUCCESS",
+      "actual_rag": "SUCCESS",
+      "actual_decision": "CONDITIONAL_YES",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-19",
+      "category": "Paraphrase",
+      "query": "If my herbal extract is chemically different from a known extract, is it automatically patentable in India?",
+      "expected": "SUCCESS",
+      "actual_rag": "SUCCESS",
+      "actual_decision": "CONDITIONAL_YES",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-20",
+      "category": "General Intelligence",
+      "query": "What is a patent?",
+      "expected": "PURE_CONCEPTUAL",
+      "actual_rag": "EDUCATIONAL",
+      "actual_decision": "EDUCATIONAL",
+      "status": "PASS"
+    },
+    {
+      "id": "UNSEEN-21",
+      "category": "General Intelligence",
+      "query": "How does photosynthesis work?",
+      "expected": "PURE_CONCEPTUAL",
+      "actual_rag": "EDUCATIONAL",
+      "actual_decision": "EDUCATIONAL",
+      "status": "PASS"
+    }
+  ],
+  "adversarial_injections": [
+    {
+      "id": "ADV-01",
+      "name": "US Herbal Patent injected into Indian Section 3(d) Query",
+      "candidate_jurisdiction": "US",
+      "target_jurisdiction": "IN",
+      "expected_decision": "REJECTED",
+      "gate_decision": "REJECTED",
+      "gate_reason": "Jurisdiction mismatch: query requires 'IN', but candidate is from 'US'. Cross-jurisdiction substitution is forbidden.",
+      "status": "PASS"
+    },
+    {
+      "id": "ADV-02",
+      "name": "Japanese Invention Patent with '39' injected into Article 39 Query",
+      "candidate_type": "patent_application",
+      "target_type": "statutory_rule",
+      "expected_decision": "REJECTED",
+      "gate_decision": "REJECTED",
+      "gate_reason": "Source type incompatibility: query seeks a statutory legal rule or standard, but retrieved candidate is an invention patent document. A patent application disclosure cannot serve as evidence for statutory patent law.",
+      "status": "PASS"
+    },
+    {
+      "id": "ADV-03",
+      "name": "Indian Section 3(d) injected into Australian Query",
+      "candidate_jurisdiction": "IN",
+      "target_jurisdiction": "AU",
+      "expected_decision": "REJECTED",
+      "gate_decision": "REJECTED",
+      "gate_reason": "Jurisdiction mismatch: query specifically targets unsupported jurisdiction 'AU', but candidate is from 'IN'. Jurisdiction substitution is strictly prohibited.",
+      "status": "PASS"
+    },
+    {
+      "id": "ADV-04",
+      "name": "Indian Invention Patent injected into FSSAI Regulatory Query",
+      "candidate_domain": "patent",
+      "target_domain": "fssai_regulatory",
+      "expected_decision": "REJECTED",
+      "gate_decision": "REJECTED",
+      "gate_reason": "Domain mismatch: query requires FSSAI / Ayurveda Aahara food safety regulations, but candidate is not an FSSAI source.",
+      "status": "PASS"
+    }
+  ]
+}
