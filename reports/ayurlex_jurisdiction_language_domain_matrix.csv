@@ -1,0 +1,33 @@
+Jurisdiction_Code,Jurisdiction_Name,System_Type,Language,Domain,Status,Chunk_Count,Index_Store,Authority_Tier,Verification_Notes
+IN,India,National,en,patent_law,Fully Supported,137,FAISS + BM25,Tier 1,"Patents Act 1970 Sec 3p, 3e, 10(4)"
+IN,India,National,en,patent_prior_art,Fully Supported,137,FAISS + BM25,Tier 1,CGPDTM granted & published patents
+IN,India,National,hi,patent_law,Fully Supported,137,FAISS (Cross-Lingual),Tier 1,Query in Hindi routes to Indian statutory corpus
+IN,India,National,te,patent_law,Fully Supported,137,FAISS (Cross-Lingual),Tier 1,Query in Telugu routes to Indian statutory corpus
+IN,India,National,ta,patent_law,Fully Supported,137,FAISS (Cross-Lingual),Tier 1,Query in Tamil routes to Indian statutory corpus
+IN,India,National,en,trademarks,Fully Supported,137,FAISS + BM25,Tier 1,Trade Marks Act 1999 Sec 9 & 13 herbal names
+IN,India,National,en,geographical_indications,Fully Supported,137,FAISS + BM25,Tier 1,GI Act 1999 & registered botanical GIs
+IN,India,National,en,food_safety_fssai,Fully Supported,137,FAISS + BM25,Tier 1,FSSAI Ayurveda Aahara Regulations 2022
+IN,India,National,en,drugs_cosmetics_rules,Fully Supported,137,FAISS + BM25,Tier 1,D&C Rules 158B & Schedule T GMP
+IN,India,National,en,access_benefit_sharing,Fully Supported,137,FAISS + BM25,Tier 1,Biological Diversity Act 2002 Sec 6 NBA
+IN,India,National,en,traditional_knowledge,Fully Supported,137,FAISS + BM25,Tier 1,TKDL prior art defense & AFI/API formulations
+IN,India,National,sa,traditional_knowledge,Fully Supported,137,FAISS (Cross-Lingual),Tier 1,Sanskrit botanical & classical formulation terms
+IN,India,National,en,commercialization_d2c,Fully Supported,137,FAISS + BM25,Tier 1,Ayurvedic D2C licensing & compliance framework
+IN,India,National,en,export_compliance,Fully Supported,137,FAISS + BM25,Tier 1,WHO heavy metal tolerances & COPP export certification
+US,United States,National,en,patent_prior_art,Fully Supported,29003,FAISS + BM25,Tier 1,USPTO HUPD utility patents
+US,United States,National,en,patent_eligibility,Fully Supported,29003,FAISS + BM25,Tier 1,35 U.S.C. 101/102/103 Alice/Mayo framework
+US,United States,National,en,dietary_supplements,Fully Supported,47,Specialized Store,Tier 1,FDA DSHEA 1994 & cGMP 21 CFR 111
+US,United States,National,en,trademarks,Partially Supported,47,Specialized Store,Tier 2,Lanham Act botanical trademark guidelines
+JP,Japan,National,ja,patent_prior_art,Fully Supported,26041,FAISS + BM25,Tier 1,JPO Kokai Tokkyo Koho herbal patent claims
+JP,Japan,National,ja,patentability,Fully Supported,26041,FAISS + BM25,Tier 1,JPO Examination Guidelines Part III
+JP,Japan,National,ja,regulatory_ffc,Partially Supported,47,Specialized Store,Tier 2,CAA Foods with Function Claims (FFC)
+WO,WIPO / PCT,International,en,pct_applications,Fully Supported,13652,FAISS + BM25,Tier 1,WIPO PATENTSCOPE PCT applications A61K/A61P
+WO,WIPO / PCT,International,en,international_treaties,Fully Supported,47,Specialized Store,Tier 1,"WIPO Treaty on IP, Genetic Resources & TK 2024"
+EP,European Patent Office,Regional,en,patent_prior_art,Fully Supported,1912,FAISS + BM25,Tier 1,EPO European Patent Bulletin claims
+EP,European Patent Office,Regional,en,patentability_second_use,Fully Supported,1912,FAISS + BM25,Tier 1,EPC Article 54(5) & Article 56 inventive step
+EU,European Union,Regional,en,traditional_herbal_thmpd,Partially Supported,47,Specialized Store,Tier 1,Directive 2004/24/EC THMPD 30-year rule
+EU,European Union,Regional,en,food_supplements,Partially Supported,47,Specialized Store,Tier 1,Directive 2002/46/EC & EFSA health claims
+DE,Germany,National,de,statutory_amg,Partially Supported,15,German Store,Tier 1,Arzneimittelgesetz (AMG) §§ 39a-39d
+DE,Germany,National,de,patent_dpma,Partially Supported,15,German Store,Tier 2,DPMA German Patent Act & BfArM Monographs
+DE,Germany,National,de,trademarks_markeng,Partially Supported,15,German Store,Tier 2,Markengesetz (MarkenG) botanical exclusions
+AU,Australia (TGA),National,en,therapeutic_goods,Requires Live Official Search,0,None,N/A,TGA database not locally indexed; triggers abstention
+TKDL-RESTRICTED,TKDL Restricted Vault,National,en,confidential_tk,Requires Authorized Access,0,None,N/A,Protected under CSIR non-disclosure agreements

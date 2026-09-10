@@ -354,6 +354,43 @@ class DecisionRuleEngine:
                 "approval are required in each target destination."
             )
 
+        elif target == "IN":
+            q_lower = ((intent.product or "") + " " + (intent.intended_use or "")).lower()
+            text_corpus = " ".join((c.text + " " + (c.title or "")).lower() for c in citations[:3]) + " " + q_lower
+            if any(w in text_corpus for w in ["trademark", "trade mark", "section 13", "nice class", "brand", "mark"]):
+                return (
+                    "India (Trade Marks Registry / CGPDTM): Trademark protection is governed under the Trade Marks Act 1999. "
+                    "Section 13 prohibits registration of generic chemical element names and International Non-proprietary Names (INNs). "
+                    "Generic Ayurvedic terms cannot be monopolized as trademarks. Formulations are registered under Nice Class 5 "
+                    "(Pharmaceutical & Ayurvedic Preparations), Class 3 (Cosmetics), and Class 30 (Dietary/Herbal Supplements) "
+                    "provided distinctive brand identity is established."
+                )
+            elif any(w in text_corpus for w in ["fssai", "ayurveda aahara", "food safety", "dietary"]):
+                return (
+                    "India (FSSAI / Ministry of Health): Ayurvedic food products and supplements are regulated under the Food Safety "
+                    "and Standards (Ayurveda Aahara) Regulations, 2022. Products must display the mandatory Ayurveda Aahara logo, "
+                    "conform strictly to compositional and purity standards, and are prohibited from making medicinal disease-cure claims."
+                )
+            elif any(w in text_corpus for w in ["biodiversity", "nba", "biological diversity", "section 6", "abs"]):
+                return (
+                    "India (National Biodiversity Authority - NBA Chennai): Under Section 6 of the Biological Diversity Act 2002, "
+                    "prior approval from the NBA is mandatory before applying for any intellectual property right in India or abroad, "
+                    "or commercializing biological resources obtained from India."
+                )
+            elif any(w in text_corpus for w in ["rule 158b", "schedule t", "drugs and cosmetics", "asu", "licens"]):
+                return (
+                    "India (Ministry of AYUSH / State Licensing Authorities): Ayurvedic formulations are regulated under the Drugs and "
+                    "Cosmetics Act 1940 and Rules 1945. Classical formulations (First Schedule texts) are licensed under Rule 158B "
+                    "without clinical trial requirements; Proprietary ASU medicines require safety dossiers and clinical evidence. "
+                    "Manufacturing facilities must be certified under Schedule T Good Manufacturing Practices (GMP)."
+                )
+            else:
+                return (
+                    "India (Ministry of AYUSH & CGPDTM): Ayurvedic products are subject to dual scrutiny: statutory patent eligibility "
+                    "under Sections 3(p) and 3(e) of the Indian Patents Act 1970, and manufacturing licensing under the Drugs and "
+                    "Cosmetics Act 1940 (Rule 158B) or FSSAI (Ayurveda Aahara Regulations 2022)."
+                )
+
         return "Regulatory compliance must be independently established under applicable national laws."
 
     def _analyze_fto_risk(
@@ -513,7 +550,91 @@ class DecisionRuleEngine:
             ]
             return decision, why, conditions, next_steps, reason_codes
 
-        # ── Stage 5: Patentability Inquiry ─────────────────────────────────────
+        # ── Stage 5: Domain-Specific Assessment (IN Jurisdiction Priority) ─────
+        target = target_jurisdictions[0] if target_jurisdictions else "IN"
+        q_lower = ((intent.product or "") + " " + (intent.intended_use or "")).lower()
+        text_corpus = " ".join((c.text + " " + (c.title or "")).lower() for c in citations[:3]) + " " + q_lower
+
+        if target == "IN":
+            if any(w in text_corpus for w in ["trademark", "trade mark", "section 13", "nice class", "brand", "mark"]):
+                decision = DecisionType.CONDITIONAL_YES
+                reason_codes.append("TRADEMARK_STATUTORY_ASSESSMENT")
+                why = (
+                    "Under Section 13 and Section 9 of the Indian Trade Marks Act 1999, registration is prohibited for marks "
+                    "consisting exclusively of generic botanical names, INNs, or words commonly used in the Ayurvedic trade. "
+                    "Distinctive brand names and proprietary logos are registrable under Nice Class 5 (Ayurvedic Medicines), "
+                    "Class 3 (Herbal Cosmetics), and Class 30 (Dietary Supplements)."
+                )
+                conditions = [
+                    "Section 13 Compliance: Ensure the mark does not constitute a generic Ayurvedic plant name or INN.",
+                    "Distinctiveness: Demonstrate distinctive commercial brand identity or acquired secondary meaning in India.",
+                    "Nice Classification: File under Class 5 (medicinal formulations), Class 3 (topical/cosmetic), or Class 30 (food supplements).",
+                ]
+                next_steps = [
+                    "Conduct formal trademark search on the CGPDTM Trade Marks Registry public portal.",
+                    "File Form TM-A with CGPDTM specifying relevant Nice Classification classes.",
+                ]
+                return decision, why, conditions, next_steps, reason_codes
+
+            elif any(w in text_corpus for w in ["fssai", "ayurveda aahara", "food safety", "dietary"]):
+                decision = DecisionType.CONDITIONAL_YES
+                reason_codes.append("FSSAI_AYURVEDA_AAHARA_ASSESSMENT")
+                why = (
+                    "Under the Food Safety and Standards (Ayurveda Aahara) Regulations, 2022, foods prepared in accordance with "
+                    "authoritative Ayurvedic texts are regulated as Ayurveda Aahara. Commercial sale requires an FSSAI manufacturing license, "
+                    "compliance with heavy metal/microbial standards, and display of the Ayurveda Aahara logo."
+                )
+                conditions = [
+                    "Ayurveda Aahara Logo: Mandatory display of the official logo on all primary and secondary packaging.",
+                    "Claim Restrictions: Health and wellness claims only; therapeutic/disease-cure claims are strictly barred.",
+                    "Schedule Purity: Comply with heavy metal, pesticide residue, and microbial contamination limits.",
+                ]
+                next_steps = [
+                    "Obtain FSSAI Central/State License with Ayurveda Aahara category endorsement.",
+                    "Submit laboratory batch Certificate of Analysis (CoA) confirming purity standards.",
+                ]
+                return decision, why, conditions, next_steps, reason_codes
+
+            elif any(w in text_corpus for w in ["biodiversity", "nba", "biological diversity", "section 6", "abs"]):
+                decision = DecisionType.CONDITIONAL_YES
+                reason_codes.append("NBA_BIODIVERSITY_ASSESSMENT")
+                why = (
+                    "Under Section 6 of the Biological Diversity Act 2002, prior approval from the National Biodiversity Authority "
+                    "(NBA Chennai) is mandatory before applying for any intellectual property right in India or abroad, "
+                    "or commercializing biological resources obtained from India."
+                )
+                conditions = [
+                    "NBA Approval: Obtain formal Section 6 clearance from the National Biodiversity Authority (NBA Chennai).",
+                    "Benefit Sharing: Comply with Access and Benefit Sharing (ABS) agreements with State Biodiversity Boards.",
+                ]
+                next_steps = [
+                    "File Form 1 / Form III with the National Biodiversity Authority at Chennai.",
+                    "Ensure complete documentation of biological resource sourcing.",
+                ]
+                return decision, why, conditions, next_steps, reason_codes
+
+            elif intent.user_objective == UserObjective.PATENTABILITY or any(w in text_corpus for w in ["patent", "section 3(p)", "section 3(e)", "novelty"]):
+                decision = DecisionType.CONDITIONAL_YES
+                reason_codes.append("INDIAN_PATENT_STATUTORY_ASSESSMENT")
+                why = (
+                    "Patent eligibility in India is governed by Section 3(p) (traditional knowledge exclusion) and Section 3(e) "
+                    "(mere admixture without synergy) of the Patents Act 1970. Novel formulations require documented experimental "
+                    "proof of synergistic efficacy beyond the sum of individual herbs, along with NBA clearance under Section 6 of the BDA."
+                )
+                conditions = [
+                    "Section 3(e) Synergistic Proof: Provide empirical laboratory data (e.g. Combination Index < 1.0) demonstrating synergy.",
+                    "Section 3(p) Traditional Knowledge Clearance: Establish novel process, specific extract fractionation, or inventive step beyond TKDL references.",
+                    "NBA Approval: Obtain Section 6 clearance from National Biodiversity Authority.",
+                    "Geographical Origin Disclosure: Disclose source and geographical origin of biological material under Section 10(4)(ii)(D).",
+                ]
+                next_steps = [
+                    "Conduct pre-filing prior art clearance against CSIR-TKDL and global patent databases.",
+                    "File Form 1 / Form III with National Biodiversity Authority (NBA Chennai).",
+                    "File patent application at the Indian Patent Office (CGPDTM) with synergy evidence.",
+                ]
+                return decision, why, conditions, next_steps, reason_codes
+
+        # ── Stage 6: Generic Patentability Inquiry (Global) ───────────────────
         if intent.user_objective == UserObjective.PATENTABILITY:
             decision = DecisionType.CONDITIONAL_YES
             reason_codes.append("PATENTABILITY_ASSESSMENT")

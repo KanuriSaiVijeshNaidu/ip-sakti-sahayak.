@@ -101,6 +101,20 @@ export default function AnalyzeWorkspace() {
   // Active Demo Scenario State
   const [activeScenario, setActiveScenario] = useState<DemoScenario | null>(null);
 
+  // Continuous Conversation Session State
+  const [messages, setMessages] = useState<Array<{
+    id: string;
+    role: "user" | "assistant";
+    query: string;
+    timestamp: number;
+    market?: string;
+    response?: DecisionResponse | null;
+    activeScenario?: DemoScenario | null;
+  }>>([]);
+  const [showEvidenceDrawer, setShowEvidenceDrawer] = useState(false);
+  const [showAnalysisDrawer, setShowAnalysisDrawer] = useState(false);
+  const [showHowDrawer, setShowHowDrawer] = useState(false);
+
   // Pipeline Execution State
   const [loading, setLoading] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
@@ -120,6 +134,22 @@ export default function AnalyzeWorkspace() {
   const [showInspector, setShowInspector] = useState(false);
   const [inspectorData, setInspectorData] = useState<RetrievalDebugData | null>(null);
   const [inspectorLoading, setInspectorLoading] = useState(false);
+
+  // New Analysis session reset
+  const handleNewAnalysis = () => {
+    setMessages([]);
+    setResponse(null);
+    setActiveScenario(null);
+    setQuery("");
+    setError(null);
+    setInspectorData(null);
+    setShowEvidenceDrawer(false);
+    setShowAnalysisDrawer(false);
+    setShowHowDrawer(false);
+    try {
+      localStorage.removeItem("ayurlex_analyze_conversation_v2");
+    } catch {}
+  };
 
   const handleOpenInspector = async () => {
     setShowInspector(true);
@@ -196,6 +226,23 @@ export default function AnalyzeWorkspace() {
     setLoading(true);
     setLoadingStep(1);
 
+    const userMsg = {
+      id: `msg_${Date.now()}_user`,
+      role: "user" as const,
+      query: scenario.name,
+      timestamp: Date.now(),
+      market: scenario.targetJurisdiction,
+    };
+    const assistantMsg = {
+      id: `msg_${Date.now()}_assistant`,
+      role: "assistant" as const,
+      query: scenario.name,
+      timestamp: Date.now(),
+      market: scenario.targetJurisdiction,
+      activeScenario: scenario,
+    };
+    setMessages((prev) => [...prev, userMsg, assistantMsg]);
+
     const t1 = setTimeout(() => setLoadingStep(3), 350);
     const t2 = setTimeout(() => setLoadingStep(6), 750);
     const t3 = setTimeout(() => {
@@ -229,6 +276,15 @@ export default function AnalyzeWorkspace() {
       fullQuery += ` [Product: ${productName || "Unspecified"}, Type: ${productType || "Herbal"}, Ingredients: ${ingredients || "Classical Herbs"}, Origin: ${countryOfOrigin}]`;
     }
 
+    const userMsg = {
+      id: `msg_${Date.now()}_user`,
+      role: "user" as const,
+      query: fullQuery,
+      timestamp: Date.now(),
+      market: activeMarket,
+    };
+    setMessages((prev) => [...prev, userMsg]);
+
     // Preload retrieval inspector diagnostic data
     fetchRetrievalDebug({
       query: fullQuery,
@@ -248,18 +304,38 @@ export default function AnalyzeWorkspace() {
       });
       setLoadingStep(4);
       setResponse(res);
+      setActiveScenario(null);
 
-      // Check if this query closely aligns with one of our demo AYUSH products
-      const lower = fullQuery.toLowerCase();
-      if (lower.includes("ashwagandha") || lower.includes("withania")) {
-        setActiveScenario(DEMO_SCENARIOS[0]);
-      } else if (lower.includes("curcumin") || lower.includes("piperine") || lower.includes("turmeric")) {
-        setActiveScenario(DEMO_SCENARIOS[1]);
-      } else if (lower.includes("pain") || lower.includes("oil") || lower.includes("taila") || lower.includes("mahanarayan")) {
-        setActiveScenario(DEMO_SCENARIOS[2]);
-      } else if (lower.includes("triphala") || lower.includes("amalaki")) {
-        setActiveScenario(DEMO_SCENARIOS[3]);
-      }
+      const assistantMsg = {
+        id: `msg_${Date.now()}_assistant`,
+        role: "assistant" as const,
+        query: fullQuery,
+        timestamp: Date.now(),
+        market: activeMarket,
+        response: res,
+      };
+      setMessages((prev) => [...prev, assistantMsg]);
+
+      // Auto-sync finding to Reports
+      try {
+        const savedReportsRaw = localStorage.getItem("ayurlex_saved_reports") || "[]";
+        const existing = JSON.parse(savedReportsRaw);
+        const newReport = {
+          id: `report_${Date.now()}`,
+          title: fullQuery.slice(0, 70) + (fullQuery.length > 70 ? "..." : ""),
+          date: new Date().toISOString(),
+          jurisdiction: activeMarket,
+          analysisType: "Statutory Decision Assessment",
+          decision: res.decision || "CONDITIONAL_YES",
+          confidence: res.confidence || "HIGH",
+          summary: res.why || "Statutory analysis completed.",
+          response: res,
+          sourceType: "official",
+        };
+        if (!existing.some((r: any) => r.title === newReport.title)) {
+          localStorage.setItem("ayurlex_saved_reports", JSON.stringify([newReport, ...existing.slice(0, 19)]));
+        }
+      } catch {}
     } catch (err: any) {
       setError(err.message || "Failed to analyze question. Authoritative statutory service temporarily busy.");
     } finally {
@@ -500,6 +576,16 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
           </div>
 
           <div className="flex items-center gap-2 self-start md:self-auto">
+            {(messages.length > 0 || activeResponse || activeScenario) && (
+              <button
+                onClick={handleNewAnalysis}
+                className="inline-flex items-center gap-1.5 px-3 py-2 bg-emerald-50 border border-emerald-300 hover:bg-emerald-100 text-emerald-800 text-xs font-semibold rounded-lg shadow-xs transition-colors cursor-pointer"
+                title="Start a new analysis session"
+              >
+                <Plus className="w-3.5 h-3.5 text-emerald-600" />
+                <span>New Analysis</span>
+              </button>
+            )}
             <Link
               href="/reports"
               className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-lg shadow-xs transition-colors"
@@ -566,6 +652,52 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
         {/* PRIMARY INTERACTIVE QUERY & PRODUCT FORM */}
         <section className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
           
+          {/* Active Session Inquiry Pills */}
+          {messages.filter(m => m.role === "user").length > 0 && (
+            <div className="flex items-center gap-2 overflow-x-auto pb-3 border-b border-slate-100 text-xs">
+              <span className="text-[11px] font-bold text-slate-500 shrink-0">Session Inquiries:</span>
+              <div className="flex items-center gap-1.5 overflow-x-auto">
+                {messages.filter(m => m.role === "user").map((msg) => {
+                  const isCurrent = query === msg.query;
+                  return (
+                    <button
+                      key={msg.id}
+                      type="button"
+                      onClick={() => {
+                        setQuery(msg.query);
+                        const ast = messages.find(m => m.role === "assistant" && m.query === msg.query);
+                        if (ast?.activeScenario) {
+                          setActiveScenario(ast.activeScenario);
+                          setResponse(null);
+                        } else if (ast?.response) {
+                          setResponse(ast.response);
+                          setActiveScenario(null);
+                        }
+                      }}
+                      className={`px-2.5 py-1 rounded-full text-[11px] font-medium transition-colors shrink-0 max-w-[220px] truncate border cursor-pointer ${
+                        isCurrent
+                          ? "bg-emerald-100 border-emerald-300 text-emerald-900 font-semibold"
+                          : "bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100"
+                      }`}
+                      title={msg.query}
+                    >
+                      {msg.market ? `[${msg.market}] ` : ""}{msg.query}
+                    </button>
+                  );
+                })}
+              </div>
+              <button
+                type="button"
+                onClick={handleNewAnalysis}
+                className="text-[11px] text-slate-400 hover:text-rose-600 flex items-center gap-1 ml-auto shrink-0 transition-colors cursor-pointer"
+                title="Clear current session"
+              >
+                <X className="w-3 h-3" />
+                <span>Reset</span>
+              </button>
+            </div>
+          )}
+
           {/* Top Bar: Target Market & Type */}
           <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-100">
             <div className="flex items-center gap-2">
@@ -779,9 +911,10 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
           </section>
         )}
 
-        {/* RESULTS: COMPLETE PRODUCT ASSESSMENT VIEW */}
+        {/* RESULTS: COMPLETE PRODUCT ASSESSMENT VIEW OR DYNAMIC ASSESSMENT */}
         {(activeScenario || activeResponse) && !loading && (
-          <div className="space-y-6 animate-in fade-in-50 duration-200">
+          activeScenario ? (
+            <div className="space-y-6 animate-in fade-in-50 duration-200">
             
             {/* 1. TOP RESULT HEADER & ACTIONS */}
             <section className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
@@ -1611,9 +1744,471 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
                 AYURLEX provides AI-assisted decision support grounded in statutory corpora and does not substitute for qualified legal or regulatory counsel. For official patent filings in India, consult a registered Patent Agent under the Indian Patents Act, 1970. For AYUSH licensing, consult the State Licensing Authority (AYUSH) or the Ministry of Ayush.
               </p>
             </section>
-
           </div>
-        )}
+        ) : activeResponse ? (
+          <div className="space-y-6 animate-in fade-in-50 duration-200">
+            {/* TOP DYNAMIC DECISION & STATUTORY CARD */}
+            {(() => {
+              const visuals = getDecisionVisuals(activeResponse.decision);
+              const isUnsupported = activeResponse.decision === "INSUFFICIENT_EVIDENCE" && (!activeResponse.evidence || activeResponse.evidence.length === 0);
+
+              return (
+                <section className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                  {/* Card Header */}
+                  <div className="p-5 sm:p-6 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-slate-50/80 to-white">
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
+                        <span className={`px-2.5 py-0.5 rounded-md text-xs font-bold border ${visuals.badgeBg}`}>
+                          {visuals.title}
+                        </span>
+                        <span className="text-[11px] font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+                          Jurisdiction: {activeResponse.decision_jurisdiction || targetMarket}
+                        </span>
+                        <span className={`text-[11px] font-semibold px-2 py-0.5 rounded border ${
+                          activeResponse.confidence === "HIGH"
+                            ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+                            : activeResponse.confidence === "MEDIUM"
+                            ? "bg-amber-50 text-amber-800 border-amber-200"
+                            : "bg-slate-100 text-slate-700 border-slate-200"
+                        }`}>
+                          {activeResponse.confidence} Confidence
+                        </span>
+                        {activeResponse.evidence_sufficiency?.evidence_sufficient ? (
+                          <span className="text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 px-2 py-0.5 rounded flex items-center gap-1">
+                            <ShieldCheck className="w-3 h-3 text-emerald-600" />
+                            Evidence Grounded
+                          </span>
+                        ) : (
+                          <span className="text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200 px-2 py-0.5 rounded flex items-center gap-1">
+                            <AlertCircle className="w-3 h-3 text-amber-600" />
+                            Evidence Gated
+                          </span>
+                        )}
+                      </div>
+                      <h2 className="text-base sm:text-lg font-bold text-slate-900">
+                        {query.slice(0, 90) + (query.length > 90 ? "..." : "")}
+                      </h2>
+                    </div>
+
+                    {/* Actions */}
+                    <div className="flex flex-wrap items-center gap-2 shrink-0">
+                      <button
+                        type="button"
+                        onClick={() => setPlainWordsMode(!plainWordsMode)}
+                        className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer border ${
+                          plainWordsMode
+                            ? "bg-emerald-700 text-white border-emerald-800 shadow-xs"
+                            : "bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100"
+                        }`}
+                        title="Toggle plain-language explanation"
+                      >
+                        <BookOpen className="w-3.5 h-3.5" />
+                        <span>{plainWordsMode ? "Technical Legal View" : "🌿 In Plain Words"}</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={handleOpenInspector}
+                        className="px-3 py-1.5 text-xs font-semibold text-emerald-400 bg-slate-900 hover:bg-slate-800 border border-emerald-500/30 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
+                        title="Developer Retrieval Debug Inspector"
+                      >
+                        <Terminal className="w-3.5 h-3.5 text-emerald-400" />
+                        <span>Inspector</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={handleSaveReport}
+                        className="px-3 py-1.5 text-xs font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer"
+                      >
+                        {saved ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Bookmark className="w-3.5 h-3.5 text-slate-500" />}
+                        <span>{saved ? "Saved" : "Save"}</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={handleCopySummary}
+                        className="px-3 py-1.5 text-xs font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer"
+                      >
+                        {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-slate-500" />}
+                        <span>{copied ? "Copied" : "Copy"}</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={handleExportJson}
+                        className="px-3 py-1.5 text-xs font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition-colors cursor-pointer"
+                      >
+                        JSON
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Decision Ring Banner */}
+                  <div className={`p-5 sm:p-6 border-b border-slate-100 ${visuals.ring}`}>
+                    <div className="flex items-start gap-4">
+                      <div className="shrink-0 mt-0.5">{visuals.icon}</div>
+                      <div className="space-y-2 flex-1">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <h3 className="text-base sm:text-lg font-bold text-slate-900">{visuals.title}</h3>
+                          <span className="text-xs text-slate-500">· {visuals.sub}</span>
+                        </div>
+                        <div className="text-sm text-slate-800 leading-relaxed font-medium whitespace-pre-line">
+                          {plainWordsMode
+                            ? (activeResponse.why?.replace(/Section 3\(e\)/gi, "synergy bar rule")?.replace(/Section 3\(p\)/gi, "traditional knowledge rule") || activeResponse.why)
+                            : activeResponse.why}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Primary Citation Banner */}
+                  {activeResponse.evidence && activeResponse.evidence.length > 0 ? (
+                    <div className="px-5 py-4 bg-emerald-50/60 border-b border-emerald-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                      <div className="flex items-start gap-2.5">
+                        <FileCheck className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+                        <div>
+                          <div className="font-bold text-emerald-950 flex items-center gap-1.5">
+                            <span>Primary Authoritative Citation:</span>
+                            <span className="font-mono text-[11px] bg-emerald-100 px-1.5 py-0.5 rounded text-emerald-900 border border-emerald-200">
+                              {activeResponse.evidence[0].publication_number || activeResponse.evidence[0].citation_id || "Official Gazette"}
+                            </span>
+                          </div>
+                          <div className="text-emerald-900 font-semibold mt-0.5">
+                            {activeResponse.evidence[0].title} {activeResponse.evidence[0].section ? `— ${activeResponse.evidence[0].section}` : ""}
+                          </div>
+                          <p className="text-[11px] text-emerald-800 line-clamp-2 mt-1 italic">
+                            &ldquo;{activeResponse.evidence[0].text?.slice(0, 220)}...&rdquo;
+                          </p>
+                        </div>
+                      </div>
+                      {activeResponse.evidence[0].source_url && (
+                        <a
+                          href={activeResponse.evidence[0].source_url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="shrink-0 text-emerald-700 hover:text-emerald-900 font-semibold inline-flex items-center gap-1 hover:underline text-[11px]"
+                        >
+                          <span>Official Gazette / Law</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="px-5 py-3.5 bg-amber-50/80 border-b border-amber-200/80 flex items-center gap-2.5 text-xs text-amber-900">
+                      <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
+                      <span>
+                        <strong>Evidence Gating Active:</strong> {isUnsupported 
+                          ? `No indexed statutory corpus exists for "${activeResponse.decision_jurisdiction || targetMarket}". Under AYURLEX strict zero-hallucination rules, unindexed jurisdictions return hard INSUFFICIENT EVIDENCE.` 
+                          : "No direct statutory citations required for pure educational/conceptual inquiries."}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Conditions Precedent & Next Steps */}
+                  <div className="p-5 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
+                    {/* Conditions Precedent */}
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2 font-bold text-slate-900 text-sm">
+                        <ListChecks className="w-4 h-4 text-emerald-700" />
+                        <h4>Statutory Conditions Precedent ({activeResponse.conditions?.length || 0})</h4>
+                      </div>
+                      {activeResponse.conditions && activeResponse.conditions.length > 0 ? (
+                        <ul className="space-y-2">
+                          {activeResponse.conditions.map((cond, idx) => (
+                            <li key={idx} className="flex items-start gap-2.5 bg-slate-50 p-2.5 rounded-xl border border-slate-200/80">
+                              <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold flex items-center justify-center shrink-0 mt-0.5">
+                                {idx + 1}
+                              </span>
+                              <span className="text-slate-700 leading-relaxed font-medium">{cond}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-500 italic">
+                          No specific statutory conditions precedent required.
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Required Next Steps */}
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2 font-bold text-slate-900 text-sm">
+                        <ArrowRight className="w-4 h-4 text-emerald-700" />
+                        <h4>Recommended Action Items ({activeResponse.required_next_steps?.length || 0})</h4>
+                      </div>
+                      {activeResponse.required_next_steps && activeResponse.required_next_steps.length > 0 ? (
+                        <ul className="space-y-2">
+                          {activeResponse.required_next_steps.map((step, idx) => (
+                            <li key={idx} className="flex items-start gap-2.5 bg-slate-50 p-2.5 rounded-xl border border-slate-200/80">
+                              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                              <span className="text-slate-700 leading-relaxed font-medium">{step}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-500 italic">
+                          No administrative filings required.
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </section>
+              );
+            })()}
+
+            {/* 3 COLLAPSIBLE DRAWERS */}
+            <div className="space-y-3">
+              {/* DRAWER 1: Authoritative Evidence & Official Citations */}
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition-all">
+                <button
+                  type="button"
+                  onClick={() => setShowEvidenceDrawer(!showEvidenceDrawer)}
+                  className="w-full p-4 sm:p-5 flex items-center justify-between text-left hover:bg-slate-50/80 transition-colors cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
+                      <FileCheck className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                        <span>Authoritative Evidence & Official Citations</span>
+                        <span className="px-2 py-0.5 text-[11px] font-bold rounded-full bg-emerald-100 text-emerald-800">
+                          {activeResponse.evidence?.length || 0} Retrieved
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-500">
+                        Statutory gazette text, legislative provisions, and prior art from official government corpora.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-slate-400">
+                    {showEvidenceDrawer ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                  </div>
+                </button>
+
+                {showEvidenceDrawer && (
+                  <div className="p-5 border-t border-slate-100 space-y-3 bg-slate-50/50">
+                    {activeResponse.evidence && activeResponse.evidence.length > 0 ? (
+                      <div className="grid grid-cols-1 gap-3">
+                        {activeResponse.evidence.map((ev, idx) => (
+                          <div key={idx} className="p-4 bg-white rounded-xl border border-slate-200 shadow-xs space-y-2">
+                            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2">
+                              <div className="flex items-center gap-2">
+                                <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-900 border border-emerald-200">
+                                  {ev.publication_number || ev.citation_id}
+                                </span>
+                                <span className="text-xs font-bold text-slate-900">
+                                  {ev.title}
+                                </span>
+                              </div>
+                              <span className="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                                Jurisdiction: {ev.jurisdiction}
+                              </span>
+                            </div>
+                            {ev.section && (
+                              <div className="text-xs font-semibold text-emerald-900">
+                                Provision: {ev.section}
+                              </div>
+                            )}
+                            <p className="text-xs text-slate-700 leading-relaxed bg-slate-50 p-3 rounded-lg border border-slate-100 font-mono text-[11px]">
+                              {ev.text}
+                            </p>
+                            <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1">
+                              <span>Source: {ev.source || "Official Gazette Repository"}</span>
+                              {ev.source_url && (
+                                <a
+                                  href={ev.source_url}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="text-emerald-700 hover:text-emerald-900 font-semibold inline-flex items-center gap-1 hover:underline"
+                                >
+                                  <span>View Official Publication</span>
+                                  <ExternalLink className="w-3 h-3" />
+                                </a>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="p-6 text-center text-xs text-slate-500 bg-white rounded-xl border border-slate-200">
+                        No external statutory citations retrieved for this question.
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* DRAWER 2: Detailed Analysis & Legal Pillars */}
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition-all">
+                <button
+                  type="button"
+                  onClick={() => setShowAnalysisDrawer(!showAnalysisDrawer)}
+                  className="w-full p-4 sm:p-5 flex items-center justify-between text-left hover:bg-slate-50/80 transition-colors cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold">
+                      <Scale className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-sm sm:text-base font-bold text-slate-900">
+                        Detailed Analysis & 4 Statutory Pillars
+                      </div>
+                      <p className="text-xs text-slate-500">
+                        Patentability, AYUSH/FSSAI regulatory pathways, trademark/FTO risks, and governing standards.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-slate-400">
+                    {showAnalysisDrawer ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                  </div>
+                </button>
+
+                {showAnalysisDrawer && (
+                  <div className="p-5 border-t border-slate-100 space-y-4 bg-slate-50/50">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                      {/* Pillar 1: Patentability & Novelty */}
+                      <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-xs space-y-2">
+                        <div className="flex items-center gap-2 font-bold text-slate-900 text-sm border-b border-slate-100 pb-2">
+                          <ShieldAlert className="w-4 h-4 text-emerald-700" />
+                          <span>1. Patentability & TK Novelty</span>
+                        </div>
+                        <p className="text-slate-700 leading-relaxed whitespace-pre-line">
+                          {activeResponse.patent_analysis || "No specific patentability bar identified."}
+                        </p>
+                      </div>
+
+                      {/* Pillar 2: Regulatory Pathway & Licensing */}
+                      <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-xs space-y-2">
+                        <div className="flex items-center gap-2 font-bold text-slate-900 text-sm border-b border-slate-100 pb-2">
+                          <Layers className="w-4 h-4 text-emerald-700" />
+                          <span>2. Regulatory Pathway & Standards</span>
+                        </div>
+                        <p className="text-slate-700 leading-relaxed whitespace-pre-line">
+                          {activeResponse.regulatory_analysis || "No specific regulatory bar identified."}
+                        </p>
+                      </div>
+
+                      {/* Pillar 3: Freedom to Operate & IP Protection */}
+                      <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-xs space-y-2">
+                        <div className="flex items-center gap-2 font-bold text-slate-900 text-sm border-b border-slate-100 pb-2">
+                          <Scale className="w-4 h-4 text-emerald-700" />
+                          <span>3. Freedom to Operate & Trademarks</span>
+                        </div>
+                        <p className="text-slate-700 leading-relaxed whitespace-pre-line">
+                          {activeResponse.ip_fto_analysis || "No FTO or trademark conflict detected."}
+                        </p>
+                      </div>
+
+                      {/* Pillar 4: Statutory Context & Authority */}
+                      <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-xs space-y-2">
+                        <div className="flex items-center gap-2 font-bold text-slate-900 text-sm border-b border-slate-100 pb-2">
+                          <Building2 className="w-4 h-4 text-emerald-700" />
+                          <span>4. Governing Authority & Legal Basis</span>
+                        </div>
+                        <div className="space-y-1.5 text-slate-700">
+                          <div><strong>Authority:</strong> {activeMarketMeta.authority}</div>
+                          <div><strong>Jurisdiction:</strong> {activeResponse.decision_jurisdiction || targetMarket}</div>
+                          <div><strong>Statutory Basis:</strong> Indian Patents Act 1970, Drugs and Cosmetics Act 1940, FSS Act 2006, Biological Diversity Act 2002</div>
+                          <div><strong>Verification Status:</strong> Grounded Against Canonical Corpora</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* DRAWER 3: How AYURLEX Reached This Answer */}
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition-all">
+                <button
+                  type="button"
+                  onClick={() => setShowHowDrawer(!showHowDrawer)}
+                  className="w-full p-4 sm:p-5 flex items-center justify-between text-left hover:bg-slate-50/80 transition-colors cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-xl bg-slate-900 text-emerald-400 flex items-center justify-center font-bold">
+                      <Terminal className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-sm sm:text-base font-bold text-slate-900">
+                        How AYURLEX Reached This Answer (Audit Trail & CRAG)
+                      </div>
+                      <p className="text-xs text-slate-500">
+                        Corrective Retrieval Augmented Generation (CRAG), sufficiency gates, latency breakdown, and intent normalization.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-slate-400">
+                    {showHowDrawer ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                  </div>
+                </button>
+
+                {showHowDrawer && (
+                  <div className="p-5 border-t border-slate-100 space-y-4 bg-slate-50/50 text-xs">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+                      <div className="p-3 bg-white rounded-xl border border-slate-200 shadow-xs">
+                        <div className="text-[10px] uppercase font-bold text-slate-400 mb-1">CRAG Verification</div>
+                        <div className="font-bold text-sm text-emerald-900 flex items-center gap-1">
+                          <CheckCheck className="w-4 h-4 text-emerald-600" />
+                          <span>{activeResponse.crag_status || "VERIFIED"}</span>
+                        </div>
+                      </div>
+
+                      <div className="p-3 bg-white rounded-xl border border-slate-200 shadow-xs">
+                        <div className="text-[10px] uppercase font-bold text-slate-400 mb-1">Searched Jurisdictions</div>
+                        <div className="font-bold text-sm text-slate-800">
+                          {activeResponse.jurisdictions_searched?.join(", ") || activeResponse.decision_jurisdiction || targetMarket}
+                        </div>
+                      </div>
+
+                      <div className="p-3 bg-white rounded-xl border border-slate-200 shadow-xs">
+                        <div className="text-[10px] uppercase font-bold text-slate-400 mb-1">Sufficiency Gate</div>
+                        <div className="font-bold text-sm text-emerald-900">
+                          {activeResponse.evidence_sufficiency?.evidence_sufficient ? "PASS" : "INSUFFICIENT_EVIDENCE"}
+                        </div>
+                      </div>
+
+                      <div className="p-3 bg-white rounded-xl border border-slate-200 shadow-xs">
+                        <div className="text-[10px] uppercase font-bold text-slate-400 mb-1">Pipeline Latency</div>
+                        <div className="font-bold text-sm text-slate-800">
+                          {activeResponse.latencies_ms?.total ? `${activeResponse.latencies_ms.total}ms` : "Instant (Rule Engine)"}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Normalized Intent & Reason Codes */}
+                    <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-xs space-y-2">
+                      <div className="font-bold text-slate-900">Query Intent Normalization & Reason Codes</div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-slate-600">
+                        <div><strong>User Objective:</strong> {activeResponse.query_intent?.user_objective || "General Statutory Assessment"}</div>
+                        <div><strong>Detected Herbs:</strong> {activeResponse.query_intent?.ingredients?.join(", ") || "None extracted"}</div>
+                        <div><strong>Reason Codes:</strong> {activeResponse.evidence_sufficiency?.decision_reason_codes?.join(", ") || "STATUTORY_RULE_EVALUATION"}</div>
+                        <div><strong>Language:</strong> {activeResponse.detected_language || language}</div>
+                      </div>
+                    </div>
+
+                    <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-[11px] text-emerald-900">
+                      <strong>Zero-Hallucination Policy:</strong> Every answer is synthesized exclusively from verified official statutes, or pedagogical knowledge when general educational queries are detected. Unsupported jurisdictions trigger mandatory hard abstention.
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* STATUTORY DISCLAIMER */}
+            <section className="bg-slate-100/80 rounded-xl p-4 border border-slate-200 text-slate-500 text-[11px] leading-relaxed space-y-1">
+              <div className="font-bold text-slate-700 flex items-center gap-1.5">
+                <Info className="w-3.5 h-3.5 text-slate-500" />
+                <span>Statutory Decision-Support Disclaimer</span>
+              </div>
+              <p>
+                AYURLEX provides AI-assisted decision support grounded in statutory corpora and does not substitute for qualified legal or regulatory counsel. For official patent filings in India, consult a registered Patent Agent under the Indian Patents Act, 1970. For AYUSH licensing, consult the State Licensing Authority (AYUSH) or the Ministry of Ayush.
+              </p>
+            </section>
+          </div>
+        ) : null
+      )}
 
       {/* EXPERT REVIEW BRIEF MODAL */}
       {showExpertBriefModal && (

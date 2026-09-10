@@ -52,6 +52,9 @@ from backend.app.rag.evidence_selector import evidence_selector
 from backend.app.rag.claim_validator import claim_validator
 from backend.app.decision.intent_extractor import extract_intent
 from backend.app.decision.rule_engine import decision_rule_engine
+from backend.app.intelligence.router import intelligence_router, UNINDEXED_JURISDICTIONS
+from backend.app.intelligence.general_engine import general_intelligence_engine
+from backend.app.decision.alignment_validator import QuestionAnswerAlignmentValidator
 
 logger = logging.getLogger(__name__)
 
@@ -76,14 +79,109 @@ class Phase7DecisionPipeline:
         intent: QueryIntent = extract_intent(raw_query, explicit_jurisdiction=request.jurisdiction)
         latencies["intent_extraction_ms"] = round((time.perf_counter() - t0) * 1000, 2)
 
+        # ── 2b. AYURLEX Intelligence Routing & Jurisdiction Guards ─────────────
+        t0 = time.perf_counter()
+        routing = intelligence_router.route(raw_query, explicit_jurisdiction=request.jurisdiction)
+        latencies["intelligence_routing_ms"] = round((time.perf_counter() - t0) * 1000, 2)
+
+        # Case 1: Unsupported / Unindexed Jurisdictions (e.g. AU, BR, CN, CA) -> Strict Abstention
+        if routing.is_unsupported_jurisdiction:
+            jur_code = routing.unsupported_jurisdiction_code or (request.jurisdiction or "UNKNOWN").upper()
+            jur_name = UNINDEXED_JURISDICTIONS.get(jur_code, jur_code)
+            total_ms = round((time.perf_counter() - t_start) * 1000, 2)
+            latencies["total_decision_pipeline_ms"] = total_ms
+            return DecisionResponse(
+                query=raw_query,
+                decision=DecisionType.INSUFFICIENT_EVIDENCE,
+                why=(
+                    f"AYURLEX Evidence Boundary: Jurisdiction '{jur_name}' ({jur_code}) is not currently indexed in the verified AYURLEX corpus. "
+                    f"Authoritative statutory and patent databases are actively maintained for India (IN), United States (US), "
+                    f"European Patent Office (EP), WIPO/PCT (WO), and Japan (JP). "
+                    f"Under our zero-hallucination policy, we abstain with INSUFFICIENT EVIDENCE rather than delivering ungrounded clearance."
+                ),
+                patent_analysis=f"No verified patent register or prior art index is currently loaded for {jur_name}.",
+                regulatory_analysis=f"No regulatory health authority corpus (e.g. TGA/ANVISA/NMPA) is currently indexed for {jur_name}.",
+                ip_fto_analysis=f"Freedom-to-operate clearance cannot be evaluated for {jur_name} without indexed patent claims.",
+                conditions=[f"Obtain direct guidance from official statutory authorities or patent registries in {jur_name}."],
+                required_next_steps=[f"Consult a registered patent attorney and regulatory consultant licensed in {jur_name}."],
+                evidence=[],
+                confidence=DecisionConfidence.LOW,
+                query_intent=intent,
+                evidence_sufficiency=EvidenceSufficiency(
+                    evidence_sufficient=False,
+                    required_evidence_present=False,
+                    unresolved_material_conditions=[f"Jurisdiction '{jur_name}' is outside the verified active corpus."],
+                    jurisdiction_valid=False,
+                    source_authority=1,
+                    missing_evidence_categories=["jurisdiction_statutes", "patent_prior_art"],
+                    decision_reason_codes=["UNINDEXED_JURISDICTION", "INSUFFICIENT_EVIDENCE"],
+                    patent_evidence_count=0,
+                    regulatory_evidence_count=0,
+                    fto_evidence_count=0,
+                    evidence_note=f"No authoritative corpus indexed for {jur_name}.",
+                ),
+                detected_language=detected_lang,
+                jurisdictions_searched=[jur_code],
+                origin_jurisdiction=intent.origin_country,
+                target_jurisdiction=jur_code,
+                decision_jurisdiction=jur_code,
+                origin_evidence=[],
+                target_evidence=[],
+                cross_jurisdiction_evidence=[],
+                evaluation_evidence=[],
+                crag_status="INSUFFICIENT",
+                evaluation_only=False,
+                latencies_ms=latencies,
+            )
+
+        # Case 2: General Knowledge / Pedagogical (e.g. photosynthesis, what is prior art, RAG)
+        if routing.is_general_educational:
+            gen_ans = general_intelligence_engine.explain(raw_query)
+            total_ms = round((time.perf_counter() - t_start) * 1000, 2)
+            latencies["total_decision_pipeline_ms"] = total_ms
+            return DecisionResponse(
+                query=raw_query,
+                decision=DecisionType.YES,
+                why=gen_ans["content"],
+                patent_analysis=f"Conceptual & Educational Intelligence: {gen_ans['title']}. This pedagogical topic explains fundamental principles without triggering statutory patent exclusions.",
+                regulatory_analysis="Educational Concept: No national therapeutic regulatory filing is triggered.",
+                ip_fto_analysis=gen_ans["follow_up_hint"],
+                conditions=[],
+                required_next_steps=[gen_ans["follow_up_hint"]],
+                evidence=[],
+                confidence=DecisionConfidence.HIGH,
+                query_intent=intent,
+                evidence_sufficiency=EvidenceSufficiency(
+                    evidence_sufficient=True,
+                    required_evidence_present=True,
+                    unresolved_material_conditions=[],
+                    jurisdiction_valid=True,
+                    source_authority=5,
+                    missing_evidence_categories=[],
+                    decision_reason_codes=["GENERAL_INTELLIGENCE_CONCEPT"],
+                    patent_evidence_count=0,
+                    regulatory_evidence_count=0,
+                    fto_evidence_count=0,
+                    evidence_note="Concept grounded in verified scientific and educational foundations.",
+                ),
+                detected_language=detected_lang,
+                jurisdictions_searched=["GLOBAL_EDUCATIONAL"],
+                origin_jurisdiction=None,
+                target_jurisdiction="GLOBAL",
+                decision_jurisdiction="GLOBAL",
+                origin_evidence=[],
+                target_evidence=[],
+                cross_jurisdiction_evidence=[],
+                evaluation_evidence=[],
+                crag_status="GOOD",
+                evaluation_only=False,
+                latencies_ms=latencies,
+            )
+
         # ── 3. Origin & Target Jurisdiction Routing ────────────────────────────
         t0 = time.perf_counter()
         target_jurs, evaluation_only = self._route_jurisdictions(intent, request.jurisdiction, raw_query)
         latencies["jurisdiction_routing_ms"] = round((time.perf_counter() - t0) * 1000, 2)
-
-        # ── Handle India Evaluation-Only Query ────────────────────────────────
-        if evaluation_only:
-            return self._execute_india_evaluation(request, intent, detected_lang, t_start, latencies)
 
         # ── 4. Jurisdiction-Safe Retrieval (Phase 5) ───────────────────────────
         t0 = time.perf_counter()
@@ -208,6 +306,20 @@ class Phase7DecisionPipeline:
             target_evidence_note = f"Authoritative target evidence from {decision_jur} evaluated for commercialization decision."
         else:
             target_evidence_note = f"Insufficient evidence for {decision_jur} commercialization assessment."
+
+        # ── 10. Question-Answer Alignment Verification ────────────────────────
+        alignment = QuestionAnswerAlignmentValidator().validate_alignment(
+            query=raw_query,
+            answer_text=f"{explanation_blocks['why']} {explanation_blocks['regulatory_analysis']}",
+            target_jurisdiction=decision_jur,
+            domain=intent.user_objective.value if hasattr(intent.user_objective, "value") else str(intent.user_objective),
+            citations=citations,
+        )
+        if not alignment.is_aligned:
+            logger.warning(
+                "Question-Answer Alignment Alert: %s (score=%.2f)",
+                alignment.mismatch_details, alignment.alignment_score
+            )
 
         logger.info(
             "Phase 7 Decision complete: query='%s', decision='%s', confidence='%s', origin=%s, target=%s, decision_jur=%s, total_ms=%.2f",
@@ -361,15 +473,14 @@ class Phase7DecisionPipeline:
         ):
             raise ValueError("Germany (DE) has been REMOVED from the active production jurisdictions.")
 
-        # Check for India evaluation-only inquiry
+        # Check for India inquiry
         is_india_query = (
             (explicit_jurisdiction and explicit_jurisdiction.upper() == "IN")
             or (intent.target_country and intent.target_country.upper() == "IN")
             or ("india" in q_lower or "cgpdtm" in q_lower or "inpass" in q_lower or "ipo" in q_lower)
         )
         if is_india_query and (not intent.is_commercialization_question or intent.target_country in (None, "IN")):
-            # India is evaluation-only
-            return ["IN"], True
+            return ["IN"], False
 
         # Commercialization priority: TARGET country takes precedence
         if intent.target_country and intent.target_country.upper() in retrieval_config.active_jurisdictions:
@@ -378,7 +489,7 @@ class Phase7DecisionPipeline:
         if explicit_jurisdiction and explicit_jurisdiction.upper() in retrieval_config.active_jurisdictions:
             return [explicit_jurisdiction.upper()], False
 
-        # Default: Global active production jurisdictions (US, EP, WO, JP)
+        # Default: Global active production jurisdictions (IN, US, EP, WO, JP)
         return list(retrieval_config.active_jurisdictions), False
 
     def _format_multilingual_explanation(

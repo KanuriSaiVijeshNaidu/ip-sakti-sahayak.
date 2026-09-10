@@ -1,0 +1,163 @@
+{
+  "metadata": {
+    "title": "AYURLEX / IP-SAKTI Sahayak \u2014 Complete Data Universe Inventory & Audit",
+    "audit_date": "2026-09-09 23:59:42",
+    "system_version": "V2.0-Production",
+    "problem_statement": "SIH 26045",
+    "total_production_indexed_chunks": 70745,
+    "total_production_vectors": 70745,
+    "dense_embedding_model": "BAAI/bge-m3 (1024 dimensions, multilingual)",
+    "lexical_index": "BM25 Okapi with jurisdiction partitioning (jurisdiction_bm25_cache_v2.pkl)",
+    "reranker": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+  },
+  "production_indexes": {
+    "US": {
+      "system_type": "National",
+      "jurisdiction_name": "United States (USPTO)",
+      "corpus_origin": "Harvard USPTO Dataset (HUPD) - Ayurvedic, botanical, herbal, and pharmaceutical patents",
+      "indexed_chunks": 29003,
+      "faiss_index": "data/indexes/faiss/us_flatip.faiss (113.3 MB)",
+      "bm25_partition": "data/indexes/bm25/jurisdiction_bm25_cache_v2.pkl (key: US)",
+      "languages": [
+        "en"
+      ],
+      "status": "Fully Supported",
+      "coverage_description": "USPTO utility patents covering herbal extracts, synthetic derivatives, therapeutic methods, formulation processes, and medicinal plant applications."
+    },
+    "JP": {
+      "system_type": "National",
+      "jurisdiction_name": "Japan (JPO)",
+      "corpus_origin": "LLM-jp Patent Corpus - JPO published patent applications (Kokai Tokkyo Koho) in herbal and botanical formulations",
+      "indexed_chunks": 26041,
+      "faiss_index": "data/indexes/faiss/jp_flatip.faiss (101.7 MB)",
+      "bm25_partition": "data/indexes/bm25/jurisdiction_bm25_cache_v2.pkl (key: JP)",
+      "languages": [
+        "ja"
+      ],
+      "status": "Fully Supported",
+      "coverage_description": "JPO patent claims and descriptions in native Japanese for botanical compositions, herbal medicines (Kampo & Ayurvedic), extraction techniques, and health foods."
+    },
+    "WO": {
+      "system_type": "International",
+      "jurisdiction_name": "WIPO / PCT (Patentscope)",
+      "corpus_origin": "WIPO PATENTSCOPE PCT International Applications in A61K/A61P botanical, herbal, and natural product classes",
+      "indexed_chunks": 13652,
+      "faiss_index": "data/indexes/faiss/wo_flatip.faiss (53.3 MB)",
+      "bm25_partition": "data/indexes/bm25/jurisdiction_bm25_cache_v2.pkl (key: WO)",
+      "languages": [
+        "en"
+      ],
+      "status": "Fully Supported",
+      "coverage_description": "PCT International patent applications covering global cross-border filings, international search reports, and priority claims in natural medicinal products."
+    },
+    "EP": {
+      "system_type": "Regional",
+      "jurisdiction_name": "European Patent Convention (EPO)",
+      "corpus_origin": "EPO European Patent Bulletin / Claims corpus covering EP applications in phytomedicines and pharmaceutical compositions",
+      "indexed_chunks": 1912,
+      "faiss_index": "data/indexes/faiss/ep_flatip.faiss (7.5 MB)",
+      "bm25_partition": "data/indexes/bm25/jurisdiction_bm25_cache_v2.pkl (key: EP)",
+      "languages": [
+        "en"
+      ],
+      "status": "Fully Supported",
+      "coverage_description": "EPO European patent applications and claims evaluated under EPC Article 54 (novelty), Article 56 (inventive step), and Article 54(5) second medical use."
+    },
+    "IN": {
+      "system_type": "National",
+      "jurisdiction_name": "India (CGPDTM / Statutory / Treatises)",
+      "corpus_origin": "Multi-source canonical Indian corpus: CGPDTM Patents, API Monographs, AFI Classical Formulations, Patents Act 1970 (Sec 3p/3e/10.4), TM Act 1999 (Sec 13), GI Act 1999, FSSAI Ayurveda Aahara 2022, D&C Rules 158B/Sched T, BDA 2002 (Sec 6), WHO Benchmarks, and Ayurvedic D2C commercialization standards",
+      "indexed_chunks": 137,
+      "faiss_index": "data/indexes/faiss/in_flatip.faiss (0.5 MB)",
+      "bm25_partition": "data/indexes/bm25/jurisdiction_bm25_cache_v2.pkl (key: IN)",
+      "languages": [
+        "en",
+        "hi",
+        "te",
+        "ta",
+        "sa"
+      ],
+      "status": "Fully Supported",
+      "coverage_description": "Comprehensive Indian statutory, prior art, classical formulation, and regulatory database enabling multi-domain IP analysis and full cross-lingual retrieval."
+    }
+  },
+  "specialized_datasets": {
+    "international_chunks": {
+      "path": "data/chunks/international/chunks.jsonl",
+      "count": 47,
+      "jurisdictions": [
+        "US",
+        "EU",
+        "DE",
+        "WO"
+      ],
+      "domains": [
+        "statutory",
+        "regulatory",
+        "patents",
+        "trademarks",
+        "abs"
+      ],
+      "status": "Indexed & Available in Specialized Store"
+    },
+    "germany_chunks": {
+      "path": "data/germany/chunks/chunks.jsonl",
+      "count": 15,
+      "jurisdictions": [
+        "DE"
+      ],
+      "languages": [
+        "de"
+      ],
+      "domains": [
+        "dpma_patents",
+        "amg_pharma_law",
+        "markeng_trademark",
+        "bfarm_monographs",
+        "nagoya_abs"
+      ],
+      "status": "Partially Supported / Dedicated German Pipeline"
+    },
+    "general_chunks": {
+      "path": "data/chunks/chunks.jsonl",
+      "count": 108,
+      "jurisdictions": [
+        "IN",
+        "US",
+        "EU",
+        "DE",
+        "WO"
+      ],
+      "domains": [
+        "patents",
+        "trademarks",
+        "gi",
+        "fssai",
+        "dcr",
+        "abs",
+        "tk",
+        "d2c",
+        "who"
+      ],
+      "status": "Fully Integrated Primary Knowledge Chunks"
+    },
+    "raw_statutory_corpus": {
+      "path": "data/raw/",
+      "total_files": 26,
+      "subdirectories": 19,
+      "format": "UTF-8 plaintext and Markdown",
+      "status": "Fully Processed & Chunked into Production Vectors"
+    },
+    "docling_parsed_documents": {
+      "path": "data/docling/",
+      "total_files": 38,
+      "status": "Parsed Structural JSON and Cleaned Markdown"
+    },
+    "quarantined_records": {
+      "path": "data/quarantine/",
+      "total_files": 17,
+      "description": "Unverified or incomplete raw patent records (5 German DPMA patents, 10 Indian filings with missing claims, 2 malformed WIPO records) isolated to prevent hallucination",
+      "status": "Quarantined (Excluded from Live Production Retrieval)"
+    }
+  }
+}
