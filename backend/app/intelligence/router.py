@@ -34,6 +34,8 @@ class RoutingDecision(BaseModel):
     is_general_educational: bool = False
     is_unsupported_jurisdiction: bool = False
     unsupported_jurisdiction_code: Optional[str] = None
+    is_out_of_domain: bool = False
+    domain_reason_code: Optional[str] = None
     reasoning: str
 
 
@@ -114,6 +116,24 @@ class IntelligenceRouter:
     ) -> RoutingDecision:
         q_raw = query.strip()
         q_lower = q_raw.lower()
+
+        # ── 0. Strict Domain Boundary Validation ───────────────────────────────
+        from backend.app.intelligence.domain_guard import validate_domain
+        domain_check = validate_domain(q_raw)
+        if not domain_check.is_domain_valid:
+            return RoutingDecision(
+                category=QueryCategory.GENERAL_KNOWLEDGE,
+                confidence=1.0,
+                detected_intent="out_of_domain",
+                target_jurisdiction=None,
+                target_domain=None,
+                requires_rag=False,
+                requires_evidence_gate=False,
+                is_general_educational=False,
+                is_out_of_domain=True,
+                domain_reason_code=domain_check.reason_code,
+                reasoning=domain_check.explanation,
+            )
 
         # ── 1. Check for Unsupported Jurisdictions ─────────────────────────────
         target_jur = (explicit_jurisdiction or "").strip().upper()

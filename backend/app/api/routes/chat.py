@@ -49,6 +49,28 @@ async def chat(request: ChatRequest) -> ChatResponse:
     if not query:
         raise HTTPException(status_code=400, detail="Query cannot be empty.")
 
+    # ── 0. Strict Domain Boundary Validation ──────────────────────────────────
+    from backend.app.intelligence.domain_guard import validate_domain
+    domain_check = validate_domain(query)
+    if not domain_check.is_domain_valid:
+        from backend.app.rag.answer_generator import format_insufficient_evidence
+        insufficient_msg = format_insufficient_evidence(
+            lang=request.language or "en",
+            jurs=[request.jurisdiction or "IN"],
+            reason="Insufficient data. This question is outside the scope of the available Intellectual Property, Ayurveda, and regulatory sources.",
+            query=query,
+        )
+        total_ms = int((time.perf_counter() - t0) * 1000)
+        return ChatResponse(
+            answer=insufficient_msg,
+            cited_passages=[],
+            model_used="ayurlex-domain-guard",
+            retrieval_latency_ms=0,
+            llm_latency_ms=0,
+            total_latency_ms=total_ms,
+            corpus_version=request.corpus_version or "v1",
+        )
+
     # ── 1. Ensure indexes are ready ───────────────────────────────────────────
     if not bm25_retriever.is_built():
         logger.warning("BM25 not built at request time — building now.")

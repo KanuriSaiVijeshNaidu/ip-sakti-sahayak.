@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { DecisionResponse, QueryIntent } from "@/types";
 import { localizeDecision } from "@/lib/localizeDecision";
+import { validateDomain } from "@/lib/domainGuard";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -43,6 +44,63 @@ export async function POST(req: Request) {
     }
 
     const qLower = rawQuery.toLowerCase();
+
+    // ── 0. Strict Domain Boundary Validation (AYURLEX Scope Shield) ──────────
+    const domainCheck = validateDomain(rawQuery);
+    if (!domainCheck.isDomainValid) {
+      const outOfDomainResponse: DecisionResponse = {
+        query: rawQuery,
+        decision: "INSUFFICIENT_EVIDENCE",
+        why: "Insufficient data. This question is outside the scope of the available Intellectual Property, Ayurveda, and regulatory sources.",
+        patent_analysis: "The inquiry does not concern patentable subject matter, prior art, or intellectual property regimes.",
+        regulatory_analysis: "No therapeutic, dietary, or health authority regulatory framework applies to this inquiry.",
+        ip_fto_analysis: "Freedom-to-operate clearance cannot be evaluated for non-IP and out-of-domain questions.",
+        conditions: [],
+        required_next_steps: [],
+        evidence: [],
+        confidence: "LOW",
+        query_intent: {
+          origin_country: undefined,
+          target_country: undefined,
+          product: "Out of Domain Query",
+          ingredients: [],
+          health_claims: [],
+          user_objective: "general",
+          is_commercialization_question: false,
+          is_fto_question: false,
+          requires_target_jurisdiction_routing: false,
+        },
+        evidence_sufficiency: {
+          evidence_sufficient: false,
+          required_evidence_present: false,
+          unresolved_material_conditions: [
+            "Query falls outside the indexed Intellectual Property, Ayurveda, and regulatory scope."
+          ],
+          jurisdiction_valid: false,
+          source_authority: 0,
+          missing_evidence_categories: ["in_domain_statutes", "in_domain_prior_art"],
+          decision_reason_codes: ["OUT_OF_DOMAIN", "INSUFFICIENT_EVIDENCE", domainCheck.reasonCode],
+          patent_evidence_count: 0,
+          regulatory_evidence_count: 0,
+          fto_evidence_count: 0,
+          evidence_note: "Query rejected by Domain Boundary Validator.",
+        },
+        detected_language: language,
+        jurisdictions_searched: [],
+        decision_jurisdiction: "GLOBAL",
+        origin_jurisdiction: undefined,
+        target_jurisdiction: "GLOBAL",
+        origin_evidence: [],
+        target_evidence: [],
+        cross_jurisdiction_evidence: [],
+        evaluation_evidence: [],
+        crag_status: "INSUFFICIENT",
+        evaluation_only: false,
+        latencies_ms: { total_decision_pipeline_ms: 1 },
+        disclaimer: "AYURLEX provides statutory intelligence and decision assistance. Not legal advice.",
+      };
+      return jsonResponse(localizeDecision(outOfDomainResponse, language as any) || outOfDomainResponse);
+    }
 
     // ── 1. Jurisdiction Safety Guardrail: Reject Germany (DE) ─────────────────
     if (
@@ -128,7 +186,7 @@ export async function POST(req: Request) {
     }
 
     // ── 1c. General Educational & Conceptual Queries ──────────────────────────
-    const isConcreteApplication = /my product|this product|formulation|extract|can i patent|can i sell|sell|export|market|infringe|infringement|ashwagandha|curcumin|piperine|triphala|brahmi|churna|taila|capsule|tablet|syrup|in india|in usa|in japan|in europe|under pmd|under section/i.test(rawQuery);
+    const isConcreteApplication = /my product|this product|formulation|extract|can i patent|can i sell|sell|export|market|infringe|infringement|ashwagandha|curcumin|piperine|triphala|brahmi|churna|taila|capsule|tablet|syrup|in india|in usa|in japan|in europe|under pmd|under section|section 3|schedule t|rule 158b|gi act|copyright|ppvfr|dus|itra|plant variety/i.test(rawQuery);
 
     const conversationHistory: Array<{ role: string; content: string }> = Array.isArray(body.conversation_history)
       ? body.conversation_history
@@ -151,22 +209,18 @@ export async function POST(req: Request) {
 
     const isGeneralConceptual = !isConcreteApplication && (
       qLower.includes("photosynthesis") ||
-      qLower.startsWith("what is") ||
-      qLower.startsWith("explain") ||
-      qLower.startsWith("how does") ||
-      qLower.startsWith("how is") ||
-      qLower.startsWith("define") ||
-      qLower.startsWith("tell me about") ||
+      qLower.includes("प्रकाश संश्लेषण") ||
+      qLower.includes("光合成") ||
+      qLower.includes("కిరణజన్య") ||
+      qLower.includes("ஒளிச்சேர்க்கை") ||
       isComparison ||
       isExampleRequest ||
-      qLower.includes("क्या है") ||
-      qLower.includes("पेटेंट") ||
-      qLower.includes("特許") ||
-      qLower.includes("とは何ですか") ||
-      qLower.includes("అంటే ఏమిటి") ||
-      qLower.includes("పేటెంట్") ||
-      qLower.includes("என்றால் என்ன") ||
-      qLower.includes("காப்புரிமை")
+      ((qLower.startsWith("what is") || qLower.startsWith("explain") || qLower.startsWith("how does") || qLower.startsWith("how is") || qLower.startsWith("define") || qLower.startsWith("tell me about")) &&
+        (qLower.includes("patent") || qLower.includes("trademark") || qLower.includes("trade mark") || qLower.includes("novelty") || qLower.includes("inventive step") || qLower.includes("obviousness") || qLower.includes("prior art") || qLower.includes("freedom to operate") || qLower.includes("fto") || qLower.includes("rag") || qLower.includes("crag") || qLower.includes("intellectual property"))) ||
+      (qLower.includes("क्या है") && (qLower.includes("पेटेंट") || qLower.includes("ट्रेडमार्क") || qLower.includes("नवीनता"))) ||
+      (qLower.includes("とは何ですか") && (qLower.includes("特許") || qLower.includes("商標") || qLower.includes("新規性"))) ||
+      (qLower.includes("అంటే ఏమిటి") && (qLower.includes("పేటెంట్") || qLower.includes("ట్రేడ్‌మార్క్"))) ||
+      (qLower.includes("என்றால் என்ன") && (qLower.includes("காப்புரிமை") || qLower.includes("வர்த்தக")))
     );
 
     if (isGeneralConceptual) {
@@ -303,7 +357,26 @@ export async function POST(req: Request) {
 
     // Intent Extraction
     let originCountry: string | undefined = undefined;
-    if (qLower.includes("india") || qLower.includes("ayurvedic") || qLower.includes("ayush") || qLower.includes("cgpdtm")) {
+    if (
+      qLower.includes("india") ||
+      qLower.includes("indian") ||
+      qLower.includes("ayurvedic") ||
+      qLower.includes("ayurveda") ||
+      qLower.includes("ayush") ||
+      qLower.includes("cgpdtm") ||
+      qLower.includes("schedule t") ||
+      qLower.includes("rule 158b") ||
+      qLower.includes("fssai") ||
+      qLower.includes("nba") ||
+      qLower.includes("tkdl") ||
+      qLower.includes("itra") ||
+      qLower.includes("ncism") ||
+      qLower.includes("ppvfr") ||
+      qLower.includes("gi act") ||
+      qLower.includes("copyright act") ||
+      qLower.includes("patents act") ||
+      qLower.includes("section 3")
+    ) {
       originCountry = "IN";
     } else if (qLower.includes("japan") || qLower.includes("jpo") || qLower.includes("kampo")) {
       originCountry = "JP";
@@ -339,10 +412,10 @@ export async function POST(req: Request) {
       targetCountry = "EP";
     } else if (explicitJurisdiction === "WO" || qLower.includes("global") || qLower.includes("wipo") || qLower.includes("international")) {
       targetCountry = "WO";
-    } else if (explicitJurisdiction === "IN" || (originCountry === "IN" && !targetCountry)) {
+    } else if (explicitJurisdiction === "IN" || originCountry === "IN") {
       targetCountry = "IN";
     } else {
-      targetCountry = explicitJurisdiction || "US";
+      targetCountry = explicitJurisdiction || "IN";
     }
 
     const isCommercialization = /sell|export|market|commercializ|distribut|launch|import/i.test(rawQuery);
@@ -664,6 +737,50 @@ export async function POST(req: Request) {
 
     // ── Target Market: United States (US) ─────────────────────────────────────
     if (targetCountry === "US") {
+      const isPatentInUS = (qLower.includes("can i patent") || qLower.includes("patent my") || qLower.includes("patentability") || qLower.includes("how to patent")) && !isCommercialization;
+      if (isPatentInUS) {
+        const response: DecisionResponse = {
+          query: rawQuery,
+          decision: "INSUFFICIENT_EVIDENCE",
+          why: "AYURLEX Evidence Boundary: Cross-jurisdiction inquiry targeting United States patentability (35 U.S.C.). Under our strict zero-hallucination policy, AYURLEX does not substitute Indian Patent Act provisions (such as Section 3(p) or Section 3(e)) for US patent examinations. Authoritative evaluation of US patent eligibility requires specific chemical or extract claims and indexed USPTO prior art, which are currently insufficient for this formulation.",
+          patent_analysis: "US Patent Examination Standard (35 U.S.C. §§ 101, 102, 103): Under the Mayo/Alice doctrine and 35 U.S.C. § 101, naturally occurring botanical products and traditional preparations are non-patentable subject matter unless modified into a markedly different non-natural substance or novel synergistic composition. Specific US patent prior art evidence for this formulation is not present in the indexed corpus.",
+          regulatory_analysis: "Therapeutic patent claims in the US require rigorous demonstration of utility and enablement under 35 U.S.C. § 112.",
+          ip_fto_analysis: "Patentability under USPTO rules cannot be confirmed without indexed US patent claim registers.",
+          conditions: ["Provide specific formulation claims, novel extraction steps, or derivative structures to evaluate 35 U.S.C. §§ 101/102/103 compliance."],
+          required_next_steps: ["Consult a registered US patent attorney (USPTO-admitted) for a formal patentability search."],
+          evidence: [],
+          confidence: "LOW",
+          query_intent: intent,
+          evidence_sufficiency: {
+            evidence_sufficient: false,
+            required_evidence_present: false,
+            unresolved_material_conditions: ["Specific US prior art or formulation claims unavailable in corpus."],
+            jurisdiction_valid: true,
+            source_authority: 2,
+            missing_evidence_categories: ["uspto_prior_art", "us_claim_charts"],
+            decision_reason_codes: ["CROSS_JURISDICTION_UNGROUNDED", "INSUFFICIENT_EVIDENCE"],
+            patent_evidence_count: 0,
+            regulatory_evidence_count: 0,
+            fto_evidence_count: 0,
+            evidence_note: "No substitution of Indian law for US patentability inquiry.",
+          },
+          detected_language: language,
+          jurisdictions_searched: ["US"],
+          decision_jurisdiction: "US",
+          origin_jurisdiction: "IN",
+          target_jurisdiction: "US",
+          origin_evidence: [],
+          target_evidence: [],
+          cross_jurisdiction_evidence: [],
+          evaluation_evidence: [],
+          crag_status: "INSUFFICIENT",
+          evaluation_only: false,
+          latencies_ms: { total_decision_pipeline_ms: Date.now() - tStart },
+          disclaimer: "AYURLEX provides statutory intelligence and decision assistance. Not legal advice.",
+        };
+        return jsonResponse(localizeDecision(response, language as any) || response);
+      }
+
       const whyEn = "An Indian patent grants exclusive territorial monopoly rights strictly within the borders of India and does NOT confer patent rights or commercial authorization in the United States under 35 U.S.C. Commercialization in the US is legally permissible, provided mandatory conditions precedent are satisfied: (1) full regulatory compliance with US FDA dietary supplement regulations (DSHEA / 21 CFR § 111 cGMP), (2) complete absence of unapproved drug or disease treatment claims, and (3) freedom-to-operate clearance confirming no infringement of unexpired US composition or formulation claims.";
       const patentEn = "Patent Territoriality Principle (35 U.S.C. § 271): A patent granted by the Indian Patent Office (CGPDTM) has strictly territorial legal effect within India. It provides zero offensive or defensive protection in the US market. Anyone can legally practice an invention disclosed in an Indian patent in the US unless there is a valid, unexpired US patent covering that exact formulation or method of use.";
       const regEn = "US Regulatory Classification (FDA / 21 U.S.C. § 321(ff) DSHEA): Ayurvedic herbal formulations sold in the US are typically regulated as Dietary Supplements, NOT prescription drugs. Mandatory requirements include: (a) 21 CFR Part 111 current Good Manufacturing Practice (cGMP) compliance, (b) 75-day premarket New Dietary Ingredient (NDI) notification if introduced after Oct 15, 1994, (c) structure/function claims only with mandatory FDA disclaimer, and (d) strict prohibition on claiming to cure, diagnose, treat, or prevent any disease.";

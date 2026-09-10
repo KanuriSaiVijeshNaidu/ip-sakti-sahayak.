@@ -542,6 +542,7 @@ export interface DecisionResponse {
   origin_jurisdiction?: string;
   target_jurisdiction?: string;
   decision_jurisdiction: string;
+  decision_reason_codes?: string[];
   origin_evidence?: Array<any>;
   target_evidence?: Array<any>;
   cross_jurisdiction_evidence?: Array<any>;

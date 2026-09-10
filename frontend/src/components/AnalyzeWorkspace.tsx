@@ -1952,7 +1952,14 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
                 const itemRes = msg.response ? (localizeDecision(msg.response, language) || msg.response) : (activeResponse || null);
                 if (!itemRes) return null;
 
-                const visuals = getDecisionVisuals(itemRes.decision);
+                const isOutOfDomain = itemRes.decision_reason_codes?.includes("OUT_OF_DOMAIN");
+                const visuals = isOutOfDomain ? {
+                  title: "Insufficient Data / Out of Domain",
+                  sub: "Query outside IP, Ayurveda, or regulatory legal scope.",
+                  icon: <AlertCircle className="w-6 h-6 text-slate-500" />,
+                  ring: "border-slate-300 bg-slate-50",
+                  badgeBg: "bg-slate-200 text-slate-800 border-slate-300",
+                } : getDecisionVisuals(itemRes.decision);
                 const isUnsupported = itemRes.decision === "INSUFFICIENT_EVIDENCE" && (!itemRes.evidence || itemRes.evidence.length === 0);
                 const cardKey = msg.id || `assistant-${idx}`;
 
@@ -2125,8 +2132,12 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
                         <div className="px-5 py-3.5 bg-amber-50/80 border-b border-amber-200/80 flex items-center gap-2.5 text-xs text-amber-900">
                           <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
                           <span>
-                            <strong>Evidence Gating Active:</strong> {isUnsupported 
+                            <strong>Evidence Gating Active:</strong> {isOutOfDomain
+                              ? "Inquiry is outside the domain of Intellectual Property, Ayurveda, and regulatory law. No statutory assessment performed."
+                              : isUnsupported 
                               ? `No indexed statutory corpus exists for "${itemRes.decision_jurisdiction || targetMarket}". Under AYURLEX strict zero-hallucination rules, unindexed jurisdictions return hard INSUFFICIENT EVIDENCE.` 
+                              : itemRes.decision === "INSUFFICIENT_EVIDENCE"
+                              ? "No authoritative statutory or regulatory citations found matching this inquiry."
                               : "No direct statutory citations required for pure educational/conceptual inquiries."}
                           </span>
                         </div>
@@ -2153,7 +2164,9 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
                             </ul>
                           ) : (
                             <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-500 italic">
-                              No specific statutory conditions precedent required.
+                              {isOutOfDomain
+                                ? "None (Inquiry outside IP/Ayurveda statutory scope)."
+                                : "No specific statutory conditions precedent required."}
                             </div>
                           )}
                         </div>
@@ -2175,7 +2188,9 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
                             </ul>
                           ) : (
                             <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-500 italic">
-                              No administrative filings required.
+                              {isOutOfDomain
+                                ? "Please submit an IP, Ayurveda, patent, trademark, or regulatory inquiry."
+                                : "No administrative filings required."}
                             </div>
                           )}
                         </div>

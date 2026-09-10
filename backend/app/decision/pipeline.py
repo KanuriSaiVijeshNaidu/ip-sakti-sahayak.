@@ -84,6 +84,49 @@ class Phase7DecisionPipeline:
         routing = intelligence_router.route(raw_query, explicit_jurisdiction=request.jurisdiction)
         latencies["intelligence_routing_ms"] = round((time.perf_counter() - t0) * 1000, 2)
 
+        # Case 0: Out-of-Domain / Arbitrary Query -> Immediate Abstention
+        if routing.is_out_of_domain:
+            total_ms = round((time.perf_counter() - t_start) * 1000, 2)
+            latencies["total_decision_pipeline_ms"] = total_ms
+            return DecisionResponse(
+                query=raw_query,
+                decision=DecisionType.INSUFFICIENT_EVIDENCE,
+                why="Insufficient data. This question is outside the scope of the available Intellectual Property, Ayurveda, and regulatory sources.",
+                patent_analysis="The query does not concern patentable subject matter, prior art, or intellectual property regimes.",
+                regulatory_analysis="No therapeutic, dietary, or health authority regulatory framework applies to this inquiry.",
+                ip_fto_analysis="Freedom-to-operate clearance cannot be evaluated for non-IP and out-of-domain questions.",
+                conditions=[],
+                required_next_steps=[],
+                evidence=[],
+                confidence=DecisionConfidence.LOW,
+                query_intent=intent,
+                evidence_sufficiency=EvidenceSufficiency(
+                    evidence_sufficient=False,
+                    required_evidence_present=False,
+                    unresolved_material_conditions=["Query falls outside the indexed Intellectual Property, Ayurveda, and regulatory scope."],
+                    jurisdiction_valid=False,
+                    source_authority=1,
+                    missing_evidence_categories=["in_domain_statutes", "in_domain_prior_art"],
+                    decision_reason_codes=["OUT_OF_DOMAIN", "INSUFFICIENT_EVIDENCE", routing.domain_reason_code or "OUT_OF_DOMAIN"],
+                    patent_evidence_count=0,
+                    regulatory_evidence_count=0,
+                    fto_evidence_count=0,
+                    evidence_note="Query rejected by Domain Boundary Validator.",
+                ),
+                detected_language=detected_lang,
+                jurisdictions_searched=[],
+                origin_jurisdiction="IN",
+                target_jurisdiction="GLOBAL",
+                decision_jurisdiction="GLOBAL",
+                origin_evidence=[],
+                target_evidence=[],
+                cross_jurisdiction_evidence=[],
+                evaluation_evidence=[],
+                crag_status="INSUFFICIENT",
+                evaluation_only=False,
+                latencies_ms=latencies,
+            )
+
         # Case 1: Unsupported / Unindexed Jurisdictions (e.g. AU, BR, CN, CA) -> Strict Abstention
         if routing.is_unsupported_jurisdiction:
             jur_code = routing.unsupported_jurisdiction_code or (request.jurisdiction or "UNKNOWN").upper()
