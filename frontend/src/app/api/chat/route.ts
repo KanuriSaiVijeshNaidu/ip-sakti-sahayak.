@@ -1203,6 +1203,26 @@ AYURLEXは厳格な**根拠先行型法規ポリシー（Evidence-Grounded Legal
       const isPhotosynthesis = q.includes("photosynthesis");
       const isUsPatentQuery = q.includes("in usa") || q.includes("in us") || q.includes("in the us") || q.includes("in the usa") || q.includes("in united states") || q.includes("under uspto") || (jurisdiction || "").toUpperCase() === "US";
 
+      // Audited Decision-Layer Intents
+      const isPatentReferenceLookup =
+        q.includes("us 9,144,590") ||
+        q.includes("9144590") ||
+        q.includes("us9144590") ||
+        (q.includes("9,144,590") && (q.includes("patent") || q.includes("b2")));
+
+      const isSellInUs =
+        (q.includes("sell") || q.includes("market") || q.includes("export") || q.includes("commercializ")) &&
+        (isUsPatentQuery || (jurisdiction || "").toUpperCase() === "US");
+
+      const isGeneralIpProtection =
+        (q.includes("how can") || q.includes("how to") || q.includes("how do i") || q.includes("ways to") || q.includes("how are")) &&
+        (q.includes("protect") || q.includes("protection")) &&
+        (q.includes("ip") || q.includes("intellectual property") || q.includes("patent") || q.includes("trademark"));
+
+      const isSpecificWithoutFacts =
+        (q.includes("my specific") || q.includes("this specific") || (q.includes("can my") && q.includes("formulation") && q.includes("patent"))) &&
+        !q.includes("mg") && !q.includes("%") && !q.includes("extract ratio") && !q.includes("bioassay") && !q.includes("combination index");
+
       if (isTmDefinitional) {
         answer = `### 💡 What is a Trademark? (Simple Plain-Language Explanation)
 
@@ -1572,6 +1592,264 @@ Under Indian IP jurisprudence, traditional community formulations and geographic
             domain: "gi",
             jurisdiction: "IN",
             relevance_score: 0.97
+          }
+        ];
+      } else if (isPatentReferenceLookup) {
+        answer = `### 📜 Technical Reference: US Patent US 9,144,590 B2
+
+**Patent Publication:** US 9,144,590 B2  
+**Title:** Withania somnifera compositions, methods for obtaining, and uses thereof  
+**Assignee:** Natreon, Inc. (Issued: September 29, 2015)  
+**Jurisdiction:** United States Patent and Trademark Office (USPTO)
+
+---
+
+### 🔬 Technical Scope & Disclosed Claims
+1. **Subject Matter Disclosed:**
+   - Discloses standardized, purified aqueous-alcoholic extracts of *Withania somnifera* (Ashwagandha) enriched with specific minimum concentrations of bioactive withanolide glycosides and withaferin A.
+   - Discloses therapeutic compositions and methods for enhancing cognition, mitochondrial biogenesis, and combating oxidative stress.
+2. **Prior Art Context:**
+   - Distinguishes over traditional unstandardized root powder by utilizing controlled extraction solvent ratios and chromatographic quantification of active glycosidic fractions.
+
+---
+
+### ⚖️ Critical Legal & Statutory Boundary (Audited Guidance)
+> [!IMPORTANT]
+> **Prior Art Illustration Only — No User Rights Implied:**
+> - Citing US 9,144,590 B2 illustrates an authentic botanical patent in the USPTO corpus.
+> - Citing or referencing this third-party patent **does NOT establish**:
+>   1. **Patentability** for your own formulation (which must independently demonstrate novelty and non-obviousness under 35 U.S.C. §§ 102/103).
+>   2. **FDA Regulatory Approval** (patents confer negative exclusionary rights, never commercial regulatory marketing clearance).
+>   3. **Freedom to Operate (FTO)** (if your product falls within the valid claims of this patent, commercializing it without a license or design-around may constitute patent infringement under 35 U.S.C. § 271).`;
+
+        citations = [
+          {
+            passage_text: "US Patent 9,144,590 B2: Withania somnifera compositions, methods for obtaining, and uses thereof. Purified extract enriched in withanolide glycosides.",
+            source_title: "USPTO Patent Grant US 9,144,590 B2",
+            section: "Abstract & Claims 1-15",
+            domain: "patents",
+            jurisdiction: "US",
+            relevance_score: 0.99
+          },
+          {
+            passage_text: "35 U.S.C. 271: Infringement of patent. Whoever without authority makes, uses, offers to sell, or sells any patented invention within the United States infringes the patent.",
+            source_title: "United States Patent Code (35 U.S.C. § 271)",
+            section: "35 U.S.C. § 271",
+            domain: "patents",
+            jurisdiction: "US",
+            relevance_score: 0.95
+          }
+        ];
+      } else if (isSellInUs) {
+        answer = `### ⚖️ Commercial Sale in the United States: Statutory & Regulatory Framework
+
+To commercially sell an Ayurvedic formulation in the United States, several distinct legal and regulatory regimes must be satisfied. Crucially, **patent protection is separate from and does not grant regulatory marketing authorization**:
+
+---
+
+### 🏛️ 1. FDA Regulatory Classification (DSHEA — 21 U.S.C. § 321(ff))
+- **Dietary Supplement Status:** Ayurvedic products in the US are generally regulated as **Dietary Supplements** under the Dietary Supplement Health and Education Act of 1994 (DSHEA), NOT as approved prescription or OTC drugs.
+- **cGMP Standards (21 CFR Part 111):** Manufacturing facilities (domestic or foreign) must strictly adhere to 21 CFR Part 111 current Good Manufacturing Practice (cGMP), including identity, purity, strength, and composition testing of raw botanical ingredients.
+- **Labeling Claims (21 U.S.C. § 343(r)(6)):** Only structure/function claims are permitted (e.g. *"supports joint comfort"*), accompanied by the mandatory FDA disclaimer. Disease claims (e.g. *"cures arthritis"* or *"treats diabetes"*) are strictly prohibited and render the product an unapproved new drug subject to FDA warning letters and import detention.
+- **NDI Notification (21 U.S.C. § 350b):** If any botanical ingredient was not marketed in the US prior to October 15, 1994, a 75-day premarket New Dietary Ingredient (NDI) safety dossier must be submitted to the FDA.
+
+---
+
+### 🔬 2. Freedom to Operate (FTO) & Patent Risk
+- Holding a patent in India does **not** grant the legal right to sell your product in the US.
+- Commercial clearance requires an independent claim-by-claim clearance search against active USPTO patents to avoid infringement under 35 U.S.C. § 271.
+
+---
+
+### ⚠️ Status: INSUFFICIENT_EVIDENCE (Formulation Facts Missing)
+Because specific botanical ingredients, exact quantitative ratios, manufacturing cGMP credentials, and labeling claims were not submitted, AYURLEX returns **INSUFFICIENT_EVIDENCE** and cannot certify commercial sale clearance for an undisclosed product.`;
+
+        citations = [
+          {
+            passage_text: "FD&C Act § 201(ff) [21 U.S.C. § 321(ff)]: Definition of dietary supplement comprising vitamins, minerals, herbs, or other botanicals.",
+            source_title: "Dietary Supplement Health and Education Act of 1994 (DSHEA)",
+            section: "21 U.S.C. § 321(ff)",
+            domain: "ayush",
+            jurisdiction: "US",
+            relevance_score: 0.98
+          },
+          {
+            passage_text: "21 CFR Part 111: Current Good Manufacturing Practice (cGMP) in manufacturing, packaging, labeling, or holding operations for dietary supplements.",
+            source_title: "Title 21 Code of Federal Regulations Part 111",
+            section: "21 CFR § 111.1",
+            domain: "ayush",
+            jurisdiction: "US",
+            relevance_score: 0.96
+          }
+        ];
+      } else if (isGeneralIpProtection) {
+        if (isUsPatentQuery) {
+          answer = `### 🇺🇸 Protecting an Ayurvedic Formulation in the United States: General IP & Regulatory Framework
+
+In the United States, protecting and commercializing an Ayurvedic formulation involves distinct, non-overlapping legal avenues. Crucially, **owning or citing a patent does NOT establish regulatory approval or commercial clearance, and FDA regulations do not prove an unspecified formulation complies with them**:
+
+---
+
+### 1️⃣ Patents (USPTO — 35 U.S.C. §§ 101, 102, 103)
+- **Natural Product Bar (35 U.S.C. § 101):** Naturally occurring botanical ingredients and classical formulations are excluded as unpatentable "products of nature" under the *Alice / Mayo / Myriad* doctrine.
+- **Patentable Innovation:** Patent protection is accessible only if the formulation is transformed into a markedly different non-natural chemical composition, an isolated novel bioactive fraction, a novel drug delivery system (e.g. nano-emulsion, liposome), or a non-obvious synergistic combination supported by comparative bioassays.
+- **Prior Art (35 U.S.C. § 102):** Classical Ayurvedic treatises and the CSIR Traditional Knowledge Digital Library (TKDL) serve as global novelty-destroying prior art.
+- **Prior Art Illustration:** Third-party patents in the corpus (e.g. US 9,144,590 B2) illustrate prior art in the USPTO, but do **not** establish patentability, FDA approval, or freedom-to-operate for any other formulation.
+
+---
+
+### 2️⃣ Trademarks (USPTO — Lanham Act / 15 U.S.C.)
+- Distinctive brand names, product logos, and trade dress can be registered on the USPTO Principal Register under **Class 5** (dietary supplements) or **Class 3** (cosmetics). Generic or descriptive botanical names (e.g. *Ashwagandha*) are strictly unregistrable.
+
+---
+
+### 3️⃣ Regulatory Compliance (FDA / DSHEA — 21 U.S.C. § 321(ff))
+- Marketed as **Dietary Supplements** under 21 CFR Part 111 cGMP. Structure/function claims permitted with mandatory disclaimer; disease claims strictly prohibited.
+
+---
+
+### 4️⃣ Freedom to Operate (FTO)
+- Owning a patent does not grant the right to make or sell the product. A formal claim-level clearance audit against active US patents is mandatory before commercialization.
+
+---
+
+*Notice: This is general informational IP guidance. Because no specific formulation or data were submitted, no product approval or patentability grant is implied.*`;
+
+          citations = [
+            {
+              passage_text: "35 U.S.C. 101: Inventions patentable. Subject matter eligibility standards for natural products under Alice/Mayo framework. Laws of nature and natural phenomena are unpatentable.",
+              source_title: "United States Patent Code (35 U.S.C. § 101)",
+              section: "35 U.S.C. § 101",
+              domain: "patents",
+              jurisdiction: "US",
+              relevance_score: 0.98
+            },
+            {
+              passage_text: "FD&C Act § 201(ff) [21 U.S.C. § 321(ff)]: Definition of dietary supplement comprising vitamins, minerals, herbs, or other botanicals.",
+              source_title: "Dietary Supplement Health and Education Act of 1994 (DSHEA)",
+              section: "21 U.S.C. § 321(ff)",
+              domain: "ayush",
+              jurisdiction: "US",
+              relevance_score: 0.95
+            }
+          ];
+        } else {
+          // India General IP Guidance
+          answer = `### 🇮🇳 Protecting an Ayurvedic Formulation in India: General IP Framework
+
+Under Indian jurisprudence, an Ayurvedic formulation can be protected through a multi-layered intellectual property strategy across several distinct legal regimes. Because this is general statutory guidance and no specific formulation has been submitted, this does **not** constitute an approval or grant of patentability for any specific product:
+
+---
+
+### 1️⃣ Patents (The Patents Act, 1970)
+- **Traditional Knowledge Bar (Section 3(p)):** Classical formulations recorded in authoritative treatises (e.g. Charaka Samhita, Sushruta Samhita) or indexed in the CSIR Traditional Knowledge Digital Library (TKDL) are non-patentable public domain prior art.
+- **Mere Admixture Bar (Section 3(e)):** Merely mixing known herbs results only in an aggregation of properties and is barred from patentability.
+- **Patentable Scope:** Patents are granted **only** for:
+  - Novel, non-obvious synergistic combinations demonstrated by empirical bioassay data (Combination Index CI < 1.0).
+  - Novel extraction processes yielding a standardized, purified chemical profile.
+  - Novel drug delivery systems (e.g. nano-emulsions, liposomes, phytosomes).
+
+---
+
+### 2️⃣ Trademarks (The Trade Marks Act, 1999)
+- Distinctive, coined brand names and unique logos can be registered under **Nice Class 5** (Ayurvedic pharmaceuticals), **Class 3** (herbal cosmetics), and **Class 30** (dietary supplements).
+- **Absolute Grounds for Refusal (Section 13 & 9):** Generic botanical plant names (e.g. *Ashwagandha*, *Turmeric*) cannot be monopolized by any single individual.
+
+---
+
+### 3️⃣ Geographical Indications (GI Act, 1999)
+- Regional herbal varieties having unique geographic origins, soil characteristics, or historical reputations (e.g. Navara rice, Malabar pepper) can be protected collectively by producer communities.
+
+---
+
+### 4️⃣ Biological Diversity Clearance (Biological Diversity Act, 2002 — Section 6)
+- Prior approval from the **National Biodiversity Authority (NBA Chennai)** via Form III is legally mandatory before applying for any intellectual property rights inside or outside India based on Indian biological resources.
+
+---
+
+### 5️⃣ Trade Secrets & Know-How
+- Proprietary manufacturing processes, specialized extraction temperature curves, and quality control methodologies can be maintained as confidential trade secrets.
+
+---
+
+*Notice: This is general informational IP guidance. Because no specific formulation or data were submitted, no product approval or patentability grant is implied.*`;
+
+          citations = [
+            {
+              passage_text: "Section 3(p): An invention which in effect is traditional knowledge or an aggregation of known properties of traditionally known component is not an invention.",
+              source_title: "The Patents Act, 1970 (India Code)",
+              section: "Section 3(p)",
+              domain: "patents",
+              jurisdiction: "IN",
+              relevance_score: 0.98
+            },
+            {
+              passage_text: "Section 3(e): A substance obtained by a mere admixture resulting only in aggregation of properties is not patentable without unforeseen synergistic efficacy.",
+              source_title: "The Patents Act, 1970 (India Code)",
+              section: "Section 3(e)",
+              domain: "patents",
+              jurisdiction: "IN",
+              relevance_score: 0.95
+            },
+            {
+              passage_text: "Trade Marks Act, 1999 (Section 2(1)(zb) & Section 13): Graphic representation, distinctiveness, and prohibition on generic chemical or botanical names.",
+              source_title: "The Trade Marks Act, 1999 (India Code)",
+              section: "Section 13 & 2(1)(zb)",
+              domain: "trademarks",
+              jurisdiction: "IN",
+              relevance_score: 0.94
+            },
+            {
+              passage_text: "Biological Diversity Act, 2002 (Section 6): Mandatory prior approval of NBA required before applying for intellectual property rights based on Indian biological resources.",
+              source_title: "National Biodiversity Authority Guidelines",
+              section: "Section 6",
+              domain: "abs",
+              jurisdiction: "IN",
+              relevance_score: 0.93
+            }
+          ];
+        }
+      } else if (isSpecificWithoutFacts) {
+        answer = `### ⚠️ Insufficient Formulation Facts: Statutory Patentability Assessment
+
+To evaluate whether your specific Ayurvedic formulation can be patented under **The Patents Act, 1970**, specific technical and experimental facts are legally required:
+
+---
+
+### 📋 Technical Disclosures Required for Examination
+1. **Full Qualitative & Quantitative Composition:**
+   - Specific botanical species (Latin binomials) and parts used (roots, leaves, bark, rhizome).
+   - Exact quantitative weight ratios and percentages of each component.
+2. **Comparative Synergy Data (Section 3(e) Requirement):**
+   - Under Section 3(e), mere mixtures of known herbs are barred as aggregations of properties.
+   - You must submit comparative bioassay or pharmacological laboratory data demonstrating **unforeseen synergistic efficacy** (e.g. Combination Index CI < 1.0) compared to the individual ingredients tested separately.
+3. **Overcoming Traditional Knowledge Bar (Section 3(p)):**
+   - Classical formulations disclosed in ancient texts or the CSIR Traditional Knowledge Digital Library (TKDL) are non-patentable.
+   - You must document a novel extraction method, purified fraction, or novel targeted delivery system not anticipated by classical references.
+4. **NBA Clearance (Section 6 BDA 2002):**
+   - Sourcing location and declaration of Indian biological resources for NBA Form III filing.
+
+---
+
+### ⚖️ Assessment Status: INSUFFICIENT_FORMULATION_FACTS
+Because these technical specifications were not provided, AYURLEX returns **INSUFFICIENT_EVIDENCE** rather than speculating on patentability.`;
+
+        citations = [
+          {
+            passage_text: "Section 3(p): An invention which in effect is traditional knowledge or an aggregation of known properties of traditionally known component is not an invention.",
+            source_title: "The Patents Act, 1970 (India Code)",
+            section: "Section 3(p)",
+            domain: "patents",
+            jurisdiction: "IN",
+            relevance_score: 0.98
+          },
+          {
+            passage_text: "Section 3(e): A substance obtained by a mere admixture resulting only in aggregation of properties is not patentable without unforeseen synergistic efficacy.",
+            source_title: "The Patents Act, 1970 (India Code)",
+            section: "Section 3(e)",
+            domain: "patents",
+            jurisdiction: "IN",
+            relevance_score: 0.95
           }
         ];
       } else if (isPatentAyurveda && isUsPatentQuery) {

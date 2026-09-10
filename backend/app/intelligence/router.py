@@ -202,6 +202,26 @@ class IntelligenceRouter:
                 reasoning=f"Identified Priority 1 statutory/jurisdiction legal inquiry targeting {detected_jur} under {target_domain}.",
             )
 
+        # ── 2.5 Priority 1.5: General IP Protection Mechanism Inquiry ──────────
+        is_general_ip_mechanism = (
+            any(w in q_lower for w in ["how can", "how to", "how do i", "ways to", "how are"])
+            and any(w in q_lower for w in ["protect", "protection"])
+            and any(w in q_lower for w in ["ip", "intellectual property", "patent", "trademark"])
+            and not any(w in q_lower for w in ["my product", "my specific", "this specific", "extract ratio", "mg", "kg", "batch"])
+        )
+        if is_general_ip_mechanism:
+            return RoutingDecision(
+                category=QueryCategory.LEGAL_REGULATORY,
+                confidence=0.95,
+                detected_intent="general_ip_information",
+                target_jurisdiction=detected_jur,
+                target_domain="patent_law",
+                requires_rag=True,
+                requires_evidence_gate=True,
+                is_general_educational=False,
+                reasoning=f"Identified general statutory & IP protection mechanism inquiry targeting {detected_jur}.",
+            )
+
         # ── 3. Priority 2: Concrete Product / Commercial Formulation Clearance
         is_concrete_application = any(
             term in q_lower for term in [

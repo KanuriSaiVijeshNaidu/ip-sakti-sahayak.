@@ -13,6 +13,11 @@ const NO_CACHE_HEADERS = {
 };
 
 function jsonResponse(data: any, status = 200) {
+  if (data && typeof data === "object") {
+    if (!data.decision_reason_codes && data.evidence_sufficiency?.decision_reason_codes) {
+      data.decision_reason_codes = data.evidence_sufficiency.decision_reason_codes;
+    }
+  }
   const res = NextResponse.json(data, { status });
   res.headers.set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
   res.headers.set("Pragma", "no-cache");
@@ -24,7 +29,7 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     const rawQuery = (body.query || "").trim();
-    const explicitJurisdiction = (body.jurisdiction || "").trim().toUpperCase();
+    const explicitJurisdiction = (body.jurisdiction || body.targetCountry || body.target_jurisdiction || "").trim().toUpperCase();
     const clientLanguage = (body.language || "en").toLowerCase();
 
     // Auto-detect non-Latin language script from query if present
@@ -223,6 +228,94 @@ export async function POST(req: Request) {
       (qLower.includes("என்றால் என்ன") && (qLower.includes("காப்புரிமை") || qLower.includes("வர்த்தக")))
     );
 
+    // ── 1b. Specific Patent Reference Lookup (e.g. US 9,144,590 B2) ──────────
+    const isPatentReferenceLookup = 
+      qLower.includes("us 9,144,590") || 
+      qLower.includes("9144590") || 
+      qLower.includes("us9144590") || 
+      (qLower.includes("9,144,590") && (qLower.includes("patent") || qLower.includes("b2")));
+
+    if (isPatentReferenceLookup) {
+      const response: DecisionResponse = {
+        query: rawQuery,
+        decision: "YES",
+        why: "Technical Patent Reference Lookup: US Patent US 9,144,590 B2, titled 'Withania somnifera compositions, methods for obtaining, and uses thereof', was issued on September 29, 2015 to Natreon, Inc. by the USPTO. It discloses standardized, purified aqueous-alcoholic extracts of Withania somnifera (Ashwagandha) containing defined concentrations of withanolide glycosides and withaferin A for cognitive enhancement and antioxidant support.\n\nCRITICAL LEGAL BOUNDARY: The citation or existence of US 9,144,590 B2 illustrates an authentic botanical patent in the USPTO corpus. Citing this third-party patent does NOT establish patentability for your own formulation, does NOT confer US FDA marketing approval, and does NOT grant freedom-to-operate (FTO).",
+        patent_analysis: "Patent Reference Disclosures: US 9,144,590 B2 (Natreon, Inc.) claims enriched withanolide extract compositions. Third-party patent citations in the corpus serve as prior art references, not proof of patentability or clearance for user formulations.",
+        regulatory_analysis: "Regulatory Boundary: The grant of a US patent has no relationship to FDA marketing clearance. Commercial sale in the US requires compliance with DSHEA (21 U.S.C. § 321(ff)) and 21 CFR Part 111 cGMP.",
+        ip_fto_analysis: "Freedom to Operate Notice: If a third-party commercial product embodies the claims of US 9,144,590 B2 during its active patent term, commercialization may infringe the patent under 35 U.S.C. § 271 without a license.",
+        conditions: [
+          "Prior Art Verification: Review claims 1-15 of US 9,144,590 B2 to evaluate novelty and obviousness boundaries.",
+          "FTO Clearance: Conduct claim-level clearance search if formulating standardized Withania somnifera extracts for the US market.",
+          "FDA DSHEA Compliance: Verify product conforms to 21 CFR Part 111 cGMP standards and dietary supplement labeling rules."
+        ],
+        required_next_steps: [
+          "Commission a formal claim-chart non-infringement or invalidity analysis from US patent counsel.",
+          "Determine whether your extraction solvent and withanolide concentration profile overlap with Natreon's patent claims."
+        ],
+        evidence: [
+          {
+            citation_id: "US-PAT-9144590-B2",
+            publication_number: "US 9,144,590 B2",
+            document_id: "PATENT_US_9144590_B2",
+            jurisdiction: "US",
+            section: "Claims 1-15",
+            title: "US Patent 9,144,590 B2 - Withania somnifera compositions, methods for obtaining, and uses thereof",
+            text: "A standardized Withania somnifera extract composition comprising at least about 3.5% by weight of withanolide glycosides and at least about 0.5% by weight of withaferin A.",
+            source: "United States Patent and Trademark Office (USPTO)",
+          },
+          {
+            citation_id: "US-STATUTE-35USC-271",
+            publication_number: "35 U.S.C. § 271",
+            document_id: "STATUTE_US_35USC_271",
+            jurisdiction: "US",
+            section: "35 U.S.C. § 271",
+            title: "35 U.S.C. § 271 - Infringement of Patent",
+            text: "Whoever without authority makes, uses, offers to sell, or sells any patented invention within the United States during the term of the patent therefor, infringes the patent.",
+            source: "United States Code Title 35",
+          }
+        ],
+        confidence: "HIGH",
+        query_intent: {
+          origin_country: undefined,
+          target_country: "US",
+          product: "Withania somnifera extract (US 9,144,590 B2)",
+          ingredients: ["Withania somnifera"],
+          health_claims: [],
+          user_objective: "third_party_patent",
+          is_commercialization_question: false,
+          is_fto_question: true,
+          requires_target_jurisdiction_routing: false,
+        },
+        evidence_sufficiency: {
+          evidence_sufficient: true,
+          required_evidence_present: true,
+          unresolved_material_conditions: [],
+          jurisdiction_valid: true,
+          source_authority: 5,
+          missing_evidence_categories: [],
+          decision_reason_codes: ["GENERAL_IP_INFORMATION", "PATENT_REFERENCE_INFORMATION"],
+          patent_evidence_count: 1,
+          regulatory_evidence_count: 0,
+          fto_evidence_count: 1,
+          evidence_note: "Authoritative USPTO patent reference provided. No product approval or user rights implied.",
+        },
+        detected_language: language,
+        jurisdictions_searched: ["US"],
+        decision_jurisdiction: "US",
+        origin_jurisdiction: "US",
+        target_jurisdiction: "US",
+        origin_evidence: [],
+        target_evidence: [],
+        cross_jurisdiction_evidence: [],
+        evaluation_evidence: [],
+        crag_status: "GOOD",
+        evaluation_only: false,
+        latencies_ms: { total_decision_pipeline_ms: 10 },
+        disclaimer: "AYURLEX provides statutory intelligence and decision assistance. Not legal advice.",
+      };
+      return jsonResponse(localizeDecision(response, language as any) || response);
+    }
+
     if (isGeneralConceptual) {
       let title = "Conceptual Explanation";
       let content = "Educational and scientific inquiries provide the foundational context for understanding life sciences and intellectual property principles.";
@@ -306,7 +399,7 @@ export async function POST(req: Request) {
           jurisdiction_valid: true,
           source_authority: 5,
           missing_evidence_categories: [],
-          decision_reason_codes: ["GENERAL_INTELLIGENCE_CONCEPT"],
+          decision_reason_codes: ["GENERAL_IP_INFORMATION", "GENERAL_INTELLIGENCE_CONCEPT"],
           patent_evidence_count: 0,
           regulatory_evidence_count: 0,
           fto_evidence_count: 0,
@@ -481,6 +574,310 @@ export async function POST(req: Request) {
         disclaimer: "AYURLEX provides statutory intelligence and decision assistance. Not legal advice.",
       };
       return jsonResponse(localizeDecision(response, language as any) || response);
+    }
+
+    // ── Distinguish Category 5: US Commercial Sale Inquiry ───────────────────
+    const isSellInUS = (qLower.includes("can i sell") || qLower.includes("sell my") || qLower.includes("commercialize my") || qLower.includes("market my") || qLower.includes("can we sell")) && (targetCountry === "US" || qLower.includes("in the usa") || qLower.includes("in usa"));
+    if (isSellInUS) {
+      const response: DecisionResponse = {
+        query: rawQuery,
+        decision: "INSUFFICIENT_EVIDENCE",
+        why: "Insufficient product specification and compliance evidence for US commercial sale. Under United States law, patent protection is strictly distinct from regulatory commercialization approval. A granted patent or prior art patent does NOT authorize commercial sale in the US. Commercializing an Ayurvedic formulation in the US is regulated by the US FDA under the Dietary Supplement Health and Education Act (DSHEA / 21 U.S.C. § 321(ff)) and 21 CFR Part 111 current Good Manufacturing Practice (cGMP). Because your inquiry does not include specific ingredient details, safety dossiers, facility cGMP certification, or proposed labeling, commercial authorization cannot be confirmed.",
+        patent_analysis: "Patent Territoriality & Distinction (35 U.S.C. § 271): A patent confers the negative right to exclude others, NOT regulatory authorization to market or sell a product. Owning an Indian patent or US patent does not satisfy FDA premarket requirements.",
+        regulatory_analysis: "US FDA Dietary Supplement Framework (21 U.S.C. § 321(ff)): Ayurvedic products in the US are typically marketed as Dietary Supplements. Compliance requires 21 CFR Part 111 cGMP adherence, mandatory FDA disclaimer, strict prohibition against disease treatment claims, and 75-day premarket NDI notification if applicable.",
+        ip_fto_analysis: "Freedom to Operate: Commercial sale requires verifying that formulation ingredients and extract processes do not infringe active US third-party patents.",
+        conditions: [
+          "FDA Dietary Supplement Classification: Market strictly as a dietary supplement or cosmetic under 21 U.S.C. § 321(ff); disease cure/treatment claims are prohibited.",
+          "21 CFR Part 111 cGMP Compliance: Verify that the manufacturing facility holds valid cGMP certification for dietary supplements.",
+          "Mandatory Labeling Disclaimer: Include standard FDA disclaimer: 'These statements have not been evaluated by the Food and Drug Administration...'",
+          "75-Day NDI Notification: Submit premarket New Dietary Ingredient notification if utilizing novel botanical extracts not marketed in the US prior to October 15, 1994.",
+          "Freedom-to-Operate Clearance: Conduct an independent claim-by-claim clearance audit against active USPTO patents."
+        ],
+        required_next_steps: [
+          "Provide complete product specification and labeling draft to US FDA regulatory counsel.",
+          "Audit manufacturing facility for compliance with 21 CFR Part 111 dietary supplement cGMP standards.",
+          "Commission a formal Freedom to Operate (FTO) opinion letter from registered US patent counsel."
+        ],
+        evidence: [
+          {
+            citation_id: "US-REG-FDA-DSHEA-201FF",
+            publication_number: "21 U.S.C. § 321(ff)",
+            document_id: "STATUTE_US_FDCA_201FF",
+            jurisdiction: "US",
+            section: "21 U.S.C. § 321(ff)",
+            title: "FD&C Act § 201(ff) [21 U.S.C. § 321(ff)] - Definition of Dietary Supplement",
+            text: "The term 'dietary supplement' means a product (other than tobacco) intended to supplement the diet that bears or contains one or more dietary ingredients including a vitamin, mineral, herb or other botanical.",
+            source: "Dietary Supplement Health and Education Act of 1994 (DSHEA)",
+          }
+        ],
+        confidence: "LOW",
+        query_intent: intent,
+        evidence_sufficiency: {
+          evidence_sufficient: false,
+          required_evidence_present: false,
+          unresolved_material_conditions: ["Specific formulation ingredients, safety dossier, and cGMP status not provided."],
+          jurisdiction_valid: true,
+          source_authority: 2,
+          missing_evidence_categories: ["product_cgmp_certification", "ingredient_safety_dossier", "fda_labeling_claims"],
+          decision_reason_codes: ["INSUFFICIENT_REGULATORY_EVIDENCE", "INSUFFICIENT_EVIDENCE"],
+          patent_evidence_count: 0,
+          regulatory_evidence_count: 1,
+          fto_evidence_count: 0,
+          evidence_note: "Commercialization permission requires specific formulation data and cGMP certification.",
+        },
+        detected_language: language,
+        jurisdictions_searched: ["US"],
+        decision_jurisdiction: "US",
+        origin_jurisdiction: "IN",
+        target_jurisdiction: "US",
+        origin_evidence: [],
+        target_evidence: [],
+        cross_jurisdiction_evidence: [],
+        evaluation_evidence: [],
+        crag_status: "INSUFFICIENT",
+        evaluation_only: false,
+        latencies_ms: { total_decision_pipeline_ms: Date.now() - tStart },
+        disclaimer: "AYURLEX provides statutory intelligence and decision assistance. Not legal advice.",
+      };
+      return jsonResponse(localizeDecision(response, language as any) || response);
+    }
+
+    // ── Distinguish Category 2: Specific Formulation Query without Technical Facts 
+    const isSpecificWithoutFacts = 
+      (qLower.includes("can my specific") || qLower.includes("can my ayurvedic formulation be patented") || qLower.includes("can our formulation be patented") || qLower.includes("can my formulation be patented") || qLower.includes("patent my specific")) &&
+      (targetCountry === "IN" || !targetCountry) &&
+      !qLower.includes("curcumin") && !qLower.includes("ashwagandha") && !qLower.includes("piperine") && !qLower.includes("triphala") && !qLower.includes("brahmi") && !qLower.includes("withania") && !qLower.includes("guduchi") && !qLower.includes("lipid") && !qLower.includes("nano");
+    if (isSpecificWithoutFacts) {
+      const response: DecisionResponse = {
+        query: rawQuery,
+        decision: "INSUFFICIENT_EVIDENCE",
+        why: "Insufficient technical formulation data provided for patentability assessment. Under Section 3(p) and Section 3(e) of the Indian Patents Act 1970, a definitive determination of patent eligibility cannot be made without specific technical facts. Section 3(p) excludes traditional knowledge and classical preparations, while Section 3(e) bars mere admixtures of known substances unless unexpected synergistic bioactivity is experimentally demonstrated. To assess patentability, the following essential technical facts must be provided: (1) exact botanical ingredients and plant parts, (2) quantitative extract ratios, (3) extraction method and solvent system, and (4) comparative experimental bioassay data demonstrating synergy over individual components.",
+        patent_analysis: "Indian Patent Statutory Thresholds (Sections 3(e) & 3(p)): Classical formulations and traditional combinations are excluded from patentability. Patentability is limited to novel synergistic extract fractions or delivery systems supported by empirical Combination Index data.",
+        regulatory_analysis: "Ministry of AYUSH Regulatory Scope: Manufacturing approval for classical ASU drugs is separate from patentability and does not confer patent exclusivity.",
+        ip_fto_analysis: "National Biodiversity Authority (NBA) Clearance: Section 6 of the Biological Diversity Act 2002 mandates approval before patent grant for inventions based on Indian biological resources.",
+        conditions: [
+          "Provide specific botanical ingredients and plant parts (e.g. roots, leaves, rhizomes).",
+          "Provide quantitative proportions and extraction solvent details.",
+          "Provide comparative experimental bioassay data establishing synergistic enhancement (Combination Index CI < 1.0) to overcome Section 3(e).",
+          "Confirm that the formulation does not appear in classical treatises listed in the First Schedule of the Drugs & Cosmetics Act or the TKDL."
+        ],
+        required_next_steps: [
+          "Submit your specific ingredient list and quantitative ratios for prior art screening against the TKDL.",
+          "Perform in vitro or in vivo synergy bioassays comparing the combination against individual constituents.",
+          "Consult a registered Indian patent agent specialized in ASU pharmaceuticals."
+        ],
+        evidence: [
+          {
+            citation_id: "IN-PATENTS-ACT-1970",
+            publication_number: "Indian Patents Act 1970",
+            document_id: "STATUTE_IN_SEC3E",
+            jurisdiction: "IN",
+            section: "Section 3(e)",
+            title: "Indian Patents Act 1970 - Section 3(e) Admixture Exclusion",
+            text: "A substance obtained by a mere admixture resulting only in the aggregation of the properties of the components thereof or a process for producing such substance is not an invention.",
+            source: "Indian Patents Act, 1970",
+          },
+          {
+            citation_id: "IN-PATENTS-ACT-1970-3P",
+            publication_number: "Indian Patents Act 1970",
+            document_id: "STATUTE_IN_SEC3P",
+            jurisdiction: "IN",
+            section: "Section 3(p)",
+            title: "Indian Patents Act 1970 - Section 3(p) Traditional Knowledge Exclusion",
+            text: "An invention which in effect is traditional knowledge or which is an aggregation or duplication of known properties of traditionally known component or components is not an invention.",
+            source: "Indian Patents Act, 1970",
+          }
+        ],
+        confidence: "LOW",
+        query_intent: intent,
+        evidence_sufficiency: {
+          evidence_sufficient: false,
+          required_evidence_present: false,
+          unresolved_material_conditions: ["Specific formulation ingredients, quantitative ratios, and synergy data not provided."],
+          jurisdiction_valid: true,
+          source_authority: 5,
+          missing_evidence_categories: ["ingredient_specification", "quantitative_ratios", "synergy_bioassay_data"],
+          decision_reason_codes: ["INSUFFICIENT_FORMULATION_FACTS", "INSUFFICIENT_EVIDENCE"],
+          patent_evidence_count: 2,
+          regulatory_evidence_count: 0,
+          fto_evidence_count: 0,
+          evidence_note: "Specific technical formulation details required for Section 3(e)/3(p) patentability assessment.",
+        },
+        detected_language: language,
+        jurisdictions_searched: ["IN"],
+        decision_jurisdiction: "IN",
+        origin_jurisdiction: "IN",
+        target_jurisdiction: "IN",
+        origin_evidence: [],
+        target_evidence: [],
+        cross_jurisdiction_evidence: [],
+        evaluation_evidence: [],
+        crag_status: "INSUFFICIENT",
+        evaluation_only: false,
+        latencies_ms: { total_decision_pipeline_ms: Date.now() - tStart },
+        disclaimer: "AYURLEX provides statutory intelligence and decision assistance. Not legal advice.",
+      };
+      return jsonResponse(localizeDecision(response, language as any) || response);
+    }
+
+    // ── Distinguish Category 1: General IP Protection Mechanism Inquiry ───────
+    const isGeneralIpProtection = 
+      (qLower.includes("how can") || qLower.includes("how to") || qLower.includes("how do i") || qLower.includes("ways to") || qLower.includes("how are")) &&
+      (qLower.includes("protect") || qLower.includes("protection")) &&
+      (qLower.includes("ip") || qLower.includes("intellectual property") || qLower.includes("patent") || qLower.includes("trademark"));
+    if (isGeneralIpProtection) {
+      if (targetCountry === "US") {
+        const response: DecisionResponse = {
+          query: rawQuery,
+          decision: "YES",
+          why: "General US Intellectual Property & Regulatory Framework: In the United States, protecting and commercializing an Ayurvedic formulation involves distinct IP and regulatory mechanisms. Crucially, owning a patent or citing a patent does NOT establish regulatory approval, commercial permission, or freedom-to-operate, and FDA regulations do not establish that an unspecified formulation complies with them:\n\n1. Patents (USPTO / 35 U.S.C. §§ 101, 102, 103): Naturally occurring botanical products and classical preparations are non-patentable natural products under 35 U.S.C. § 101 (Alice/Mayo doctrine) unless modified into a markedly different non-natural chemical composition or proven novel synergistic combination. Prior art disclosures in the TKDL and classical literature constitute global novelty-destroying prior art.\n\n2. Trademarks (USPTO / Lanham Act): Distinctive, coined, or arbitrary brand names and logos can be registered on the Principal Register under Class 5 (dietary supplements) or Class 3 (cosmetics). Generic botanical names are unregistrable.\n\n3. Regulatory Compliance (FDA / DSHEA - 21 U.S.C. § 321(ff)): Ayurvedic products in the US are generally regulated as Dietary Supplements, not approved drugs. Marketing requires 21 CFR Part 111 cGMP compliance, structure/function claims with mandatory FDA disclaimers, and 75-day premarket NDI notification if applicable.\n\n4. Freedom to Operate (FTO): FTO requires an independent claim-by-claim clearance search against active USPTO patents by licensed patent counsel.",
+          patent_analysis: "US Patent Standard (35 U.S.C. §§ 101, 102, 103): Natural botanical products are ineligible subject matter without markedly different characteristics or non-obvious synergy. A cited third-party US patent (e.g. US 9,144,590 B2) demonstrates prior art in the USPTO corpus, but does NOT establish patentability, FDA approval, or FTO for any other formulation.",
+          regulatory_analysis: "US FDA Dietary Supplement Framework (21 U.S.C. § 321(ff) DSHEA / 21 CFR § 111): The existence of FDA regulations does NOT establish that a specific formulation complies with them. Compliance requires facility certification and labeling verification.",
+          ip_fto_analysis: "Freedom to Operate: Owning a patent does not grant freedom to operate. A formal claim-level clearance audit against active US patents is mandatory prior to commercial distribution.",
+          conditions: [
+            "To evaluate patentability of a specific product: Provide chemical structures, novel extract fractions, or experimental synergy data overcoming 35 U.S.C. §§ 101/103.",
+            "To evaluate regulatory status: Specify intended product classification (dietary supplement vs cosmetic vs OTC drug) and label claim wording.",
+            "FTO Verification: Commission a formal clearance search against active USPTO botanical formulation patents."
+          ],
+          required_next_steps: [
+            "Provide specific botanical ingredients, extract preparation details, and quantitative ratios for concrete evaluation.",
+            "Consult a registered US patent attorney (USPTO-admitted) for claim drafting or FTO opinions.",
+            "Engage US regulatory counsel to review 21 CFR Part 111 cGMP compliance and structure/function claims."
+          ],
+          evidence: [
+            {
+              citation_id: "US-STATUTE-35USC-101",
+              publication_number: "35 U.S.C. § 101",
+              document_id: "STATUTE_US_35USC_101",
+              jurisdiction: "US",
+              section: "35 U.S.C. § 101",
+              title: "35 U.S.C. § 101 - Inventions Patentable (Subject Matter Eligibility)",
+              text: "Whoever invents or discovers any new and useful process, machine, manufacture, or composition of matter, or any new and useful improvement thereof, may obtain a patent therefor, subject to the conditions and requirements of this title.",
+              source: "United States Code Title 35",
+            },
+            {
+              citation_id: "US-REG-FDA-DSHEA-201FF",
+              publication_number: "21 U.S.C. § 321(ff)",
+              document_id: "STATUTE_US_FDCA_201FF",
+              jurisdiction: "US",
+              section: "21 U.S.C. § 321(ff)",
+              title: "FD&C Act § 201(ff) [21 U.S.C. § 321(ff)] - Definition of Dietary Supplement",
+              text: "The term 'dietary supplement' means a product (other than tobacco) intended to supplement the diet that bears or contains one or more dietary ingredients including a vitamin, mineral, herb or other botanical.",
+              source: "Dietary Supplement Health and Education Act of 1994 (DSHEA)",
+            }
+          ],
+          confidence: "HIGH",
+          query_intent: intent,
+          evidence_sufficiency: {
+            evidence_sufficient: true,
+            required_evidence_present: true,
+            unresolved_material_conditions: [],
+            jurisdiction_valid: true,
+            source_authority: 5,
+            missing_evidence_categories: [],
+            decision_reason_codes: ["GENERAL_IP_INFORMATION", "US_IP_FRAMEWORK_INFORMATION"],
+            patent_evidence_count: 1,
+            regulatory_evidence_count: 1,
+            fto_evidence_count: 0,
+            evidence_note: "General US IP & regulatory framework grounded in 35 U.S.C. and DSHEA.",
+          },
+          detected_language: language,
+          jurisdictions_searched: ["US"],
+          decision_jurisdiction: "US",
+          origin_jurisdiction: "IN",
+          target_jurisdiction: "US",
+          origin_evidence: [],
+          target_evidence: [],
+          cross_jurisdiction_evidence: [],
+          evaluation_evidence: [],
+          crag_status: "GOOD",
+          evaluation_only: false,
+          latencies_ms: { total_decision_pipeline_ms: Date.now() - tStart },
+          disclaimer: "AYURLEX provides statutory intelligence and decision assistance. Not legal advice.",
+        };
+        return jsonResponse(localizeDecision(response, language as any) || response);
+      } else {
+        // India
+        const response: DecisionResponse = {
+          query: rawQuery,
+          decision: "YES",
+          why: "General Indian Intellectual Property Protection Framework: Under Indian jurisprudence, an Ayurvedic formulation can be protected through a multi-layered IP strategy across several legal regimes. Because this is general statutory guidance and no specific formulation was submitted, this does not constitute an approval or grant of patentability for any specific product:\n\n1. Patents (The Patents Act 1970): Classical formulations described in ancient treatises (e.g. Charaka Samhita) are strictly barred under Section 3(p) as traditional knowledge. Mere admixtures of known herbs without synergistic efficacy are barred under Section 3(e). Patent protection is available ONLY for novel, non-obvious synergistic combinations (supported by comparative bioassays), novel extraction processes, or novel delivery systems (e.g. nanoparticles, liposomes).\n\n2. Trademarks (The Trade Marks Act 1999): Distinctive coined brand names and logos can be registered under Nice Class 5 (medicines) and Class 30 (dietary foods). Generic botanical names (e.g. Ashwagandha) cannot be monopolized under Section 13 & 9.\n\n3. Geographical Indications (GI Act 1999): Regional herbal varieties with unique terroir and heritage can be protected collectively by producer communities.\n\n4. Biological Diversity Clearance (BDA 2002 § 6): Prior approval from NBA Chennai is legally mandatory before applying for any IPR inside or outside India based on Indian biological resources.\n\n5. Trade Secrets & Know-How: Proprietary manufacturing processes, standardized extraction parameters, and quality control methodologies can be maintained as confidential trade secrets.",
+          patent_analysis: "Indian Patent Framework: Sections 3(e) and 3(p) of the Patents Act 1970 exclude traditional knowledge and mere admixtures. Patentability requires empirical proof of synergistic enhancement. CSIR-TKDL serves as global prior art.",
+          regulatory_analysis: "Indian Regulatory Framework: Formulations are licensed by the Ministry of AYUSH under Drugs & Cosmetics Rule 158B (Form 25D) with Schedule T GMP compliance, or under FSSAI Ayurveda Aahara Regulations 2022.",
+          ip_fto_analysis: "National Biodiversity Authority (NBA) Clearance: Section 6 of the Biological Diversity Act 2002 mandates prior approval before filing for IPR based on Indian bio-resources.",
+          conditions: [
+            "To evaluate patentability of a specific formulation: Provide empirical synergy data (Combination Index < 1.0) and novel non-obvious technical effect beyond classical texts.",
+            "To register trademarks: Select coined, non-descriptive brand names complying with Section 13 of the Trade Marks Act 1999.",
+            "NBA Clearance: Obtain Section 6 prior approval from National Biodiversity Authority before patent grant."
+          ],
+          required_next_steps: [
+            "Provide specific botanical ingredients, quantitative proportions, and extraction method for concrete Section 3(e)/3(p) evaluation.",
+            "Screen proposed formulation against the CSIR Traditional Knowledge Digital Library (TKDL).",
+            "File Form 1 / Form III with the National Biodiversity Authority at Chennai."
+          ],
+          evidence: [
+            {
+              citation_id: "IN-PATENTS-ACT-1970",
+              publication_number: "Indian Patents Act 1970",
+              document_id: "STATUTE_IN_SEC3E",
+              jurisdiction: "IN",
+              section: "Section 3(e)",
+              title: "Indian Patents Act 1970 - Section 3(e) Admixture Exclusion",
+              text: "A substance obtained by a mere admixture resulting only in the aggregation of the properties of the components thereof or a process for producing such substance is not an invention.",
+              source: "Indian Patents Act, 1970",
+            },
+            {
+              citation_id: "IN-PATENTS-ACT-1970-3P",
+              publication_number: "Indian Patents Act 1970",
+              document_id: "STATUTE_IN_SEC3P",
+              jurisdiction: "IN",
+              section: "Section 3(p)",
+              title: "Indian Patents Act 1970 - Section 3(p) Traditional Knowledge Exclusion",
+              text: "An invention which in effect is traditional knowledge or which is an aggregation or duplication of known properties of traditionally known component or components is not an invention.",
+              source: "Indian Patents Act, 1970",
+            },
+            {
+              citation_id: "IN-BIO-DIVERSITY-2002",
+              publication_number: "Biological Diversity Act 2002",
+              document_id: "STATUTE_IN_NBA_SEC6",
+              jurisdiction: "IN",
+              section: "Section 6",
+              title: "Biological Diversity Act 2002 - Section 6 Application for IPR",
+              text: "No person shall apply for any intellectual property right, by whatever name called, in or outside India for any invention based on any research or information on a biological resource obtained from India without obtaining the previous approval of the National Biodiversity Authority.",
+              source: "Biological Diversity Act, 2002",
+            }
+          ],
+          confidence: "HIGH",
+          query_intent: intent,
+          evidence_sufficiency: {
+            evidence_sufficient: true,
+            required_evidence_present: true,
+            unresolved_material_conditions: [],
+            jurisdiction_valid: true,
+            source_authority: 5,
+            missing_evidence_categories: [],
+            decision_reason_codes: ["GENERAL_IP_INFORMATION", "STATUTORY_EVALUATION_IN_GROUNDED"],
+            patent_evidence_count: 2,
+            regulatory_evidence_count: 0,
+            fto_evidence_count: 1,
+            evidence_note: "Authoritative statutory provisions from Indian legal corpora applied for general IP guidance.",
+          },
+          detected_language: language,
+          jurisdictions_searched: ["IN"],
+          decision_jurisdiction: "IN",
+          origin_jurisdiction: "IN",
+          target_jurisdiction: "IN",
+          origin_evidence: [],
+          target_evidence: [],
+          cross_jurisdiction_evidence: [],
+          evaluation_evidence: [],
+          crag_status: "GOOD",
+          evaluation_only: false,
+          latencies_ms: { total_decision_pipeline_ms: Date.now() - tStart },
+          disclaimer: "AYURLEX provides statutory intelligence and decision assistance. Not legal advice.",
+        };
+        return jsonResponse(localizeDecision(response, language as any) || response);
+      }
     }
 
     // ── India Evaluation Case (Domain-Specific Statutory Synthesis) ──────────

@@ -498,6 +498,76 @@ class DecisionRuleEngine:
             next_steps = ["Reformulate product to eliminate prohibited substances or unapproved claims."]
             return decision, why, conditions, next_steps, reason_codes
 
+        # ── Stage 2.5: General IP Protection Mechanism Inquiry ────────────────
+        is_gen_ip = (
+            getattr(intent, "detected_intent", None) == "general_ip_information" or
+            (
+                intent.raw_query and
+                any(w in intent.raw_query.lower() for w in ["how can", "how to", "how do i", "ways to", "how are"]) and
+                any(w in intent.raw_query.lower() for w in ["protect", "protection"]) and
+                any(w in intent.raw_query.lower() for w in ["ip", "intellectual property", "patent", "trademark"]) and
+                not any(w in intent.raw_query.lower() for w in ["my product", "my specific", "this specific", "extract ratio", "mg", "kg", "batch"])
+            )
+        )
+        if is_gen_ip:
+            target = target_jurisdictions[0] if target_jurisdictions else "IN"
+            decision = DecisionType.CONDITIONAL_YES
+            reason_codes.append("GENERAL_IP_INFORMATION")
+            if target == "US":
+                reason_codes.append("US_IP_FRAMEWORK_INFORMATION")
+                why = (
+                    "General US Intellectual Property & Regulatory Framework: In the United States, protecting an Ayurvedic "
+                    "formulation involves distinct IP and regulatory mechanisms. Crucially, owning or citing a patent does NOT "
+                    "establish regulatory approval, commercial permission, or freedom-to-operate, and FDA regulations do not establish "
+                    "that an unspecified formulation complies with them:\n\n"
+                    "1. Patents (USPTO / 35 U.S.C. §§ 101, 102, 103): Naturally occurring botanical products and classical preparations "
+                    "are non-patentable natural products under 35 U.S.C. § 101 (Alice/Mayo doctrine) unless modified into a markedly different "
+                    "composition or proven novel synergistic combination. Prior art in the TKDL serves as novelty-destroying prior art.\n\n"
+                    "2. Trademarks (USPTO / Lanham Act): Distinctive coined brand names and logos can be registered under Class 5 or Class 3.\n\n"
+                    "3. Regulatory Compliance (FDA / DSHEA - 21 U.S.C. § 321(ff)): Ayurvedic products in the US are generally regulated as "
+                    "Dietary Supplements under 21 CFR Part 111 cGMP with structure/function claims.\n\n"
+                    "4. Freedom to Operate (FTO): FTO requires an independent clearance search against active USPTO patents."
+                )
+                conditions = [
+                    "To evaluate patentability of a specific product: Provide chemical structures, novel extract fractions, or experimental synergy data overcoming 35 U.S.C. §§ 101/103.",
+                    "To evaluate regulatory status: Specify intended product classification (dietary supplement vs cosmetic vs OTC drug) and label claim wording.",
+                    "FTO Verification: Commission a formal clearance search against active USPTO botanical formulation patents."
+                ]
+                next_steps = [
+                    "Provide specific botanical ingredients, extract preparation details, and quantitative ratios for concrete evaluation.",
+                    "Consult a registered US patent attorney (USPTO-admitted) for claim drafting or FTO opinions.",
+                    "Engage US regulatory counsel to review 21 CFR Part 111 cGMP compliance and structure/function claims."
+                ]
+            else:
+                reason_codes.append("STATUTORY_EVALUATION_IN_GROUNDED")
+                why = (
+                    "General Indian Intellectual Property Protection Framework: Under Indian jurisprudence, an Ayurvedic formulation "
+                    "can be protected through a multi-layered IP strategy across several legal regimes. Because this is general statutory "
+                    "guidance and no specific formulation was submitted, this does not constitute an approval or grant of patentability "
+                    "for any specific product:\n\n"
+                    "1. Patents (The Patents Act 1970): Classical formulations described in ancient treatises are strictly barred under "
+                    "Section 3(p) as traditional knowledge. Mere admixtures of known herbs without synergistic efficacy are barred under "
+                    "Section 3(e). Patent protection is available ONLY for novel synergistic combinations, novel extraction processes, or "
+                    "novel delivery systems.\n\n"
+                    "2. Trademarks (The Trade Marks Act 1999): Distinctive coined brand names can be registered under Class 5 and Class 30. "
+                    "Generic botanical names cannot be monopolized under Section 13 & 9.\n\n"
+                    "3. Geographical Indications (GI Act 1999): Regional herbal varieties can be protected collectively.\n\n"
+                    "4. Biological Diversity Clearance (BDA 2002 § 6): Prior approval from NBA Chennai is legally mandatory before applying "
+                    "for any IPR inside or outside India based on Indian biological resources.\n\n"
+                    "5. Trade Secrets & Know-How: Proprietary manufacturing processes can be maintained as confidential trade secrets."
+                )
+                conditions = [
+                    "To evaluate patentability of a specific formulation: Provide empirical synergy data (Combination Index < 1.0) and novel non-obvious technical effect beyond classical texts.",
+                    "To register trademarks: Select coined, non-descriptive brand names complying with Section 13 of the Trade Marks Act 1999.",
+                    "NBA Clearance: Obtain Section 6 prior approval from National Biodiversity Authority before patent grant."
+                ]
+                next_steps = [
+                    "Provide specific formulation ingredients, extraction solvent, and quantitative ratios for concrete evaluation.",
+                    "Conduct prior art clearance against CSIR-TKDL and global patent databases.",
+                    "File brand trademark application (Form TM-A) with CGPDTM."
+                ]
+            return decision, why, conditions, next_steps, reason_codes
+
         # ── Stage 3: Commercialization & Market Entry Inquiries ────────────────
         if intent.is_commercialization_question:
             reason_codes.append("CONDITIONAL_APPROVAL_REQUIRED")

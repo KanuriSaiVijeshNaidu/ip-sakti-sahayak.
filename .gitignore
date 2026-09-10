@@ -29,7 +29,7 @@ pgdata/
 
 # Models cache (large)
 .cache/
-models/
+/models/
 
 # Large dataset archives (>100MB)
 *.tar.gz

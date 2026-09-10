@@ -1952,13 +1952,26 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
                 const itemRes = msg.response ? (localizeDecision(msg.response, language) || msg.response) : (activeResponse || null);
                 if (!itemRes) return null;
 
-                const isOutOfDomain = itemRes.decision_reason_codes?.includes("OUT_OF_DOMAIN");
+                const codes: string[] = [
+                  ...(itemRes.decision_reason_codes || []),
+                  ...(itemRes.evidence_sufficiency?.decision_reason_codes || [])
+                ];
+                const isOutOfDomain = codes.includes("OUT_OF_DOMAIN");
+                const isGeneralInfo = codes.some((c) =>
+                  ["GENERAL_IP_INFORMATION", "GENERAL_INTELLIGENCE_CONCEPT", "INFORMATIONAL_GUIDANCE", "PATENT_REFERENCE_INFORMATION"].includes(c)
+                );
                 const visuals = isOutOfDomain ? {
                   title: "Insufficient Data / Out of Domain",
                   sub: "Query outside IP, Ayurveda, or regulatory legal scope.",
                   icon: <AlertCircle className="w-6 h-6 text-slate-500" />,
                   ring: "border-slate-300 bg-slate-50",
                   badgeBg: "bg-slate-200 text-slate-800 border-slate-300",
+                } : isGeneralInfo ? {
+                  title: "Informational IP Guidance",
+                  sub: "General statutory & IP principles. No specific product approval or commercial clearance implied.",
+                  icon: <BookOpen className="w-6 h-6 text-teal-700" />,
+                  ring: "border-teal-500/30 bg-teal-50/20",
+                  badgeBg: "bg-teal-100 text-teal-900 border-teal-300",
                 } : getDecisionVisuals(itemRes.decision);
                 const isUnsupported = itemRes.decision === "INSUFFICIENT_EVIDENCE" && (!itemRes.evidence || itemRes.evidence.length === 0);
                 const cardKey = msg.id || `assistant-${idx}`;
@@ -2134,6 +2147,8 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
                           <span>
                             <strong>Evidence Gating Active:</strong> {isOutOfDomain
                               ? "Inquiry is outside the domain of Intellectual Property, Ayurveda, and regulatory law. No statutory assessment performed."
+                              : isGeneralInfo
+                              ? "Evidence-grounded statutory information provided. Because no specific formulation or empirical data were submitted, no product-specific approval or clearance is made."
                               : isUnsupported 
                               ? `No indexed statutory corpus exists for "${itemRes.decision_jurisdiction || targetMarket}". Under AYURLEX strict zero-hallucination rules, unindexed jurisdictions return hard INSUFFICIENT EVIDENCE.` 
                               : itemRes.decision === "INSUFFICIENT_EVIDENCE"
@@ -2149,7 +2164,7 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
                         <div className="space-y-3">
                           <div className="flex items-center gap-2 font-bold text-slate-900 text-sm">
                             <ListChecks className="w-4 h-4 text-emerald-700" />
-                            <h4>Statutory Conditions Precedent ({itemRes.conditions?.length || 0})</h4>
+                            <h4>{isGeneralInfo ? `Statutory Criteria & Evaluation Thresholds (${itemRes.conditions?.length || 0})` : `Statutory Conditions Precedent (${itemRes.conditions?.length || 0})`}</h4>
                           </div>
                           {itemRes.conditions && itemRes.conditions.length > 0 ? (
                             <ul className="space-y-2">
@@ -2166,6 +2181,8 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
                             <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-500 italic">
                               {isOutOfDomain
                                 ? "None (Inquiry outside IP/Ayurveda statutory scope)."
+                                : isGeneralInfo
+                                ? "None (General informational guidance. Specific formulation details required for conditional product evaluation)."
                                 : "No specific statutory conditions precedent required."}
                             </div>
                           )}
@@ -2175,7 +2192,7 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
                         <div className="space-y-3">
                           <div className="flex items-center gap-2 font-bold text-slate-900 text-sm">
                             <ArrowRight className="w-4 h-4 text-emerald-700" />
-                            <h4>Recommended Action Items ({itemRes.required_next_steps?.length || 0})</h4>
+                            <h4>{isGeneralInfo ? `Next Steps for Specific Product Evaluation (${itemRes.required_next_steps?.length || 0})` : `Recommended Action Items (${itemRes.required_next_steps?.length || 0})`}</h4>
                           </div>
                           {itemRes.required_next_steps && itemRes.required_next_steps.length > 0 ? (
                             <ul className="space-y-2">
@@ -2190,6 +2207,8 @@ Official Source Citation Verified by AYURLEX (SIH26045)`;
                             <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-500 italic">
                               {isOutOfDomain
                                 ? "Please submit an IP, Ayurveda, patent, trademark, or regulatory inquiry."
+                                : isGeneralInfo
+                                ? "To assess a specific product: Provide formulation ingredients, quantitative ratios, extraction solvent, and bioassay data."
                                 : "No administrative filings required."}
                             </div>
                           )}
