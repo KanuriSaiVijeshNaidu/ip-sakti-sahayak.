@@ -142,12 +142,20 @@ def route_jurisdiction(query: str, explicit_override: Optional[str] = None) -> T
         or "இந்திய" in query
         or "インド" in query
     )
-    has_us = bool(re.search(r"\b(us|usa|united states|american patent|uspto|35\s*u\.?s\.?c|fda|ndi|gras)\b", q_lower) or "米国" in query or "アメリカ" in query)
-    has_ep = bool(re.search(r"\b(ep|epo|european patent|european patent office|europe|ema|hmpc)\b", q_lower) or "欧州" in query or "ヨーロッパ" in query)
-    has_wo = bool(re.search(r"\b(wo|wipo|pct|international patent|international application)\b", q_lower) or "国際出願" in query or "世界知的所有権機関" in query)
+    has_us = bool(re.search(r"\b(us|usa|united states|american patent|uspto|35\s*u\.?s\.?c|fda|ndi|gras|dshea|21\s*u\.?s\.?c|21\s*cfr|cgmp)\b", q_lower) or "米国" in query or "アメリカ" in query)
+    has_ep = bool(
+        re.search(r"\b(ep|epo|epc|epü|epa|european patent|european patent office|europe|european|europäische|europäisches|ema|hmpc)\b", q_lower)
+        or "欧州" in query
+        or "ヨーロッパ" in query
+        or "epü" in q_lower
+        or "epu" in q_lower
+    )
+    has_wo = bool(re.search(r"\b(wo|wipo|pct|international patent|international application|patentscope|iprp|isr|wo-isa)\b", q_lower) or "国際出願" in query or "世界知的所有権機関" in query)
     has_jp = bool(
-        re.search(r"\b(jp|japan|japanese|jpo|pmda|mhlw)\b", q_lower)
+        re.search(r"\b(jp|japan|japanese|jpo|pmda|mhlw|pmd act|ffc)\b", q_lower)
         or "日本" in query
+        or "特許法" in query
+        or "薬機法" in query
         or ("特許庁" in query and not any(f"{p}特許庁" in query for p in ["インド", "米国", "欧州", "世界"]))
     )
 

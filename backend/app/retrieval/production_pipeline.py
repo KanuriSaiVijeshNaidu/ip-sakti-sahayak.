@@ -40,6 +40,7 @@ from backend.app.retrieval.hybrid_fusion import reciprocal_rank_fusion
 from backend.app.retrieval.cross_encoder_reranker import cross_encoder_reranker
 from backend.app.retrieval.jurisdiction_guard import verify_jurisdiction_safety
 from backend.app.retrieval.evidence_selector import select_diverse_evidence
+from backend.app.retrieval.statutory_store import statutory_store
 from backend.app.rag.crag_validator import crag_validator
 from backend.app.rag.config import rag_config
 
@@ -62,6 +63,7 @@ class ProductionRetrievalPipeline:
         jurisdiction_faiss_retriever.initialize()
         jurisdiction_bm25_retriever.build_or_load()
         cross_encoder_reranker.initialize()
+        statutory_store.initialize()
         self._warm = True
         logger.info("Production Retrieval Pipeline successfully warmed up.")
 
@@ -113,6 +115,16 @@ class ProductionRetrievalPipeline:
         latencies["lexical_retrieval_ms"] = round((time.perf_counter() - t0) * 1000, 2)
         verify_jurisdiction_safety(lexical_candidates, target_jurisdictions, stage_name="Lexical BM25 Retrieval")
 
+        # Stream C: Statutory Anchors Retrieval
+        t0 = time.perf_counter()
+        statutory_candidates = statutory_store.search(
+            query=query_analysis.normalized_query,
+            jurisdictions=target_jurisdictions,
+            top_k=5,
+        )
+        latencies["statutory_retrieval_ms"] = round((time.perf_counter() - t0) * 1000, 2)
+        verify_jurisdiction_safety(statutory_candidates, target_jurisdictions, stage_name="Statutory Anchor Retrieval")
+
         # If dense candidates lack text/title, enrich them from BM25 corpus mapping
         bm25_chunks_by_id = {}
         for jur in target_jurisdictions:
@@ -143,11 +155,26 @@ class ProductionRetrievalPipeline:
         latencies["rrf_ms"] = round((time.perf_counter() - t0) * 1000, 2)
         verify_jurisdiction_safety(fused_candidates, target_jurisdictions, stage_name="RRF Fusion")
 
-        # 4. Cross-Encoder Reranking
+        # 4. Cross-Encoder Reranking Candidate Pool Assembly
         t0 = time.perf_counter()
-        rerank_pool = fused_candidates[:rerank_k]
+        seen_cids = set()
+        rerank_pool = []
+
+        # Verified Tier-1 statutory anchors are prioritized in rerank candidate pool
+        for sc in statutory_candidates:
+            if sc["chunk_id"] not in seen_cids:
+                rerank_pool.append(sc)
+                seen_cids.add(sc["chunk_id"])
+
+        for fc in fused_candidates:
+            if fc["chunk_id"] not in seen_cids:
+                rerank_pool.append(fc)
+                seen_cids.add(fc["chunk_id"])
+            if len(rerank_pool) >= rerank_k + len(statutory_candidates):
+                break
+
         rerank_query = query_analysis.normalized_query
-        if query_analysis.detected_language in ["te", "hi", "ta", "ja"] and query_analysis.expanded_representations:
+        if query_analysis.expanded_representations:
             en_trans = query_analysis.expanded_representations.get("en_canonical", "")
             if en_trans and en_trans != rerank_query:
                 rerank_query = f"{rerank_query} ({en_trans})"
@@ -270,6 +297,15 @@ class ProductionRetrievalPipeline:
         )
         latencies["lexical_retrieval_ms"] = round((time.perf_counter() - t0) * 1000, 2)
 
+        # 4. Stream C: Statutory Anchors Retrieval
+        t0 = time.perf_counter()
+        statutory_candidates = statutory_store.search(
+            query=query_analysis.normalized_query,
+            jurisdictions=target_jurisdictions,
+            top_k=5,
+        )
+        latencies["statutory_retrieval_ms"] = round((time.perf_counter() - t0) * 1000, 2)
+
         # Enrich dense candidates
         bm25_chunks_by_id = {}
         for jur in target_jurisdictions:
@@ -290,7 +326,7 @@ class ProductionRetrievalPipeline:
                 dc["subdomain"] = meta.get("subdomain", "")
                 dc["authority_tier"] = meta.get("authority_tier", 1)
 
-        # 4. RRF Fusion
+        # 5. RRF Fusion
         t0 = time.perf_counter()
         fused_candidates = reciprocal_rank_fusion(
             dense_candidates=dense_candidates,
@@ -299,9 +335,24 @@ class ProductionRetrievalPipeline:
         )
         latencies["rrf_ms"] = round((time.perf_counter() - t0) * 1000, 2)
 
-        # 5. Cross-Encoder Reranking
+        # 6. Cross-Encoder Reranking Candidate Pool Assembly
         t0 = time.perf_counter()
-        rerank_pool = fused_candidates[:rerank_k]
+        seen_cids = set()
+        rerank_pool = []
+
+        # Verified Tier-1 statutory anchors are prioritized in rerank candidate pool
+        for sc in statutory_candidates:
+            if sc["chunk_id"] not in seen_cids:
+                rerank_pool.append(sc)
+                seen_cids.add(sc["chunk_id"])
+
+        for fc in fused_candidates:
+            if fc["chunk_id"] not in seen_cids:
+                rerank_pool.append(fc)
+                seen_cids.add(fc["chunk_id"])
+            if len(rerank_pool) >= rerank_k + len(statutory_candidates):
+                break
+
         rerank_query = query_analysis.normalized_query
         if query_analysis.detected_language in ["te", "hi", "ta", "ja"] and query_analysis.expanded_representations:
             en_trans = query_analysis.expanded_representations.get("en_canonical", "")
@@ -369,7 +420,17 @@ class ProductionRetrievalPipeline:
 
         dense_summaries = [make_summary(c, "dense_score", i + 1) for i, c in enumerate(dense_candidates[:10])]
         lexical_summaries = [make_summary(c, "lexical_score", i + 1) for i, c in enumerate(lexical_candidates[:10])]
-        fused_summaries = [make_summary(c, "rrf_score", i + 1) for i, c in enumerate(fused_candidates[:10])]
+        fused_pool_display = []
+        seen_fused = set()
+        for sc in statutory_candidates:
+            if sc["chunk_id"] not in seen_fused:
+                fused_pool_display.append(sc)
+                seen_fused.add(sc["chunk_id"])
+        for fc in fused_candidates:
+            if fc["chunk_id"] not in seen_fused:
+                fused_pool_display.append(fc)
+                seen_fused.add(fc["chunk_id"])
+        fused_summaries = [make_summary(c, "rrf_score", i + 1) for i, c in enumerate(fused_pool_display[:10])]
         reranked_summaries = [make_summary(c, "rerank_score", i + 1) for i, c in enumerate(reranked_candidates[:10])]
 
         return RetrievalDebugResponse(

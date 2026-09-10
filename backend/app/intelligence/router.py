@@ -49,12 +49,39 @@ UNINDEXED_JURISDICTIONS = {
     "NZ": ("New Zealand (Medsafe)", r"\b(new zealand|medsafe)\b"),
 }
 
+RE_STATUTORY_ARTICLE = re.compile(
+    r"\b("
+    r"35\s*u\.?s\.?c\.?(\s*(§|sec\.?|section)?\s*\d+)?|"
+    r"section\s+(101|102|103|112|271|3\([a-z]\)|10\(4\)|13|9|28|29)|"
+    r"article\s+(29(\(\d+\))?|52|53(\([a-z]\))?|54(\(\d+\))?|56|57|18|19|21|22|33)|"
+    r"epc\s+article\s+\d+|pct\s+article\s+\d+|pct\s+chapter(\s+[ivx]+)?|"
+    r"rule\s+(158b|43bis)|schedule\s+t|form\s+(25d|24d|tm-a|iii)|"
+    r"dshea|21\s*u\.?s\.?c\.?|21\s*cfr|cgmp|"
+    r"pmd\s+act|mhlw(\s+circular)?|circular\s+(no\.?\s*)?429|ffc|foods\s+with\s+function\s+claims|"
+    r"fssai|ayurveda\s+aahara|nba|biological\s+diversity(\s+act)?|tkdl|traditional\s+knowledge\s+digital\s+library|"
+    r"特許法|薬機法"
+    r")\b",
+    re.IGNORECASE,
+)
+
+RE_JURISDICTION_LEGAL = re.compile(
+    r"\b("
+    r"under\s+(us|usa|united\s+states|japanese?|indian?|epc|epo|pct|wipo|europe|european)\s+(patent\s+law|law|statute|rules?|act)|"
+    r"in\s+(the\s+)?(us|usa|united\s+states|japan|india|europe)\s+(patent\s+law|law|patentability)|"
+    r"(novelty|inventive\s+step|non-obviousness?|patentability|prior\s+art|infringement)\s+under\s+(us|usa|japan|india|epc|pct|epo|wipo)|"
+    r"(food\s+and\s+drug|food-drug)\s+boundary\s+under|"
+    r"chapter\s+ii\s+of\s+pct|wo-isa|iprp|isr"
+    r")\b",
+    re.IGNORECASE,
+)
+
 GENERAL_PATTERNS = [
-    r"^what\s+is\s+(an?\s+)?(patent|trademark|trade\s+mark|prior\s+art|rag|novelty|patent\s+novelty|inventive\s+step|freedom\s+to\s+operate|fto|photosynthesis|dna|herb|ayurveda|intellectual\s+property)",
-    r"^explain\s+(a\s+)?(patent|trademark|trade\s+mark|rag|prior\s+art|novelty|patent\s+novelty|inventive\s+step|freedom\s+to\s+operate|fto|photosynthesis|how\s+patents\s+work|this\s+simply)",
+    r"^what\s+is\s+(an?\s+)?(patent|trademark|trade\s+mark|prior\s+art|rag|novelty|patent\s+novelty|inventive\s+step|freedom\s+to\s+operate|fto|photosynthesis|dna|herb|ayurveda|intellectual\s+property)\??$",
+    r"^what\s+is\s+(an?\s+)?(patent|trademark|trade\s+mark|prior\s+art|rag|novelty|inventive\s+step|photosynthesis)\b(?!\s+(under|according|in\s+(the\s+)?(us|japan|india|europe)))",
+    r"^explain\s+(a\s+)?(patent|trademark|trade\s+mark|rag|prior\s+art|novelty|inventive\s+step|freedom\s+to\s+operate|fto|photosynthesis|how\s+patents\s+work|this\s+simply)\b(?!\s+(under|according|in\s+(the\s+)?(us|japan|india|europe)))",
     r"^how\s+does\s+(photosynthesis|rag|retrieval\s+augmented\s+generation|a\s+patent\s+work|a\s+trademark\s+work)",
     r"^tell\s+me\s+about\s+(photosynthesis|patents?|trademarks?|the\s+history\s+of\s+ayurveda|how\s+plants\s+grow)",
-    r"^define\s+(an?\s+)?(patent|trademark|trade\s+mark|prior\s+art|novelty|inventive\s+step|synergy|freedom\s+to\s+operate|fto)",
+    r"^define\s+(an?\s+)?(patent|trademark|trade\s+mark|prior\s+art|novelty|inventive\s+step|synergy|freedom\s+to\s+operate|fto)\??$",
 ]
 
 LEGAL_KEYWORDS = [
@@ -103,34 +130,100 @@ class IntelligenceRouter:
                     reasoning=f"Jurisdiction '{name}' is not indexed in the verified AYURLEX corpus.",
                 )
 
-        # ── 2. Check for Pure General / Educational Questions ─────────────────
+        # ── Resolve Target Jurisdiction Helper ─────────────────────────────────
+        detected_jur = target_jur
+        if not detected_jur:
+            if re.search(r"\b(jp|japan|japanese|jpo|pmda|mhlw|特許法|薬機法)\b", q_lower) or "日本" in query:
+                detected_jur = "JP"
+            elif re.search(r"\b(us|usa|united states|uspto|35\s*u\.?s\.?c|fda|dshea|21\s*cfr|21\s*u\.?s\.?c)\b", q_lower) or "米国" in query or "アメリカ" in query:
+                detected_jur = "US"
+            elif re.search(r"\b(wo|wipo|pct|international preliminary|international application|patentscope|iprp|isr|wo-isa)\b", q_lower) or "国際出願" in query:
+                detected_jur = "WO"
+            elif re.search(r"\b(ep|epo|european|europe|epc|thmpd)\b", q_lower) or "欧州" in query:
+                detected_jur = "EP"
+            elif re.search(r"\b(in|india|indian|cgpdtm|ipo|ayush|fssai|section 3|tkdl|nba|rule 158b)\b", q_lower) or any(k in query for k in ["भारत", "भारतीय", "భారత"]):
+                detected_jur = "IN"
+            else:
+                detected_jur = "IN"
+
+        # ── Detect Specific Legal / Regulatory Domain Helper ───────────────────
+        target_domain = "patent_law"
+        if "trademark" in q_lower or "trade mark" in q_lower or "section 13" in q_lower or "class 5" in q_lower:
+            target_domain = "trademarks"
+        elif "fssai" in q_lower or "ayurveda aahara" in q_lower or "food supplement" in q_lower or "dietary" in q_lower or "ffc" in q_lower:
+            target_domain = "food_safety_fssai"
+        elif "rule 158b" in q_lower or "schedule t" in q_lower or "drugs and cosmetics" in q_lower or "asu" in q_lower or "pmd act" in q_lower:
+            target_domain = "drugs_cosmetics_rules"
+        elif "biodiversity" in q_lower or "nba" in q_lower or "biological diversity" in q_lower or "abs" in q_lower:
+            target_domain = "access_benefit_sharing"
+        elif "tkdl" in q_lower or "traditional knowledge" in q_lower or "biopiracy" in q_lower or "turmeric" in q_lower:
+            target_domain = "traditional_knowledge"
+        elif "commercializ" in q_lower or "sell" in q_lower or "market" in q_lower or "d2c" in q_lower or "form 25d" in q_lower:
+            target_domain = "commercialization_d2c"
+        elif "heavy metal" in q_lower or "export" in q_lower or "who" in q_lower or "copp" in q_lower:
+            target_domain = "export_compliance"
+
+        # ── 2. Priority 1: Explicit Statutory / Jurisdiction Legal Inquiries ───
+        is_statutory = bool(RE_STATUTORY_ARTICLE.search(q_lower))
+        is_jurisdiction_legal = bool(RE_JURISDICTION_LEGAL.search(q_lower))
+
+        if is_statutory or is_jurisdiction_legal:
+            return RoutingDecision(
+                category=QueryCategory.LEGAL_REGULATORY,
+                confidence=0.98,
+                detected_intent=f"{target_domain}_statutory_inquiry",
+                target_jurisdiction=detected_jur,
+                target_domain=target_domain,
+                requires_rag=True,
+                requires_evidence_gate=True,
+                is_general_educational=False,
+                reasoning=f"Identified Priority 1 statutory/jurisdiction legal inquiry targeting {detected_jur} under {target_domain}.",
+            )
+
+        # ── 3. Priority 2: Concrete Product / Commercial Formulation Clearance
+        is_concrete_application = any(
+            term in q_lower for term in [
+                "my product", "this product", "formulation", "extract", "patentable", "can i", "sell", "export",
+                "market", "infringe", "infringement", "ashwagandha", "curcumin", "piperine", "triphala", "brahmi",
+                "churna", "taila", "capsule", "tablet", "syrup", "in india", "in usa", "in japan", "in europe", "under pmd",
+                "find patents", "prior art for", "patents related to"
+            ]
+        )
+        is_product = any(term in q_lower for term in [
+            "this formulation", "my product", "extract", "capsule", "syrup", "churna", "taila", "softgel", "tablet",
+            "curcumin", "ashwagandha", "piperine", "supplement", "dietary supplement"
+        ])
+
+        if is_concrete_application:
+            category = QueryCategory.PRODUCT_ANALYSIS if is_product else QueryCategory.LEGAL_REGULATORY
+            return RoutingDecision(
+                category=category,
+                confidence=0.95,
+                detected_intent=f"{target_domain}_inquiry",
+                target_jurisdiction=detected_jur,
+                target_domain=target_domain,
+                requires_rag=True,
+                requires_evidence_gate=True,
+                is_general_educational=False,
+                reasoning=f"Identified {category.value} application query targeting {detected_jur} under {target_domain}.",
+            )
+
+        # ── 4. Priority 3: Pure Conceptual / General Knowledge Questions ───────
         is_general = False
         for pat in GENERAL_PATTERNS:
             if re.search(pat, q_lower):
                 is_general = True
                 break
 
-        # Check if query is directed at a concrete formulation, commercial action, or jurisdiction clearance
-        is_concrete_application = any(
-            term in q_lower for term in [
-                "my product", "this product", "formulation", "extract", "patentable", "can i", "sell", "export",
-                "market", "infringe", "infringement", "ashwagandha", "curcumin", "piperine", "triphala", "brahmi",
-                "churna", "taila", "capsule", "tablet", "syrup", "in india", "in usa", "in japan", "in europe", "under pmd"
-            ]
+        is_pure_concept = (
+            q_lower in ["what is a patent?", "what is a patent", "what is a trademark?", "what is a trademark",
+                        "what is novelty?", "what is novelty", "what is inventive step?", "what is inventive step",
+                        "what is prior art?", "what is prior art", "how does photosynthesis work?", "how does photosynthesis work"]
+            or (q_lower.startswith(("what is ", "explain ", "how does ", "define ", "tell me about "))
+                and not any(k in q_lower for k in ["us", "japan", "india", "europe", "pct", "epc", "act", "section", "article", "law", "statute", "supplement", "fda", "pmd"]))
         )
 
-        has_legal_kw = any(kw in q_lower for kw in LEGAL_KEYWORDS)
-
-        # Pure concept queries ("What is a patent?", "What is a trademark?", "How does photosynthesis work?", "What is novelty in patent law?")
-        is_conceptual_question = (
-            q_lower.startswith("what is") or
-            q_lower.startswith("explain") or
-            q_lower.startswith("how does") or
-            q_lower.startswith("define") or
-            q_lower.startswith("tell me about")
-        )
-
-        if (is_general or (is_conceptual_question and not is_concrete_application)):
+        if is_general or is_pure_concept:
             return RoutingDecision(
                 category=QueryCategory.GENERAL_KNOWLEDGE,
                 confidence=0.95,
@@ -142,50 +235,18 @@ class IntelligenceRouter:
                 reasoning="General educational/scientific/conceptual query that does not require statutory evidence grounding.",
             )
 
-        # ── 3. Resolve Target Jurisdiction from Query ─────────────────────────
-        detected_jur = target_jur or "IN"
-        if "japan" in q_lower or "jpo" in q_lower or "kampo" in q_lower or "日本" in q_lower:
-            detected_jur = "JP"
-        elif "usa" in q_lower or "united states" in q_lower or "uspto" in q_lower or "fda" in q_lower:
-            detected_jur = "US"
-        elif "europe" in q_lower or "epo" in q_lower or "thmpd" in q_lower:
-            detected_jur = "EP"
-        elif "wipo" in q_lower or "pct" in q_lower or "international" in q_lower or "treaty" in q_lower:
-            detected_jur = "WO"
-        elif "india" in q_lower or "cgpdtm" in q_lower or "ayush" in q_lower or "fssai" in q_lower:
-            detected_jur = "IN"
-
-        # ── 4. Detect Specific Legal / Regulatory Domain ──────────────────────
-        target_domain = "patent_law"
-        if "trademark" in q_lower or "trade mark" in q_lower or "section 13" in q_lower or "class 5" in q_lower:
-            target_domain = "trademarks"
-        elif "fssai" in q_lower or "ayurveda aahara" in q_lower or "food supplement" in q_lower or "dietary" in q_lower:
-            target_domain = "food_safety_fssai"
-        elif "rule 158b" in q_lower or "schedule t" in q_lower or "drugs and cosmetics" in q_lower or "asu" in q_lower:
-            target_domain = "drugs_cosmetics_rules"
-        elif "biodiversity" in q_lower or "nba" in q_lower or "biological diversity" in q_lower or "abs" in q_lower:
-            target_domain = "access_benefit_sharing"
-        elif "tkdl" in q_lower or "traditional knowledge" in q_lower or "biopiracy" in q_lower or "turmeric" in q_lower:
-            target_domain = "traditional_knowledge"
-        elif "commercializ" in q_lower or "sell" in q_lower or "market" in q_lower or "d2c" in q_lower or "form 25d" in q_lower:
-            target_domain = "commercialization_d2c"
-        elif "heavy metal" in q_lower or "export" in q_lower or "who" in q_lower or "copp" in q_lower:
-            target_domain = "export_compliance"
-
-        # ── 5. Classify between Product Analysis and General Legal ────────────
-        is_product = any(term in q_lower for term in ["this formulation", "my product", "extract", "capsule", "syrup", "churna", "taila", "softgel", "tablet"])
+        # ── 5. Default Fallback ───────────────────────────────────────────────
         category = QueryCategory.PRODUCT_ANALYSIS if is_product else QueryCategory.LEGAL_REGULATORY
-
         return RoutingDecision(
             category=category,
-            confidence=0.95,
+            confidence=0.90,
             detected_intent=f"{target_domain}_inquiry",
             target_jurisdiction=detected_jur,
             target_domain=target_domain,
             requires_rag=True,
             requires_evidence_gate=True,
             is_general_educational=False,
-            reasoning=f"Identified {category.value} query targeting {detected_jur} under {target_domain}.",
+            reasoning=f"Defaulted to {category.value} query targeting {detected_jur} under {target_domain}.",
         )
 
 
