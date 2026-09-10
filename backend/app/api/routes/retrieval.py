@@ -9,6 +9,7 @@ and ranked evidence without generating final LLM answers.
 from __future__ import annotations
 
 import logging
+from fastapi import APIRouter, HTTPException, status
 from backend.app.models.retrieval_schemas import (
     RetrievalSearchRequest,
     RetrievalSearchResponse,
